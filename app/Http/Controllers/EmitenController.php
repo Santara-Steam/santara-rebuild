@@ -15,7 +15,7 @@ class EmitenController extends Controller
     public function index(){
         $emiten = emiten::where('emitens.is_deleted',0)
         ->select('emitens.*','categories.category as ktg','emiten_journeys.title as sts')
-        ->join('categories', 'categories.id','=','emitens.category_id')
+        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
         ->get();
@@ -101,11 +101,11 @@ class EmitenController extends Controller
         $emj = new emiten_journey();
         $emj->emiten_id = $em->id;
         $emj->title = "Pra Penawaran Saham";
-        $emj->save();
-        $notif = array(
-            'message' => 'Data Berhasil Di Tambahkan',
-            'alert-type' => 'success'
-        );
+        // $emj->save();
+        // $notif = array(
+        //     'message' => 'Data Berhasil Di Tambahkan',
+        //     'alert-type' => 'success'
+        // );
 
         $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
         // dd($em);
