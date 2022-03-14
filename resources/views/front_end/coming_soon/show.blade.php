@@ -1,7 +1,7 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-<div class="bg" style="background-image: url({{ asset('assets/images/background-now-playing@1x.png') }}">
+<div class="bg" style="background-image: url({{ asset('public/assets/images/background-now-playing@1x.png') }}">
         <div class="banner_section layout_padding">
             <div class="container">
                <div class="section">
@@ -21,7 +21,7 @@
                 </div>
               </div>
               <div class="profil">
-                <img class="image-69" src="{{ asset('assets/images/image-69-8@2x.png') }}" />
+                <img class="image-69" src="{{ asset('public/assets/images/image-69-8@2x.png') }}" />
                 <div class="pemilik-bisnis">
                   <div class="m-khemal-nugroho inter-medium-alabaster-18px">
                     <span class="text-mulai inter-medium-alabaster">M Khemal Nugroho</span>
@@ -84,14 +84,14 @@
 		            </div>
 		            <div class="table-1">
 		              <div class="table-row">
-		                <img class="table-4" src="{{ asset('assets/images/table-56@2x.png') }}" />
-		                <img class="table-5" src="{{ asset('assets/images/table-57@2x.png') }}" />
+		                <img class="table-4" src="{{ asset('public/assets/images/table-56@2x.png') }}" />
+		                <img class="table-5" src="{{ asset('public/assets/images/table-57@2x.png') }}" />
 		              </div>
 		              <div class="table-row-1">
-		                <img class="table-4" src="{{ asset('assets/images/table-58@2x.png') }}" />
-		                <img class="table-5" src="{{ asset('assets/images/table-59@2x.png') }}" />
+		                <img class="table-4" src="{{ asset('public/assets/images/table-58@2x.png') }}" />
+		                <img class="table-5" src="{{ asset('public/assets/images/table-59@2x.png') }}" />
 		              </div>
-		              <img class="table-6" src="{{ asset('assets/images/table-60@2x.png') }}" />
+		              <img class="table-6" src="{{ asset('public/assets/images/table-60@2x.png') }}" />
 		            </div>
 		          </div>
                          
@@ -100,31 +100,31 @@
 
         <div class="actions-com">
           <div class="button-5">
-            <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
+            <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
             <div class="address-1 inter-medium-eerie-black-14px">
               <span class="tx-icon inter-medium-eerie-black "><p class="tx-icon">82 </p><p class="com-u">&ensp;Likes</p></span>
             </div>
           </div>
           <div class="button-5">
-            <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
+            <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
             <div class="address-1 inter-medium-eerie-black-14px">
               <span class="tx-icon inter-medium-eerie-black"><p class="tx-icon">197 </p> <p class="com-u">&ensp;Minat</p></span>
             </div>
           </div>
           <div class="button-5">
-            <img class="icon-com" src="{{ asset('assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
+            <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
             <div class="address-1 inter-medium-eerie-black-14px">
               <span class="tx-icon inter-medium-eerie-black"><p class="tx-icon">18 </p><p class="com-u">&ensp;Komen</p></span>
             </div>
           </div>
           <div class="button-5">
-            <img class="icon-com" src="{{ asset('assets/images/icon-share-2-47@2x.png') }}" />&ensp;
+            <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
             <div class="address-1 inter-medium-eerie-black-14px">
               <span class="tx-icon inter-medium-eerie-black"><p class="com-u">&ensp;Share</p></span>
             </div>
           </div>
         </div>
-            <img class="youtube" src="{{ asset('assets/images/yt.png') }}">
+            <img class="youtube" src="{{ asset('public/assets/images/yt.png') }}">
               <div class="gallery">
               <div class="gallery-1 inter-bold-alabaster-24px"><span class="inter-bold-alabaster-24px">Gallery</span></div>
             </div>
@@ -146,19 +146,19 @@
                         <div class="row">
                            <div class="col-lg-4 col-sm-4">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 
                               </div>
                            </div>
@@ -174,19 +174,19 @@
                         <div class="row">
                            <div class="col-lg-4 col-sm-4">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 
                               </div>
                            </div>

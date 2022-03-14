@@ -51,7 +51,7 @@
                            <div class="col-lg-3 col-sm-6 col-6">
                             <a href="{{ route('now-playing.detail') }}">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -97,7 +97,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -115,7 +115,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -161,7 +161,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -178,7 +178,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -224,7 +224,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -241,7 +241,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -287,7 +287,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -313,7 +313,7 @@
                         <div class="row">
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -359,7 +359,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -376,7 +376,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -422,7 +422,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -439,7 +439,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -485,7 +485,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -502,7 +502,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -548,7 +548,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -601,7 +601,7 @@
                            <div class="col-lg-3 col-sm-6 col-6">
                             <a href="{{ route('coming-soon.detail') }}">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -621,25 +621,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('assets/images/icon-heart-18@2x.png') }}" />
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
                                         <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
                                           <span class="tx-icon inter-normal-alabaster">91 Suka</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('assets/images/icon-user-17@2x.png') }}" />
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
                                         <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
                                           <span class="tx-icon inter-normal-alabaster">100 Minat</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-2">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
                                         <div class="address-6 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-3">
-                                        <img class="icon-com iconshare-2" src="{{ asset('assets/images/icon-share-2-46@2x.png') }}" />
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -647,7 +647,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                         <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
@@ -656,7 +656,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -676,25 +676,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('assets/images/icon-heart-18@2x.png') }}" />
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
                                         <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
                                           <span class="tx-icon inter-normal-alabaster">91 Suka</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('assets/images/icon-user-17@2x.png') }}" />
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
                                         <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
                                           <span class="tx-icon inter-normal-alabaster">100 Minat</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-2">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
                                         <div class="address-6 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-3">
-                                        <img class="icon-com iconshare-2" src="{{ asset('assets/images/icon-share-2-46@2x.png') }}" />
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -702,7 +702,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                         <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
@@ -710,7 +710,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -730,25 +730,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('assets/images/icon-heart-18@2x.png') }}" />
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
                                         <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
                                           <span class="tx-icon inter-normal-alabaster">91 Suka</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('assets/images/icon-user-17@2x.png') }}" />
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
                                         <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
                                           <span class="tx-icon inter-normal-alabaster">100 Minat</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-2">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
                                         <div class="address-6 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-3">
-                                        <img class="icon-com iconshare-2" src="{{ asset('assets/images/icon-share-2-46@2x.png') }}" />
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -756,7 +756,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                         <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
@@ -764,7 +764,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -784,25 +784,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('assets/images/icon-heart-18@2x.png') }}" />
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
                                         <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
                                           <span class="tx-icon inter-normal-alabaster">91 Suka</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('assets/images/icon-user-17@2x.png') }}" />
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
                                         <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
                                           <span class="tx-icon inter-normal-alabaster">100 Minat</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-2">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
                                         <div class="address-6 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-3">
-                                        <img class="icon-com iconshare-2" src="{{ asset('assets/images/icon-share-2-46@2x.png') }}" />
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -810,7 +810,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                         <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
@@ -828,7 +828,7 @@
                         <div class="row">
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -848,25 +848,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('assets/images/icon-heart-18@2x.png') }}" />
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
                                         <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
                                           <span class="tx-icon inter-normal-alabaster">91 Suka</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('assets/images/icon-user-17@2x.png') }}" />
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
                                         <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
                                           <span class="tx-icon inter-normal-alabaster">100 Minat</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-2">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
                                         <div class="address-6 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-3">
-                                        <img class="icon-com iconshare-2" src="{{ asset('assets/images/icon-share-2-46@2x.png') }}" />
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -874,7 +874,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                         <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
@@ -882,7 +882,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -902,25 +902,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('assets/images/icon-heart-18@2x.png') }}" />
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
                                         <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
                                           <span class="tx-icon inter-normal-alabaster">91 Suka</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('assets/images/icon-user-17@2x.png') }}" />
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
                                         <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
                                           <span class="tx-icon inter-normal-alabaster">100 Minat</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-2">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
                                         <div class="address-6 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-3">
-                                        <img class="icon-com iconshare-2" src="{{ asset('assets/images/icon-share-2-46@2x.png') }}" />
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -928,7 +928,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                         <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
@@ -936,7 +936,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -956,25 +956,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('assets/images/icon-heart-18@2x.png') }}" />
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
                                         <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
                                           <span class="tx-icon inter-normal-alabaster">91 Suka</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('assets/images/icon-user-17@2x.png') }}" />
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
                                         <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
                                           <span class="tx-icon inter-normal-alabaster">100 Minat</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-2">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
                                         <div class="address-6 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-3">
-                                        <img class="icon-com iconshare-2" src="{{ asset('assets/images/icon-share-2-46@2x.png') }}" />
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -982,7 +982,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                         <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
@@ -990,7 +990,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -1010,25 +1010,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('assets/images/icon-heart-18@2x.png') }}" />
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
                                         <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
                                           <span class="tx-icon inter-normal-alabaster">91 Suka</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('assets/images/icon-user-17@2x.png') }}" />
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
                                         <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
                                           <span class="tx-icon inter-normal-alabaster">100 Minat</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-2">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
                                         <div class="address-6 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-3">
-                                        <img class="icon-com iconshare-2" src="{{ asset('assets/images/icon-share-2-46@2x.png') }}" />
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -1036,7 +1036,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                         <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
@@ -1080,7 +1080,7 @@
                            <div class="col-lg-3 col-sm-6 col-6">
                             <a href="{{ route('sold-out.detail') }}">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
                                     <div class="header-and-tags">
@@ -1110,7 +1110,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-2">
                                       <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span
@@ -1128,7 +1128,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
                                     <div class="header-and-tags">
@@ -1158,7 +1158,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-2">
                                       <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span
@@ -1175,7 +1175,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
                                     <div class="header-and-tags">
@@ -1205,7 +1205,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-2">
                                       <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span
@@ -1222,7 +1222,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
                                     <div class="header-and-tags">
@@ -1252,7 +1252,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-2">
                                       <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span
@@ -1279,7 +1279,7 @@
                         <div class="row">
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
                                     <div class="header-and-tags">
@@ -1309,7 +1309,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-2">
                                       <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span
@@ -1326,7 +1326,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
                                     <div class="header-and-tags">
@@ -1356,7 +1356,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-2">
                                       <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span
@@ -1373,7 +1373,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
                                     <div class="header-and-tags">
@@ -1403,7 +1403,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-2">
                                       <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span
@@ -1420,7 +1420,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
                                     <div class="header-and-tags">
@@ -1450,7 +1450,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-2">
                                       <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span

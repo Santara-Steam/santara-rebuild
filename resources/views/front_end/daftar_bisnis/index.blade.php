@@ -1,7 +1,7 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-<div class="bg-2" style="background-image: url({{ asset('assets/images/background@1x.png') }}";>
+<div class="bg-2" style="background-image: url({{ asset('public/assets/images/background@1x.png') }}";>
         <div class="banner_section layout_padding">
             <div class="container">
                <div class="section">
@@ -71,7 +71,7 @@
                 </p>
               </div>
             </div>
-            <img class="image" src="{{ asset('assets/images/image-7@2x.png') }}" />
+            <img class="image" src="{{ asset('public/assets/images/image-7@2x.png') }}" />
           </div>
         </div>      
             </div>

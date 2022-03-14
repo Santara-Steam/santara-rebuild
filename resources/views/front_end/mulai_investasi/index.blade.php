@@ -2,7 +2,7 @@
 
 @section('content')
 
-      <div class="bg-2" style="background-image: url({{ asset('assets/images/hero-section-1@2x.png') }} ">
+      <div class="bg-2" style="background-image: url({{ asset('public/assets/images/hero-section-1@2x.png') }} ">
         <div class="banner_section layout_padding">
             <div class="container">
                <div class="section">
@@ -23,7 +23,7 @@
                   </div>
                 </div>
               </div>
-              <img class="image-mul" src="{{ asset('assets/images/image-1@2x.png') }}" />
+              <img class="image-mul" src="{{ asset('public/assets/images/image-1@2x.png') }}" />
           </div>
       </div>
       <!-- fashion section start -->
@@ -38,7 +38,7 @@
           </div>
           <div class="panduan-1">
             <div class="panduan-2">
-              <img class="image" src="{{ asset('assets/images/image-2@2x.png') }}" />
+              <img class="image" src="{{ asset('public/assets/images/image-2@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">1. Daftar ke Santara</span>
@@ -51,7 +51,7 @@
               </div>
             </div>
             <div class="panduan">
-              <img class="image" src="{{ asset('assets/images/image-3@2x.png') }}" />
+              <img class="image" src="{{ asset('public/assets/images/image-3@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">2. Lengkapi Profilmu</span>
@@ -65,7 +65,7 @@
               </div>
             </div>
             <div class="panduan">
-              <img class="image" src="{{ asset('assets/images/image-4@2x.png') }}" />
+              <img class="image" src="{{ asset('public/assets/images/image-4@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">3. Tunggu Verifikasi</span>
@@ -79,7 +79,7 @@
               </div>
             </div>
             <div class="panduan">
-              <img class="image" src="{{ asset('assets/images/image-5@2x.png') }}" />
+              <img class="image" src="{{ asset('public/assets/images/image-5@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">4. Pilih Bisnis</span>
@@ -92,7 +92,7 @@
               </div>
             </div>
             <div class="panduan">
-              <img class="image" src="{{ asset('assets/images/image-6@2x.png') }}" />
+              <img class="image" src="{{ asset('public/assets/images/image-6@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">5. Masukan Nilai Investasi</span>

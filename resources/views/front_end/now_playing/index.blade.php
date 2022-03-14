@@ -22,7 +22,7 @@
                   <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
                 </div>
                 <div class="input-1 border-1px-cape-cod">
-                  <img class="search" src="{{ asset('assets/images/search-9@2x.png') }}" />
+                  <img class="search" src="{{ asset('public/assets/images/search-9@2x.png') }}" />
                   <div class="text inter-normal-delta-16px"><span class="inter-normal-delta-16px">Nama Bisnis</span></div> </div>
                 </div>
               </div>
@@ -105,7 +105,7 @@
                            <div class="col-lg-3 col-sm-6 col-6">
                             <a href="detail-now-playing.html">
                               <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -151,7 +151,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -169,7 +169,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -215,7 +215,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -232,7 +232,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -278,7 +278,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -295,7 +295,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -341,7 +341,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -359,7 +359,7 @@
                            <div class="col-lg-3 col-sm-6 col-6">
                             <a href="detail-now-playing.html">
                               <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -405,7 +405,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -423,7 +423,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -469,7 +469,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -486,7 +486,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -532,7 +532,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
@@ -549,7 +549,7 @@
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
                               <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('assets/images/rectangle-2@1x.png') }}" />
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
@@ -595,7 +595,7 @@
                                     </div>
                                   </div>
                                   <div class="footer-card">
-                                    <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                                     <div class="footer-card-1">
                                       <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
