@@ -28,7 +28,7 @@ use App\Http\Controllers\Front_end\Mulai_investasiController;
 // Auth::routes();
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
 Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () {
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
