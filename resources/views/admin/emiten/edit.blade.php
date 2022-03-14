@@ -210,12 +210,12 @@
                                             <hr>
                                             <div class="form-group">
                                                 <label for="companyName">Kode Emiten</label>
-                                                <input type="text" id="companyName" name="code_emiten" class="form-control"
+                                                <input type="text" id="companyName" value="{{$emiten->code_emiten}}"  name="code_emiten" class="form-control"
                                                     placeholder="Kode Emiten">
                                             </div>
                                             <div class="form-group">
                                                 <label for="companyName">Nama Brand</label>
-                                                <input type="text" id="companyName" name="brand" class="form-control"
+                                                <input type="text" id="companyName" value="{{$emiten->trademark}}"  name="brand" class="form-control"
                                                     placeholder="Nama Brand">
                                             </div>
                                             <div class="form-group">
@@ -224,7 +224,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Rp</span>
                                                     </div>
-                                                    <input type="text" name="harga_saham" class="form-control"
+                                                    <input type="text" name="harga_saham" value="{{$emiten->price}}" class="form-control"
                                                         placeholder="Harga Saham Per Lembar"
                                                         aria-describedby="basic-addon1">
                                                 </div>
