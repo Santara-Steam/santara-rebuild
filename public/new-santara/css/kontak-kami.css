@@ -1,0 +1,97 @@
+.container-kontak {
+    background-color: #1D2231;
+    border-radius: 10px;
+    margin: 70px 100px;
+}
+
+.row-detail-kontak {
+    background-color: #242A3A;
+    border-radius: 10px;
+    padding: 10px 80px;
+    margin: 5px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+}
+
+.row-map {
+    background-color: #242A3A;
+    border-radius: 10px;
+    margin: 5px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+}
+
+.row-kontak {
+    margin: 0px -50px;
+}
+
+.font-header {
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: -15px;
+    padding: 0px 50px;
+    background-color: #1A1A1A
+}
+
+.red-kontak {
+    color: #DF2426;
+}
+
+.font-pt {
+    font-size: 24px;
+}
+
+.font-alamat {
+    font-size: 14px;
+}
+
+.logo-sosmed {
+    margin: 10px;
+}
+
+@media screen and (max-width:680px) {
+    .container-kontak {
+        background-color: #1D2231;
+        border-radius: 10px;
+        margin: 30px 20px;
+    }
+
+    .font-pt {
+        font-size: 22px;
+    }
+
+    .row-detail-kontak {
+        background-color: #242A3A;
+        border-radius: 10px;
+        padding: 5px 10px;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .row-kontak {
+        margin: 10px -25px;
+    }
+
+    .font-alamat {
+        font-size: 12px;
+    }
+
+    .font-header {
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-top: -15px;
+        background-color: #1A1A1A
+    }
+
+    .logo-sosmed {
+        margin: 10px;
+    }
+
+
+    .row-map {
+        margin: 0px;
+    }
+}

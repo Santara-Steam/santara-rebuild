@@ -57,7 +57,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -121,7 +121,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -184,7 +184,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -247,7 +247,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -319,7 +319,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -382,7 +382,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -445,7 +445,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -508,7 +508,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -607,7 +607,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -621,24 +621,24 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
-                                        <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
-                                          <span class="tx-icon inter-normal-alabaster">91 Suka</span>
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
-                                          <span class="tx-icon inter-normal-alabaster">100 Minat</span>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-2">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-3">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
@@ -662,7 +662,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -676,24 +676,24 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
-                                        <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
-                                          <span class="tx-icon inter-normal-alabaster">91 Suka</span>
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
-                                          <span class="tx-icon inter-normal-alabaster">100 Minat</span>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-2">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-3">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
@@ -716,7 +716,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -730,24 +730,24 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
-                                        <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
-                                          <span class="tx-icon inter-normal-alabaster">91 Suka</span>
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
-                                          <span class="tx-icon inter-normal-alabaster">100 Minat</span>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-2">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-3">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
@@ -770,7 +770,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -784,24 +784,24 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
-                                        <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
-                                          <span class="tx-icon inter-normal-alabaster">91 Suka</span>
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
-                                          <span class="tx-icon inter-normal-alabaster">100 Minat</span>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-2">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-3">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
@@ -834,7 +834,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -848,24 +848,24 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
-                                        <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
-                                          <span class="tx-icon inter-normal-alabaster">91 Suka</span>
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
-                                          <span class="tx-icon inter-normal-alabaster">100 Minat</span>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-2">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-3">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
@@ -888,7 +888,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -902,24 +902,24 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
-                                        <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
-                                          <span class="tx-icon inter-normal-alabaster">91 Suka</span>
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
-                                          <span class="tx-icon inter-normal-alabaster">100 Minat</span>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-2">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-3">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
@@ -942,7 +942,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -956,24 +956,24 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
-                                        <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
-                                          <span class="tx-icon inter-normal-alabaster">91 Suka</span>
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
-                                          <span class="tx-icon inter-normal-alabaster">100 Minat</span>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-2">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-3">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
@@ -996,7 +996,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -1010,24 +1010,24 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />
-                                        <div class="address-2 inter-normal-alabaster-10px" style="margin-left: 25px">
-                                          <span class="tx-icon inter-normal-alabaster">91 Suka</span>
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="address-5 inter-normal-alabaster-10px" style="margin-left: 20px">
-                                          <span class="tx-icon inter-normal-alabaster">100 Minat</span>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-2">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">46 Komentar</span>
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
-                                      <div class="icon-and-supporting-text-3">
+                                      <div class="icon-and-supporting-text-1">
                                         <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
@@ -1086,7 +1086,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -1134,7 +1134,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -1181,7 +1181,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -1228,7 +1228,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -1285,7 +1285,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -1332,7 +1332,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -1379,7 +1379,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -1426,7 +1426,7 @@
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">

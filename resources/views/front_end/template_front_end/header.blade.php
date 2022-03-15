@@ -13,7 +13,7 @@
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
-
+      <link rel="shortcut icon" type="image/x-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon.ico">
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
       <!-- fevicon -->
@@ -44,9 +44,9 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
    </head>
    <body>
-        <!-- header section start -->
-        <div class="header_section">
-           <div class="containt_main">
+    <nav class="navbar navbar-expand-lg" style="min-height: 96px;">
+      <a class="navbar-brand" href="{{ url('/') }}">
+        <div class="containt_main">
              <div id="mySidenav" class="sidenav">
                      <div class="men">
                       <a href="{{ url('/') }}" style="margin-left: -30px;">
@@ -56,73 +56,73 @@
                        </div>
                       </a>
                      <div class="menu-view-body ff-n">
-                        <ul class="ml-auto navbar-nav">
+                        <ul class="ml-auto ">
                            <li class="tx-dd nav-item">
-                             <a class="nav-link menu" id="menu-dropdown" data-bs-toggle="collapse" href="#penerbit" role="button" aria-expanded="false" aria-controls="penerbit">
+                             <a class="nav-link navbar-nav" id="menu-dropdown" data-bs-toggle="collapse" href="#penerbit" role="button" aria-expanded="false" aria-controls="penerbit">
                                List Penerbit &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown"></i>
                              </a>
                            </li>
                            <div class="collapse" id="penerbit" style="padding-left: 20px;">
                              <li class="nav-item">
-                               <a class="nav-link menu" href="{{ route('now-playing.index') }}">Now Playing</a>
+                               <a class="nav-link navbar-nav" href="{{ route('now-playing.index') }}">Now Playing</a>
                              </li>
                              <li class="nav-item">
-                               <a class="nav-link menu" href="{{ route('coming-soon.index') }}">Coming Soon</a>
+                               <a class="nav-link navbar-nav" href="{{ route('coming-soon.index') }}">Coming Soon</a>
                              </li>
                              <li class="nav-item">
-                               <a class="nav-link menu" href="{{ route('sold-out.index') }}">Sold Out</a>
+                               <a class="nav-link navbar-nav" href="{{ route('sold-out.index') }}">Sold Out</a>
                              </li>
                            </div>
 
                            <li class="nav-item">
-                             <a class="nav-link menu" href="#>tentang-santara">Tentang Santara</a>
+                             <a class="nav-link navbar-nav" href="#>tentang-santara">Tentang Santara</a>
                            </li>
 
                            <li class="nav-item">
-                             <a class="nav-link menu" href="#">Testimoni</a>
+                             <a class="nav-link navbar-nav" href="#">Testimoni</a>
                            </li>
 
                            <li class="nav-item">
-                             <a class="nav-link menu" href="#">Panduan</a>
+                             <a class="nav-link navbar-nav" href="#">Panduan</a>
                            </li>
 
                            <li class="nav-item tx-dd"><br>
-                             <a class="nav-link menu" id="menu-dropdown2" data-bs-toggle="collapse" href="#syarat" role="button" aria-expanded="false" aria-controls="syarat">
+                             <a class="nav-link navbar-nav" id="menu-dropdown2" data-bs-toggle="collapse" href="#syarat" role="button" aria-expanded="false" aria-controls="syarat">
                                Syarat & Ketentuan &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown2"></i>
                              </a>
                            </li>
                            <div class="collapse" id="syarat" style="padding-left: 20px;">
                              <li class="nav-item">
-                               <a class="nav-link menu" href="#">Pemodal</a>
+                               <a class="nav-link navbar-nav" href="#">Pemodal</a>
                              </li>
                              <li class="nav-item">
-                               <a class="nav-link menu" href="#">Penerbit</a>
+                               <a class="nav-link navbar-nav" href="#">Penerbit</a>
                              </li>
                            </div>
 
 
                            <li class="nav-item">
-                             <a class="nav-link menu" href="#">Pertanyaan</a>
+                             <a class="nav-link navbar-nav" href="#">Pertanyaan</a>
                            </li>
 
 
                            <li class="nav-item">
-                             <a class="nav-link menu" href="#">SUPPORTED BY</a>
+                             <a class="nav-link navbar-nav" href="#">SUPPORTED BY</a>
                            </li>
                            <li class="nav-item tx-dd"><br>
-                             <a class="nav-link menu" id="menu-dropdown3" data-bs-toggle="collapse" href="#tentangKami" role="button" aria-expanded="false" aria-controls="tentangKami">
+                             <a class="nav-link navbar-nav" id="menu-dropdown3" data-bs-toggle="collapse" href="#tentangKami" role="button" aria-expanded="false" aria-controls="tentangKami">
                                Tentang Kami &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown3"></i>
                              </a>
                            </li>
                            <div class="collapse" id="tentangKami" style="padding-left: 20px;">
                              <li class="nav-item">
-                               <a class="nav-link menu" href="#">Kontak Kami</a>
+                               <a class="nav-link navbar-nav" href="#">Kontak Kami</a>
                              </li>
                              <li class="nav-item">
-                               <a class="nav-link menu" target="_blank" href="#">Berita</a>
+                               <a class="nav-link navbar-nav" target="_blank" href="#">Berita</a>
                              </li>
                              <li class="nav-item">
-                               <a class="nav-link menu" target="_blank" href="#">Karir</a>
+                               <a class="nav-link navbar-nav" target="_blank" href="#">Karir</a>
                              </li>
                           </div>
                        </ul>
@@ -134,14 +134,23 @@
                   <span class="toggle_icon" onclick="openNav()"><img src="{{ asset('public/assets/images/toggle-icon.png') }}"></span>
              </div>
            </div>
-             <div class="menu">
-               <a href="{{ url('/') }}">
+        <div class="menu">
                    <img class="logo" src="{{ asset('public/assets/images/logo-newsantara-ai-putih-merah-l-1-27@2x.png') }}" />
                    <div class="santara ubuntu-medium-white-28px"><span class="ubuntu-medium-white-28px">santara</span></div>
-               </a>
              </div>
-          <div class="button-auth inter-medium-white-14px">
-            <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px">Masuk</a>
-            <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px">Daftar</a>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <div class="inter-medium-white-14px">
+            <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ route('login') }}">Masuk</a>
+            <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" href="{{ route('register') }}">Daftar</a>
           </div>
-       </div>
+        </form>
+      </div>
+    </nav>

@@ -1,0 +1,470 @@
+.text-grey {
+    color: #708088;
+}
+
+.font-mulish {
+        font-family: 'Nunito';
+}
+
+.jumlah-range {
+    min-width: 35px;
+    padding: 0px;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #e9ecef;
+}
+
+.jumlah-range:active {
+    background-color: #BB0711;
+    transform: translateY(0px);
+    color: #fff;
+}
+td.description {
+    vertical-align: middle;
+}
+.jumbotron-container {
+    width: 100%;
+    height: 497px;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0;
+    background-size: cover;
+    color: white;
+    /* transform: translateY(-10%); */
+}
+
+.bg-image-playing {
+    /* margin: auto; */
+    /* max-width: 100%; */
+    background-repeat: no-repeat;
+    width: inherit;
+    /* or any custom size */
+    height: 90vh;
+    object-fit: contain;
+    z-index: -1;
+}
+
+.now-playing-header {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+
+}
+
+.without-border {
+    border: 0;
+}
+
+.now-playing-header__title {
+    background-color: black;
+    font-family: 'acumin-pro';
+    font-weight: 700;
+    font-size: 4vw;
+    padding: 0 5px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.now-playing-card {
+    background-color: black;
+    padding: 0.5%;
+    display: inline-flex;
+}
+
+.now-playing-card__title {
+    text-transform: capitalize;
+}
+
+.now-playing-card__image {
+    float: left;
+    margin-right: 1vw;
+
+}
+
+.text-gold {
+    color: #d2b353;
+}
+
+.text-yellow {
+    color: #dfb857;
+}
+
+
+.btn-pill {
+    border-radius: 23px;
+}
+
+
+.timeline {
+    counter-reset: test 0;
+    position: relative;
+    margin-left: -25px;
+}
+
+
+.tooltip-santara .tooltiptext {
+       visibility: hidden;
+       background-color: rgb(255, 255, 255);
+       color: rgb(0, 0, 0);
+       text-align: center;
+       border-radius: 35px;
+       padding: 5px 17px;
+       position: absolute;
+       font-weight: bold;
+       /* z-index: 1; */
+       width: 200px;
+       bottom: 105%;
+       left: 38px;
+       /* margin-left: -60px; */
+       border-style: double;
+}
+
+.tooltip-santara .tooltiptext::after {
+       content: "";
+       position: absolute;
+       top: 106%;
+       left: 50%;
+       margin-left: -8px;
+       border-width: 7px;
+       border-style: solid;
+       border-color: white transparent transparent transparent;
+}
+
+.tooltip-santara:hover .tooltiptext {
+    visibility: visible;
+}
+
+@media(max-width:1200px) {
+    .jumbotron-container {
+        height: 497px;
+        /* transform: translateY(-10%); */
+    }
+
+}
+
+@media(max-width:768px) {
+    .jumbotron-container {
+        height: 400px;
+        /* transform: translateY(-10%); */
+    }
+    .tooltip-santara .tooltiptext {
+       left: 38px;
+    }
+
+    .timeline {
+        transform: scale(0.8);
+    }
+
+    ul:nth-child(1) {
+        color: #a9c3cf;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    /* #commentModal {
+      transform: scale(0.5);
+    } */
+
+
+    .jumbotron-container {
+        height: 300px;
+        /* transform: translateY(-10%); */
+    }
+
+    .timeline {
+        transform: scale(0.8);
+    }
+
+    ul:nth-child(1) {
+        color: #a9c3cf;
+        font-size: 8px;
+    }
+
+    .now-playing-header {
+        left: 3%;
+        transform: scale(0.8);
+
+    }
+
+    .now-playing-card__image {
+        float: left;
+        transform: scale(0.8);
+
+    }
+
+}
+
+.timeline li {
+    list-style: none;
+    float: left;
+    width: 20%;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 10px 0 10px
+}
+
+.time-line li ul:nth-child(1) {
+    color: #a9c3cf;
+}
+
+.timeline li:before {
+    counter-increment: test;
+    content: counter(test);
+    width: 40px;
+    height: 40px;
+    border: 3px solid #000;
+    box-shadow: 0 0 0 3px #597380;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    margin: 0 auto 10px auto;
+    background: #597380;
+    color: #a1bbc7;
+    font-weight: 800;
+    font-size: 20px;
+    transition: all ease-in-out .3s;
+    /* padding: 5px; */
+    display: block;
+    /* cursor: pointer; */
+}
+
+.timeline li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: #597380;
+    background-color: #597380;
+    top: 20px;
+    left: -50%;
+    z-index: -1;
+    transition: all ease-in-out .3s;
+}
+
+
+.timeline li:first-child:after {
+    content: none;
+}
+
+.timeline li.active-tl {
+    color: #a9c3cf;
+
+}
+
+.timeline li.active-tl:before {
+    background: #df2426;
+    color: #F1F1F1;
+    box-shadow: 0 0 0 3px #df2426;
+
+}
+
+.timeline li.active-tl+li.active-tl:after {
+    background: #df2426;
+    z-index: -1;
+
+}
+
+.santara-white-background {
+    padding: 2% 2%;
+    object-fit: fill;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/new-santara/img/santara-white-bg.png');
+    background-size: 100% 100%;
+
+}
+
+.vertical-center {
+    min-height: 100%;
+    /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh;
+    /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+
+.modal {
+    color: #000;
+}
+
+.swiper {
+   width: 100%;
+   height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+   }
+.swiper-wrapper {
+    margin-bottom: 30px;
+}
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-slide.one img {
+     display: block;
+     width: 380px;
+     height: 285px;
+     object-fit: fill;
+}
+.beli-saham-modal {
+    content: "";
+    background-image: url('../../../assets/new-santara/img/beli-saham-modal.png');
+}
+
+.login-modal {
+    content: "";
+    background-image: url('../../../assets/new-santara/img/login-modal.png');
+    background-size: cover;
+}
+
+.btn-danger {
+    border-color: #bf2d30;
+    background-color: #bf2d30;
+}
+
+.btn-light {
+    border-color: #a2bbc6;
+}
+
+.btn-danger:hover {
+    border-color: #942224;
+    background-color: #942224;
+}
+
+.font-poppins {
+    font-family: 'acumin-pro';
+}
+
+.video {
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+}
+
+.border-left-dividen {
+    border-left: #4A585A solid;
+}
+
+.ml-tersisa{
+    margin-left: 20px;
+}
+.foto-owner{
+    width: 200px;
+    height: 200px;
+}
+.detail-owner{
+    text-align: left;
+}
+@media(max-width:1200px) {
+    .video {
+        height: 500px;
+    }
+.ml-tersisa {
+    margin-left: 0px;
+}
+
+    .mobile-center {
+        text-align: center;
+    }
+}
+
+@media(max-width:992px) {
+    .video {
+        height: 400px;
+    }
+    .border-left-dividen {
+        border-left: none;
+    }
+    .detail-owner {
+        text-align: center;
+    }
+
+    .foto-owner {
+        width: 200px;
+        height: 200px;
+    }
+}
+@media(max-width:768px) {
+    .video {
+        height: 400px;
+    }
+    .border-left-dividen {
+        border-left: none;
+    }
+    .foto-owner {
+        width: 200px;
+        height: 200px;
+    }
+.detail-owner {
+    text-align: center;
+}
+
+    .mobile-center {
+            text-align: center;
+        }
+}
+@media(max-width:768px) {
+    .video {
+        height: 400px;
+    }
+.border-left-dividen {
+    border-left: none;
+}
+.foto-owner {
+    width: 200px;
+    height: 200px;
+}
+.detail-owner {
+    text-align: center;
+}
+
+.mobile-center {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .video {
+        height: 300px;
+    }
+    
+    .border-left-dividen {
+        border-left:none;
+    }
+
+    .foto-owner {
+        width: 200px;
+        height: 200px;
+    }
+
+    .detail-owner {
+        text-align: center;
+    }
+
+    .mobile-center {
+        text-align: center;
+    }
+}
