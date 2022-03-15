@@ -1,0 +1,200 @@
+.pertanyaan-header {
+    background-image: url("../../new-santara/img/pertanyaan.png");
+    background-color: #2C303A;
+    height: 390px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 538px;
+}
+
+.accordion-button{
+    font-family: 'Nunito';
+}
+.daftarkan-bisnis-dua {
+    background-image: url('../img/background/cara-investasi.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 270px;
+    margin-top: 50px;
+}
+
+.arrow-btn {
+    padding: 10px;
+    margin: -8px -16px -8px 0px;
+    border: #D2E3EB solid;
+    color: #708088;
+    background-color: #D2E3EB;
+}
+
+.nav-pills .nav-link.active .arrow-btn {
+    color: #fff;
+    background-color: #84191C;
+    border: #84191C solid;
+}
+
+.container-pertanyaan {
+    display: flex;
+}
+
+.pertanyaan-title {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 2rem;
+}
+
+.content-faq {
+    padding: 1rem 6rem;
+    background-image: url("../../new-santara/img/background/cara-investasi.svg");
+}
+
+.content-faq>div>.content-faq-text>h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-top: 1rem;
+}
+
+.content-faq>div>.content-faq-text>h5 {
+    font-size: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.content-faq>div>.content-faq-text>a>.btn-faq {
+    display: block;
+    width: 330px;
+}
+
+@media only screen and (max-width: 767px) {
+    .container-pertanyaan {
+        display: inline;
+    }
+
+    .pertanyaan-header {
+        background-size: 338px;
+    }
+
+}
+
+/* 
+.collapse-faq-background-white {
+    background-color: white;
+}
+
+.collapse-faq-card-body {
+    padding: 0 0 20px 0;
+}
+
+.collapse-faq-title {
+    padding-left: 25px;
+    color: rgb(204, 41, 82);
+    font-size: 1.5rem;
+}
+
+.collapse-faq-title>b>.la {
+    font-size: 1.5rem;
+    padding-right: 10px;
+}
+
+.pertanyaan {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+
+.collapse-fag-subtitle {
+    color: #464855;
+}
+
+.collapse-faq {
+    padding: 0 !important;
+}
+
+.collapse-faq-white {
+    background-color: white;
+    border-bottom: 1px dashed #ddd;
+    border-width: thin;
+}
+
+
+
+.btn-santara-white {
+    background-color: white;
+    margin-top: 2rem;
+    color: black;
+}
+
+@media only screen and (max-width: 600px) {
+    .pertanyaan-header {
+        height: 240px;
+        background-size: 300px;
+    }
+
+    .content-faq>div>.content-faq-text>h3 {
+        font-size: 1.5rem !important;
+        padding-top: 2rem;
+    }
+
+    .content-faq>div>.content-faq-text>h5 {
+        font-size: 1rem !important;
+    }
+
+    .collapse-faq-title {
+        font-size: 1.2rem !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .pertanyaan {
+        padding: 0;
+    }
+
+    .pertanyaan-title {
+        padding-top: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .card-header-pertanyaan {
+        padding: 0 !important;
+        padding-top: .7rem !important;
+    }
+
+    .content-faq {
+        padding: 0;
+    }
+
+    .content-faq>div>.content-faq-text>h3 {
+        font-size: 2rem;
+        padding-top: 2rem;
+    }
+
+    .content-faq>div>.content-faq-text>h5 {
+        font-size: 1.5rem;
+    }
+
+    .collapse-faq-card-body {
+        padding: 0 1rem 1rem;
+    }
+
+    .collapse-faq-title {
+        padding-left: 10px;
+        font-size: 1.6rem;
+    }
+
+    .content-faq>div>.content-faq-text>a>.btn-faq {
+        display: block;
+        width: 230px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .pertanyaan {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .pertanyaan-title {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-size: 2rem;
+    }
+} */

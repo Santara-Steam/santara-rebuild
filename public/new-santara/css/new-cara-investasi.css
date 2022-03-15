@@ -1,0 +1,295 @@
+.banner-cinv-left {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
+
+.bg-blacklight {
+    background: #2C303A;
+}
+
+.cara-investasi-header {
+    background-image: url("../../new-santara/img/Group\ 20563.png");
+    background-color: #484b58;
+    /* height: 470px; */
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.cara-investasi-title {
+    position: absolute;
+    padding-top: 60px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #eeb302;
+    padding-left: 90px;
+    font-variant-caps: normal;
+}
+
+.cara-investasi-description {
+    position: absolute;
+    padding-left: 90px;
+    font-size: 1.7rem;
+}
+
+.cara-investasi-button {
+    padding-left: 90px;
+    position: absolute;
+    top: 28rem;
+}
+
+.cara-investasi {
+    padding: 5rem;
+    background-color: #1A1A1A;
+}
+
+.cara-investasi>.row>.title>h3 {
+    color: black;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.cara-investasi>.row>.description>p {
+    font-size: 1.1rem;
+    color: #d49f00;
+    margin-left: 5rem;
+}
+
+.cara-investasi-content {
+    position: absolute;
+}
+
+.card-cara-investasi {
+    box-shadow: none !important;
+    background-color: #1A1A1A;
+    margin-left: 45px;
+    margin: 0;
+}
+
+.card-cara-investasi>.card-body {
+    padding: 20px 50px;
+}
+
+.card-text.step-investasi {
+    padding-left: 2rem;
+}
+
+.card-text.step-investasi>h4 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.card-text.step-investasi>h3 {
+    padding: 1rem 0;
+    font-size: 30px;
+}
+
+.card-text.step-investasi>h3 {
+    padding: .1rem 0;
+    font-size: 2.8rem;
+}
+
+.card-text.step-investasi>p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.btn-mulai-investasi {
+    margin-top: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+}
+
+.step-inves {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.cont-step {
+    padding: 0rem 5rem 10rem 5rem;
+}
+@media only screen and (max-width: 600px) {
+    .content-cinv-img {
+        display: none;
+    }
+    .banner-cinv-left {
+        text-align: center;
+    }
+    .cont-step {
+        padding: 0rem 2rem;
+    }
+    .cara-investasi-header {
+        height: 230px;
+        text-align: center;
+        background-image: none;
+    }
+
+    .cara-investasi-content {
+        top: 100px !important;
+    }
+
+    .cara-investasi-title {
+        padding-left: 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #eeb302;
+        font-variant-caps: normal;
+    }
+
+    .cara-investasi-description {
+        padding-left: 20px;
+    }
+
+    .cara-investasi-button {
+        padding-left: 20px;
+    }
+
+    .btn-mulai-investasi {
+        font-size: .7rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .content-cinv-img {
+        display: none;
+    }
+    .cara-investasi-header {
+        height: 340px;
+        background-size: 300px;
+    }
+    .cont-step {
+        padding: 0rem 2rem;
+    }
+
+    .cara-investasi-content {
+        position: absolute;
+    }
+
+    .cara-investasi-title {
+        position: initial;
+        font-size: 1.4rem;
+    }
+
+    .cara-investasi-description {
+        position: initial;
+        font-size: 1rem;
+    }
+
+    .cara-investasi-button {
+        position: initial;
+    }
+
+    .cara-investasi {
+        padding: 1rem;
+    }
+
+    .cara-investasi>.row>.title>h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-text.step-investasi>h3 {
+        font-size: 1rem;
+        padding: .1rem 0;
+    }
+
+    .card-text.step-investasi {
+        padding-left: .8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-text.step-investasi>p {
+        line-height: 1.4;
+    }
+
+    .card-cara-investasi>.card-body {
+        padding: 0;
+    }
+
+    .card-cara-investasi {
+        padding-top: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .content-cinv-img {
+        display: none;
+    }
+    .cara-investasi-header {
+        height: 430px;
+        background-size: 400px;
+    }
+    .cont-step {
+        padding: 0rem 2rem;
+    }
+    .cara-investasi-title {
+        font-size: 2rem;
+    }
+
+    .cara-investasi-description {
+        font-size: 1rem;
+    }
+
+    .cara-investasi-button {
+        top: 22rem;
+    }
+
+    .cara-investasi {
+        padding: 2rem;
+    }
+
+    .cara-investasi>.row>.title>h3 {
+        font-size: 2rem;
+    }
+
+    .card-text.step-investasi>h3 {
+        font-size: 1.3rem;
+    }
+
+    .card-text.step-investasi>p {
+        font-size: .8rem;
+    }
+
+}
+
+ .cara-investasi-header {
+     height: 430px;
+     background-size: 400px;
+ }
+
+@media only screen and (min-width: 1025px) {
+   .cara-investasi-header {
+       height: 430px;
+       background-size: 450px;
+   }
+
+   .cara-investasi-title {
+     font-size: 2rem;
+ }
+
+ .cara-investasi-description {
+     font-size: 1rem;
+ }
+
+ .cara-investasi-button {
+     top: 22rem;
+ }
+
+ .cara-investasi {
+     padding: 2rem;
+ }
+}
+
+@media only screen and (min-width: 1400px) {
+    .cara-investasi-header {
+        height: 800px;
+    }
+}
+
