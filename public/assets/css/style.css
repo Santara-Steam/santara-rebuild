@@ -385,13 +385,7 @@ a,
     padding-top: 50px;
 }
 .menu-view-body .navbar-nav {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    position: relative;
-}
 
-.menu-view-body .navbar-nav .menu {
     padding: 0px 20px;
     position: relative;
     color: white;
@@ -405,7 +399,9 @@ a,
     display: flex;
     width: 230px;
     margin-left: 8px;
+    
 }
+
 
 .close {
   cursor: pointer;
@@ -432,7 +428,7 @@ a,
     margin-top: -20px;
 }
 
-.menu-view-body .navbar-nav .menu:hover {
+.menu-view-body .navbar-nav:hover {
     color: #BD0000;
 }
 
@@ -485,19 +481,12 @@ img {
 
 .button-cta-1 {
   cursor: pointer;
-  letter-spacing: 0;
-  line-height: 20px;
-  min-height: 20px;
-  min-width: 42px;
-  white-space: nowrap;
  
   align-items: center;
   background-color: var(--eerie-black);
   border-radius: 8px;
   box-shadow: 0px 1px 2px #0000001f;
-  display: flex;
   height: 40px;
-  padding: 0 16px;
   min-width: 74px;
 }
 
@@ -510,20 +499,14 @@ img {
 .button-cta-2 {
   cursor: pointer;
   letter-spacing: 0;
-  line-height: 20px;
-  min-height: 20px;
-  min-width: 42px;
-  white-space: nowrap;
 
   align-items: center;
   background-color: var(--alizarin-crimson);
   border-radius: 8px;
   box-shadow: 0px 1px 2px #0000001f;
-  display: flex;
   height: 40px;
   margin-left: 10px;
   min-width: 74px;
-  padding: 0 16px;
 }
 
 
@@ -749,8 +732,6 @@ button {
 
 .containt_main {
     display: flex;
-    margin-left: 31px;
-    margin-top: 18px;
 }
 
 
@@ -867,14 +848,12 @@ button {
 
 .menu {
     margin-left: 20px;
-    margin-top: 14px;
 
 }
 
 .menu-header {
     
     margin-left: 8px;
-    margin-top: 18px;
 }
 
 .menu-view-body {
@@ -1649,7 +1628,7 @@ input.mail_bt::placeholder {
   letter-spacing: 0;
   line-height: 16px;
   min-height: 16px;
-  min-width: 140px;
+  min-width: 100%;
   white-space: nowrap;
 }
 
@@ -1819,6 +1798,7 @@ input.mail_bt::placeholder {
   flex-direction: column;
   min-height: 40px;
   width: 37px;
+  margin-left: 10px;
 }
 
 .icon-and-supporting-text-2 {
@@ -1828,11 +1808,6 @@ input.mail_bt::placeholder {
   margin-left: 33px;
   min-height: 40px;
   width: 61px;
-}
-
-.iconmessage-circle {
-  height: 20px;
-  width: 20px;
 }
 
 .address-2 {
@@ -1874,12 +1849,6 @@ input.mail_bt::placeholder {
   width: 28px;
 }
 
-.iconshare-2 {
-  height: 20px;
-  margin-left: 4px;
-  width: 20px;
-}
-
 .share {
   letter-spacing: 0;
   line-height: 16px;
@@ -1910,9 +1879,7 @@ input.mail_bt::placeholder {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-left: 33px;
   min-height: 40px;
-  width: 47px;
 }
 
 .icon-com{
@@ -3293,4 +3260,21 @@ input.mail_bt::placeholder {
     margin-right: auto;
     float: left;
     margin-left: 0px;
+  }
+
+  .ic-sz{
+    font-size: 10px;
+  }
+
+  .tx-tp{
+    margin-top: -68px;
+    margin-left: 18px;
+  }
+
+  .lk{
+    margin-left: 20px;
+  }
+
+  .mnt{
+    margin-top: 0px;
   }

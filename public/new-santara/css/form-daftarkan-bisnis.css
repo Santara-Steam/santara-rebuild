@@ -1,0 +1,51 @@
+.bg-header-daftarkan-bisnis {
+    background-image: url('../img/background/header-form-daftarkan-bisnis.svg');
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.img-header-daftarkan-bisnis {
+    margin-top: 150px;
+    max-width: 275px;
+}
+
+.desc-header-daftarkan-bisnis {
+    font-size: 18px;
+}
+
+.judul-register-coming-soon {
+    font-weight: 800;
+    background-color: #1A1A1A;
+    margin-bottom: -15px;
+    font-size: 24px;
+}
+.shadow-img {
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.68);
+    -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.68);
+}
+
+.shadow-name{
+    box-shadow: 0px 0px 8px 2px rgba(102, 102, 102, 0.68);
+    -webkit-box-shadow: 0px 0px 8px 2px rgba(102, 102, 102, 0.68);
+    -moz-box-shadow: 0px 0px 8px 2px rgba(102, 102, 102, 0.68);
+}
+@media (max-width: 576px) {
+    .img-header-daftarkan-bisnis {
+        margin-top: 170px;
+        max-width: 200px;
+    }
+
+    .desc-header-daftarkan-bisnis {
+        font-size: 16px;
+    }
+
+    .judul-register-coming-soon {
+        font-weight: 800;
+        background-color: #1A1A1A;
+        margin-bottom: -15px;
+        font-size: 18px;
+    }
+}

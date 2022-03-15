@@ -127,7 +127,22 @@
     }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) and (max-width: 1299px) {
+  .lkk{
+    margin-left: -18px;
+  }
+  .com-u{
+    display: none;
+  }
+  .addr {
+    margin-left: auto;
+    margin-top: -2px;
+    margin-right: 0px;
+    font-size: 12px;
+  }
+  .mul{
+    font-size: 10px;
+  }
     .tx-icon {
      font-size: 10px;
     }
@@ -210,6 +225,22 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .lk {
+    margin-left: -3px;
+  }
+  .icon-and-supporting-text {
+    margin-left: -10px;
+  }
+  .tags {
+    min-width: 100%;
+  }
+  .tags {
+    min-width: 100%;
+  }
+
+    .form-inline {
+      display: none;
+    }
   .com-u{
     display: none;
   }
@@ -303,7 +334,7 @@
     
     .menu{
         margin-left: auto;
-        margin-right: 30px;
+        margin-right: -30px;
     }
     .text-urun {
       font-size: 30px;
@@ -405,6 +436,25 @@
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .tx-t{
+    font-size: 9px;
+  }
+  .lk {
+    margin-left: -3px;
+  }
+  .icon-and-supporting-text {
+    margin-left: -10px;
+  }
+  .tags {
+    min-width: 100%;
+  }
+  .tags {
+    min-width: 100%;
+  }
+
+    .form-inline {
+      display: none;
+    }
   .com-u{
     display: none;
   }
@@ -504,7 +554,7 @@
     }
     .menu{
         margin-left: auto;
-        margin-right: 30px;
+        margin-right: -30px;
     }
     .text-urun {
       font-size: 30px;
@@ -636,7 +686,7 @@
     .location_main {
         padding: 30px 0px 30px 0px;
     }
-    .button-auth {
+    .form-inline {
       display: none;
     }
 
@@ -700,6 +750,18 @@
 }
 
 @media (max-width: 575px) {
+  .tx-t{
+    font-size: 9px;
+  }
+  .lk {
+    margin-left: -3px;
+  }
+  .icon-and-supporting-text {
+    margin-left: -10px;
+  }
+  .tags {
+    min-width: 100%;
+  }
 /*  .divider-1{
     display: none;
   }
@@ -960,7 +1022,7 @@
 
     .menu{
         margin-left: auto;
-        margin-right: 60px;
+        margin-right: 10px;
     }
 
     .logo{
@@ -1052,7 +1114,7 @@
       text-align: center;
       width: 100%;
     }
-    .button-auth {
+    .form-inline {
       display: none;
     }
     .banner_bg_main {

@@ -1,0 +1,412 @@
+.bold {
+    font-family: 'acumin-pro';
+    font-weight: bold;
+}
+.bg-gradient-dark {
+    background: #000000;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.container-navbar {
+    justify-content: flex-start;
+    margin-left: 50px;
+    max-width: 0
+}
+.text-danger{
+    color: #BB0711;
+}
+.btn-danger{
+    background-color: #BB0711;
+}
+	.font-header {
+	    font-weight: 800;
+	    text-transform: uppercase;
+	    margin-top: -15px;
+	    padding: 0px 50px;
+	    background-color: #1A1A1A
+	}
+.page-wrap::before {
+    transition: .3s all ease-in-out;
+    background-color: rgba(0, 0, 0, 0.6);
+    content: "";
+    position: absolute;
+    z-index: 2000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.off-view .page-wrap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2000;
+    overflow: hidden;
+}
+
+.off-view .page-wrap::before {
+    opacity: 0.5;
+    visibility: visible;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.menu-view {
+    width: 300px;
+    position: fixed;
+    left: 0;
+    z-index: 2000;
+    padding-top: 20px;
+    background: linear-gradient(to right, rgb(0 0 0 / 90%) 39%, rgb(0 0 0 / 70%) 90%);
+    height: calc(100vh);
+    transform: translateX(-110%);
+    box-shadow: -10px 0 20px -10px rgba(0, 0, 0, 0.1);
+    transition: .3s all ease-in-out;
+     overflow: hidden;
+     top: 0;
+     height: -webkit-fill-available
+}
+
+.off-view .menu-view {
+    transform: translateX(0%);
+}
+
+.menu-view .menu-view-header {
+    width: 100%;
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.menu-view .menu-view-header .menu-view-close {
+    float: left;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.menu-view .menu-view-header .menu-view-close i {
+    font-size: 30px;
+    display: inline-block;
+    padding-left: 10px;
+    line-height: 1;
+    cursor: pointer;
+    transition: .3 all ease;
+}
+
+.menu-view .menu-view-body {
+    overflow: auto;
+    position: relative;
+    padding: 20px;
+    height: calc(100vh - 52px);
+    padding-bottom: 150px;
+    padding-top: 50px;
+}
+
+.menu-view-body .navbar-nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+.menu-view-body .navbar-nav .menu {
+    padding: 10px 20px;
+    position: relative;
+    color: white;
+    text-align: left;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.menu-view-body .navbar-nav .menu:hover {
+    color: #BD0000;
+}
+
+.menu-view-body .navbar-nav .active {
+    padding: 10px 20px;
+    position: relative;
+    color: #BF2D30;
+    font-weight: bold;
+    text-align: left;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.btn-lr-nav {
+    margin: 10px 10px 10px 10px;
+}
+
+.btn-santara-red {
+    background-color: #BD0000;
+    border: 1px solid #BF2D30;
+    color: #fff;
+}
+.btn-santara-red-linear {
+    background-image: linear-gradient(to bottom, #8C040A, #BB0711);
+    color: #fff;
+}
+.c-white {
+ color: #fff;
+}
+.c-red{
+ color: #BD0000;
+}
+.row-btn-lr-nav {
+    margin-right: 50px;
+}
+
+.btn-lr {
+    display: none;
+}
+
+.logo-header {
+    margin-left: 20px;
+}
+
+.fs-54 {
+    font-size: 54px;
+}
+
+.fs-34 {
+    font-size: 34px;
+}
+
+.fs-27 {
+    font-size: 27px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-17 {
+    font-size: 17px;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-15 {
+    font-size: 15px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-13 {
+    font-size: 13px;
+}
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.fs-11 {
+    font-size: 11px;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+
+.fs-8 {
+    font-size: 8px;
+}
+
+.c-gold {
+    color: #DFB857;
+}
+
+.c-red {
+    color: #BF2D30
+}
+
+.c-white {
+    color: #fff
+}
+
+.ff-a {
+    font-family: 'acumin-pro';
+}
+
+.ff-n {
+    font-family: 'Nunito';
+}
+.ff-m {
+    font-family: 'Nunito';
+}
+
+.ff-p {
+    font-family: 'acumin-pro';
+}
+
+.bg-disclaimer {
+    background-color: #2c303a;
+}
+
+.disclaimer-outer-bg {
+    padding: 60px;
+}
+
+.disclaimer-inner-bg {
+    background-color: #21252e;
+    border-radius: 45px;
+    padding: 40px;
+    border: #707070 solid;
+}
+
+.bg-footer-santara {
+    background-image: url('../img/background/footer.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 85px;
+    margin: -12px 0px 0px -10px;
+}
+
+.link-red {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.link-red:hover p{
+    color: #BF2D30;
+    font-weight: bold;
+}
+
+.form-check-input:checked {
+    background-color: #bf2d30;
+    border-color: #bf2d30
+}
+
+/* modal black */
+.modal-black {
+    background-color: #2c303a;
+    color: white;
+    border-color: #4A585A;
+}
+
+/* end modal black */
+
+/* scrollbar custom */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #bf2d30;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #bf2d30;
+}
+
+/* end scrollbar custom */
+@media (max-width: 576px) {
+    .btn-lr-nav {
+        display: none;
+    }
+
+    .btn-lr {
+        display: block;
+        margin: 15px;
+        width: fit-content;
+    }
+.font-header {
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: -15px;
+    padding: 0px 20px;
+    background-color: #1A1A1A
+}
+    .container-navbar {
+        justify-content: flex-start;
+        margin-left: 10px;
+        max-width: none
+    }
+
+    .kontak-align {
+        text-align: center;
+    }
+
+    .mt-kontak {
+        margin-top: 30px;
+    }
+
+    .disclaimer-outer-bg {
+        padding: 15px;
+    }
+
+    .disclaimer-inner-bg {
+        background-color: #21252e;
+        border-radius: 25px;
+        border: #707070 solid;
+        padding: 15px;
+    }
+
+    .download {
+        text-align: center;
+    }
+}
+
+@media (max-width: 770px) {
+    .kontak-align {
+        text-align: center;
+    }
+
+    .download {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .mt-kontak {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .btn-lr-nav {
+        display: none;
+    }
+
+    .btn-lr {
+        display: block;
+        margin: 15px;
+        width: fit-content;
+    }
+
+    .container-navbar {
+        justify-content: flex-start;
+        margin-left: 10px;
+        max-width: none
+    }
+}

@@ -1,0 +1,88 @@
+.daftarkan-bisnis-header {
+    background-image: url('../img/header-daftarkan-bisnis.png');
+    width: 100%;
+    height: 550px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+}
+
+ .container-header-bisnis{
+    height: 550px;
+    padding-left: 79px; 
+ }
+.overlay-header {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #2a323f;
+    opacity: .7;
+}
+
+.label-header {
+    text-align: left;
+    font-size: 54px;
+    font-family: 'acumin-pro';
+    font-weight: 700;
+    color: white;
+}
+
+.button-bg-red {
+    background: #BF2D30;
+}
+
+.row-busines {
+    border-top: solid;
+    border-bottom: solid;
+    border-color: #4A585A;
+    border-width: 2;
+}
+
+
+
+.judul-langkah-bisnis {
+    color: #D2B353;
+    font-family: 'acumin-pro';
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.daftarkan-bisnis-dua {
+    background-image: url('../img/background/cara-investasi.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 270px;
+}
+
+
+.img-android {
+    margin-bottom: -30px;
+}
+
+@media (max-width: 576px) {
+    .label-header {
+        text-align: left;
+        font-size: 34px;
+        font-family: Poppins;
+        font-weight: 700;
+        color: white;
+    }
+
+    .data-bisnis {
+        text-align: center;
+    }
+
+ .container-header-bisnis {
+     height: 550px;
+     padding: 30px;
+ }
+}
+
+@media (max-width: 768px) {
+
+
+    .img-android {
+        margin-bottom: 0;
+    }
+}
