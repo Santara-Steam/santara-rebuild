@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class emiten_journey extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql';
     protected $table = 'emiten_journeys';
     protected $guarded = ['id']; 
 }

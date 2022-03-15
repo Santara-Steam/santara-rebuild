@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class trader extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql';
     protected $table = 'traders';
     protected $guarded = ['id']; 
     
