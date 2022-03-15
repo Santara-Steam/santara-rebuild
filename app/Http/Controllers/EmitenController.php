@@ -14,7 +14,7 @@ class EmitenController extends Controller
     //
     public function index(){
         $emiten = emiten::where('emitens.is_deleted',0)
-        ->select('emitens.*','categories.category as ktg','emiten_journeys.title as sts')
+        ->select('emitens.*','categories.category as ktg','emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
@@ -232,6 +232,17 @@ class EmitenController extends Controller
         $emiten = emiten::where('id',$id)->first();
         $emiten->is_deleted = 1;
         $emiten->save();
+
+        return redirect('/admin/emiten');
+    }
+
+    public function emiten_status(Request $request,$id){
+        $emj = new emiten_journey();
+        $emj->emiten_id = $id;
+        $emj->title = $request->get('title');
+        $emj->date = $request->get('start_date');
+        $emj->end_date = $request->get('end_date');
+        $emj->save();
 
         return redirect('/admin/emiten');
     }

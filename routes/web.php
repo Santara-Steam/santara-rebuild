@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/emiten/edit/{id}', [App\Http\Controllers\EmitenController::class, 'edit']);
     Route::post('/emiten/update/{id}',[App\Http\Controllers\EmitenController::class, 'update']);
     Route::post('/emiten/delete/{id}',[App\Http\Controllers\EmitenController::class, 'delete']);
+    Route::post('/emiten/update_status/{id}',[App\Http\Controllers\EmitenController::class, 'emiten_status']);
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 
