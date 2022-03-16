@@ -13,6 +13,7 @@
                   <div class="actions">
                       <div class="mulai-investasi button-cta-3 inter-medium-white-18px">
                         <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="cara-investasi-desktop.html">Daftarkan Bisnis</a>
+                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="{{ route('daftar-bisnis.add') }}">Daftarkan Bisnis</a>
                       </div>
                   </div>
                 </div>
@@ -82,6 +83,7 @@
           </div>
           <div class="mulai-investasi button-cta-3 inter-medium-white-18px">
                         <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="cara-investasi-desktop.html">Daftarkan Bisnis</a>
+                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="{{ route('daftar-bisnis.add') }}">Daftarkan Bisnis</a>
                       </div>
         </div>
             

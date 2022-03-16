@@ -773,6 +773,7 @@ button {
 
 .sidenav a:hover {
     color: #f26522;
+    text-transform: capitalize;
 }
 
 .sidenav .closebtn {
@@ -843,6 +844,7 @@ button {
     display: inline-block;
     order: 2;
     margin-left: 0px;
+    margin-left: -20px;
     margin-top: 1px;
 }
 
@@ -3278,3 +3280,26 @@ input.mail_bt::placeholder {
   .mnt{
     margin-top: 0px;
   }
+  }
+
+  .li-auth{
+    display: none;
+  }
+
+.btns{
+  display: table;
+  margin: 30px auto;
+}
+.customNextBtn, .customPreviousBtn{
+      float: right;
+    background: #2d9070;
+    color: #fff;
+    padding: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.tx-pt{
+    width: 100%
+    min-width: 100%;
+}
