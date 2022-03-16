@@ -13,8 +13,6 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $connection = 'mysql';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -46,4 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(trader::class,'user_id');
     }
+
+    protected $connection = 'mysql';
+    protected $table = 'users';
 }
