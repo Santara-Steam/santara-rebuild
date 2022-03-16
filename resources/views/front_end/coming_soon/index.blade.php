@@ -7,11 +7,11 @@
               <span class="inter-bold-alizarin-crimson-16px">Coming Soon Bisnis</span>
             </div>
             <div class="text-urun pilih-bisnis-favoritmu inter-bold-alabaster-48px">
-              <span class="inter-bold-alabaster">Pilih Bisnis Favoritmu</span>
+              <span class="text-sb inter-bold-alabaster">Pilih Bisnis Favoritmu</span>
             </div>
           </div>
           <div class="text-mulai inter-normal-alabaster-20px">
-            <span class="inter-normal-alabaster">Ayo dukung bisnis favoritmu agar naik menjadi Penerbit!</span>
+            <span class="text-mulai inter-normal-alabaster">Ayo dukung bisnis favoritmu agar naik menjadi Penerbit!</span>
           </div>
         </div>
         <div class="row r-top">
@@ -83,15 +83,14 @@
                      <div class="fashion_section_2">
                         <div class="row">
                            <div class="col-lg-3 col-sm-6 col-6">
-                            <a href="detail-now-playing.html">
-                              <div class="top-i card">
+                              <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -103,122 +102,49 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="info-dan-progress">
-                                      <div class="info-pendanaan">
-                                        <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                          <span class="tx-sold span-1 inter-normal-mercury">Mulai</span
-                                          ><span class="inter-normal-mercury-12px">&nbsp;</span
-                                          >
-                                          <div class="mulai-rp inter-bold-white-14px"
-                                          ><span class="tx-sold span-1 inter-bold-white" style="font-weight: bold">Rp1.000.000</span>
-                                        </div>
+                                    <div class="icon-card">
+                                      <div class="icon-and-supporting-text">
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
-                                      <div class="address">
-                                        <div  class="hr inter-bold-white-14px">
-                                          <span class="tx-sold inter-medium-white"><b style="font-weight: bold">40</b></span>
-                                        </div>
-                                        <span class="inter-normal-mercury-12px">&nbsp;</span>
-                                        <div class="tiku hr-lg inter-normal-mercury-14px">
-                                          <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="overlap-group">
-                                        <div class="percent inter-medium-white-12px">
-                                          <span class="tx-np percen inter-medium-white">0%</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="footer-card">
+                                  <div class="footer-card-3">
                                     <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                    <div class="footer-card-1">
-                                      <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                        <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
-                                        ><span class="inter-medium-alabaster-12px">Rp3.000.000.000</span>
-                                      </div>
-                                      <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                        <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span
-                                        ><span class="inter-medium-alabaster-12px">6 Bulan</span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                           </div>
-                           <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="info-dan-progress">
-                                      <div class="info-pendanaan">
-                                        <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                          <span class="tx-sold span-1 inter-normal-mercury">Mulai</span
-                                          ><span class="inter-normal-mercury-12px">&nbsp;</span
-                                          >
-                                          <div class="mulai-rp inter-bold-white-14px"
-                                          ><span class="tx-sold span-1 inter-bold-white" style="font-weight: bold">Rp1.000.000</span>
-                                        </div>
-                                        </div>
-                                      </div>
-                                      <div class="address">
-                                        <div  class="hr inter-bold-white-14px">
-                                          <span class="tx-sold inter-medium-white"><b style="font-weight: bold">40</b></span>
-                                        </div>
-                                        <span class="inter-normal-mercury-12px">&nbsp;</span>
-                                        <div class="tiku hr-lg inter-normal-mercury-14px">
-                                          <span class="tx-sold inter-normal-mercury">hari lagi</span>
-                                        </div>
-                                      </div>
-                                      <div class="overlap-group">
-                                        <div class="percent inter-medium-white-12px">
-                                          <span class="tx-np percen inter-medium-white">0%</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                    <div class="footer-card-1">
-                                      <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                        <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
-                                        ><span class="inter-medium-alabaster-12px">Rp3.000.000.000</span>
-                                      </div>
-                                      <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                        <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span
-                                        ><span class="inter-medium-alabaster-12px">6 Bulan</span>
-                                      </div>
-                                    </div>
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
                               </div>
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="top-i card">
+                              <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -230,58 +156,49 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="info-dan-progress">
-                                      <div class="info-pendanaan">
-                                        <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                          <span class="tx-sold span-1 inter-normal-mercury">Mulai</span
-                                          ><span class="inter-normal-mercury-12px">&nbsp;</span
-                                          >
-                                          <div class="mulai-rp inter-bold-white-14px"
-                                          ><span class="tx-sold span-1 inter-bold-white" style="font-weight: bold">Rp1.000.000</span>
-                                        </div>
+                                    <div class="icon-card">
+                                      <div class="icon-and-supporting-text">
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
-                                      <div class="address">
-                                        <div  class="hr inter-bold-white-14px">
-                                          <span class="tx-sold inter-medium-white"><b style="font-weight: bold">40</b></span>
-                                        </div>
-                                        <span class="inter-normal-mercury-12px">&nbsp;</span>
-                                        <div class="tiku hr-lg inter-normal-mercury-14px">
-                                          <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="overlap-group">
-                                        <div class="percent inter-medium-white-12px">
-                                          <span class="tx-np percen inter-medium-white">0%</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="footer-card">
+                                  <div class="footer-card-3">
                                     <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                    <div class="footer-card-1">
-                                      <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                        <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
-                                        ><span class="inter-medium-alabaster-12px">Rp3.000.000.000</span>
-                                      </div>
-                                      <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                        <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span
-                                        ><span class="inter-medium-alabaster-12px">6 Bulan</span>
-                                      </div>
-                                    </div>
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
                               </div>
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="top-i card">
+                              <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -293,59 +210,49 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="info-dan-progress">
-                                      <div class="info-pendanaan">
-                                        <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                          <span class="tx-sold span-1 inter-normal-mercury">Mulai</span
-                                          ><span class="inter-normal-mercury-12px">&nbsp;</span
-                                          >
-                                          <div class="mulai-rp inter-bold-white-14px"
-                                          ><span class="tx-sold span-1 inter-bold-white" style="font-weight: bold">Rp1.000.000</span>
-                                        </div>
+                                    <div class="icon-card">
+                                      <div class="icon-and-supporting-text">
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
-                                      <div class="address">
-                                        <div  class="hr inter-bold-white-14px">
-                                          <span class="tx-sold inter-medium-white"><b style="font-weight: bold">40</b></span>
-                                        </div>
-                                        <span class="inter-normal-mercury-12px">&nbsp;</span>
-                                        <div class="tiku hr-lg inter-normal-mercury-14px">
-                                          <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="overlap-group">
-                                        <div class="percent inter-medium-white-12px">
-                                          <span class="tx-np percen inter-medium-white">0%</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="footer-card">
+                                  <div class="footer-card-3">
                                     <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                    <div class="footer-card-1">
-                                      <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                        <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
-                                        ><span class="inter-medium-alabaster-12px">Rp3.000.000.000</span>
-                                      </div>
-                                      <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                        <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span
-                                        ><span class="inter-medium-alabaster-12px">6 Bulan</span>
-                                      </div>
-                                    </div>
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
                               </div>
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
-                            <a href="detail-now-playing.html">
-                              <div class="top-i card">
+                              <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -357,122 +264,49 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="info-dan-progress">
-                                      <div class="info-pendanaan">
-                                        <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                          <span class="tx-sold span-1 inter-normal-mercury">Mulai</span
-                                          ><span class="inter-normal-mercury-12px">&nbsp;</span
-                                          >
-                                          <div class="mulai-rp inter-bold-white-14px"
-                                          ><span class="tx-sold span-1 inter-bold-white" style="font-weight: bold">Rp1.000.000</span>
-                                        </div>
+                                    <div class="icon-card">
+                                      <div class="icon-and-supporting-text">
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
-                                      <div class="address">
-                                        <div  class="hr inter-bold-white-14px">
-                                          <span class="tx-sold inter-medium-white"><b style="font-weight: bold">40</b></span>
-                                        </div>
-                                        <span class="inter-normal-mercury-12px">&nbsp;</span>
-                                        <div class="tiku hr-lg inter-normal-mercury-14px">
-                                          <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="overlap-group">
-                                        <div class="percent inter-medium-white-12px">
-                                          <span class="tx-np percen inter-medium-white">0%</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="footer-card">
+                                  <div class="footer-card-3">
                                     <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                    <div class="footer-card-1">
-                                      <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                        <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
-                                        ><span class="inter-medium-alabaster-12px">Rp3.000.000.000</span>
-                                      </div>
-                                      <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                        <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span
-                                        ><span class="inter-medium-alabaster-12px">6 Bulan</span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </a>
-                           </div>
-                           <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="top-i card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="info-dan-progress">
-                                      <div class="info-pendanaan">
-                                        <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                          <span class="tx-sold span-1 inter-normal-mercury">Mulai</span
-                                          ><span class="inter-normal-mercury-12px">&nbsp;</span
-                                          >
-                                          <div class="mulai-rp inter-bold-white-14px"
-                                          ><span class="tx-sold span-1 inter-bold-white" style="font-weight: bold">Rp1.000.000</span>
-                                        </div>
-                                        </div>
-                                      </div>
-                                      <div class="address">
-                                        <div  class="hr inter-bold-white-14px">
-                                          <span class="tx-sold inter-medium-white"><b style="font-weight: bold">40</b></span>
-                                        </div>
-                                        <span class="inter-normal-mercury-12px">&nbsp;</span>
-                                        <div class="tiku hr-lg inter-normal-mercury-14px">
-                                          <span class="tx-sold inter-normal-mercury">hari lagi</span>
-                                        </div>
-                                      </div>
-                                      <div class="overlap-group">
-                                        <div class="percent inter-medium-white-12px">
-                                          <span class="tx-np percen inter-medium-white">0%</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                    <div class="footer-card-1">
-                                      <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                        <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
-                                        ><span class="inter-medium-alabaster-12px">Rp3.000.000.000</span>
-                                      </div>
-                                      <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                        <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span
-                                        ><span class="inter-medium-alabaster-12px">6 Bulan</span>
-                                      </div>
-                                    </div>
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
                               </div>
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="top-i card">
+                              <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -484,58 +318,49 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="info-dan-progress">
-                                      <div class="info-pendanaan">
-                                        <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                          <span class="tx-sold span-1 inter-normal-mercury">Mulai</span
-                                          ><span class="inter-normal-mercury-12px">&nbsp;</span
-                                          >
-                                          <div class="mulai-rp inter-bold-white-14px"
-                                          ><span class="tx-sold span-1 inter-bold-white" style="font-weight: bold">Rp1.000.000</span>
-                                        </div>
+                                    <div class="icon-card">
+                                      <div class="icon-and-supporting-text">
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
-                                      <div class="address">
-                                        <div  class="hr inter-bold-white-14px">
-                                          <span class="tx-sold inter-medium-white"><b style="font-weight: bold">40</b></span>
-                                        </div>
-                                        <span class="inter-normal-mercury-12px">&nbsp;</span>
-                                        <div class="tiku hr-lg inter-normal-mercury-14px">
-                                          <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="overlap-group">
-                                        <div class="percent inter-medium-white-12px">
-                                          <span class="tx-np percen inter-medium-white">0%</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="footer-card">
+                                  <div class="footer-card-3">
                                     <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                    <div class="footer-card-1">
-                                      <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                        <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
-                                        ><span class="inter-medium-alabaster-12px">Rp3.000.000.000</span>
-                                      </div>
-                                      <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                        <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span
-                                        ><span class="inter-medium-alabaster-12px">6 Bulan</span>
-                                      </div>
-                                    </div>
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
                               </div>
                            </div>
                            <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="top-i card">
+                              <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">
                                     <div class="header-and-tags">
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -547,45 +372,144 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="info-dan-progress">
-                                      <div class="info-pendanaan">
-                                        <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                          <span class="tx-sold span-1 inter-normal-mercury">Mulai</span
-                                          ><span class="inter-normal-mercury-12px">&nbsp;</span
-                                          >
-                                          <div class="mulai-rp inter-bold-white-14px"
-                                          ><span class="tx-sold span-1 inter-bold-white" style="font-weight: bold">Rp1.000.000</span>
-                                        </div>
+                                    <div class="icon-card">
+                                      <div class="icon-and-supporting-text">
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
-                                      <div class="address">
-                                        <div  class="hr inter-bold-white-14px">
-                                          <span class="tx-sold inter-medium-white"><b style="font-weight: bold">40</b></span>
-                                        </div>
-                                        <span class="inter-normal-mercury-12px">&nbsp;</span>
-                                        <div class="tiku hr-lg inter-normal-mercury-14px">
-                                          <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
-                                      <div class="overlap-group">
-                                        <div class="percent inter-medium-white-12px">
-                                          <span class="tx-np percen inter-medium-white">0%</span>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="footer-card">
+                                  <div class="footer-card-3">
                                     <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                    <div class="footer-card-1">
-                                      <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                        <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span
-                                        ><span class="inter-medium-alabaster-12px">Rp3.000.000.000</span>
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
+                                  </div>
+                                </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-3 col-sm-6 col-6">
+                              <div class="card">
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
+                                <div class="content">
+                                  <div class="header-card-dan-progress">
+                                    <div class="header-and-tags">
+                                      <div class="tags">
+                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
+                                        </div>
                                       </div>
-                                      <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                        <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span
-                                        ><span class="inter-medium-alabaster-12px">6 Bulan</span>
+                                      <div class="header">
+                                        <div class="saka-logistics inter-medium-alabaster-20px">
+                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
+                                        </div>
+                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
+                                        </div>
                                       </div>
                                     </div>
+                                    <div class="icon-card">
+                                      <div class="icon-and-supporting-text">
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="footer-card-3">
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
+                                  </div>
+                                </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-3 col-sm-6 col-6">
+                              <div class="card">
+                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
+                                <div class="content">
+                                  <div class="header-card-dan-progress">
+                                    <div class="header-and-tags">
+                                      <div class="tags">
+                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
+                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
+                                        </div>
+                                      </div>
+                                      <div class="header">
+                                        <div class="saka-logistics inter-medium-alabaster-20px">
+                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
+                                        </div>
+                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="icon-card">
+                                      <div class="icon-and-supporting-text">
+                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <div class=" inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
+                                        </div>
+                                      </div>
+                                      <div class="icon-and-supporting-text-1">
+                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="footer-card-3">
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
                                   </div>
                                 </div>
                               </div>
