@@ -53,6 +53,6 @@ Route::resource('/sold-out', Sold_outController::class);
 Route::resource('/daftar-bisnis', Daftar_bisnisController::class);
 Route::resource('/mulai-investasi', Mulai_investasiController::class);
 
-Route::get('/detail-now-playing', [Now_playingController::class, 'detail'])->name('now-playing.detail');;
-Route::get('/detail-coming-soon', [Coming_soonController::class, 'detail'])->name('coming-soon.detail');;
-Route::get('/detail-sold-out', [Sold_outController::class, 'detail'])->name('sold-out.detail');;
+Route::get('/detail-now-playing', [Now_playingController::class, 'detail'])->name('now-playing.detail');
+Route::get('/detail-coming-soon', [Coming_soonController::class, 'detail'])->name('coming-soon.detail');
+Route::get('/detail-sold-out', [Sold_outController::class, 'detail'])->name('sold-out.detail');
