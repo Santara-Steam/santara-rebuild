@@ -423,11 +423,6 @@ a,
   width: 24px;
 }
 
-
-.tx-dd{
-    margin-top: -20px;
-}
-
 .menu-view-body .navbar-nav:hover {
     color: #BD0000;
 }
@@ -763,16 +758,7 @@ button {
   position: absolute;
 }
 .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #ffffff;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f26522;
+    text-transform: capitalize;
 }
 
 .sidenav .closebtn {
@@ -842,7 +828,7 @@ button {
     flex: 1;
     display: inline-block;
     order: 2;
-    margin-left: 0px;
+    margin-left: -20px;
     margin-top: 1px;
 }
 
@@ -1267,13 +1253,13 @@ a:hover {
 }
 
 #jewellery_main_slider a.carousel-control-next {
-    right: 581px;
-    top: 105%;
+    right: 577px;
+    top: 95%;
 }
 
 #jewellery_main_slider a.carousel-control-prev {
-    left: 581px;
-    top: 105%;
+    left: 577px;
+    top: 95%;
 }
 
 #jewellery_main_slider .carousel-control-next,
@@ -1645,7 +1631,6 @@ input.mail_bt::placeholder {
   letter-spacing: 0;
   line-height: 30px;
   min-height: 30px;
-  white-space: nowrap;
 }
 
 .pt-saka-multitrans-nusantara {
@@ -2220,7 +2205,6 @@ input.mail_bt::placeholder {
   margin-top: 12px;
   min-height: 60px;
   text-align: center;
-  white-space: nowrap;
   width: 100%;
 }
 
@@ -3278,3 +3262,25 @@ input.mail_bt::placeholder {
   .mnt{
     margin-top: 0px;
   }
+
+  .li-auth{
+    display: none;
+  }
+
+.btns{
+  display: table;
+  margin: 30px auto;
+}
+.customNextBtn, .customPreviousBtn{
+      float: right;
+    background: #2d9070;
+    color: #fff;
+    padding: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.tx-pt{
+    width: 100%
+    min-width: 100%;
+}
