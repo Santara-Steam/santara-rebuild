@@ -1346,9 +1346,20 @@ a:hover {
   display: flex;
   flex-direction: column;
   margin-left: auto;
-  margin-right: 60px;
+  margin-right: 20px;
   min-height: 72px;
   width: 267px;
+  margin-top: -130px;
+  margin-bottom: 50px;
+}
+
+.santara-app2 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: 60px;
+  margin-left: auto;
   margin-top: -80px;
   margin-bottom: 50px;
 }
@@ -1360,10 +1371,20 @@ a:hover {
   white-space: nowrap;
 }
 
+.santara-app2 {
+  align-items: flex-start;
+  display: flex;
+  margin-top: 57px;
+  margin-left: -380px;
+}
+
+.lg-ply{
+  margin-top: -138px;
+}
 .action-app {
   align-items: flex-start;
   display: flex;
-  margin-top: 12px;
+  margin-top: 20px;
   min-width: 267px;
 }
 
@@ -1376,6 +1397,23 @@ a:hover {
   overflow: hidden;
   padding: 5.9px 5.2px;
   width: 135px;
+}
+
+.logo-aludi{
+  margin-left: 200px;
+  margin-top: -132px;
+}
+
+.ojk {
+  height:25%;
+  margin-top: -35px;
+  width: 25%;
+}
+
+.aludi {
+  height: 35%;
+  margin-top: 17px;
+  width: 35%;
 }
 
 .google-play-logo {

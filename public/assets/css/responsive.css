@@ -142,7 +142,23 @@
     }
 }
 
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .tx-f{
+    width: 45%;
+  }
+  .santara-app{
+    margin-top: -147px;
+  }
+}
+
 @media (min-width: 992px) and (max-width: 1299px) {
+  .santara-app{
+    margin-top: -147px;
+  }
+  
+  .tx-f{
+    width: 45%;
+  }
   .lkk{
     margin-left: -18px;
   }
@@ -437,11 +453,50 @@
     }
 
     .santara-app {
-      margin-top: -130px;
+      margin-top: 10px;
       min-height: 72px;
       width: 267px;
       margin-right: auto;
       margin-left: 15px;
+    }
+
+    .santara-app2 {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      margin-right: auto;
+      margin-left: 15px;
+      margin-left: auto;
+      margin-bottom: 50px;
+      margin-top: -100px;
+    }
+
+    .lg-ply{
+      margin-top: 20px;
+    }
+    .logo-aludi{
+        margin-left: 200px;
+        margin-top: -138px;
+      }
+
+      .ojk {
+        height:50%;
+        margin-top: -35px;
+        width: 50%;
+      }
+
+      .aludi {
+        height: 100%;
+        margin-top: 17px;
+        width: 100%;
+      }
+
+    .copyright_section {
+        margin-top: -1px;
+    }
+
+    .layout_padding {
+        padding-bottom: 10px;
     }
 
     .copyright_section {
@@ -730,11 +785,50 @@
     }
 
     .santara-app {
-      margin-top: -130px;
+      margin-top: 10px;
       min-height: 72px;
       width: 267px;
       margin-right: auto;
       margin-left: 15px;
+    }
+
+    .santara-app2 {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      margin-right: auto;
+      margin-left: 15px;
+      margin-left: auto;
+      margin-bottom: 50px;
+      margin-top: -100px;
+    }
+
+    .lg-ply{
+      margin-top: 20px;
+    }
+    .logo-aludi{
+        margin-left: 200px;
+        margin-top: -138px;
+      }
+
+      .ojk {
+        height:50%;
+        margin-top: -35px;
+        width: 50%;
+      }
+
+      .aludi {
+        height: 100%;
+        margin-top: 17px;
+        width: 100%;
+      }
+
+    .copyright_section {
+        margin-top: -1px;
+    }
+
+    .layout_padding {
+        padding-bottom: 10px;
     }
 
     .copyright_section {
@@ -1270,12 +1364,43 @@
     }
 
     .santara-app {
-      margin-top: -130px;
+      margin-top: 10px;
       min-height: 72px;
       width: 267px;
       margin-right: auto;
       margin-left: 15px;
     }
+
+    .santara-app2 {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      margin-right: auto;
+      margin-left: 15px;
+      margin-left: auto;
+      margin-bottom: 50px;
+      margin-top: -100px;
+    }
+
+    .lg-ply{
+      margin-top: 20px;
+    }
+    .logo-aludi{
+        margin-left: 200px;
+        margin-top: -138px;
+      }
+
+      .ojk {
+        height:50%;
+        margin-top: -35px;
+        width: 50%;
+      }
+
+      .aludi {
+        height: 100%;
+        margin-top: 17px;
+        width: 100%;
+      }
 
     .copyright_section {
         margin-top: -1px;

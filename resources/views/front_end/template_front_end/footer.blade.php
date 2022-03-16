@@ -10,6 +10,21 @@
       <!-- copyright section start -->
       <div class="copyright_section">
          <div class="santara-app">
+          <div class="santara-app2">
+            <div class="logo-ojk">
+              <div class="santara-app-1 inter-medium-mercury-14px">
+                <span class="inter-medium-mercury-14px">Berizin dan Diawasi oleh:</span>
+              </div>
+                <img class="ojk" src="{{ asset('public/assets/images/ojk.png') }}" />
+            </div>
+            <div class="logo-aludi">
+              <div class="santara-app-1 inter-medium-mercury-14px">
+                <span class="inter-medium-mercury-14px">Anggota Resmi:</span>
+              </div>
+                <img class="aludi" src="{{ asset('public/assets/images/aludi.png') }}" />
+            </div>
+          </div>
+        <div class="lg-ply">
             <div class="santara-app-1 inter-medium-mercury-14px">
               <span class="inter-medium-mercury-14px">Santara App</span>
             </div>
@@ -23,6 +38,7 @@
               </div>
               <img class="mobile-app-store-badge-1" src="{{ asset('public/assets/images/mobile-app-store-badge-24@2x.png') }}" />
             </div>
+          </div>
           </div>
       </div>
       <!-- copyright section end -->
