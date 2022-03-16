@@ -33,8 +33,6 @@
       <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
       <link rel="stylesheet" href="{{ asset('public/assets/css/owl.carousel.min.css') }}">
       <link rel="stylesoeet" href="{{ asset('public/assets/css/owl.theme.default.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('public/assets/OwlCarousel2/dist/assets/owl.carousel.min.css') }}">
-      <link rel="stylesoeet" href="{{ asset('public/assets/OwlCarousel2/dist/assets/owl.theme.default.min.css') }}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/fontawesome/css/all.css') }}">
       <!-- bootstrap css -->
@@ -44,7 +42,6 @@
       <!-- Responsive-->
       <link rel="stylesheet" href="{{ asset('public/assets/css/responsive.css') }}">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-      @yield('header')
    </head>
    <body>
     <nav class="navbar navbar-expand-lg" style="min-height: 96px;">
@@ -62,8 +59,6 @@
                         <ul class="ml-auto ">
                            <li class="tx-dd nav-item">
                              <a class="nav-link navbar-nav" id="menu-dropdown" data-bs-toggle="collapse" href="#penerbit" role="button" aria-expanded="false" aria-controls="penerbit">
-                           <li class="nav-item">
-                             <a class=" navbar-nav d-inline-block" style="margin-top: -50px;" id="menu-dropdown" data-bs-toggle="collapse" href="#penerbit" role="button" aria-expanded="false" aria-controls="penerbit">
                                List Penerbit &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown"></i>
                              </a>
                            </li>
@@ -76,13 +71,6 @@
                              </li>
                              <li class="nav-item">
                                <a class="nav-link navbar-nav" href="{{ route('sold-out.index') }}">Sold Out</a>
-                               <a class=" navbar-nav" href="{{ route('now-playing.index') }}">Now Playing</a>
-                             </li>
-                             <li class="nav-item">
-                               <a class=" navbar-nav" href="{{ route('coming-soon.index') }}">Coming Soon</a>
-                             </li>
-                             <li class="nav-item">
-                               <a class=" navbar-nav" href="{{ route('sold-out.index') }}">Sold Out</a>
                              </li>
                            </div>
 
@@ -100,19 +88,6 @@
 
                            <li class="nav-item tx-dd"><br>
                              <a class="nav-link navbar-nav" id="menu-dropdown2" data-bs-toggle="collapse" href="#syarat" role="button" aria-expanded="false" aria-controls="syarat">
-                             <a class=" navbar-nav" href="#>tentang-santara">Tentang Santara</a>
-                           </li>
-
-                           <li class="nav-item">
-                             <a class=" navbar-nav" href="#">Testimoni</a>
-                           </li>
-
-                           <li class="nav-item">
-                             <a class=" navbar-nav" href="#">Panduan</a>
-                           </li>
-
-                           <li class="nav-item">
-                             <a class=" navbar-nav d-inline-block" id="menu-dropdown2" data-bs-toggle="collapse" href="#syarat" role="button" aria-expanded="false" aria-controls="syarat">
                                Syarat & Ketentuan &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown2"></i>
                              </a>
                            </li>
@@ -122,17 +97,12 @@
                              </li>
                              <li class="nav-item">
                                <a class="nav-link navbar-nav" href="#">Penerbit</a>
-                               <a class=" navbar-nav" href="#">Pemodal</a>
-                             </li>
-                             <li class="nav-item">
-                               <a class=" navbar-nav" href="#">Penerbit</a>
                              </li>
                            </div>
 
 
                            <li class="nav-item">
                              <a class="nav-link navbar-nav" href="#">Pertanyaan</a>
-                             <a class=" navbar-nav" href="#">Pertanyaan</a>
                            </li>
 
 
@@ -141,10 +111,6 @@
                            </li>
                            <li class="nav-item tx-dd"><br>
                              <a class="nav-link navbar-nav" id="menu-dropdown3" data-bs-toggle="collapse" href="#tentangKami" role="button" aria-expanded="false" aria-controls="tentangKami">
-                             <a class=" navbar-nav" href="#">SUPPORTED BY</a>
-                           </li>
-                           <li class="nav-item">
-                             <a class=" navbar-nav d-inline-block" id="menu-dropdown3" data-bs-toggle="collapse" href="#tentangKami" role="button" aria-expanded="false" aria-controls="tentangKami">
                                Tentang Kami &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown3"></i>
                              </a>
                            </li>
@@ -159,21 +125,6 @@
                                <a class="nav-link navbar-nav" target="_blank" href="#">Karir</a>
                              </li>
                           </div>
-                               <a class=" navbar-nav" href="#">Kontak Kami</a>
-                             </li>
-                             <li class="nav-item">
-                               <a class=" navbar-nav" target="_blank" href="#">Berita</a>
-                             </li>
-                             <li class="nav-item">
-                               <a class=" navbar-nav" target="_blank" href="#">Karir</a>
-                             </li>
-                          </div>
-                          <li class="nav-item li-auth">
-                            <div class="d-inline-block inter-medium-white-14px navbar-nav" style="font-size: 12px;">
-                              <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ route('login') }}">Masuk</a>
-                              <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" href="{{ route('register') }}">Daftar</a>
-                            </div>
-                          </li>
                        </ul>
                </div>
              </div>
@@ -184,7 +135,6 @@
              </div>
            </div>
         <div class="menu">
-      <a class="navbar-brand" href="{{ url('/') }}">
                    <img class="logo" src="{{ asset('public/assets/images/logo-newsantara-ai-putih-merah-l-1-27@2x.png') }}" />
                    <div class="santara ubuntu-medium-white-28px"><span class="ubuntu-medium-white-28px">santara</span></div>
              </div>

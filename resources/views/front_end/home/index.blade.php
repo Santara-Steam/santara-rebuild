@@ -654,18 +654,6 @@
                           ?>
                            <div class="col-lg-3 col-sm-6 col-6">
                             <a href="{{ route('sold-out.detail') }}">
-                   <div class="carousel-item active">
-                      <div class="w3-container w3-red">
-                         <div class="fashion_section_2">
-                            <div class="fashion_section_2">
-                            <div class="row">
-                              <div class="owl-carousel owl-theme">
-                              @foreach ($sold_out as $item)
-                              <?php 
-                              $picture = explode(',',$item->pictures);
-                              ?>
-                              <div class="item" style="padding-left: 15px; padding-right: 5px;">
-                                <a href="{{ route('sold-out.detail') }}">
                               <div class="card">
                                 <img class="rectangle-2" src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                                 <div class="content">
@@ -715,10 +703,6 @@
                            </div>
                           @endforeach
                         </div>
-                              </div>
-                          @endforeach
-                        </div>
-                        </div>
                      </div>
                      </div>
                   </div>
@@ -730,9 +714,6 @@
             <a class="carousel-control-prev border-1px-cape-cod inter-medium-alabaster-14px" href="#jewellery_main_slider" role="button" data-slide="prev"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Prev
             </a>
             <a class="carousel-control-next border-1px-cape-cod inter-medium-alabaster-14px" href="#jewellery_main_slider" role="button" data-slide="next">Next &nbsp&nbsp<i class="fas fa-arrow-right"></i>
-            <a class="carousel-control-prev border-1px-cape-cod inter-medium-alabaster-14px customPreviousBtn" href="#jewellery_main_slider" role="button" data-slide="prev"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Prev
-            </a>
-            <a class="carousel-control-next border-1px-cape-cod inter-medium-alabaster-14px customNextBtn" href="#jewellery_main_slider" role="button" data-slide="next">Next &nbsp&nbsp<i class="fas fa-arrow-right"></i>
             </a>
           </div>
          </div>

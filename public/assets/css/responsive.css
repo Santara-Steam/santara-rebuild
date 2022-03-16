@@ -225,9 +225,6 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .li-auth{
-    display: inline;
-  }
   .lk {
     margin-left: -3px;
   }
@@ -338,7 +335,6 @@
     .menu{
         margin-left: auto;
         margin-right: -30px;
-        margin-right: -65px;
     }
     .text-urun {
       font-size: 30px;
@@ -440,9 +436,6 @@
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-  .li-auth{
-    display: inline;
-  }
   .tx-t{
     font-size: 9px;
   }
@@ -562,7 +555,6 @@
     .menu{
         margin-left: auto;
         margin-right: -30px;
-        margin-right: -55px;
     }
     .text-urun {
       font-size: 30px;
@@ -758,9 +750,6 @@
 }
 
 @media (max-width: 575px) {
-  .li-auth{
-    display: inline;
-  }
   .tx-t{
     font-size: 9px;
   }
@@ -1034,7 +1023,6 @@
     .menu{
         margin-left: auto;
         margin-right: 10px;
-        margin-right: -15px;
     }
 
     .logo{

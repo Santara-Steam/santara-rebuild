@@ -12,11 +12,6 @@
           </div>
           <div class="text-mulai inter-normal-alabaster-20px">
             <span class="inter-normal-alabaster">Yuk, mulai investasi bisnis sekarang juga!</span>
-              <span class="text-sb inter-bold-alabaster">Pilih Bisnis Favoritmu</span>
-            </div>
-          </div>
-          <div class="text-mulai inter-normal-alabaster-20px">
-            <span class="text-mulai inter-normal-alabaster">Yuk, mulai investasi bisnis sekarang juga!</span>
           </div>
         </div>
         <div class="row r-top">
@@ -117,7 +112,6 @@
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
                                           <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -182,7 +176,6 @@
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
                                           <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -246,7 +239,6 @@
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
                                           <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -310,7 +302,6 @@
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
                                           <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -375,7 +366,6 @@
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
                                           <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -440,7 +430,6 @@
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
                                           <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -504,7 +493,6 @@
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
                                           <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">
@@ -568,7 +556,6 @@
                                       <div class="tags">
                                         <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
                                           <span class="inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
-                                          <span class="tx-t inter-medium-sweet-pink-12px">Retail/Distribusi/Logistik</span>
                                         </div>
                                       </div>
                                       <div class="header">

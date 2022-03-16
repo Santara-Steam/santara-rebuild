@@ -17,10 +17,6 @@ class Daftar_bisnisController extends Controller
         return view('front_end/daftar_bisnis/index');
     }
 
-    public function add()
-    {
-        return view('front_end/daftar_bisnis/add');
-    }
     /**
      * Show the form for creating a new resource.
      *
