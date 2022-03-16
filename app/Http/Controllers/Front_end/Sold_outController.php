@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front_end;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\emitens_old;
 
 class Sold_outController extends Controller
 {
@@ -14,7 +15,15 @@ class Sold_outController extends Controller
      */
     public function index()
     {
-        return view('front_end/sold_out/index');
+        $sold_out = emitens_old::where('emitens.is_active',1)
+        ->select('emitens.*','categories.category as ktg')
+        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->orderby('emitens.id','DESC')
+        ->get();
+
+        return view('front_end/sold_out/index',compact('sold_out'));
     }
 
     public function detail()

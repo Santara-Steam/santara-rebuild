@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front_end;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\emitens_old;
+use Illuminate\Support\Facades\DB;
 
 class Now_playingController extends Controller
 {
@@ -14,7 +16,17 @@ class Now_playingController extends Controller
      */
     public function index()
     {
-        return view('front_end/now_playing/index');
+        $now_playing = emitens_old::whereRaw('CURDATE() BETWEEN emitens.begin_period and emitens.end_period')
+        ->select('emitens.*','categories.category as ktg','emiten_journeys.title as sts','emiten_journeys.date as sd',
+        db::raw('SUM(IF(t.is_verified = 1, t.amount, 0)) / emitens.price as terjual')
+        )
+        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        ->leftjoin('transactions as t', 't.emiten_id','=','emitens.id')
+        ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+        ->groupby('emitens.id')
+        ->get();
+        return view('front_end/now_playing/index',compact('now_playing'));
     }
 
     public function detail()
