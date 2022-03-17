@@ -56,3 +56,8 @@ Route::resource('/mulai-investasi', Mulai_investasiController::class);
 Route::get('/detail-now-playing', [Now_playingController::class, 'detail'])->name('now-playing.detail');
 Route::get('/detail-coming-soon', [Coming_soonController::class, 'detail'])->name('coming-soon.detail');
 Route::get('/detail-sold-out', [Sold_outController::class, 'detail'])->name('sold-out.detail');
+
+Route::group(['middleware' => ['auth', 'checkRole:1,2', "verified"]], function () {
+    Route::get('/daftar-bisnis/create', [Daftar_bisnisController::class, 'create'])->name('daftar-bisnis.create');
+    Route::post('/daftar-bisnis/store',[Daftar_bisnisController::class, 'store'])->name('daftar-bisnis.store');
+});

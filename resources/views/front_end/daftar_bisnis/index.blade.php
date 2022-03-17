@@ -12,7 +12,7 @@
                   </div>
                   <div class="actions">
                       <div class="mulai-investasi button-cta-3 inter-medium-white-18px">
-                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="cara-investasi-desktop.html">Daftarkan Bisnis</a>
+                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="{{ route('daftar-bisnis.create') }}">Daftarkan Bisnis</a>
                       </div>
                   </div>
                 </div>
@@ -81,7 +81,7 @@
             <span class="text-urun inter-normal-alabaster">Ayo Daftarkan Bisnis Anda!</span>
           </div>
           <div class="mulai-investasi button-cta-3 inter-medium-white-18px">
-                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="cara-investasi-desktop.html">Daftarkan Bisnis</a>
+                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="{{ route('daftar-bisnis.create') }}">Daftarkan Bisnis</a>
                       </div>
         </div>
             
@@ -89,4 +89,32 @@
             </div>
              </div>
           </div>
+
+          <!-- footer section start -->
+      <div class="footer_section ">
+         <div class="container-fluid disclaimer-outer-bg bg-disclaimer ">
+
+          <div class="container disclaimer-inner-bg fs-11">
+
+            <h4 class="text-danger ff-a fs-16">Disclaimer:</h4>
+            <div class="row ff-n" style="font-weight: normal;     text-align: justify; margin-right: 25px; color ">
+              <p class="mt-2" style="margin-bottom: 8px; color: #fff;">Pembelian saham bisnis merupakan aktivitas beresiko tinggi. Anda berinvestasi pada bisnis yang mungkin saja mengalami kenaikan dan penurunan kinerja bahkan mengalami kegagalan. Harap menggunakan pertimbangan ekstra dalam membuat keputusan untuk membeli saham. Ada kemungkinan Anda tidak bisa menjual kembali saham bisnis dengan cepat. Lakukan diversifikasi investasi, hanya gunakan dana yang siap Anda lepaskan (affors to loose) dan atau disimpan dalam jangka panjang. Santara tidak memaksa pengguna untuk membeli saham bisnis sebagai investasi. Semua keputusan pembelian merupakan keputusan independen oleh pengguna.
+              </p>
+              <p style="margin-bottom: 8px; color: #fff;">
+                Santara bertindak sebagai penyelenggara urun dana yang mempertemukan pemodal dan penerbit, bukan sebagai pihak yang menjalankan bisnis (Penerbit). Otoritas Jasa Keuangan bertindak sebagai regulator dan pemberi izin, bukan sebagai penjamin investasi. Keputusan pembelian saham, sepenuhnya merupakan hak dan tanggung jawab Pemodal (investor). Dengan membeli saham di Santara berarti Anda sudah menyetujui seluruh syarat dan ketentuan serta memahami semua risiko investasi termasuk resiko kehilangan sebagian atau seluruh modal.
+              </p>
+              <p style="margin-bottom: 8px;color: #fff;">
+                “OTORITAS JASA KEUANGAN TIDAK MEMBERIKAN PERNYATAAN MENYETUJUI ATAU TIDAK MENYETUJUI EFEK INI, TIDAK JUGA MENYATAKAN KEBENARAN ATAU KECUKUPAN INFORMASI DALAM LAYANAN URUN DANA INI. SETIAP PERNYATAAN YANG BERTENTANGAN DENGAN HAL TERSEBUT ADALAH PERBUATAN MELANGGAR HUKUM.”
+              </p>
+              <p style="margin-bottom: 8px;color: #fff;">
+                “INFORMASI DALAM LAYANAN URUN DANA INI PENTING DAN PERLU MENDAPAT PERHATIAN SEGERA. APABILA TERDAPAT KERAGUAN PADA TINDAKAN YANG AKAN DIAMBIL, SEBAIKNYA BERKONSULTASI DENGAN PENYELENGGARA.”
+              </p>
+              <p style="margin-bottom: 8px;color: #fff;">
+                “PENERBIT DAN PENYELENGGARA, BAIK SENDIRI-SENDIRI MAUPUN BERSAMA-SAMA, BERTANGGUNG JAWAB SEPENUHNYA ATAS KEBENARAN SEMUA INFORMASI YANG TERCANTUM DALAM LAYANAN URUN DANA INI.”
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
 @endsection

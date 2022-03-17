@@ -149,6 +149,11 @@
   .santara-app{
     margin-top: -147px;
   }
+
+.addr {
+  margin-left: auto;
+  margin-top: -3px;
+  margin-right: 30px;
 }
 
 @media (min-width: 992px) and (max-width: 1299px) {
