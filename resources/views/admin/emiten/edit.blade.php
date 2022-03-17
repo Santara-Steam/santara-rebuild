@@ -41,6 +41,18 @@
                                                 <input type="text" id="companyName" name="company_name" class="form-control" value="{{$emiten->company_name}}"
                                                     placeholder="Nama Perusahaan">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="projectinput6">Owner</label>
+                                                <select id="projectinput6" name="pemilik" class="form-control">
+                                                    <option value="0" selected="" disabled="" hidden>-- Pilih Owner
+                                                        --</option>
+                                                    @foreach ($user as $item)
+                                                    <option <?php if ($emiten->trader_id == $item->trader->id) {
+                                                        echo 'selected'; } ?> value="{{$item->trader->id}}">{{$item->trader->name}} - {{$item->email}}</option>
+                                                        
+                                                    @endforeach
+                                                </select>
+                                            </div>
 
                                             <fieldset class="form-group row">
                                                 <div class="col-2 text-center">

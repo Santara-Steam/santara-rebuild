@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\emiten;
 use App\Models\emiten_journey;
 use App\Models\kategori;
+use App\Models\trader;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -24,8 +26,9 @@ class EmitenController extends Controller
     }
 
     public function add(){
+        $user = User::where('role_id',2)->get();
         $kategori = kategori::all();
-        return view('admin.emiten.add',compact('kategori'));
+        return view('admin.emiten.add',compact('kategori','user'));
     }
 
     public function validator(array $data){
@@ -103,6 +106,7 @@ class EmitenController extends Controller
 
         $em = new emiten();
         $em->company_name = $request->get('company_name');
+        $em->trader_id = $request->get('pemilik');
         $em->owner_name = $request->get('nama_owner');
         $em->category_id = $request->get('kategori');
         $em->avg_annual_turnover_previous_year = $request->get('omset1');
@@ -158,8 +162,9 @@ class EmitenController extends Controller
             $picture[3];
         }
         $kategori = kategori::all();
+        $user = User::where('role_id',2)->get();
         // dd($s);
-        return view('admin.emiten.edit',compact('kategori','emiten','picture'));
+        return view('admin.emiten.edit',compact('kategori','emiten','picture','user'));
     }
 
     public function update(request $request,emiten $emiten,$id){
