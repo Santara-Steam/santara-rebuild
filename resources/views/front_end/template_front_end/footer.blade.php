@@ -9,7 +9,6 @@
       <!-- footer section end -->
       <!-- copyright section start -->
       <div class="copyright_section">
-         <div class="santara-app">
           <div class="santara-app2">
             <div class="logo-ojk">
               <div class="santara-app-1 inter-medium-mercury-14px">
@@ -24,21 +23,25 @@
                 <img class="aludi" src="{{ asset('public/assets/images/aludi.png') }}" />
             </div>
           </div>
-        <div class="lg-ply">
-            <div class="santara-app-1 inter-medium-mercury-14px">
-              <span class="inter-medium-mercury-14px">Santara App</span>
-            </div>
-            <div class="action-app">
-              <div class="mobile-app-store-badge border-1px-quick-silver">
-                <img class="google-play-logo" src="{{ asset('public/assets/images/google-play-logo-24@2x.png') }}" />
-                <div class="flex-col">
-                  <img class="get-it-on" src="{{ asset('public/assets/images/get-it-on-24@2x.png') }}" />
-                  <img class="google-play" src="{{ asset('public/assets/images/google-play-24@2x.png') }}" />
-                </div>
+         <div class="santara-app">
+              <div class="santara-app-1 inter-medium-mercury-14px">
+                <span class="inter-medium-mercury-14px">Santara App</span>
               </div>
-              <img class="mobile-app-store-badge-1" src="{{ asset('public/assets/images/mobile-app-store-badge-24@2x.png') }}" />
+                <div class="action-app">
+                  <a href="https://play.google.com/store/apps/details?id=id.co.santara.app">
+                    <div class="mobile-app-store-badge border-1px-quick-silver">
+                      <img class="google-play-logo" src="{{ asset('public/assets/images/google-play-logo-24@2x.png') }}" />
+                      <div class="flex-col">
+                        <img class="get-it-on" src="{{ asset('public/assets/images/get-it-on-24@2x.png') }}" />
+                        <img class="google-play" src="{{ asset('public/assets/images/google-play-24@2x.png') }}" />
+                      </div>
+                    </div>
+                  </a>
+                  <a href="https://apps.apple.com/id/app/santara-app/id1473570177">
+                    <img class="mobile-app-store-badge-1" src="{{ asset('public/assets/images/mobile-app-store-badge-24@2x.png') }}" />
+                  </a>
             </div>
-          </div>
+            </div>
           </div>
       </div>
       <!-- copyright section end -->

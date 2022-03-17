@@ -1329,7 +1329,7 @@ a:hover {
   display: flex;
   width: 100%;
   background-color: var(--falu-red);
-  height: auto;
+  height: 100%;
 }
 
 .tx-f {
@@ -1346,22 +1346,39 @@ a:hover {
   display: flex;
   flex-direction: column;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 60px;
   min-height: 72px;
   width: 267px;
-  margin-top: -130px;
-  margin-bottom: 50px;
+  margin-top: -160px;
+  margin-bottom: 90px;
 }
 
 .santara-app2 {
   align-items: flex-start;
   display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: 60px;
-  margin-left: auto;
-  margin-top: -80px;
-  margin-bottom: 50px;
+  margin-left: 25px;
+}
+
+  .ojk{
+      width:180px;
+      height: 180px;
+      margin-top: -43px;
+    }
+
+    .aludi{
+      margin-top: 16px;
+      width:170px;
+      height:65px;
+    }
+
+
+.logo-ojk{
+  margin-top: 0px;
+}
+
+.logo-aludi{
+  margin-top: 0px;
+  margin-left: 30px;
 }
 
 .santara-app-1 {
@@ -1371,20 +1388,10 @@ a:hover {
   white-space: nowrap;
 }
 
-.santara-app2 {
-  align-items: flex-start;
-  display: flex;
-  margin-top: 57px;
-  margin-left: -380px;
-}
-
-.lg-ply{
-  margin-top: -138px;
-}
 .action-app {
   align-items: flex-start;
   display: flex;
-  margin-top: 20px;
+  margin-top: 12px;
   min-width: 267px;
 }
 
@@ -1397,23 +1404,6 @@ a:hover {
   overflow: hidden;
   padding: 5.9px 5.2px;
   width: 135px;
-}
-
-.logo-aludi{
-  margin-left: 200px;
-  margin-top: -132px;
-}
-
-.ojk {
-  height:25%;
-  margin-top: -35px;
-  width: 25%;
-}
-
-.aludi {
-  height: 35%;
-  margin-top: 17px;
-  width: 35%;
 }
 
 .google-play-logo {
