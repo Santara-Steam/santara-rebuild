@@ -20,8 +20,8 @@
                         <div class="row mt-3">
 
                             <div class="col-md-12">
-                                <form class="form-login" id="form_login"method="POST" action="{{ route('register') }}">
-                                @csrf
+                                <form class="form-login" id="form_login" method="POST" action="{{ route('register') }}">
+                                    @csrf
                                     <div class="form-group mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
@@ -53,7 +53,7 @@
                                     <div class="form-group mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                                            <input id="password-confirm" type="password" class="form-control" name="Konfirmasi Password" placeholder="Password Confirmation" required autocomplete="new-password">
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Konfirmasi Password" required autocomplete="new-password">
                                             <span class="input-group-text" style="background-color: #fff;"><i id="eye2" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
                                         </div>
                                     </div>
@@ -127,6 +127,7 @@
             $("#phone").on("keyup blur input change paste", function(e) {
                 this.value = this.value.replace(/^0+/, "");
             });
+            
             $('#eye').click(function () {
                 $('#password').attr('type', $('#password').is(':password') ? 'text' : 'password');
                 if ($('#password').attr('type') === 'password') {
