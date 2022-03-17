@@ -79,6 +79,27 @@ class EmitenController extends Controller
         //     'company_name' => $request->get('company_name'),
         //     'pictures' => $logoFileSave,
         // ]);
+        if($request->logo == null){
+            $logo = 'default1.png';
+        }else{
+            $logo = str_replace('public/upload/','',$request->logo);
+        }
+        if($request->cover == null){
+            $cover = 'default2.png';
+        }else{
+            $cover = str_replace('public/upload/','',$request->cover);
+        }
+        if($request->galeri == null){
+            $galeri = 'default.png';
+        }else{
+            $galeri = str_replace('public/upload/','',$request->galeri);
+        }
+        if($request->owner == null){
+            $owner = 'default1.png';
+        }else{
+            $owner = str_replace('public/upload/','',$request->owner);
+        }
+
 
         $em = new emiten();
         $em->company_name = $request->get('company_name');
@@ -95,19 +116,19 @@ class EmitenController extends Controller
         $em->website= $request->get('web');
         $em->instagram= $request->get('ig');
         $em->business_description= $request->get('deskripsi');
-        $em->pictures = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
+        $em->pictures = $logo.','.$cover.','.$galeri.','.$owner;
         $em->save();
 
         $emj = new emiten_journey();
         $emj->emiten_id = $em->id;
         $emj->title = "Pra Penawaran Saham";
-        // $emj->save();
+        $emj->save();
         // $notif = array(
         //     'message' => 'Data Berhasil Di Tambahkan',
         //     'alert-type' => 'success'
         // );
 
-        $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
+        // $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
         // dd($em);
         // return response()->json(['status' => 'Mantap']);
         return redirect('/admin/emiten');
@@ -204,6 +225,27 @@ class EmitenController extends Controller
             $ownerFileSave = $picture[3];
         }
 
+        if($request->logo == null){
+            $logo = 'default1.png';
+        }else{
+            $logo = str_replace('public/upload/','',$request->logo);
+        }
+        if($request->cover == null){
+            $cover = 'default2.png';
+        }else{
+            $cover = str_replace('public/upload/','',$request->cover);
+        }
+        if($request->galeri == null){
+            $galeri = 'default.png';
+        }else{
+            $galeri = str_replace('public/upload/','',$request->galeri);
+        }
+        if($request->owner == null){
+            $owner = 'default1.png';
+        }else{
+            $owner = str_replace('public/upload/','',$request->owner);
+        }
+
         $emiten->company_name = $request->get('company_name');
         $emiten->owner_name = $request->get('nama_owner');
         $emiten->category_id = $request->get('kategori');
@@ -218,7 +260,7 @@ class EmitenController extends Controller
         $emiten->website= $request->get('web');
         $emiten->instagram= $request->get('ig');
         $emiten->business_description= $request->get('deskripsi');
-        $emiten->pictures = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
+        $emiten->pictures = $logo.','.$cover.','.$galeri.','.$owner;
         $emiten->code_emiten = $request->get('code_emiten');
         $emiten->trademark = $request->get('brand');
         $emiten->price = $request->get('harga_saham');
@@ -245,5 +287,45 @@ class EmitenController extends Controller
         $emj->save();
 
         return redirect('/admin/emiten');
+    }
+    public function logocropImg()
+    {
+          $data = $_POST['image'];
+            $image_array_1 = explode(";", $data);
+            $image_array_2 = explode(",", $image_array_1[1]);
+            $data = base64_decode($image_array_2[1]);
+            $image_name = 'public/upload/logo_' . time() . '.png';
+            file_put_contents($image_name, $data);
+            echo $image_name;
+    }
+    public function galericropImg()
+    {
+          $data = $_POST['image'];
+            $image_array_1 = explode(";", $data);
+            $image_array_2 = explode(",", $image_array_1[1]);
+            $data = base64_decode($image_array_2[1]);
+            $image_name = 'public/upload/galeri_' . time() . '.png';
+            file_put_contents($image_name, $data);
+            echo $image_name;
+    }
+    public function covercropImg()
+    {
+          $data = $_POST['image'];
+            $image_array_1 = explode(";", $data);
+            $image_array_2 = explode(",", $image_array_1[1]);
+            $data = base64_decode($image_array_2[1]);
+            $image_name = 'public/upload/cover_' . time() . '.png';
+            file_put_contents($image_name, $data);
+            echo $image_name;
+    }
+    public function ownercropImg()
+    {
+          $data = $_POST['image'];
+            $image_array_1 = explode(";", $data);
+            $image_array_2 = explode(",", $image_array_1[1]);
+            $data = base64_decode($image_array_2[1]);
+            $image_name = 'public/upload/owner_' . time() . '.png';
+            file_put_contents($image_name, $data);
+            echo $image_name;
     }
 }

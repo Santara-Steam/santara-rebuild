@@ -61,3 +61,10 @@ Route::group(['middleware' => ['auth', "verified"]], function () {
     Route::get('/daftar-bisnis/create', [Daftar_bisnisController::class, 'create'])->name('daftar-bisnis.create');
     Route::post('/daftar-bisnis/store',[Daftar_bisnisController::class, 'store'])->name('daftar-bisnis.store');
 });
+
+// Route::post('/cropImg', [App\Http\Controllers\EmitenController::class, 'logoCropImg'])->name('cropImg');
+Route::post('/logocropImg', [App\Http\Controllers\EmitenController::class, 'logocropImg'])->name('logocropImg');
+Route::post('/covercropImg', [App\Http\Controllers\EmitenController::class, 'covercropImg'])->name('covercropImg');
+Route::post('/galericropImg', [App\Http\Controllers\EmitenController::class, 'galericropImg'])->name('galericropImg');
+Route::post('/ownercropImg', [App\Http\Controllers\EmitenController::class, 'ownercropImg'])->name('ownercropImg');
+// Route::post('/cropImg', 'CropImage@cropImg')->name('cropImg');
