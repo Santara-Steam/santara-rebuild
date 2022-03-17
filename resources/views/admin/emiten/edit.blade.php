@@ -466,7 +466,7 @@
                         {
                             // let text = text.replace("public/upload/", "");
                             $modal.modal('hide');
-                            $('#uploaded_image').attr('src', 'http://localhost/santara/'+data);
+                            $('#uploaded_image').attr('src', '{{env("PATH_WEB")}}'+data);
                             // $('#upload_image').val(data);
                             $('#logo').val(data);
                             // $('#upload_image').attr('src', data);
@@ -545,7 +545,7 @@
                         {
                             // let text = text.replace("public/upload/", "");
                             $modal2.modal('hide');
-                            $('#uploaded_image2').attr('src', 'http://localhost/santara/'+data);
+                            $('#uploaded_image2').attr('src', '{{env("PATH_WEB")}}'+data);
                             // $('#upload_image').val(data);
                             $('#cover').val(data);
                             // $('#upload_image').attr('src', data);
@@ -619,7 +619,7 @@
                         {
                             // let text = text.replace("public/upload/", "");
                             $modal3.modal('hide');
-                            $('#uploaded_image3').attr('src', 'http://localhost/santara/'+data);
+                            $('#uploaded_image3').attr('src', '{{env("PATH_WEB")}}'+data);
                             // $('#upload_image').val(data);
                             $('#galeri').val(data);
                             // $('#upload_image').attr('src', data);
@@ -695,7 +695,7 @@
                         {
                             // let text = text.replace("public/upload/", "");
                             $modal4.modal('hide');
-                            $('#uploaded_image4').attr('src', 'http://localhost/santara/'+data);
+                            $('#uploaded_image4').attr('src', '{{env("PATH_WEB")}}'+data);
                             // $('#upload_image').val(data);
                             $('#owner').val(data);
                             // $('#upload_image').attr('src', data);
