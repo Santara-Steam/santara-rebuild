@@ -74,7 +74,8 @@ class RegisterController extends Controller
 
         trader::create([
             'user_id' => $user->id,
-            'name' => $data['name']
+            'name' => $data['name'],
+            'phone' => $data['phone'],
         ]);
 
         return $user;

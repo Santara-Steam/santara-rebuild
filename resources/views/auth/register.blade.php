@@ -25,9 +25,17 @@
                                     <div class="form-group mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nama" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                         </div>
 
+                                    </div>
+
+                                    <div class="form-group mb-3" style="color: black; margin-left: -15px;">
+                                        <div class="input-group col-12 ff-m" style="padding-right: 0;">
+                                            <input type="tel" class="form-control d-block required-form number-only-phone" style=" width: 100% !important" value="" name="phone" id="phone" placeholder="821xxxxxx" maxlength="14" onkeypress="return numberOnly(event)" value="">
+                                            <input type="hidden" name="code_dial" style="color: black;" id="code_dial">
+                                            <span id="phone_error" style="color: #fff;"></span>
+                                        </div>
                                     </div>
                                     <div class="form-group mb-3">
                                         <div class="input-group">
@@ -39,12 +47,14 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
+                                            <span class="input-group-text" style="background-color: #fff;"><i id="eye" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Password Confirmation" required autocomplete="new-password">
+                                            <input id="password-confirm" type="password" class="form-control" name="Konfirmasi Password" placeholder="Password Confirmation" required autocomplete="new-password">
+                                            <span class="input-group-text" style="background-color: #fff;"><i id="eye2" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
                                         </div>
                                     </div>
                                     <div class="row m-0 mt-4">
@@ -55,7 +65,7 @@
                                     </div>
                                     <div class="row fs-11 ff-m mt-2">
                                         <div class="col-6 d-flex align-content-start float-start">
-                                            
+                                            <a class="link" href="{{ route('password.request') }}">Lupa password?</a>
                                         </div>
                                         <div class="row col-lg-6 d-flex align-content-end text-end">
                                             <p style="font-size: 12px;">Sudah punya akun? <a class="link" href="{{ route('login') }}">&ensp; Login</a></p>
@@ -100,4 +110,40 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://santara.co.id/app-assets/new-santara/vendors/intlTelInput/css/intlTelInput.min.css">
+    <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/login.css?v=5.8.8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://santara.co.id/app-assets/new-santara/vendors/intlTelInput/js/intlTelInput.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var iti = window.intlTelInput(phone, {
+                formatOnDisplay: true,
+                preferredCountries: ["id"],
+                placeholderNumberType: "MOBILE",
+                separateDialCode: true,
+                width: '100%',
+            });
+
+            $("#phone").on("keyup blur input change paste", function(e) {
+                this.value = this.value.replace(/^0+/, "");
+            });
+            $('#eye').click(function () {
+                $('#password').attr('type', $('#password').is(':password') ? 'text' : 'password');
+                if ($('#password').attr('type') === 'password') {
+                    $('#eye').removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    $('#eye').removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+
+            $('#eye2').click(function () {
+                $('#password-confirm').attr('type', $('#password-confirm').is(':password') ? 'text' : 'password');
+                if ($('#password-confirm').attr('type') === 'password') {
+                    $('#eye2').removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    $('#eye2').removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+        });
+        </script>
 @endsection

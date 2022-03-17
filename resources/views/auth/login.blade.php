@@ -33,6 +33,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
+                                            <span class="input-group-text" style="background-color: #fff;"><i id="eye" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
                                         </div>
                                     </div>
                                     <div class="row m-0 mt-4">
@@ -43,7 +44,7 @@
                                     </div>
                                     <div class="row fs-11 ff-m mt-2">
                                         <div class="col-6 d-flex align-content-start float-start">
-                                            
+                                            <a class="link" href="{{ route('password.request') }}">Lupa password?</a>
                                         </div>
                                         <div class="row col-lg-6 d-flex align-content-end text-end">
                                             <p style="font-size: 12px;">Belum punya akun? <a class="link" href="{{ route('register') }}">&ensp; Daftar</a></p>
@@ -87,4 +88,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#eye').click(function () {
+                $('#password').attr('type', $('#password').is(':password') ? 'text' : 'password');
+                if ($('#password').attr('type') === 'password') {
+                    $('#eye').removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    $('#eye').removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+        });
+        </script>
 @endsection
