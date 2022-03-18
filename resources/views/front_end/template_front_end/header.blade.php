@@ -49,9 +49,9 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
   <!-- Responsive-->
   <link rel="stylesheet" href="{{ asset('public/assets/css/responsive.css') }}">
-  @yield('style')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  @yield('style')
 
 </head>
 
