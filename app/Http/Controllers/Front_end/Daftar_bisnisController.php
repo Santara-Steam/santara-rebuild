@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front_end;
 use App\Models\emiten;
 use App\Models\emiten_journey;
 use App\Models\kategori;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -29,8 +30,9 @@ class Daftar_bisnisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
+        $user = User::where('role_id',2)->get();
         $kategori = kategori::all();
-        return view('front_end.daftar_bisnis.create',compact('kategori'));
+        return view('front_end.daftar_bisnis.create',compact('kategori','user'));
     }
 
     public function validator(array $data){

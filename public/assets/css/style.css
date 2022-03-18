@@ -3321,6 +3321,11 @@ input.mail_bt::placeholder {
     cursor: pointer;
 }
 
+.customNextBtn2, .customPreviousBtn2{
+    padding: 10px;
+    cursor: pointer;
+}
+
 .tx-pt{
     width: 100%
     min-width: 100%;

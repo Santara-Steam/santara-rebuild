@@ -89,7 +89,7 @@
   
              $("#owl-demo").owlCarousel({
                  loop  : true,
-                 margin : 30,
+                 margin : 10,
                  nav    : true,
                  smartSpeed :900,
                  navText : [$('.customPreviousBtn'),$('.customNextBtn')],
@@ -113,8 +113,11 @@
                   }
               });
              $("#owl-demo2").owlCarousel({
-                loop:true,
-                  margin:10,
+                loop  : true,
+                 margin : 10,
+                 nav    : true,
+                 smartSpeed :900,
+                 navText : [$('.customPreviousBtn2'),$('.customNextBtn2')],
                   responsiveClass:true,
                   responsive:{
                       0:{
@@ -135,7 +138,29 @@
                   }
               });
                $("#owl-demo3").owlCarousel({
-                pagination : false,
+                loop  : true,
+                 margin : 10,
+                 nav    : true,
+                 smartSpeed :900,
+                 navText : [$('.customPreviousBtn3'),$('.customNextBtn3')],
+                 responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      }
+                  }
              });
                $("#owl-demo4").owlCarousel({
                 loop:true,
