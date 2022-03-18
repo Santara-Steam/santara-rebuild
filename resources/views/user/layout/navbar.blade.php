@@ -7,7 +7,7 @@
                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                             class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item mr-auto">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{url('user')}}">
                         <img class="brand-logo" alt="modern admin logo" style="width:65%"
                             src="{{asset('public/admin')}}/img/santara-tidur-dark.png">
                         {{-- <h3 class="brand-text">Modern</h3> --}}
@@ -31,11 +31,7 @@
                                 class="avatar avatar-online"><img
                                     src="{{asset('public/admin')}}/app-assets/images/portrait/small/avatar-s-19.png"
                                     alt="avatar"><i></i></span></a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
-                                href="user-profile.html"><i class="ft-user"></i> Edit Profile</a><a
-                                class="dropdown-item" href="app-kanban.html"><i class="ft-clipboard"></i> Todo</a><a
-                                class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i> Task</a>
-                            <div class="dropdown-divider"></div>
+                        <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
                                 

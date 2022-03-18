@@ -6,6 +6,7 @@ use App\Models\book_saham;
 use App\Models\emiten;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookSahamController extends Controller
 {
@@ -14,6 +15,12 @@ class BookSahamController extends Controller
         $book = book_saham::all();
 
         return view('admin.pesan_saham.index',compact('book'));
+    }
+    public function index_user(){
+        $book = book_saham::where('trader_id',Auth::user()->trader->id)->get();
+
+        return view('user.order.index',compact('book'));
+        // dd(Auth::user()->trader->id);
     }
 
     public function create(){
@@ -37,6 +44,7 @@ class BookSahamController extends Controller
         $emiten = emiten::where('id',$request->get('emiten_id'))->first();
 
         $bs = new book_saham;
+        $bs->order_id = 'PS'.time();
         $bs->trader_id = $request->get('trader_id');
         $bs->emiten_id = $request->get('emiten_id');
         $bs->lembar_saham = $request->get('lembar_saham');
@@ -50,6 +58,35 @@ class BookSahamController extends Controller
         $book = book_saham::where('id',$id)->first();
         
         return view('admin.pesan_saham.detail',compact('book'));
+    }
+
+    public function detail_user($id){
+
+        $book = book_saham::where('id',$id)->first();
+        
+        return view('user.order.detail',compact('book'));
+    }
+
+    public function upload_bukti(Request $request,$id){
+        if($request->hasFile("bukti_transfer")){
+            $BuktiTransferNameWithExt = $request->file('bukti_transfer')->getClientOriginalName() ;
+            $BuktiTransferFileName = pathinfo ($BuktiTransferNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('bukti_transfer')->getClientoriginalExtension();
+            $BuktiTransferFileSave = 'bukti_transfer_'.time().'.'.$extension;
+            $path = $request->file('bukti_transfer')->storeAs('public/bukti_transfer',$BuktiTransferFileSave) ;
+        }else{
+            $BuktiTransferFileSave = '-';
+        }
+
+        $book = book_saham::where('id',$id)->first();
+        $book->bukti_tranfer = $BuktiTransferFileSave;
+        $book->save();
+
+        $notif = array(
+            'message' => 'Bukti Transfer Berhasil Di Upload',
+            'alert-type' => 'success'
+        );
+        return redirect('/user/pesan_saham')->with($notif);
     }
 
     public function approve($id){

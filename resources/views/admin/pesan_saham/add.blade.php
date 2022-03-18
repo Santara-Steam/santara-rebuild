@@ -12,6 +12,7 @@
     enctype="multipart/form-data">
     {{ csrf_field() }}
     {{-- <input type="number" name="trader_id"> --}}
+    {{-- <input type="number" name="trader_id"> --}}
     <select name="trader_id" id="">
         @foreach ($user as $item)
             <option value="{{$item->trader->id}}">{{$item->trader->name}}</option>

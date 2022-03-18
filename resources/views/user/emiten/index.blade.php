@@ -28,11 +28,11 @@
                                                 <tr>
                                                     {{-- <th>Owner</th> --}}
                                                     <th>Penerbit</th>
-                                                    <th style="width: 10%">Dana</th>
+                                                    <th style="width: 10%">Dana Dibutuhkan</th>
                                                     <th>Saham Dilepas</th>
-                                                    <th>Deviden</th>
-                                                    <th>Omset 2021</th>
-                                                    <th>Omset 2022</th>
+                                                    <th>Deviden Tahunan</th>
+                                                    {{-- <th>Omset 2021</th> --}}
+                                                    {{-- <th>Omset 2022</th> --}}
                                                     {{-- <th>Status</th> --}}
                                                     <th>Action</th>
                                                 </tr>
@@ -42,21 +42,24 @@
                                                 <tr>
                                                     {{-- <td>{{$item->trader_id}}</td> --}}
                                                     <td>{{$item->company_name}}</td>
-                                                    <td>Rp{{number_format(round($item->avg_capital_needs,0),0,',','.')}}</td>
+                                                    <td>Rp{{number_format(round($item->avg_capital_needs,0),0,',','.')}}
+                                                    </td>
                                                     <td>{{round($item->avg_general_share_amount,0)}}%</td>
                                                     <td>{{round($item->avg_annual_dividen,0)}}%</td>
-                                                    <td>Rp{{number_format(round($item->avg_annual_turnover_previous_year,0),0,',','.')}}</td>
-                                                    <td>Rp{{number_format(round($item->avg_annual_turnover_current_year,0),0,',','.')}}</td>
+                                                    {{-- <td>Rp{{number_format(round($item->avg_annual_turnover_previous_year,0),0,',','.')}}
+                                                    </td>
+                                                    <td>Rp{{number_format(round($item->avg_annual_turnover_current_year,0),0,',','.')}}
+                                                    </td> --}}
                                                     {{-- <td>{{$item->sts}}</td> --}}
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                <button class="btn btn-primary">
+                                                                <button class="btn btn-sm btn-primary">
                                                                     Lihat Detail
                                                                 </button>
                                                             </div>
                                                             <div class="col-6">
-                                                                <button class="btn btn-success">
+                                                                <button class="btn btn-sm btn-success">
                                                                     Pesan Saham
                                                                 </button>
                                                             </div>
@@ -92,6 +95,9 @@
     $(document).ready(function() {
         $('#tabel').DataTable({
             responsive: true,
+            "columnDefs": [
+    { "width": "20%", "targets": 4 }
+  ],
         });
     });
 </script>

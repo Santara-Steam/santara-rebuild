@@ -26,6 +26,7 @@
                                             <thead>
                                                 <tr>
                                                     {{-- <th>Owner</th> --}}
+                                                    <th>Order ID</th>
                                                     <th>Trader</th>
                                                     <th>Emiten</th>
                                                     <th>Lembar Saham</th>
@@ -38,19 +39,20 @@
                                                 @foreach ($book as $item)
                                                 <tr>
                                                     {{-- <td>{{$item->trader_id}}</td> --}}
+                                                    <td>{{$item->order_id}}</td>
                                                     <td>{{$item->trd->name}}</td>
                                                     <td>{{$item->emtn->company_name}}</td>
-                                                    <td>{{$item->lembar_saham}}</td>
-                                                    <td>{{$item->total_amount}}</td>
+                                                    <td>{{number_format($item->lembar_saham,0,',','.')}}</td>
+                                                    <td>Rp{{number_format($item->total_amount,0,',','.')}}</td>
                                                     <td>
                                                         @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer == null)
                                                         <div class="badge badge-warning">Bukti Transfer Belum Di Upload</div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 0)
-                                                        <div class="badge badge-success">Bukti Transfer Sudah Di Upload</div>
+                                                        <div class="badge badge-primary">Bukti Transfer Sudah Di Upload</div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 3)
-                                                        <div class="badge badge-success">Bukti Transfer Sudah Di Upload Ulang</div>
+                                                        <div class="badge badge-primary">Bukti Transfer Sudah Di Upload Ulang</div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 1)
-                                                        <div class="badge badge-primary">Bukti Transfer Valid</div>
+                                                        <div class="badge badge-success">Bukti Transfer Valid</div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 2)
                                                         <div class="badge badge-danger">Bukti Transfer Tidak Valid</div>
                                                         @endif

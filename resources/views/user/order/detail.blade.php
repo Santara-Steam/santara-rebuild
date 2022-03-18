@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('user.layout.master')
 @section('content')
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -22,25 +22,19 @@
                                         <table class="table" style="font-size: 1.32rem;font-family: Quicksand, Georgia,Times New Roman, Times, serif;
                                         font-weight: 400;color: #464855;">
                                             <tr>
-                                                <td>Nama Trader</td>
-                                                <td>:</td>
-                                                <td class="px-1">{{ $book->trd->name}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding-top:10px ">Email</td>
-                                                <td style="padding-top:10px ">:</td>
-                                                <td class="px-1" style="padding-top:10px ">{{ $book->trd->usr->email}}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding-top:10px ">Nomor Telepon</td>
-                                                <td style="padding-top:10px ">:</td>
-                                                <td class="px-1" style="padding-top:10px ">{{ $book->trd->phone}}</td>
-                                            </tr>
-                                            <tr>
                                                 <td style="padding-top:10px ">Penerbit</td>
                                                 <td style="padding-top:10px ">:</td>
                                                 <td class="px-1" style="padding-top:10px ">{{ $book->emtn->company_name}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-top:10px ">Nama Brand</td>
+                                                <td style="padding-top:10px ">:</td>
+                                                <td class="px-1" style="padding-top:10px ">{{ $book->emtn->trademark}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-top:10px ">Kode Emiten</td>
+                                                <td style="padding-top:10px ">:</td>
+                                                <td class="px-1" style="padding-top:10px ">{{ $book->emtn->code_emiten}}</td>
                                             </tr>
                                             <tr>
                                                 <td style="padding-top:10px ">Harga Per Lembar</td>
@@ -94,26 +88,9 @@
                                                     <div class="badge badge-danger">Bukti Transfer Tidak Valid</div>
                                                 </td>        
                                                 @elseif($book->bukti_tranfer != '-' && $book->isValid == 0 || $book->bukti_tranfer != '-' && $book->isValid == 3)
-                                                <td class="3">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <a data-id="{{$book->id}}" style="color: white" class="btn btn-primary form-control konfbtn">Konfirmasi</a>
-                                                            <form id="konf{{$book->id}}" method="post"
-                                                                action="{{url('/admin/pesan_saham/approve')}}/{{$book->id}}"
-                                                                enctype="multipart/form-data">
-                                                                {{ csrf_field() }}
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <a data-id="{{$book->id}}" style="color: white" class="btn btn-danger form-control rejcbtn">Tolak</a>
-                                                            <form id="rejc{{$book->id}}" method="post"
-                                                                action="{{url('/admin/pesan_saham/reject')}}/{{$book->id}}"
-                                                                enctype="multipart/form-data">
-                                                                {{ csrf_field() }}
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                <td>
+                                                    <div class="badge badge-primary">Bukti Transfer Dalam Proses Pengecekan</div>
+                                                </td>      
                                                 @endif
                                             </tr>
                                         

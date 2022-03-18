@@ -38,6 +38,8 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <!-- END: Custom CSS-->
     @yield('style')
 </head>
@@ -91,6 +93,46 @@
     <!-- BEGIN: Page JS-->
     {{-- <script src="{{asset('public/admin')}}/app-assets/js/scripts/pages/dashboard-sales.js"></script> --}}
     <!-- END: Page JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- END: Theme JS-->
+    <!-- BEGIN: Page JS-->
+    {{-- <script src="{{asset('public/admin')}}/app-assets/js/scripts/pages/dashboard-sales.js"></script> --}}
+    <!-- END: Page JS-->
+    @if(Session::has('message'))
+    <script>
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    var type = "{{Session::get('alert-type','success')}}"
+    switch (type) {
+        case 'success':
+        toastr.success("{{Session::get('message')}}");
+        // Swal.fire("Berhasil","{{Session::get('message')}}","success");
+        // Swal.fire("Good job!", "You clicked the button!", "success");
+        break;
+        case 'fail':
+        toastr.error("{{Session::get('message')}}");
+        // Swal.fire("Berhasil","{{Session::get('message')}}","success");
+        // Swal.fire("Good job!", "You clicked the button!", "success");
+        break;
+    }
+    </script>
+    @endif
     @yield('js')
 
 </body>

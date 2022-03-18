@@ -15,19 +15,19 @@
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
-                                        <li><a href="{{url('admin/pesan_saham/add')}}" class="btn btn-primary">Tambah
-                                                Penerbit</a></li>
+
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table" id="tabel">
                                             <thead>
                                                 <tr>
                                                     {{-- <th>Owner</th> --}}
-                                                    <th>Trader</th>
+                                                    {{-- <th>Trader</th> --}}
+                                                    <th>Order ID</th>
                                                     <th>Emiten</th>
                                                     <th>Lembar Saham</th>
                                                     <th>Total</th>
@@ -39,24 +39,49 @@
                                                 @foreach ($book as $item)
                                                 <tr>
                                                     {{-- <td>{{$item->trader_id}}</td> --}}
-                                                    <td>{{$item->trd->name}}</td>
+                                                    {{-- <td>{{$item->trd->name}}</td> --}}
+                                                    <td>{{$item->order_id}}</td>
                                                     <td>{{$item->emtn->company_name}}</td>
-                                                    <td>{{$item->lembar_saham}}</td>
-                                                    <td>{{$item->total_amount}}</td>
+                                                    <td>{{ number_format(round($item->lembar_saham,0),0,',','.')}}</td>
+                                                    <td>Rp{{ number_format(round($item->total_amount,0),0,',','.')}}
+                                                    </td>
                                                     <td>
-                                                        @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer == null)
-                                                        <div class="badge badge-warning">Bukti Transfer Belum Di Upload</div>
+                                                        @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer ==
+                                                        null)
+                                                        <div class="badge badge-warning">Bukti Transfer Belum Di Upload
+                                                        </div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 0)
-                                                        <div class="badge badge-success">Bukti Transfer Sudah Di Upload</div>
+                                                        <div class="badge badge-primary">Bukti Transfer Dalam Proses
+                                                        </div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 1)
-                                                        <div class="badge badge-primary">Bukti Transfer Valid</div>
+                                                        <div class="badge badge-success">Bukti Transfer Valid</div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 2)
                                                         <div class="badge badge-danger">Bukti Transfer Tidak Valid</div>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                                <a href="{{url('admin/emiten/edit')}}/{{$item->id}}"
-                                                                    class="btn btn-sm btn-primary">Lihat Bukti Transfer</a>
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <a href="{{url('user/pesan_saham/detail/')}}/{{$item->id}}"
+                                                                    class="btn btn-sm btn-primary ">Detail</a>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer
+                                                                == null)
+                                                                <button data-toggle="modal"
+                                                                    data-target="#uploadbukti{{$item->id}}"
+                                                                    class="btn btn-sm btn-warning">Upload
+                                                                    Bukti</button>
+                                                                @elseif($item->bukti_tranfer != '-' && $item->isValid ==
+                                                                2)
+                                                                <button data-toggle="modal"
+                                                                    data-target="#uploadbukti{{$item->id}}"
+                                                                    class="btn btn-sm  btn-warning">Upload
+                                                                    Ulang</button>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -73,4 +98,61 @@
         </div>
     </div>
 </div>
+@foreach ($book as $item)
+<div class="modal fade" id="uploadbukti{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="uploadbuktiLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadbuktiLabel">Upload Bukti Transfer {{$item->order_id}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{url('/upload_bukti')}}/{{$item->id}}" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="bukti">Bukti Transfer</label>
+                        <input type="file" class="form-control" name="bukti_transfer" id="bukti">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+@endsection
+@section('js')
+<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
+    integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function() {
+        $('#tabel').DataTable({
+            responsive: true,
+            "columnDefs": [
+    { "width": "23%", "targets": 5 },
+    { "width": "5%", "targets": 4 },
+  ],
+        });
+    });
+</script>
+@endsection
+@section('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+    integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css"
+    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 @endsection

@@ -33,6 +33,10 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () {
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
     Route::get('/user/emiten', [App\Http\Controllers\EmitenController::class, 'index_user']);
+    Route::get('/user/pesan_saham', [App\Http\Controllers\BookSahamController::class, 'index_user']);
+    Route::get('/user/pesan_saham/detail/{id}', [App\Http\Controllers\BookSahamController::class, 'detail_user']);
+
+    Route::post('/upload_bukti/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti']);
 });
 Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'indexadmin']);
