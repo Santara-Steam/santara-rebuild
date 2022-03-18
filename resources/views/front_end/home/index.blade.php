@@ -27,7 +27,7 @@
       </div>
       <!-- banner bg main end -->
       <!-- fashion section start -->
-      <div class="fashion_section">
+      <div class="fashion_section" style="margin-top: -70px;">
          <div id="main_slider" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="title-dan-link-button-1 w3-red">
