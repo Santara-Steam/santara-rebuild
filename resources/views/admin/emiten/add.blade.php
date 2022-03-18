@@ -88,6 +88,25 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-3 text-center">
+                                                    <label for="companyName">Foto Owner</label>
+                                                    <div class="image_area text-center">
+                                                        <label for="upload_image4">
+                                                            <img src="{{asset('public')}}/default1.png" id="uploaded_image4"
+                                                                class="img-responsive" />
+                                                            <div class="overlay">
+                                                                <div class="text">Foto Owner</div>
+                                                            </div>
+                                                        </label>
+                                                        <input type="file" name="image4" class="image" id="upload_image4"
+                                                            style="display: none" />
+                                                        <input type="text" hidden name="owner" class="image"
+                                                            id="owner" />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <div class="form-group row">
+
+                                                <div class="col-4">
                                                     <label for="companyName">Galeri Foto/Tempat Usaha</label>
                                                     <div class="image_area text-center">
                                                         <label for="upload_image3">
@@ -103,54 +122,64 @@
                                                             id="galeri" />
                                                     </div>
                                                 </div>
-                                            </fieldset>
-                                            <div class="form-group row">
-
-                                                <div class="col-3">
-                                                    <label for="companyName">Foto Owner</label>
+                                                <div class="col-4">
+                                                    <label for="companyName">Galeri Foto/Tempat Usaha 2</label>
                                                     <div class="image_area text-center">
-                                                        <label for="upload_image4">
-                                                            <img src="{{asset('public')}}/default1.png" id="uploaded_image4"
+                                                        <label for="upload_image5">
+                                                            <img src="{{asset('public')}}/default.png" id="uploaded_image5"
                                                                 class="img-responsive" />
                                                             <div class="overlay">
-                                                                <div class="text">Foto Owner</div>
+                                                                <div class="text">Galeri Foto/Tempat Usaha 2</div>
                                                             </div>
                                                         </label>
-                                                        <input type="file" name="image4" class="image" id="upload_image4"
+                                                        <input type="file" name="image5" class="image" id="upload_image5"
                                                             style="display: none" />
-                                                        <input type="text" hidden name="owner" class="image"
-                                                            id="owner" />
+                                                        <input type="text" hidden name="galeri2" class="image"
+                                                            id="galeri2" />
                                                     </div>
-
                                                 </div>
-                                                <div class="col-9">
-                                                    <div class="form-group">
-                                                        <label for="companyName">Nama Owner</label>
-                                                        <input type="text" name="nama_owner" id="companyName"
-                                                        class="form-control" placeholder="Nama Owner">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="projectinput6">Kategori</label>
-                                                        <select id="projectinput6" name="kategori" class="form-control">
-                                                            <option value="0" selected="" disabled="" hidden>-- Pilih Kategori
-                                                                --</option>
-                                                            @foreach ($kategori as $item)
-                                                            <option value="{{$item->id}}">{{$item->category}}</option>
-        
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="companyName">Perkiraan Dana yang di Butuhkan</label>
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                <div class="col-4">
+                                                    <label for="companyName">Galeri Foto/Tempat Usaha 3</label>
+                                                    <div class="image_area text-center">
+                                                        <label for="upload_image6">
+                                                            <img src="{{asset('public')}}/default.png" id="uploaded_image6"
+                                                                class="img-responsive" />
+                                                            <div class="overlay">
+                                                                <div class="text">Galeri Foto/Tempat Usaha 3</div>
                                                             </div>
-                                                            <input type="text" name="perkiraan_dana" class="form-control"
-                                                                placeholder="Perkiraan Dana yang di Butuhkan"
-                                                                aria-describedby="basic-addon1">
-                                                        </div>
+                                                        </label>
+                                                        <input type="file" name="image6" class="image" id="upload_image6"
+                                                            style="display: none" />
+                                                        <input type="text" hidden name="galeri3" class="image"
+                                                            id="galeri3" />
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="companyName">Nama Owner</label>
+                                                <input type="text" name="nama_owner" id="companyName"
+                                                class="form-control" placeholder="Nama Owner">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="projectinput6">Kategori</label>
+                                                <select id="projectinput6" name="kategori" class="form-control">
+                                                    <option value="0" selected="" disabled="" hidden>-- Pilih Kategori
+                                                        --</option>
+                                                    @foreach ($kategori as $item)
+                                                    <option value="{{$item->id}}">{{$item->category}}</option>
+
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="companyName">Perkiraan Dana yang di Butuhkan</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                    </div>
+                                                    <input type="text" name="perkiraan_dana" class="form-control"
+                                                        placeholder="Perkiraan Dana yang di Butuhkan"
+                                                        aria-describedby="basic-addon1">
                                                 </div>
                                             </div>
                                             
@@ -334,7 +363,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha</h5>
+                <h5 class="modal-title">Crop Foto Owner</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -384,6 +413,68 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="crop3" class="btn btn-primary">Crop</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+
+
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha 2</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container" style="padding: 30px">
+                    <div class="row">
+                        {{-- <div class="col-md-8"> --}}
+                            <img src="" id="sample_image5" />
+                        {{-- </div>
+                        <div class="col-md-4">
+                            <div class="preview3"></div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="crop5" class="btn btn-primary">Crop</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+
+
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha 3</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container" style="padding: 30px">
+                    <div class="row">
+                        {{-- <div class="col-md-8"> --}}
+                            <img src="" id="sample_image6" />
+                        {{-- </div>
+                        <div class="col-md-4">
+                            <div class="preview3"></div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="crop6" class="btn btn-primary">Crop</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -703,6 +794,153 @@ $('#crop4').click(function(){
 
 
 
+
+var $modal5 = $('#modal5');
+
+var image5 = document.getElementById('sample_image5');
+
+$('#upload_image5').change(function(event){
+    var files = event.target.files;
+
+    var done = function(url){
+        image5.src = url;
+        $modal5.modal('show');
+    };
+
+    if(files && files.length > 0)
+    {
+        reader = new FileReader();
+        reader.onload = function(event)
+        {
+            done(reader.result);
+        };
+        reader.readAsDataURL(files[0]);
+    }
+});
+
+$modal5.on('shown.bs.modal', function() {
+    cropper = new Cropper(image5, {
+        aspectRatio: 4/3,
+        viewMode: 3,
+        preview:'.preview3'
+    });
+}).on('hidden.bs.modal', function(){
+    cropper.destroy();
+       cropper = null;
+});
+
+$('#crop5').click(function(){
+    canvas = cropper.getCroppedCanvas({
+        width:400,
+        height:300
+    });
+
+    canvas.toBlob(function(blob){
+        url = URL.createObjectURL(blob);
+        var reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = function(){
+          
+            var base64data = reader.result;
+            // var fileSelect = $(this).val();
+            $.ajax({
+                url:'{{route("galericropImg")}}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method:'POST',
+                data:{image:base64data},
+                success:function(data)
+                {
+                    // let text = text.replace("public/upload/", "");
+                    $modal5.modal('hide');
+                    $('#uploaded_image5').attr('src', '{{env("PATH_WEB")}}'+data);
+                    // $('#upload_image').val(data);
+                    $('#galeri2').val(data);
+                    // $('#upload_image').attr('src', data);
+                    // console.log(base64data);
+                    // console.log(base64data);
+                    // console.log(data);
+                }
+            });
+        };
+    });
+});
+
+
+
+
+var $modal6 = $('#modal6');
+
+var image6 = document.getElementById('sample_image6');
+
+$('#upload_image6').change(function(event){
+    var files = event.target.files;
+
+    var done = function(url){
+        image6.src = url;
+        $modal6.modal('show');
+    };
+
+    if(files && files.length > 0)
+    {
+        reader = new FileReader();
+        reader.onload = function(event)
+        {
+            done(reader.result);
+        };
+        reader.readAsDataURL(files[0]);
+    }
+});
+
+$modal6.on('shown.bs.modal', function() {
+    cropper = new Cropper(image6, {
+        aspectRatio: 4/3,
+        viewMode: 3,
+        preview:'.preview3'
+    });
+}).on('hidden.bs.modal', function(){
+    cropper.destroy();
+       cropper = null;
+});
+
+$('#crop6').click(function(){
+    canvas = cropper.getCroppedCanvas({
+        width:400,
+        height:300
+    });
+
+    canvas.toBlob(function(blob){
+        url = URL.createObjectURL(blob);
+        var reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = function(){
+          
+            var base64data = reader.result;
+            // var fileSelect = $(this).val();
+            $.ajax({
+                url:'{{route("galericropImg")}}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method:'POST',
+                data:{image:base64data},
+                success:function(data)
+                {
+                    // let text = text.replace("public/upload/", "");
+                    $modal6.modal('hide');
+                    $('#uploaded_image6').attr('src', '{{env("PATH_WEB")}}'+data);
+                    // $('#upload_image').val(data);
+                    $('#galeri3').val(data);
+                    // $('#upload_image').attr('src', data);
+                    // console.log(base64data);
+                    // console.log(base64data);
+                    // console.log(data);
+                }
+            });
+        };
+    });
+});
 
 
 

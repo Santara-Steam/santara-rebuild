@@ -97,6 +97,16 @@ class EmitenController extends Controller
         }else{
             $galeri = str_replace('public/upload/','',$request->galeri);
         }
+        if($request->galeri2 == null){
+            $galeri2 = 'default.png';
+        }else{
+            $galeri2 = str_replace('public/upload/','',$request->galeri2);
+        }
+        if($request->galeri3 == null){
+            $galeri3 = 'default.png';
+        }else{
+            $galeri3 = str_replace('public/upload/','',$request->galeri3);
+        }
         if($request->owner == null){
             $owner = 'default1.png';
         }else{
@@ -120,7 +130,7 @@ class EmitenController extends Controller
         $em->website= $request->get('web');
         $em->instagram= $request->get('ig');
         $em->business_description= $request->get('deskripsi');
-        $em->pictures = $logo.','.$cover.','.$galeri.','.$owner;
+        $em->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
         $em->save();
 
         $emj = new emiten_journey();
@@ -245,6 +255,16 @@ class EmitenController extends Controller
         }else{
             $galeri = str_replace('public/upload/','',$request->galeri);
         }
+        if($request->galeri2 == null){
+            $galeri2 = 'default.png';
+        }else{
+            $galeri2 = str_replace('public/upload/','',$request->galeri2);
+        }
+        if($request->galeri3 == null){
+            $galeri3 = 'default.png';
+        }else{
+            $galeri3 = str_replace('public/upload/','',$request->galeri3);
+        }
         if($request->owner == null){
             $owner = 'default1.png';
         }else{
@@ -265,7 +285,7 @@ class EmitenController extends Controller
         $emiten->website= $request->get('web');
         $emiten->instagram= $request->get('ig');
         $emiten->business_description= $request->get('deskripsi');
-        $emiten->pictures = $logo.','.$cover.','.$galeri.','.$owner;
+        $emiten->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
         $emiten->code_emiten = $request->get('code_emiten');
         $emiten->trademark = $request->get('brand');
         $emiten->price = $request->get('harga_saham');
