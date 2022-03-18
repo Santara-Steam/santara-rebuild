@@ -1,15 +1,21 @@
 <!-- footer section start -->
-      <div class="footer_section layout_padding">
-         <p class="tx-f inter-normal-mercury-14px">
+<footer class="page-footer font-small teal pt-4 footer_section layout_padding">
+
+  <!-- Footer Text -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-8 mt-md-0 mt-3">
+
+        <p class="tx-f inter-normal-mercury-14px">
             <span class="text-f inter-normal-mercury-14px"
               >Santara Website Ver 5.8.0 - Business Ver 3.6.1 | Copyright © 2020 Santara, All rights reserved.</span
             >
           </p>
-      </div>
-      <!-- footer section end -->
-      <!-- copyright section start -->
-      <div class="copyright_section">
-          <div class="santara-app2">
+        <div class="santara-app2">
             <div class="logo-ojk">
               <div class="santara-app-1 inter-medium-mercury-14px">
                 <span class="inter-medium-mercury-14px">Berizin dan Diawasi oleh:</span>
@@ -23,7 +29,15 @@
                 <img class="aludi" src="{{ asset('public/assets/images/aludi.png') }}" />
             </div>
           </div>
-         <div class="santara-app">
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mb-md-0 mb-3">
+        <div class="santara-app">
               <div class="santara-app-1 inter-medium-mercury-14px">
                 <span class="inter-medium-mercury-14px">Santara App</span>
               </div>
@@ -43,7 +57,18 @@
             </div>
             </div>
           </div>
+
       </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Text -->
+
+</footer>
+<!-- Footer -->
       <!-- copyright section end -->
       <!-- Javascript files-->
       <script src="{{ asset('public/assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -60,32 +85,124 @@
       <script src="{{ asset('public/assets/OwlCarousel2/dist/assets/owl.carousel.js') }}"></script>
       <script>
 
-        $(document).ready(function() {
-          var owl = $('.owl-carousel');
-          owl.owlCarousel({
-            margin: 10,
-            nav: true,
-            loop: true,
-            responsive: {
-              0: {
-                items: 2
-              },
-              600: {
-                items: 2
-              },
-              1000: {
-                items: 4
-              }
-            }
-          })
-
-          // Custom Button
-        $('.customNextBtn').click(function() {
-          owl.trigger('next.owl.carousel');
-        });
-        $('.customPreviousBtn').click(function() {
-          owl.trigger('prev.owl.carousel');
-        });
+        $(document).ready(function () {
+  
+             $("#owl-demo").owlCarousel({
+                 loop  : true,
+                 margin : 30,
+                 nav    : true,
+                 smartSpeed :900,
+                 navText : [$('.customPreviousBtn'),$('.customNextBtn')],
+                 responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
+             $("#owl-demo2").owlCarousel({
+                loop:true,
+                  margin:10,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
+               $("#owl-demo3").owlCarousel({
+                pagination : false,
+             });
+               $("#owl-demo4").owlCarousel({
+                loop:true,
+                  margin:20,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:1,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
+               $("#owl-demo5").owlCarousel({
+                loop:true,
+                  margin:20,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:1,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
+               $("#owl-demo6").owlCarousel({
+                loop:true,
+                  margin:20,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:1,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
         })
       </script>
       <script>

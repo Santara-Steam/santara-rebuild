@@ -87,7 +87,7 @@
                           $picture = explode(',',$item->pictures);
                           ?>
                            <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="card">
+                              <div class="card" style="margin-top: 20px;">
                                 <img class="rectangle-2"  src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">

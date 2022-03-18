@@ -50,11 +50,10 @@
   <!-- Responsive-->
   <link rel="stylesheet" href="{{ asset('public/assets/css/responsive.css') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  @yield('header')
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg" style="min-height: 96px;">
+  <nav class="navbar navbar-expand-lg fixed-top" style="min-height: 96px; background-color: var(--eerie-black)">
     <a class="navbar-brand" href="{{ url('/') }}">
       <div class="containt_main">
         <div id="mySidenav" class="sidenav">

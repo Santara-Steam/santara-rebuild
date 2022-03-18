@@ -531,8 +531,27 @@ img {
   align-items: flex-start;
   display: flex;
   margin-top: 48px;
-  min-width: 397px;
+  width: 397px;
 }
+
+.b-daf{
+      margin-top: 7px; 
+  height: 60px; 
+  padding-top: 18px; 
+  font-weight: bold; 
+  font-size: 16px; 
+  background-color: var(--alizarin-crimson);
+}
+
+    .b-mul{
+      height: 60px; 
+      margin-top: 0px; 
+      padding-top: 18px; 
+      font-weight: bold; 
+      font-size: 16px;
+      margin-left: 10px;
+      background-color: var(--mercury);
+    }
 
 .button-2 {
   cursor: pointer;
@@ -1266,11 +1285,8 @@ a:hover {
 #jewellery_main_slider .carousel-control-prev {
     align-items: center;
     display: flex;
-    height: 40px;
-    padding: 0 16px;
-    width: 92px;
-    background-color: var(--shark);
-    opacity: 1;
+    width: 85px;
+    background-color: var(--shark);;
     font-size: 14px;
     color: #ffffff;
 }
@@ -1338,7 +1354,7 @@ a:hover {
   line-height: 20px;
   margin-bottom: 52.0px;
   margin-left: 25px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .santara-app {
@@ -1349,31 +1365,41 @@ a:hover {
   margin-right: 60px;
   min-height: 72px;
   width: 267px;
-  margin-top: -160px;
-  margin-bottom: 90px;
+  margin-top: 0px;
+}
+
+
+.food {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 
 .santara-app2 {
   align-items: flex-start;
   display: flex;
-  margin-left: 25px;
+  margin-top: -30px;
+  min-width: 267px;
+  white-space: nowrap;
+  margin-bottom: 10px;
 }
 
   .ojk{
-      width:180px;
-      height: 180px;
-      margin-top: -43px;
+      width:130px;
+      height:58px;
+      margin-top: 0px;
     }
 
     .aludi{
-      margin-top: 16px;
-      width:170px;
-      height:65px;
+      margin-top: 10px;
+      width:110px;
+      height:42px;
     }
 
 
 .logo-ojk{
   margin-top: 0px;
+  margin-left: 25px;
 }
 
 .logo-aludi{
@@ -1544,12 +1570,6 @@ input.mail_bt::placeholder {
 
 /* copyright section start */
 
-.copyright_section {
-    width: 100%;
-    float: left;
-    background-color: var(--falu-red);
-    height: auto;
-}
 
 .copyright_text {
     width: 100%;
@@ -1667,6 +1687,9 @@ input.mail_bt::placeholder {
   margin-top: 4px;
   min-height: 16px;
   min-width: 100%;
+}
+.tx-np{
+  width: 100px;
 }
 
 .info-dan-progress {
@@ -2144,6 +2167,13 @@ input.mail_bt::placeholder {
   margin-bottom: -1px;
   margin-left: 16px;
   width: auto;
+}
+
+.table-7 {
+  height: 64px;
+  margin-bottom: -1px;
+  margin-left: 16px;
+  width: 100px;
 }
 
 .table-row {
@@ -2989,7 +3019,6 @@ input.mail_bt::placeholder {
 .table-2 {
   align-items: flex-start;
   align-self: center;
-  background-color: var(--shark);
   border-radius: 4px;
   box-shadow: 0px 1px 2px #0000001f;
   display: flex;
@@ -3008,11 +3037,11 @@ input.mail_bt::placeholder {
 
 .table-cell {
   align-items: center;
-  background-color: var(--shark);
   display: flex;
   height: 56px;
   min-width: 176px;
   padding: 0 16px;
+  margin-left: -15px;
 }
 
 .pembagian-deviden-ta {
@@ -3032,19 +3061,10 @@ input.mail_bt::placeholder {
 }
 
 .overlap-group-3 {
-  height: 56px;
+  height: 60px;
   position: relative;
   width: 352px;
 }
-
-.divider {
-  height: 1px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 352px;
-}
-
 .table-cell-row {
   align-items: flex-start;
   display: flex;
@@ -3264,9 +3284,6 @@ input.mail_bt::placeholder {
   top: 20px;
   width: 136px;
 }
-  .divider{
-    display: none;
-  }
 
   .tx-icon{
     margin-right: auto;
@@ -3300,15 +3317,27 @@ input.mail_bt::placeholder {
   margin: 30px auto;
 }
 .customNextBtn, .customPreviousBtn{
-      float: right;
-    background: #2d9070;
-    color: #fff;
     padding: 10px;
-    margin-left: 5px;
     cursor: pointer;
 }
 
 .tx-pt{
     width: 100%
     min-width: 100%;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

@@ -1,7 +1,7 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-<div class="header-section">
+<div class="header-section" >
           <div class="heading-and-subheading">
             <div class="now-playing-bisnis inter-bold-alizarin-crimson-16px">
               <span class="inter-bold-alizarin-crimson-16px">Now Playing Bisnis</span>
@@ -108,7 +108,7 @@
                         ?>
                          <div class="col-lg-3 col-sm-6 col-6">
                           <a href="{{ route('now-playing.detail') }}">
-                            <div class="card">
+                            <div class="card" style="margin-top: 20px;">>
                               <img class="rectangle-2" src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                               <div class="content">
                                 <div class="header-card-dan-progress">
@@ -159,7 +159,7 @@
                                     </div>
                                     <div class="overlap-group">
                                       <div class="percent inter-medium-white-12px">
-                                      <div class="progress-bar " style="width: {{ round((round($np->terjual,0)/round($np->supply))*100,2) }}%; background-color:#bf2d30;" role="progressbar" aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}" aria-valuemin="0" aria-valuemax="100">
+                                      <div class="progress-bar " style="width: {{ round((round($np->terjual,0)/round($np->supply))*100,2) }}%; background-color:#bf2d30; border-radius: 8px; height: 16px;" role="progressbar" aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}" aria-valuemin="0" aria-valuemax="100">
                                       
                                         <span class="tx-np percen inter-medium-white">
                                           
