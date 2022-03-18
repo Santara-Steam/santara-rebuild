@@ -115,7 +115,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="bukti">Bukti Transfer</label>
-                        <input type="file" class="form-control" name="bukti_transfer" id="bukti">
+                        <input type="file" class="form-control" name="bukti_transfer" id="bukti" required>
                     </div>
                 </div>
                 <div class="modal-footer">
