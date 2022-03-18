@@ -124,8 +124,8 @@
                       <br><br><span class="inter-medium-delta-12px">Bagikan: &nbsp;&nbsp;</span><i style="font-size: 20px; margin-top: " class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i style="font-size: 20px;" class="fa fa-clone"></i><br><br>
                       <img class="divider" style="min-width: 270px;" src="{{ asset('public/assets/images/divider-108@2x.png') }}" /> 
                       <div style="margin-left: 20px; min-width: 270px; margin-top: -10px;">
-                        <a class="b-daf btn btn-danger btn-lg btn-block" href="">Beli Saham</a><br>
-                        <a style="margin-left: -1px; margin-top: -10px;"class="b-mul btn btn-light btn-lg btn-block" href="{{ route('daftar-bisnis.index') }}">Prospektus</a>
+                        <a class="b-daf btn btn-danger btn-lg btn-block" href=""><i class="fas fa-shopping-cart"></i>&nbsp; Beli Saham</a><br>
+                        <a style="margin-left: -1px; margin-top: -10px;"class="b-mul btn btn-light btn-lg btn-block" href="{{ route('daftar-bisnis.index') }}"><i class="fas fa-list"></i>&nbsp; Prospektus</a>
                       </div>
                     </p>
                 </div>

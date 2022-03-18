@@ -1,10 +1,111 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-@section('content')
-    <link rel="stylesheet" href="https://use.typekit.net/juf5ftz.css">
-    <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/form-daftarkan-bisnis.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/form-daftarkan-bisnis.css" /><script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="{{asset('public')}}/cropImage.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+<link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
+<script src="https://unpkg.com/dropzone"></script>
+<script src="https://unpkg.com/cropperjs"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
+       
+
+<style>
+    .image_area {
+        position: relative;
+    }
+
+    .image_area2 {
+        position: relative;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    .preview {
+        overflow: hidden;
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+        border: 1px solid red;
+    }
+
+    .preview2 {
+        overflow: hidden;
+        width: 150px;
+        height: 80px;
+        margin: 10px;
+        border: 1px solid red;
+    }
+
+    .preview3 {
+        overflow: hidden;
+        width: 150px;
+        height: 80px;
+        margin: 10px;
+        border: 1px solid red;
+    }
+
+    .modal-lg {
+        max-width: 1000px !important;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        background-color: rgba(26, 25, 25, 0.527);
+        overflow: hidden;
+        height: 0;
+        color: white;
+        transition: .5s ease;
+        width: 100%;
+    }
+
+    .overlay2 {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        overflow: hidden;
+        height: 0;
+        transition: .5s ease;
+        width: 100%;
+    }
+
+    .image_area:hover .overlay {
+        height: 50%;
+        color: white;
+        cursor: pointer;
+    }
+
+    .image_area2:hover .overlay2 {
+        height: 50%;
+        cursor: pointer;
+    }
+
+    .text {
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+</style>
 
    <div class="container-fluid d-flex align-content-center justify-content-center bg-header-daftarkan-bisnis text-center">
         <div class="row col-12 col-md-9">
@@ -39,6 +140,7 @@
 
                     </select>
                 </div> --}}
+                <input type="text" hidden name="pemilik" value="{{auth()->user()->trader->id}}"/>
                 <div class="col-12 col-xl-6 mt-5">
                     <div class="form-group mt-2">
                         <label for="exampleFormControlInput1" class="form-label">*Nama Perusahaan</label>
@@ -47,11 +149,19 @@
 
                     <div class="form-group mt-2">
                         <label for="exampleFormControlInput1" class="form-label">*Logo Perusahaan</label>
-                        <div class="custom-file">
-                                                    <input type="file" name="logo" class="custom-file-input" id="inputGroupFile02">
-                                                    <label class="custom-file-label" for="inputGroupFile02"
-                                                        aria-describedby="inputGroupFile02">Choose file</label>
-                                                </div>
+                        <div class="image_area text-center">
+                                                        <label for="upload_image4">
+                                                            <img src="{{asset('public')}}/default1.png" id="uploaded_image4"
+                                                                class="img-responsive" />
+                                                            <div class="overlay">
+                                                                <div class="text">Foto Owner</div>
+                                                            </div>
+                                                        </label>
+                                                        <input type="file" name="image4" class="image" id="upload_image4"
+                                                            style="display: none" />
+                                                        <input type="text" hidden name="owner" class="image"
+                                                            id="owner" />
+                                                    </div>
                     </div>
                     <div class="form-group mt-2">
                         <label for="exampleFormControlInput1" class="form-label">*Foto Cover Profile Perusahaan</label>
@@ -217,428 +327,578 @@
           </div>
 
         </div>
-        <link rel="stylesheet" href="style.css" /> --}}
+        <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 
-<style>
-    .image_area {
-        position: relative;
-    }
 
-    .image_area2 {
-        position: relative;
-    }
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crop Foto Owner</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container" style="padding: 30px">
+                    <div class="row">
+                        {{-- <div class="col-md-8"> --}}
+                            <img src="" id="sample_image4" />
+                        {{-- </div>
+                        <div class="col-md-4">
+                            <div class="preview3"></div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="crop4" class="btn btn-primary">Crop</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 
-    img {
-        display: block;
-        max-width: 100%;
-    }
+</div>
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 
-    .preview {
-        overflow: hidden;
-        width: 80px;
-        height: 80px;
-        margin: 10px;
-        border: 1px solid red;
-    }
 
-    .preview2 {
-        overflow: hidden;
-        width: 150px;
-        height: 80px;
-        margin: 10px;
-        border: 1px solid red;
-    }
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container" style="padding: 30px">
+                    <div class="row">
+                        {{-- <div class="col-md-8"> --}}
+                            <img src="" id="sample_image3" />
+                        {{-- </div>
+                        <div class="col-md-4">
+                            <div class="preview3"></div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="crop3" class="btn btn-primary">Crop</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 
-    .preview3 {
-        overflow: hidden;
-        width: 150px;
-        height: 80px;
-        margin: 10px;
-        border: 1px solid red;
-    }
+</div>
+<div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 
-    .modal-lg {
-        max-width: 1000px !important;
-    }
 
-    .overlay {
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        background-color: rgba(26, 25, 25, 0.527);
-        overflow: hidden;
-        height: 0;
-        color: white;
-        transition: .5s ease;
-        width: 100%;
-    }
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha 2</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container" style="padding: 30px">
+                    <div class="row">
+                        {{-- <div class="col-md-8"> --}}
+                            <img src="" id="sample_image5" />
+                        {{-- </div>
+                        <div class="col-md-4">
+                            <div class="preview3"></div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="crop5" class="btn btn-primary">Crop</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 
-    .overlay2 {
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        background-color: rgba(255, 255, 255, 0.5);
-        overflow: hidden;
-        height: 0;
-        transition: .5s ease;
-        width: 100%;
-    }
+</div>
+<div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 
-    .image_area:hover .overlay {
-        height: 50%;
-        color: white;
-        cursor: pointer;
-    }
 
-    .image_area2:hover .overlay2 {
-        height: 50%;
-        cursor: pointer;
-    }
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha 3</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container" style="padding: 30px">
+                    <div class="row">
+                        {{-- <div class="col-md-8"> --}}
+                            <img src="" id="sample_image6" />
+                        {{-- </div>
+                        <div class="col-md-4">
+                            <div class="preview3"></div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="crop6" class="btn btn-primary">Crop</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 
-    .text {
-        color: rgb(255, 255, 255);
-        font-size: 20px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-</style>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> --}}
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
-<link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
-<script src="https://unpkg.com/dropzone"></script>
-<script src="https://unpkg.com/cropperjs"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
-<script src="{{asset('public')}}/cropImage.js"></script>
+</div>
+</div>
 <script>
     
     $(document).ready(function(){
 
-var $modal = $('#modal');
+    var $modal = $('#modal');
 
-var image = document.getElementById('sample_image');
+    var image = document.getElementById('sample_image');
 
-var cropper;
+    var cropper;
 
-$('#upload_image').change(function(event){
-    var files = event.target.files;
+    $('#upload_image').change(function(event){
+        var files = event.target.files;
 
-    var done = function(url){
-        image.src = url;
-        $modal.modal('show');
-    };
+        var done = function(url){
+            image.src = url;
+            $modal.modal('show');
+        };
 
-    if(files && files.length > 0)
-    {
-        reader = new FileReader();
-        reader.onload = function(event)
+        if(files && files.length > 0)
         {
-            done(reader.result);
+            reader = new FileReader();
+            reader.onload = function(event)
+            {
+                done(reader.result);
+            };
+            reader.readAsDataURL(files[0]);
+        }
+    });
+
+    $modal.on('shown.bs.modal', function() {
+        cropper = new Cropper(image, {
+            aspectRatio: 4/4,
+            viewMode: 3,
+            preview:'.preview'
+        });
+    }).on('hidden.bs.modal', function(){
+        cropper.destroy();
+           cropper = null;
+    });
+
+    $('#crop').click(function(){
+        canvas = cropper.getCroppedCanvas({
+            width:250,
+            height:250
+        });
+
+        canvas.toBlob(function(blob){
+            url = URL.createObjectURL(blob);
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function(){
+              
+                var base64data = reader.result;
+                // var fileSelect = $(this).val();
+                $.ajax({
+                    url:'/logocropImg',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method:'POST',
+                    data:{image:base64data},
+                    success:function(data)
+                    {
+                        // let text = text.replace("public/upload/", "");
+                        $modal.modal('hide');
+                        $('#uploaded_image').attr('src', '{{env("PATH_WEB")}}'+data);
+                        // $('#upload_image').val(data);
+                        $('#logo').val(data);
+                        // $('#upload_image').attr('src', data);
+                        // console.log(base64data);
+                        // console.log(base64data);
+                        // console.log(data);
+                    }
+                });
+            };
+        });
+    });
+
+    var $modal2 = $('#modal2');
+
+    var image2 = document.getElementById('sample_image2');
+
+    $('#upload_image2').change(function(event){
+        var files = event.target.files;
+
+        var done = function(url){
+            image2.src = url;
+            $modal2.modal('show');
         };
-        reader.readAsDataURL(files[0]);
-    }
-});
 
-$modal.on('shown.bs.modal', function() {
-    cropper = new Cropper(image, {
-        aspectRatio: 4/4,
-        viewMode: 3,
-        preview:'.preview'
-    });
-}).on('hidden.bs.modal', function(){
-    cropper.destroy();
-       cropper = null;
-});
-
-$('#crop').click(function(){
-    canvas = cropper.getCroppedCanvas({
-        width:250,
-        height:250
-    });
-
-    canvas.toBlob(function(blob){
-        url = URL.createObjectURL(blob);
-        var reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = function(){
-          
-            var base64data = reader.result;
-            // var fileSelect = $(this).val();
-            $.ajax({
-                url:'{{route("logocropImg")}}',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                method:'POST',
-                data:{image:base64data},
-                success:function(data)
-                {
-                    // let text = text.replace("public/upload/", "");
-                    $modal.modal('hide');
-                    $('#uploaded_image').attr('src', '{{env("PATH_WEB")}}'+data);
-                    // $('#upload_image').val(data);
-                    $('#logo').val(data);
-                    // $('#upload_image').attr('src', data);
-                    // console.log(base64data);
-                    // console.log(base64data);
-                    // console.log(data);
-                }
-            });
-        };
-    });
-});
-
-
-
-
-
-
-
-
-var $modal2 = $('#modal2');
-
-var image2 = document.getElementById('sample_image2');
-
-$('#upload_image2').change(function(event){
-    var files = event.target.files;
-
-    var done = function(url){
-        image2.src = url;
-        $modal2.modal('show');
-    };
-
-    if(files && files.length > 0)
-    {
-        reader = new FileReader();
-        reader.onload = function(event)
+        if(files && files.length > 0)
         {
-            done(reader.result);
+            reader = new FileReader();
+            reader.onload = function(event)
+            {
+                done(reader.result);
+            };
+            reader.readAsDataURL(files[0]);
+        }
+    });
+
+    $modal2.on('shown.bs.modal', function() {
+        cropper = new Cropper(image2, {
+            aspectRatio: 2,
+            viewMode: 3,
+            preview:'.preview2'
+        });
+    }).on('hidden.bs.modal', function(){
+        cropper.destroy();
+           cropper = null;
+    });
+
+    $('#crop2').click(function(){
+        canvas = cropper.getCroppedCanvas({
+            width: 1366,
+            height: 497
+        });
+
+        canvas.toBlob(function(blob){
+            url = URL.createObjectURL(blob);
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function(){
+              
+                var base64data = reader.result;
+                // var fileSelect = $(this).val();
+                $.ajax({
+                    url:'{{route("covercropImg")}}',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method:'POST',
+                    data:{image:base64data},
+                    success:function(data)
+                    {
+                        // let text = text.replace("public/upload/", "");
+                        $modal2.modal('hide');
+                        $('#uploaded_image2').attr('src', '{{env("PATH_WEB")}}'+data);
+                        // $('#upload_image').val(data);
+                        $('#cover').val(data);
+                        // $('#upload_image').attr('src', data);
+                        // console.log(base64data);
+                        // console.log(base64data);
+                        // console.log(data);
+                    }
+                });
+            };
+        });
+    });
+
+
+
+    var $modal3 = $('#modal3');
+
+    var image3 = document.getElementById('sample_image3');
+
+    $('#upload_image3').change(function(event){
+        var files = event.target.files;
+
+        var done = function(url){
+            image3.src = url;
+            $modal3.modal('show');
         };
-        reader.readAsDataURL(files[0]);
-    }
-});
 
-$modal2.on('shown.bs.modal', function() {
-    cropper = new Cropper(image2, {
-        aspectRatio: 2,
-        viewMode: 3,
-        preview:'.preview2'
-    });
-}).on('hidden.bs.modal', function(){
-    cropper.destroy();
-       cropper = null;
-});
-
-$('#crop2').click(function(){
-    canvas = cropper.getCroppedCanvas({
-        width: 1366,
-        height: 497
-    });
-
-    canvas.toBlob(function(blob){
-        url = URL.createObjectURL(blob);
-        var reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = function(){
-          
-            var base64data = reader.result;
-            // var fileSelect = $(this).val();
-            $.ajax({
-                url:'{{route("covercropImg")}}',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                method:'POST',
-                data:{image:base64data},
-                success:function(data)
-                {
-                    // let text = text.replace("public/upload/", "");
-                    $modal2.modal('hide');
-                    $('#uploaded_image2').attr('src', '{{env("PATH_WEB")}}'+data);
-                    // $('#upload_image').val(data);
-                    $('#cover').val(data);
-                    // $('#upload_image').attr('src', data);
-                    // console.log(base64data);
-                    // console.log(base64data);
-                    // console.log(data);
-                }
-            });
-        };
-    });
-});
-
-
-
-var $modal3 = $('#modal3');
-
-var image3 = document.getElementById('sample_image3');
-
-$('#upload_image3').change(function(event){
-    var files = event.target.files;
-
-    var done = function(url){
-        image3.src = url;
-        $modal3.modal('show');
-    };
-
-    if(files && files.length > 0)
-    {
-        reader = new FileReader();
-        reader.onload = function(event)
+        if(files && files.length > 0)
         {
-            done(reader.result);
+            reader = new FileReader();
+            reader.onload = function(event)
+            {
+                done(reader.result);
+            };
+            reader.readAsDataURL(files[0]);
+        }
+    });
+
+    $modal3.on('shown.bs.modal', function() {
+        cropper = new Cropper(image3, {
+            aspectRatio: 4/3,
+            viewMode: 3,
+            preview:'.preview3'
+        });
+    }).on('hidden.bs.modal', function(){
+        cropper.destroy();
+           cropper = null;
+    });
+
+    $('#crop3').click(function(){
+        canvas = cropper.getCroppedCanvas({
+            width:400,
+            height:300
+        });
+
+        canvas.toBlob(function(blob){
+            url = URL.createObjectURL(blob);
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function(){
+              
+                var base64data = reader.result;
+                // var fileSelect = $(this).val();
+                $.ajax({
+                    url:'{{route("galericropImg")}}',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method:'POST',
+                    data:{image:base64data},
+                    success:function(data)
+                    {
+                        // let text = text.replace("public/upload/", "");
+                        $modal3.modal('hide');
+                        $('#uploaded_image3').attr('src', '{{env("PATH_WEB")}}'+data);
+                        // $('#upload_image').val(data);
+                        $('#galeri').val(data);
+                        // $('#upload_image').attr('src', data);
+                        // console.log(base64data);
+                        // console.log(base64data);
+                        // console.log(data);
+                    }
+                });
+            };
+        });
+    });
+
+
+
+
+
+    var $modal4 = $('#modal4');
+
+    var image4 = document.getElementById('sample_image4');
+
+    $('#upload_image4').change(function(event){
+        var files = event.target.files;
+
+        var done = function(url){
+            image4.src = url;
+            $modal4.modal('show');
         };
-        reader.readAsDataURL(files[0]);
-    }
-});
 
-$modal3.on('shown.bs.modal', function() {
-    cropper = new Cropper(image3, {
-        aspectRatio: 4/3,
-        viewMode: 3,
-        preview:'.preview3'
-    });
-}).on('hidden.bs.modal', function(){
-    cropper.destroy();
-       cropper = null;
-});
-
-$('#crop3').click(function(){
-    canvas = cropper.getCroppedCanvas({
-        width:400,
-        height:300
-    });
-
-    canvas.toBlob(function(blob){
-        url = URL.createObjectURL(blob);
-        var reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = function(){
-          
-            var base64data = reader.result;
-            // var fileSelect = $(this).val();
-            $.ajax({
-                url:'{{route("galericropImg")}}',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                method:'POST',
-                data:{image:base64data},
-                success:function(data)
-                {
-                    // let text = text.replace("public/upload/", "");
-                    $modal3.modal('hide');
-                    $('#uploaded_image3').attr('src', '{{env("PATH_WEB")}}'+data);
-                    // $('#upload_image').val(data);
-                    $('#galeri').val(data);
-                    // $('#upload_image').attr('src', data);
-                    // console.log(base64data);
-                    // console.log(base64data);
-                    // console.log(data);
-                }
-            });
-        };
-    });
-});
-
-
-
-
-
-var $modal4 = $('#modal4');
-
-var image4 = document.getElementById('sample_image4');
-
-$('#upload_image4').change(function(event){
-    var files = event.target.files;
-
-    var done = function(url){
-        image4.src = url;
-        $modal4.modal('show');
-    };
-
-    if(files && files.length > 0)
-    {
-        reader = new FileReader();
-        reader.onload = function(event)
+        if(files && files.length > 0)
         {
-            done(reader.result);
+            reader = new FileReader();
+            reader.onload = function(event)
+            {
+                done(reader.result);
+            };
+            reader.readAsDataURL(files[0]);
+        }
+    });
+
+    $modal4.on('shown.bs.modal', function() {
+        cropper = new Cropper(image4, {
+            aspectRatio: 4/4,
+            viewMode: 3,
+            preview:'.preview4'
+        });
+    }).on('hidden.bs.modal', function(){
+        cropper.destroy();
+           cropper = null;
+    });
+
+    $('#crop4').click(function(){
+        canvas = cropper.getCroppedCanvas({
+            width:400,
+            height:400
+        });
+
+        canvas.toBlob(function(blob){
+            url = URL.createObjectURL(blob);
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function(){
+              
+                var base64data = reader.result;
+                // var fileSelect = $(this).val();
+                $.ajax({
+                    url:'{{route("ownercropImg")}}',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method:'POST',
+                    data:{image:base64data},
+                    success:function(data)
+                    {
+                        // let text = text.replace("public/upload/", "");
+                        $modal4.modal('hide');
+                        $('#uploaded_image4').attr('src', '{{env("PATH_WEB")}}'+data);
+                        // $('#upload_image').val(data);
+                        $('#owner').val(data);
+                        // $('#upload_image').attr('src', data);
+                        // console.log(base64data);
+                        // console.log(base64data);
+                        // console.log(data);
+                    }
+                });
+            };
+        });
+    });
+
+
+
+
+    var $modal5 = $('#modal5');
+
+    var image5 = document.getElementById('sample_image5');
+
+    $('#upload_image5').change(function(event){
+        var files = event.target.files;
+
+        var done = function(url){
+            image5.src = url;
+            $modal5.modal('show');
         };
-        reader.readAsDataURL(files[0]);
-    }
-});
 
-$modal4.on('shown.bs.modal', function() {
-    cropper = new Cropper(image4, {
-        aspectRatio: 4/4,
-        viewMode: 3,
-        preview:'.preview4'
-    });
-}).on('hidden.bs.modal', function(){
-    cropper.destroy();
-       cropper = null;
-});
-
-$('#crop4').click(function(){
-    canvas = cropper.getCroppedCanvas({
-        width:400,
-        height:400
+        if(files && files.length > 0)
+        {
+            reader = new FileReader();
+            reader.onload = function(event)
+            {
+                done(reader.result);
+            };
+            reader.readAsDataURL(files[0]);
+        }
     });
 
-    canvas.toBlob(function(blob){
-        url = URL.createObjectURL(blob);
-        var reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = function(){
-          
-            var base64data = reader.result;
-            // var fileSelect = $(this).val();
-            $.ajax({
-                url:'{{route("ownercropImg")}}',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                method:'POST',
-                data:{image:base64data},
-                success:function(data)
-                {
-                    // let text = text.replace("public/upload/", "");
-                    $modal4.modal('hide');
-                    $('#uploaded_image4').attr('src', '{{env("PATH_WEB")}}'+data);
-                    // $('#upload_image').val(data);
-                    $('#owner').val(data);
-                    // $('#upload_image').attr('src', data);
-                    // console.log(base64data);
-                    // console.log(base64data);
-                    // console.log(data);
-                }
-            });
+    $modal5.on('shown.bs.modal', function() {
+        cropper = new Cropper(image5, {
+            aspectRatio: 4/3,
+            viewMode: 3,
+            preview:'.preview3'
+        });
+    }).on('hidden.bs.modal', function(){
+        cropper.destroy();
+           cropper = null;
+    });
+
+    $('#crop5').click(function(){
+        canvas = cropper.getCroppedCanvas({
+            width:400,
+            height:300
+        });
+
+        canvas.toBlob(function(blob){
+            url = URL.createObjectURL(blob);
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function(){
+              
+                var base64data = reader.result;
+                // var fileSelect = $(this).val();
+                $.ajax({
+                    url:'{{route("galericropImg")}}',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method:'POST',
+                    data:{image:base64data},
+                    success:function(data)
+                    {
+                        // let text = text.replace("public/upload/", "");
+                        $modal5.modal('hide');
+                        $('#uploaded_image5').attr('src', '{{env("PATH_WEB")}}'+data);
+                        // $('#upload_image').val(data);
+                        $('#galeri2').val(data);
+                        // $('#upload_image').attr('src', data);
+                        // console.log(base64data);
+                        // console.log(base64data);
+                        // console.log(data);
+                    }
+                });
+            };
+        });
+    });
+
+
+    var $modal6 = $('#modal6');
+
+    var image6 = document.getElementById('sample_image6');
+
+    $('#upload_image6').change(function(event){
+        var files = event.target.files;
+
+        var done = function(url){
+            image6.src = url;
+            $modal6.modal('show');
         };
+
+        if(files && files.length > 0)
+        {
+            reader = new FileReader();
+            reader.onload = function(event)
+            {
+                done(reader.result);
+            };
+            reader.readAsDataURL(files[0]);
+        }
     });
-});
 
+    $modal6.on('shown.bs.modal', function() {
+        cropper = new Cropper(image6, {
+            aspectRatio: 4/3,
+            viewMode: 3,
+            preview:'.preview3'
+        });
+    }).on('hidden.bs.modal', function(){
+        cropper.destroy();
+           cropper = null;
+    });
 
+    $('#crop6').click(function(){
+        canvas = cropper.getCroppedCanvas({
+            width:400,
+            height:300
+        });
 
-
-
-
-
-
-
-
-
+        canvas.toBlob(function(blob){
+            url = URL.createObjectURL(blob);
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function(){
+              
+                var base64data = reader.result;
+                // var fileSelect = $(this).val();
+                $.ajax({
+                    url:'{{route("galericropImg")}}',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method:'POST',
+                    data:{image:base64data},
+                    success:function(data)
+                    {
+                        // let text = text.replace("public/upload/", "");
+                        $modal6.modal('hide');
+                        $('#uploaded_image6').attr('src', '{{env("PATH_WEB")}}'+data);
+                        // $('#upload_image').val(data);
+                        $('#galeri3').val(data);
+                        // $('#upload_image').attr('src', data);
+                        // console.log(base64data);
+                        // console.log(base64data);
+                        // console.log(data);
+                    }
+                });
+            };
+        });
+    });
 });
 
 </script>

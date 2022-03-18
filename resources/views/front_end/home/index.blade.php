@@ -142,9 +142,9 @@
               </div>
             </div>
             <div class="but-pag">
-            <a class="carousel-control-prev border-1px-cape-cod inter-medium-alabaster-14px" href="#main_slider" role="button" data-slide="prev"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Prev
+            <a class="carousel-control-prev border-1px-cape-cod inter-medium-alabaster-14px customPreviousBtn2" href="#jewellery_main_slider" role="button" data-slide="prev"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Prev
             </a>
-            <a class="carousel-control-next border-1px-cape-cod inter-medium-alabaster-14px" href="#main_slider" role="button" data-slide="next">Next &nbsp&nbsp<i class="fas fa-arrow-right"></i>
+            <a class="carousel-control-next border-1px-cape-cod inter-medium-alabaster-14px customNextBtn2" href="#jewellery_main_slider" role="button" data-slide="next" >Next &nbsp&nbsp<i class="fas fa-arrow-right"></i>
             </a>
           </div>
          </div>
@@ -169,7 +169,8 @@
                      <div class="fashion_section_2">
                         <div class="fashion_section_2">
                         <div class="row">
-                           <div class="col-lg-3 col-sm-3 col-3">
+                          <div id="owl-demo3" class="owl-carousel owl-theme"  style="padding-left: 15px; padding-right: 15px;">
+                              <div class="item">
                             <a href="{{ route('coming-soon.detail') }}">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
@@ -192,25 +193,25 @@
                                     </div>
                                     <div class="icon-card">
                                       <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
+                                        <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>&ensp;
                                         <div class="lk inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
+                                        <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
                                         <div class="lk inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
+                                        <i class="icon-com iconheart fas fa-comments" style="color: #fff; font-size: 18px; margin-left: -15px;"></i>
                                         <div class=" inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
                                         </div>
                                       </div>
                                       <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
+                                        <i class="icon-com iconheart fas fa-share" style="color: #fff; font-size: 18px;"></i>
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
@@ -224,395 +225,8 @@
                                 </div>
                               </div>
                             </a>
-                           </div>
-                           <div class="col-lg-3 col-sm-3 col-3">
-                              <div class="card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="icon-card">
-                                      <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class=" inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
-                                        <div class="share inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-3 col-sm-3 col-3">
-                              <div class="card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="icon-card">
-                                      <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class=" inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
-                                        <div class="share inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-3 col-sm-3 col-3">
-                              <div class="card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="icon-card">
-                                      <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class=" inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
-                                        <div class="share inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
+                          </div>
                         </div>
-                     </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="carousel-item">
-                  <div class="w3-container w3-red">
-                     <div class="fashion_section_2">
-                        <div class="fashion_section_2">
-                        <div class="row">
-                           <div class="col-lg-3 col-sm-3 col-3">
-                              <div class="card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="icon-card">
-                                      <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class=" inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
-                                        <div class="share inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-3 col-sm-3 col-3">
-                              <div class="card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="icon-card">
-                                      <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class=" inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
-                                        <div class="share inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-3 col-sm-3 col-3">
-                              <div class="card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="icon-card">
-                                      <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class=" inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
-                                        <div class="share inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-3 col-sm-3 col-3">
-                              <div class="card">
-                                <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                                      <div class="tags">
-                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                                          <span class="tx-t inter-medium-sweet-pink">Retail/Distribusi/Logistik</span>
-                                        </div>
-                                      </div>
-                                      <div class="header">
-                                        <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">Saka Logistics</span>
-                                        </div>
-                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">PT. Saka Multitrans Nusantara</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="icon-card">
-                                      <div class="icon-and-supporting-text">
-                                        <img class="icon-com iconheart" src="{{ asset('public/assets/images/icon-heart-18@2x.png') }}" />&ensp;
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -25px;">82 </p><p class="ic-sz com-u tx-tp">&ensp;Likes</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconuser" src="{{ asset('public/assets/images/icon-user-17@2x.png') }}" />
-                                        <div class="lk inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon lkk" style="margin-top: -0px;">100 </p><p class="ic-sz com-u mnt">&ensp;Minat</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconmessage-circle" src="{{ asset('public/assets/images/icon-message-circle-46@2x.png') }}" />
-                                        <div class=" inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster"><p class="ic-sz tx-icon" style="margin-top: -0px;">46 </p><p class="ic-sz com-u mnt">&ensp;Komentar</p></span>
-                                        </div>
-                                      </div>
-                                      <div class="icon-and-supporting-text-1">
-                                        <img class="icon-com iconshare-2" src="{{ asset('public/assets/images/icon-share-2-46@2x.png') }}" />
-                                        <div class="share inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="footer-card-3">
-                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
                         </div>
                      </div>
                      </div>
@@ -621,9 +235,9 @@
             </div>
           </div>
             <div class="but-pag">
-            <a class="carousel-control-prev border-1px-cape-cod inter-medium-alabaster-14px" href="#electronic_main_slider" role="button" data-slide="prev"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Prev
+            <a class="carousel-control-prev border-1px-cape-cod inter-medium-alabaster-14px customPreviousBtn3" href="#jewellery_main_slider" role="button" data-slide="prev"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Prev
             </a>
-            <a class="carousel-control-next border-1px-cape-cod inter-medium-alabaster-14px" href="#electronic_main_slider" role="button" data-slide="next">Next &nbsp&nbsp<i class="fas fa-arrow-right"></i>
+            <a class="carousel-control-next border-1px-cape-cod inter-medium-alabaster-14px customNextBtn3" href="#jewellery_main_slider" role="button" data-slide="next" >Next &nbsp&nbsp<i class="fas fa-arrow-right"></i>
             </a>
           </div>
          </div>
@@ -722,32 +336,4 @@
       </div>
       <!-- jewellery  section end -->
 
-
-
- <div class="footer_section ">
-         <div class="container-fluid disclaimer-outer-bg bg-disclaimer ">
-
-          <div class="container disclaimer-inner-bg" style="font-size: 11px;">
-
-            <h4 class="text-danger ff-a fs-16" style="font-size: 16px; font-family: 'acumin-pro'; margin-left: 5px; margin-bottom: -2px">Disclaimer:</h4>
-            <div class="row ff-n" style="font-weight: normal;     text-align: justify; margin-right: -15px; font-family: 'Nunito'; font-size: 11px;">
-              <p class="mt-2" style="margin-bottom: -10px; color: #fff; font-size: 11px;line-height:1.5;">Pembelian saham bisnis merupakan aktivitas beresiko tinggi. Anda berinvestasi pada bisnis yang mungkin saja mengalami kenaikan dan penurunan kinerja bahkan mengalami kegagalan. Harap menggunakan pertimbangan ekstra dalam membuat keputusan untuk membeli saham. Ada kemungkinan Anda tidak bisa menjual kembali saham bisnis dengan cepat. Lakukan diversifikasi investasi, hanya gunakan dana yang siap Anda lepaskan (affors to loose) dan atau disimpan dalam jangka panjang. Santara tidak memaksa pengguna untuk membeli saham bisnis sebagai investasi. Semua keputusan pembelian merupakan keputusan independen oleh pengguna.
-              </p>
-              <p style="margin-bottom: -10px; color: #fff; font-size: 11px;line-height:1.5; "; >
-                Santara bertindak sebagai penyelenggara urun dana yang mempertemukan pemodal dan penerbit, bukan sebagai pihak yang menjalankan bisnis (Penerbit). Otoritas Jasa Keuangan bertindak sebagai regulator dan pemberi izin, bukan sebagai penjamin investasi. Keputusan pembelian saham, sepenuhnya merupakan hak dan tanggung jawab Pemodal (investor). Dengan membeli saham di Santara berarti Anda sudah menyetujui seluruh syarat dan ketentuan serta memahami semua risiko investasi termasuk resiko kehilangan sebagian atau seluruh modal.
-              </p>
-              <p style="margin-bottom: -10px;color: #fff; font-size: 11px; line-height:1.5; ">
-                “OTORITAS JASA KEUANGAN TIDAK MEMBERIKAN PERNYATAAN MENYETUJUI ATAU TIDAK MENYETUJUI EFEK INI, TIDAK JUGA MENYATAKAN KEBENARAN ATAU KECUKUPAN INFORMASI DALAM LAYANAN URUN DANA INI. SETIAP PERNYATAAN YANG BERTENTANGAN DENGAN HAL TERSEBUT ADALAH PERBUATAN MELANGGAR HUKUM.”
-              </p>
-              <p style="margin-bottom: -10px;color: #fff; font-size: 11px;  line-height:1.5;">
-                “INFORMASI DALAM LAYANAN URUN DANA INI PENTING DAN PERLU MENDAPAT PERHATIAN SEGERA. APABILA TERDAPAT KERAGUAN PADA TINDAKAN YANG AKAN DIAMBIL, SEBAIKNYA BERKONSULTASI DENGAN PENYELENGGARA.”
-              </p>
-              <p style="margin-bottom: -10px;color: #fff; font-size: 11px; line-height:1.5; ">
-                “PENERBIT DAN PENYELENGGARA, BAIK SENDIRI-SENDIRI MAUPUN BERSAMA-SAMA, BERTANGGUNG JAWAB SEPENUHNYA ATAS KEBENARAN SEMUA INFORMASI YANG TERCANTUM DALAM LAYANAN URUN DANA INI.”
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
 @endsection

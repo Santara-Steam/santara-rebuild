@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front_end;
 use App\Models\emiten;
 use App\Models\emiten_journey;
 use App\Models\kategori;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -28,8 +29,9 @@ class Daftar_bisnisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
+        $user = User::where('role_id',2)->get();
         $kategori = kategori::all();
-        return view('front_end.daftar_bisnis.create',compact('kategori'));
+        return view('front_end.daftar_bisnis.create',compact('kategori','user'));
     }
 
     public function validator(array $data){
@@ -83,9 +85,41 @@ class Daftar_bisnisController extends Controller
         //     'company_name' => $request->get('company_name'),
         //     'pictures' => $logoFileSave,
         // ]);
+        if($request->logo == null){
+            $logo = 'default1.png';
+        }else{
+            $logo = str_replace('public/upload/','',$request->logo);
+        }
+        if($request->cover == null){
+            $cover = 'default2.png';
+        }else{
+            $cover = str_replace('public/upload/','',$request->cover);
+        }
+        if($request->galeri == null){
+            $galeri = 'default.png';
+        }else{
+            $galeri = str_replace('public/upload/','',$request->galeri);
+        }
+        if($request->galeri2 == null){
+            $galeri2 = 'default.png';
+        }else{
+            $galeri2 = str_replace('public/upload/','',$request->galeri2);
+        }
+        if($request->galeri3 == null){
+            $galeri3 = 'default.png';
+        }else{
+            $galeri3 = str_replace('public/upload/','',$request->galeri3);
+        }
+        if($request->owner == null){
+            $owner = 'default1.png';
+        }else{
+            $owner = str_replace('public/upload/','',$request->owner);
+        }
+
 
         $em = new emiten();
         $em->company_name = $request->get('company_name');
+        $em->trader_id = $request->get('pemilik');
         $em->owner_name = $request->get('nama_owner');
         $em->category_id = $request->get('kategori');
         $em->avg_annual_turnover_previous_year = $request->get('omset1');
@@ -99,22 +133,17 @@ class Daftar_bisnisController extends Controller
         $em->website= $request->get('web');
         $em->instagram= $request->get('ig');
         $em->business_description= $request->get('deskripsi');
-        $em->pictures = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
+        $em->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
         $em->save();
 
         $emj = new emiten_journey();
         $emj->emiten_id = $em->id;
         $emj->title = "Pra Penawaran Saham";
-        // $emj->save();
-        // $notif = array(
-        //     'message' => 'Data Berhasil Di Tambahkan',
-        //     'alert-type' => 'success'
-        // );
-
-        $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
-        // dd($em);
-        // return response()->json(['status' => 'Mantap']);
-        return redirect('/admin/emiten');
+        $emj->save();
+        $notif = array(
+            'message' => 'Berhasil mendaftarkan bisnis',
+            'alert-type' => 'success'
+        );
     }
 
     /**
