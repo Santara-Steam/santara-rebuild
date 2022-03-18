@@ -22,7 +22,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table" id="tabel">
                                             <thead>
                                                 <tr>
                                                     {{-- <th>Owner</th> --}}
@@ -74,4 +74,19 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tabel').DataTable({
+            responsive: true,
+        });
+    });
+</script>
+@endsection
+@section('style')
+<link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+
 @endsection

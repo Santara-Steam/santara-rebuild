@@ -67,7 +67,7 @@
                                                         <div class="row flex">
                                                             <div class="col-6">
                                                                 <a href="{{url('admin/emiten/edit')}}/{{$item->id}}"
-                                                                    class="btn btn-sm btn-warning">Edit</a>
+                                                                    class="btn btn-block btn-sm btn-warning">Edit</a>
                                                             </div>
                                                             <div class="col-6">
                                                             <form id="del{{$item->id}}" method="post"

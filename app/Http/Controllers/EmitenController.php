@@ -394,4 +394,15 @@ class EmitenController extends Controller
             file_put_contents($image_name, $data);
             echo $image_name;
     }
+
+    public function index_user(){
+        $emiten = emiten::where('emitens.is_deleted',0)
+        ->select('emitens.*','categories.category as ktg','emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
+        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+        ->get();
+        
+        return view('user.emiten.index',compact('emiten'));
+    }
 }
