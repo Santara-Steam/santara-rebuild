@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container" style="margin-top: 80px;">
+    <div class="container" style="margin-top: 180px;">
         <div class="row d-flex align-content-center justify-content-center flex-wrap row-login">
             <div class="col-md-10">
                 <div class="row card-body-login">

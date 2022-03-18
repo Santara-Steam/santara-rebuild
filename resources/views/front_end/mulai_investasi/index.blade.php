@@ -27,7 +27,7 @@
           </div>
       </div>
       <!-- fashion section start -->
-      <div class="fashion_section">
+      <div class="fashion_section" style="margin-top: -70px;">
          <div class="container">
           <div class="panduan-section">
           <div class="langkah-mudah-daftarkan-bisnis-anda inter-normal-alabaster-36px">
