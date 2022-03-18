@@ -4,7 +4,7 @@
 <!-- banner bg main start -->
       <div class="banner_bg_main">
         <div class="banner_section layout_padding">
-            <div class="container">
+            <div class="container" style="margin-top: 60px">
                <div class="section">
                   <div class="header-dan-supporting-text">
                     <div class="tx-bn inter-bold-alabaster-56px">
@@ -17,13 +17,9 @@
                       >
                     </div>
                   </div>
-                  <div class="actions">
-                      <div class="mulai-investasi button-cta-3 inter-medium-white-18px">
-                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="{{ route('mulai-investasi.index') }}">Mulai Investasi</a>
-                      </div>
-                      <div class="jadi-penerbit button-cta-4 inter-medium-eerie-black-18px">
-                        <a class="button-3 text-daftar btn btn-light btn-hm inter-medium-eerie-black" href="{{ route('daftar-bisnis.index') }}">Daftarkan Bisnis</a>
-                      </div>
+                  <div class="actions"> 
+                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('mulai-investasi.index') }}">Mulai Investasi</a>
+                        <a class="b-mul btn btn-light btn-lg btn-block" href="{{ route('daftar-bisnis.index') }}">Daftarkan Bisnis</a>
                   </div>
                 </div>
               </div>
@@ -44,16 +40,18 @@
                       </div>
                     </div>
                     <div class="carousel-inner">
-               <div class="carousel-item active">
-                  <div class="w3-container w3-red">
-                     <div class="fashion_section_2">
-                        <div class="row">
-                          @foreach ($now_playing as $np)
-                          <?php 
-                          $picture = explode(',',$np->pictures);
-                          ?>
-                           <div class="col-lg-3 col-sm-6 col-6">
-                            <a href="{{ route('now-playing.detail') }}">
+                   <div class="carousel-item active">
+                      <div class="w3-container w3-red">
+                         <div class="fashion_section_2">
+                            <div class="fashion_section_2">
+                            <div class="row">
+                              @foreach ($now_playing as $np)
+                              <?php 
+                              $picture = explode(',',$np->pictures);
+                              ?>
+                              <div class="owl-carousel owl-theme"  style="padding-left: 15px; padding-right: 15px;">
+                              <div class="item">
+                                <a href="{{ route('now-playing.detail') }}">
                               <div class="card">
                                 <img class="rectangle-2" src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                                 <div class="content">
@@ -66,10 +64,10 @@
                                       </div>
                                       <div class="header">
                                         <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">{{$np->trademark}}</span>
+                                          <span class="tx-pt inter-medium-alabaster"><?php echo \Illuminate\Support\Str::limit(strip_tags( $np->trademark ), 20, $end='...') ?></span>
                                         </div>
                                         <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">{{$np->company_name}}</span>
+                                          <span class="tx-np inter-normal-quill-gray"><?php echo \Illuminate\Support\Str::limit(strip_tags( $np->company_name ), 30, $end='...') ?></span>
                                         </div>
                                       </div>
                                     </div>
@@ -105,7 +103,7 @@
                                       </div>
                                       <div class="overlap-group">
                                         <div class="percent inter-medium-white-12px">
-                                        <div class="progress-bar " style="width: {{ round((round($np->terjual,0)/round($np->supply))*100,2) }}%; background-color:#bf2d30;" role="progressbar" aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar " style="width: {{ round((round($np->terjual,0)/round($np->supply))*100,2) }}%; background-color:#bf2d30; border-radius: 8px; height: 16px;" role="progressbar" aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}" aria-valuemin="0" aria-valuemax="100">
                                         
                                           <span class="tx-np percen inter-medium-white">
                                             
@@ -133,13 +131,15 @@
                                 </div>
                               </div>
                             </a>
-                           </div>
-                           @endforeach
+                              </div>
+                        </div>
+                          @endforeach
                         </div>
                      </div>
+                     </div>
                   </div>
-               </div>
-            </div>
+                  </div>
+              </div>
             </div>
             <div class="but-pag">
             <a class="carousel-control-prev border-1px-cape-cod inter-medium-alabaster-14px" href="#main_slider" role="button" data-slide="prev"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Prev
@@ -169,7 +169,7 @@
                      <div class="fashion_section_2">
                         <div class="fashion_section_2">
                         <div class="row">
-                           <div class="col-lg-3 col-sm-6 col-6">
+                           <div class="col-lg-3 col-sm-3 col-3">
                             <a href="{{ route('coming-soon.detail') }}">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
@@ -225,7 +225,7 @@
                               </div>
                             </a>
                            </div>
-                           <div class="col-lg-3 col-sm-6 col-6">
+                           <div class="col-lg-3 col-sm-3 col-3">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
@@ -279,7 +279,7 @@
                                 </div>
                               </div>
                            </div>
-                           <div class="col-lg-3 col-sm-6 col-6">
+                           <div class="col-lg-3 col-sm-3 col-3">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
@@ -333,7 +333,7 @@
                                 </div>
                               </div>
                            </div>
-                           <div class="col-lg-3 col-sm-6 col-6">
+                           <div class="col-lg-3 col-sm-3 col-3">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
@@ -397,7 +397,7 @@
                      <div class="fashion_section_2">
                         <div class="fashion_section_2">
                         <div class="row">
-                           <div class="col-lg-3 col-sm-6 col-6">
+                           <div class="col-lg-3 col-sm-3 col-3">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
@@ -451,7 +451,7 @@
                                 </div>
                               </div>
                            </div>
-                           <div class="col-lg-3 col-sm-6 col-6">
+                           <div class="col-lg-3 col-sm-3 col-3">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
@@ -505,7 +505,7 @@
                                 </div>
                               </div>
                            </div>
-                           <div class="col-lg-3 col-sm-6 col-6">
+                           <div class="col-lg-3 col-sm-3 col-3">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
@@ -559,7 +559,7 @@
                                 </div>
                               </div>
                            </div>
-                           <div class="col-lg-3 col-sm-6 col-6">
+                           <div class="col-lg-3 col-sm-3 col-3">
                               <div class="card">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
@@ -648,12 +648,12 @@
                          <div class="fashion_section_2">
                             <div class="fashion_section_2">
                             <div class="row">
-                              <div class="owl-carousel owl-theme">
+                              <div class="owl-carousel owl-theme"  style="padding-left: 15px; padding-right: 15px;">
                               @foreach ($sold_out as $item)
                               <?php 
                               $picture = explode(',',$item->pictures);
                               ?>
-                              <div class="item" style="padding-left: 15px; padding-right: 8px;">
+                              <div class="item">
                                 <a href="{{ route('sold-out.detail') }}">
                               <div class="card">
                                 <img class="rectangle-2" src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
@@ -667,10 +667,10 @@
                                       </div>
                                       <div class="header">
                                         <div class="saka-logistics inter-medium-alabaster-20px">
-                                          <span class="tx-pt inter-medium-alabaster">{{$item->trademark}}</span>
+                                          <span class="tx-pt inter-medium-alabaster"><?php echo \Illuminate\Support\Str::limit(strip_tags( $item->trademark ), 20, $end='...') ?></span>
                                         </div>
                                         <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                          <span class="tx-np inter-normal-quill-gray">{{$item->company_name}}</span>
+                                          <span class="tx-np inter-normal-quill-gray"><?php echo \Illuminate\Support\Str::limit(strip_tags( $item->company_name ), 30, $end='...') ?></span>
                                         </div>
                                       </div>
                                     </div>

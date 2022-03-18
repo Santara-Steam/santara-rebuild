@@ -15,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\CropImage' => $baseDir . '/app/Http/Controllers/CropImage.php',
     'App\\Http\\Controllers\\EmitenCommentController' => $baseDir . '/app/Http/Controllers/EmitenCommentController.php',
     'App\\Http\\Controllers\\EmitenController' => $baseDir . '/app/Http/Controllers/EmitenController.php',
     'App\\Http\\Controllers\\EmitenJourneyController' => $baseDir . '/app/Http/Controllers/EmitenJourneyController.php',

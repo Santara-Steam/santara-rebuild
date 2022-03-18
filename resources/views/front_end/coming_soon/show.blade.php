@@ -3,7 +3,7 @@
 @section('content')
 <div class="bg" style="background-image: url({{ asset('public/assets/images/background-now-playing@1x.png') }}">
         <div class="banner_section layout_padding">
-            <div class="container">
+            <div class="container" style="margin-top: 15px;">
                <div class="section">
                   <div class="heading-and-tag">
                 <div class="hheader-dan-supporting-text">

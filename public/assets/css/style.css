@@ -531,8 +531,27 @@ img {
   align-items: flex-start;
   display: flex;
   margin-top: 48px;
-  min-width: 397px;
+  width: 397px;
 }
+
+.b-daf{
+      margin-top: 7px; 
+  height: 60px; 
+  padding-top: 18px; 
+  font-weight: bold; 
+  font-size: 16px; 
+  background-color: var(--alizarin-crimson);
+}
+
+    .b-mul{
+      height: 60px; 
+      margin-top: 0px; 
+      padding-top: 18px; 
+      font-weight: bold; 
+      font-size: 16px;
+      margin-left: 10px;
+      background-color: var(--mercury);
+    }
 
 .button-2 {
   cursor: pointer;
@@ -1338,7 +1357,7 @@ a:hover {
   line-height: 20px;
   margin-bottom: 52.0px;
   margin-left: 25px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .santara-app {
@@ -1349,31 +1368,41 @@ a:hover {
   margin-right: 60px;
   min-height: 72px;
   width: 267px;
-  margin-top: -160px;
-  margin-bottom: 90px;
+  margin-top: 0px;
+}
+
+
+.food {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 
 .santara-app2 {
   align-items: flex-start;
   display: flex;
-  margin-left: 25px;
+  margin-top: -30px;
+  min-width: 267px;
+  white-space: nowrap;
+  margin-bottom: 10px;
 }
 
   .ojk{
-      width:180px;
-      height: 180px;
-      margin-top: -43px;
+      width:130px;
+      height:58px;
+      margin-top: 0px;
     }
 
     .aludi{
-      margin-top: 16px;
-      width:170px;
-      height:65px;
+      margin-top: 10px;
+      width:110px;
+      height:42px;
     }
 
 
 .logo-ojk{
   margin-top: 0px;
+  margin-left: 25px;
 }
 
 .logo-aludi{
@@ -1544,12 +1573,6 @@ input.mail_bt::placeholder {
 
 /* copyright section start */
 
-.copyright_section {
-    width: 100%;
-    float: left;
-    background-color: var(--falu-red);
-    height: auto;
-}
 
 .copyright_text {
     width: 100%;
@@ -1667,6 +1690,9 @@ input.mail_bt::placeholder {
   margin-top: 4px;
   min-height: 16px;
   min-width: 100%;
+}
+.tx-np{
+  width: 100px;
 }
 
 .info-dan-progress {

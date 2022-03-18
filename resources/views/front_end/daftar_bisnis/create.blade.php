@@ -190,33 +190,457 @@
         </form>
     </div>
 
+
     <div class="container-fluid disclaimer-outer-bg bg-disclaimer ">
 
-  <div class="container disclaimer-inner-bg fs-11">
+  <div class="container-fluid disclaimer-outer-bg bg-disclaimer ">
 
-    <h4 class="text-danger ff-a fs-16">Disclaimer:</h4>
-    <div class="row ff-n" style="font-weight: normal;     text-align: justify; margin-right: 25px;">
-      <p class="mt-2" style="margin-bottom: 8px;">Pembelian saham bisnis merupakan aktivitas beresiko tinggi. Anda berinvestasi pada bisnis yang mungkin saja mengalami kenaikan dan penurunan kinerja bahkan mengalami kegagalan. Harap menggunakan pertimbangan ekstra dalam membuat keputusan untuk membeli saham. Ada kemungkinan Anda tidak bisa menjual kembali saham bisnis dengan cepat. Lakukan diversifikasi investasi, hanya gunakan dana yang siap Anda lepaskan (affors to loose) dan atau disimpan dalam jangka panjang. Santara tidak memaksa pengguna untuk membeli saham bisnis sebagai investasi. Semua keputusan pembelian merupakan keputusan independen oleh pengguna.
-      </p>
-      <p style="margin-bottom: 8px;">
-        Santara bertindak sebagai penyelenggara urun dana yang mempertemukan pemodal dan penerbit, bukan sebagai pihak yang menjalankan bisnis (Penerbit). Otoritas Jasa Keuangan bertindak sebagai regulator dan pemberi izin, bukan sebagai penjamin investasi. Keputusan pembelian saham, sepenuhnya merupakan hak dan tanggung jawab Pemodal (investor). Dengan membeli saham di Santara berarti Anda sudah menyetujui seluruh syarat dan ketentuan serta memahami semua risiko investasi termasuk resiko kehilangan sebagian atau seluruh modal.
-      </p>
-      <p style="margin-bottom: 8px;">
-        “OTORITAS JASA KEUANGAN TIDAK MEMBERIKAN PERNYATAAN MENYETUJUI ATAU TIDAK MENYETUJUI EFEK INI, TIDAK JUGA MENYATAKAN KEBENARAN ATAU KECUKUPAN INFORMASI DALAM LAYANAN URUN DANA INI. SETIAP PERNYATAAN YANG BERTENTANGAN DENGAN HAL TERSEBUT ADALAH PERBUATAN MELANGGAR HUKUM.”
-      </p>
-      <p style="margin-bottom: 8px;">
-        “INFORMASI DALAM LAYANAN URUN DANA INI PENTING DAN PERLU MENDAPAT PERHATIAN SEGERA. APABILA TERDAPAT KERAGUAN PADA TINDAKAN YANG AKAN DIAMBIL, SEBAIKNYA BERKONSULTASI DENGAN PENYELENGGARA.”
-      </p>
-      <p style="margin-bottom: 8px;">
-        “PENERBIT DAN PENYELENGGARA, BAIK SENDIRI-SENDIRI MAUPUN BERSAMA-SAMA, BERTANGGUNG JAWAB SEPENUHNYA ATAS KEBENARAN SEMUA INFORMASI YANG TERCANTUM DALAM LAYANAN URUN DANA INI.”
-      </p>
-    </div>
-  </div>
+          <div class="container disclaimer-inner-bg" style="font-size: 11px;">
 
-</div>
+            <h4 class="text-danger ff-a fs-16" style="font-size: 16px; font-family: 'acumin-pro'; margin-left: 5px; margin-bottom: -2px">Disclaimer:</h4>
+            <div class="row ff-n" style="font-weight: normal;     text-align: justify; margin-right: -15px; font-family: 'Nunito'; font-size: 11px;">
+              <p class="mt-2" style="margin-bottom: -10px; color: #fff; font-size: 11px;line-height:1.5;">Pembelian saham bisnis merupakan aktivitas beresiko tinggi. Anda berinvestasi pada bisnis yang mungkin saja mengalami kenaikan dan penurunan kinerja bahkan mengalami kegagalan. Harap menggunakan pertimbangan ekstra dalam membuat keputusan untuk membeli saham. Ada kemungkinan Anda tidak bisa menjual kembali saham bisnis dengan cepat. Lakukan diversifikasi investasi, hanya gunakan dana yang siap Anda lepaskan (affors to loose) dan atau disimpan dalam jangka panjang. Santara tidak memaksa pengguna untuk membeli saham bisnis sebagai investasi. Semua keputusan pembelian merupakan keputusan independen oleh pengguna.
+              </p>
+              <p style="margin-bottom: -10px; color: #fff; font-size: 11px;line-height:1.5; "; >
+                Santara bertindak sebagai penyelenggara urun dana yang mempertemukan pemodal dan penerbit, bukan sebagai pihak yang menjalankan bisnis (Penerbit). Otoritas Jasa Keuangan bertindak sebagai regulator dan pemberi izin, bukan sebagai penjamin investasi. Keputusan pembelian saham, sepenuhnya merupakan hak dan tanggung jawab Pemodal (investor). Dengan membeli saham di Santara berarti Anda sudah menyetujui seluruh syarat dan ketentuan serta memahami semua risiko investasi termasuk resiko kehilangan sebagian atau seluruh modal.
+              </p>
+              <p style="margin-bottom: -10px;color: #fff; font-size: 11px; line-height:1.5; ">
+                “OTORITAS JASA KEUANGAN TIDAK MEMBERIKAN PERNYATAAN MENYETUJUI ATAU TIDAK MENYETUJUI EFEK INI, TIDAK JUGA MENYATAKAN KEBENARAN ATAU KECUKUPAN INFORMASI DALAM LAYANAN URUN DANA INI. SETIAP PERNYATAAN YANG BERTENTANGAN DENGAN HAL TERSEBUT ADALAH PERBUATAN MELANGGAR HUKUM.”
+              </p>
+              <p style="margin-bottom: -10px;color: #fff; font-size: 11px;  line-height:1.5;">
+                “INFORMASI DALAM LAYANAN URUN DANA INI PENTING DAN PERLU MENDAPAT PERHATIAN SEGERA. APABILA TERDAPAT KERAGUAN PADA TINDAKAN YANG AKAN DIAMBIL, SEBAIKNYA BERKONSULTASI DENGAN PENYELENGGARA.”
+              </p>
+              <p style="margin-bottom: -10px;color: #fff; font-size: 11px; line-height:1.5; ">
+                “PENERBIT DAN PENYELENGGARA, BAIK SENDIRI-SENDIRI MAUPUN BERSAMA-SAMA, BERTANGGUNG JAWAB SEPENUHNYA ATAS KEBENARAN SEMUA INFORMASI YANG TERCANTUM DALAM LAYANAN URUN DANA INI.”
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <link rel="stylesheet" href="style.css" /> --}}
+
+<style>
+    .image_area {
+        position: relative;
+    }
+
+    .image_area2 {
+        position: relative;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    .preview {
+        overflow: hidden;
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+        border: 1px solid red;
+    }
+
+    .preview2 {
+        overflow: hidden;
+        width: 150px;
+        height: 80px;
+        margin: 10px;
+        border: 1px solid red;
+    }
+
+    .preview3 {
+        overflow: hidden;
+        width: 150px;
+        height: 80px;
+        margin: 10px;
+        border: 1px solid red;
+    }
+
+    .modal-lg {
+        max-width: 1000px !important;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        background-color: rgba(26, 25, 25, 0.527);
+        overflow: hidden;
+        height: 0;
+        color: white;
+        transition: .5s ease;
+        width: 100%;
+    }
+
+    .overlay2 {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        overflow: hidden;
+        height: 0;
+        transition: .5s ease;
+        width: 100%;
+    }
+
+    .image_area:hover .overlay {
+        height: 50%;
+        color: white;
+        cursor: pointer;
+    }
+
+    .image_area2:hover .overlay2 {
+        height: 50%;
+        cursor: pointer;
+    }
+
+    .text {
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+</style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> --}}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+<link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
+<script src="https://unpkg.com/dropzone"></script>
+<script src="https://unpkg.com/cropperjs"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
 <script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="{{asset('public')}}/cropImage.js"></script>
+<script>
+    
+    $(document).ready(function(){
+
+var $modal = $('#modal');
+
+var image = document.getElementById('sample_image');
+
+var cropper;
+
+$('#upload_image').change(function(event){
+    var files = event.target.files;
+
+    var done = function(url){
+        image.src = url;
+        $modal.modal('show');
+    };
+
+    if(files && files.length > 0)
+    {
+        reader = new FileReader();
+        reader.onload = function(event)
+        {
+            done(reader.result);
+        };
+        reader.readAsDataURL(files[0]);
+    }
+});
+
+$modal.on('shown.bs.modal', function() {
+    cropper = new Cropper(image, {
+        aspectRatio: 4/4,
+        viewMode: 3,
+        preview:'.preview'
+    });
+}).on('hidden.bs.modal', function(){
+    cropper.destroy();
+       cropper = null;
+});
+
+$('#crop').click(function(){
+    canvas = cropper.getCroppedCanvas({
+        width:250,
+        height:250
+    });
+
+    canvas.toBlob(function(blob){
+        url = URL.createObjectURL(blob);
+        var reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = function(){
+          
+            var base64data = reader.result;
+            // var fileSelect = $(this).val();
+            $.ajax({
+                url:'{{route("logocropImg")}}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method:'POST',
+                data:{image:base64data},
+                success:function(data)
+                {
+                    // let text = text.replace("public/upload/", "");
+                    $modal.modal('hide');
+                    $('#uploaded_image').attr('src', '{{env("PATH_WEB")}}'+data);
+                    // $('#upload_image').val(data);
+                    $('#logo').val(data);
+                    // $('#upload_image').attr('src', data);
+                    // console.log(base64data);
+                    // console.log(base64data);
+                    // console.log(data);
+                }
+            });
+        };
+    });
+});
+
+
+
+
+
+
+
+
+var $modal2 = $('#modal2');
+
+var image2 = document.getElementById('sample_image2');
+
+$('#upload_image2').change(function(event){
+    var files = event.target.files;
+
+    var done = function(url){
+        image2.src = url;
+        $modal2.modal('show');
+    };
+
+    if(files && files.length > 0)
+    {
+        reader = new FileReader();
+        reader.onload = function(event)
+        {
+            done(reader.result);
+        };
+        reader.readAsDataURL(files[0]);
+    }
+});
+
+$modal2.on('shown.bs.modal', function() {
+    cropper = new Cropper(image2, {
+        aspectRatio: 2,
+        viewMode: 3,
+        preview:'.preview2'
+    });
+}).on('hidden.bs.modal', function(){
+    cropper.destroy();
+       cropper = null;
+});
+
+$('#crop2').click(function(){
+    canvas = cropper.getCroppedCanvas({
+        width: 1366,
+        height: 497
+    });
+
+    canvas.toBlob(function(blob){
+        url = URL.createObjectURL(blob);
+        var reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = function(){
+          
+            var base64data = reader.result;
+            // var fileSelect = $(this).val();
+            $.ajax({
+                url:'{{route("covercropImg")}}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method:'POST',
+                data:{image:base64data},
+                success:function(data)
+                {
+                    // let text = text.replace("public/upload/", "");
+                    $modal2.modal('hide');
+                    $('#uploaded_image2').attr('src', '{{env("PATH_WEB")}}'+data);
+                    // $('#upload_image').val(data);
+                    $('#cover').val(data);
+                    // $('#upload_image').attr('src', data);
+                    // console.log(base64data);
+                    // console.log(base64data);
+                    // console.log(data);
+                }
+            });
+        };
+    });
+});
+
+
+
+var $modal3 = $('#modal3');
+
+var image3 = document.getElementById('sample_image3');
+
+$('#upload_image3').change(function(event){
+    var files = event.target.files;
+
+    var done = function(url){
+        image3.src = url;
+        $modal3.modal('show');
+    };
+
+    if(files && files.length > 0)
+    {
+        reader = new FileReader();
+        reader.onload = function(event)
+        {
+            done(reader.result);
+        };
+        reader.readAsDataURL(files[0]);
+    }
+});
+
+$modal3.on('shown.bs.modal', function() {
+    cropper = new Cropper(image3, {
+        aspectRatio: 4/3,
+        viewMode: 3,
+        preview:'.preview3'
+    });
+}).on('hidden.bs.modal', function(){
+    cropper.destroy();
+       cropper = null;
+});
+
+$('#crop3').click(function(){
+    canvas = cropper.getCroppedCanvas({
+        width:400,
+        height:300
+    });
+
+    canvas.toBlob(function(blob){
+        url = URL.createObjectURL(blob);
+        var reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = function(){
+          
+            var base64data = reader.result;
+            // var fileSelect = $(this).val();
+            $.ajax({
+                url:'{{route("galericropImg")}}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method:'POST',
+                data:{image:base64data},
+                success:function(data)
+                {
+                    // let text = text.replace("public/upload/", "");
+                    $modal3.modal('hide');
+                    $('#uploaded_image3').attr('src', '{{env("PATH_WEB")}}'+data);
+                    // $('#upload_image').val(data);
+                    $('#galeri').val(data);
+                    // $('#upload_image').attr('src', data);
+                    // console.log(base64data);
+                    // console.log(base64data);
+                    // console.log(data);
+                }
+            });
+        };
+    });
+});
+
+
+
+
+
+var $modal4 = $('#modal4');
+
+var image4 = document.getElementById('sample_image4');
+
+$('#upload_image4').change(function(event){
+    var files = event.target.files;
+
+    var done = function(url){
+        image4.src = url;
+        $modal4.modal('show');
+    };
+
+    if(files && files.length > 0)
+    {
+        reader = new FileReader();
+        reader.onload = function(event)
+        {
+            done(reader.result);
+        };
+        reader.readAsDataURL(files[0]);
+    }
+});
+
+$modal4.on('shown.bs.modal', function() {
+    cropper = new Cropper(image4, {
+        aspectRatio: 4/4,
+        viewMode: 3,
+        preview:'.preview4'
+    });
+}).on('hidden.bs.modal', function(){
+    cropper.destroy();
+       cropper = null;
+});
+
+$('#crop4').click(function(){
+    canvas = cropper.getCroppedCanvas({
+        width:400,
+        height:400
+    });
+
+    canvas.toBlob(function(blob){
+        url = URL.createObjectURL(blob);
+        var reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = function(){
+          
+            var base64data = reader.result;
+            // var fileSelect = $(this).val();
+            $.ajax({
+                url:'{{route("ownercropImg")}}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method:'POST',
+                data:{image:base64data},
+                success:function(data)
+                {
+                    // let text = text.replace("public/upload/", "");
+                    $modal4.modal('hide');
+                    $('#uploaded_image4').attr('src', '{{env("PATH_WEB")}}'+data);
+                    // $('#upload_image').val(data);
+                    $('#owner').val(data);
+                    // $('#upload_image').attr('src', data);
+                    // console.log(base64data);
+                    // console.log(base64data);
+                    // console.log(data);
+                }
+            });
+        };
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+});
+
+</script>
 
 @endsection
