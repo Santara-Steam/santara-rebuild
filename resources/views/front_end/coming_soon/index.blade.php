@@ -83,7 +83,7 @@
                      <div class="fashion_section_2">
                         <div class="row">
                            <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="card">
+                              <div class="card" style="margin-top: 20px;">
                                 <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress">

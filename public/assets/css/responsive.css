@@ -851,6 +851,10 @@
         right: 25px;
         top: 100%;
     }
+    
+    .sp-tab{
+      margin-left: 10px; 
+    }
 }
 
 @media (max-width: 575px) {
@@ -879,163 +883,6 @@
   .tags {
     min-width: 100%;
   }
-/*  .divider-1{
-    display: none;
-  }
-  .divider-2{
-    display: none;
-  }
-  .divider-3{
-    display: none;
-  }
-  .divider-4{
-    display: none;
-  }
-  .progress-section {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-top: 48px;
-  min-height: 312px;
-  width: 343px;
-}
-
-.progres-penerbit {
-  letter-spacing: 0;
-  line-height: 28px;
-  min-height: 28px;
-  white-space: nowrap;
-}
-
-.progress {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-top: 24px;
-  min-height: 260px;
-  width: 236px;
-}
-
-.progres-1 {
-  align-items: center;
-  display: flex;
-  height: 36px;
-  min-width: 236px;
-}
-
-.frame-1 {
-  align-items: flex-start;
-  background-color: var(--thunderbird);
-  border-radius: 24px;
-  display: flex;
-  height: 34px;
-  margin-left: -4px;
-  min-width: 34px;
-  padding: 4px;
-}
-
-.number {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  text-align: center;
-  white-space: nowrap;
-  width: 18px;
-}
-
-.info-progres {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-left: 12px;
-  min-height: 36px;
-  width: 192px;
-}
-
-.pra-penawaran-saham {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.date {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.divider {
-  height: 12px;
-  margin-left: 13.0px;
-  margin-top: 4px;
-  width: 2px;
-}
-
-.progres-1 {
-  align-items: center;
-  display: flex;
-  height: 36px;
-  margin-top: 4px;
-  min-width: 236px;
-}
-
-.penawaran-saham {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.date {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.pendanaan-terpenuhi {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.date-1 {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.penyerahan-dana {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.date- {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.pembagian-deviden {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}
-
-.date-4 {
-  letter-spacing: 0;
-  line-height: 18px;
-  min-height: 18px;
-  white-space: nowrap;
-}*/
   .com-u{
     display: none;
   }
@@ -1438,5 +1285,9 @@
       font-weight: bold; 
       font-size: 16px;
       margin-left: 0px;
+    }
+
+    .sp-tab{
+      margin-left: 10px; 
     }
 }

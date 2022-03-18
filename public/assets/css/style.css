@@ -1285,11 +1285,8 @@ a:hover {
 #jewellery_main_slider .carousel-control-prev {
     align-items: center;
     display: flex;
-    height: 40px;
-    padding: 0 16px;
-    width: 92px;
-    background-color: var(--shark);
-    opacity: 1;
+    width: 85px;
+    background-color: var(--shark);;
     font-size: 14px;
     color: #ffffff;
 }
@@ -2172,6 +2169,13 @@ input.mail_bt::placeholder {
   width: auto;
 }
 
+.table-7 {
+  height: 64px;
+  margin-bottom: -1px;
+  margin-left: 16px;
+  width: 100px;
+}
+
 .table-row {
   align-items: flex-end;
   display: flex;
@@ -3015,7 +3019,6 @@ input.mail_bt::placeholder {
 .table-2 {
   align-items: flex-start;
   align-self: center;
-  background-color: var(--shark);
   border-radius: 4px;
   box-shadow: 0px 1px 2px #0000001f;
   display: flex;
@@ -3034,11 +3037,11 @@ input.mail_bt::placeholder {
 
 .table-cell {
   align-items: center;
-  background-color: var(--shark);
   display: flex;
   height: 56px;
   min-width: 176px;
   padding: 0 16px;
+  margin-left: -15px;
 }
 
 .pembagian-deviden-ta {
@@ -3058,19 +3061,10 @@ input.mail_bt::placeholder {
 }
 
 .overlap-group-3 {
-  height: 56px;
+  height: 60px;
   position: relative;
   width: 352px;
 }
-
-.divider {
-  height: 1px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 352px;
-}
-
 .table-cell-row {
   align-items: flex-start;
   display: flex;
@@ -3290,9 +3284,6 @@ input.mail_bt::placeholder {
   top: 20px;
   width: 136px;
 }
-  .divider{
-    display: none;
-  }
 
   .tx-icon{
     margin-right: auto;
@@ -3326,15 +3317,27 @@ input.mail_bt::placeholder {
   margin: 30px auto;
 }
 .customNextBtn, .customPreviousBtn{
-      float: right;
-    background: #2d9070;
-    color: #fff;
     padding: 10px;
-    margin-left: 5px;
     cursor: pointer;
 }
 
 .tx-pt{
     width: 100%
     min-width: 100%;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

@@ -85,37 +85,124 @@
       <script src="{{ asset('public/assets/OwlCarousel2/dist/assets/owl.carousel.js') }}"></script>
       <script>
 
-        $(document).ready(function() {
-          var owl = $('.owl-carousel').owlCarousel({
-              loop:true,
-              margin:10,
-              responsiveClass:true,
-              responsive:{
-                  0:{
-                      items:4,
-                      nav:true,
-                      loop:false
-                  },
-                  600:{
-                      items:4,
-                      nav:true,
-                      loop:false
-                  },
-                  1000:{
-                      items:4,
-                      nav:true,
-                      loop:false
+        $(document).ready(function () {
+  
+             $("#owl-demo").owlCarousel({
+                 loop  : true,
+                 margin : 30,
+                 nav    : true,
+                 smartSpeed :900,
+                 navText : [$('.customPreviousBtn'),$('.customNextBtn')],
+                 responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      }
                   }
-              }
-          });
-
-          // Custom Button
-        $('.customNextBtn').click(function() {
-          owl.trigger('next.owl.carousel');
-        });
-        $('.customPreviousBtn').click(function() {
-          owl.trigger('prev.owl.carousel');
-        });
+              });
+             $("#owl-demo2").owlCarousel({
+                loop:true,
+                  margin:10,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:4,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
+               $("#owl-demo3").owlCarousel({
+                pagination : false,
+             });
+               $("#owl-demo4").owlCarousel({
+                loop:true,
+                  margin:20,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:1,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
+               $("#owl-demo5").owlCarousel({
+                loop:true,
+                  margin:20,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:1,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
+               $("#owl-demo6").owlCarousel({
+                loop:true,
+                  margin:20,
+                  responsiveClass:true,
+                  responsive:{
+                      0:{
+                          items:1,
+                          nav:true,
+                          loop:false
+                      },
+                      600:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      },
+                      1000:{
+                          items:3,
+                          nav:true,
+                          loop:false
+                      }
+                  }
+              });
         })
       </script>
       <script>

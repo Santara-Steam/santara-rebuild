@@ -49,7 +49,7 @@
                               <?php 
                               $picture = explode(',',$np->pictures);
                               ?>
-                              <div class="owl-carousel owl-theme"  style="padding-left: 15px; padding-right: 15px;">
+                              <div id="owl-demo2" class="owl-carousel owl-theme"  style="padding-left: 15px; padding-right: 15px;">
                               <div class="item">
                                 <a href="{{ route('now-playing.detail') }}">
                               <div class="card">
@@ -648,7 +648,7 @@
                          <div class="fashion_section_2">
                             <div class="fashion_section_2">
                             <div class="row">
-                              <div class="owl-carousel owl-theme"  style="padding-left: 15px; padding-right: 15px;">
+                              <div id="owl-demo" class="owl-carousel owl-theme div_main"  style="padding-left: 15px; padding-right: 15px;">
                               @foreach ($sold_out as $item)
                               <?php 
                               $picture = explode(',',$item->pictures);
@@ -715,7 +715,7 @@
             <div class="but-pag">
             <a class="carousel-control-prev border-1px-cape-cod inter-medium-alabaster-14px customPreviousBtn" href="#jewellery_main_slider" role="button" data-slide="prev"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Prev
             </a>
-            <a class="carousel-control-next border-1px-cape-cod inter-medium-alabaster-14px customNextBtn" href="#jewellery_main_slider" role="button" data-slide="next">Next &nbsp&nbsp<i class="fas fa-arrow-right"></i>
+            <a class="carousel-control-next border-1px-cape-cod inter-medium-alabaster-14px customNextBtn" href="#jewellery_main_slider" role="button" data-slide="next" >Next &nbsp&nbsp<i class="fas fa-arrow-right"></i>
             </a>
           </div>
          </div>
