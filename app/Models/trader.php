@@ -13,5 +13,8 @@ class trader extends Model
     protected $guarded = ['id']; 
     
 
-
+    public function usr()
+    {
+        return $this->belongsTo(user::class,'user_id')->withDefault();
+    }
 }

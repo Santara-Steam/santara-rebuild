@@ -23,7 +23,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table" id="tabel"> 
                                             <thead>
                                                 <tr>
                                                     {{-- <th>Owner</th> --}}
@@ -70,13 +70,13 @@
                                                                     class="btn btn-sm btn-warning">Edit</a>
                                                             </div>
                                                             <div class="col-6">
-                                                                <form method="post"
-                                                                    action="{{url('/emiten/delete')}}/{{$item->id}}"
-                                                                    enctype="multipart/form-data">
-                                                                    {{ csrf_field() }}
-                                                                    <button type="submit"
-                                                                        class="btn btn-sm btn-danger">Delete</button>
-                                                                </form>
+                                                            <form id="del{{$item->id}}" method="post"
+                                                                action="{{url('/emiten/delete')}}/{{$item->id}}"
+                                                                enctype="multipart/form-data">
+                                                                {{ csrf_field() }}
+                                                            </form>
+                                                                <a data-id="{{$item->id}}" style="color: white" type="submit"
+                                                                    class="btn btn-sm btn-danger  deletebtn">Delete</a>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -155,4 +155,47 @@
     </div>
 </div>
 @endforeach
+@endsection
+@section('js')
+<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function() {
+        $('#tabel').DataTable({
+            responsive: true,
+        });
+    });
+</script>
+<script>
+     $(".deletebtn").click(function(e) {
+
+    id = e.target.dataset.id;
+    Swal.fire({
+        title: "Apakah anda yakin?",
+        text: "Data yang sudah anda hapus tidak akan bisa kembali!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ya, Hapus"
+    }).then(function(result) {
+        if (result.value) {
+
+            Swal.fire(
+                "Terhapus!",
+                "Data telah terhapus.",
+                "success"
+            );
+            $(`#del${id}`).submit();
+
+        } else {
+
+        }
+    });
+});
+</script>
+@endsection
+@section('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 @endsection

@@ -137,15 +137,15 @@ class EmitenController extends Controller
         $emj->emiten_id = $em->id;
         $emj->title = "Pra Penawaran Saham";
         $emj->save();
-        // $notif = array(
-        //     'message' => 'Data Berhasil Di Tambahkan',
-        //     'alert-type' => 'success'
-        // );
+        $notif = array(
+            'message' => 'Emiten Berhasil Di Tambahkan',
+            'alert-type' => 'success'
+        );
 
         // $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
         // dd($em);
         // return response()->json(['status' => 'Mantap']);
-        return redirect('/admin/emiten');
+        return redirect('/admin/emiten')->with($notif);
     }
 
     public function edit(emiten $emiten,$id){
@@ -170,6 +170,21 @@ class EmitenController extends Controller
             $picture[3] = '-';
         }else{
             $picture[3];
+        }
+        if(empty($picture[4])){
+            $picture[4] = '-';
+        }else{
+            $picture[4];
+        }
+        if(empty($picture[5])){
+            $picture[5] = '-';
+        }else{
+            $picture[5];
+        }
+        if(empty($picture[6])){
+            $picture[6] = '-';
+        }else{
+            $picture[6];
         }
         $kategori = kategori::all();
         $user = User::where('role_id',2)->get();
@@ -200,6 +215,21 @@ class EmitenController extends Controller
             $picture[3] = '-';
         }else{
             $picture[3];
+        }
+        if(empty($picture[4])){
+            $picture[4] = '-';
+        }else{
+            $picture[4];
+        }
+        if(empty($picture[5])){
+            $picture[5] = '-';
+        }else{
+            $picture[5];
+        }
+        if(empty($picture[6])){
+            $picture[6] = '-';
+        }else{
+            $picture[6];
         }
 
         if($request->hasFile("logo")){
@@ -290,17 +320,23 @@ class EmitenController extends Controller
         $emiten->trademark = $request->get('brand');
         $emiten->price = $request->get('harga_saham');
         $emiten->save();
-
+        $notif = array(
+            'message' => 'Penerbit Berhasil Di Edit',
+            'alert-type' => 'success'
+        );
         // dd($logoFileSave);
-        return redirect('/admin/emiten');
+        return redirect('/admin/emiten')->with($notif);
     }
 
     public function delete($id){
         $emiten = emiten::where('id',$id)->first();
         $emiten->is_deleted = 1;
         $emiten->save();
-
-        return redirect('/admin/emiten');
+        $notif = array(
+            'message' => 'Emiten Berhasil Di Hapus',
+            'alert-type' => 'success'
+        );
+        return redirect('/admin/emiten')->with($notif);
     }
 
     public function emiten_status(Request $request,$id){
@@ -311,7 +347,12 @@ class EmitenController extends Controller
         $emj->end_date = $request->get('end_date');
         $emj->save();
 
-        return redirect('/admin/emiten');
+        $notif = array(
+            'message' => 'Update Status Emiten Berhasil!!',
+            'alert-type' => 'success'
+        );
+
+        return redirect('/admin/emiten')->with($notif);
     }
     public function logocropImg()
     {

@@ -9,9 +9,13 @@
     <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
     <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard sales - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin Dashboard</title>
-    <link rel="apple-touch-icon" href="{{asset('public/admin')}}/app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('public/admin')}}/app-assets/images/ico/favicon.ico">
+    <title>Santara | Dashboard</title>
+    {{-- <link rel="icon" href="{{ asset('public/assets/images/fevicon.png') }}" type="image/gif" /> --}}
+
+    {{-- <link rel="apple-touch-icon" href="{{asset('public/admin')}}/app-assets/images/ico/apple-icon-120.png"> --}}
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{asset('public/admin')}}/app-assets/images/ico/favicon.ico"> --}}
+    <link rel="shortcut icon" type="image/x-icon"
+    href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
@@ -36,6 +40,8 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
     <!-- END: Custom CSS-->
     @yield('style')
 </head>
@@ -85,10 +91,46 @@
     <!-- BEGIN: Theme JS-->
     <script src="{{asset('public/admin')}}/app-assets/js/core/app-menu.js"></script>
     <script src="{{asset('public/admin')}}/app-assets/js/core/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- END: Theme JS-->
     <!-- BEGIN: Page JS-->
     {{-- <script src="{{asset('public/admin')}}/app-assets/js/scripts/pages/dashboard-sales.js"></script> --}}
     <!-- END: Page JS-->
+    @if(Session::has('message'))
+    <script>
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    var type = "{{Session::get('alert-type','success')}}"
+    switch (type) {
+        case 'success':
+        toastr.success("{{Session::get('message')}}");
+        // Swal.fire("Berhasil","{{Session::get('message')}}","success");
+        // Swal.fire("Good job!", "You clicked the button!", "success");
+        break;
+        case 'fail':
+        toastr.error("{{Session::get('message')}}");
+        // Swal.fire("Berhasil","{{Session::get('message')}}","success");
+        // Swal.fire("Good job!", "You clicked the button!", "success");
+        break;
+    }
+    </script>
+    @endif
     @yield('js')
 
 </body>

@@ -42,6 +42,14 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/emiten/update/{id}',[App\Http\Controllers\EmitenController::class, 'update']);
     Route::post('/emiten/delete/{id}',[App\Http\Controllers\EmitenController::class, 'delete']);
     Route::post('/emiten/update_status/{id}',[App\Http\Controllers\EmitenController::class, 'emiten_status']);
+    
+    Route::get('/admin/pesan_saham', [App\Http\Controllers\BookSahamController::class, 'index']);
+    Route::get('/admin/pesan_saham/add', [App\Http\Controllers\BookSahamController::class, 'create']);
+    Route::post('/pesan_saham/store',[App\Http\Controllers\BookSahamController::class, 'store']);
+    Route::get('/admin/pesan_saham/detail/{id}', [App\Http\Controllers\BookSahamController::class, 'detail']);
+    Route::post('/admin/pesan_saham/approve/{id}', [App\Http\Controllers\BookSahamController::class, 'approve']);
+    Route::post('/admin/pesan_saham/reject/{id}', [App\Http\Controllers\BookSahamController::class, 'reject']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 
