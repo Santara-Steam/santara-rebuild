@@ -242,7 +242,25 @@
                                 </div>
                               </div>
                               <div class="icon-card">
+                                @guest
+                                <a href="{{route('login')}}" style="cursor: pointer">
+                                  <div class="icon-and-supporting-text">
+                                    <i class="icon-com iconheart fas fa-heart"
+                                      style="color: #fff; font-size: 18px;"></i>
+                                    &ensp;
+                                    <div class="lk inter-normal-alabaster-10px">
+                                      <span class="tx-icon inter-normal-alabaster">
+                                        <p class="ic-sz tx-icon lkk" style="margin-top: -25px;">
+                                          {{$cs->likes}}
+                                        </p>
+                                        <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </a>
+                                @else
                                 @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
+
                                 <a onclick="document.getElementById('sublike{{$cs->id}}').submit();"
                                   style="cursor: pointer">
                                   @else
@@ -275,7 +293,29 @@
                                       enctype="multipart/form-data">
                                       {{ csrf_field() }}
                                     </form>
+                                    @endguest
+
+
+
+                                    @guest
+                                    <a href="{{route('login')}}" style="cursor: pointer">
+                                      <div class="icon-and-supporting-text">
+                                        <i class="icon-com iconheart fas fa-heart"
+                                          style="color: #fff; font-size: 18px;"></i>
+                                        &ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">
+                                            <p class="ic-sz tx-icon lkk" style="margin-top: -25px;">
+                                              {{$cs->likes}}
+                                            </p>
+                                            <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </a>
+                                    @else
                                     @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
+
                                     <a onclick="document.getElementById('subvote{{$cs->id}}').submit();"
                                       style="cursor: pointer">
                                       @else
@@ -301,6 +341,8 @@
                                         method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                       </form>
+
+                                      @endguest
                                       <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
                                         data-target="#modal{{$cs->id}}" class="cmt">
                                         <div class="icon-and-supporting-text-1">
