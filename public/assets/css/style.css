@@ -534,6 +534,20 @@ img {
   width: 397px;
 }
 
+.actions2 {
+  align-items: flex-start;
+  display: flex;
+  margin-top: 48px;
+  width: 180px;
+}
+
+.actions3 {
+  align-items: center;
+  display: flex;
+  margin-top: 48px;
+  width: 180px;
+  margin: 0 auto;
+}
 .b-daf{
       margin-top: 7px; 
   height: 60px; 

@@ -10,17 +10,15 @@
                       <span class="text-urun inter-bold-alabaster">Daftarkan Bisnis Anda Dapatkan Modal Bisnis Dari Pemodal Setia Kami</span>
                     </div>
                   </div>
-                  <div class="actions">
-                      <div class="mulai-investasi button-cta-3 inter-medium-white-18px">
-                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="{{ route('daftar-bisnis.create') }}">Daftarkan Bisnis</a>
-                      </div>
+                  <div class="actions2"> 
+                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}">Daftarkan Bisnis</a>
                   </div>
                 </div>
               </div>
           </div>
       </div>
       <!-- fashion section start -->
-      <div class="fashion_section" style="margin-top: -70px;">
+      <div class="fashion_section" style="margin-top: 0px;">
          <div class="container">
           <div class="section-langkah-mudah">
           <div class="langkah-mudah-daftarkan-bisnis-anda inter-normal-alabaster-36px">
@@ -80,9 +78,10 @@
           <div class="ayo-daftarkan-bisnis-anda inter-normal-alabaster-40px">
             <span class="text-urun inter-normal-alabaster">Ayo Daftarkan Bisnis Anda!</span>
           </div>
-          <div class="mulai-investasi button-cta-3 inter-medium-white-18px">
-                        <a class="button-2 text-mulai btn btn-danger btn-hm inter-medium-white" href="{{ route('daftar-bisnis.create') }}">Daftarkan Bisnis</a>
-                      </div>
+          <div class="actions3 "> 
+                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}">Daftarkan Bisnis</a>
+                  </div>
+          </div>
         </div>
             
            
