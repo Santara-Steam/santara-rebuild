@@ -60,13 +60,13 @@
                <div class="carousel-item active">
                   <div class="w3-container w3-red">
                      <div class="fashion_section_2">
-                        <div class="row">
+                        <div class="row" style="padding-left: 10px; padding-right: 10px;">
                           @foreach ($sold_out as $item)
                           <?php 
                           $picture = explode(',',$item->pictures);
                           ?>
-                           <div class="col-lg-3 col-sm-6 col-6">
-                              <div class="card" style="margin-top: 20px;">
+                           <div class="col-lg-3 col-sm-3 col-3" style="padding: 5px;">
+                              <div class="card" style="margin-top: 10px;">
                                 <img class="rectangle-2"  src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                                 <div class="content">
                                   <div class="header-card-dan-progress-2">
