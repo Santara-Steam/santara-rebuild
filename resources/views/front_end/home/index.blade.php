@@ -467,7 +467,7 @@
         </button>
       </div>
       <div class="modal-body">
-        
+
       </div>
       <div class="modal-footer">
         <textarea name="comment" class="form-control" id="" cols="30" rows="10"></textarea><br>
@@ -500,6 +500,7 @@
 
                   // Display Modal
                   // $('#empModal').modal('show'); 
+                  // console.log(cmt);
               }
           });
       });
