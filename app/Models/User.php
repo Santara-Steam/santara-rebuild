@@ -42,7 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function trader()
     {
-        return $this->hasOne(trader::class,'user_id')->withDefault();
+        return $this->hasOne(trader::class,'user_id');
     }
 
     protected $connection = 'mysql';
