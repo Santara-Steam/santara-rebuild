@@ -2,7 +2,7 @@
 <footer class="page-footer font-small teal pt-4 footer_section layout_padding">
 
   <!-- Footer Text -->
-  <div class="container-fluid text-center text-md-left">
+  <div class="container-fluid text-md-left">
 
     <!-- Grid row -->
     <div class="row">
