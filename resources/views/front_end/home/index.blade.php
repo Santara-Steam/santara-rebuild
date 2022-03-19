@@ -508,6 +508,9 @@
       <div class="modal-body">
 
       </div>
+      @guest
+
+      @else
       <div class="modal-footer container">
         {{-- <form action="{{url('sendData')}}/{{$item->id}}" method="POST" enctype="multipart/form-data">
           {{ csrf_field() }}
@@ -551,6 +554,7 @@
               </tbody>
             </table>
           </div>
+          @endguest
       </div>
     </div>
   </div>
