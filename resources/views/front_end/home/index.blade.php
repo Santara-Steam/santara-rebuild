@@ -299,16 +299,13 @@
 
                                     @guest
                                     <a href="{{route('login')}}" style="cursor: pointer">
-                                      <div class="icon-and-supporting-text">
-                                        <i class="icon-com iconheart fas fa-heart"
+                                      <div class="icon-and-supporting-text-1">
+                                        <i class="icon-com iconheart fas fa-user"
                                           style="color: #fff; font-size: 18px;"></i>
-                                        &ensp;
                                         <div class="lk inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">
-                                            <p class="ic-sz tx-icon lkk" style="margin-top: -25px;">
-                                              {{$cs->likes}}
-                                            </p>
-                                            <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
+                                            <p class="ic-sz tx-icon lkk" style="margin-top: -0px;">{{$cs->vot}} </p>
+                                            <p class="ic-sz com-u mnt">&ensp;Minat</p>
                                           </span>
                                         </div>
                                       </div>

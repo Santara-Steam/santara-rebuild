@@ -10,7 +10,9 @@ class EmitenCommentController extends Controller
     //
     public function getcomment($id){
         $cmtt = emiten_comment::where('emiten_id',$id)
-        ->select('trader_id','comment')
+        ->select('emiten_comments.comment as cm','emiten_comments.created_at as tm','users.name as name')
+        ->join('traders','emiten_comments.trader_id','=','traders.id')
+        ->join('users','traders.user_id','=','users.id')
         ->get();
 
         if($cmtt){
@@ -25,7 +27,7 @@ class EmitenCommentController extends Controller
                     class='mt-1 rounded-circle' width='35' height='35'>
                 </td>
                 <td width='85%'>
-                  <p class='mt-1 mb-0 text-break' style='font-size: 14px'><span class=' fw-bold'>".$key->trader_id."</span> &nbsp; ini
+                  <p class='mt-1 mb-0 text-break' style='font-size: 14px'><span class=' fw-bold'>".$key->name."</span> &nbsp; ini
                   dummy atau asli ya min
                 </p>
               </td>
