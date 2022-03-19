@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front_end;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\emiten;
+use App\Models\emiten_vote;
 use App\Models\emitens_old;
 use Illuminate\Support\Facades\DB;
 
@@ -35,7 +37,17 @@ class HomeController extends Controller
         ->orderby('emitens.id','DESC')
         ->get();
 
-        return view('front_end/home/index',compact('now_playing','sold_out'));
+        $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+            SELECT count(id) from emiten_comments
+            where emiten_id = emitens.id
+            ) as cmt'))
+        ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+        ->groupBy('emitens.id')
+        ->get()
+        ;
+
+        return view('front_end/home/index',compact('now_playing','sold_out','soon'));
     }
 
     /**

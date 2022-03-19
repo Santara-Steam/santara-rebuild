@@ -60,6 +60,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 
 Route::get('/', [HomeController::class, 'index']);
 
+
+
 Route::resource('/now-playing', Now_playingController::class);
 Route::resource('/coming-soon', Coming_soonController::class);
 Route::resource('/sold-out', Sold_outController::class);
@@ -73,6 +75,11 @@ Route::get('/detail-sold-out', [Sold_outController::class, 'detail'])->name('sol
 Route::group(['middleware' => ['auth', "verified"]], function () {
     Route::get('/daftar-bisnis/create', [Daftar_bisnisController::class, 'create'])->name('daftar-bisnis.create');
     Route::post('/daftar-bisnis/store',[Daftar_bisnisController::class, 'store'])->name('daftar-bisnis.store');
+    Route::post('/addLike/{id}',[App\Http\Controllers\EmitenVoteController::class,'addlike']);
+    Route::post('/addVote/{id}',[App\Http\Controllers\EmitenVoteController::class,'addvote']);
+    Route::post('/subLike/{id}',[App\Http\Controllers\EmitenVoteController::class,'sublike']);
+    Route::post('/subVote/{id}',[App\Http\Controllers\EmitenVoteController::class,'subvote']);
+    Route::get('/getmodaldata/{id}',[App\Http\Controllers\EmitenCommentController::class,'getcomment']);
 });
 
 // Route::post('/cropImg', [App\Http\Controllers\EmitenController::class, 'logoCropImg'])->name('cropImg');

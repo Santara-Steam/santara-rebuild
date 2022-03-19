@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class emiten extends Model
 {
     use HasFactory;
+    protected $hidden = ['uuid'];
+    protected $guarded = ['id','uuid']; 
     protected $connection = 'mysql';
+    public function ctg()
+    {
+        return $this->belongsTo(kategori::class,"category_id")->withDefault();
+    }
 }
