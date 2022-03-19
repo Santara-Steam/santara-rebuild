@@ -214,11 +214,11 @@
     }
     #jewellery_main_slider a.carousel-control-prev {
         left: 25px;
-        top: 105%;
+        top: 90%;
     }
     #jewellery_main_slider a.carousel-control-next {
         right: 25px;
-        top: 105%;
+        top: 90%;
     }
     #main_slider a.carousel-control-prev {
         left: 25px;
@@ -235,6 +235,10 @@
     #electronic_main_slider a.carousel-control-next {
         right: 25px;
         top: 105%;
+    }
+    .r-top{
+      align-items: flex-start;
+      display: flex;
     }
 }
 
@@ -399,11 +403,11 @@
     
     #jewellery_main_slider a.carousel-control-prev {
         left: 25px;
-        top: 100%;
+        top: 86%;
     }
     #jewellery_main_slider a.carousel-control-next {
         right: 25px;
-        top: 100%;
+        top: 86%;
     }
     #main_slider a.carousel-control-prev {
         left: 25px;
@@ -486,6 +490,10 @@
 
     .layout_padding {
         padding-bottom: 10px;
+    }
+    .r-top{
+      align-items: flex-start;
+      display: flex;
     }
 }
 
@@ -663,6 +671,18 @@
     .dropdown {
         display: none;
     }
+    .dropdown-6 {
+      margin-left: 25px;
+      margin-top: 100px;
+    }
+    .dropdown-2 {
+      margin-left: 25px;
+      margin-top: 15px;
+    }
+    .dropdown-4 {
+      margin-left: 25px;
+      margin-top: 15px;
+    }
     .login_menu li {
         float: left;
         font-size: 14px;
@@ -716,30 +736,6 @@
     .box_main {
         padding: 20px 10px;
     }
-    #jewellery_main_slider a.carousel-control-prev {
-        left: 25px;
-        top: 100%;
-    }
-    #jewellery_main_slider a.carousel-control-next {
-        right: 25px;
-        top: 100%;
-    }
-    #main_slider a.carousel-control-prev {
-        left: 25px;
-        top: 100%;
-    }
-    #main_slider a.carousel-control-next {
-        right: 25px;
-        top: 100%;
-    }
-    #electronic_main_slider a.carousel-control-prev {
-        left: 25px;
-        top: 100%;
-    }
-    #electronic_main_slider a.carousel-control-next {
-        right: 25px;
-        top: 100%;
-    }
     .input_bt {
         width: 100%;
     }
@@ -777,7 +773,7 @@
 
     .santara-app {
       align-self: center;
-      margin-top: -80px;
+      margin-top: -35px;
       min-height: 72px;
       width: 267px;
       margin-left: 15px;
@@ -797,7 +793,6 @@
       width:130px;
       height:58px;
       margin-top: 0px;
-      margin-left: -45px;
     }
 
     .aludi{
@@ -829,11 +824,11 @@
     }
     #jewellery_main_slider a.carousel-control-prev {
         left: 20px;
-        top: 91%;
+        top: 86%;
     }
     #jewellery_main_slider a.carousel-control-next {
         right: 20px;
-        top: 91%;
+        top: 86%;
     }
     #main_slider a.carousel-control-prev {
         left: 25px;
@@ -854,6 +849,10 @@
     
     .sp-tab{
       margin-left: 10px; 
+    }
+    
+    .kati{
+      display: none;
     }
 }
 
@@ -895,12 +894,9 @@
     .r-top{
     margin-top: -130px;  
     }
-    .input-1 {
-    min-width: 325px;
-    }
     .dropdown-6 {
-      margin-left: 280px;
-      margin-top: -71px;
+      margin-left: 25px;
+      margin-top: 10px;
     }
     .dropdown-2 {
       margin-left: 25px;
@@ -1000,6 +996,15 @@
       white-space: nowrap;
     }
     .actions {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-top: 32px;
+      min-height: 108px;
+      width: 100%;
+    }
+
+    .actions2 {
       align-items: center;
       display: flex;
       flex-direction: column;
@@ -1162,11 +1167,11 @@
     }
     #jewellery_main_slider a.carousel-control-prev {
         left: 20px;
-        top: 86%;
+        top: 83%;
     }
     #jewellery_main_slider a.carousel-control-next {
         right: 20px;
-        top: 86%;
+        top: 83%;
     }
     #main_slider a.carousel-control-prev {
         left: 25px;
@@ -1218,7 +1223,7 @@
 
     .santara-app {
       align-self: center;
-      margin-top: -80px;
+      margin-top: -35px;
       min-height: 72px;
       width: 267px;
       margin-left: 15px;
@@ -1238,7 +1243,6 @@
       width:130px;
       height:58px;
       margin-top: 0px;
-      margin-left: -45px;
     }
 
     .aludi{
@@ -1289,5 +1293,8 @@
 
     .sp-tab{
       margin-left: 10px; 
+    }
+    .kati{
+      display: none;
     }
 }
