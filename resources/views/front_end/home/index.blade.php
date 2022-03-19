@@ -518,31 +518,39 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </form> --}}
         {{-- <form action="{{url('sendData')}}/{{$item->id}}" method="POST" enctype="multipart/form-data"> --}}
-        
-          {{-- <input  name="comment{{$item->id}}" > --}}
+
+          {{-- <input name="comment{{$item->id}}"> --}}
           {{-- <textarea name="comment{{$item->id}}" id="" cols="30" rows="10"></textarea> --}}
-          {{-- <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}" placeholder="Write a comment" style="font-size:12px; padding: 6px; resize:none;"></textarea>
+          {{-- <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}"
+            placeholder="Write a comment" style="font-size:12px; padding: 6px; resize:none;"></textarea>
           <button type="button" class="btn btn-primary" id="send{{$item->id}}">send</button> --}}
           {{-- <div class="modal-footer "> --}}
-            <table >
-                <tbody><tr>
+            <table>
+              <tbody>
+                <tr>
                   <form id="ajaxform{{$item->id}}">
                     {{-- {{ csrf_field() }} --}}
                     <input type="hidden" name="idem{{$item->id}}" value="{{$item->id}}">
-                    <input type="hidden" name="trd{{$item->id}}" value="{{Auth::user()->trader->id}}">
+                    <input type="hidden" name="trd{{$item->id}}">
                     <td width="100%" valign="top" style="margin-right: 5px;">
-                      
-                        <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}" placeholder="Write a comment" cols="70" style="font-size:12px; padding: 6px; resize:none;"></textarea>
-                        <span class="error" style="font-size: 10px; color:red" id="comment_error">
-                        </span>
+
+                      <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}"
+                        placeholder="Write a comment" cols="70"
+                        style="font-size:12px; padding: 6px; resize:none;"></textarea>
+                      <span class="error" style="font-size: 10px; color:red" id="comment_error">
+                      </span>
                     </td>
-                    <td rowspan="2" style="text-align: right; vertical-align: top;margin-left: 5px;padding-left: 15px;" width="25%">
-                        <button type="button" class="btn-pill btn btn-sm btn-outline-danger" id="send{{$item->id}}" >Send &nbsp;<i class="fa fa-paper-plane"></i></button><p></p>
-                      </td>
-                    </form>
+                    <td rowspan="2" style="text-align: right; vertical-align: top;margin-left: 5px;padding-left: 15px;"
+                      width="25%">
+                      <button type="button" class="btn-pill btn btn-sm btn-outline-danger" id="send{{$item->id}}">Send
+                        &nbsp;<i class="fa fa-paper-plane"></i></button>
+                      <p></p>
+                    </td>
+                  </form>
                 </tr>
-            </tbody></table>
-        </div>
+              </tbody>
+            </table>
+          </div>
       </div>
     </div>
   </div>
@@ -579,7 +587,7 @@
 </script>
 
 @foreach ($soon as $item)
-    
+
 <script type='text/javascript'>
   $(document).ready(function(){
   $("#send{{$item->id}}").click(function(){

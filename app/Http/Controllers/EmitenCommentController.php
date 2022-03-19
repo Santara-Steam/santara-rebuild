@@ -90,7 +90,7 @@ class EmitenCommentController extends Controller
         $data = $request->all();
         
         $cm = new emiten_comment();
-        $cm->trader_id = $request->trd;
+        $cm->trader_id = Auth::user()->trader->id;
         $cm->emiten_id = $request->idem;
         $cm->comment = $request->comment;
         $cm->save();
