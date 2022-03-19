@@ -2,6 +2,7 @@
 
 @section('content')
  <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/now-playing-detail.css') }}" />
 
 <div class="bg" style="background-image: url({{ asset('public/assets/images/background-now-playing@1x.png') }}">
         <div class="banner_section layout_padding">
@@ -38,75 +39,51 @@
           </div>
       </div>
 
+        <div class="container mt-5">
 
-        <div class="progres-section">
-          <div class="progres-penerbit inter-bold-alabaster-24px">
-            <span class="inter-bold-alabaster-24px">Progres Penerbit</span>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="np-timeline">
+                        <ul class="timeline d-flex justify-content-evenly">
+                            <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="22 Juni 2021">
+                            <div class="timeline-caption">
+                               <p class="timeline-text">Pra Penawaran Saham
+                            </div>
+                            <div class="timeline-caption"> <p class="timeline-text" style="margin-top: -20px;">22-06-2021</div>
+                            </li>
+                            <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="23 Juni 2021">
+                                <div class="timeline-caption">
+                                   <p class="timeline-text">Penawaran Saham
+                                </div>
+                                <div class="timeline-caption"> <p class="timeline-text" style="margin-top: -20px;">23-06-2021</div>
+                            </li>
+                            <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                                <div class="timeline-caption">
+                                  <p class="timeline-text">Pendanaan Terpenuhi
+                                </div>
+                                <div class="timeline-caption">
+                                   <p class="timeline-text" style="margin-top: -20px;">11-07-2021
+                                </div>
+                            </li>
+                            <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                                <div class="timeline-caption">
+                                   <p class="timeline-text">Penyerahan Dana
+                                </div>
+                                <div class="timeline-caption">
+                                  <p class="timeline-text" style="margin-top: -20px;">12-08-2021
+                                </div>
+                            </li>
+                            <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                                <div class="timeline-caption">
+                                    <p class="timeline-text">Pembagian Dividen</p>
+                                </div>
+                            </li>
+                       </ul>
+                    </div>
+                </div>
+            </div>
           </div>
-          <div class="overlap-group-1">
-            <div class="progres">
-              <div class="frame-1 border-6px-falu-red">
-                <div class="number inter-bold-alabaster-18px"><span class="inter-bold-alabaster-18px">1</span></div>
-              </div>
-              <div class="info-progres">
-                <div class="pra-penawaran-saham inter-medium-delta-16px">
-                  <span class="inter-medium-delta-16px">Pra Penawaran Saham</span>
-                </div>
-                <div class="date inter-normal-delta-14px"><span class="inter-normal-delta-14px">22-06-2021</span></div>
-              </div>
-            </div>
-            <div class="progres-1">
-              <div class="frame-1 border-6px-falu-red">
-                <div class="number inter-bold-alabaster-18px"><span class="inter-bold-alabaster-18px">2</span></div>
-              </div>
-              <div class="info-progres">
-                <div class="penawaran-saham inter-medium-delta-16px">
-                  <span class="inter-medium-delta-16px">Penawaran Saham</span>
-                </div>
-                <div class="date inter-normal-delta-14px"><span class="inter-normal-delta-14px">23-06-2021</span></div>
-              </div>
-            </div>
-            <div class="progres-2">
-              <div class="frame-1 border-6px-falu-red">
-                <div class="number inter-bold-alabaster-18px"><span class="inter-bold-alabaster-18px">3</span></div>
-              </div>
-              <div class="info-progres">
-                <div class="pendanaan-terpenuhi inter-medium-delta-16px">
-                  <span class="inter-medium-delta-16px">Pendanaan Terpenuhi</span>
-                </div>
-                <div class="date-1 inter-normal-delta-14px">
-                  <span class="inter-normal-delta-14px">11-07-2021</span>
-                </div>
-              </div>
-            </div>
-            <div class="progres-3">
-              <div class="frame-1 border-6px-falu-red">
-                <div class="number inter-bold-alabaster-18px"><span class="inter-bold-alabaster-18px">4</span></div>
-              </div>
-              <div class="info-progres">
-                <div class="penyerahan-dana inter-medium-delta-16px">
-                  <span class="inter-medium-delta-16px">Penyerahan Dana</span>
-                </div>
-                <div class="date-2 inter-normal-delta-14px">
-                  <span class="inter-normal-delta-14px">12-08-2021</span>
-                </div>
-              </div>
-            </div>
-            <div class="progres-4">
-              <div class="frame-1 border-6px-falu-red">
-                <div class="number inter-bold-alabaster-18px"><span class="inter-bold-alabaster-18px">5</span></div>
-              </div>
-              <div class="pembagian-deviden inter-medium-alabaster-16px">
-                <span class="inter-medium-alabaster-16px">Pembagian Deviden</span>
-              </div>
-            </div>
-            <img class="divider" src="img/divider-52@2x.png') }}" />
-            <img class="divider-1" src="{{ asset('public/assets/images/divider-112@2x.png') }}" />
-            <img class="divider-2" src="{{ asset('public/assets/images/divider-112@2x.png') }}" />
-            <img class="divider-3" src="{{ asset('public/assets/images/divider-112@2x.png') }}" />
-            <img class="divider-4" src="{{ asset('public/assets/images/divider-112@2x.png') }}" />
-          </div>
-        </div>
+            <hr>
       <!-- fashion section start -->
       <div class="fashion_section">
          <div class="container">
