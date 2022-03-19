@@ -2330,11 +2330,13 @@ input.mail_bt::placeholder {
   background-color: var(--shark);
   border-radius: 8px;
   box-shadow: 0px 1px 2px #1018280d;
-  display: flex;
-  height: 44px;
-  margin-top: 6px;
-  min-width: 304px;
-  padding: 0 16px;
+}
+
+input.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
 }
 
 .search {
@@ -2357,8 +2359,6 @@ input.mail_bt::placeholder {
   flex-direction: column;
   min-height: 70px;
   min-width: 100%;
-  margin-top: 80px;
-  margin-left: 98px;
 }
 
 .label-1 {
@@ -2375,9 +2375,20 @@ input.mail_bt::placeholder {
   box-shadow: 0px 1px 2px #1018280d;
   display: flex;
   height: 44px;
-  margin-top: 6px;
-  min-width: 416px;
-  padding: 0 16px;
+}
+option {
+  background: #1b1a1a !important;
+  color: var(--quill-gray) !important;
+}
+select {
+  background: #1b1a1a !important;
+  color: var(--quill-gray) !important;
+}
+
+// If you also want to theme your text inputs:
+input {
+  background: #1b1a1a !important;
+  color: var(--quill-gray) !important;
 }
 
 .text-1 {
@@ -2443,8 +2454,16 @@ input.mail_bt::placeholder {
   flex-direction: column;
   min-height: 70px;
   min-width: 304px;
-  margin-top: 80px;
-  margin-left: 120px;
+  margin-top: -70px;
+}
+
+.dropdown-6 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+  min-width: 100%;
+  margin-top: -70px;
 }
 
 .label-3 {
@@ -2512,7 +2531,6 @@ input.mail_bt::placeholder {
   align-items: center;
   border-radius: 8px;
   height: 44px;
-  margin-top: 4px;
 }
 .prettydropdown.loading {
   min-width: 0;

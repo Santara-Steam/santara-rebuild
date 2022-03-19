@@ -14,26 +14,21 @@
             <span class="text-mulai inter-normal-alabaster">Mereka sudah merasakan urun dana bersama kami, saatnya Bisnis Anda</span>
           </div>
         </div>
-        <div class="row r-top">
-            <div class="col-lg-4 col-sm-4">
-              <div class="filter">
-              <div class="input">
-                <div class="label inter-medium-quill-gray-14px">
-                  <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
-                </div>
-                <div class="input-1 border-1px-cape-cod">
-                  <img class="search" src="{{ asset('public/assets/images/search-9@2x.png') }}" />
-                  <div class="text inter-normal-delta-16px"><span class="inter-normal-delta-16px">Nama Bisnis</span></div> </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-4">
-                <div class="dropdown-4 kat">
-                  <div class="label-1 inter-medium-quill-gray-14px">
+        <div class="form-row" style="padding-right: 25px; padding-left: 25px;">
+        <div class="form-group col-md-4">
+          <div class="label inter-medium-quill-gray-14px">
+            <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
+          </div>
+          <input type="text" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="&#xF002;"/>
+        </div>
+        <div class="form-group col-md-3 kati">
+        </div>
+        <div class="form-group col-md-3">
+          <div class="label-1 inter-medium-quill-gray-14px">
                     <span class="inter-medium-quill-gray-14px">Kategori</span>
                   </div>
-                  <select id="sort" name="sort" class="pretty dd border-1px-cape-cod">
-                    <option value="position">Semua Kategori</option>
+          <select id="inputState" class="form-control dropdown-1">
+            <option value="position">Semua Kategori</option>
                     <option value="price" >Property</option>
                     <option value="position">Food and Beverage</option>
                     <option value="price" >Peternakan</option>
@@ -44,35 +39,19 @@
                     <option value="price" >Service/Layanan</option>
                     <option value="position">Manufaktur/Produksi</option>
                     <option value="price" >Retail/Distribusi/Logistik</option>
-                  </select>
-                  <script>
-                  $(document).ready(function() {
-                    // Initiate Pretty Dropdowns
-                    $('.pretty').prettyDropdown();
-                  });
-                  </script>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-4">
-                <div class="dropdown-6 ur">
-                  <div class="label-1 inter-medium-quill-gray-14px">
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <div class="label-1 inter-medium-quill-gray-14px">
                     <span class="inter-medium-quill-gray-14px">Urutkan</span>
                   </div>
-                  <select id="sort" name="sort" class="pretty border-1px-cape-cod">
-                    <option value="position">Terlama</option>
+          <select id="inputState" class="form-control dropdown-1">
+            <option value="position">Terlama</option>
                     <option value="price" >Terpenuhi</option>
                     <option value="position">Belum Terpenuhi</option>
-                  </select>
-                  <script>
-                  $(document).ready(function() {
-                    // Initiate Pretty Dropdowns
-                    $('.pretty').prettyDropdown();
-                  });
-                  </script>
-                </div>
-              </div>
-            </div>
+          </select>
         </div>
+      </div>
       <!-- fashion section start -->
       <div class="fashion_section">
          <div id="main_slider" class="carousel" data-ride="carousel">

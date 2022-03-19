@@ -14,46 +14,33 @@
             <span class="text-mulai inter-normal-alabaster">Yuk, mulai investasi bisnis sekarang juga!</span>
           </div>
         </div>
-        <div class="row r-top">
-            <div class="col-lg-3 col-sm-3">
-              <div class="filter">
-              <div class="input">
-                <div class="label inter-medium-quill-gray-14px">
-                  <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
-                </div>
-                <div class="input-1 border-1px-cape-cod">
-                  <img class="search" src="{{ asset('public/assets/images/search-9@2x.png') }}" />
-                  <div class="text inter-normal-delta-16px"><span class="inter-normal-delta-16px">Nama Bisnis</span></div> </div>
-                </div>
-              </div>
+        <div class="form-row" style="padding-right: 25px; padding-left: 25px;">
+        <div class="form-group col-md-3">
+          <div class="label inter-medium-quill-gray-14px">
+            <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
+          </div>
+          <input type="text" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="&#xF002;"/>
+        </div>
+        <div class="form-group col-md-2 kati">
+        </div>
+        <div class="form-group col-md-3">
+          <div class="label-1 inter-medium-quill-gray-14px">
+              <span class="inter-medium-quill-gray-14px">Nilai Pendanaan</span>
             </div>
-            <div class="col-lg-3 col-sm-3">
-              <div class="dropdown-2">
-                <div class="label-1 inter-medium-quill-gray-14px">
-                  <span class="inter-medium-quill-gray-14px">Nilai Pendanaan</span>
-                </div>
-                <select id="sort" name="sort" class="pretty border-1px-cape-cod">
-                  <option value="position">Rp500.000.000 - Rp1.000.000.000</option>
-                  <option value="price" title="Sort by Lowest Price First">Rp1.000.000.000 - Rp3.000.000.000</option>
-                  <option value="date" title="Sort by Newest First">Rp3.000.000.000 - Rp5.000.000.000</option>
-                  <option value="price" title="Sort by Lowest Price First">Rp5.000.000.000 - Rp10.000.000.000</option>
-                  <option value="date" title="Sort by Newest First">Rp10.000.000.000</option>
-                </select>
-                <script>
-                $(document).ready(function() {
-                  // Initiate Pretty Dropdowns
-                  $('.pretty').prettyDropdown();
-                });
-                </script>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-3">
-                <div class="dropdown-4">
-                  <div class="label-1 inter-medium-quill-gray-14px">
+          <select id="inputState" class="form-control dropdown-1">
+            <option value="position">Rp500.000.000 - Rp1.000.000.000</option>
+            <option value="price" title="Sort by Lowest Price First">Rp1.000.000.000 - Rp3.000.000.000</option>
+            <option value="date" title="Sort by Newest First">Rp3.000.000.000 - Rp5.000.000.000</option>
+            <option value="price" title="Sort by Lowest Price First">Rp5.000.000.000 - Rp10.000.000.000</option>
+            <option value="date" title="Sort by Newest First">Rp10.000.000.000</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <div class="label-1 inter-medium-quill-gray-14px">
                     <span class="inter-medium-quill-gray-14px">Kategori</span>
                   </div>
-                  <select id="sort" name="sort" class="pretty dd border-1px-cape-cod">
-                    <option value="position">Semua Kategori</option>
+          <select id="inputState" class="form-control dropdown-1">
+            <option value="position">Semua Kategori</option>
                     <option value="price" >Property</option>
                     <option value="position">Food and Beverage</option>
                     <option value="price" >Peternakan</option>
@@ -64,35 +51,19 @@
                     <option value="price" >Service/Layanan</option>
                     <option value="position">Manufaktur/Produksi</option>
                     <option value="price" >Retail/Distribusi/Logistik</option>
-                  </select>
-                  <script>
-                  $(document).ready(function() {
-                    // Initiate Pretty Dropdowns
-                    $('.pretty').prettyDropdown();
-                  });
-                  </script>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-3">
-                <div class="dropdown-6">
-                  <div class="label-1 inter-medium-quill-gray-14px">
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <div class="label-1 inter-medium-quill-gray-14px">
                     <span class="inter-medium-quill-gray-14px">Urutkan</span>
                   </div>
-                  <select id="sort" name="sort" class="pretty border-1px-cape-cod">
-                    <option value="position">Terlama</option>
+          <select id="inputState" class="form-control dropdown-1">
+            <option value="position">Terlama</option>
                     <option value="price" >Terpenuhi</option>
                     <option value="position">Belum Terpenuhi</option>
-                  </select>
-                  <script>
-                  $(document).ready(function() {
-                    // Initiate Pretty Dropdowns
-                    $('.pretty').prettyDropdown();
-                  });
-                  </script>
-                </div>
-              </div>
-            </div>
+          </select>
         </div>
+      </div>
       <!-- fashion section start -->
       <div class="fashion_section">
          <div id="main_slider" class="carousel" data-ride="carousel">
