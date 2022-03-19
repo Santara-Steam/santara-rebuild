@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="{{ asset('public/assets/css/responsive.css') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   @yield('style')
 
 </head>

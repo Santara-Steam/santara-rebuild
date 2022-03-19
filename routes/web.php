@@ -80,6 +80,7 @@ Route::group(['middleware' => ['auth', "verified"]], function () {
     Route::post('/subLike/{id}',[App\Http\Controllers\EmitenVoteController::class,'sublike']);
     Route::post('/subVote/{id}',[App\Http\Controllers\EmitenVoteController::class,'subvote']);
     Route::get('/getmodaldata/{id}',[App\Http\Controllers\EmitenCommentController::class,'getcomment']);
+    Route::post('/sendData/{id}',[App\Http\Controllers\EmitenCommentController::class,'sendComment']);
 });
 
 // Route::post('/cropImg', [App\Http\Controllers\EmitenController::class, 'logoCropImg'])->name('cropImg');
