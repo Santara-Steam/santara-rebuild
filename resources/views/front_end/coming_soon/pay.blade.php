@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- fashion section start -->
-<div class="fashion_section" style="margin-top: 50px;margin-bottom: -300px">
+<div class="fashion_section" style="margin-top: 50px;margin-bottom: -200px">
     <div class="container">
         <div class="section-langkah-mudah">
             <div class="langkah-mudah-daftarkan-bisnis-anda inter-normal-alabaster-36px">
