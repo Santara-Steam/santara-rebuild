@@ -205,15 +205,16 @@
               </div>
             </div>
           </div>
-          <div class="container" style="margin-bottom: -20px;">
-            <button class="btn btn-danger btn-block">Pesan Saham</button>
+          <div class="container" style="margin-bottom: -20px;margin-top: 10px;">
+            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Pesan
+              Saham</button>
           </div>
         </div>
       </div>
 
     </div>
 
-    
+
 
     <div class="actions-com">
       <a class="button-5 clike" data-id={{$emt->id}} id="clike" style="cursor: pointer;">
@@ -263,7 +264,8 @@
           </span>
         </div>
       </a>
-      <a class="button-5" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal" data-target="#modalShareButton{{$emt->id}}">
+      <a class="button-5" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
+        data-target="#modalShareButton{{$emt->id}}">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
@@ -301,27 +303,27 @@
               <div class="fashion_section_2">
                 <div id="owl-demo6" class="owl-carousel owl-theme">
                   @if ($picture[3] == 'default.png')
-                      
+
                   @else
                   <div class="item">
                     <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
                   </div>
                   @endif
                   @if ($picture[4] == 'default.png')
-                      
+
                   @else
                   <div class="item">
                     <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[4]}}" />
                   </div>
                   @endif
                   @if ($picture[5] == 'default.png')
-                      
+
                   @else
                   <div class="item">
                     <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[5]}}" />
                   </div>
                   @endif
-                  
+
                 </div>
               </div>
             </div>
@@ -331,6 +333,66 @@
     </div>
 
   </div>
+</div>
+
+<input type="hidden" name="detail-price" id="detail-price" value="{{$emt->price}}">
+
+<div class="modal fade" id="beliSahamModal" tabindex="-1" aria-labelledby="beliSahamModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <img src="{{ asset('public/upload') }}/{{$picture[1]}}"
+        onerror="this.onerror=null;this.src='https://santara.co.id//assets/images/error/no-image-user.png';"
+        height="200px">
+      <div class="p-4 modal-body beli-saham-modal">
+        <h3 class="text-danger font-poppins" style="font-weight: 800;">{{$emt->trademark}}</h3>
+        <h6>{{$emt->company_name}}</h6>
+        <p><span class=" font-weight-lighter">Minimum Pembelian</span> &nbsp;: &nbsp; Rp {{number_format(round($emt->price* 100,0),0,',','.') }} - 100
+          Lembar</p>
+        <hr>
+        <form action="{{url('pesan_saham/store_user')}}" method="POST"
+        enctype="multipart/form-data">
+    {{ csrf_field() }}
+
+        <input type="hidden" name="emiten_id" value="{{$emt->id}}">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group row d-flex justify-content-center text-center">
+                <label for="jumlah_saham" class="mb-2 text-bold col-12">Jumlah Saham yang akan dibeli dalam kelipatan
+                  100 lembar </label>
+                <div class="input-group mb-3 text-center" style="width:80%">
+                  <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minus()">-</span>
+                  <input type="text" class="form-control text-center number-only-phone" style="background-color: #fff;"
+                    id="jumlah_saham"  value="0" disabled aria-label="Lembar saham">
+                    <input type="hidden" id="lembar_saham" name="lembar_saham" >
+                  <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plus()">+</span>
+                </div>
+                <span class="error invalid-feedback text-center" style="display:none" id="alertmaks"></span>
+              </div>
+              <div class="mt-4 text-center row d-flex justify-content-center form-group">
+                <label for="total_harga_saham" class="mb-2 text-bold">Total Harga Saham (IDR)</label>
+                <input class="form-control text-center" type="text" id="total_harga_saham" style="width: 80%;"
+                  placeholder="Rp 0" disabled>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 row">
+            <div class="col-lg-12">
+              <div class="gap-2 d-grid">
+                <button type="submit" id="btnbeli" class="btn btn-danger btn-block"><i class="fa fa-book"></i>
+                  Pesan Saham</button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 
@@ -395,69 +457,83 @@
           </div>
           @endguest
 
+      </div>
     </div>
+
   </div>
 
-</div>
-
-<div class="modal fade" id="modalShareButton{{$emt->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{$emt->id}}"
-  aria-hidden="true">
-<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-    <div class="p-2 modal-content">
+  <div class="modal fade" id="modalShareButton{{$emt->id}}" tabindex="-1" role="dialog"
+    aria-labelledby="modalLabel{{$emt->id}}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="p-2 modal-content">
         <div class="modal-header" style="border-bottom: none;">
         </div>
         <div class="text-center modal-body ">
-            <div class="d-flex justify-content-evenly mb-5">
-                <div class="container  text-center d-flex justify-content-center" style="border-top: solid #D9D9D9;">
-                    <h1 class="ff-a fs-24" style="font-weight:800;text-transform:uppercase; padding:0 15px 0 15px; margin-top:-20px; width:150px; background-color:#fff;color:black;font-family: inherit;">Share</h1>
-                </div>
+          <div class="d-flex justify-content-evenly mb-5">
+            <div class="container  text-center d-flex justify-content-center" style="border-top: solid #D9D9D9;">
+              <h1 class="ff-a fs-24"
+                style="font-weight:800;text-transform:uppercase; padding:0 15px 0 15px; margin-top:-20px; width:150px; background-color:#fff;color:black;font-family: inherit;">
+                Share</h1>
             </div>
-            <div class="row mt-3 mb-3 d-flex justify-content-center ">
-                <!-- <div class="col-4 col-md-2">
+          </div>
+          <div class="row mt-3 mb-3 d-flex justify-content-center ">
+            <!-- <div class="col-4 col-md-2">
                     <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
                     <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
                 </div> -->
-                <div class="col-4 col-md-2">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}" id="shareFacebook" target="_blank" style="text-decoration: none;">
-                        <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/facebook.png" class="lazyload">
-                        <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
-                    </a>
-                </div>
-                <div class="col-4 col-md-2">
-                    <a href="https://twitter.com/intent/tweet?url=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTwitter" style="text-decoration: none;" target="_blank">
-                        <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/twitter.png" class="lazyload">
-                        <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
-                    </a>
-                </div>
-                <div class="col-4 col-md-2">
-                    <a href="https://telegram.me/share/url?url=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTelegram" target="_blank" style="text-decoration: none;">
-                        <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/telegram.png" class="lazyload">
-                        <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
-                    </a>
-                </div>
-                <!-- <div class="col-4 col-md-2">
+            <div class="col-4 col-md-2">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}"
+                id="shareFacebook" target="_blank" style="text-decoration: none;">
+                <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/facebook.png"
+                  class="lazyload">
+                <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
+              </a>
+            </div>
+            <div class="col-4 col-md-2">
+              <a href="https://twitter.com/intent/tweet?url=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
+                id="shareTwitter" style="text-decoration: none;" target="_blank">
+                <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/twitter.png"
+                  class="lazyload">
+                <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
+              </a>
+            </div>
+            <div class="col-4 col-md-2">
+              <a href="https://telegram.me/share/url?url=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
+                id="shareTelegram" target="_blank" style="text-decoration: none;">
+                <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/telegram.png"
+                  class="lazyload">
+                <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
+              </a>
+            </div>
+            <!-- <div class="col-4 col-md-2">
                     <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
                     <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
                 </div> -->
-                <div class="col-4 col-md-2">
-                    <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}" id="shareWhatsapp" target="_blank" style="text-decoration: none;">
-                        <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/whatsapp.png" class="lazyload">
-                        <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
-                    </a>
-                </div>
+            <div class="col-4 col-md-2">
+              <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}"
+                id="shareWhatsapp" target="_blank" style="text-decoration: none;">
+                <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/whatsapp.png"
+                  class="lazyload">
+                <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
+              </a>
             </div>
-            <div class="input-group input-group-lg mb-3">
-                <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled="" style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username" aria-describedby="basic-addon2" placeholder="https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}">
-                <span id="copy-link" class="input-group-text" style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer" onclick="shareButton('https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}')">Copy Link</span>
-            </div>
+          </div>
+          <div class="input-group input-group-lg mb-3">
+            <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled=""
+              style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username"
+              aria-describedby="basic-addon2" placeholder="https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}">
+            <span id="copy-link" class="input-group-text"
+              style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer"
+              onclick="shareButton('https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}')">Copy Link</span>
+          </div>
         </div>
 
+      </div>
     </div>
-</div>
-@endsection
-@section('js')
-<script>
-  $(document).ready(function(){
+    @endsection
+    @section('js')
+    <script>
+      $(document).ready(function(){
       $('#clike').click(function(){
          
           var id = $(this).data('id');
@@ -497,9 +573,9 @@
       
       
 });
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+    </script>
+    <script type='text/javascript'>
+      $(document).ready(function(){
     $('#slike').click(function(){
       var id = $(this).data('id');
           let _token   = $('meta[name="csrf-token"]').attr('content');
@@ -535,10 +611,10 @@
       
       
 });
-</script>
+    </script>
 
-<script type='text/javascript'>
-  $(document).ready(function(){
+    <script type='text/javascript'>
+      $(document).ready(function(){
       $('#cvote').click(function(){
          
           var id = $(this).data('id');
@@ -576,9 +652,9 @@
       })
       
 });
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+    </script>
+    <script type='text/javascript'>
+      $(document).ready(function(){
       $('#svote').click(function(){
          
           var id = $(this).data('id');
@@ -616,9 +692,9 @@
       })
       
 });
-</script>
-<script>
-  function shareButton(url) {
+    </script>
+    <script>
+      function shareButton(url) {
       navigator.clipboard.writeText(url);
       // alert("Copied the text: " + url);
       toastr.success("Url Berhasil Di Copy!!");
@@ -652,9 +728,9 @@
       }
 
   }
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+    </script>
+    <script type='text/javascript'>
+      $(document).ready(function(){
 
       $('#cmt').click(function(){
          
@@ -676,10 +752,10 @@
           });
       });
 });
-</script>
+    </script>
 
-<script type='text/javascript'>
-  $(document).ready(function(){
+    <script type='text/javascript'>
+      $(document).ready(function(){
   $("#send{{$emt->id}}").click(function(){
       // event.preventDefault();
 
@@ -723,8 +799,119 @@
        });
   });
 });
-</script>
-@endsection
+    </script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+      },
+      autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+      },
+      breakpoints: {
+          "@0.00": {
+              slidesPerView: 1,
+              spaceBetween: 10,
+          },
+          "@0.75": {
+              slidesPerView: 2,
+              spaceBetween: 20,
+          },
+          "@1.00": {
+              slidesPerView: 3,
+              spaceBetween: 40,
+          },
+          "@1.50": {
+              slidesPerView: 3,
+              spaceBetween: 50,
+          },
+      },
+  });
 
-@section('style')
-@endsection
+  function checkValidasi(total) {
+      const total_price = document.getElementById("total_harga_saham");
+      const detail_price = document.getElementById("detail-price");
+      const alertmaks = document.getElementById("alertmaks");
+
+      total_price.value = parseInt(total) * parseInt(detail_price.value);
+      if (!isNaN(total_price.value) && total_price.value > 0) {
+          btnbeli.disabled = false;
+          var invest_value = parseInt(total);
+          var maksimal_token_value = parseInt(
+              maksimal_token.innerHTML.replace(/\./g, "")
+          );
+          var minimum_invest_value = parseInt(
+              minimum_invest.innerHTML.replace(/\./g, "")
+          );
+
+          if (invest_value > maksimal_token_value) {
+              alertmaks.innerHTML = `<i class="la la-exclamation-triangle"></i> Maksimal <strong>${maksimal_token.innerHTML} Lembar</strong>`;
+              alertmaks.style.display = "block";
+              $('#jumlah_saham').addClass('is-invalid')
+              total_price.value = 0;
+              btnbeli.disabled = true;
+          } else if (maksimal_token_value > minimum_invest_value) {
+              if (invest_value >= minimum_invest_value) {
+                  alertmaks.style.display = "none";
+                  btnbeli.disabled = false;
+                  $('#jumlah_saham').addClass('is-valid')
+                  $('#jumlah_saham').removeClass('is-invalid')
+
+              } else {
+                  alertmaks.innerHTML = `<i class="la la-exclamation-triangle"></i> Minimal <strong>${minimum_invest.innerHTML} Lembar</strong>`;
+                  alertmaks.style.display = "block";
+                  $('#jumlah_saham').addClass('is-invalid')
+                  btnbeli.disabled = true;
+                  total_price.value = 0;
+              }
+          } else {
+              alertmaks.style.display = "none";
+              $('#jumlah_saham').addClass('is-valid')
+              $('#jumlah_saham').removeClass('is-invalid')
+          }
+
+          total = formatNumber(total);
+          total_price.value = formatNumber(
+              parseInt(total_price.value)
+          );
+      } else {
+          total_price.value = 0;
+      }
+  };
+
+  const kelipatan = 100;
+
+  function minus() {
+      let jumlah = $('#jumlah_saham').val();
+      if (jumlah == '') {
+
+      }
+      jumlah.replace(/^0+/, "");
+      jumlah.replace(/\./g, "");
+      total = parseInt(jumlah) - parseInt(kelipatan)
+      if (parseInt(jumlah) == 100) {
+          $('#jumlah_saham').val(100)
+          $('#lembar_saham').val(100);
+      } else {
+          $('#jumlah_saham').val(total)
+          $('#lembar_saham').val(total);
+      }
+      checkValidasi(total)
+  }
+
+  function plus() {
+      let jumlah = $('#jumlah_saham').val();
+      total = parseInt(jumlah) + parseInt(kelipatan);
+      $('#jumlah_saham').val(total)
+      $('#lembar_saham').val(total);
+      checkValidasi(total)
+  }
+    </script>
+    @endsection
+
+    @section('style')
+    @endsection

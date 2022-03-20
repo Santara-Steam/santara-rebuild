@@ -53,6 +53,42 @@ class BookSahamController extends Controller
         $bs->save();
     }
 
+    public function store_user(Request $request){
+
+        if($request->hasFile("bukti_transfer")){
+            $BuktiTransferNameWithExt = $request->file('bukti_transfer')->getClientOriginalName() ;
+            $BuktiTransferFileName = pathinfo ($BuktiTransferNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('bukti_transfer')->getClientoriginalExtension();
+            $BuktiTransferFileSave = 'bukti_transfer_'.time().'.'.$extension;
+            $path = $request->file('bukti_transfer')->storeAs('public/bukti_transfer',$BuktiTransferFileSave) ;
+        }else{
+            $BuktiTransferFileSave = '-';
+        }
+
+        $emiten = emiten::where('id',$request->get('emiten_id'))->first();
+
+        $bs = new book_saham;
+        $bs->order_id = 'PS'.time();
+        $bs->trader_id = Auth::user()->trader->id;
+        $bs->emiten_id = $request->get('emiten_id');
+        $bs->lembar_saham = $request->get('lembar_saham');
+        $bs->total_amount = $request->get('lembar_saham')*$emiten->price;
+        $bs->bukti_tranfer = $BuktiTransferFileSave;
+        $bs->save();
+
+        $notif = array(
+            'message' => 'Pesan Saham Berhasil!, Silahkan Transfer ke Rekening yang Tertera',
+            'alert-type' => 'success'
+        );
+        return redirect('upload_transfer/'.$bs->id)->with($notif);
+    }
+
+    public function pay($id){
+        $trx = book_saham::where('id',$id)->first();
+
+        return view('front_end.coming_soon.pay',compact('trx'));
+    }
+
     public function detail($id){
 
         $book = book_saham::where('id',$id)->first();

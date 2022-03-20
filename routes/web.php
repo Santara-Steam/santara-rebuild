@@ -59,6 +59,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 
 Route::get('/', [HomeController::class, 'index']);
+Route::post('/pesan_saham/store_user',[App\Http\Controllers\BookSahamController::class, 'store_user']);
+Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);
 
 
 
