@@ -73,7 +73,7 @@
 
                                         <input type="file" name="bukti_transfer" id="" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-4 text-center row">
+                                    <div class="col-lg-4 text-center">
                                             <button type="submit" class="btn btn-danger btn-block">Send</button>
                                     </div>
                                 </div>
