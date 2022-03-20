@@ -147,10 +147,40 @@
                 </div>
                 <li class="nav-item li-auth">
                   <div class="d-inline-block inter-medium-white-14px navbar-nav" style="font-size: 12px;">
-                    <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px"
-                      href="{{ route('login') }}">Masuk</a>
-                    <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px"
-                      href="{{ route('register') }}">Daftar</a>
+                    @if(! Auth::check())
+                    <form class="form-inline my-2 my-lg-0">
+                      <div class="inter-medium-white-14px">
+                        <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ route('login') }}">Masuk</a>
+                        <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px"
+                          href="{{ route('register') }}">Daftar</a>
+                      </div>
+                    </form>
+                    @else
+                      @if (Auth::user()->role_id == 1)
+                      <div class="inter-medium-white-14px">
+                        <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/admin') }}">Dashboard</a>
+                        <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" style="margin-top: 10px;" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">Logout</a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                        </form>
+                      </div>
+                      @elseif(Auth::user()->role_id == 2)
+                        <div class="inter-medium-white-14px">
+                          <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/user') }}">Dashboard</a>
+                          <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" style="margin-top: 10px;" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"">Logout</a>
+                        
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                        </div>
+                      @endif
+
+                    @endif
                   </div>
                 </li>
               </ul>
