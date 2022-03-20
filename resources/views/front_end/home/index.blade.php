@@ -11,9 +11,8 @@
             <span class="text-urun inter-bold-alabaster">Urun Dana Investasi Bisnis UKM</span>
           </div>
           <div class="tx-sb inter-normal-alabaster-18px">
-            <span class="text-sb inter-normal-alabaster">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Quisque tincidunt auctor mauris, at laoreet
-              arcu tincidunt.</span>
+            <span class="text-sb inter-normal-alabaster">Platform Equity Crowdfunding pertama yang berizin dan diawasi Otoritas Jasa Keuangan berdasarkan Surat Keputusan Nomor:
+KEP-59/D.04/2019.</span>
           </div>
         </div>
         <div class="actions">
@@ -28,7 +27,7 @@
 <!-- banner bg main end -->
 <!-- fashion section start -->
 <div class="fashion_section" style="margin-top: -70px;">
-  <div id="main_slider" class="carousel slide" data-ride="carousel">
+  <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="title-dan-link-button-1 w3-red">
         <div class="now-playing inter-bold-alabaster-24px">
@@ -163,7 +162,7 @@
 <!-- fashion section end -->
 <!-- electronic section start -->
 <div class="fashion_section">
-  <div id="electronic_main_slider" class="carousel slide" data-ride="carousel">
+  <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="title-dan-link-button-1 w3-red">
         <div class="now-playing inter-bold-alabaster-24px">
@@ -502,61 +501,18 @@
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" style="font-size: 20px;">{{$item->trademark}}</h5>
-        <button type="button" class="close" data-dismiss="modal"  aria-label="Close">
-          <span aria-hidden="true" style="padding-right: 12px;">×</span>
+        <h5 class="modal-title">Comment {{$item->id}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body comm">
 
       </div>
-      @guest
-
-      @else
-      <div class="modal-footer container">
-        {{-- <form action="{{url('sendData')}}/{{$item->id}}" method="POST" enctype="multipart/form-data">
-          {{ csrf_field() }}
-          <div class="form-group">
-            <textarea name="comment" class="form-control" id="" cols="10" rows="10"></textarea>
-          </div>
-          <button type="button" id="send" class="btn btn-primary send">Send</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </form> --}}
-        {{-- <form action="{{url('sendData')}}/{{$item->id}}" method="POST" enctype="multipart/form-data"> --}}
-
-          {{-- <input name="comment{{$item->id}}"> --}}
-          {{-- <textarea name="comment{{$item->id}}" id="" cols="30" rows="10"></textarea> --}}
-          {{-- <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}"
-            placeholder="Write a comment" style="font-size:12px; padding: 6px; resize:none;"></textarea>
-          <button type="button" class="btn btn-primary" id="send{{$item->id}}">send</button> --}}
-          {{-- <div class="modal-footer "> --}}
-            <table>
-              <tbody>
-                <tr>
-                  <form id="ajaxform{{$item->id}}">
-                    {{-- {{ csrf_field() }} --}}
-                    <input type="hidden" name="idem{{$item->id}}" value="{{$item->id}}">
-                    <input type="hidden" name="trd{{$item->id}}">
-                    <td width="100%" valign="top" style="margin-right: 5px;">
-
-                      <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}"
-                        placeholder="Write a comment" cols="70"
-                        style="font-size:12px; padding: 6px; resize:none;"></textarea>
-                      <span class="error" style="font-size: 10px; color:red" id="comment_error">
-                      </span>
-                    </td>
-                    <td rowspan="2" style="text-align: right; vertical-align: top;margin-left: 5px;padding-left: 15px;"
-                      width="25%">
-                      <button type="button" class="btn-pill btn btn-sm btn-outline-danger" id="send{{$item->id}}">Send
-                        &nbsp;<i class="fa fa-paper-plane"></i></button>
-                      <p></p>
-                    </td>
-                  </form>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          @endguest
+      <div class="modal-footer">
+        <textarea name="comment" class="form-control" id="" cols="30" rows="10"></textarea><br>
+        <button type="button" id="crop" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -624,7 +580,6 @@
 
 @endsection
 @section('js')
-
 <script type='text/javascript'>
   $(document).ready(function(){
 
@@ -698,6 +653,4 @@
   });
   });
 </script>
-@endforeach
-
 @endsection
