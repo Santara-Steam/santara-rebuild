@@ -1064,7 +1064,7 @@ a:hover {
 .fashion_section {
     width: 100%;
     float: left;
-    padding-bottom: 150px;
+    padding-bottom: 60px;
 }
 
 .title-dan-link-button-1 {
@@ -1663,6 +1663,28 @@ input.mail_bt::placeholder {
   width: 100%;
 }
 .tags {
+  align-items: center;
+  background-color: var(--falu-red);
+  border-radius: 10px;
+  display: flex;
+  height: 20px;
+  min-width: 156px;
+  padding: 0 8px;
+}
+
+
+
+.content2 {
+  align-items: center;
+  background-color: var(--shark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 16px 0;
+  width: 100%;
+}
+
+.tags2 {
   align-items: center;
   background-color: var(--falu-red);
   border-radius: 10px;
