@@ -144,7 +144,7 @@ class BookSahamController extends Controller
         }
 
         $book = book_saham::where('id',$id)->first();
-        $book->bukti_tranfer = $BuktiTransferFileSave;
+        
         if ($book->trader_id != Auth::user()->trader->id) {
             $notif = array(
                 'message' => 'Bukan Transaksi Anda Brader Wkwkw',
@@ -159,6 +159,7 @@ class BookSahamController extends Controller
                 );
                 return redirect()->back()->with($notif);
             }else{
+                $book->bukti_tranfer = $BuktiTransferFileSave;
                 $book->save();
                 $notif = array(
                     'message' => 'Bukti Transfer Berhasil Di Upload',
