@@ -263,7 +263,7 @@
           </span>
         </div>
       </a>
-      <a class="button-5" style="cursor: pointer;">
+      <a class="button-5" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal" data-target="#modalShareButton{{$emt->id}}">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
@@ -331,6 +331,62 @@
     </div>
 
   </div>
+</div>
+
+
+<div class="modal fade" id="modalShareButton{{$emt->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{$emt->id}}"
+  aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="p-2 modal-content">
+        <div class="modal-header" style="border-bottom: none;">
+        </div>
+        <div class="text-center modal-body ">
+            <div class="d-flex justify-content-evenly mb-5">
+                <div class="container  text-center d-flex justify-content-center" style="border-top: solid #D9D9D9;">
+                    <h1 class="ff-a fs-24" style="font-weight:800;text-transform:uppercase; padding:0 15px 0 15px; margin-top:-20px; width:150px; background-color:#fff;color:black;font-family: inherit;">Share</h1>
+                </div>
+            </div>
+            <div class="row mt-3 mb-3 d-flex justify-content-center ">
+                <!-- <div class="col-4 col-md-2">
+                    <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
+                    <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
+                </div> -->
+                <div class="col-4 col-md-2">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}" id="shareFacebook" target="_blank" style="text-decoration: none;">
+                        <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/facebook.png" class="lazyload">
+                        <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2">
+                    <a href="https://twitter.com/intent/tweet?url=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTwitter" style="text-decoration: none;" target="_blank">
+                        <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/twitter.png" class="lazyload">
+                        <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2">
+                    <a href="https://telegram.me/share/url?url=https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTelegram" target="_blank" style="text-decoration: none;">
+                        <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/telegram.png" class="lazyload">
+                        <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
+                    </a>
+                </div>
+                <!-- <div class="col-4 col-md-2">
+                    <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
+                    <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
+                </div> -->
+                <div class="col-4 col-md-2">
+                    <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}" id="shareWhatsapp" target="_blank" style="text-decoration: none;">
+                        <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/whatsapp.png" class="lazyload">
+                        <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
+                    </a>
+                </div>
+            </div>
+            <div class="input-group input-group-lg mb-3">
+                <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled="" style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username" aria-describedby="basic-addon2" placeholder="https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}">
+                <span id="copy-link" class="input-group-text" style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer" onclick="shareButton('https://dev.santara.co.id/detail-coming-soon/{{$emt->id}}')">Copy Link</span>
+            </div>
+        </div>
+
+    </div>
 </div>
 @endsection
 @section('js')
@@ -494,6 +550,42 @@
       })
       
 });
+</script>
+<script>
+  function shareButton(url) {
+      navigator.clipboard.writeText(url);
+      // alert("Copied the text: " + url);
+      toastr.success("Url Berhasil Di Copy!!");
+  }
+
+  function share(url, message) {
+
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          // some code..
+          const shareData = {
+              title: message,
+              text: 'Temukan peluang investasi berikut di Santara! ' + message,
+              url: url
+          }
+
+          try {
+              navigator.share(shareData)
+              resultPara.textContent = 'MDN shared successfully'
+          } catch (err) {
+              resultPara.textContent = 'Error: ' + err
+          }
+      } else {
+
+          $('#shareWhatsapp').attr('href', "https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + url);
+          $('#shareTelegram').attr('href', "https://telegram.me/share/url?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
+          $('#shareFacebook').attr('href', "https://www.facebook.com/sharer/sharer.php?u=" + url);
+          $('#shareTwitter').attr('href', "https://twitter.com/intent/tweet?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
+          $('#copy-link').attr('onclick', "shareButton('" + url + "')");
+          $('#inputShareLink').attr('placeholder', url);
+          $('#modalShareButton').modal('show');
+      }
+
+  }
 </script>
 @endsection
 

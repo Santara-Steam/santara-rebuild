@@ -502,19 +502,62 @@ KEP-59/D.04/2019.</span>
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Comment {{$item->id}}</h5>
+        <h5 class="modal-title" style="font-size: 20px;">{{$item->trademark}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
+          <span aria-hidden="true" style="padding-right: 12px;">×</span>
         </button>
       </div>
       <div class="modal-body comm">
 
       </div>
-      <div class="modal-footer">
-        <textarea name="comment" class="form-control" id="" cols="30" rows="10"></textarea><br>
-        <button type="button" id="crop" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+      @guest
+
+      @else
+      <div class="modal-footer container">
+        {{-- <form action="{{url('sendData')}}/{{$item->id}}" method="POST" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <textarea name="comment" class="form-control" id="" cols="10" rows="10"></textarea>
+          </div>
+          <button type="button" id="send" class="btn btn-primary send">Send</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form> --}}
+        {{-- <form action="{{url('sendData')}}/{{$item->id}}" method="POST" enctype="multipart/form-data"> --}}
+
+          {{-- <input name="comment{{$item->id}}"> --}}
+          {{-- <textarea name="comment{{$item->id}}" id="" cols="30" rows="10"></textarea> --}}
+          {{-- <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}"
+            placeholder="Write a comment" style="font-size:12px; padding: 6px; resize:none;"></textarea>
+          <button type="button" class="btn btn-primary" id="send{{$item->id}}">send</button> --}}
+          {{-- <div class="modal-footer "> --}}
+            <table>
+              <tbody>
+                <tr>
+                  <form id="ajaxform{{$item->id}}">
+                    {{-- {{ csrf_field() }} --}}
+                    <input type="hidden" name="idem{{$item->id}}" value="{{$item->id}}">
+                    <input type="hidden" name="trd{{$item->id}}">
+                    <td width="100%" valign="top" style="margin-right: 5px;">
+
+                      <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}"
+                        placeholder="Write a comment" cols="70"
+                        style="font-size:12px; padding: 6px; resize:none;"></textarea>
+                      <span class="error" style="font-size: 10px; color:red" id="comment_error">
+                      </span>
+                    </td>
+                    <td rowspan="2" style="text-align: right; vertical-align: top;margin-left: 5px;padding-left: 15px;"
+                      width="25%">
+                      <button type="button" class="btn-pill btn btn-sm btn-outline-danger" id="send{{$item->id}}">Send
+                        &nbsp;<i class="fa fa-paper-plane"></i></button>
+                      <p></p>
+                    </td>
+                  </form>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          @endguest
+
     </div>
   </div>
 
