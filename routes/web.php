@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () 
 
     Route::post('/upload_bukti/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti']);
 });
+Route::post('/upload_bukti_user/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti_user']);
 Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'indexadmin']);
     Route::get('/admin/emiten', [App\Http\Controllers\EmitenController::class, 'index']);

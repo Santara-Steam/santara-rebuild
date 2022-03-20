@@ -206,8 +206,13 @@
             </div>
           </div>
           <div class="container" style="margin-bottom: -20px;margin-top: 10px;">
+            @guest
+            <a href="{{route('login')}}" class="btn btn-danger btn-block">Pesan Saham</a>
+
+            @else
             <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Pesan
               Saham</button>
+            @endguest
           </div>
         </div>
       </div>
@@ -335,6 +340,8 @@
   </div>
 </div>
 
+
+</div>
 <input type="hidden" name="detail-price" id="detail-price" value="{{$emt->price}}">
 
 <div class="modal fade" id="beliSahamModal" tabindex="-1" aria-labelledby="beliSahamModalLabel" aria-hidden="true">
@@ -346,14 +353,14 @@
       <div class="p-4 modal-body beli-saham-modal">
         <h3 class="text-danger font-poppins" style="font-weight: 800;">{{$emt->trademark}}</h3>
         <h6>{{$emt->company_name}}</h6>
-        <p><span class=" font-weight-lighter">Minimum Pembelian</span> &nbsp;: &nbsp; Rp {{number_format(round($emt->price* 100,0),0,',','.') }} - 100
+        <p><span class=" font-weight-lighter">Minimum Pembelian</span> &nbsp;: &nbsp; Rp
+          {{number_format(round($emt->price* 100,0),0,',','.') }} - 100
           Lembar</p>
         <hr>
-        <form action="{{url('pesan_saham/store_user')}}" method="POST"
-        enctype="multipart/form-data">
-    {{ csrf_field() }}
+        <form action="{{url('pesan_saham/store_user')}}" method="POST" enctype="multipart/form-data">
+          {{ csrf_field() }}
 
-        <input type="hidden" name="emiten_id" value="{{$emt->id}}">
+          <input type="hidden" name="emiten_id" value="{{$emt->id}}">
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group row d-flex justify-content-center text-center">
@@ -362,8 +369,8 @@
                 <div class="input-group mb-3 text-center" style="width:80%">
                   <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minus()">-</span>
                   <input type="text" class="form-control text-center number-only-phone" style="background-color: #fff;"
-                    id="jumlah_saham"  value="0" disabled aria-label="Lembar saham">
-                    <input type="hidden" id="lembar_saham" name="lembar_saham" >
+                    id="jumlah_saham" value="0" disabled aria-label="Lembar saham">
+                  <input type="hidden" id="lembar_saham" name="lembar_saham">
                   <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plus()">+</span>
                 </div>
                 <span class="error invalid-feedback text-center" style="display:none" id="alertmaks"></span>
@@ -530,10 +537,12 @@
 
       </div>
     </div>
-    @endsection
-    @section('js')
-    <script>
-      $(document).ready(function(){
+    </div>
+
+@endsection
+@section('js')
+<script>
+  $(document).ready(function(){
       $('#clike').click(function(){
          
           var id = $(this).data('id');
@@ -573,9 +582,9 @@
       
       
 });
-    </script>
-    <script type='text/javascript'>
-      $(document).ready(function(){
+</script>
+<script type='text/javascript'>
+  $(document).ready(function(){
     $('#slike').click(function(){
       var id = $(this).data('id');
           let _token   = $('meta[name="csrf-token"]').attr('content');
@@ -611,10 +620,10 @@
       
       
 });
-    </script>
+</script>
 
-    <script type='text/javascript'>
-      $(document).ready(function(){
+<script type='text/javascript'>
+  $(document).ready(function(){
       $('#cvote').click(function(){
          
           var id = $(this).data('id');
@@ -652,9 +661,9 @@
       })
       
 });
-    </script>
-    <script type='text/javascript'>
-      $(document).ready(function(){
+</script>
+<script type='text/javascript'>
+  $(document).ready(function(){
       $('#svote').click(function(){
          
           var id = $(this).data('id');
@@ -692,9 +701,9 @@
       })
       
 });
-    </script>
-    <script>
-      function shareButton(url) {
+</script>
+<script>
+  function shareButton(url) {
       navigator.clipboard.writeText(url);
       // alert("Copied the text: " + url);
       toastr.success("Url Berhasil Di Copy!!");
@@ -728,9 +737,9 @@
       }
 
   }
-    </script>
-    <script type='text/javascript'>
-      $(document).ready(function(){
+</script>
+<script type='text/javascript'>
+  $(document).ready(function(){
 
       $('#cmt').click(function(){
          
@@ -752,10 +761,10 @@
           });
       });
 });
-    </script>
+</script>
 
-    <script type='text/javascript'>
-      $(document).ready(function(){
+<script type='text/javascript'>
+  $(document).ready(function(){
   $("#send{{$emt->id}}").click(function(){
       // event.preventDefault();
 
@@ -799,9 +808,9 @@
        });
   });
 });
-    </script>
-    <script>
-      var swiper = new Swiper(".mySwiper", {
+</script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
       slidesPerView: 3,
       spaceBetween: 30,
       pagination: {
@@ -910,8 +919,8 @@
       $('#lembar_saham').val(total);
       checkValidasi(total)
   }
-    </script>
-    @endsection
+</script>
+@endsection
 
-    @section('style')
-    @endsection
+@section('style')
+@endsection

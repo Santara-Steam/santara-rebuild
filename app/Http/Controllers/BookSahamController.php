@@ -124,6 +124,27 @@ class BookSahamController extends Controller
         );
         return redirect('/user/pesan_saham')->with($notif);
     }
+    public function upload_bukti_user(Request $request,$id){
+        if($request->hasFile("bukti_transfer")){
+            $BuktiTransferNameWithExt = $request->file('bukti_transfer')->getClientOriginalName() ;
+            $BuktiTransferFileName = pathinfo ($BuktiTransferNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('bukti_transfer')->getClientoriginalExtension();
+            $BuktiTransferFileSave = 'bukti_transfer_'.time().'.'.$extension;
+            $path = $request->file('bukti_transfer')->storeAs('public/bukti_transfer',$BuktiTransferFileSave) ;
+        }else{
+            $BuktiTransferFileSave = '-';
+        }
+
+        $book = book_saham::where('id',$id)->first();
+        $book->bukti_tranfer = $BuktiTransferFileSave;
+        $book->save();
+
+        $notif = array(
+            'message' => 'Bukti Transfer Berhasil Di Upload',
+            'alert-type' => 'success'
+        );
+        return redirect('detail-coming-soon/'.$book->emiten_id)->with($notif);
+    }
 
     public function approve($id){
         $book = book_saham::where('id',$id)->first();

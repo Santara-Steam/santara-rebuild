@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- fashion section start -->
-<div class="fashion_section" style="margin-top: 50px;">
+<div class="fashion_section" style="margin-top: 50px;margin-bottom: -300px">
     <div class="container">
         <div class="section-langkah-mudah">
             <div class="langkah-mudah-daftarkan-bisnis-anda inter-normal-alabaster-36px">
@@ -13,37 +13,37 @@
                 <div class="row" style="margin-top: 40px">
                     <div class="col-md-3">
                         <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                            <div class="card-header">BCA</div>
-                            <div class="card-body c-margin-t-30">
+                            <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                            <div class="card-body " style="padding: 20px 0px 10px 0px;">
                                 <h2 class="c-margin-b-20" style="color: white;font-family: Arial, Helvetica, sans-serif;"> 12313-123123-12313123</h2>
-                                <p class="card-text">A.n. Santara Santara Santara</p>
+                                <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                            <div class="card-header">BCA</div>
-                            <div class="card-body c-margin-t-30">
+                            <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                            <div class="card-body " style="padding: 20px 0px 10px 0px;">
                                 <h2 class="c-margin-b-20" style="color: white;font-family: Arial, Helvetica, sans-serif;"> 12313-123123-12313123</h2>
-                                <p class="card-text">A.n. Santara Santara Santara</p>
+                                <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                            <div class="card-header">BCA</div>
-                            <div class="card-body c-margin-t-30">
+                            <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                            <div class="card-body " style="padding: 20px 0px 10px 0px;">
                                 <h2 class="c-margin-b-20" style="color: white;font-family: Arial, Helvetica, sans-serif;"> 12313-123123-12313123</h2>
-                                <p class="card-text">A.n. Santara Santara Santara</p>
+                                <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                            <div class="card-header">BCA</div>
-                            <div class="card-body c-margin-t-30">
+                            <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                            <div class="card-body " style="padding: 20px 0px 10px 0px;">
                                 <h2 class="c-margin-b-20" style="color: white;font-family: Arial, Helvetica, sans-serif;"> 121234232-4324234234</h2>
-                                <p class="card-text">A.n. Santara Santara Santara</p>
+                                <p class="card-text" style="margin: 0;" >A.n. Santara Santara Santara</p>
                             </div>
                         </div>
                     </div>
@@ -58,24 +58,22 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
-                        <form  method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
+                        <form  action="{{url('/upload_bukti_user')}}/{{$trx->id}}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="form-group"    style="margin-top: -50px;">
                                 <div class="row">
-                                    <div class="col-lg-8 text-center">
-                                        <label for="">Select file proof of payment</label>
+                                    <div class="col-lg-12 text-center">
+                                        <label for="">Upload Bukti Transfer</label>
                                     </div>
-                                    <div class="col-lg-4"></div>
+                                    {{-- <div class="col-lg-4"></div> --}}
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-8">
 
-                                        <input style="height: 44px;line-height: 2;" type="file" name="bukti_pembayaran" id="" class="form-control" required>
+                                        <input type="file" name="bukti_transfer" id="" class="form-control" required>
                                     </div>
-                                    <div class="col-lg-4 text-center">
-
-                                        <button type="submit" class="btn c-btn btn-lg c-theme-btn c-btn-square c-font-white c-font-bold c-font-uppercase c-cart-float-r ">Submit</button>
-                                        <a href="{{ url()->previous() }}" class="btn c-btn btn-lg btn-primary c-btn-square c-font-white c-font-bold c-font-uppercase c-cart-float-r " id="back">Back</a>
+                                    <div class="col-lg-4 text-center row">
+                                            <button type="submit" class="btn btn-danger btn-block">Send</button>
                                     </div>
                                 </div>
                             </div>
