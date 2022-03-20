@@ -253,8 +253,8 @@
         </div>
       </a>
 
-
-      <a class="button-5" style="cursor: pointer;">
+      <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
+        data-target="#modal{{$emt->id}}">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
@@ -333,6 +333,72 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="modal{{$emt->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-size: 20px;">{{$emt->trademark}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="padding-right: 12px;">×</span>
+        </button>
+      </div>
+      <div class="modal-body comm">
+
+      </div>
+      @guest
+
+      @else
+      <div class="modal-footer container">
+        {{-- <form action="{{url('sendData')}}/{{$emt->id}}" method="POST" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <textarea name="comment" class="form-control" id="" cols="10" rows="10"></textarea>
+          </div>
+          <button type="button" id="send" class="btn btn-primary send">Send</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form> --}}
+        {{-- <form action="{{url('sendData')}}/{{$emt->id}}" method="POST" enctype="multipart/form-data"> --}}
+
+          {{-- <input name="comment{{$emt->id}}"> --}}
+          {{-- <textarea name="comment{{$emt->id}}" id="" cols="30" rows="10"></textarea> --}}
+          {{-- <textarea class="form-control without-border" id="comment" name="comment{{$emt->id}}"
+            placeholder="Write a comment" style="font-size:12px; padding: 6px; resize:none;"></textarea>
+          <button type="button" class="btn btn-primary" id="send{{$emt->id}}">send</button> --}}
+          {{-- <div class="modal-footer "> --}}
+            <table>
+              <tbody>
+                <tr>
+                  <form id="ajaxform{{$emt->id}}">
+                    {{-- {{ csrf_field() }} --}}
+                    <input type="hidden" name="idem{{$emt->id}}" value="{{$emt->id}}">
+                    <input type="hidden" name="trd{{$emt->id}}">
+                    <td width="100%" valign="top" style="margin-right: 5px;">
+
+                      <textarea class="form-control without-border" id="comment" name="comment{{$emt->id}}"
+                        placeholder="Write a comment" cols="70"
+                        style="font-size:12px; padding: 6px; resize:none;"></textarea>
+                      <span class="error" style="font-size: 10px; color:red" id="comment_error">
+                      </span>
+                    </td>
+                    <td rowspan="2" style="text-align: right; vertical-align: top;margin-left: 5px;padding-left: 15px;"
+                      width="25%">
+                      <button type="button" class="btn-pill btn btn-sm btn-outline-danger" id="send{{$emt->id}}">Send
+                        &nbsp;<i class="fa fa-paper-plane"></i></button>
+                      <p></p>
+                    </td>
+                  </form>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          @endguest
+
+    </div>
+  </div>
+
+</div>
 
 <div class="modal fade" id="modalShareButton{{$emt->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{$emt->id}}"
   aria-hidden="true">
@@ -586,6 +652,77 @@
       }
 
   }
+</script>
+<script type='text/javascript'>
+  $(document).ready(function(){
+
+      $('#cmt').click(function(){
+         
+          var id = $(this).data('id');
+
+          // AJAX request
+          $.ajax({
+              url: '{{url("getmodaldata")}}/'+id,
+              type: 'get',
+              data: {id: id},
+              success: function(cmt){ 
+                  // Add response in Modal body
+                  $('.comm').html(cmt); 
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+                  // console.log(cmt);
+              }
+          });
+      });
+});
+</script>
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+  $("#send{{$emt->id}}").click(function(){
+      // event.preventDefault();
+
+      let comment = $("textarea[name=comment{{$emt->id}}]").val();
+      let idem = $("input[name=idem{{$emt->id}}]").val();
+      let trd = $("input[name=trd{{$emt->id}}]").val();
+      let _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{url('sendData')}}" +"/"+ idem,
+        type:"POST",
+        data:{
+          comment:comment,
+          idem:idem,
+          trd:trd,
+          _token: _token
+        },
+        success:function(response){
+          // console.log(response);
+          if(response) {
+            $('.success').text(response.success);
+            $("#ajaxform{{$emt->id}}")[0].reset();
+            $.ajax({
+              url: '{{url("getmodaldata")}}/'+{{$emt->id}},
+              type: 'get',
+              data: {id: "{{$emt->id}}"},
+              success: function(cmt){ 
+                  // Add response in Modal body
+                  $('.comm').html(cmt); 
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+                  // console.log(cmt);
+              }
+          });
+          }
+        },
+        error: function(error) {
+        console.log(error);
+        }
+       });
+  });
+});
 </script>
 @endsection
 
