@@ -101,10 +101,10 @@
 @foreach ($book as $item)
 <div class="modal fade" id="uploadbukti{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="uploadbuktiLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="uploadbuktiLabel">Upload Bukti Transfer {{$item->order_id}}</h5>
+                <h5 class="modal-title" id="uploadbuktiLabel">Upload Bukti Transfer Order ID : #{{$item->order_id}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -113,6 +113,56 @@
                 {{ csrf_field() }}
 
                 <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
+                                <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                                <div class="card-body " style="padding: 20px 0px 10px 0px;">
+                                    <h2 class="c-margin-b-20"
+                                        style="color: white;font-family: Arial, Helvetica, sans-serif;">
+                                        12313-123123-12313123</h2>
+                                    <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
+                                <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                                <div class="card-body " style="padding: 20px 0px 10px 0px;">
+                                    <h2 class="c-margin-b-20"
+                                        style="color: white;font-family: Arial, Helvetica, sans-serif;">
+                                        12313-123123-12313123</h2>
+                                    <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
+                                <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                                <div class="card-body " style="padding: 20px 0px 10px 0px;">
+                                    <h2 class="c-margin-b-20"
+                                        style="color: white;font-family: Arial, Helvetica, sans-serif;">
+                                        12313-123123-12313123</h2>
+                                    <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
+                                <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                                <div class="card-body " style="padding: 20px 0px 10px 0px;">
+                                    <h2 class="c-margin-b-20"
+                                        style="color: white;font-family: Arial, Helvetica, sans-serif;">
+                                        12313-123123-12313123</h2>
+                                    <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 text-center" style="margin-top: -20px">
+                        Transfer Sebesar <strong>Rp{{ number_format($item->total_amount,0,',','.') }}</strong> Ke Nomor Rekening Di Atas.
+                    </div>
                     <div class="form-group">
                         <label for="bukti">Bukti Transfer</label>
                         <input type="file" class="form-control" name="bukti_transfer" id="bukti" required>
@@ -120,7 +170,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
                 </div>
             </form>
         </div>

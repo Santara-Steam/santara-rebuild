@@ -7,7 +7,7 @@
                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                             class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item mr-auto">
-                    <a class="navbar-brand" href="{{url('user')}}">
+                    <a class="navbar-brand" href="{{url('/')}}">
                         <img class="brand-logo" alt="modern admin logo" style="width:65%"
                             src="{{asset('public/admin')}}/img/santara-tidur-dark.png">
                         {{-- <h3 class="brand-text">Modern</h3> --}}
@@ -23,7 +23,7 @@
         <div class="navbar-container content">
             <div class="collapse navbar-collapse" id="navbar-mobile">
                 <ul class="nav navbar-nav mr-auto float-left">
-                    <button class="btn btn-secondary float-right">Back to Homepage</button>
+                    <a class="btn btn-secondary float-right" href="{{url('/')}}">Back to Homepage</a>
                 </ul>
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"

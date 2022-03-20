@@ -8,6 +8,7 @@
         <div class="section-langkah-mudah">
             <div class="langkah-mudah-daftarkan-bisnis-anda inter-normal-alabaster-36px">
                 <span class="text-urun inter-normal-alabaster">Silahkan Transfer Ke Rekening Di Bawah</span>
+                <p>Order ID : #{{$trx->order_id}}</p>
             </div>
             {{-- <div class="content-1"> --}}
                 <div class="row" style="margin-top: 40px">

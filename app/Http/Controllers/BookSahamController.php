@@ -99,8 +99,15 @@ class BookSahamController extends Controller
     public function detail_user($id){
 
         $book = book_saham::where('id',$id)->first();
-        
-        return view('user.order.detail',compact('book'));
+        if ($book->trader_id != Auth::user()->trader->id) {
+            $notif = array(
+                'message' => 'Bukan transaksi Anda Brader',
+                'alert-type' => 'fail'
+            );
+            return redirect()->back()->with($notif);
+        }else{
+            return view('user.order.detail',compact('book'));
+        }
     }
 
     public function upload_bukti(Request $request,$id){
@@ -137,13 +144,28 @@ class BookSahamController extends Controller
 
         $book = book_saham::where('id',$id)->first();
         $book->bukti_tranfer = $BuktiTransferFileSave;
-        $book->save();
-
-        $notif = array(
-            'message' => 'Bukti Transfer Berhasil Di Upload',
-            'alert-type' => 'success'
-        );
-        return redirect('detail-coming-soon/'.$book->emiten_id)->with($notif);
+        if ($book->trader_id != Auth::user()->trader->id) {
+            $notif = array(
+                'message' => 'Bukan transaksi Anda Brader',
+                'alert-type' => 'fail'
+            );
+            return redirect()->back()->with($notif);
+        }else{
+            if ($book->bukti_tranfer != "-" ) {
+                $notif = array(
+                    'message' => 'Bukti Transfer sudah di Upload ya Brader, Tunggu Verifikasi',
+                    'alert-type' => 'warn'
+                );
+                return redirect()->back()->with($notif);
+            }else{
+                $book->save();
+                $notif = array(
+                    'message' => 'Bukti Transfer Berhasil Di Upload',
+                    'alert-type' => 'success'
+                );
+                return redirect('detail-coming-soon/'.$book->emiten_id)->with($notif);
+            }
+        }
     }
 
     public function approve($id){

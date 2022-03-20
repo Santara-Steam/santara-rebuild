@@ -37,7 +37,9 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () 
     Route::get('/user/pesan_saham/detail/{id}', [App\Http\Controllers\BookSahamController::class, 'detail_user']);
 
     Route::post('/upload_bukti/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti']);
+    
 });
+Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);
 Route::post('/upload_bukti_user/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti_user']);
 Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'indexadmin']);
@@ -61,7 +63,6 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/pesan_saham/store_user',[App\Http\Controllers\BookSahamController::class, 'store_user']);
-Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);
 
 
 
