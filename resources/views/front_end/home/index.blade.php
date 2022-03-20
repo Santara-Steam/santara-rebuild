@@ -97,6 +97,7 @@ KEP-59/D.04/2019.</span>
                                               ?>
                                         {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                         {{round($datediff / (60 * 60 * 24))}}
+                                        
                                       </b></span>
                                   </div>
                                   {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
@@ -647,10 +648,11 @@ KEP-59/D.04/2019.</span>
           }
         },
         error: function(error) {
-         console.log(error);
+        console.log(error);
         }
        });
   });
-  });
+});
 </script>
+@endforeach
 @endsection
