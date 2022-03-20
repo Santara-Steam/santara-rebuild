@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\emiten_comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EmitenCommentController extends Controller
 {
@@ -27,15 +28,16 @@ class EmitenCommentController extends Controller
     }
 
     public function getcomment($id){
+
         $cmtt = emiten_comment::where('emiten_comments.emiten_id',$id)
         ->select('emiten_comments.comment as cm','emiten_comments.created_at as tm','traders.name as name')
-        ->join('traders','emiten_comments.trader_id','=','traders.id')
-        ->join('users','traders.user_id','=','users.id')
+        ->leftjoin('traders','emiten_comments.trader_id','=','traders.id')
+        ->leftjoin('users','traders.user_id','=','users.id')
         ->get();
         $cmtt2 = emiten_comment::where('emiten_comments.emiten_id',$id)
         ->select('emiten_comments.comment as cm','emiten_comments.created_at as tm','traders.name as name')
-        ->join('traders','emiten_comments.trader_id','=','traders.id')
-        ->join('users','traders.user_id','=','users.id')
+        ->leftjoin('traders','emiten_comments.trader_id','=','traders.id')
+        ->leftjoin('users','traders.user_id','=','users.id')
         ->count();
 
 
