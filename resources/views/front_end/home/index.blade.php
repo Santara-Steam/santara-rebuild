@@ -51,10 +51,42 @@
                               ?>
                   <div id="owl-demo2" class="owl-carousel owl-theme" style="padding-left: 15px; padding-right: 15px;">
                     <div class="item">
-                      <a href="{{ route('now-playing.detail') }}">
+
+                      <?php 
+                        $mul=number_format(round($np->minimum_invest * $np->price,0),0,',','.');
+                        $prog=round((round($np->terjual,0)/round($np->supply))*100,2);
+                        $pend=number_format(round($np->supply*$np->price,0),0,',','.');
+                        $now = time();
+                        $start = strtotime($np->begin_period);
+                        $end = strtotime($np->end_period);
+                        $datediff = $end - $now;
+                        $har=round($datediff / (60 * 60 * 24));
+                        ?>
+                        {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
+                                       
+                          {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
+
+                      
                         <div class="card">
+                          <a type="button" data-toggle="modal" id="detail_now" class="mod_now moldla" style="width: 100%;" data-target="#modal_now"
+                          data-ktg="<?=$np->ktg?>"
+                          data-trademark_now="<?=$np->trademark?>"
+                          data-company_name_now="<?=$np->company_name?>"
+                          data-mulai="<?=$mul?>"
+                          data-image_now="<?=$picture[0]?>"
+                          data-hari="<?=$har?>"
+                          data-progres_now="<?=$prog?>"
+                          data-tot_pendanaan="<?=$pend?>"
+                          data-periode_dividen="<?=$np->period?>"
+                          >
                           <img class="rectangle-2"
                             src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
+                           </a> 
+                           <a href="{{ route('now-playing.detail') }}">
+                          <img class="rectangle-2 molpli" style="width: 100%;"
+                            src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
+                          </a>
+                           <a href="{{ route('now-playing.detail') }}">
                           <div class="content">
                             <div class="header-card-dan-progress">
                               <div class="header-and-tags">
@@ -138,9 +170,9 @@
                                 </div>
                               </div>
                             </div>
+                          </a>
                           </div>
                         </div>
-                      </a>
                     </div>
                   </div>
                   @endforeach
@@ -222,16 +254,25 @@
                               }
                               ?>
                     <div class="item">
-                      <!-- <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}"> -->
                       <div class="card">
-                        <a type="button" data-toggle="modal" id="detail{{$cs->id}}" class="mod detail"
-                          data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
-                          data-image="{{$picture[3]}}" data-trademark="<?=$cs->trademark?>"
-                          data-company_name="<?=$cs->company_name?>" data-like="<?=$cs->likes?>"
-                          data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>" data-id="<?=$cs->id?>"
-                          data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>">
+                        <a type="button" data-toggle="modal" id="detail" class="mod moldla" style="width: 100%;" data-target="#exampleModalCenter"
+                          data-category="<?=$cs->ctg->category?>"
+                          data-trademark="<?=$cs->trademark?>"
+                          data-company_name="<?=$cs->company_name?>"
+                          data-like="<?=$cs->likes?>"
+                          data-minat="<?=$cs->vot?>"
+                          data-comment="<?=$cs->cmt?>"
+                          data-id="<?=$cs->id?>"
+                          data-trdlike="<?=$cs->trdlike?>"
+                          data-trdvot="<?=$cs->trdvot?>"
+                          data-image="<?=$picture[3]?>"
+                          >
                           <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
                         </a>
+                      <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}">
+                          <img class="rectangle-2 molpli" style="width: 100%;" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
+                        </a>
+                      <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}">
                         <div class="content">
                           <div class="header-card-dan-progress">
                             <div class="header-and-tags">
@@ -377,10 +418,11 @@
                             <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis
                               Ini</span>
                           </div>
+                        </a>
                         </div>
                       </div>
-                      <!-- 
-                      </a> -->
+                      
+                      </a>
                     </div>
                     @endforeach
                   </div>
@@ -426,12 +468,25 @@
                     @foreach ($sold_out as $item)
                     <?php 
                               $picture = explode(',',$item->pictures);
+                              $tot=number_format(round($item->supply * $item->price),0,',','.');
                               ?>
                     <div class="item">
-                      <a href="{{ route('sold-out.detail') }}">
                         <div class="card">
+                           <a type="button" data-toggle="modal" id="detail_sold" style="width: 100%;" class="mod_sold moldla" data-target="#modal_sold"
+                          data-ktg_sold="<?=$item->ktg?>"
+                          data-trademark_sold="<?=$item->trademark?>"
+                          data-company_name_sold="<?=$item->company_name?>"
+                          data-tot_pendanaan_sold="<?=$tot?>"
+                          data-image_sold="<?=$picture[0]?>"
+                          >
                           <img class="rectangle-2"
                             src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
+                          </a>
+                      <a href="{{ route('sold-out.detail') }}" style="width: 100%;">
+                          <img class="rectangle-2 molpli"
+                            src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
+                          </a>
+                      <a href="{{ route('sold-out.detail') }}" >
                           <div class="content">
                             <div class="header-card-dan-progress-2">
                               <div class="header-and-tags">
@@ -478,9 +533,9 @@
                                 </div>
                               </div>
                             </div>
+                      </a>
                           </div>
                         </div>
-                      </a>
                     </div>
                     @endforeach
                   </div>
@@ -646,166 +701,321 @@
       </div>
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="card" style="margin-bottom: -1px;">
-            <img class="rectangle-2" id="image" />
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-              style="margin-right: 10px; margin-top: 0px; width: 30px;">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="content2">
-              <div class="header-card-dan-progress">
-                <div class="header-and-tags">
-                  <div class="tags2">
-                    <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
-                      <span class="tx-t inter-medium-sweet-pink" id="category"></span>
-                    </div>
-                  </div>
-                  <div class="header">
-                    <div class="saka-logistics inter-medium-alabaster-20px">
-                      <span class="tx-pt inter-medium-alabaster" id="trademark"></span>
-                    </div>
-                    <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                      <span class="tx-np inter-normal-quill-gray" id="company_name"></span>
-                    </div>
-                  </div>
-                </div>
-                <div class="icon-card">
-                  @guest
-                  <a href="{{route('login')}}" style="cursor: pointer">
-                    <div class="icon-and-supporting-text">
-                      <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
-                      &ensp;
-                      <div class="lk inter-normal-alabaster-10px">
-                        <span class="tx-icon inter-normal-alabaster">
-                          <p class="ic-sz tx-icon lkk" style="margin-top: -25px;" id="like">
-
-                          </p>
-                          <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                  @else
-                  @if (in_array(Auth::user()->trader->id,[$item->trdlike]))
-
-                  <a onclick="document.getElementById('sublike{{$item->id}}').submit();" style="cursor: pointer">
-                    @else
-                    <a onclick="document.getElementById('like{{$item->id}}').submit();" style="cursor: pointer">
-                      @endif
-
-                      {{-- <a onclick="document.getElementById('like{{$item->id}}').submit();" style="cursor: pointer">
-                        --}}
-                        <div class="icon-and-supporting-text">
-                          <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
-                          &ensp;
-                          <div class="lk inter-normal-alabaster-10px">
-                            <span class="tx-icon inter-normal-alabaster">
-                              <p class="ic-sz tx-icon lkk" style="margin-top: -25px;" id="like">
-
-                              </p>
-                              <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
-                            </span>
+    <div class="modal fade" id="modal_sold" tabindex="-1" role="dialog" aria-labelledby="detail_sold" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+                              <div class="card" style="margin-bottom: -1px;">
+                                <img class="rectangle-2" id="image_sold" />
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 10px; margin-top: 0px; width: 30px;">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="content2">
+                            <div class="header-card-dan-progress-2">
+                              <div class="header-and-tags">
+                                <div class="tags2">
+                                  <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
+                                    <span class="tx-t inter-medium-sweet-pink-12px" id="ktg_sold"></span>
+                                  </div>
+                                </div>
+                                <div class="header">
+                                  <div class="saka-logistics inter-medium-alabaster-20px">
+                                    <span class="tx-pt inter-medium-alabaster" id="trademark_sold">
+                                    </span>
+                                  </div>
+                                  <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                                    <span class="tx-np inter-normal-quill-gray" id="company_name_sold">
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="info-pendanaan">
+                                <div class="mul inter-normal-mercury-14px">
+                                  <span class="tx-sold span-1 inter-normal-quill-gray">Total Pendanaan</span>
+                                </div>
+                              </div>
+                              <div class="addr inter-bold-white-14px">
+                                <span class="tx-sold inter-bold-white" style="font-weight: bold" id="tot_pendanaan_sold">Rp</span>
+                              </div>
+                              <div>
+                              </div>
+                            </div>
+                            <div class="footer-card">
+                              <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                              <div class="footer-card-2">
+                                <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
+                                  <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span><span
+                                    class="inter-medium-alabaster-12px">Rp250.000.000</span>
+                                </div>
+                                <div class="pembagian-dividen-1-kali inter-normal-mercury-10px">
+                                  <span class="inter-normal-quill-gray-12px">Pembagian Dividen<br /></span><span
+                                    class="inter-medium-alabaster-12px">1 Kali</span>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </a>
-                      <form id="like{{$item->id}}" action="{{url('addLike')}}/{{$item->id}}" method="POST"
-                        enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                      </form>
-
-                      <form id="sublike{{$item->id}}" action="{{url('subLike')}}/{{$item->id}}" method="POST"
-                        enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                      </form>
-                      @endguest
-
-
-
-                      @guest
-                      <a href="{{route('login')}}" style="cursor: pointer">
-                        <div class="icon-and-supporting-text-1">
-                          <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
-                          <div class="lk inter-normal-alabaster-10px">
-                            <span class="tx-icon inter-normal-alabaster">
-                              <p class="ic-sz tx-icon lkk" style="margin-top: -0px;" id="minat"> </p>
-                              <p class="ic-sz com-u mnt">&ensp;Minat</p>
-                            </span>
+                              <div class="modal-footer" style="background-color: var(--shark);">
+                                  <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('sold-out.detail') }}">Selengkapnya</a>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </a>
-                      @else
-                      @if (in_array(Auth::user()->trader->id,[$item->trdvote]))
 
-                      <a onclick="document.getElementById('subvote{{$item->id}}').submit();" style="cursor: pointer">
-                        @else
-                        <a onclick="document.getElementById('vote{{$item->id}}').submit();" style="cursor: pointer">
-                          @endif
-                          <div class="icon-and-supporting-text-1">
-                            <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
-                            <div class="lk inter-normal-alabaster-10px">
-                              <span class="tx-icon inter-normal-alabaster">
-                                <p class="ic-sz tx-icon lkk" style="margin-top: -0px;" id="minat"> </p>
-                                <p class="ic-sz com-u mnt">&ensp;Minat</p>
-                              </span>
+<div class="modal fade" id="modal_now" tabindex="-1" role="dialog" aria-labelledby="detail_now" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+                              <div class="card" style="margin-bottom: -1px;">
+                                <img class="rectangle-2" id="image_now" />
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 10px; margin-top: 0px; width: 30px;">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="content2">
+                            <div class="header-card-dan-progress">
+                              <div class="header-and-tags">
+                                <div class="tags2">
+                                  <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
+                                    <span class="tx-t inter-medium-sweet-pink" id="ktg"></span>
+                                  </div>
+                                </div>
+                                <div class="header">
+                                  <div class="saka-logistics inter-medium-alabaster-20px">
+                                    <span class="tx-pt inter-medium-alabaster" id="trademark_now">
+                                    </span>
+                                  </div>
+                                  <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                                    <span class="tx-np inter-normal-quill-gray" id="company_name_now">
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="info-dan-progress">
+                                <div class="info-pendanaan">
+                                  <div class="mulai-rp1000000 inter-normal-mercury-14px">
+                                    <span class="tx-sold span-1 inter-normal-mercury">Mulai</span><span
+                                      class="inter-normal-mercury-12px">&nbsp;</span>
+                                    <div class="mulai-rp inter-bold-white-14px"><span
+                                        class="tx-sold span-1 inter-bold-white" style="font-weight: bold" id="mulai">Rp</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="address">
+                                  <div class="hr inter-bold-white-14px">
+                                    <span class="tx-sold inter-medium-white"><b style="font-weight: bold" id="hari">
+                                        
+                                        
+                                        
+                                      </b></span>
+                                  </div>
+                                  
+                                  <span class="inter-normal-mercury-12px">&nbsp;</span>
+                                  <div class="hr-lg inter-normal-mercury-14px">
+                                    <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                                  </div>
+                                </div>
+                                <div class="overlap-group">
+                                  <div class="percent inter-medium-white-12px">
+                                    <div class="progress-bar "
+                                      style="width: {{ round((round($np->terjual,0)/round($np->supply))*100,2) }}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                      role="progressbar"
+                                      aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}"
+                                      aria-valuemin="0" aria-valuemax="100">
+
+                                      <span class="tx-np percen inter-medium-white" id="progres_now">
+
+                                        
+
+                                        %</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="footer-card">
+                              <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                              <div class="footer-card-1">
+                                <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
+                                  <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
+                                    class="inter-medium-alabaster-12px" id="tot_pendanaan">Rp</span>
+                                </div>
+                                <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
+                                  <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
+                                    class="inter-medium-alabaster-12px" id="periode_dividen"></span>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </a>
-                        <form id="vote{{$item->id}}" action="{{url('addVote')}}/{{$item->id}}" method="POST"
-                          enctype="multipart/form-data">
-                          {{ csrf_field() }}
-                        </form>
-                        <form id="subvote{{$item->id}}" action="{{url('subVote')}}/{{$item->id}}" method="POST"
-                          enctype="multipart/form-data">
-                          {{ csrf_field() }}
-                        </form>
-
-                        @endguest
-                        <a style="cursor: pointer" data-id="{{$item->id}}" data-toggle="modal"
-                          data-target="#modal{{$item->id}}" class="cmt" data-dismiss="modal">
-                          <div class="icon-and-supporting-text-1">
-                            <i class="icon-com iconheart fas fa-comments"
-                              style="color: #fff; font-size: 18px; margin-left: -15px;"></i>
-                            <div class=" inter-normal-alabaster-10px">
-                              <span class="tx-icon inter-normal-alabaster">
-                                <p class="ic-sz tx-icon" style="margin-top: -0px;" id="comments"> </p>
-                                <p class="ic-sz com-u mnt">&ensp;Komentar</p>
-                              </span>
+                        </div>
+                              <div class="modal-footer" style="background-color: var(--shark);">
+                                  <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('now-playing.detail') }}">Selengkapnya</a>
+                              </div>
                             </div>
                           </div>
-                        </a>
-                        <a style="cursor: pointer" data-id="{{$item->id}}" data-toggle="modal"
-                          data-target="#modalShareButton{{$item->id}}" data-dismiss="modal">
-                          <div class="icon-and-supporting-text-1">
-                            <i class="icon-com iconheart fas fa-share" style="color: #fff; font-size: 18px;"></i>
-                            <div class="share inter-normal-alabaster-10px">
-                              <span class="tx-icon inter-normal-alabaster">Share</span>
+                        </div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+                              <div class="card" style="margin-bottom: -1px;">
+                                <img class="rectangle-2" id="image" />
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 10px; margin-top: 0px; width: 30px;">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="content2">
+                                  <div class="header-card-dan-progress">
+                                    <div class="header-and-tags">
+                                      <div class="tags2">
+                                        <div class="retail-distribusi-logistik inter-medium-sweet-pink-12px">
+                                          <span class="tx-t inter-medium-sweet-pink" id="category"></span>
+                                        </div>
+                                      </div>
+                                      <div class="header">
+                                        <div class="saka-logistics inter-medium-alabaster-20px">
+                                          <span class="tx-pt inter-medium-alabaster" id="trademark"></span>
+                                        </div>
+                                        <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                                          <span class="tx-np inter-normal-quill-gray" id="company_name"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="icon-card">
+                                @guest
+                                <a href="{{route('login')}}" style="cursor: pointer">
+                                  <div class="icon-and-supporting-text">
+                                    <i class="icon-com iconheart fas fa-heart"
+                                      style="color: #fff; font-size: 18px;"></i>
+                                    &ensp;
+                                    <div class="lk inter-normal-alabaster-10px">
+                                      <span class="tx-icon inter-normal-alabaster">
+                                        <p class="ic-sz tx-icon lkk" style="margin-top: -25px;" id="like">
+                                          
+                                        </p>
+                                        <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </a>
+                                @else
+                                @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
+
+                                <a onclick="document.getElementById('sublike{{$cs->id}}').submit();"
+                                  style="cursor: pointer">
+                                  @else
+                                  <a onclick="document.getElementById('like{{$cs->id}}').submit();"
+                                    style="cursor: pointer">
+                                    @endif
+
+                                    {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();"
+                                      style="cursor: pointer"> --}}
+                                      <div class="icon-and-supporting-text">
+                                        <i class="icon-com iconheart fas fa-heart"
+                                          style="color: #fff; font-size: 18px;"></i>
+                                        &ensp;
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">
+                                            <p class="ic-sz tx-icon lkk" style="margin-top: -25px;" id="like">
+                                              
+                                            </p>
+                                            <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </a>
+                                    <form id="like{{$cs->id}}" action="{{url('addLike')}}/{{$cs->id}}" method="POST"
+                                      enctype="multipart/form-data">
+                                      {{ csrf_field() }}
+                                    </form>
+
+                                    <form id="sublike{{$cs->id}}" action="{{url('subLike')}}/{{$cs->id}}" method="POST"
+                                      enctype="multipart/form-data">
+                                      {{ csrf_field() }}
+                                    </form>
+                                    @endguest
+
+
+
+                                    @guest
+                                    <a href="{{route('login')}}" style="cursor: pointer">
+                                      <div class="icon-and-supporting-text-1">
+                                        <i class="icon-com iconheart fas fa-user"
+                                          style="color: #fff; font-size: 18px;"></i>
+                                        <div class="lk inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">
+                                            <p class="ic-sz tx-icon lkk" style="margin-top: -0px;" id="minat"> </p>
+                                            <p class="ic-sz com-u mnt">&ensp;Minat</p>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </a>
+                                    @else
+                                    @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
+
+                                    <a onclick="document.getElementById('subvote{{$cs->id}}').submit();"
+                                      style="cursor: pointer">
+                                      @else
+                                      <a onclick="document.getElementById('vote{{$cs->id}}').submit();"
+                                        style="cursor: pointer">
+                                        @endif
+                                        <div class="icon-and-supporting-text-1">
+                                          <i class="icon-com iconheart fas fa-user"
+                                            style="color: #fff; font-size: 18px;"></i>
+                                          <div class="lk inter-normal-alabaster-10px">
+                                            <span class="tx-icon inter-normal-alabaster">
+                                              <p class="ic-sz tx-icon lkk" style="margin-top: -0px;" id="minat"> </p>
+                                              <p class="ic-sz com-u mnt">&ensp;Minat</p>
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </a>
+                                      <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
+                                        enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                      </form>
+                                      <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}"
+                                        method="POST" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                      </form>
+
+                                      @endguest
+                                      <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal" data-dismiss="modal"
+                                        data-target="#modal{{$cs->id}}" class="cmt">
+                                        <div class="icon-and-supporting-text-1">
+                                          <i class="icon-com iconheart fas fa-comments"
+                                            style="color: #fff; font-size: 18px; margin-left: -15px;"></i>
+                                          <div class=" inter-normal-alabaster-10px">
+                                            <span class="tx-icon inter-normal-alabaster">
+                                              <p class="ic-sz tx-icon" style="margin-top: -0px;" id="comment"> </p>
+                                              <p class="ic-sz com-u mnt">&ensp;Komentar</p>
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </a>
+                                      <a  style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal" data-target="#modalShareButton{{$cs->id}}">
+                                        <div class="icon-and-supporting-text-1">
+                                        <i class="icon-com iconheart fas fa-share"
+                                        style="color: #fff; font-size: 18px;"></i>
+                                        <div class="share inter-normal-alabaster-10px">
+                                          <span class="tx-icon inter-normal-alabaster">Share</span>
+                                        </div>
+                                      </div>
+                                    </a>
+                                    </div>
+                                  </div>
+                                  <div class="footer-card3">
+                                    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                        <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer" style="background-color: var(--shark);">
+                                  <a class="b-daf btn btn-danger btn-lg btn-block" href="">Selengkapnya</a>
+                              </div>
                             </div>
                           </div>
-                        </a>
-                </div>
-              </div>
-              <div class="footer-card3">
-                <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer" style="background-color: var(--shark);">
-            <a class="b-daf btn btn-danger btn-lg btn-block" id="sel"
-              href="{{url('detail_coming_soon')}}/">Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    @endforeach
+                        </div>
 
-    <script>
-      $(document).ready(function() {
-    $(document).on('click', '.detail', function() {
+<script>
+  $(document).ready(function() {
+    $(document).on('click', '#detail', function() {
       var category = $(this).data('category');
       var trademark = $(this).data('trademark');
       var company_name = $(this).data('company_name');
@@ -819,17 +1029,61 @@
       $('#category').text(category);
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
-      $('#image').prop('src', 'public/upload/'+image);
+      $('#image').prop('src', 'public/upload/' + image);
       $('#like').text(like);
       $('#minat').text(minat);
-      $('#comments').text(comment);
+      $('#comment').text(comment);
       $('#id').text(id);
       $('#trdlike').text(trdlike);
       $('#trdvote').text(trdvote);
-      $("#sel").attr("href", "{{url('detail_coming_soon')}}/"+id)
     })
   })
-    </script>
+</script>
+
+<script>
+  $(document).ready(function() {
+    $(document).on('click', '#detail_now', function() {
+      var ktg = $(this).data('ktg');
+      var trademark_now = $(this).data('trademark_now');
+      var company_name_now = $(this).data('company_name_now');
+      var image_now = $(this).data('image_now');
+      var mulai = $(this).data('mulai');
+      var hari = $(this).data('hari');
+      var progres_now = $(this).data('progres_now');
+      var tot_pendanaan = $(this).data('tot_pendanaan');
+      var periode_dividen = $(this).data('periode_dividen');
+      $('#ktg').text(ktg);
+      $('#trademark_now').text(trademark_now);
+      $('#company_name_now').text(company_name_now);
+      $('#image_now').prop('src', 'https://storage.googleapis.com/asset-santara/santara.co.id/token/' + image_now);
+      $('#mulai').text(mulai);
+      $('#hari').text(hari);
+      $('#progres_now').text(progres_now);
+      $('#tot_pendanaan').text(tot_pendanaan);
+      $('#periode_dividen').text(periode_dividen);
+    })
+  })
+</script>
+<script>
+  $(document).ready(function() {
+    $(document).on('click', '#detail_sold', function() {
+      var ktg_sold = $(this).data('ktg_sold');
+      var trademark_sold = $(this).data('trademark_sold');
+      var company_name_sold = $(this).data('company_name_sold');
+      var image_sold = $(this).data('image_sold');
+      var tot_pendanaan_sold = $(this).data('tot_pendanaan_sold');
+      var periode_dividen_sold = $(this).data('periode_dividen_sold');
+      $('#ktg_sold').text(ktg_sold);
+      $('#trademark_sold').text(trademark_sold);
+      $('#company_name_sold').text(company_name_sold);
+      $('#image_sold').prop('src', 'https://storage.googleapis.com/asset-santara/santara.co.id/token/' + image_sold);
+      $('#tot_pendanaan_sold').text(tot_pendanaan_sold);
+      $('#periode_dividen_sold').text(periode_dividen_sold);
+    })
+  })
+</script>
+    @endforeach
+
     @endsection
     @section('js')
     <script type='text/javascript'>
