@@ -15,4 +15,8 @@ class emiten extends Model
     {
         return $this->belongsTo(kategori::class,"category_id")->withDefault();
     }
+    public function tr()
+    {
+        return $this->belongsTo(trader::class,'trader_id')->withDefault();
+    }
 }

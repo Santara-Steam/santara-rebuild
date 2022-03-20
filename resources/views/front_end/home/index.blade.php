@@ -221,7 +221,7 @@
                               }
                               ?>
                     <div class="item">
-                      <a href="{{ route('coming-soon.detail') }}">
+                      <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}">
                         <div class="card">
                           <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
                           <div class="content">
@@ -353,14 +353,16 @@
                                           </div>
                                         </div>
                                       </a>
-                                      <div class="icon-and-supporting-text-1">
+                                      <a  style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal" data-target="#modalShareButton{{$cs->id}}">
+                                        <div class="icon-and-supporting-text-1">
                                         <i class="icon-com iconheart fas fa-share"
-                                          style="color: #fff; font-size: 18px;"></i>
+                                        style="color: #fff; font-size: 18px;"></i>
                                         <div class="share inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">Share</span>
                                         </div>
                                       </div>
-                              </div>
+                                    </a>
+                                    </div>
                             </div>
                             <div class="footer-card-3">
                               <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
@@ -505,7 +507,7 @@
           <span aria-hidden="true" style="padding-right: 12px;">×</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body comm">
 
       </div>
       @guest
@@ -560,6 +562,64 @@
   </div>
 
 </div>
+
+
+{{-- <div class="modal fade show" id="modalShareButton{{$item->id}}" tabindex="-1" aria-labelledby="modalShare" aria-modal="true" role="dialog" style="display: block;"> --}}
+  <div class="modal fade" id="modalShareButton{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{$item->id}}"
+    aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="p-2 modal-content">
+          <div class="modal-header" style="border-bottom: none;">
+          </div>
+          <div class="text-center modal-body ">
+              <div class="d-flex justify-content-evenly mb-5">
+                  <div class="container  text-center d-flex justify-content-center" style="border-top: solid #D9D9D9;">
+                      <h1 class="ff-a fs-24" style="font-weight:800;text-transform:uppercase; padding:0 15px 0 15px; margin-top:-20px; width:150px; background-color:#fff;color:black">Share {{$item->id}}</h1>
+                  </div>
+              </div>
+              <div class="row mt-3 mb-3 d-flex justify-content-center ">
+                  <!-- <div class="col-4 col-md-2">
+                      <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
+                      <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
+                  </div> -->
+                  <div class="col-4 col-md-2">
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c" id="shareFacebook" target="_blank" style="text-decoration: none;">
+                          <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/facebook.png" class="lazyload">
+                          <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
+                      </a>
+                  </div>
+                  <div class="col-4 col-md-2">
+                      <a href="https://twitter.com/intent/tweet?url=https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTwitter" style="text-decoration: none;" target="_blank">
+                          <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/twitter.png" class="lazyload">
+                          <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
+                      </a>
+                  </div>
+                  <div class="col-4 col-md-2">
+                      <a href="https://telegram.me/share/url?url=https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTelegram" target="_blank" style="text-decoration: none;">
+                          <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/telegram.png" class="lazyload">
+                          <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
+                      </a>
+                  </div>
+                  <!-- <div class="col-4 col-md-2">
+                      <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
+                      <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
+                  </div> -->
+                  <div class="col-4 col-md-2">
+                      <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c" id="shareWhatsapp" target="_blank" style="text-decoration: none;">
+                          <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/whatsapp.png" class="lazyload">
+                          <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
+                      </a>
+                  </div>
+              </div>
+              <div class="input-group input-group-lg mb-3">
+                  <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled="" style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username" aria-describedby="basic-addon2" placeholder="https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c">
+                  <span id="copy-link" class="input-group-text" style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer" onclick="shareButton('https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c')">Copy Link</span>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
 @endforeach
 
 @endsection
@@ -579,7 +639,7 @@
               data: {id: id},
               success: function(cmt){ 
                   // Add response in Modal body
-                  $('.modal-body').html(cmt); 
+                  $('.comm').html(cmt); 
 
                   // Display Modal
                   // $('#empModal').modal('show'); 
@@ -622,7 +682,7 @@
               data: {id: "{{$item->id}}"},
               success: function(cmt){ 
                   // Add response in Modal body
-                  $('.modal-body').html(cmt); 
+                  $('.comm').html(cmt); 
 
                   // Display Modal
                   // $('#empModal').modal('show'); 

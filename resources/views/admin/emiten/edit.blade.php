@@ -616,7 +616,7 @@
     
         $modal2.on('shown.bs.modal', function() {
             cropper = new Cropper(image2, {
-                aspectRatio: 2,
+                aspectRatio: 1360/497,
                 viewMode: 3,
                 preview:'.preview2'
             });
@@ -627,7 +627,7 @@
     
         $('#crop2').click(function(){
             canvas = cropper.getCroppedCanvas({
-                width: 1366,
+                width: 1360,
                 height: 497
             });
     

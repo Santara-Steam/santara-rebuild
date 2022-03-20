@@ -63,7 +63,7 @@
                                 id="logo" />
                         </div>
                     </div>
-                    <div class="col-7 text-center">
+                    <div class="col-8 text-center">
                         <label for="companyName">Cover Profile</label>
                         <div class="image_area text-center">
                             <label for="upload_image2">
@@ -79,14 +79,14 @@
                                 id="cover" />
                         </div>
                     </div>
-                    <div class="col-3 text-center">
+                    <div class="col-2 text-center">
                         <label for="companyName">Foto Owner</label>
                         <div class="image_area text-center">
                             <label for="upload_image4">
                                 <img src="{{asset('public')}}/default1.png" id="uploaded_image4"
                                     class="img-responsive" />
                                 <div class="overlay">
-                                    <div class="text">Foto Owner</div>
+                                    <div class="text">Foto <br> Owner</div>
                                 </div>
                             </label>
                             <input type="file" name="image4" class="image" id="upload_image4"
@@ -637,7 +637,7 @@ $('#upload_image2').change(function(event){
 
 $modal2.on('shown.bs.modal', function() {
     cropper = new Cropper(image2, {
-        aspectRatio: 2,
+        aspectRatio: 1360/497,
         viewMode: 3,
         preview:'.preview2'
     });

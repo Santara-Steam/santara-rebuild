@@ -595,7 +595,7 @@ $('#upload_image2').change(function(event){
 
 $modal2.on('shown.bs.modal', function() {
     cropper = new Cropper(image2, {
-        aspectRatio: 2,
+        aspectRatio: 1360/497,
         viewMode: 3,
         preview:'.preview2'
     });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front_end;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\emiten;
 
 class Coming_soonController extends Controller
 {
@@ -17,9 +18,10 @@ class Coming_soonController extends Controller
         return view('front_end/coming_soon/index');
     }
 
-    public function detail()
-    {
-        return view('front_end/coming_soon/show');
+    public function detail($id)
+    {   
+        $emt = emiten::where('id',$id)->first();
+        return view('front_end/coming_soon/show',compact('emt'));
     }
 
     /**
