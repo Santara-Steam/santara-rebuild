@@ -230,7 +230,7 @@
                         <span class="input-group-text " id="basic-addon2">%</span>
                     </div>
                 </div>
-                <div class="form-group mt-2">
+                <div class="form-group mt-2" hidden>
                     <label for="exampleFormControlInput1" class="form-label">Video Profile Perusahaan</label>
                     <input type="text" class="form-control username" name="video_profile"
                         placeholder="https://www.youtube.com/watch?v=DSO7qWAbqjg">

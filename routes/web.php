@@ -79,10 +79,16 @@ Route::group(['middleware' => ['auth', "verified"]], function () {
     Route::post('/addVote/{id}',[App\Http\Controllers\EmitenVoteController::class,'addvote']);
     Route::post('/subLike/{id}',[App\Http\Controllers\EmitenVoteController::class,'sublike']);
     Route::post('/subVote/{id}',[App\Http\Controllers\EmitenVoteController::class,'subvote']);
+    Route::post('/addLikeajx/{id}',[App\Http\Controllers\EmitenVoteController::class,'addlikeajx']);
+    Route::post('/addVoteajx/{id}',[App\Http\Controllers\EmitenVoteController::class,'addvoteajx']);
+    Route::post('/subLikeajx/{id}',[App\Http\Controllers\EmitenVoteController::class,'sublikeajx']);
+    Route::post('/subVoteajx/{id}',[App\Http\Controllers\EmitenVoteController::class,'subvoteajx']);
     Route::post('/sendData/{id}',[App\Http\Controllers\EmitenCommentController::class,'sendComment']);
 });
 
 Route::get('/getmodaldata/{id}',[App\Http\Controllers\EmitenCommentController::class,'getcomment']);
+Route::get('/getlike/{id}',[App\Http\Controllers\EmitenVoteController::class,'clike']);
+Route::get('/getvote/{id}',[App\Http\Controllers\EmitenVoteController::class,'cvote']);
 // Route::post('/cropImg', [App\Http\Controllers\EmitenController::class, 'logoCropImg'])->name('cropImg');
 Route::post('/logocropImg', [App\Http\Controllers\EmitenController::class, 'logocropImg'])->name('logocropImg');
 Route::post('/covercropImg', [App\Http\Controllers\EmitenController::class, 'covercropImg'])->name('covercropImg');

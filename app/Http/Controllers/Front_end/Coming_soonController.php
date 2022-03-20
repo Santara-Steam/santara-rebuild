@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front_end;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\emiten;
+use App\Models\emiten_vote;
+use Illuminate\Support\Facades\DB;
 
 class Coming_soonController extends Controller
 {
@@ -21,7 +23,13 @@ class Coming_soonController extends Controller
     public function detail($id)
     {   
         $emt = emiten::where('id',$id)->first();
-        return view('front_end/coming_soon/show',compact('emt'));
+        $clike = emiten_vote::select(DB::raw('COALESCE(SUM(likes),0) as l'))
+        ->where('emiten_id',$id)
+        ->first();
+        $cvote = emiten_vote::select(db::raw('COALESCE(SUM(vote),0) as v'))
+        ->where('emiten_id',$id)
+        ->first();
+        return view('front_end/coming_soon/show',compact('emt','clike','cvote'));
     }
 
     /**

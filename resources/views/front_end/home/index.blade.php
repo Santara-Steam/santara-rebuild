@@ -531,7 +531,7 @@ KEP-59/D.04/2019.</span>
           <div class="text-center modal-body ">
               <div class="d-flex justify-content-evenly mb-5">
                   <div class="container  text-center d-flex justify-content-center" style="border-top: solid #D9D9D9;">
-                      <h1 class="ff-a fs-24" style="font-weight:800;text-transform:uppercase; padding:0 15px 0 15px; margin-top:-20px; width:150px; background-color:#fff;color:black">Share {{$item->id}}</h1>
+                      <h1 class="ff-a fs-24" style="font-weight:800;text-transform:uppercase; padding:0 15px 0 15px; margin-top:-20px; width:150px; background-color:#fff;color:black;font-family: inherit;">Share</h1>
                   </div>
               </div>
               <div class="row mt-3 mb-3 d-flex justify-content-center ">
@@ -540,19 +540,19 @@ KEP-59/D.04/2019.</span>
                       <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
                   </div> -->
                   <div class="col-4 col-md-2">
-                      <a href="https://www.facebook.com/sharer/sharer.php?u=https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c" id="shareFacebook" target="_blank" style="text-decoration: none;">
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=https://dev.santara.co.id/detail-coming-soon/{{$item->id}}" id="shareFacebook" target="_blank" style="text-decoration: none;">
                           <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/facebook.png" class="lazyload">
                           <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
                       </a>
                   </div>
                   <div class="col-4 col-md-2">
-                      <a href="https://twitter.com/intent/tweet?url=https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTwitter" style="text-decoration: none;" target="_blank">
+                      <a href="https://twitter.com/intent/tweet?url=https://dev.santara.co.id/detail-coming-soon/{{$item->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTwitter" style="text-decoration: none;" target="_blank">
                           <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/twitter.png" class="lazyload">
                           <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
                       </a>
                   </div>
                   <div class="col-4 col-md-2">
-                      <a href="https://telegram.me/share/url?url=https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTelegram" target="_blank" style="text-decoration: none;">
+                      <a href="https://telegram.me/share/url?url=https://dev.santara.co.id/detail-coming-soon/{{$item->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung" id="shareTelegram" target="_blank" style="text-decoration: none;">
                           <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/telegram.png" class="lazyload">
                           <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
                       </a>
@@ -562,15 +562,15 @@ KEP-59/D.04/2019.</span>
                       <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
                   </div> -->
                   <div class="col-4 col-md-2">
-                      <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c" id="shareWhatsapp" target="_blank" style="text-decoration: none;">
+                      <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A https://dev.santara.co.id/detail-coming-soon/{{$item->id}}" id="shareWhatsapp" target="_blank" style="text-decoration: none;">
                           <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/whatsapp.png" class="lazyload">
                           <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
                       </a>
                   </div>
               </div>
               <div class="input-group input-group-lg mb-3">
-                  <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled="" style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username" aria-describedby="basic-addon2" placeholder="https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c">
-                  <span id="copy-link" class="input-group-text" style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer" onclick="shareButton('https://santara.co.id/pralisting/detail/3438d0f0-6dcc-47c5-9594-0fa1a9fab06c')">Copy Link</span>
+                  <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled="" style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username" aria-describedby="basic-addon2" placeholder="https://dev.santara.co.id/detail-coming-soon/{{$item->id}}">
+                  <span id="copy-link" class="input-group-text" style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer" onclick="shareButton('https://dev.santara.co.id/detail-coming-soon/{{$item->id}}')">Copy Link</span>
               </div>
           </div>
 
@@ -605,7 +605,42 @@ KEP-59/D.04/2019.</span>
       });
 });
 </script>
+<script>
+  function shareButton(url) {
+      navigator.clipboard.writeText(url);
+      // alert("Copied the text: " + url);
+      toastr.success("Url Berhasil Di Copy!!");
+  }
 
+  function share(url, message) {
+
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          // some code..
+          const shareData = {
+              title: message,
+              text: 'Temukan peluang investasi berikut di Santara! ' + message,
+              url: url
+          }
+
+          try {
+              navigator.share(shareData)
+              resultPara.textContent = 'MDN shared successfully'
+          } catch (err) {
+              resultPara.textContent = 'Error: ' + err
+          }
+      } else {
+
+          $('#shareWhatsapp').attr('href', "https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + url);
+          $('#shareTelegram').attr('href', "https://telegram.me/share/url?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
+          $('#shareFacebook').attr('href', "https://www.facebook.com/sharer/sharer.php?u=" + url);
+          $('#shareTwitter').attr('href', "https://twitter.com/intent/tweet?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
+          $('#copy-link').attr('onclick', "shareButton('" + url + "')");
+          $('#inputShareLink').attr('placeholder', url);
+          $('#modalShareButton').modal('show');
+      }
+
+  }
+</script>
 @foreach ($soon as $item)
 
 <script type='text/javascript'>

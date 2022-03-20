@@ -61,7 +61,8 @@
           </div>
         </div>
         <div class="profil">
-          <img class="image-69" src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png" />
+          <img class="image-69"
+            src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png" />
           <div class="pemilik-bisnis">
             <div class="m-khemal-nugroho inter-medium-alabaster-18px">
               <span class="text-mulai inter-medium-alabaster">{{$emt->tr->name}}</span>
@@ -144,7 +145,7 @@
 
         </div>
       </div>
-      <div class="col-lg-6 col-sm-6">
+      <div class="col-lg-6 col-sm-6 container">
         <div class="info-deviden border-1px-cape-cod">
           <div class="pembagian-deviden-1 inter-medium-alabaster-18px">
             <span class="inter-medium-alabaster-18px">Informasi Bisnis:</span>
@@ -154,13 +155,15 @@
               <div class="table-cell">
                 <p class="pembagian-deviden-ta inter-normal-delta-12px">
                   <span class="inter-normal-delta-12px">Saham yang dilepas</span><br><span
-                    class="inter-normal-delta-12px" style="font-weight: bold; color: #fff">{{$emt->avg_general_share_amount}}%</span>
+                    class="inter-normal-delta-12px"
+                    style="font-weight: bold; color: #fff">{{round($emt->avg_general_share_amount,0)}}%</span>
                 </p>
               </div>
               <div class="table-cell">
                 <p class="pembagian-deviden-ta inter-normal-delta-12px">
                   <span class="inter-normal-delta-12px">Perkiraan omzet penerbit</span><br><span
-                    class="inter-normal-delta-12px" style="font-weight: bold; color: #fff">{{$emt->avg_turnover_after_becoming_a_publisher}}</span>
+                    class="inter-normal-delta-12px"
+                    style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_turnover_after_becoming_a_publisher,0),0,',','.')}}</span>
                 </p>
               </div>
             </div>
@@ -169,13 +172,15 @@
                 <div class="table-cell">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
                     <span class="inter-normal-delta-12px">Perkiraan Dividen</span><br><span
-                      class="inter-normal-delta-12px" style="font-weight: bold; color: #fff">{{$emt->avg_annual_dividen}}%</span>
+                      class="inter-normal-delta-12px"
+                      style="font-weight: bold; color: #fff">{{round($emt->avg_annual_dividen,0)}}%</span>
                   </p>
                 </div>
                 <div class="table-cell">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
                     <span class="inter-normal-delta-12px">Dana yang dibutuhkan</span><br><span
-                      class="inter-normal-delta-12px" style="font-weight: bold; color: #fff">{{$emt->avg_capital_needs}}</span>
+                      class="inter-normal-delta-12px"
+                      style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</span>
                   </p>
                 </div>
               </div>
@@ -187,43 +192,69 @@
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
                     <span class="inter-normal-delta-12px" style="white-space: nowrap;">Omzet 2 tahun
                       sebelumnya</span><br><span class="inter-normal-delta-12px">2020:</span><br><span
-                      class="inter-medium-delta-12px" style="font-weight: bold; color: #fff">{{$emt->avg_annual_turnover_previous_year}}</span>
+                      class="inter-medium-delta-12px"
+                      style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_annual_turnover_previous_year,0),0,',','.')}}</span>
                   </p>
                 </div>
                 <div class="table-cell" style="margin-top: 10px;">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
                     <span class="inter-normal-delta-12px">2021:</span><br><span class="inter-normal-delta-12px"
-                      style="font-weight: bold; color: #fff">{{$emt->avg_annual_turnover_current_year}}</span>
+                      style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_annual_turnover_current_year,0),0,',','.')}}</span>
                   </p>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="container" style="margin-bottom: -20px;">
+            <button class="btn btn-danger btn-block">Pesan Saham</button>
           </div>
         </div>
       </div>
 
     </div>
 
+    
+
     <div class="actions-com">
-      <div class="button-5">
+      <a class="button-5 clike" data-id={{$emt->id}} id="clike" style="cursor: pointer;">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black ">
-            <p class="tx-icon">82 </p>
+            <p id="addcountLike" class="tx-icon">{{$clike->l}} </p>
             <p class="com-u">&ensp;Likes</p>
           </span>
         </div>
-      </div>
-      <div class="button-5">
+      </a>
+      <a class="button-5 slike" data-id={{$emt->id}} id="slike" style="cursor: pointer;display:none;">
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+        <div class="address-1 inter-medium-eerie-black-14px">
+          <span class="tx-icon inter-medium-eerie-black ">
+            <p id="subcountLike" class="tx-icon">{{$clike->l}} </p>
+            <p class="com-u">&ensp;Likes</p>
+          </span>
+        </div>
+      </a>
+      <a class="button-5" data-id={{$emt->id}} id="cvote" style="cursor: pointer;">
         <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
-            <p class="tx-icon">197 </p>
+            <p id="addcountVote" class="tx-icon">{{$cvote->v}} </p>
             <p class="com-u">&ensp;Minat</p>
           </span>
         </div>
-      </div>
-      <div class="button-5">
+      </a>
+      <a class="button-5" data-id={{$emt->id}} id="svote" style="cursor: pointer;display:none;">
+        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+        <div class="address-1 inter-medium-eerie-black-14px">
+          <span class="tx-icon inter-medium-eerie-black">
+            <p id="subcountVote" class="tx-icon">{{$cvote->v}} </p>
+            <p class="com-u">&ensp;Minat</p>
+          </span>
+        </div>
+      </a>
+
+
+      <a class="button-5" style="cursor: pointer;">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
@@ -231,21 +262,25 @@
             <p class="com-u">&ensp;Komen</p>
           </span>
         </div>
-      </div>
-      <div class="button-5">
+      </a>
+      <a class="button-5" style="cursor: pointer;">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <p class="com-u">&ensp;Share</p>
           </span>
         </div>
-      </div>
+      </a>
     </div>
+    @if ($emt->youtube == null)
+
+    @else
     <div class="videoWrapper" style="margin-top: 100px;">
       <!-- Copy & Pasted from YouTube -->
-      <iframe width="560" height="349" src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0"
+      <iframe width="560" height="349" src="{{$emt->youtube}}" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+    @endif
     <div class="gallery">
       <div class="gallery-1 inter-bold-alabaster-24px"><span class="inter-bold-alabaster-24px">Gallery</span></div>
     </div>
@@ -265,15 +300,28 @@
             <div class="fashion_section_2">
               <div class="fashion_section_2">
                 <div id="owl-demo6" class="owl-carousel owl-theme">
+                  @if ($picture[3] == 'default.png')
+                      
+                  @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
+                    <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
                   </div>
+                  @endif
+                  @if ($picture[4] == 'default.png')
+                      
+                  @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
+                    <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[4]}}" />
                   </div>
+                  @endif
+                  @if ($picture[5] == 'default.png')
+                      
+                  @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/assets/images/rectangle-2@1x.png') }}" />
+                    <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[5]}}" />
                   </div>
+                  @endif
+                  
                 </div>
               </div>
             </div>
@@ -284,4 +332,170 @@
 
   </div>
 </div>
+@endsection
+@section('js')
+<script>
+  $(document).ready(function(){
+      $('#clike').click(function(){
+         
+          var id = $(this).data('id');
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+          console.log(id);
+          // AJAX request
+          $.ajax({
+              url: '{{url("addLikeajx")}}/'+id,
+              type: 'post',
+              data: {id: id,
+                _token: _token
+              },
+              success: function(count){ 
+                  // Add response in Modal body
+                  toastr.info("Suka");
+                  $.ajax({
+                  url: '{{url("getlike")}}/'+id,
+                  type: 'get',
+                  data: {id: id},
+                  success: function(count){ 
+                      console.log(count);
+                      var li = document.getElementById('subcountLike');
+                      li.innerHTML = count; 
+                      document.getElementById("slike").style.display = "inherit";
+                      document.getElementById("clike").style.display = "none";
+                    }
+                  });
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+              }
+          });
+          
+          
+      })
+      
+      
+      
+});
+</script>
+<script type='text/javascript'>
+  $(document).ready(function(){
+    $('#slike').click(function(){
+      var id = $(this).data('id');
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+          console.log(id);
+          // AJAX request
+          $.ajax({
+              url: '{{url("subLikeajx")}}/'+id,
+              type: 'post',
+              data: {id: id,
+                _token: _token
+              },
+              success: function(count){ 
+                  // Add response in Modal body
+                  toastr.error("Batal Suka");
+                  $.ajax({
+                  url: '{{url("getlike")}}/'+id,
+                  type: 'get',
+                  data: {id: id},
+                  success: function(count){ 
+                      console.log(count);
+                      var li = document.getElementById('addcountLike');
+                      li.innerHTML = count; 
+                      document.getElementById("slike").style.display = "none";
+                      document.getElementById("clike").style.display = "inherit";
+                    }
+                  });
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+              }
+          });
+     });
+      
+      
+});
+</script>
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+      $('#cvote').click(function(){
+         
+          var id = $(this).data('id');
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+          console.log(id);
+          // AJAX request
+          $.ajax({
+              url: '{{url("addVoteajx")}}/'+id,
+              type: 'post',
+              data: {id: id,
+                _token: _token
+              },
+              success: function(count){ 
+                  // Add response in Modal body
+                  toastr.info("Minat");
+                  $.ajax({
+                  url: '{{url("getvote")}}/'+id,
+                  type: 'get',
+                  data: {id: id},
+                  success: function(count){ 
+                      console.log(count);
+                      var lis = document.getElementById('subcountVote');
+                      lis.innerHTML = count; 
+                      document.getElementById("svote").style.display = "inherit";
+                      document.getElementById("cvote").style.display = "none";
+                    }
+                  });
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+              }
+          });
+          
+          
+      })
+      
+});
+</script>
+<script type='text/javascript'>
+  $(document).ready(function(){
+      $('#svote').click(function(){
+         
+          var id = $(this).data('id');
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+          console.log(id);
+          // AJAX request
+          $.ajax({
+              url: '{{url("subVoteajx")}}/'+id,
+              type: 'post',
+              data: {id: id,
+                _token: _token
+              },
+              success: function(count){ 
+                  // Add response in Modal body
+                  toastr.error("Batal Minat");
+                  $.ajax({
+                  url: '{{url("getvote")}}/'+id,
+                  type: 'get',
+                  data: {id: id},
+                  success: function(count){ 
+                      console.log(count);
+                      var lit = document.getElementById('addcountVote');
+                      lit.innerHTML = count; 
+                      document.getElementById("cvote").style.display = "inherit";
+                      document.getElementById("svote").style.display = "none";
+                    }
+                  });
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+              }
+          });
+          
+          
+      })
+      
+});
+</script>
+@endsection
+
+@section('style')
 @endsection
