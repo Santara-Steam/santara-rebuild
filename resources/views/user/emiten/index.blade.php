@@ -51,20 +51,9 @@
                                                     </td> --}}
                                                     {{-- <td>{{$item->sts}}</td> --}}
                                                     <td>
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <button class="btn btn-sm btn-primary">
+                                                                <a href="{{url('detail-coming-soon')}}/{{$item->id}}" class="btn btn-sm btn-primary">
                                                                     Lihat Detail
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <button class="btn btn-sm btn-success">
-                                                                    Pesan Saham
-                                                                </button>
-                                                            </div>
-
-
-                                                        </div>
+                                                                </a>
                                                     </td>
 
                                                 </tr>
@@ -94,9 +83,7 @@
     $(document).ready(function() {
         $('#tabel').DataTable({
             responsive: true,
-            "columnDefs": [
-    { "width": "20%", "targets": 4 }
-  ],
+            
         });
     });
 </script>
