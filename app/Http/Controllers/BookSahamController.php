@@ -85,15 +85,15 @@ class BookSahamController extends Controller
 
     public function pay($id){
         $trx = book_saham::where('id',$id)->first();
-        if ($trx->trader_id != Auth::user()->trader->id) {
-            $notif = array(
-                'message' => 'Bukan transaksi Anda Brader',
-                'alert-type' => 'fail'
-            );
-            return redirect('/')->with($notif);
-        }else{
+        // if ($trx->trader_id != Auth::user()->trader->id) {
+        //     $notif = array(
+        //         'message' => 'Bukan transaksi Anda Brader',
+        //         'alert-type' => 'fail'
+        //     );
+        //     return redirect('/')->with($notif);
+        // }else{
         return view('front_end.coming_soon.pay',compact('trx'));
-        }
+        // }
     }
 
     public function detail($id){
@@ -147,7 +147,7 @@ class BookSahamController extends Controller
         $book->bukti_tranfer = $BuktiTransferFileSave;
         if ($book->trader_id != Auth::user()->trader->id) {
             $notif = array(
-                'message' => 'Bukan transaksi Anda Brader',
+                'message' => 'Bukan Transaksi Anda Brader Wkwkw',
                 'alert-type' => 'fail'
             );
             return redirect()->back()->with($notif);
