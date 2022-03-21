@@ -284,7 +284,7 @@
         <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
-            <p class="tx-icon">18 </p>
+            <p class="tx-icon"> {{$ccmt}}</p>
             <p class="com-u">&ensp;Komen</p>
           </span>
         </div>
