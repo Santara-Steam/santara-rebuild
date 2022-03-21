@@ -25,7 +25,7 @@
                                         <table class="table" id="tabel">
                                             <thead>
                                                 <tr>
-                                                    {{-- <th>Owner</th> --}}
+                                                    <th>#</th>
                                                     <th>Order ID</th>
                                                     <th>Trader</th>
                                                     <th>Emiten</th>
@@ -36,9 +36,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $no = 0;?>
+                                                {{-- @foreach ($emiten as $item) --}}
                                                 @foreach ($book as $item)
+                                                <?php $no++; ?>
                                                 <tr>
                                                     {{-- <td>{{$item->trader_id}}</td> --}}
+                                                    <td>{{$no}}</td>
                                                     <td>{{$item->order_id}}</td>
                                                     <td>{{$item->trd->name}}</td>
                                                     <td>{{$item->emtn->company_name}}</td>

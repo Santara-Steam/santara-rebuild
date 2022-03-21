@@ -27,6 +27,7 @@
                                             <thead>
                                                 <tr>
                                                     {{-- <th>Owner</th> --}}
+                                                    <th>#</th>
                                                     <th>Nama Perusahaan</th>
                                                     <th>Nama Brand</th>
                                                     <th>Kode</th>
@@ -36,9 +37,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $no = 0;?>
                                                 @foreach ($emiten as $item)
+                                                <?php $no++; ?>
                                                 <tr>
                                                     {{-- <td>{{$item->trader_id}}</td> --}}
+                                                    <td>{{$no}}</td>
                                                     <td>{{$item->company_name}}</td>
                                                     <td>{{$item->trademark}}</td>
                                                     <td>{{$item->code_emiten}}</td>

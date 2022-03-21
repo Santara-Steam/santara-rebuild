@@ -26,7 +26,7 @@
                                             <thead>
                                                 <tr>
                                                     {{-- <th>Owner</th> --}}
-                                                    {{-- <th>Trader</th> --}}
+                                                    <th>#</th>
                                                     <th>Order ID</th>
                                                     <th>Emiten</th>
                                                     <th>Lembar Saham</th>
@@ -36,9 +36,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $no = 0;?>
+                                                {{-- @foreach ($emiten as $item) --}}
                                                 @foreach ($book as $item)
+                                                <?php $no++; ?>
                                                 <tr>
-                                                    {{-- <td>{{$item->trader_id}}</td> --}}
+                                                    <td>{{$no}}</td>
                                                     {{-- <td>{{$item->trd->name}}</td> --}}
                                                     <td>{{$item->order_id}}</td>
                                                     <td>{{$item->emtn->company_name}}</td>

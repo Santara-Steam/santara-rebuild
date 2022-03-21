@@ -25,7 +25,7 @@
                                         <table class="table" id="tabel">
                                             <thead>
                                                 <tr>
-                                                    {{-- <th>Owner</th> --}}
+                                                    <th>#</th>
                                                     <th>Penerbit</th>
                                                     <th style="width: 10%">Dana Dibutuhkan</th>
                                                     <th>Saham Dilepas</th>
@@ -37,9 +37,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $no = 0;?>
+                                                {{-- @foreach ($emiten as $item) --}}
                                                 @foreach ($emiten as $item)
+                                                <?php $no++; ?>
                                                 <tr>
-                                                    {{-- <td>{{$item->trader_id}}</td> --}}
+                                                    <td>{{$no}}</td>
                                                     <td>{{$item->company_name}}</td>
                                                     <td>Rp{{number_format(round($item->avg_capital_needs,0),0,',','.')}}
                                                     </td>
