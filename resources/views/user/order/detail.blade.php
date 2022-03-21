@@ -19,7 +19,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <table class="table" style="font-size: 1.32rem;font-family: Quicksand, Georgia,Times New Roman, Times, serif;
+                                        <table class="table" style="font-size: 1rem;font-family: Quicksand, Georgia,Times New Roman, Times, serif;
                                         font-weight: 400;color: #464855;">
                                             <tr>
                                                 <td style="padding-top:10px ">Order ID</td>
