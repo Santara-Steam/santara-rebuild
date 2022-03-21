@@ -222,6 +222,26 @@
 
 
     <div class="actions-com">
+      @guest
+      <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+        <div class="address-1 inter-medium-eerie-black-14px">
+          <span class="tx-icon inter-medium-eerie-black ">
+            <p id="addcountLike" class="tx-icon">{{$clike->l}} </p>
+            <p class="com-u">&ensp;Likes</p>
+          </span>
+        </div>
+      </a>
+      <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
+        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+        <div class="address-1 inter-medium-eerie-black-14px">
+          <span class="tx-icon inter-medium-eerie-black">
+            <p id="addcountVote" class="tx-icon">{{$cvote->v}} </p>
+            <p class="com-u">&ensp;Minat</p>
+          </span>
+        </div>
+      </a>
+      @else
       <a class="button-5 clike" data-id={{$emt->id}} id="clike" style="cursor: pointer;">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
@@ -258,7 +278,7 @@
           </span>
         </div>
       </a>
-
+      @endguest
       <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
         data-target="#modal{{$emt->id}}">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
