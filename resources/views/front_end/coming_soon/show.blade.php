@@ -65,7 +65,7 @@
             src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png" />
           <div class="pemilik-bisnis">
             <div class="m-khemal-nugroho inter-medium-alabaster-18px">
-              <span class="text-mulai inter-medium-alabaster">{{$emt->tr->name}}</span>
+              <span class="text-mulai inter-medium-alabaster">{{$emt->owner_name}}</span>
             </div>
             <div class="pemilik-bisnis-1 inter-normal-mercury-14px">
               <span class="inter-normal-mercury-14px">Pemilik Bisnis</span>
