@@ -991,7 +991,7 @@
 </div>
 </div>
 <div class="modal-footer" style="background-color: var(--shark);">
-  <a class="b-daf btn btn-danger btn-lg btn-block" id="sel" href="{{url('detail-coming-soon')}}/">Selengkapnya</a>
+  <a class="b-daf btn btn-danger btn-lg btn-block" id="sel" href="">Selengkapnya</a>
 </div>
 </div>
 </div>
@@ -1020,6 +1020,7 @@
       $('#minat').text(minat);
       $('#comment').text(comment);
       $('#id').text(id);
+      $('#sel').attr("href", "{{url('detail-coming-soon')}}/"+id);
       $('#trdlike').text(trdlike);
       $('#trdvote').text(trdvote);
     })
