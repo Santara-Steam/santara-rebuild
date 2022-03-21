@@ -887,9 +887,9 @@
                   @else
                   @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
 
-                  <a onclick="document.getElementById('sublike{{$cs->id}}').submit();" style="cursor: pointer">
+                  <a id="sl" onclick="" style="cursor: pointer">
                     @else
-                    <a onclick="document.getElementById('like{{$cs->id}}').submit();" style="cursor: pointer">
+                    <a id="ll" onclick="" style="cursor: pointer">
                       @endif
 
                       {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();" style="cursor: pointer">
@@ -907,12 +907,12 @@
                           </div>
                         </div>
                       </a>
-                      <form id="like{{$cs->id}}" action="{{url('addLike')}}/{{$cs->id}}" method="POST"
+                      <form id="like" action=""  method="POST"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
                       </form>
 
-                      <form id="sublike{{$cs->id}}" action="{{url('subLike')}}/{{$cs->id}}" method="POST"
+                      <form id="sublike" action=""  method="POST"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
                       </form>
@@ -959,21 +959,21 @@
                         </form>
 
                         @endguest
-                        <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal" data-dismiss="modal"
-                          data-target="#modal{{$cs->id}}" class="cmt">
+                        <a style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal" data-dismiss="modal"
+                          data-target="#modal" class="cmt">
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-comments"
                               style="color: #fff; font-size: 18px; margin-left: -15px;"></i>
                             <div class=" inter-normal-alabaster-10px">
                               <span class="tx-icon inter-normal-alabaster">
-                                <p class="ic-sz tx-icon" style="margin-top: -0px;" id="comment"> </p>
+                                <p class="ic-sz tx-icon" style="margin-top: -0px;" id="comments"> </p>
                                 <p class="ic-sz com-u mnt">&ensp;Komentar</p>
                               </span>
                             </div>
                           </div>
                         </a>
-                        <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
-                          data-target="#modalShareButton{{$cs->id}}">
+                        <a style="cursor: pointer" id="msb" data-id="{{$cs->id}}" data-toggle="modal"
+                          data-target="#modalShareButton">
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-share" style="color: #fff; font-size: 18px;"></i>
                             <div class="share inter-normal-alabaster-10px">
@@ -1018,11 +1018,24 @@
       $('#image').prop('src', 'public/upload/' + image);
       $('#like').text(like);
       $('#minat').text(minat);
-      $('#comment').text(comment);
+      $('#comments').text(comment);
       $('#id').text(id);
       $('#sel').attr("href", "{{url('detail-coming-soon')}}/"+id);
       $('#trdlike').text(trdlike);
       $('#trdvote').text(trdvote);
+      $("form#like").prop('id','like'+id).prop('action', "{{url('addLike')}}/"+id);;
+      $("form#sublike").prop('id','sublike'+id).prop('action',"{{url('subLike')}}/"+id);
+      $("#msb").attr('data-target', "#modalShareButton"+id);
+      $("#mct").attr('data-target', "#modal"+id).attr('data-id', id);
+// console.log($("#msb").dataset.target);
+      $("#sl").attr('onclick',"document.getElementById('sublike"+id+"').submit()");
+      $("#ll").attr('onclick',"document.getElementById('sublike"+id+"').submit()");
+      // $("#sl").setAttribute('onclick',"d");
+      // $("#ll").setAttribute('onclick',"ds");
+      // var s = function() { document.getElementById('sublike'+id).submit() };
+      // var l = function() { document.getElementById('like'+id).submit() };
+      // $("#sl").onclick = 's';
+      // $("#ll").onclick = 'l';
     })
   })
 </script>
