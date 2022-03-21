@@ -405,8 +405,8 @@
                             </div>
                             <div class="footer-card-3">
                               <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                              <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis
-                                Ini</span>
+                              <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis
+                                Ini</a>
                             </div>
                         </a>
                       </div>
@@ -986,7 +986,7 @@
               
   <div class="footer-card3">
     <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-    <span class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</span>
+    <a id="dbi" class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</a>
   </div>
 </div>
 </div>
@@ -1021,6 +1021,7 @@
       $('#comments').text(comment);
       $('#id').text(id);
       $('#sel').attr("href", "{{url('detail-coming-soon')}}/"+id);
+      $('#dbi').attr("href", "{{url('detail-coming-soon')}}/"+id);
       $('#trdlike').text(trdlike);
       $('#trdvote').text(trdvote);
       $("form#like").prop('id','like'+id).prop('action', "{{url('addLike')}}/"+id);;
