@@ -868,9 +868,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="icon-card">
+                <div class="icon-card row">
                   @guest
-                  <a href="{{route('login')}}" style="cursor: pointer">
+                  <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
                     <div class="icon-and-supporting-text">
                       <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
                       &ensp;
@@ -887,9 +887,9 @@
                   @else
                   @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
 
-                  <a id="sl" onclick="" style="cursor: pointer">
+                  <a class="col-3" id="sl" onclick="" style="cursor: pointer">
                     @else
-                    <a id="ll" onclick="" style="cursor: pointer">
+                    <a class="col-3" id="ll" onclick="" style="cursor: pointer">
                       @endif
 
                       {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();" style="cursor: pointer">
@@ -921,7 +921,7 @@
 
 
                       @guest
-                      <a href="{{route('login')}}" style="cursor: pointer">
+                      <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
                         <div class="icon-and-supporting-text-1">
                           <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
                           <div class="lk inter-normal-alabaster-10px">
@@ -935,9 +935,9 @@
                       @else
                       @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
 
-                      <a onclick="document.getElementById('subvote{{$cs->id}}').submit();" style="cursor: pointer">
+                      <a class="col-3" onclick="document.getElementById('subvote{{$cs->id}}').submit();" style="cursor: pointer">
                         @else
-                        <a onclick="document.getElementById('vote{{$cs->id}}').submit();" style="cursor: pointer">
+                        <a class="col-3" onclick="document.getElementById('vote{{$cs->id}}').submit();" style="cursor: pointer">
                           @endif
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
@@ -959,7 +959,7 @@
                         </form>
 
                         @endguest
-                        <a style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal" data-dismiss="modal"
+                        <a class="col-3" style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal" data-dismiss="modal"
                           data-target="#modal" class="cmt">
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-comments"
@@ -972,7 +972,7 @@
                             </div>
                           </div>
                         </a>
-                        <a style="cursor: pointer" id="msb" data-id="{{$cs->id}}"  data-toggle="modal"
+                        <a class="col-3" style="cursor: pointer" id="msb" data-id="{{$cs->id}}"  data-toggle="modal"
                           data-target="#modalShareButton" data-dismiss="modal">
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-share" style="color: #fff; font-size: 18px;"></i>
