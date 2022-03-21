@@ -796,7 +796,7 @@
           </div>
           <div class="modal-footer" style="background-color: var(--shark);">
             <a class="b-daf btn btn-danger btn-lg btn-block" id="sel"
-              href="{{url('detail_coming_soon')}}/">Selengkapnya</a>
+              href="{{url('detail-coming-soon')}}/">Selengkapnya</a>
           </div>
         </div>
       </div>
