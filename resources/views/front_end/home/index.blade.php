@@ -972,8 +972,8 @@
                             </div>
                           </div>
                         </a>
-                        <a style="cursor: pointer" id="msb" data-id="{{$cs->id}}" data-toggle="modal"
-                          data-target="#modalShareButton">
+                        <a style="cursor: pointer" id="msb" data-id="{{$cs->id}}"  data-toggle="modal"
+                          data-target="#modalShareButton" data-dismiss="modal">
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-share" style="color: #fff; font-size: 18px;"></i>
                             <div class="share inter-normal-alabaster-10px">
