@@ -558,7 +558,7 @@ $('#upload_image').change(function(event){
 
 $modal.on('shown.bs.modal', function() {
     cropper = new Cropper(image, {
-        aspectRatio: 4/4,
+        aspectRatio: 304/384,
         viewMode: 3,
         preview:'.preview'
     });
@@ -569,8 +569,8 @@ $modal.on('shown.bs.modal', function() {
 
 $('#crop').click(function(){
     canvas = cropper.getCroppedCanvas({
-        width:250,
-        height:250
+        width:304,
+        height:380
     });
 
     canvas.toBlob(function(blob){
@@ -637,7 +637,7 @@ $('#upload_image2').change(function(event){
 
 $modal2.on('shown.bs.modal', function() {
     cropper = new Cropper(image2, {
-        aspectRatio: 1360/497,
+        aspectRatio: 1440/432,
         viewMode: 3,
         preview:'.preview2'
     });
@@ -648,8 +648,8 @@ $modal2.on('shown.bs.modal', function() {
 
 $('#crop2').click(function(){
     canvas = cropper.getCroppedCanvas({
-        width: 1366,
-        height: 497
+        width: 1440,
+        height: 432
     });
 
     canvas.toBlob(function(blob){
