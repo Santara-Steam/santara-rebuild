@@ -68,7 +68,7 @@
 
 
                       <div class="card">
-                        <a type="button" data-toggle="modal" id="detail_now" class="mod_now moldla" style="width: 100%;"
+                        <a type="button" data-toggle="modal" id="detail_now" class="mod_now detail_now" style="width: 100%;"
                           data-target="#modal_now" data-ktg="<?=$np->ktg?>" data-trademark_now="<?=$np->trademark?>"
                           data-company_name_now="<?=$np->company_name?>" data-mulai="<?=$mul?>"
                           data-image_now="<?=$picture[0]?>" data-hari="<?=$har?>" data-progres_now="<?=$prog?>"
@@ -76,10 +76,10 @@
                           <img class="rectangle-2"
                             src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                         </a>
-                        <a href="{{ route('now-playing.detail') }}">
+                        {{-- <a href="{{ route('now-playing.detail') }}">
                           <img class="rectangle-2 molpli" style="width: 100%;"
                             src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
-                        </a>
+                        </a> --}}
                         <a href="{{ route('now-playing.detail') }}">
                           <div class="content">
                             <div class="header-card-dan-progress">
@@ -249,7 +249,7 @@
                               ?>
                     <div class="item">
                       <div class="card">
-                        <a type="button" data-toggle="modal" id="detail" class="mod moldla" style="width: 100%;"
+                        <a type="button" data-toggle="modal" id="detail" class="mod" style="width: 100%;"
                           data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
                           data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
                           data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"
@@ -257,10 +257,10 @@
                           data-image="<?=$picture[3]?>">
                           <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
                         </a>
-                        <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}">
-                          <img class="rectangle-2 molpli" style="width: 100%;"
+                        {{-- <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}">
+                          <img class="rectangle-2" style="width: 100%;"
                             src="{{ asset('public/upload') }}/{{$picture[3]}}" />
-                        </a>
+                        </a> --}}
                         <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}">
                           <div class="content">
                             <div class="header-card-dan-progress">
@@ -463,16 +463,16 @@
                     <div class="item">
                       <div class="card">
                         <a type="button" data-toggle="modal" id="detail_sold" style="width: 100%;"
-                          class="mod_sold moldla" data-target="#modal_sold" data-ktg_sold="<?=$item->ktg?>"
+                          class="mod_sold detail_sold" data-target="#modal_sold" data-ktg_sold="<?=$item->ktg?>"
                           data-trademark_sold="<?=$item->trademark?>" data-company_name_sold="<?=$item->company_name?>"
                           data-tot_pendanaan_sold="<?=$tot?>" data-image_sold="<?=$picture[0]?>">
                           <img class="rectangle-2"
                             src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                         </a>
-                        <a href="{{ route('sold-out.detail') }}" style="width: 100%;">
+                        {{-- <a href="{{ route('sold-out.detail') }}" style="width: 100%;">
                           <img class="rectangle-2 molpli"
                             src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
-                        </a>
+                        </a> --}}
                         <a href="{{ route('sold-out.detail') }}">
                           <div class="content">
                             <div class="header-card-dan-progress-2">
@@ -1001,7 +1001,7 @@
 
 <script>
   $(document).ready(function() {
-    $(document).on('click', '#detail', function() {
+    $(document).on('click', '.mod', function() {
       var category = $(this).data('category');
       var trademark = $(this).data('trademark');
       var company_name = $(this).data('company_name');
@@ -1028,7 +1028,7 @@
 
 <script>
   $(document).ready(function() {
-    $(document).on('click', '#detail_now', function() {
+    $(document).on('click', '.detail_now', function() {
       var ktg = $(this).data('ktg');
       var trademark_now = $(this).data('trademark_now');
       var company_name_now = $(this).data('company_name_now');
@@ -1052,7 +1052,7 @@
 </script>
 <script>
   $(document).ready(function() {
-    $(document).on('click', '#detail_sold', function() {
+    $(document).on('click', '.detail_sold', function() {
       var ktg_sold = $(this).data('ktg_sold');
       var trademark_sold = $(this).data('trademark_sold');
       var company_name_sold = $(this).data('company_name_sold');
