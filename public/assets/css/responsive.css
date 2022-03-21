@@ -495,6 +495,14 @@
       align-items: flex-start;
       display: flex;
     }
+    .molpli{
+    visibility:hidden;
+    display:none !important;
+    }
+    .moldla{
+    visibility:visible;
+    display: flex;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -850,6 +858,20 @@
     
     .kati{
       display: none;
+    }
+    .molpli{
+    visibility:hidden;
+    display:none !important;
+    }
+
+    .moldla{
+    visibility:visible;
+    display: flex;
+    }
+    .boxi{
+      width: 100%;
+      margin-left: 0px;
+      margin-right: 10px;
     }
 }
 
@@ -1290,5 +1312,18 @@
     }
     .kati{
       display: none;
+    }
+    .molpli{
+    visibility:hidden;
+    display:none !important;
+    }
+    .moldla{
+    visibility:visible;
+    display: flex;
+    }
+    .boxi{
+      width: 100%;
+      margin-left: 0px;
+      margin-right: 10px;
     }
 }

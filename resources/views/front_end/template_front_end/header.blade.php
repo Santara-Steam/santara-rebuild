@@ -92,15 +92,15 @@
                 </div>
 
                 <li class="nav-item">
-                  <a class=" navbar-nav" href="#>tentang-santara">Tentang Santara</a>
+                  <a class=" navbar-nav" href="https://santara.co.id/tentang-santara">Tentang Santara</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class=" navbar-nav" href="#">Testimoni</a>
+                  <a class=" navbar-nav" href="https://santara.co.id/testimoni">Testimoni</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class=" navbar-nav" href="#">Panduan</a>
+                  <a class=" navbar-nav" href="{{ route('mulai-investasi.index') }}">Panduan</a>
                 </li>
 
                 <li class="nav-item">
@@ -112,21 +112,21 @@
                 </li>
                 <div class="collapse" id="syarat" style="padding-left: 20px;">
                   <li class="nav-item">
-                    <a class=" navbar-nav" href="#">Pemodal</a>
+                    <a class=" navbar-nav" href="https://santara.co.id/syarat-ketentuan-pemodal">Pemodal</a>
                   </li>
                   <li class="nav-item">
-                    <a class=" navbar-nav" href="#">Penerbit</a>
+                    <a class=" navbar-nav" href="https://santara.co.id/syarat-ketentuan-penerbit">Penerbit</a>
                   </li>
                 </div>
 
 
                 <li class="nav-item">
-                  <a class=" navbar-nav" href="#">Pertanyaan</a>
+                  <a class=" navbar-nav" href="https://santara.co.id/pertanyaan">Pertanyaan</a>
                 </li>
 
 
                 <li class="nav-item">
-                  <a class=" navbar-nav" href="#">SUPPORTED BY</a>
+                  <a class=" navbar-nav" href="https://santara.co.id/supported-by">SUPPORTED BY</a>
                 </li>
                 <li class="nav-item">
                   <a class=" navbar-nav d-inline-block" id="menu-dropdown3" data-bs-toggle="collapse"
@@ -136,21 +136,51 @@
                 </li>
                 <div class="collapse" id="tentangKami" style="padding-left: 20px;">
                   <li class="nav-item">
-                    <a class=" navbar-nav" href="#">Kontak Kami</a>
+                    <a class=" navbar-nav" href="https://santara.co.id/kontak-kami">Kontak Kami</a>
                   </li>
                   <li class="nav-item">
-                    <a class=" navbar-nav" target="_blank" href="#">Berita</a>
+                    <a class=" navbar-nav" target="_blank" href="https://santara.co.id/berita">Berita</a>
                   </li>
                   <li class="nav-item">
-                    <a class=" navbar-nav" target="_blank" href="#">Karir</a>
+                    <a class=" navbar-nav" target="_blank" href="https://santara.co.id/karir">Karir</a>
                   </li>
                 </div>
                 <li class="nav-item li-auth">
                   <div class="d-inline-block inter-medium-white-14px navbar-nav" style="font-size: 12px;">
-                    <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px"
-                      href="{{ route('login') }}">Masuk</a>
-                    <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px"
-                      href="{{ route('register') }}">Daftar</a>
+                    @if(! Auth::check())
+                    <form class="form-inline my-2 my-lg-0">
+                      <div class="inter-medium-white-14px">
+                        <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ route('login') }}">Masuk</a>
+                        <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px"
+                          href="{{ route('register') }}">Daftar</a>
+                      </div>
+                    </form>
+                    @else
+                      @if (Auth::user()->role_id == 1)
+                      <div class="inter-medium-white-14px">
+                        <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/admin') }}">Dashboard</a>
+                        <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" style="margin-top: 10px;" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">Logout</a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                        </form>
+                      </div>
+                      @elseif(Auth::user()->role_id == 2)
+                        <div class="inter-medium-white-14px">
+                          <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/user') }}">Dashboard</a>
+                          <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" style="margin-top: 10px;" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"">Logout</a>
+                        
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                        </div>
+                      @endif
+
+                    @endif
                   </div>
                 </li>
               </ul>

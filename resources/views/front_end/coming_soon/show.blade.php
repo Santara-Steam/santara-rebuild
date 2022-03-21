@@ -146,7 +146,7 @@
         </div>
       </div>
       <div class="col-lg-6 col-sm-6 container">
-        <div class="info-deviden border-1px-cape-cod">
+        <div class="info-deviden border-1px-cape-cod boxi">
           <div class="pembagian-deviden-1 inter-medium-alabaster-18px">
             <span class="inter-medium-alabaster-18px">Informasi Bisnis:</span>
           </div>
