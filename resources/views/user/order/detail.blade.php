@@ -22,6 +22,11 @@
                                         <table class="table" style="font-size: 1.32rem;font-family: Quicksand, Georgia,Times New Roman, Times, serif;
                                         font-weight: 400;color: #464855;">
                                             <tr>
+                                                <td style="padding-top:10px ">Order ID/td>
+                                                <td style="padding-top:10px ">:</td>
+                                                <td class="px-1" style="padding-top:10px ">#{{ $book->order_id}}</td>
+                                            </tr>
+                                            <tr>
                                                 <td style="padding-top:10px ">Penerbit</td>
                                                 <td style="padding-top:10px ">:</td>
                                                 <td class="px-1" style="padding-top:10px ">{{ $book->emtn->company_name}}</td>

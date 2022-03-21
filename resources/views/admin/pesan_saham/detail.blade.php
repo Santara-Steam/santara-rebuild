@@ -22,6 +22,11 @@
                                         <table class="table" style="font-size: 1.32rem;font-family: Quicksand, Georgia,Times New Roman, Times, serif;
                                         font-weight: 400;color: #464855;">
                                             <tr>
+                                                <td style="padding-top:10px ">Order ID/td>
+                                                <td style="padding-top:10px ">:</td>
+                                                <td class="px-1" style="padding-top:10px ">#{{ $book->order_id}}</td>
+                                            </tr>
+                                            <tr>
                                                 <td>Nama Trader</td>
                                                 <td>:</td>
                                                 <td class="px-1">{{ $book->trd->name}}</td>
@@ -40,22 +45,26 @@
                                             <tr>
                                                 <td style="padding-top:10px ">Penerbit</td>
                                                 <td style="padding-top:10px ">:</td>
-                                                <td class="px-1" style="padding-top:10px ">{{ $book->emtn->company_name}}</td>
+                                                <td class="px-1" style="padding-top:10px ">{{
+                                                    $book->emtn->company_name}}</td>
                                             </tr>
                                             <tr>
                                                 <td style="padding-top:10px ">Harga Per Lembar</td>
                                                 <td style="padding-top:10px ">:</td>
-                                                <td class="px-1" style="padding-top:10px ">Rp{{ number_format(round($book->emtn->price,0),0,',','.')}}</td>
+                                                <td class="px-1" style="padding-top:10px ">Rp{{
+                                                    number_format(round($book->emtn->price,0),0,',','.')}}</td>
                                             </tr>
                                             <tr>
                                                 <td style="padding-top:10px ">Jumlah Lembar</td>
                                                 <td style="padding-top:10px ">:</td>
-                                                <td class="px-1" style="padding-top:10px ">{{ number_format(round($book->lembar_saham,0),0,',','.')}}</td>
+                                                <td class="px-1" style="padding-top:10px ">{{
+                                                    number_format(round($book->lembar_saham,0),0,',','.')}}</td>
                                             </tr>
                                             <tr>
                                                 <td style="padding-top:10px ">Total</td>
                                                 <td style="padding-top:10px ">:</td>
-                                                <td class="px-1" style="padding-top:10px ">Rp{{ number_format(round($book->total_amount,0),0,',','.')}}</td>
+                                                <td class="px-1" style="padding-top:10px ">Rp{{
+                                                    number_format(round($book->total_amount,0),0,',','.')}}</td>
                                             </tr>
                                         </table>
                                     </div>
@@ -69,7 +78,8 @@
                                             <tr>
                                                 <td colspan="3">
                                                     @if($book->bukti_tranfer == '-' || $book->bukti_tranfer == null)
-                                                    <img class="img-fluid" width="100px" src="{{asset('public')}}/default.png" alt="">
+                                                    <img class="img-fluid" width="100px"
+                                                        src="{{asset('public')}}/default.png" alt="">
                                                     @else
                                                     <a class="venobox" data-gall="gallery01"
                                                         href="{{ asset('public/storage/bukti_transfer/'.$book->bukti_tranfer) }}"><img
@@ -82,7 +92,8 @@
                                             <tr>
                                                 @if($book->bukti_tranfer == '-' || $book->bukti_tranfer == null)
                                                 <td>
-                                                    <div class="badge badge-warning">Bukti Transfer Belum Di Upload</div>
+                                                    <div class="badge badge-warning">Bukti Transfer Belum Di Upload
+                                                    </div>
                                                 </td>
 
                                                 @elseif($book->bukti_tranfer != '-' && $book->isValid == 1)
@@ -92,12 +103,14 @@
                                                 @elseif($book->bukti_tranfer != '-' && $book->isValid == 2)
                                                 <td>
                                                     <div class="badge badge-danger">Bukti Transfer Tidak Valid</div>
-                                                </td>        
-                                                @elseif($book->bukti_tranfer != '-' && $book->isValid == 0 || $book->bukti_tranfer != '-' && $book->isValid == 3)
+                                                </td>
+                                                @elseif($book->bukti_tranfer != '-' && $book->isValid == 0 ||
+                                                $book->bukti_tranfer != '-' && $book->isValid == 3)
                                                 <td class="3">
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <a data-id="{{$book->id}}" style="color: white" class="btn btn-primary form-control konfbtn">Konfirmasi</a>
+                                                            <a data-id="{{$book->id}}" style="color: white"
+                                                                class="btn btn-primary form-control konfbtn">Konfirmasi</a>
                                                             <form id="konf{{$book->id}}" method="post"
                                                                 action="{{url('/admin/pesan_saham/approve')}}/{{$book->id}}"
                                                                 enctype="multipart/form-data">
@@ -105,7 +118,8 @@
                                                             </form>
                                                         </div>
                                                         <div class="col-6">
-                                                            <a data-id="{{$book->id}}" style="color: white" class="btn btn-danger form-control rejcbtn">Tolak</a>
+                                                            <a data-id="{{$book->id}}" style="color: white"
+                                                                class="btn btn-danger form-control rejcbtn">Tolak</a>
                                                             <form id="rejc{{$book->id}}" method="post"
                                                                 action="{{url('/admin/pesan_saham/reject')}}/{{$book->id}}"
                                                                 enctype="multipart/form-data">
@@ -116,8 +130,8 @@
                                                 </td>
                                                 @endif
                                             </tr>
-                                        
-                                        
+
+
 
                                         </table>
 
@@ -137,7 +151,9 @@
 @endsection
 @section('js')
 <script type="text/javascript" src="{{asset('public/assets/venobox/venobox.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
+    integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $(document).ready(function() {
     $('.venobox').venobox({
@@ -204,6 +220,10 @@
 @endsection
 @section('style')
 <link rel="stylesheet" href="{{asset('public/assets/venobox/venobox.css')}}" type="text/css" media="screen" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+    integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
