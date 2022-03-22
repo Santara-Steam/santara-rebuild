@@ -919,7 +919,6 @@
                       @endguest
 
 
-
                       @guest
                       <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
                         <div class="icon-and-supporting-text-1">
@@ -949,7 +948,7 @@
                             </div>
                           </div>
                         </a>
-                        
+
                         <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
                           enctype="multipart/form-data">
                           {{ csrf_field() }}
