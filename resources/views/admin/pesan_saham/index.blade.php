@@ -63,7 +63,7 @@
                                                     </td>
                                                     <td>
                                                                 <a href="{{url('admin/pesan_saham/detail')}}/{{$item->id}}"
-                                                                    class="btn btn-sm btn-primary">Lihat Bukti Transfer</a>
+                                                                    class="btn btn-sm btn-primary">Lihat Detail</a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
