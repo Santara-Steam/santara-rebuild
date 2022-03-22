@@ -906,6 +906,7 @@
                             </div>
                           </div>
                         </a>
+                        
                         <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
                           enctype="multipart/form-data">
                           {{ csrf_field() }}
