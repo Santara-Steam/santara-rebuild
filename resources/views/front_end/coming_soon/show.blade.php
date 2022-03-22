@@ -84,15 +84,12 @@
         <!-- nav options -->
         <ul class="nav nav-pills mb-3 shadow-sm" id="pills-tab" role="tablist">
           <li class="nav-item sp-tab"> <a class="nav-link active inter-medium-delta" id="pills-home-tab"
-              data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Informasi
-              Saham</a> </li>
+              data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Deskripsi Bisnis</a> </li>
           <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-profile-tab" data-toggle="pill"
-              href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detail Saham</a>
+              href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detail Pemilik Bisnis</a>
           </li>
           <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill"
-              href="#pills-des" role="tab" aria-controls="pills-des" aria-selected="false">Deskripsi Bisnis</a> </li>
-          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill"
-              href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Kontak</a> </li>
+              href="#pills-des" role="tab" aria-controls="pills-des" aria-selected="false">Kontak</a> </li>
         </ul> <!-- content -->
         <div class="tab-content" id="pills-tabContent p-3">
           <!-- 1st card -->
@@ -131,17 +128,6 @@
             </div>
           </div> <!-- 3nd card -->
           <!-- 2nd card -->
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-            <div class="table-row-1">
-              <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-            </div>
-            <div class="table-row">
-              <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-            </div>
-            <div class="table-row">
-              <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-            </div>
-          </div> <!-- 3nd card -->
 
         </div>
       </div>
@@ -226,9 +212,8 @@
       <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black ">
-            <p id="addcountLike" class="tx-icon">{{$clike->l}} </p>
-            <p class="com-u">&ensp;Likes</p>
+          <span class="tx-icon inter-medium-eerie-black">
+            <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
           </span>
         </div>
       </a>
@@ -236,8 +221,7 @@
         <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
-            <p id="addcountVote" class="tx-icon">{{$cvote->v}} </p>
-            <p class="com-u">&ensp;Minat</p>
+            <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
           </span>
         </div>
       </a>
@@ -246,8 +230,7 @@
         <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black ">
-            <p id="addcountLike" class="tx-icon">{{$clike->l}} </p>
-            <p class="com-u">&ensp;Likes</p>
+            <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
           </span>
         </div>
       </a>
@@ -255,8 +238,7 @@
         <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black ">
-            <p id="subcountLike" class="tx-icon">{{$clike->l}} </p>
-            <p class="com-u">&ensp;Likes</p>
+            <span id="subcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
           </span>
         </div>
       </a>
@@ -264,8 +246,7 @@
         <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
-            <p id="addcountVote" class="tx-icon">{{$cvote->v}} </p>
-            <p class="com-u">&ensp;Minat</p>
+            <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
           </span>
         </div>
       </a>
@@ -273,8 +254,7 @@
         <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
-            <p id="subcountVote" class="tx-icon">{{$cvote->v}} </p>
-            <p class="com-u">&ensp;Minat</p>
+            <span id="subcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
           </span>
         </div>
       </a>
@@ -284,8 +264,7 @@
         <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
-            <p class="tx-icon"> {{$ccmt}}</p>
-            <p class="com-u">&ensp;Komen</p>
+            <span class="tx-icon"> {{$ccmt}} <span class="com-u">Komentar</span></span>
           </span>
         </div>
       </a>

@@ -64,10 +64,10 @@
           <div class="men">
             <a href="{{ url('/') }}" style="margin-left: -30px;">
               <div class="menu-header">
-                <img class="logo-header"
-                  src="{{ asset('public/assets/images/logo-newsantara-ai-putih-merah-l-1-27@2x.png') }}" />
-                <div class="santara-header ubuntu-medium-white-28px"><span
-                    class="ubuntu-medium-white-28px">santara</span></div>
+                <img class="logo-header" style="width: 65%;
+    height: 65%; margin-bottom: 50px;"
+                  src="{{ asset('public/assets/images/logo_header.png') }}" />
+                
               </div>
             </a>
             <div class="menu-view-body ff-n">
@@ -196,8 +196,7 @@
       </div>
       <div class="menu">
         <a class="navbar-brand" href="{{ url('/') }}">
-          <img class="logo" src="{{ asset('public/assets/images/logo-newsantara-ai-putih-merah-l-1-27@2x.png') }}" />
-          <div class="santara ubuntu-medium-white-28px"><span class="ubuntu-medium-white-28px">santara</span></div>
+          <img class="logo" src="{{ asset('public/assets/images/logo_header.png') }}" />
       </div>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
