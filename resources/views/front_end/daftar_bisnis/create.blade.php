@@ -46,7 +46,7 @@
                     <input type="text" id="companyName" name="company_name" class="form-control"
                         placeholder="Isi Nama Perusahaan">
                 </div>
-                <fieldset class="form-group row">
+                {{-- <fieldset class="form-group row">
                     <div class="col-2 text-center">
                         <label for="companyName">Logo Usaha</label>
                         <div class="image_area text-center">
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                
+                --}}
 
                 
                 

@@ -30,7 +30,7 @@
                             href="#" data-toggle="dropdown">
                             <span class="mr-1 user-name text-bold-700">{{Auth::user()->trader->name}}</span><span
                                 class="avatar avatar-online"><img
-                                    src="{{asset('public/admin')}}/app-assets/images/portrait/small/avatar-s-19.png"
+                                    src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                     alt="avatar"><i></i></span></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
