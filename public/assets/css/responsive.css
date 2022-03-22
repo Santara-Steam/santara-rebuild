@@ -178,7 +178,7 @@
       margin-left: 0px;
       margin-top: 5px;
     }
-    .content {
+    .content {;
       min-height: auto;
     }
     .rectangle-2 {
@@ -334,7 +334,7 @@
       margin-left: 0px;
       margin-top: 5px;
     }
-    .content {
+    .content {;
       min-height: auto;
     }
     .rectangle-2 {
@@ -349,7 +349,9 @@
     .footer-card-3 {
         display: none;
     }
-
+    .card{
+        margin-bottom: 30px;
+    }
     .tx-lf {
       font-size: 24px;
     }
@@ -596,7 +598,7 @@
       height: 14px;
     }
     .tx-np{
-        width: 100%;
+        width: 100%
         font-size: 12px;
     }
     .tx-pt{
@@ -607,7 +609,7 @@
       margin-left: 0px;
       margin-top: 5px;
     }
-    .content {
+    .content {;
       display: none;
     }
     .rectangle-2 {
@@ -621,6 +623,9 @@
     }
     .footer-card-3 {
         display: none;
+    }
+    .card{
+        margin-bottom: 30px;
     }
     .tx-lf {
       font-size: 18px;
@@ -956,7 +961,7 @@
         margin-top: 80px;
     }
     .tx-np{
-        width: 100%;
+        width: 100%
         font-size: 12px;
     }
     .tx-pt{
@@ -979,7 +984,9 @@
     .footer-card-3 {
         display: none;
     }
-
+    .card{
+        margin-bottom: 30px;
+    }
     .tx-lf {
       font-size: 18px;
     }
@@ -1308,7 +1315,7 @@
     }
     .molpli{
     visibility:hidden;
-    display:none;
+    display:none !important;
     }
     .moldla{
     visibility:visible;

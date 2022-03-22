@@ -99,7 +99,7 @@
       </div>
             </div>
             <div class="col-lg-6 col-sm-6">
-                <div class="info-deviden border-1px-cape-cod" style="width: 300px; height: 420px;">
+                <div class="info-deviden border-1px-cape-cod" style="width: 350px; height: 500px;">
             <div class="pembagian-deviden-1 inter-normal-delta-12px">
               <span class="inter-normal-delta-12px" >Mulai dari</span>
             </div>
@@ -110,7 +110,7 @@
                     <span class="inter-normal-delta-12px" style="white-space: nowrap; margin-top: -5px;">Dari target</span
                     >&nbsp;<span class="inter-normal-delta-12px" style="font-weight: bold; color: #fff">Rp3.000.000.000</span>
                   </p>
-                  <div class="overlap-group" style=" min-width: 270px;">
+                  <div class="overlap-group" style="margin-left: 20px; min-width: 270px;">
                     <div class="percent inter-medium-white-12px">
                       <span class="tx-np percen inter-medium-white">0%</span>
                     </div>
@@ -123,7 +123,7 @@
 
                       <br><br><span class="inter-medium-delta-12px">Bagikan: &nbsp;&nbsp;</span><i style="font-size: 20px; margin-top: " class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i style="font-size: 20px;" class="fa fa-clone"></i><br><br>
                       <img class="divider" style="min-width: 270px;" src="{{ asset('public/assets/images/divider-108@2x.png') }}" /> 
-                      <div style="min-width: 270px; margin-top: -10px;">
+                      <div style="margin-left: 20px; min-width: 270px; margin-top: -10px;">
                         <a class="b-daf btn btn-danger btn-lg btn-block" href=""><i class="fas fa-shopping-cart"></i>&nbsp; Beli Saham</a><br>
                         <a style="margin-left: -1px; margin-top: -10px;"class="b-mul btn btn-light btn-lg btn-block" href="{{ route('daftar-bisnis.index') }}"><i class="fas fa-list"></i>&nbsp; Prospektus</a>
                       </div>
@@ -132,6 +132,7 @@
               </div>
             </div>
           </div>
+                  
             
            
               <div class="videoWrapper" style="margin-top:100px;">
