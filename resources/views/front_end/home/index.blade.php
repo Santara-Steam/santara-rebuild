@@ -35,7 +35,7 @@
           <span class="tx-lf inter-bold-alabaster">Now Playing ({{count($now_playing)}})</span>
         </div>
         <div class="investasi-sekarang inter-bold-thunderbird-16px button-4 seemore">
-          <a href="{{ route('now-playing.index') }}" class="tx-rg inter-bold-white">Lihat Semua
+          <a data-toggle="modal" data-target="#exampleModal" class="tx-rg inter-bold-white">Lihat Semua
             &nbsp&nbsp<i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
