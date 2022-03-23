@@ -106,7 +106,7 @@
                                   <div class="mulai-rp1000000 inter-normal-mercury-14px">
                                     <span class="tx-sold span-1 inter-normal-mercury">Mulai &nbsp;<span
                                         class="tx-sold span-1 inter-bold-white-14px" style="font-weight: bold">Rp
-                                        {{number_format(round(1000 * $np->price,0),0,',','.')}}</span> </span>
+                                        {{number_format(round(100 * $np->price,0),0,',','.')}}</span> </span>
                                   </div>
                                 </div>
                                 <div class="address">
