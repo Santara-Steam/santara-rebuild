@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\emiten;
 use App\Models\emiten_comment;
+use App\Models\emiten_journey;
 use App\Models\emiten_vote;
 use Illuminate\Support\Facades\DB;
 
@@ -43,7 +44,12 @@ class Coming_soonController extends Controller
         ->first();
         $ccmt = emiten_comment::where('emiten_id',$id)
         ->count();
-        return view('front_end/coming_soon/show',compact('emt','clike','cvote','ccmt'));
+        $status = emiten_journey::select('*')->where('emiten_id',$id)
+        ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
+        where emiten_id = '.$id.')')
+        ->first();
+
+        return view('front_end/coming_soon/show',compact('emt','clike','cvote','ccmt','status'));
     }
 
     /**

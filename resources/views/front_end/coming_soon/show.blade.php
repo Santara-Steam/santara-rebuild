@@ -196,9 +196,14 @@
             <a href="{{route('login')}}" class="btn btn-danger btn-block">Pesan Saham</a>
 
             @else
-            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Pesan
-              Saham</button>
+              @if ($status->title == 'Pra Penawaran Saham')
+                  
+              @elseif ($status->title == 'Penawaran Saham')
+              <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Pesan
+                Saham</button>
+              @endif
             @endguest
+            
           </div>
         </div>
       </div>
