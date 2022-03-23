@@ -49,20 +49,20 @@
                             <div class="timeline-caption">
                                <p class="timeline-text">Pra Penawaran Saham
                             </div>
-                            <div class="timeline-caption"> <p class="timeline-text" style="margin-top: -20px;">22-06-2021</div>
+                            <div class="timeline-caption"> <p class="timeline-text">22-06-2021</div>
                             </li>
                             <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="23 Juni 2021">
                                 <div class="timeline-caption">
                                    <p class="timeline-text">Penawaran Saham
                                 </div>
-                                <div class="timeline-caption"> <p class="timeline-text" style="margin-top: -20px;">23-06-2021</div>
+                                <div class="timeline-caption"> <p class="timeline-text" >23-06-2021</div>
                             </li>
                             <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
                                 <div class="timeline-caption">
                                   <p class="timeline-text">Pendanaan Terpenuhi
                                 </div>
                                 <div class="timeline-caption">
-                                   <p class="timeline-text" style="margin-top: -20px;">11-07-2021
+                                   <p class="timeline-text" >11-07-2021
                                 </div>
                             </li>
                             <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
@@ -70,7 +70,7 @@
                                    <p class="timeline-text">Penyerahan Dana
                                 </div>
                                 <div class="timeline-caption">
-                                  <p class="timeline-text" style="margin-top: -20px;">12-08-2021
+                                  <p class="timeline-text" >12-08-2021
                                 </div>
                             </li>
                             <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
@@ -147,11 +147,11 @@
               </div>
             </div>
             <div class="col-lg-6 col-sm-6">
-                <div class="info-deviden border-1px-cape-cod">
+                <div class="info-deviden border-1px-cape-cod" style="width: 100%; height: 100%;">
             <div class="pembagian-deviden-1 inter-medium-alabaster-18px">
               <span class="inter-medium-alabaster-18px">Pembagian Deviden</span>
             </div>
-            <div class="table-2 border-1px-cape-cod">
+            <div class="table-2 border-1px-cape-cod" style="width: 90%; height: 100%;">
               <div class="table-cell-row-1">
                 <div class="table-cell">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
