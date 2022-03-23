@@ -1617,7 +1617,7 @@ input.mail_bt::placeholder {
 }
 
 .rectangle-2 {
-  height: 380px;
+  height: 100%;
   object-fit: cover;
   width: 100%;
 }

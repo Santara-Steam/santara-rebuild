@@ -85,7 +85,7 @@
 
 @media only screen and (min-width: 280px) and (max-width: 599px) {
   .rectangle-2 {
-      height: 70px;
+      height: 100%;
       object-fit: cover;
       width: 100%;
     }
@@ -182,6 +182,7 @@
     min-height: auto;
   }
   .rectangle-2 {
+    height: 100%;
     object-fit: cover;
     width: 100%;
   }
@@ -337,7 +338,7 @@
     min-height: auto;
   }
   .rectangle-2 {
-    height: 205px;
+    height: 100%;
     object-fit: cover;
     width: 100%;
   }
@@ -610,7 +611,7 @@
     display: none;
   }
   .rectangle-2 {
-    height: 205px;
+    height: 100%;
     object-fit: cover;
     width: 100%;
   }
@@ -967,7 +968,7 @@
     margin-top: 5px;
   }
   .rectangle-2 {
-    height: 150px;
+    height: 100%;
     object-fit: cover;
     width: 100%;
   }

@@ -14,255 +14,253 @@
             <span class="text-mulai inter-normal-alabaster">Ayo dukung bisnis favoritmu agar naik menjadi Penerbit!</span>
           </div>
         </div>
-        <fieldset disabled>
-        <div class="form-row" style="padding-right: 25px; padding-left: 25px;">
-        <div class="form-group col-md-4">
-          <div class="label inter-medium-quill-gray-14px">
-            <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
-          </div>
-          <input type="text" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="&#xF002;"/>
-        </div>
-        <div class="form-group col-md-3 kati">
-        </div>
-        <div class="form-group col-md-3">
-          <div class="label-1 inter-medium-quill-gray-14px">
-                    <span class="inter-medium-quill-gray-14px">Kategori</span>
-                  </div>
-          <select id="inputState" class="form-control dropdown-1">
-            <option value="position">Semua Kategori</option>
-                    <option value="price" >Property</option>
-                    <option value="position">Food and Beverage</option>
-                    <option value="price" >Peternakan</option>
-                    <option value="position">Perkebunan/Argo</option>
-                    <option value="price" >Teknologi</option>
-                    <option value="position">Start Up</option>
-                    <option value="price" >Project Financing</option>
-                    <option value="price" >Service/Layanan</option>
-                    <option value="position">Manufaktur/Produksi</option>
-                    <option value="price" >Retail/Distribusi/Logistik</option>
-          </select>
-        </div>
-        <div class="form-group col-md-2">
-          <div class="label-1 inter-medium-quill-gray-14px">
-                    <span class="inter-medium-quill-gray-14px">Urutkan</span>
-                  </div>
-          <select id="inputState" class="form-control dropdown-1">
-            <option value="position">Terlama</option>
-                    <option value="price" >Terpenuhi</option>
-                    <option value="position">Belum Terpenuhi</option>
-          </select>
-        </div>
       </div>
-      </fieldset>
-      </div>
-      <!-- fashion section start -->
+
       <div class="fashion_section">
-         <div id="main_slider" class="carousel" data-ride="carousel">
+         <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                    <div class="carousel-inner">
                <div class="carousel-item active">
-                  <div class="w3-container w3-red">
-                     <div class="fashion_section_2">
-                        <div class="row" style="padding-left: 10px; padding-right: 10px;">
-                        
-                        @foreach ($soon as $cs)
-                    <?php 
-                              $picture = explode(',',$cs->pictures);
-                              if(empty($picture[0])){
-                              $picture[0] = 'default1.png';
-                              }else{
-                                  $picture[0];
-                              }
-                              if(empty($picture[1])){
-                                  $picture[1] = 'default2.png';
-                              }else{
-                                  $picture[1];
-                              }
-                              if(empty($picture[2])){
-                                  $picture[2] = 'default.png';
-                              }else{
-                                  $picture[2];
-                              }
-                              if(empty($picture[3])){
-                                  $picture[3] = 'default.png';
-                              }else{
-                                  $picture[3];
-                              }
-                              if(empty($picture[4])){
-                                  $picture[4] = 'default.png';
-                              }else{
-                                  $picture[4];
-                              }
-                              if(empty($picture[5])){
-                                  $picture[5] = 'default.png';
-                              }else{
-                                  $picture[5];
-                              }
-                              if(empty($picture[6])){
-                                  $picture[6] = 'default1.png';
-                              }else{
-                                  $picture[6];
-                              }
-                              ?>
-
-                      <div class="col-lg-3 col-sm-3 col-3 moldla" style="padding: 5px;">
-                      <a type="button" data-toggle="modal" id="detail" class="mod moldla " style="width: 100%;"
-                          data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
-                          data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
-                          data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"
-                          data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
-                          data-image="<?=$picture[0]?>">
-                     
-                          <div class="card" style="margin-top: 10px;">
-                          <img class="rectangle-2 moldla" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
-                      </div>
-                        </a>
-                            </div>
-                        <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
-                           <div class="col-lg-3 col-sm-3 col-3 molpli" style="padding: 5px;">
-                              <div class="card molpli" style="margin-top: 10px;">
-                          <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
-                                <div class="content">
-                                  <div class="header-card-dan-progress">
-                                    <div class="header-and-tags">
-                              <span class="tx-t inter-medium-sweet-pink-12px" style="background: var(--falu-red);
-    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$cs->ctg->category}}</span>
-                                <div class="header">
-                                <div class="saka-logistics inter-medium-alabaster-20px">
-                                    <span class="tx-pt inter-medium-alabaster">{{$cs->trademark}}</span>
-                                  </div>
-                                  <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                    <span class="tx-np inter-normal-quill-gray">{{$cs->company_name}}</span>
-                                  </div>
-                                      </div>
-                                    </div>
-                                    <div class="icon-card row">
-                                @guest
-                                <a href="{{route('login')}}" style="cursor: pointer">
-                                <div class="icon-and-supporting-text">
-                                    <i class="icon-com iconheart fas fa-heart"
-                                      style="color: #fff; font-size: 18px;"></i>
-                                        <div class="address-2 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
-                                        </div>
-                                      </div>
-                                </a>
-                                @else
-                                @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
-
-                                <a onclick="document.getElementById('sublike{{$cs->id}}').submit();"
-                                  style="cursor: pointer">
-                                  @else
-                                  <a onclick="document.getElementById('like{{$cs->id}}').submit();"
-                                    style="cursor: pointer">
-                                    @endif
-
-                                    {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();"
-                                      style="cursor: pointer"> --}}
-                                      <div class="icon-and-supporting-text">
-                                    <i class="icon-com iconheart fas fa-heart"
-                                      style="color: #fff; font-size: 18px;"></i>
-                                        <div class="address-2 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
-                                        </div>
-                                      </div>
-                                    </a>
-                                    <form id="like{{$cs->id}}" action="{{url('addLike')}}/{{$cs->id}}" method="POST"
-                                      enctype="multipart/form-data">
-                                      {{ csrf_field() }}
-                                    </form>
-
-                                    <form id="sublike{{$cs->id}}" action="{{url('subLike')}}/{{$cs->id}}" method="POST"
-                                      enctype="multipart/form-data">
-                                      {{ csrf_field() }}
-                                    </form>
-                                    @endguest
-
-
-
-                                    @guest
-                                    <a href="{{route('login')}}" style="cursor: pointer">
-                                    <div class="icon-and-supporting-text-1">
-                                        <i class="icon-com iconheart fas fa-user"
-                                          style="color: #fff; font-size: 18px;"></i>
-                                        <div class="address-5 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
-                                        </div>
-                                      </div>
-                                    </a>
-                                    @else
-                                    @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
-
-                                    <a onclick="document.getElementById('subvote{{$cs->id}}').submit();"
-                                      style="cursor: pointer">
-                                      @else
-                                      <a onclick="document.getElementById('vote{{$cs->id}}').submit();"
-                                        style="cursor: pointer">
-                                        @endif
-                                        <div class="icon-and-supporting-text-1">
-                                        <i class="icon-com iconheart fas fa-user"
-                                          style="color: #fff; font-size: 18px;"></i>
-                                        <div class="address-5 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
-                                        </div>
-                                      </div>
-                                      </a>
-                                      <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
-                                        enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                      </form>
-                                      <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}"
-                                        method="POST" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                      </form>
-
-                                      @endguest
-                                      <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
-                                        data-target="#modal{{$cs->id}}" class="cmt">
-                                        <div class="icon-and-supporting-text-2">
-                                          <i class="icon-com iconheart fas fa-comments"
-                                            style="color: #fff; font-size: 18px;"></i>
-                                        <div class="address-6 inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
-                                        </div>
-                                      </div>
-                                      </a>
-                                      <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
-                                        data-target="#modalShareButton{{$cs->id}}">
-                                        <div class="icon-and-supporting-text-2">
-                                          <i class="icon-com iconheart fas fa-share"
-                                            style="color: #fff; font-size: 18px;"></i>
-                                        <div class="share inter-normal-alabaster-10px">
-                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                        </div>
-                                      </div>
-                                      </a>
-                              </div>
-                                  </div>
-                                  <div class="footer-card">
-                              <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                              <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="button btn-block btn btn-outline-light inter-medium-white-14px">Dukung Bisnis
-                                Ini</a>
-                            </div>
-                                </div>
-                              </div>
-                           </div>
-                        @endforeach
+                  <div class="container">
+                  <fieldset disabled>
+                        <div class="form-row" style="padding-right: 25px; padding-left: 25px;">
+                        <div class="form-group col-md-4">
+                          <div class="label inter-medium-quill-gray-14px">
+                            <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
+                          </div>
+                          <input type="text" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="&#xF002;"/>
                         </div>
-                        <div>
-                           <div class="button-1 cut">
+                        <div class="form-group col-md-3 kati">
+                        </div>
+                        <div class="form-group col-md-3">
+                          <div class="label-1 inter-medium-quill-gray-14px">
+                                    <span class="inter-medium-quill-gray-14px">Kategori</span>
+                                  </div>
+                          <select id="inputState" class="form-control dropdown-1">
+                            <option value="position">Semua Kategori</option>
+                                    <option value="price" >Property</option>
+                                    <option value="position">Food and Beverage</option>
+                                    <option value="price" >Peternakan</option>
+                                    <option value="position">Perkebunan/Argo</option>
+                                    <option value="price" >Teknologi</option>
+                                    <option value="position">Start Up</option>
+                                    <option value="price" >Project Financing</option>
+                                    <option value="price" >Service/Layanan</option>
+                                    <option value="position">Manufaktur/Produksi</option>
+                                    <option value="price" >Retail/Distribusi/Logistik</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <div class="label-1 inter-medium-quill-gray-14px">
+                                    <span class="inter-medium-quill-gray-14px">Urutkan</span>
+                                  </div>
+                          <select id="inputState" class="form-control dropdown-1">
+                            <option value="position">Terlama</option>
+                                    <option value="price" >Terpenuhi</option>
+                                    <option value="position">Belum Terpenuhi</option>
+                          </select>
+                        </div>
+                      </div>
+                      </fieldset>
+
+                            <div class="fashion_section_2">
+                                <div class="row" style="padding-left: 10px; padding-right: 10px;">
+                                  @foreach ($soon as $cs)
+                                  <?php 
+                                            $picture = explode(',',$cs->pictures);
+                                            if(empty($picture[0])){
+                                            $picture[0] = 'default1.png';
+                                            }else{
+                                                $picture[0];
+                                            }
+                                            if(empty($picture[1])){
+                                                $picture[1] = 'default2.png';
+                                            }else{
+                                                $picture[1];
+                                            }
+                                            if(empty($picture[2])){
+                                                $picture[2] = 'default.png';
+                                            }else{
+                                                $picture[2];
+                                            }
+                                            if(empty($picture[3])){
+                                                $picture[3] = 'default.png';
+                                            }else{
+                                                $picture[3];
+                                            }
+                                            if(empty($picture[4])){
+                                                $picture[4] = 'default.png';
+                                            }else{
+                                                $picture[4];
+                                            }
+                                            if(empty($picture[5])){
+                                                $picture[5] = 'default.png';
+                                            }else{
+                                                $picture[5];
+                                            }
+                                            if(empty($picture[6])){
+                                                $picture[6] = 'default1.png';
+                                            }else{
+                                                $picture[6];
+                                            }
+                                            ?>
+
+                                  <div class="col-lg-3 col-sm-3 col-3" style="padding: 5px;">
+                                    <a type="button" data-toggle="modal" id="detail" class="mod moldla" style="width: 100%;"
+                                      data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
+                                      data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
+                                      data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"
+                                      data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
+                                      data-image="<?=$picture[0]?>">
+                                      <div class="card moldla">
+                                        <img class="rectangle-2 moldla" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
+                                      </div>
+                                    </a>
+                                    <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
+                                      <div class="card molpli">
+                                        <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
+                                        <div class="content">
+                                          <div class="header-card-dan-progress">
+                                            <div class="header-and-tags">
+                                              <span class="tx-t inter-medium-sweet-pink-12px"
+                                                style="background: var(--falu-red);
+                  border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$cs->ctg->category}}</span>
+                                              <div class="header">
+                                                <div class="saka-logistics inter-medium-alabaster-20px">
+                                                  <span class="tx-pt inter-medium-alabaster"><?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 20, $end='...') ?></span>
+                                                </div>
+                                                <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                                                  <span class="tx-np inter-normal-quill-gray"><?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->company_name ), 30, $end='...') ?></span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="icon-card row" style="display: flex;
+                justify-content: center;
+                align-items: center;">
+                                              @guest
+                                              <a href="{{route('login')}}" style="cursor: pointer">
+                                                <div class="icon-and-supporting-text">
+                                                  <i class="icon-com iconheart fas fa-heart"
+                                                    style="color: #fff; font-size: 18px;"></i>
+                                                  <div class="address-2 inter-normal-alabaster-10px">
+                                                    <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
+                                                  </div>
+                                                </div>
+                                              </a>
+                                              @else
+                                              @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
+
+                                              <a onclick="document.getElementById('sublike{{$cs->id}}').submit();"
+                                                style="cursor: pointer">
+                                                @else
+                                                <a onclick="document.getElementById('like{{$cs->id}}').submit();"
+                                                  style="cursor: pointer">
+                                                  @endif
+
+                                                  {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();"
+                                                    style="cursor: pointer"> --}}
+                                                    <div class="icon-and-supporting-text">
+                                                      <i class="icon-com iconheart fas fa-heart"
+                                                        style="color: #fff; font-size: 18px;"></i>
+                                                      <div class="address-2 inter-normal-alabaster-10px">
+                                                        <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
+                                                      </div>
+                                                    </div>
+                                                  </a>
+                                                  <form id="like{{$cs->id}}" action="{{url('addLike')}}/{{$cs->id}}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
+                                                  </form>
+
+                                                  <form id="sublike{{$cs->id}}" action="{{url('subLike')}}/{{$cs->id}}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
+                                                  </form>
+                                                  @endguest
+
+
+
+                                                  @guest
+                                                  <a href="{{route('login')}}" style="cursor: pointer">
+                                                    <div class="icon-and-supporting-text-1">
+                                                      <i class="icon-com iconheart fas fa-user"
+                                                        style="color: #fff; font-size: 18px;"></i>
+                                                      <div class="address-2 inter-normal-alabaster-10px">
+                                                        <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
+                                                      </div>
+                                                    </div>
+                                                  </a>
+                                                  @else
+                                                  @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
+
+                                                  <a onclick="document.getElementById('subvote{{$cs->id}}').submit();"
+                                                    style="cursor: pointer">
+                                                    @else
+                                                    <a onclick="document.getElementById('vote{{$cs->id}}').submit();"
+                                                      style="cursor: pointer">
+                                                      @endif
+                                                      <div class="icon-and-supporting-text-1">
+                                                        <i class="icon-com iconheart fas fa-user"
+                                                          style="color: #fff; font-size: 18px;"></i>
+                                                        <div class="address-2 inter-normal-alabaster-10px">
+                                                          <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
+                                                        </div>
+                                                      </div>
+                                                    </a>
+                                                    <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
+                                                      enctype="multipart/form-data">
+                                                      {{ csrf_field() }}
+                                                    </form>
+                                                    <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}"
+                                                      method="POST" enctype="multipart/form-data">
+                                                      {{ csrf_field() }}
+                                                    </form>
+
+                                                    @endguest
+                                                    <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
+                                                      data-target="#modal{{$cs->id}}" class="cmt">
+                                                      <div class="icon-and-supporting-text-2">
+                                                        <i class="icon-com iconheart fas fa-comments"
+                                                          style="color: #fff; font-size: 18px;"></i>
+                                                        <div class="address-2 inter-normal-alabaster-10px">
+                                                          <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
+                                                        </div>
+                                                      </div>
+                                                    </a>
+                                                    <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
+                                                      data-target="#modalShareButton{{$cs->id}}">
+                                                      <div class="icon-and-supporting-text-2">
+                                                        <i class="icon-com iconheart fas fa-share"
+                                                          style="color: #fff; font-size: 18px;"></i>
+                                                        <div class="address-2  inter-normal-alabaster-10px">
+                                                          <span class="tx-icon inter-normal-alabaster">Share</span>
+                                                        </div>
+                                                      </div>
+                                                    </a>
+                                            </div>
+                                          </div>
+                                          <div class="footer-card">
+                                            <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                            <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}"
+                                              class="button btn-block btn btn-outline-light inter-medium-white-14px">Dukung Bisnis
+                                              Ini</a>
+                                          </div>
+                                        </div>
+                                    </a>
+                                  </div>
+                                </div>
+                                @endforeach
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            <div class="button-1 cut">
                             <div class="inter-medium-white-14px">
                               <span class="inter-medium-white-14px">See More</span>
                             </div>
                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
             </div>
-            </div>
-         </div>
-      </div>
 
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
