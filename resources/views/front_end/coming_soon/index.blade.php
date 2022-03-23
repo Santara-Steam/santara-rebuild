@@ -14,6 +14,7 @@
             <span class="text-mulai inter-normal-alabaster">Ayo dukung bisnis favoritmu agar naik menjadi Penerbit!</span>
           </div>
         </div>
+        <fieldset disabled>
         <div class="form-row" style="padding-right: 25px; padding-left: 25px;">
         <div class="form-group col-md-4">
           <div class="label inter-medium-quill-gray-14px">
@@ -52,6 +53,7 @@
           </select>
         </div>
       </div>
+      </fieldset>
       </div>
       <!-- fashion section start -->
       <div class="fashion_section">

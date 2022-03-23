@@ -14,6 +14,7 @@
             <span class="text-mulai inter-normal-alabaster">Mereka sudah merasakan urun dana bersama kami, saatnya Bisnis Anda</span>
           </div>
         </div>
+        <fieldset disabled>
         <div class="form-row" style="padding-right: 25px; padding-left: 25px;">
         <div class="form-group col-md-4">
           <div class="label inter-medium-quill-gray-14px">
@@ -51,7 +52,7 @@
                     <option value="position">Belum Terpenuhi</option>
           </select>
         </div>
-      </div>
+      </div></fieldset>
       <!-- fashion section start -->
       <div class="fashion_section">
          <div id="main_slider" class="carousel" data-ride="carousel">

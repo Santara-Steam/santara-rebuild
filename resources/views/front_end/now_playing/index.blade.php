@@ -14,6 +14,7 @@
             <span class="text-mulai inter-normal-alabaster">Yuk, mulai investasi bisnis sekarang juga!</span>
           </div>
         </div>
+        <fieldset disabled>
         <div class="form-row" style="padding-right: 25px; padding-left: 25px;">
         <div class="form-group col-md-3">
           <div class="label inter-medium-quill-gray-14px">
@@ -63,6 +64,7 @@
                     <option value="position">Belum Terpenuhi</option>
           </select>
         </div>
+        </fieldset>
       </div>
       <!-- fashion section start -->
       <div class="fashion_section">

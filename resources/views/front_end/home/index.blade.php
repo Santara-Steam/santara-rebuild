@@ -449,8 +449,8 @@
                         </div>
                       </a>
 
-                      <a href="{{ route('sold-out.detail') }}" class="molpli">
-                        <div class="card molpli">
+                    <a type="button" class="molpli" data-toggle="modal" data-target="#exampleModal">
+                      <div class="card molpli">
                           <img class="rectangle-2"
                             src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                           <div class="content">
@@ -520,6 +520,26 @@
 </div>
 </div>
 <!-- jewellery  section end -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Maaf</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      Halaman masih dalam pengembangan.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 @foreach ($soon as $item)
 
