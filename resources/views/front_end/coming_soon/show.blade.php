@@ -41,7 +41,7 @@
                               ?>
 <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
-<div class="bg" style="background-image: url({{ asset('public/storage/pictures') }}/{{$picture[1]}})">
+<div class="bg" style="background-image: url({{ asset('public/storage/pictures') }}/{{$picture[1]}});margin-top:100px">
   <div class="banner_section layout_padding">
     <div class="container" style="margin-top: 15px;">
       <div class="section">
@@ -54,15 +54,15 @@
               <span class="tx-pt inter-medium-alabaster">{{$emt->company_name}}</span>
             </div>
           </div>
-          <div class="tags-d">
+          {{-- <div class="tags-d"> --}}
             <span class="tx-t inter-medium-sweet-pink-12px"
                                   style="background: var(--falu-red);
     border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$emt->ctg->category}}</span>
-          </div>
+          {{-- </div> --}}
         </div>
         <div class="profil">
           <img class="image-69"
-            src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png" />
+            src="{{ asset('public/storage/pictures') }}/{{$picture[2]}}" />
           <div class="pemilik-bisnis">
             <div class="m-khemal-nugroho inter-medium-alabaster-18px">
               <span class="text-mulai inter-medium-alabaster">{{$emt->owner_name}}</span>
