@@ -47,11 +47,12 @@
               <div class="fashion_section_2">
                 <div class="row">
                   <div id="owl-demo2" class="owl-carousel owl-theme" style="padding-left: 15px; padding-right: 15px;">
-                    @foreach ($now_playing as $np)
+                  
+                  <div class="item">  
+                  @foreach ($now_playing as $np)
                     <?php 
                               $picture = explode(',',$np->pictures);
                               ?>
-                    <div class="item">
 
                       <?php 
                         // $mul=number_format(round($np->minimum_invest * $np->price,0),0,',','.');
@@ -68,7 +69,7 @@
                       {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
 
                       <a type="button" data-toggle="modal" id="detail_now" class="mod_now detail_now moldla"
-                        style="width: 100%;" data-target="#modal_now" {{-- data-ktg="<?=$np->ktg?>"
+                        style="width: 100%;" data-target="#modal_now" data-id="<?=$np->id?>"{{-- data-ktg="<?=$np->ktg?>"
                         data-trademark_now="<?=$np->trademark?>" data-company_name_now="<?=$np->company_name?>"
                         data-mulai="<?=$mul?>" data-image_now="<?=$picture[0]?>" data-hari="<?=$har?>"
                         data-progres_now="<?=$prog?>" data-tot_pendanaan="<?=$pend?>"
@@ -121,13 +122,13 @@
                                               ?>
                                         {{round($datediff / (60 * 60 * 24))}} --}}
                                         {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
-
+                                        40 
                                       </b></span>
                                   </div>
                                   {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                   <span class="inter-normal-mercury-12px">&nbsp;</span>
                                   <div class="hr-lg inter-normal-mercury-14px">
-                                    <span class="tx-sold inter-normal-mercury">40 hari lagi</span>
+                                    <span class="tx-sold inter-normal-mercury">hari lagi</span>
                                   </div>
                                 </div>
                                 <div class="overlap-group">
@@ -826,7 +827,7 @@
             </div>
           </div>
           <div class="modal-footer" style="background-color: var(--shark);">
-            <a class="b-daf btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">Selengkapnya</a>
+          <a class="b-daf btn btn-danger btn-lg btn-block" id="sel_now" href="">Selengkapnya</a>
           </div>
         </div>
       </div>
@@ -1040,6 +1041,7 @@
       var image_now = $(this).data('image_now');
       var mulai = $(this).data('mulai');
       var hari = $(this).data('hari');
+      var id = $(this).data('id');
       var progres_now = $(this).data('progres_now');
       var tot_pendanaan = $(this).data('tot_pendanaan');
       var periode_dividen = $(this).data('periode_dividen');
@@ -1052,6 +1054,7 @@
       $('#progres_now').text(progres_now);
       $('#tot_pendanaan').text(tot_pendanaan);
       $('#periode_dividen').text(periode_dividen);
+      $('#sel_now').attr("href", "{{url('detail-now-playing')}}/"+id);
     })
   })
   </script>
