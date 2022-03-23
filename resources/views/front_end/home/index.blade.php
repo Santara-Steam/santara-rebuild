@@ -194,7 +194,7 @@
     <div class="carousel-inner">
       <div class="title-dan-link-button-1 w3-red">
         <div class="now-playing inter-bold-alabaster-24px">
-          <span class="tx-lf inter-bold-alabaster">Coming Soon (45)</span>
+          <span class="tx-lf inter-bold-alabaster">Coming Soon ({{count($soon)}})</span>
         </div>
         <div class="investasi-sekarang inter-bold-thunderbird-16px button-4 seemore">
           <a href="{{ route('coming-soon.index') }}" class="tx-rg inter-bold-white">Lihat Semua
