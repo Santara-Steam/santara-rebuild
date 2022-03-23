@@ -278,7 +278,9 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class="icon-card row">
+                              <div class="icon-card row" style="display: flex;
+  justify-content: center;
+  align-items: center;">
                                 @guest
                                 <a href="{{route('login')}}" style="cursor: pointer">
                                   <div class="icon-and-supporting-text">
@@ -327,7 +329,7 @@
                                       <div class="icon-and-supporting-text-1">
                                         <i class="icon-com iconheart fas fa-user"
                                           style="color: #fff; font-size: 18px;"></i>
-                                        <div class="address-5 inter-normal-alabaster-10px">
+                                        <div class="address-2 inter-normal-alabaster-10px">
                                           <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
                                         </div>
                                       </div>
@@ -344,7 +346,7 @@
                                         <div class="icon-and-supporting-text-1">
                                           <i class="icon-com iconheart fas fa-user"
                                             style="color: #fff; font-size: 18px;"></i>
-                                          <div class="address-5 inter-normal-alabaster-10px">
+                                          <div class="address-2 inter-normal-alabaster-10px">
                                             <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
                                           </div>
                                         </div>
@@ -364,7 +366,7 @@
                                         <div class="icon-and-supporting-text-2">
                                           <i class="icon-com iconheart fas fa-comments"
                                             style="color: #fff; font-size: 18px;"></i>
-                                          <div class="address-6 inter-normal-alabaster-10px">
+                                          <div class="address-2 inter-normal-alabaster-10px">
                                             <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
                                           </div>
                                         </div>
@@ -374,7 +376,7 @@
                                         <div class="icon-and-supporting-text-2">
                                           <i class="icon-com iconheart fas fa-share"
                                             style="color: #fff; font-size: 18px;"></i>
-                                          <div class="share inter-normal-alabaster-10px">
+                                          <div class="address-2  inter-normal-alabaster-10px">
                                             <span class="tx-icon inter-normal-alabaster">Share</span>
                                           </div>
                                         </div>

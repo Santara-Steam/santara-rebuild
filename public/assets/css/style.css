@@ -1860,8 +1860,8 @@ input.mail_bt::placeholder {
   height: 40px;
   margin-top: 24px;
   min-width: 100%;
+  margin-left: 0px;
   width: 100%;
-  margin-left: 5px;
 }
 
 .icon-and-supporting-text {
@@ -1869,8 +1869,7 @@ input.mail_bt::placeholder {
   display: flex;
   flex-direction: column;
   min-height: 40px;
-  width: 37px;
-  margin-left: 15px;
+  width: 100%;
 }
 
 .icon-and-supporting-text-2 {
@@ -1878,8 +1877,7 @@ input.mail_bt::placeholder {
   display: flex;
   flex-direction: column;
   min-height: 40px;
-  width: 61px;
-  margin-left: auto;
+  width: 100%;
 }
 
 .address-2 {
@@ -1917,8 +1915,7 @@ input.mail_bt::placeholder {
   display: flex;
   flex-direction: column;
   min-height: 40px;
-  width: 28px;
-  margin-left: auto;
+  width: 100%;
 }
 
 .share {
@@ -1926,7 +1923,7 @@ input.mail_bt::placeholder {
   line-height: 16px;
   margin-top: 4px;
   min-height: 16px;
-  min-width: 28px;
+  min-width: 35px;
   text-align: center;
   white-space: nowrap;
 }
@@ -1942,7 +1939,7 @@ input.mail_bt::placeholder {
   display: flex;
   flex-direction: column;
   min-height: 40px;
-  margin-left: auto;
+  width: 100%;
 }
 
 .icon-com{
