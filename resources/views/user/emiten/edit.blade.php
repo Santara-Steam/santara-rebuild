@@ -1063,14 +1063,14 @@ $('#crop6').click(function(){
 
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
 <script>
     document.querySelectorAll('.ribuan').forEach(inp => new Cleave(inp, {
     numeral: true,
     numeralDecimalMark: ',',
     delimiter: '.'
     }));
-</script>
+</script> --}}
 @endsection
 @section('style')
 {{--
