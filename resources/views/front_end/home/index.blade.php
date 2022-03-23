@@ -254,14 +254,14 @@
                         data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
                         data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"
                         data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
-                        data-image="<?=$picture[3]?>">
+                        data-image="<?=$picture[0]?>">
                         <div class="card moldla">
-                          <img class="rectangle-2 moldla" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
+                          <img class="rectangle-2 moldla" src="{{ asset('public/upload') }}/{{$picture[0]}}" />
                         </div>
                       </a>
                       <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
                         <div class="card molpli">
-                          <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
+                          <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[0]}}" />
                           <div class="content">
                             <div class="header-card-dan-progress">
                               <div class="header-and-tags">
