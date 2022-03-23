@@ -78,7 +78,7 @@
                             src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
                         </div>
                       </a>
-                      <a class="molpli" data-toggle="modal" data-target="#exampleModal">
+                      <a class="molpli" href="{{url('detail-now-playing')}}/{{$np->id}}">
                       <div class="card molpli">
                           <img class="rectangle-2"
                             src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
