@@ -409,6 +409,7 @@
                   </div>
                 </div>
               </div>
+            </div>
               
               <div class="fashion_section">
                 <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
@@ -515,6 +516,8 @@
             </div>
          </div>
       </div>
+                                          
+    </div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
