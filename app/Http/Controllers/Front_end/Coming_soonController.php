@@ -24,11 +24,13 @@ class Coming_soonController extends Controller
             where emiten_id = emitens.id
             ) as cmt'))
         ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+        ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+        ->where('emiten_journeys.title','=','Pra Penawaran Saham')
         // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
         ->groupBy('emitens.id')
         ->orderby('emitens.id','DESC')
-        ->get()
-        ;
+        ->get();
 
         return view('front_end/coming_soon/index',compact('soon'));
     }

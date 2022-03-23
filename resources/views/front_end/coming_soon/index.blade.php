@@ -22,7 +22,7 @@
                <div class="carousel-item active">
                   <div class="container">
                   <fieldset disabled>
-                        <div class="form-row" style="padding-right: 25px; padding-left: 25px;">
+                        <div class="form-row">
                         <div class="form-group col-md-4">
                           <div class="label inter-medium-quill-gray-14px">
                             <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
