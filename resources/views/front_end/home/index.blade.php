@@ -75,13 +75,13 @@
                         data-periode_dividen="<?=$np->period?>" --}}>
                         <div class="card moldla">
                           <img class="rectangle-2 moldla"
-                            src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
+                            src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
                         </div>
                       </a>
                       <a class="molpli" data-toggle="modal" data-target="#exampleModal">
                       <div class="card molpli">
                           <img class="rectangle-2"
-                            src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
+                            src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
                           <div class="content">
                             <div class="header-card-dan-progress">
                               <div class="header-and-tags">
