@@ -148,7 +148,7 @@
                 <li class="nav-item li-auth">
                   <div class="d-inline-block inter-medium-white-14px navbar-nav" style="font-size: 12px;">
                     @if(! Auth::check())
-                    <form class="form-inline my-2 my-lg-0">
+                    <form class="my-2 my-lg-0">
                       <div class="inter-medium-white-14px">
                         <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ route('login') }}">Masuk</a>
                         <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px"
