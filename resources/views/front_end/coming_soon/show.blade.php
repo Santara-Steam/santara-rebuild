@@ -55,13 +55,13 @@
             </div>
           </div>
           {{-- <div class="tags-d"> --}}
-            <span class="tx-t inter-medium-sweet-pink-12px"
-                                  style="background: var(--falu-red);
+            <span class="tx-t inter-medium-sweet-pink-14px"
+                                  style="font-size:16px;background: var(--falu-red);
     border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$emt->ctg->category}}</span>
           {{-- </div> --}}
         </div>
         <div class="profil">
-          <img class="image-69"
+          <img style="border-radius: 50%;" class="image-69"
             src="{{ asset('public/storage/pictures') }}/{{$picture[2]}}" />
           <div class="pemilik-bisnis">
             <div class="m-khemal-nugroho inter-medium-alabaster-18px">
