@@ -517,7 +517,7 @@ class EmitenController extends Controller
         $emiten->admin_desc= $request->get('bio_owner');
         // $emiten->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
         $emiten->pictures = $logoFileSave.','.$coverFileSave.','.$ownerFileSave.','.$galeriFileSave.','.$galeri2FileSave.','.$galeri3FileSave;
-        $emiten->code_emiten = $request->get('code_emiten');
+        // $emiten->code_emiten = $request->get('code_emiten');
         $emiten->trademark = $request->get('brand');
         $emiten->price = $request->get('harga_saham');
         $emiten->save();
