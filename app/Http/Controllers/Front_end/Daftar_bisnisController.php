@@ -44,34 +44,53 @@ class Daftar_bisnisController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
+        // $this->validator($request->all())->validate();
         // $file = $request->file('logo')->store('logo_perusahaan', 'public');
-        if($request->hasFile("logo")){
-            $logoNameWithExt = $request->file('logo')->getClientOriginalName() ;
+        if($request->hasFile('thumbnail')){
+            $logoNameWithExt = $request->file('thumbnail')->getClientOriginalName() ;
             $logoFileName = pathinfo ($logoNameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('logo')->getClientoriginalExtension();
-            $logoFileSave = 'logo'.time().'.'.$extension;
-            $path = $request->file('logo')->storeAs('public/pictures',$logoFileSave) ;
+            $extension = $request->file('thumbnail')->getClientoriginalExtension();
+            $logoFileSave = 'thumbnail'.time().'.'.$extension;
+            $path = $request->file('thumbnail')->storeAs('public/pictures',$logoFileSave) ;
         }else{
             $logoFileSave = 'noimage.jpg';
         }
-        if($request->hasFile("cover")){
-            $coverNameWithExt = $request->file('cover')->getClientOriginalName() ;
+
+        if($request->hasFile('banner')){
+            $coverNameWithExt = $request->file('banner')->getClientOriginalName() ;
             $coverFileName = pathinfo ($coverNameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('cover')->getClientoriginalExtension();
-            $coverFileSave = 'cover'.time().'.'.$extension;
-            $path = $request->file('cover')->storeAs('public/pictures',$coverFileSave) ;
+            $extension = $request->file('banner')->getClientoriginalExtension();
+            $coverFileSave = 'banner'.time().'.'.$extension;
+            $path = $request->file('banner')->storeAs('public/pictures',$coverFileSave) ;
         }else{
             $coverFileSave = 'noimage.jpg';
         }
-        if($request->hasFile("galeri")){
-            $galeriNameWithExt = $request->file('galeri')->getClientOriginalName() ;
-            $galeriFileName = pathinfo ($galeriNameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('galeri')->getClientoriginalExtension();
-            $galeriFileSave = 'galeri'.time().'.'.$extension;
-            $path = $request->file('galeri')->storeAs('public/pictures',$galeriFileSave) ;
+        if($request->hasFile("galeri1")){
+            $galeri1NameWithExt = $request->file('galeri1')->getClientOriginalName() ;
+            $galeri1FileName = pathinfo ($galeri1NameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('galeri1')->getClientoriginalExtension();
+            $galeri1FileSave = 'galeri1'.time().'.'.$extension;
+            $path = $request->file('galeri1')->storeAs('public/pictures',$galeri1FileSave) ;
         }else{
-            $galeriFileSave = 'noimage.jpg';
+            $galeri1FileSave = 'noimage.jpg';
+        }
+        if($request->hasFile("galeri2")){
+            $galeri2NameWithExt = $request->file('galeri2')->getClientOriginalName() ;
+            $galeri2FileName = pathinfo ($galeri2NameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('galeri2')->getClientoriginalExtension();
+            $galeri2FileSave = 'galeri2'.time().'.'.$extension;
+            $path = $request->file('galeri2')->storeAs('public/pictures',$galeri2FileSave) ;
+        }else{
+            $galeri2ileSave = 'noimage.jpg';
+        }
+        if($request->hasFile("galeri3")){
+            $galeri3NameWithExt = $request->file('galeri3')->getClientOriginalName() ;
+            $galeri3FileName = pathinfo ($galeri3NameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('galeri3')->getClientoriginalExtension();
+            $galeri3FileSave = 'galeri3'.time().'.'.$extension;
+            $path = $request->file('galeri3')->storeAs('public/pictures',$galeri3FileSave) ;
+        }else{
+            $galeri3FileSave = 'noimage.jpg';
         }
         if($request->hasFile("owner")){
             $ownerNameWithExt = $request->file('owner')->getClientOriginalName() ;
@@ -120,9 +139,11 @@ class Daftar_bisnisController extends Controller
 
         $em = new emiten();
         $em->company_name = $request->get('company_name');
+        $em->trademark = $request->get('nama_brand');
         $em->trader_id = Auth::user()->trader->id;
         $em->owner_name = $request->get('nama_owner');
         $em->category_id = $request->get('kategori');
+        $em->price = $request->get('harga_saham');
         $em->avg_annual_turnover_previous_year = $request->get('omset1');
         $em->avg_annual_turnover_current_year = $request->get('omset2');
         $em->avg_capital_needs = $request->get('perkiraan_dana');
@@ -134,7 +155,10 @@ class Daftar_bisnisController extends Controller
         $em->website= $request->get('web');
         $em->instagram= $request->get('ig');
         $em->business_description= $request->get('deskripsi');
-        $em->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
+        $em->admin_desc= $request->get('bio_owner');
+        // $em->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
+        $em->pictures = $logoFileSave.','.$coverFileSave.','.$ownerFileSave.','.$galeri1FileSave.','.$galeri2FileSave.','.$galeri3FileSave;
+
         $em->save();
 
         $emj = new emiten_journey();
@@ -146,7 +170,7 @@ class Daftar_bisnisController extends Controller
             'alert-type' => 'success'
         );
 
-        $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
+        // $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
         // dd($em);
         // return response()->json(['status' => 'Mantap']);
         return redirect('/')->with($notif);
