@@ -796,8 +796,8 @@
                   <div class="overlap-group">
                     <div class="percent inter-medium-white-12px">
                       <div class="progress-bar "
-                        style="width: {{ round((round($np->terjual,0)/round($np->supply))*100,2) }}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
-                        role="progressbar" aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}"
+                        style="width: 0%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                        role="progressbar" aria-valuenow="0"
                         aria-valuemin="0" aria-valuemax="100">
 
                         <span class="tx-np percen inter-medium-white" id="progres_now">
