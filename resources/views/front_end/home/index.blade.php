@@ -77,7 +77,7 @@
                                 src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                           </div>
                       </a>
-                      <a href="{{ route('now-playing.detail') }}" class="molpli">
+                      <a class="molpli" data-toggle="modal" data-target="#exampleModal">
                       <div class="card molpli">
                           <img class="rectangle-2"
                             src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
@@ -727,7 +727,7 @@
             </div>
           </div>
           <div class="modal-footer" style="background-color: var(--shark);">
-            <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('sold-out.detail') }}">Selengkapnya</a>
+            <a class="b-daf btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">Selengkapnya</a>
           </div>
         </div>
       </div>
@@ -815,7 +815,7 @@
             </div>
           </div>
           <div class="modal-footer" style="background-color: var(--shark);">
-            <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('now-playing.detail') }}">Selengkapnya</a>
+            <a class="b-daf btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">Selengkapnya</a>
           </div>
         </div>
       </div>

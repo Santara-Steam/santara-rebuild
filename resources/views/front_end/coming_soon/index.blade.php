@@ -105,18 +105,21 @@
                               }
                               ?>
 
+                      <div class="col-lg-3 col-sm-3 col-3 moldla" style="padding: 5px;">
                       <a type="button" data-toggle="modal" id="detail" class="mod moldla " style="width: 100%;"
                           data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
                           data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
                           data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"
                           data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
                           data-image="<?=$picture[3]?>">
-                     <div class="card moldla col-lg-3 col-sm-3 col-3"> 
+                     
+                          <div class="card" style="margin-top: 10px;">
                           <img class="rectangle-2 moldla" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
                       </div>
                         </a>
+                            </div>
                         <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
-                           <div class="col-lg-3 col-sm-3 col-3" style="padding: 5px;">
+                           <div class="col-lg-3 col-sm-3 col-3 molpli" style="padding: 5px;">
                               <div class="card molpli" style="margin-top: 10px;">
                           <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
                                 <div class="content">
