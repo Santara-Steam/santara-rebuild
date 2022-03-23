@@ -2,8 +2,8 @@
 
 @section('content')
 
-      <div class="bg-2" style="background-image: url({{ asset('public/assets/images/hero-section-1@2x.png') }} ">
-        <div class="banner_section layout_padding">
+      <div class="bg-3">
+        <div class="banner_section">
             <div class="container" style="margin-top: 60px">
                <div class="section">
                   <div class="header-dan-supporting-text">
@@ -21,7 +21,6 @@
                   </div>
                 </div>
               </div>
-              <img class="image-mul" src="{{ asset('public/assets/images/image-1@2x.png') }}" />
           </div>
       </div>
       <!-- fashion section start -->

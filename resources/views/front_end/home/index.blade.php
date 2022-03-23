@@ -4,7 +4,7 @@
 <!-- banner bg main start -->
 <div class="banner_bg_main">
   <div class="banner_section layout_padding">
-    <div class="container" style="margin-top: 0px">
+    <div class="container" style="margin-top: 0px" >
       <div class="section">
         <div class="header-dan-supporting-text">
           <div class="tx-bn inter-bold-alabaster-56px">

@@ -1991,9 +1991,21 @@ input.mail_bt::placeholder {
 .bg-2{
     width: 100%;
     float: left;
-    height: 100%;
+    background-image: url(../images/background@1x.png);
+    height: auto;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin-bottom: -70px;
+    margin-bottom: 70px;
+}
+
+.bg-3{
+  width: 100%;
+  float: left;
+  background-image: url(../images/hero-section-1@2x.png);
+  height: auto;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin-bottom: 70px;
 }
 
 .heading-and-tag {
@@ -2725,8 +2737,6 @@ input {
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 824px;
-  padding: 96px 0;
   width: 100%;
 }
 
@@ -2742,7 +2752,7 @@ input {
   align-items: flex-start;
   display: flex;
   height: 492px;
-  margin-top: 96px;
+  margin-top: 50px;
   min-width: 100%;
 }
 
@@ -2869,10 +2879,9 @@ input {
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 100%
+  min-height: 100%;
   padding: 96px 0;
   width: 100%;
-  margin-top:150px;
 }
 
 .panduan-singkat-cara {
