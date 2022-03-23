@@ -44,6 +44,7 @@ class HomeController extends Controller
         ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
         // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
         ->groupBy('emitens.id')
+        ->orderby('emitens.id','DESC')
         ->get()
         ;
 

@@ -18,7 +18,18 @@ class Coming_soonController extends Controller
      */
     public function index()
     {
-        return view('front_end/coming_soon/index');
+        $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+            SELECT count(id) from emiten_comments
+            where emiten_id = emitens.id
+            ) as cmt'))
+        ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+        ->groupBy('emitens.id')
+        ->orderby('emitens.id','DESC')
+        ->get()
+        ;
+
+        return view('front_end/coming_soon/index',compact('soon'));
     }
 
     public function detail($id)
