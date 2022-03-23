@@ -95,36 +95,36 @@
           <!-- 1st card -->
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <div class="table-row-1">
+              <span class="inter-medium-delta-16px">{{$emt->business_description}}</span>
+            </div>
+            {{-- <div class="table-row">
               <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
             </div>
             <div class="table-row">
               <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-            </div>
-            <div class="table-row">
-              <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-            </div>
+            </div> --}}
           </div> <!-- 2nd card -->
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             <div class="table-row-1">
+              <span class="inter-medium-delta-16px">{{$emt->admin_desc}}</span>
+            </div>
+            {{-- <div class="table-row">
               <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
             </div>
             <div class="table-row">
               <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-            </div>
-            <div class="table-row">
-              <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-            </div>
+            </div> --}}
           </div> <!-- 3nd card -->
           <!-- 2nd card -->
           <div class="tab-pane fade" id="pills-des" role="tabpanel" aria-labelledby="pills-des-tab">
             <div class="table-row-1">
-              <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
+              <span class="inter-medium-delta-16px">Instagram : {{$emt->instagram}}</span>
             </div>
             <div class="table-row">
-              <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
+              <span class="inter-medium-delta-16px">Facebook : {{$emt->facebook}}</span>
             </div>
             <div class="table-row">
-              <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
+              <span class="inter-medium-delta-16px">Website : {{$emt->website}}</span>
             </div>
           </div> <!-- 3nd card -->
           <!-- 2nd card -->
@@ -193,8 +193,10 @@
           </div>
           <div class="container" style="margin-bottom: -20px;margin-top: 10px;">
             @guest
-            <a href="{{route('login')}}" class="btn btn-danger btn-block">Pesan Saham</a>
-
+              @if ($status->title == 'Pra Penawaran Saham')
+              @elseif ($status->title == 'Penawaran Saham')
+              <a href="{{route('login')}}" class="btn btn-danger btn-block">Pesan Saham</a>
+              @endif
             @else
               @if ($status->title == 'Pra Penawaran Saham')
                   
