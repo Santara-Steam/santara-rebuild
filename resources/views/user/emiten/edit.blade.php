@@ -235,7 +235,7 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Nama Owner</label>
                                                     <input required type="text" value="{{$emiten->owner_name}}" name="nama_owner"
-                                                        id="companyName" class="form-control" placeholder="Nama Owner">
+                                                        id="companyName" class="form-control" placeholder="harga_saham">
                                                     <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
