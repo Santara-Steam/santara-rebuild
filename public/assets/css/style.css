@@ -859,12 +859,13 @@ button {
     flex: 1;
     display: inline-block;
     order: 2;
-    margin-left: -20px;
+    margin-left: 0px;
     margin-top: 1px;
 }
 
 .menu {
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: auto;
 
 }
 

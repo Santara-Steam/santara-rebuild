@@ -189,11 +189,16 @@
           <div href="javascript:void(0)" class="close" onclick="closeNav()"><img class="x"
               src="{{ asset('public/assets/images/x@2x.png') }}" /></div>
                   </div>
-                    <span class="toggle_icon" onclick="openNav()"><img src="{{ asset('public/assets/images/toggle-icon.png') }}"></span>
-                    <a href="{{ url('/') }}">
-                      <img class="" src="{{ asset('public/assets/images/logo_header.png') }}" />
-                    </a>
-                  </div>
+                  <div class="main">
+                        <span class="toggle_icon" onclick="openNav()"><img
+                            src="{{ asset('public/assets/images/toggle-icon.png') }}"></span>
+                      </div>
+                    </div>
+                    <div class="menu">
+                      <a class="navbar-brand" href="{{ url('/') }}">
+                        <img class="logo" src="{{ asset('public/assets/images/logo_header.png') }}" />
+                  </a>
+                    </div>
                   <div id="navbar" class="nav navbar-nav navbar-right">
                   @if(! Auth::check())
       <form class="form-inline my-2 my-lg-0">

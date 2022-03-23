@@ -416,7 +416,7 @@
                     <div class="carousel-inner">
                       <div class="carousel-item active">
                           <div class="container">
-                            <div class="col-12 d-flex justify-content-between" style="padding-bottom:10px">
+                            <div class="col-12 d-flex justify-content-between">
                               <div class="now-playing inter-bold-alabaster-24px">
                                 <span class="tx-lf inter-bold-alabaster">Sold Out ({{count($sold_out)}})</span>
                               </div>
@@ -515,8 +515,7 @@
               </a>
             </div>
          </div>
-      </div>
-                                          
+      </div>                             
     </div>
 
 <!-- Modal -->
