@@ -41,7 +41,7 @@
                               ?>
 <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
-<div class="bg" style="background-image: url({{ asset('public/upload') }}/{{$picture[1]}})">
+<div class="bg" style="background-image: url({{ asset('public/storage/pictures') }}/{{$picture[1]}})">
   <div class="banner_section layout_padding">
     <div class="container" style="margin-top: 15px;">
       <div class="section">
@@ -55,9 +55,9 @@
             </div>
           </div>
           <div class="tags-d">
-            <div class="food-and-beverage inter-medium-sweet-pink-14px">
-              <span class="tx-rg inter-medium-sweet-pink-14px">{{$emt->ctg->category}}</span>
-            </div>
+            <span class="tx-t inter-medium-sweet-pink-12px"
+                                  style="background: var(--falu-red);
+    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$emt->ctg->category}}</span>
           </div>
         </div>
         <div class="profil">
@@ -310,21 +310,21 @@
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[3]}}" />
+                    <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[3]}}" />
                   </div>
                   @endif
                   @if ($picture[4] == 'default.png')
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[4]}}" />
+                    <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[4]}}" />
                   </div>
                   @endif
                   @if ($picture[5] == 'default.png')
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/upload') }}/{{$picture[5]}}" />
+                    <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[5]}}" />
                   </div>
                   @endif
 
@@ -346,7 +346,7 @@
 <div class="modal fade" id="beliSahamModal" tabindex="-1" aria-labelledby="beliSahamModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <img src="{{ asset('public/upload') }}/{{$picture[1]}}"
+      <img src="{{ asset('public/storage/pictures') }}/{{$picture[1]}}"
         onerror="this.onerror=null;this.src='https://santara.co.id//assets/images/error/no-image-user.png';"
         height="200px">
       <div class="p-4 modal-body beli-saham-modal">
