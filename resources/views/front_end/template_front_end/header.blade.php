@@ -57,157 +57,143 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top" style="min-height: 96px; background-color: var(--eerie-black)">
-    <a class="navbar-brand" href="{{ url('/') }}">
-      <div class="containt_main">
-        <div id="mySidenav" class="sidenav">
-          <div class="men">
-            <a href="{{ url('/') }}" style="margin-left: -30px;">
-              <div class="menu-header">
-                <img class="logo-header" style="width: 65%;
-    height: 65%; margin-bottom: 50px;"
-                  src="{{ asset('public/assets/images/logo_header.png') }}" />
-                
-              </div>
-            </a>
-            <div class="menu-view-body ff-n">
-              <ul class="ml-auto ">
-                <li class="nav-item">
-                  <a class=" navbar-nav d-inline-block" style="margin-top: -50px;" id="menu-dropdown"
-                    data-bs-toggle="collapse" href="#penerbit" role="button" aria-expanded="false"
-                    aria-controls="penerbit">
-                    List Penerbit &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown"></i>
-                  </a>
-                </li>
-                <div class="collapse" id="penerbit" style="padding-left: 20px;">
-                  <li class="nav-item">
-                    <a class=" navbar-nav" href="{{ route('now-playing.index') }}">Now Playing</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class=" navbar-nav" href="{{ route('coming-soon.index') }}">Coming Soon</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class=" navbar-nav" href="{{ route('sold-out.index') }}">Sold Out</a>
-                  </li>
-                </div>
-
-                <li class="nav-item">
-                  <a class=" navbar-nav" href="https://santara.co.id/tentang-santara">Tentang Santara</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class=" navbar-nav" href="https://santara.co.id/testimoni">Testimoni</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class=" navbar-nav" href="{{ route('mulai-investasi.index') }}">Panduan</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class=" navbar-nav d-inline-block" id="menu-dropdown2" data-bs-toggle="collapse" href="#syarat"
-                    role="button" aria-expanded="false" aria-controls="syarat">
-                    Syarat & Ketentuan &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;"
-                      id="arrow-dropdown2"></i>
-                  </a>
-                </li>
-                <div class="collapse" id="syarat" style="padding-left: 20px;">
-                  <li class="nav-item">
-                    <a class=" navbar-nav" href="https://santara.co.id/syarat-ketentuan-pemodal">Pemodal</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class=" navbar-nav" href="https://santara.co.id/syarat-ketentuan-penerbit">Penerbit</a>
-                  </li>
-                </div>
-
-
-                <li class="nav-item">
-                  <a class=" navbar-nav" href="https://santara.co.id/pertanyaan">Pertanyaan</a>
-                </li>
-
-
-                <li class="nav-item">
-                  <a class=" navbar-nav" href="https://santara.co.id/supported-by">SUPPORTED BY</a>
-                </li>
-                <li class="nav-item">
-                  <a class=" navbar-nav d-inline-block" id="menu-dropdown3" data-bs-toggle="collapse"
-                    href="#tentangKami" role="button" aria-expanded="false" aria-controls="tentangKami">
-                    Tentang Kami &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown3"></i>
-                  </a>
-                </li>
-                <div class="collapse" id="tentangKami" style="padding-left: 20px;">
-                  <li class="nav-item">
-                    <a class=" navbar-nav" href="https://santara.co.id/kontak-kami">Kontak Kami</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class=" navbar-nav" target="_blank" href="https://santara.co.id/berita">Berita</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class=" navbar-nav" target="_blank" href="https://santara.co.id/karir">Karir</a>
-                  </li>
-                </div>
-                <li class="nav-item li-auth">
-                  <div class="d-inline-block inter-medium-white-14px navbar-nav" style="font-size: 12px;">
-                    @if(! Auth::check())
-                    <form class="my-2 my-lg-0">
-                      <div class="inter-medium-white-14px">
-                        <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ route('login') }}">Masuk</a>
-                        <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px"
-                          href="{{ route('register') }}">Daftar</a>
-                      </div>
-                    </form>
-                    @else
-                      @if (Auth::user()->role_id == 1)
-                      <div class="inter-medium-white-14px">
-                        <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/admin') }}">Dashboard</a>
-                        <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" style="margin-top: 10px;" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">Logout</a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                          @csrf
-                        </form>
-                      </div>
-                      @elseif(Auth::user()->role_id == 2)
-                        <div class="inter-medium-white-14px">
-                          <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/user') }}">Dashboard</a>
-                          <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" style="margin-top: 10px;" href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"">Logout</a>
-                        
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+<nav class="navbar navbar-default navbar-fixed-top" style="min-height: 96px;">
+                <div class="container">
+                  <div class="navbar-header">
+                    <div id="mySidenav" class="sidenav">
+                    <div class="men">
+                      <a href="{{ url('/') }}" style="margin-left: -30px;">
+                        <div class="menu-header">
+                          <img class="logo-header" style="width: 65%;
+              height: 65%; margin-bottom: 50px;"
+                            src="{{ asset('public/assets/images/logo_header.png') }}" />
+                          
                         </div>
-                      @endif
+                      </a>
+                      <div class="menu-view-body ff-n">
+                        <ul class="ml-auto ">
+                          <li class="nav-item">
+                            <a class=" navbar-nav d-inline-block" style="margin-top: -50px;" id="menu-dropdown"
+                              data-bs-toggle="collapse" href="#penerbit" role="button" aria-expanded="false"
+                              aria-controls="penerbit">
+                              List Penerbit &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown"></i>
+                            </a>
+                          </li>
+                          <div class="collapse" id="penerbit" style="padding-left: 20px;">
+                            <li class="nav-item">
+                              <a class=" navbar-nav" href="{{ route('now-playing.index') }}">Now Playing</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class=" navbar-nav" href="{{ route('coming-soon.index') }}">Coming Soon</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class=" navbar-nav" href="{{ route('sold-out.index') }}">Sold Out</a>
+                            </li>
+                          </div>
 
-                    @endif
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+                          <li class="nav-item">
+                            <a class=" navbar-nav" href="https://santara.co.id/tentang-santara">Tentang Santara</a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a class=" navbar-nav" href="https://santara.co.id/testimoni">Testimoni</a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a class=" navbar-nav" href="{{ route('mulai-investasi.index') }}">Panduan</a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a class=" navbar-nav d-inline-block" id="menu-dropdown2" data-bs-toggle="collapse" href="#syarat"
+                              role="button" aria-expanded="false" aria-controls="syarat">
+                              Syarat & Ketentuan &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;"
+                                id="arrow-dropdown2"></i>
+                            </a>
+                          </li>
+                          <div class="collapse" id="syarat" style="padding-left: 20px;">
+                            <li class="nav-item">
+                              <a class=" navbar-nav" href="https://santara.co.id/syarat-ketentuan-pemodal">Pemodal</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class=" navbar-nav" href="https://santara.co.id/syarat-ketentuan-penerbit">Penerbit</a>
+                            </li>
+                          </div>
+
+
+                          <li class="nav-item">
+                            <a class=" navbar-nav" href="https://santara.co.id/pertanyaan">Pertanyaan</a>
+                          </li>
+
+
+                          <li class="nav-item">
+                            <a class=" navbar-nav" href="https://santara.co.id/supported-by">SUPPORTED BY</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class=" navbar-nav d-inline-block" id="menu-dropdown3" data-bs-toggle="collapse"
+                              href="#tentangKami" role="button" aria-expanded="false" aria-controls="tentangKami">
+                              Tentang Kami &ensp;<i class="fas fa-chevron-down" style="margin-top: 5px;" id="arrow-dropdown3"></i>
+                            </a>
+                          </li>
+                          <div class="collapse" id="tentangKami" style="padding-left: 20px;">
+                            <li class="nav-item">
+                              <a class=" navbar-nav" href="https://santara.co.id/kontak-kami">Kontak Kami</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class=" navbar-nav" target="_blank" href="https://santara.co.id/berita">Berita</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class=" navbar-nav" target="_blank" href="https://santara.co.id/karir">Karir</a>
+                            </li>
+                          </div>
+                          <li class="nav-item li-auth">
+                            <div class="d-inline-block inter-medium-white-14px navbar-nav" style="font-size: 12px;">
+                              @if(! Auth::check())
+                              <form class="my-2 my-lg-0">
+                                <div class="inter-medium-white-14px">
+                                  <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ route('login') }}">Masuk</a>
+                                  <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px"
+                                    href="{{ route('register') }}">Daftar</a>
+                                </div>
+                              </form>
+                              @else
+                                @if (Auth::user()->role_id == 1)
+                                <div class="inter-medium-white-14px">
+                                  <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/admin') }}">Dashboard</a>
+                                  <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" style="margin-top: 10px;" href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">Logout</a>
+
+                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                  </form>
+                                </div>
+                                @elseif(Auth::user()->role_id == 2)
+                                  <div class="inter-medium-white-14px">
+                                    <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/user') }}">Dashboard</a>
+                                    <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" style="margin-top: 10px;" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();"">Logout</a>
+                                  
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                      @csrf
+                                  </form>
+                                  </div>
+                                @endif
+
+                              @endif
+                            </div>
+                          </li>
+                        </ul>
+                       </div>
+                     </div>
           <div href="javascript:void(0)" class="close" onclick="closeNav()"><img class="x"
               src="{{ asset('public/assets/images/x@2x.png') }}" /></div>
-        </div>
-        <div class="main">
-          <span class="toggle_icon" onclick="openNav()"><img
-              src="{{ asset('public/assets/images/toggle-icon.png') }}"></span>
-        </div>
-      </div>
-      <div class="menu">
-        <a class="navbar-brand" href="{{ url('/') }}">
-          <img class="logo" src="{{ asset('public/assets/images/logo_header.png') }}" />
-      </div>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-      </ul>
-      @if(! Auth::check())
+                  </div>
+                    <span class="toggle_icon" onclick="openNav()"><img src="{{ asset('public/assets/images/toggle-icon.png') }}"></span>
+                    <img class="" src="{{ asset('public/assets/images/logo_header.png') }}" />
+                  </div>
+                  <div id="navbar" class="nav navbar-nav navbar-right">
+                  @if(! Auth::check())
       <form class="form-inline my-2 my-lg-0">
         <div class="inter-medium-white-14px">
           <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ route('login') }}">Masuk</a>
@@ -242,4 +228,4 @@
 
       @endif
     </div>
-  </nav>
+</nav>
