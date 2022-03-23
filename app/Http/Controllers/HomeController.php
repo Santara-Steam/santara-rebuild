@@ -55,9 +55,6 @@ class HomeController extends Controller
     }
     public function indexadmin()
     {
-        $psb = book_saham::where('isValid',0)
-        ->where('bukti_tranfer','!=','-')
-        ->count();
-        return view('admin.index',compact('psb'));
+        return view('admin.index');
     }
 }

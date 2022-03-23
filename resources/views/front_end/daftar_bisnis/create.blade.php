@@ -31,7 +31,7 @@
     <form class="ff-m" action="{{route('daftar-bisnis.store')}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row d-flex justify-content-center" style="border-top: #4A585A solid;">
-            {{-- <div class="col-md-4 form-group">
+            {{-- <div class="form-group">
                 <label for="projectinput6">Owner</label>
                 <select id="projectinput6" name="budget" class="form-control">
                     <option value="0" selected="" disabled="" hidden>-- Pilih Owner --
@@ -40,27 +40,11 @@
 
                 </select>
             </div> --}}
-            <div class="col-12 col-xl-10 mt-5 row">
-                <div class="col-md-4 form-group">
-                    <label for="exampleFormControlInput1" class="form-label">Nama Brand <span style="color: red">*</span></label>
-                    <input required type="text" id="companyName" name="nama_brand" class="form-control"
-                        placeholder="Isi Nama Brand">
-                </div>
-                <div class="col-md-4 form-group">
-                    <label for="exampleFormControlInput1" class="form-label">Nama Perusahaan <span style="color: red">*</span></label>
-                    <input required type="text" id="companyName" name="company_name" class="form-control"
+            <div class="col-12 col-xl-10 mt-5">
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">*Nama Perusahaan</label>
+                    <input type="text" id="companyName" name="company_name" class="form-control"
                         placeholder="Isi Nama Perusahaan">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="exampleFormControlInput1" class="form-label">Kategori Bisnis <span style="color: red">*</span></label>
-                    <select  required id="projectinput6" name="kategori" class="form-control">
-                        <option value="0" selected="" disabled="" hidden>-- Pilih Kategori
-                            --</option>
-                        @foreach ($kategori as $item)
-                        <option value="{{$item->id}}">{{$item->category}}</option>
-
-                        @endforeach
-                    </select>
                 </div>
                 {{-- <fieldset class="form-group row">
                     <div class="col-2 text-center">
@@ -164,182 +148,111 @@
                     </div>
                 </div>
                 --}}
-                <div class="form-group col-md-12 mt-2">
-                    <label for="exampleFormControlInput1" class="form-label">Deskripsi
-                        Usaha <span style="color: red">*</span></label>
-                    <textarea required class="form-control" id="exampleFormControlTextarea1" name="deskripsi"
-                        placeholder="Isi Caption dan Biografi" rows="3"></textarea>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label for="companyName">Thumbnail <span style="color: red">*</span></label>
-                    <div class="custom-file">
-                        <input value='' class="custom-file-input req" id="fil" accept="image/*" type="file" name="thumbnail" 
-                            id="inputGroupFile02">
-                        <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
-                            aria-describedby="inputGroupFile02">Pilih File</label>
-                    </div>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label for="companyName">Banner <span style="color: red">*</span></label>
-                    <div class="custom-file">
-                        <input value='' accept="image/*" type="file" name="banner" class="custom-file-input req"
-                            id="inputGroupFile02">
-                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                            aria-describedby="inputGroupFile02">Pilih File</label>
-                    </div>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label for="companyName">Foto Owner <span style="color: red">*</span></label>
 
-                    <div class="custom-file">
-                        <input value='' accept="image/*" type="file" name="owner" class="custom-file-input req"
-                            id="inputGroupFile02">
-                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                            aria-describedby="inputGroupFile02">Pilih File</label>
-                    </div>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label for="companyName">Galeri <span style="color: red">*</span></label>
-
-                    <div class="custom-file">
-                        <input value='' accept="image/*" type="file" name="galeri1" class="custom-file-input req"
-                            id="inputGroupFile02">
-                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                            aria-describedby="inputGroupFile02">Pilih File</label>
-                    </div>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label for="companyName">Galeri <span style="color: red">*</span></label>
-
-                    <div class="custom-file">
-                        <input value='' accept="image/*" type="file" name="galeri2" class="custom-file-input req"
-                            id="inputGroupFile02">
-                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                            aria-describedby="inputGroupFile02">Pilih File</label>
-                    </div>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label for="companyName">Galeri <span style="color: red">*</span></label>
-
-                    <div class="custom-file">
-                        <input value='' accept="image/*" type="file" name="galeri3" class="custom-file-input req"
-                            id="inputGroupFile02">
-                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                            aria-describedby="inputGroupFile02">Pilih File</label>
-                    </div>
-                </div>
                 
-                <div class="form-group col-md-4">
-                    <label for="companyName">Nama Owner <span style="color: red">*</span></label>
-                    <input required type="text" value="" name="nama_owner"
-                        id="companyName" class="form-control" placeholder="Nama Owner">
-                    <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar <span style="color: red">*</span></label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Rp</span>
-                        </div>
-                        <input required type="text" name="harga_saham" value=""
-                            class="form-control ribuan" placeholder="Harga Saham Per Lembar"
-                            aria-describedby="basic-addon1">
-                    </div>
-                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana yang di Butuhkan <span style="color: red">*</span></label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Rp</span>
-                        </div>
-                        <input required type="text" value=""
-                            name="perkiraan_dana" class="form-control ribuan"
-                            placeholder="Perkiraan Dana yang di Butuhkan"
-                            aria-describedby="basic-addon1">
-                    </div>
-                </div>
-                <div class="form-group col-md-8">
-                    <label for="projectinput8">Biografi Owner <span style="color: red">*</span></label>
-                    <textarea required id="projectinput8" rows="9" cols="30" class="form-control"
-                        name="bio_owner"
-                        placeholder="Biografi Owner"></textarea>
-                </div>
                 
-                <p class="mt-3">Omzet 2 Tahun Sebelumnya 2021 dan 2022</p>
-                <div class="form-group col-md-6 mt-2">
-                    {{-- <div class="mb-3 row"> --}}
-                        <label for="inputPassword" class="col-form-label" style="font-weight: 700;">Tahun
-                            2021 <span style="color: red">*</span></label>
-                        {{-- <div class="col-sm-9"> --}}
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">*Nama Owner</label>
+                    <input type="text" class="form-control" name="nama_owner" placeholder="Isi Nama Owner">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">*Kategori Bisnis</label>
+                    <select id="projectinput6" name="kategori" class="form-control">
+                        <option value="0" selected="" disabled="" hidden>-- Pilih Kategori
+                            --</option>
+                        @foreach ($kategori as $item)
+                        <option value="{{$item->id}}">{{$item->category}}</option>
+
+                        @endforeach
+                    </select>
+                </div>
+                <p class="mt-3">*Omzet 2 Tahun Sebelumnya 2021 dan 2022</p>
+                <div class="form-group mt-2">
+                    <div class="mb-3 row">
+                        <label for="inputPassword" class="col-sm-3 col-form-label" style="font-weight: 700;">*Tahun
+                            2021</label>
+                        <div class="col-sm-9">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"
                                     style="background-color:#D5E1E6">Rp</span>
-                                <input type="text" class="form-control format-number ribuan format-number number-only"
+                                <input type="text" class="form-control format-number format-number number-only"
                                     id="amount" name="omset1" placeholder="0" style="background-color:#fff"
                                     aria-label="" aria-describedby="basic-addon1">
                             </div>
-                        {{-- </div> --}}
-                    {{-- </div> --}}
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group col-md-6 mt-2">
-                    {{-- <div class="mb-3 row"> --}}
-                        <label class="col-form-label" style="font-weight: 700;">Tahun 2022 (Berjalan) <span style="color: red">*</span></label>
-                        {{-- <div class="col-sm-9"> --}}
+                <div class="form-group mt-2">
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label" style="font-weight: 700;">*Tahun 2022 (Berjalan)</label>
+                        <div class="col-sm-9">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"
                                     style="background-color:#D5E1E6">Rp</span>
-                                <input type="text" class="form-control ribuan format-number number-only" name="omset2"
+                                <input type="text" class="form-control format-number number-only" name="omset2"
                                     placeholder="0" style="background-color:#fff" aria-label=""
                                     aria-describedby="basic-addon1">
                             </div>
-                        {{-- </div> --}}
-                    {{-- </div> --}}
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group col-md-6 mt-2">
-                    <label for="exampleFormControlInput1" class="form-label">Perkiraan Saham yang di Lepas ke
-                        Umum </label>
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">*Perkiraan Dana Yang di Butuhkan </label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control format-number ribuan number-only" placeholder="0"
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="text" class="form-control format-number number-only" name="perkiraan_dana"
+                            placeholder="0" aria-label="dana_dibutuhkan" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">*Perkiraan Saham yang di Lepas ke
+                        Umum</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control format-number number-only" placeholder="0"
                             name="saham_dilepas" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <span class="input-group-text" id="basic-addon2">%</span>
                     </div>
                 </div>
-                <div class="form-group col-md-6 mt-2">
-                    <label for="exampleFormControlInput1" class="form-label">Perkiraan Omzet Setelah Jadi
-                        Penerbit </label>
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">*Perkiraan Omzet Setelah Jadi
+                        Penerbit</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Rp</span>
-                        <input type="text" class="form-control format-number ribuan number-only " placeholder="0"
+                        <input type="text" class="form-control format-number number-only " placeholder="0"
                             name="omset_penerbit" aria-label="omzet_jadi_penerbit" aria-describedby="basic-addon1">
                     </div>
                 </div>
-                <div class="form-group col-md-4 mt-2">
-                    <label for="exampleFormControlInput1" class="form-label">Perkiraan Deviden Tahunan</label>
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">*Perkiraan Deviden Tahunan</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control format-number number-only ribuan" placeholder="0"
+                        <input type="text" class="form-control format-number number-only " placeholder="0"
                             name="deviden_tahunan" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <span class="input-group-text " id="basic-addon2">%</span>
                     </div>
                 </div>
-                <div class="form-group col-md-8 mt-2">
-                    <label for="exampleFormControlInput1" class="form-label">Alamat Website</label>
-                    <input type="text" class="form-control username" name="web" placeholder="https://santara.co.id/">
-                </div>
-                <div class="form-group col-md-4 mt-2">
+                <div class="form-group mt-2" hidden>
                     <label for="exampleFormControlInput1" class="form-label">Video Profile Perusahaan</label>
                     <input type="text" class="form-control username" name="video_profile"
                         placeholder="https://www.youtube.com/watch?v=DSO7qWAbqjg">
                 </div>
-                
-                <div class="form-group col-md-4 mt-2">
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">Alamat Website</label>
+                    <input type="text" class="form-control username" name="web" placeholder="https://santara.co.id/">
+                </div>
+                <div class="form-group mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Facebook</label>
                     <input type="text" class="form-control username" name="fb" placeholder="Isi Username Facebook">
                 </div>
-                <div class="form-group col-md-4 mt-2">
+                <div class="form-group mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Instagram</label>
                     <input type="text" class="form-control username" name="ig" placeholder="Isi Username Instagram">
                 </div>
-                {{-- <div class="form-group col-md-4 mt-2">
+                <div class="form-group mt-2">
                     <label for="exampleFormControlInput1" class="form-label">*Isi Caption Biografi Owner atau Deskripsi
                         Usaha</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi"
                         placeholder="Isi Caption dan Biografi" rows="3"></textarea>
-                </div> --}}
+                </div>
 
                 <div class="col-12 fs-10 ff-m mt-3">
                     <p>Syarat dan Ketentuan :</p>
@@ -360,9 +273,9 @@
             <div class="row">
                 <div class="col-12  d-flex justify-content-center align-item-center">
                     <a href="{{route('daftar-bisnis.index')}}" class="btn btn-danger m-3"
-                        style="width: 300px; background-color:white; color:#BF2D30;font-weight:700">Cancel</a>
+                        style="width: 300px; background-color:white; color:#BF2D30;font-weight:700">cancel</a>
                     <button class="btn btn-danger m-3" type="submit" id="asd"
-                        style="width: 300px;font-weight:700">Daftar</button>
+                        style="width: 300px;font-weight:700">daftar</button>
                 </div>
             </div>
         </div>
@@ -1080,26 +993,6 @@ $('#crop6').click(function(){
 
 });
 
-</script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
-<script>
-    $("#asd").on("click", function () {
-
-        if ($('.ssa').html() == 'Pilih File') {
-            $('.req').prop('required',true);
-            // console.log('sip')
-            return;
-        };
-
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
-<script>
-    document.querySelectorAll('.ribuan').forEach(inp => new Cleave(inp, {
-    numeral: true,
-    numeralDecimalMark: ',',
-    delimiter: '.'
-    }));
 </script>
 @endsection
 @section('style')
