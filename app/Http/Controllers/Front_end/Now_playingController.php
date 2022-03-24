@@ -20,16 +20,17 @@ class Now_playingController extends Controller
      */
     public function index()
     {
-        $now_playing = emitens_old::whereRaw('CURDATE() BETWEEN emitens.begin_period and emitens.end_period')
-        ->select('emitens.*','categories.category as ktg','emiten_journeys.title as sts','emiten_journeys.date as sd',
-        db::raw('SUM(IF(t.is_verified = 1, t.amount, 0)) / emitens.price as terjual')
-        )
+        $now_playing = emiten::select('emitens.*','categories.category as ktg')
+        // ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-        ->leftjoin('transactions as t', 't.emiten_id','=','emitens.id')
         ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
-        ->groupby('emitens.id')
-        ->get();
+        ->where('emiten_journeys.title','=','Penawaran Saham')
+        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+        ->groupBy('emitens.id')
+        ->orderby('emitens.id','DESC')
+        ->get()
+        ;
         return view('front_end/now_playing/index',compact('now_playing'));
     }
 
