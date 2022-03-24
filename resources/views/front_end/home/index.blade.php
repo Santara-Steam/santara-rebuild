@@ -88,7 +88,7 @@
                           <div class="header-and-tags">
                             <span class="tx-t inter-medium-sweet-pink-12px"
                               style="background: var(--falu-red);
-            border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$np->ktg}}</span>
+            border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;"><?php echo \Illuminate\Support\Str::limit(strip_tags( $np->ktg ), 20, $end='...') ?></span>
                             <div class="header">
                               <div class="saka-logistics inter-medium-alabaster-20px">
                                 <span class="tx-pt inter-medium-alabaster">
@@ -266,7 +266,9 @@
                           <div class="header-and-tags">
                             <span class="tx-t inter-medium-sweet-pink-12px"
                               style="background: var(--falu-red);
-                  border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$cs->ctg->category}}</span>
+                  border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
+                <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->ctg->category ), 20, $end='...') ?>  
+                </span>
                             <div class="header">
                               <div class="saka-logistics inter-medium-alabaster-20px">
                                 <span class="tx-pt inter-medium-alabaster">
@@ -458,7 +460,9 @@
                           <div class="header-and-tags">
                             <span class="tx-t inter-medium-sweet-pink-12px"
                               style="background: var(--falu-red);
-            border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$item->ktg}}</span>
+            border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
+            <?php echo \Illuminate\Support\Str::limit(strip_tags( $item->ktg ), 20, $end='...') ?>  
+          </span>
                             <div class="header">
                               <div class="saka-logistics inter-medium-alabaster-20px">
                                 <span class="tx-pt inter-medium-alabaster">
