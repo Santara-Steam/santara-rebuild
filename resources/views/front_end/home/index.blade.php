@@ -158,7 +158,7 @@
                               </div>
                               <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
                                 <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
-                                  class="inter-medium-alabaster-12px">6</span>
+                                  class="inter-medium-alabaster-12px">6 Bulan</span>
                               </div>
                             </div>
                           </div>

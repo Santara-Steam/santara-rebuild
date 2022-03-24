@@ -116,13 +116,13 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Saham Tersisa <br> 100</td>
+                    <td>Saham Tersisa <br> -</td>
                   </tr>
                   <tr>
-                    <td>Dalam Lembar <br> 100</td>
+                    <td>Dalam Lembar <br> -</td>
                   </tr>
                   <tr>
-                    <td>Total Rupiah <br> 100</td>
+                    <td>Total Rupiah <br> -</td>
                   </tr>
                 </table>
               </div>
@@ -133,13 +133,13 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Saham Terjual <br> 100</td>
+                    <td>Saham Terjual <br> -</td>
                   </tr>
                   <tr>
-                    <td>Dalam Lembar <br> 100</td>
+                    <td>Dalam Lembar <br> -</td>
                   </tr>
                   <tr>
-                    <td>Dalam Rupiah<br> 100</td>
+                    <td>Dalam Rupiah<br> -</td>
                   </tr>
                 </table>
               </div>
