@@ -41,7 +41,7 @@
                               ?>
 <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
-<div class="banner_bg_main" style="background-image: url({{ asset('public/storage/pictures') }}/{{$picture[1]}});">
+<div class="banner_bg_main" style="background-image: url({{ asset('public/storage/pictures') }}/{{$picture[1]}});" style="margin-top: 96px;">
   <div class="banner_section layout_padding">
     <div class="container" style="margin-top: 15px;">
       <div class="section">

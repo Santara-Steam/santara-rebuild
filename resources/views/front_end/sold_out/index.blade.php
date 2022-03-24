@@ -1,7 +1,7 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
- <div class="header-section">
+ <div class="header-section" style="margin-top: 96px;">
           <div class="heading-and-subheading">
             <div class="now-playing-bisnis inter-bold-alizarin-crimson-16px">
               <span class="inter-bold-alizarin-crimson-16px">Sold Out Bisnis</span>

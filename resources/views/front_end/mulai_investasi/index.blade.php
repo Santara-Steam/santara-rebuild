@@ -2,7 +2,7 @@
 
 @section('content')
 
-      <div class="bg-3">
+      <div class="bg-3" style="margin-top: 96px;">
         <div class="banner_section">
             <div class="container" style="margin-top: 60px">
                <div class="section">

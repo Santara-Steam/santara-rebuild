@@ -1,7 +1,7 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-<div class="bg-2">
+<div class="bg-2" style="margin-top: 96px;">
         <div class="banner_section">
             <div class="container" style="margin-top:60px">
                <div class="section">

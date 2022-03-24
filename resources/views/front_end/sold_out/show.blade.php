@@ -4,7 +4,7 @@
  <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
  <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/now-playing-detail.css') }}" />
 
-<div class="bg" style="background-image: url({{ asset('public/assets/images/background-now-playing@1x.png') }}">
+<div class="bg" style="background-image: url({{ asset('public/assets/images/background-now-playing@1x.png') }}" style="margin-top: 96px;">
         <div class="banner_section layout_padding">
             <div class="container"style="margin-top: 15px;">
                <div class="section">

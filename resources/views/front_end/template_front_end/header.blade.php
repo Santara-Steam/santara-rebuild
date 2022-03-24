@@ -57,7 +57,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" style="min-height: 96px;">
+<nav class="navbar navbar-default fixed-top" style="min-height: 96px; background-color:var(--shark);">
                 <div class="container">
                   <div class="navbar-header">
                     <div id="mySidenav" class="sidenav">

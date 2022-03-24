@@ -1,7 +1,7 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-<div class="header-section">
+<div class="header-section" style="margin-top: 96px;">
           <div class="heading-and-subheading">
             <div class="now-playing-bisnis inter-bold-alizarin-crimson-16px">
               <span class="inter-bold-alizarin-crimson-16px">Coming Soon Bisnis</span>
@@ -264,9 +264,153 @@
                             </div>
                           </div>
             </div>
+
+@foreach ($soon as $item)
+
+<div class="modal fade" id="modal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-size: 20px;">{{$item->trademark}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="padding-right: 12px;">×</span>
+        </button>
+      </div>
+      <div class="modal-body comm">
+
+      </div>
+      @guest
+
+      @else
+      <div class="modal-footer container">
+        {{-- <form action="{{url('sendData')}}/{{$item->id}}" method="POST" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <textarea name="comment" class="form-control" id="" cols="10" rows="10"></textarea>
+          </div>
+          <button type="button" id="send" class="btn btn-primary send">Send</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form> --}}
+        {{-- <form action="{{url('sendData')}}/{{$item->id}}" method="POST" enctype="multipart/form-data"> --}}
+
+          {{-- <input name="comment{{$item->id}}"> --}}
+          {{-- <textarea name="comment{{$item->id}}" id="" cols="30" rows="10"></textarea> --}}
+          {{-- <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}"
+            placeholder="Write a comment" style="font-size:12px; padding: 6px; resize:none;"></textarea>
+          <button type="button" class="btn btn-primary" id="send{{$item->id}}">send</button> --}}
+          {{-- <div class="modal-footer "> --}}
+            <table>
+              <tbody>
+                <tr>
+                  <form id="ajaxform{{$item->id}}">
+                    {{-- {{ csrf_field() }} --}}
+                    <input type="hidden" name="idem{{$item->id}}" value="{{$item->id}}">
+                    <input type="hidden" name="trd{{$item->id}}">
+                    <td width="100%" valign="top" style="margin-right: 5px;">
+
+                      <textarea class="form-control without-border" id="comment" name="comment{{$item->id}}"
+                        placeholder="Write a comment" cols="70"
+                        style="font-size:12px; padding: 6px; resize:none;"></textarea>
+                      <span class="error" style="font-size: 10px; color:red" id="comment_error">
+                      </span>
+                    </td>
+                    <td rowspan="2" style="text-align: right; vertical-align: top;margin-left: 5px;padding-left: 15px;"
+                      width="25%">
+                      <button type="button" class="btn-pill btn btn-sm btn-outline-danger" id="send{{$item->id}}">Send
+                        &nbsp;<i class="fa fa-paper-plane"></i></button>
+                      <p></p>
+                    </td>
+                  </form>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          @endguest
+
+      </div>
+    </div>
+
+  </div>
+
+
+  {{-- <div class="modal fade show" id="modalShareButton{{$item->id}}" tabindex="-1" aria-labelledby="modalShare"
+    aria-modal="true" role="dialog" style="display: block;"> --}}
+    <div class="modal fade" id="modalShareButton{{$item->id}}" tabindex="-1" role="dialog"
+      aria-labelledby="modalLabel{{$item->id}}" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="p-2 modal-content">
+          <div class="modal-header" style="border-bottom: none;">
+          </div>
+          <div class="text-center modal-body ">
+            <div class="d-flex justify-content-evenly mb-5">
+              <div class="container  text-center d-flex justify-content-center" style="border-top: solid #D9D9D9;">
+                <h1 class="ff-a fs-24"
+                  style="font-weight:800;text-transform:uppercase; padding:0 15px 0 15px; margin-top:-20px; width:150px; background-color:#fff;color:black;font-family: inherit;">
+                  Share</h1>
+              </div>
+            </div>
+            <div class="row mt-3 mb-3 d-flex justify-content-center ">
+              <!-- <div class="col-4 col-md-2">
+                      <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
+                      <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
+                  </div> -->
+              <div class="col-4 col-md-2">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{url('detail-coming-soon')}}/{{$item->id}}"
+                  id="shareFacebook" target="_blank" style="text-decoration: none;">
+                  <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/facebook.png"
+                    class="lazyload">
+                  <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
+                </a>
+              </div>
+              <div class="col-4 col-md-2">
+                <a href="https://twitter.com/intent/tweet?url={{url('detail-coming-soon')}}/{{$item->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
+                  id="shareTwitter" style="text-decoration: none;" target="_blank">
+                  <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/twitter.png"
+                    class="lazyload">
+                  <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
+                </a>
+              </div>
+              <div class="col-4 col-md-2">
+                <a href="https://telegram.me/share/url?url={{url('detail-coming-soon')}}/{{$item->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
+                  id="shareTelegram" target="_blank" style="text-decoration: none;">
+                  <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/telegram.png"
+                    class="lazyload">
+                  <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
+                </a>
+              </div>
+              <!-- <div class="col-4 col-md-2">
+                      <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
+                      <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
+                  </div> -->
+              <div class="col-4 col-md-2">
+                <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A {{url('detail-coming-soon')}}/{{$item->id}}"
+                  id="shareWhatsapp" target="_blank" style="text-decoration: none;">
+                  <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/whatsapp.png"
+                    class="lazyload">
+                  <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
+                </a>
+              </div>
+            </div>
+            <div class="input-group input-group-lg mb-3">
+              <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled=""
+                style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                placeholder="{{url('detail-coming-soon')}}/{{$item->id}}">
+              <span id="copy-link" class="input-group-text"
+                style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer"
+                onclick="shareButton('{{url('detail-coming-soon')}}/{{$item->id}}')">Copy Link</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    @endforeach
+
 @foreach ($soon as $cs)
     
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -584,5 +728,116 @@
           }
       });
       </script>
+@endsection
+@section('js')
+  <script type='text/javascript'>
+    $(document).ready(function(){
+
+      $('.cmt').click(function(){
+         
+          var id = $(this).data('id');
+
+          // AJAX request
+          $.ajax({
+              url: '{{url("getmodaldata")}}/'+id,
+              type: 'get',
+              data: {id: id},
+              success: function(cmt){ 
+                  // Add response in Modal body
+                  $('.comm').html(cmt); 
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+                  // console.log(cmt);
+              }
+          });
+      });
+});
+  </script>
+  <script>
+    function shareButton(url) {
+      navigator.clipboard.writeText(url);
+      // alert("Copied the text: " + url);
+      toastr.success("Url Berhasil Di Copy!!");
+  }
+
+  function share(url, message) {
+
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          // some code..
+          const shareData = {
+              title: message,
+              text: 'Temukan peluang investasi berikut di Santara! ' + message,
+              url: url
+          }
+
+          try {
+              navigator.share(shareData)
+              resultPara.textContent = 'MDN shared successfully'
+          } catch (err) {
+              resultPara.textContent = 'Error: ' + err
+          }
+      } else {
+
+          $('#shareWhatsapp').attr('href', "https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + url);
+          $('#shareTelegram').attr('href', "https://telegram.me/share/url?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
+          $('#shareFacebook').attr('href', "https://www.facebook.com/sharer/sharer.php?u=" + url);
+          $('#shareTwitter').attr('href', "https://twitter.com/intent/tweet?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
+          $('#copy-link').attr('onclick', "shareButton('" + url + "')");
+          $('#inputShareLink').attr('placeholder', url);
+          $('#modalShareButton').modal('show');
+      }
+
+  }
+  </script>
+  @foreach ($soon as $item)
+
+  <script type='text/javascript'>
+    $(document).ready(function(){
+  $("#send{{$item->id}}").click(function(){
+      // event.preventDefault();
+
+      let comment = $("textarea[name=comment{{$item->id}}]").val();
+      let idem = $("input[name=idem{{$item->id}}]").val();
+      let trd = $("input[name=trd{{$item->id}}]").val();
+      let _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{url('sendData')}}" +"/"+ idem,
+        type:"POST",
+        data:{
+          comment:comment,
+          idem:idem,
+          trd:trd,
+          _token: _token
+        },
+        success:function(response){
+          // console.log(response);
+          if(response) {
+            $('.success').text(response.success);
+            $("#ajaxform{{$item->id}}")[0].reset();
+            $.ajax({
+              url: '{{url("getmodaldata")}}/'+{{$item->id}},
+              type: 'get',
+              data: {id: "{{$item->id}}"},
+              success: function(cmt){ 
+                  // Add response in Modal body
+                  $('.comm').html(cmt); 
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+                  // console.log(cmt);
+              }
+          });
+          }
+        },
+        error: function(error) {
+        console.log(error);
+        }
+       });
+  });
+});
+  </script>
+  @endforeach
 @endsection
 @endsection

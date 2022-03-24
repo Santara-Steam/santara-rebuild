@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     crossorigin="anonymous">
 
-<div class="container-fluid d-flex align-content-center justify-content-center bg-header-daftarkan-bisnis text-center">
+<div class="container-fluid d-flex align-content-center justify-content-center bg-header-daftarkan-bisnis text-center" style="margin-top: 96px;">
     <div class="row col-12 col-md-9"  style="margin-top: 70px;">
         <div class="col-12 align-self-end">
             <img src="https://santara.co.id/assets/new-santara/img/logo/logo_header.png" class="img-fluid" width="270px"
