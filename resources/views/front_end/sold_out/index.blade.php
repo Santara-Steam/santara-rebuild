@@ -67,7 +67,7 @@
                                       $picture = explode(',',$item->pictures);
                                       $tot=number_format(round($item->supply * $item->price),0,',','.');
                                       ?>
-                            <div class="col-lg-3 col-sm-3 col-3" style="padding: 5px;">
+                            <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;">
 
 
                               <a data-toggle="modal" id="detail_sold" style="width: 100%;"
