@@ -509,7 +509,7 @@
                 <span class="error invalid-feedback text-center" style="display:none" id="alertmaks"></span>
               </div>
               <div class="mt-4 text-center row d-flex justify-content-center form-group">
-                <label for="total_harga_saham" class="mb-2 text-bold">Total Harga Saham (IDR)</label>
+                <label for="total_harga_saham" class="mb-2 text-bold">Total Harga Saham (Rp)</label>
                 <input class="form-control text-center" type="text" id="total_harga_saham" style="width: 80%;"
                   placeholder="Rp 0" disabled>
               </div>
