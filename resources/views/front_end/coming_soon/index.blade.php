@@ -134,7 +134,7 @@
                                                 </div>
                                                 <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                                                   <span class="tx-np inter-normal-quill-gray">
-                                                    <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 30, $end='...') ?>
+                                                    <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->company_name ), 30, $end='...') ?>
                                                   </span>
                                                 </div>
                                               </div>
