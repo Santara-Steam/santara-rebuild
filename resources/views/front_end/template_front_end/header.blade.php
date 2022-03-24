@@ -210,7 +210,7 @@
       </form>
       @else
         @if (Auth::user()->role_id == 1)
-        <div class="inter-medium-white-14px">
+        <div class="form-inline inter-medium-white-14px">
           <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/admin') }}">Dashboard</a>
           <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" href="{{ route('logout') }}"
           onclick="event.preventDefault();
@@ -221,7 +221,7 @@
           </form>
         </div>
         @elseif(Auth::user()->role_id == 2)
-          <div class="inter-medium-white-14px">
+          <div class="form-inline inter-medium-white-14px">
             <a class="button-cta-1 btn btn-dark btn-au inter-medium-white-14px" href="{{ url('/user') }}">Dashboard</a>
             <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px" href="{{ route('logout') }}"
             onclick="event.preventDefault();

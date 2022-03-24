@@ -71,11 +71,8 @@
                   {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
 
                   <a type="button" data-toggle="modal" id="detail_now" class="mod_now detail_now moldla"
-                    style="width: 100%;" data-target="#modal_now" data-id="<?=$np->id?>" {{-- data-ktg="<?=$np->ktg?>"
-                    data-trademark_now="<?=$np->trademark?>" data-company_name_now="<?=$np->company_name?>"
-                    data-mulai="<?=$mul?>" data-image_now="<?=$picture[0]?>" data-hari="<?=$har?>"
-                    data-progres_now="<?=$prog?>" data-tot_pendanaan="<?=$pend?>"
-                    data-periode_dividen="<?=$np->period?>" --}}>
+                    style="width: 100%;" data-target="#modal_now" data-id="<?=$np->id?>"data-ktg="<?=$np->ktg?>"
+                    data-trademark_now="<?=$np->trademark?>" data-mulai="<?= number_format(round(100 * $np->price,0),0,',','.')?>" data-company_name_now="<?=$np->company_name?>" data-image_now="<?=$picture[0]?>" >
                     <div class="card moldla">
                       <img class="rectangle-2 moldla" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
                     </div>
@@ -784,12 +781,9 @@
                   <div class="address">
                     <div class="hr inter-bold-white-14px">
                       <span class="tx-sold inter-medium-white"><b style="font-weight: bold" id="hari">
-
-
-
+                      40
                         </b></span>
                     </div>
-
                     <span class="inter-normal-mercury-12px">&nbsp;</span>
                     <div class="hr-lg inter-normal-mercury-14px">
                       <span class="tx-sold inter-normal-mercury">hari lagi</span>
@@ -801,7 +795,7 @@
                         style="width: 0%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
                         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
 
-                        <span class="tx-np percen inter-medium-white" id="progres_now">
+                        <span class="tx-np percen inter-medium-white" id="progres_now"> 0
 
 
 
@@ -1048,7 +1042,7 @@
       $('#ktg').text(ktg);
       $('#trademark_now').text(trademark_now);
       $('#company_name_now').text(company_name_now);
-      $('#image_now').prop('src', 'https://storage.googleapis.com/asset-santara/santara.co.id/token/' + image_now);
+      $('#image_now').prop('src', 'public/storage/pictures/' + image_now);
       $('#mulai').text(mulai);
       $('#hari').text(hari);
       $('#progres_now').text(progres_now);
