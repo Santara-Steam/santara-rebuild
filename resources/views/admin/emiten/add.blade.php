@@ -177,7 +177,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Rp</span>
                                                     </div>
-                                                    <input type="text" name="perkiraan_dana" class="form-control"
+                                                    <input type="number" name="perkiraan_dana" class="form-control"
                                                         placeholder="Perkiraan Dana yang di Butuhkan"
                                                         aria-describedby="basic-addon1">
                                                 </div>
@@ -193,7 +193,7 @@
                                                                 <span class="input-group-text"
                                                                     id="basic-addon1">Rp</span>
                                                             </div>
-                                                            <input type="text" name="omset1" class="form-control"
+                                                            <input type="number" name="omset1" class="form-control"
                                                                 placeholder="Omset 2021"
                                                                 aria-describedby="basic-addon1">
                                                         </div>
@@ -205,7 +205,7 @@
                                                                 <span class="input-group-text"
                                                                     id="basic-addon1">Rp</span>
                                                             </div>
-                                                            <input type="text" name="omset2" class="form-control"
+                                                            <input type="number" name="omset2" class="form-control"
                                                                 placeholder="Omset 2022"
                                                                 aria-describedby="basic-addon1">
                                                         </div>
@@ -218,7 +218,7 @@
                                                 <label for="companyName">Perkiraan Saham yang di lepas ke Umum</label>
                                                 <div class="input-group">
 
-                                                    <input type="text" name="saham_dilepas" class="form-control"
+                                                    <input type="number" name="saham_dilepas" class="form-control"
                                                         placeholder="Perkiraan Saham yang di lepas ke Umum"
                                                         aria-describedby="basic-addon4">
                                                     <div class="input-group-append">
@@ -232,7 +232,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Rp</span>
                                                     </div>
-                                                    <input type="text" name="omset_penerbit" class="form-control"
+                                                    <input type="number" name="omset_penerbit" class="form-control"
                                                         placeholder="Perkiraan Omzet Setelah Jadi Penerbit"
                                                         aria-describedby="basic-addon1">
                                                 </div>
@@ -241,7 +241,7 @@
                                                 <label for="companyName">Perkiraan Deviden Tahunan</label>
                                                 <div class="input-group">
 
-                                                    <input type="text" name="deviden_tahunan" class="form-control"
+                                                    <input type="number" name="deviden_tahunan" class="form-control"
                                                         placeholder="Perkiraan Deviden Tahunan"
                                                         aria-describedby="basic-addon4">
                                                     <div class="input-group-append">

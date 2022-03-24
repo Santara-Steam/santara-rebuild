@@ -238,7 +238,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Rp</span>
                         </div>
-                        <input required type="text" name="harga_saham" value=""
+                        <input required type="number" name="harga_saham" value=""
                             class="form-control ribuan" placeholder="Harga Saham Per Lembar"
                             aria-describedby="basic-addon1">
                     </div>
@@ -247,7 +247,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Rp</span>
                         </div>
-                        <input required type="text" value=""
+                        <input required type="number" value=""
                             name="perkiraan_dana" class="form-control ribuan"
                             placeholder="Perkiraan Dana yang di Butuhkan"
                             aria-describedby="basic-addon1">
@@ -269,7 +269,7 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"
                                     style="background-color:#D5E1E6">Rp</span>
-                                <input type="text" class="form-control format-number ribuan format-number number-only"
+                                <input type="number" class="form-control format-number ribuan format-number number-only"
                                     id="amount" name="omset1" placeholder="0" style="background-color:#fff"
                                     aria-label="" aria-describedby="basic-addon1">
                             </div>
@@ -283,7 +283,7 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"
                                     style="background-color:#D5E1E6">Rp</span>
-                                <input type="text" class="form-control ribuan format-number number-only" name="omset2"
+                                <input type="number" class="form-control ribuan format-number number-only" name="omset2"
                                     placeholder="0" style="background-color:#fff" aria-label=""
                                     aria-describedby="basic-addon1">
                             </div>
@@ -294,7 +294,7 @@
                     <label for="exampleFormControlInput1" class="form-label">Perkiraan Saham yang di Lepas ke
                         Umum </label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control format-number ribuan number-only" placeholder="0"
+                        <input type="number" class="form-control format-number ribuan number-only" placeholder="0"
                             name="saham_dilepas" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <span class="input-group-text" id="basic-addon2">%</span>
                     </div>
@@ -304,14 +304,14 @@
                         Penerbit </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Rp</span>
-                        <input type="text" class="form-control format-number ribuan number-only " placeholder="0"
+                        <input type="number" class="form-control format-number ribuan number-only " placeholder="0"
                             name="omset_penerbit" aria-label="omzet_jadi_penerbit" aria-describedby="basic-addon1">
                     </div>
                 </div>
                 <div class="form-group col-md-4 mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Perkiraan Deviden Tahunan</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control format-number number-only ribuan" placeholder="0"
+                        <input type="number" class="form-control format-number number-only ribuan" placeholder="0"
                             name="deviden_tahunan" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <span class="input-group-text " id="basic-addon2">%</span>
                     </div>

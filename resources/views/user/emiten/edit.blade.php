@@ -241,7 +241,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="text" name="harga_saham" value="{{round($emiten->price,0)}}"
+                                                        <input required type="number" name="harga_saham" value="{{round($emiten->price,0)}}"
                                                             class="form-control ribuan" placeholder="Harga Saham Per Lembar"
                                                             aria-describedby="basic-addon1">
                                                     </div>
@@ -250,7 +250,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="text" value="{{round($emiten->avg_capital_needs,0)}}"
+                                                        <input required type="number" value="{{round($emiten->avg_capital_needs,0)}}"
                                                             name="perkiraan_dana" class="form-control ribuan"
                                                             placeholder="Perkiraan Dana yang di Butuhkan"
                                                             aria-describedby="basic-addon1">
@@ -279,7 +279,7 @@
                                                                     <span class="input-group-text"
                                                                         id="basic-addon1">Rp</span>
                                                                 </div>
-                                                                <input required type="text"
+                                                                <input required type="number"
                                                                     value="{{round($emiten->avg_annual_turnover_previous_year,0)}}"
                                                                     name="omset1" class="form-control ribuan"
                                                                     placeholder="Omset 2021"
@@ -293,7 +293,7 @@
                                                                     <span class="input-group-text"
                                                                         id="basic-addon1">Rp</span>
                                                                 </div>
-                                                                <input required type="text"
+                                                                <input required type="number"
                                                                     value="{{round($emiten->avg_annual_turnover_current_year,0)}}"
                                                                     name="omset2" class="form-control ribuan"
                                                                     placeholder="Omset 2022"
@@ -310,7 +310,7 @@
                                                         Umum</label>
                                                     <div class="input-group">
 
-                                                        <input required type="text" value="{{round($emiten->avg_general_share_amount,0)}}"
+                                                        <input required type="number" value="{{round($emiten->avg_general_share_amount,0)}}"
                                                             name="saham_dilepas" class="form-control ribuan"
                                                             placeholder="Perkiraan Saham yang di lepas ke Umum"
                                                             aria-describedby="basic-addon4">
@@ -327,7 +327,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="text"
+                                                        <input required type="number"
                                                             value="{{round($emiten->avg_turnover_after_becoming_a_publisher,0)}}"
                                                             name="omset_penerbit" class="form-control ribuan"
                                                             placeholder="Perkiraan Omzet Setelah Jadi Penerbit"
@@ -338,7 +338,7 @@
                                                     <label for="companyName">Perkiraan Deviden Tahunan</label>
                                                     <div class="input-group">
 
-                                                        <input required  type="text" value="{{round($emiten->avg_annual_dividen,0)}}"
+                                                        <input required  type="number" value="{{round($emiten->avg_annual_dividen,0)}}"
                                                             name="deviden_tahunan" class="form-control ribuan"
                                                             placeholder="Perkiraan Deviden Tahunan"
                                                             aria-describedby="basic-addon4">

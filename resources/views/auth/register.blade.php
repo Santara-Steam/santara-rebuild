@@ -32,7 +32,7 @@
 
                                     <div class="form-group mb-3" style="color: black; margin-left: -15px;">
                                         <div class="input-group col-12 ff-m" style="padding-right: 0;">
-                                            <input type="tel" class="form-control d-block required-form number-only-phone" style=" width: 100% !important" value="" name="phone" id="phone" placeholder="821xxxxxx" maxlength="14" onkeypress="return numberOnly(event)" value="">
+                                            <input type="number" class="form-control d-block required-form number-only-phone" style=" width: 100% !important" value="" name="phone" id="phone" placeholder="821xxxxxx" maxlength="14" onkeypress="return numberOnly(event)" value="">
                                             <input type="hidden" name="code_dial" style="color: black;" id="code_dial">
                                             <span id="phone_error" style="color: #fff;"></span>
                                         </div>

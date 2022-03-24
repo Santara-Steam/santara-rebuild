@@ -181,7 +181,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Rp</span>
                                                     </div>
-                                                    <input type="text" value="{{$emiten->avg_capital_needs}}" name="perkiraan_dana" class="form-control"
+                                                    <input type="number" value="{{$emiten->avg_capital_needs}}" name="perkiraan_dana" class="form-control"
                                                         placeholder="Perkiraan Dana yang di Butuhkan"
                                                         aria-describedby="basic-addon1">
                                                 </div>
@@ -197,7 +197,7 @@
                                                                 <span class="input-group-text"
                                                                     id="basic-addon1">Rp</span>
                                                             </div>
-                                                            <input type="text" value="{{$emiten->avg_annual_turnover_previous_year}}"  name="omset1" class="form-control"
+                                                            <input type="number" value="{{$emiten->avg_annual_turnover_previous_year}}"  name="omset1" class="form-control"
                                                                 placeholder="Omset 2021"
                                                                 aria-describedby="basic-addon1">
                                                         </div>
@@ -221,7 +221,7 @@
                                                 <label for="companyName">Perkiraan Saham yang di lepas ke Umum</label>
                                                 <div class="input-group">
 
-                                                    <input type="text" value="{{$emiten->avg_general_share_amount}}" name="saham_dilepas" class="form-control"
+                                                    <input type="number" value="{{$emiten->avg_general_share_amount}}" name="saham_dilepas" class="form-control"
                                                         placeholder="Perkiraan Saham yang di lepas ke Umum"
                                                         aria-describedby="basic-addon4">
                                                     <div class="input-group-append">
@@ -235,7 +235,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Rp</span>
                                                     </div>
-                                                    <input type="text" value="{{$emiten->avg_turnover_after_becoming_a_publisher}}" name="omset_penerbit" class="form-control"
+                                                    <input type="number" value="{{$emiten->avg_turnover_after_becoming_a_publisher}}" name="omset_penerbit" class="form-control"
                                                         placeholder="Perkiraan Omzet Setelah Jadi Penerbit"
                                                         aria-describedby="basic-addon1">
                                                 </div>
@@ -244,7 +244,7 @@
                                                 <label for="companyName">Perkiraan Deviden Tahunan</label>
                                                 <div class="input-group">
 
-                                                    <input type="text" value="{{$emiten->avg_annual_dividen}}" name="deviden_tahunan" class="form-control"
+                                                    <input type="number" value="{{$emiten->avg_annual_dividen}}" name="deviden_tahunan" class="form-control"
                                                         placeholder="Perkiraan Deviden Tahunan"
                                                         aria-describedby="basic-addon4">
                                                     <div class="input-group-append">
