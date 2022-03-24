@@ -74,7 +74,7 @@
                      <div class="fashion_section_2">
                         <div class="row" style="padding-left: 10px; padding-right: 10px;">
                         @foreach ($now_playing as $np)
-                        <div class="col-lg-3 col-sm-3 col-3" style="padding: 5px;"> 
+                        <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;"> 
                   <?php 
                                       $picture = explode(',',$np->pictures);
                                       ?>
