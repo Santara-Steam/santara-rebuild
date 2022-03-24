@@ -509,7 +509,7 @@ class EmitenController extends Controller
         $emiten->avg_general_share_amount = $request->get('saham_dilepas');
         $emiten->avg_turnover_after_becoming_a_publisher= $request->get('omset_penerbit');
         $emiten->avg_annual_dividen= $request->get('deviden_tahunan');
-        $emiten->youtube= str_replace("watch?v=", "embed/", $request->get('video_profile'));
+        $emiten->youtube= str_replace("youtu.be/", "www.youtube.com/embed/", $request->get('video_profile'));
         $emiten->facebook= $request->get('fb');
         $emiten->website= $request->get('web');
         $emiten->instagram= $request->get('ig');

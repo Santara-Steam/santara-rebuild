@@ -349,7 +349,7 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Video Profile Perusahaan</label>
-                                                    <input pattern="https?://www.youtube.com.+" title="Include http://" required type="text" value="{{$emiten->youtube}}" id="companyName"
+                                                    <input pattern="https?://youtu.be.+" title="Include http://" required type="text" value="{{$emiten->youtube}}" id="companyName"
                                                         name="video_profile" class="form-control"
                                                         placeholder="Video Profile Perusahaan">
                                                 </div>
