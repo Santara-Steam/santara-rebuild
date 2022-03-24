@@ -150,7 +150,7 @@ class Daftar_bisnisController extends Controller
         $em->avg_general_share_amount = $request->get('saham_dilepas');
         $em->avg_turnover_after_becoming_a_publisher= $request->get('omset_penerbit');
         $em->avg_annual_dividen= $request->get('deviden_tahunan');
-        $em->youtube= $request->get('video_profile');
+        $em->youtube= str_replace("youtu.be/", "www.youtube.com/embed/", $request->get('video_profile'));
         $em->facebook= $request->get('fb');
         $em->website= $request->get('web');
         $em->instagram= $request->get('ig');
