@@ -56,9 +56,10 @@
           </div>
           {{-- <div class="tags-d"> --}}
             <span class="tx-t inter-medium-sweet-pink-14px"
-                                  style="font-size:16px;background: var(--falu-red);
+              style="font-size:16px;background: var(--falu-red);
     border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$emt->ctg->category}}</span>
-          {{-- </div> --}}
+            {{--
+          </div> --}}
         </div>
         <div class="profil">
           <img style="border-radius: 50%;" class="image-69"
@@ -84,57 +85,127 @@
       <div class="col-lg-6 col-sm-6">
         <!-- nav options -->
         <ul class="nav nav-pills mb-3 shadow-sm" id="pills-tab" role="tablist">
-            <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Informasi Saham</a> </li>
-            <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detail Saham</a> </li>
-            <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill" href="#pills-des" role="tab" aria-controls="pills-des" aria-selected="false">Deskripsi Bisnis</a> </li>
-            <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Kontak</a> </li>
+          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta active show" id="pills-home-tab"
+              data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Informasi
+              Saham</a> </li>
+          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-profile-tab" data-toggle="pill"
+              href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detail Saham</a>
+          </li>
+          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill"
+              href="#pills-des" role="tab" aria-controls="pills-des" aria-selected="false">Deskripsi Bisnis</a> </li>
+          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill"
+              href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Kontak</a> </li>
         </ul> <!-- content -->
         <div class="tab-content" id="pills-tabContent p-3">
-            <!-- 1st card -->
-            <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="table-row-1">
-                 <span class="inter-medium-delta-16px">lorem ipsum : 100.000.000</span>
-               </div>
-               <div class="table-row">
-                 <span class="inter-medium-delta-16px">lorem ipsum : 100.000.000</span>
-               </div>
-               <div class="table-row">
-                 <span class="inter-medium-delta-16px">lorem ipsum : 100.000.000</span>
-               </div>
-            </div> <!-- 2nd card -->
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="table-row-1">
-                   <span class="inter-medium-delta-16px">lorem ipsum : 100.000.000</span>
-                 </div>
-                 <div class="table-row">
-                   <span class="inter-medium-delta-16px">lorem ipsum : 100.000.000</span>
-                 </div>
-                 <div class="table-row">
-                   <span class="inter-medium-delta-16px">lorem ipsum : 100.000.000</span>
-                 </div>
-            </div> <!-- 3nd card --> <!-- 2nd card -->
-            <div class="tab-pane fade" id="pills-des" role="tabpanel" aria-labelledby="pills-des-tab">
-              <div class="table-row-1">
-                <span class="inter-medium-delta-16px">{{$emt->business_description}}</span>
+          <!-- 1st card -->
+          <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            {{-- <div class="table-row-1">
+              <span class="inter-medium-delta-16px">Saham Tersisa : 100</span>
+            </div>
+            <div class="table-row">
+              <span class="inter-medium-delta-16px">Dalam Lembar : 100</span>
+            </div>
+            <div class="table-row">
+              <span class="inter-medium-delta-16px">Total Rupiah : 100</span>
+            </div> --}}
+            <div class="row">
+              <div class="col-6">
+                <table style="color: var(--delta);
+                font-family: var(--font-family-inter);
+                font-size: var(--font-size-l);
+                font-style: normal;
+                font-weight: 500;">
+                  <tr>
+                    <td>Saham Tersisa <br> 100</td>
+                  </tr>
+                  <tr>
+                    <td>Dalam Lembar <br> 100</td>
+                  </tr>
+                  <tr>
+                    <td>Total Rupiah <br> 100</td>
+                  </tr>
+                </table>
               </div>
-            </div> <!-- 3nd card -->
-             <!-- 2nd card -->
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-              <div class="table-row-1">
-                <span class="inter-medium-delta-16px">Instagram : {{$emt->instagram}}</span>
+              <div class="col-6">
+                <table style="color: var(--delta);
+                font-family: var(--font-family-inter);
+                font-size: var(--font-size-l);
+                font-style: normal;
+                font-weight: 500;">
+                  <tr>
+                    <td>Saham Terjual <br> 100</td>
+                  </tr>
+                  <tr>
+                    <td>Dalam Lembar <br> 100</td>
+                  </tr>
+                  <tr>
+                    <td>Dalam Rupiah<br> 100</td>
+                  </tr>
+                </table>
               </div>
-              <div class="table-row">
-                <span class="inter-medium-delta-16px">Facebook : {{$emt->facebook}}</span>
+            </div>
+          </div> <!-- 2nd card -->
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="row">
+              <div class="col-6">
+                <table style="color: var(--delta);
+                font-family: var(--font-family-inter);
+                font-size: var(--font-size-l);
+                font-style: normal;
+                font-weight: 500;">
+                  <tr>
+                    <td>Harga Saham <br> Rp{{number_format(round($emt->price * 100,0),0,',','.')}}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Saham <br> {{number_format(round($emt->avg_capital_needs / $emt->price,0),0,',','.')}}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Saham (Rp) <br> Rp{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</td>
+                  </tr>
+                </table>
               </div>
-              <div class="table-row">
-                <span class="inter-medium-delta-16px">Website : {{$emt->website}}</span>
+              <div class="col-6">
+                <table style="color: var(--delta);
+                font-family: var(--font-family-inter);
+                font-size: var(--font-size-l);
+                font-style: normal;
+                font-weight: 500;">
+                  <tr>
+                    <td>Kode Saham <br> -</td>
+                  </tr>
+                  <tr>
+                    <td>Sisa Waktu <br> 45 Hari</td>
+                  </tr>
+                  <tr>
+                    <td>Periode Deviden<br> 6 Bulan</td>
+                  </tr>
+                </table>
               </div>
-            </div> <!-- 3nd card -->
-</div>
-     </div>
-      
-      
-      <div class="col-lg-6 col-sm-6 container">
+            </div>
+          </div> <!-- 3nd card -->
+          <!-- 2nd card -->
+          <div class="tab-pane fade" id="pills-des" role="tabpanel" aria-labelledby="pills-des-tab">
+            <div class="table-row-1">
+              <span class="inter-medium-delta-16px">{{$emt->business_description}}</span>
+            </div>
+          </div> <!-- 3nd card -->
+          <!-- 2nd card -->
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="table-row-1">
+              <span class="inter-medium-delta-16px">Instagram : {{$emt->instagram}}</span>
+            </div>
+            <div class="table-row">
+              <span class="inter-medium-delta-16px">Facebook : {{$emt->facebook}}</span>
+            </div>
+            <div class="table-row">
+              <span class="inter-medium-delta-16px">Website : {{$emt->website}}</span>
+            </div>
+          </div> <!-- 3nd card -->
+        </div>
+      </div>
+
+
+      {{-- <div class="col-lg-6 col-sm-6 container">
         <div class="info-deviden border-1px-cape-cod boxi">
           <div class="pembagian-deviden-1 inter-medium-alabaster-18px">
             <span class="inter-medium-alabaster-18px">Informasi Bisnis:</span>
@@ -196,111 +267,164 @@
           </div>
           <div class="container" style="margin-bottom: -20px;margin-top: 10px;">
             @guest
-              @if ($status->title == 'Pra Penawaran Saham')
-              @elseif ($status->title == 'Penawaran Saham')
-              <a href="{{route('login')}}" class="btn btn-danger btn-block">Pesan Saham</a>
-              @endif
+            @if ($status->title == 'Pra Penawaran Saham')
+            @elseif ($status->title == 'Penawaran Saham')
+            <a href="{{route('login')}}" class="btn btn-danger btn-block">Pesan Saham</a>
+            @endif
             @else
-              @if ($status->title == 'Pra Penawaran Saham')
-                  
-              @elseif ($status->title == 'Penawaran Saham')
-              <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Pesan
-                Saham</button>
-              @endif
+            @if ($status->title == 'Pra Penawaran Saham')
+
+            @elseif ($status->title == 'Penawaran Saham')
+            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Pesan
+              Saham</button>
+            @endif
             @endguest
-            
+
+          </div>
+        </div>
+      </div> --}}
+      <div class="col-lg-6 col-sm-6 container">
+        <div class="info-deviden border-1px-cape-cod" style="width: 300px; height: 320px;">
+          <div class="pembagian-deviden-1 inter-normal-delta-12px">
+            <span class="inter-normal-delta-12px">Mulai dari</span>
+          </div>
+          <div class="table-7">
+            <p class="pembagian-deviden-ta inter-bold-alabaster-24px">
+              <span class="inter-bold-alabaster-24px" style="color: #fff">Rp{{number_format(round($emt->price * 100,0),0,',','.')}}</span><span
+                class="inter-normal-delta-14px" style="white-space: nowrap;">/100 lembar</span><br>
+              <span class="inter-normal-delta-12px" style="white-space: nowrap; margin-top: -5px;">Dari
+                target</span>&nbsp;<span class="inter-normal-delta-12px"
+                style="font-weight: bold; color: #fff">Rp{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</span>
+            </p>
+            <div class="overlap-group" style=" min-width: 270px;">
+              <div class="percent inter-medium-white-12px">
+                <span class="tx-np percen inter-medium-white">0%</span>
+              </div>
+            </div>
+            <p class="pembagian-deviden-ta inter-normal-delta-12px">
+              <span class="inter-normal-delta-12px" style="white-space: nowrap;">Sisa waktu:</span>&nbsp;<span
+                class="inter-normal-delta-12px">30 Hari</span>
+              <img class="divider" style="min-width: 270px; margin-top: 30px;"
+                src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+
+              <br><br><span class="inter-medium-delta-12px">Bagikan: &nbsp;&nbsp;</span><i
+                style="font-size: 20px; margin-top: " class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i
+                style="font-size: 20px;" class="fa fa-clone"></i><br><br>
+              <img class="divider" style="min-width: 270px;"
+                src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+            <div style="min-width: 270px; margin-top: -10px;">
+              {{-- <a class="b-daf btn btn-danger btn-lg btn-block" href=""><i class="fas fa-shopping-cart"></i>&nbsp; Beli
+                Saham</a><br>
+              <a style="margin-left: -1px; margin-top: -10px;" class="b-mul btn btn-light btn-lg btn-block"
+                href="{{ route('daftar-bisnis.index') }}"><i class="fas fa-list"></i>&nbsp; Prospektus</a> --}}
+                @guest
+            @if ($status->title == 'Pra Penawaran Saham')
+            @elseif ($status->title == 'Penawaran Saham')
+            <a href="{{route('login')}}" class="btn btn-danger btn-block">Pesan Saham</a>
+            @endif
+            @else
+            @if ($status->title == 'Pra Penawaran Saham')
+
+            @elseif ($status->title == 'Penawaran Saham')
+            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Pesan
+              Saham</button>
+            @endif
+            @endguest
+            </div>
+            </p>
           </div>
         </div>
       </div>
+    {{-- </div> --}}
 
-    </div>
-
-
-
-    <div class="actions-com">
-      @guest
-      <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
-        <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black">
-            <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
-          </span>
-        </div>
-      </a>
-      <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
-        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
-        <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black">
-            <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
-          </span>
-        </div>
-      </a>
-      @else
-      <a class="button-5 clike" data-id={{$emt->id}} id="clike" style="cursor: pointer;">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
-        <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black ">
-            <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
-          </span>
-        </div>
-      </a>
-      <a class="button-5 slike" data-id={{$emt->id}} id="slike" style="cursor: pointer;display:none;">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
-        <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black ">
-            <span id="subcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
-          </span>
-        </div>
-      </a>
-      <a class="button-5" data-id={{$emt->id}} id="cvote" style="cursor: pointer;">
-        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
-        <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black">
-            <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
-          </span>
-        </div>
-      </a>
-      <a class="button-5" data-id={{$emt->id}} id="svote" style="cursor: pointer;display:none;">
-        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
-        <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black">
-            <span id="subcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
-          </span>
-        </div>
-      </a>
-      @endguest
-      <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
-        data-target="#modal{{$emt->id}}">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
-        <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black">
-            <span class="tx-icon"> {{$ccmt}} <span class="com-u">Komentar</span></span>
-          </span>
-        </div>
-      </a>
-      <a class="button-5" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
-        data-target="#modalShareButton{{$emt->id}}">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
-        <div class="address-1 inter-medium-eerie-black-14px">
-          <span class="tx-icon inter-medium-eerie-black">
-            <p class="com-u">&ensp;Share</p>
-          </span>
-        </div>
-      </a>
-    </div>
-    @if ($emt->youtube == null)
-
-    @else
-    <div class="videoWrapper" style="margin-top: 100px;">
-      <!-- Copy & Pasted from YouTube -->
-      <iframe width="560" height="349" src="{{$emt->youtube}}" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    @endif
-    <div class="gallery">
-      <div class="gallery-1 inter-bold-alabaster-24px"><span class="inter-bold-alabaster-24px">Gallery</span></div>
-    </div>
   </div>
+
+
+
+  <div class="actions-com">
+    @guest
+    <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
+      <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+      <div class="address-1 inter-medium-eerie-black-14px">
+        <span class="tx-icon inter-medium-eerie-black">
+          <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
+        </span>
+      </div>
+    </a>
+    <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
+      <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+      <div class="address-1 inter-medium-eerie-black-14px">
+        <span class="tx-icon inter-medium-eerie-black">
+          <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
+        </span>
+      </div>
+    </a>
+    @else
+    <a class="button-5 clike" data-id={{$emt->id}} id="clike" style="cursor: pointer;">
+      <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+      <div class="address-1 inter-medium-eerie-black-14px">
+        <span class="tx-icon inter-medium-eerie-black ">
+          <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
+        </span>
+      </div>
+    </a>
+    <a class="button-5 slike" data-id={{$emt->id}} id="slike" style="cursor: pointer;display:none;">
+      <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+      <div class="address-1 inter-medium-eerie-black-14px">
+        <span class="tx-icon inter-medium-eerie-black ">
+          <span id="subcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
+        </span>
+      </div>
+    </a>
+    <a class="button-5" data-id={{$emt->id}} id="cvote" style="cursor: pointer;">
+      <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+      <div class="address-1 inter-medium-eerie-black-14px">
+        <span class="tx-icon inter-medium-eerie-black">
+          <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
+        </span>
+      </div>
+    </a>
+    <a class="button-5" data-id={{$emt->id}} id="svote" style="cursor: pointer;display:none;">
+      <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+      <div class="address-1 inter-medium-eerie-black-14px">
+        <span class="tx-icon inter-medium-eerie-black">
+          <span id="subcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
+        </span>
+      </div>
+    </a>
+    @endguest
+    <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
+      data-target="#modal{{$emt->id}}">
+      <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
+      <div class="address-1 inter-medium-eerie-black-14px">
+        <span class="tx-icon inter-medium-eerie-black">
+          <span class="tx-icon"> {{$ccmt}} <span class="com-u">Komentar</span></span>
+        </span>
+      </div>
+    </a>
+    <a class="button-5" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
+      data-target="#modalShareButton{{$emt->id}}">
+      <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
+      <div class="address-1 inter-medium-eerie-black-14px">
+        <span class="tx-icon inter-medium-eerie-black">
+          <p class="com-u">&ensp;Share</p>
+        </span>
+      </div>
+    </a>
+  </div>
+  @if ($emt->youtube == null)
+
+  @else
+  <div class="videoWrapper" style="margin-top: 100px;">
+    <!-- Copy & Pasted from YouTube -->
+    <iframe width="560" height="349" src="{{$emt->youtube}}" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  @endif
+  <div class="gallery">
+    <div class="gallery-1 inter-bold-alabaster-24px"><span class="inter-bold-alabaster-24px">Gallery</span></div>
+  </div>
+</div>
 </div>
 <!-- fashion section end -->
 <!-- electronic section end -->
@@ -546,12 +670,12 @@
 
       </div>
     </div>
-    </div>
+  </div>
 
-@endsection
-@section('js')
-<script>
-  $(document).ready(function(){
+  @endsection
+  @section('js')
+  <script>
+    $(document).ready(function(){
       $('#clike').click(function(){
          
           var id = $(this).data('id');
@@ -591,9 +715,9 @@
       
       
 });
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+  </script>
+  <script type='text/javascript'>
+    $(document).ready(function(){
     $('#slike').click(function(){
       var id = $(this).data('id');
           let _token   = $('meta[name="csrf-token"]').attr('content');
@@ -629,10 +753,10 @@
       
       
 });
-</script>
+  </script>
 
-<script type='text/javascript'>
-  $(document).ready(function(){
+  <script type='text/javascript'>
+    $(document).ready(function(){
       $('#cvote').click(function(){
          
           var id = $(this).data('id');
@@ -670,9 +794,9 @@
       })
       
 });
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+  </script>
+  <script type='text/javascript'>
+    $(document).ready(function(){
       $('#svote').click(function(){
          
           var id = $(this).data('id');
@@ -710,9 +834,9 @@
       })
       
 });
-</script>
-<script>
-  function shareButton(url) {
+  </script>
+  <script>
+    function shareButton(url) {
       navigator.clipboard.writeText(url);
       // alert("Copied the text: " + url);
       toastr.success("Url Berhasil Di Copy!!");
@@ -746,9 +870,9 @@
       }
 
   }
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+  </script>
+  <script type='text/javascript'>
+    $(document).ready(function(){
 
       $('#cmt').click(function(){
          
@@ -770,10 +894,10 @@
           });
       });
 });
-</script>
+  </script>
 
-<script type='text/javascript'>
-  $(document).ready(function(){
+  <script type='text/javascript'>
+    $(document).ready(function(){
   $("#send{{$emt->id}}").click(function(){
       // event.preventDefault();
 
@@ -817,9 +941,9 @@
        });
   });
 });
-</script>
-<script>
-  var swiper = new Swiper(".mySwiper", {
+  </script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
       slidesPerView: 3,
       spaceBetween: 30,
       pagination: {
@@ -928,8 +1052,8 @@
       $('#lembar_saham').val(total);
       checkValidasi(total)
   }
-</script>
-@endsection
+  </script>
+  @endsection
 
-@section('style')
-@endsection
+  @section('style')
+  @endsection
