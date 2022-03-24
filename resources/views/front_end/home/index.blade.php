@@ -1001,7 +1001,7 @@
       $('#category').text(category);
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
-      $('#image').prop('src', 'public/upload/' + image);
+      $('#image').prop('src', 'public/storage/pictures/' + image);
       $('#like').text(like);
       $('#minat').text(minat);
       $('#comments').text(comment);
