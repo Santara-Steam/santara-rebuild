@@ -142,6 +142,19 @@
 }
 
 @media (min-width: 992px) and (max-width: 1299px) {
+  
+  .address {
+    margin-right: auto;
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+  
+  .footer-card {
+    display: none;
+}
+.footer-card-3 {
+    display: none;
+}
 .lkk{
   margin-left: -18px;
 }
@@ -173,11 +186,6 @@
     width: 20px;
     height: 20px;
   }
-  .address {
-    margin-right: auto;
-    margin-left: 0px;
-    margin-top: 5px;
-  }
   .content {
     min-height: auto;
   }
@@ -187,12 +195,6 @@
     width: 100%;
   }
 
-  .footer-card {
-      display: none;
-  }
-  .footer-card-3 {
-      display: none;
-  }
   .banner_bg_main {
       background-size: 100% 100%;
   }
@@ -329,11 +331,6 @@
     width: 20px;
     height: 20px;
   }
-  .address {
-    margin-right: auto;
-    margin-left: 0px;
-    margin-top: 5px;
-  }
   .content {
     min-height: auto;
   }
@@ -341,13 +338,6 @@
     height: 100%;
     object-fit: cover;
     width: 100%;
-  }
-
-  .footer-card {
-      display: none;
-  }
-  .footer-card-3 {
-      display: none;
   }
 
   .tx-lf {
@@ -602,11 +592,6 @@
   .tx-pt{
       font-size: 14px;
   }
-  .address {
-    margin-right: auto;
-    margin-left: 0px;
-    margin-top: 5px;
-  }
   .content {
     display: none;
   }
@@ -616,12 +601,6 @@
     width: 100%;
   }
 
-  .footer-card {
-      display: none;
-  }
-  .footer-card-3 {
-      display: none;
-  }
   .tx-lf {
     font-size: 18px;
   }
@@ -962,22 +941,10 @@
   .tx-pt{
       font-size: 14px
   }
-  .address {
-    margin-right: auto;
-    margin-left: 0px;
-    margin-top: 5px;
-  }
   .rectangle-2 {
     height: 100%;
     object-fit: cover;
     width: 100%;
-  }
-
-  .footer-card {
-      display: none;
-  }
-  .footer-card-3 {
-      display: none;
   }
 
   .tx-lf {

@@ -64,8 +64,8 @@
 
                             <div class="fashion_section_2">
                                 <div class="row" style="padding-left: 10px; padding-right: 10px;">
-                                  @foreach ($soon as $cs)
-                                  <?php 
+                                @foreach ($soon as $cs)
+                <?php 
                                             $picture = explode(',',$cs->pictures);
                                             if(empty($picture[0])){
                                             $picture[0] = 'default1.png';
@@ -103,8 +103,8 @@
                                                 $picture[6];
                                             }
                                             ?>
-
-                                  <div class="col-lg-3 col-sm-3 col-3" style="padding: 5px;">
+                                    
+                                    <div class="col-lg-3 col-sm-3 col-3" style="padding: 5px;">
                                     <a type="button" data-toggle="modal" id="detail" class="mod moldla" style="width: 100%;"
                                       data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
                                       data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
@@ -123,24 +123,29 @@
                                             <div class="header-and-tags">
                                               <span class="tx-t inter-medium-sweet-pink-12px"
                                                 style="background: var(--falu-red);
-                  border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$cs->ctg->category}}</span>
+                                    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
+                                  <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->ctg->category ), 20, $end='...') ?>  
+                                  </span>
                                               <div class="header">
                                                 <div class="saka-logistics inter-medium-alabaster-20px">
-                                                  <span class="tx-pt inter-medium-alabaster"><?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 20, $end='...') ?></span>
+                                                  <span class="tx-pt inter-medium-alabaster">
+                                                    <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 20, $end='...') ?>
+                                                  </span>
                                                 </div>
                                                 <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                                  <span class="tx-np inter-normal-quill-gray"><?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->company_name ), 30, $end='...') ?></span>
+                                                  <span class="tx-np inter-normal-quill-gray">
+                                                    <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 30, $end='...') ?>
+                                                  </span>
                                                 </div>
                                               </div>
                                             </div>
                                             <div class="icon-card row" style="display: flex;
-                justify-content: center;
-                align-items: center;">
+                                  justify-content: center;
+                                  align-items: center;">
                                               @guest
                                               <a href="{{route('login')}}" style="cursor: pointer">
                                                 <div class="icon-and-supporting-text">
-                                                  <i class="icon-com iconheart fas fa-heart"
-                                                    style="color: #fff; font-size: 18px;"></i>
+                                                  <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
                                                   <div class="address-2 inter-normal-alabaster-10px">
                                                     <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
                                                   </div>
@@ -152,8 +157,7 @@
                                               <a onclick="document.getElementById('sublike{{$cs->id}}').submit();"
                                                 style="cursor: pointer">
                                                 @else
-                                                <a onclick="document.getElementById('like{{$cs->id}}').submit();"
-                                                  style="cursor: pointer">
+                                                <a onclick="document.getElementById('like{{$cs->id}}').submit();" style="cursor: pointer">
                                                   @endif
 
                                                   {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();"
@@ -182,8 +186,7 @@
                                                   @guest
                                                   <a href="{{route('login')}}" style="cursor: pointer">
                                                     <div class="icon-and-supporting-text-1">
-                                                      <i class="icon-com iconheart fas fa-user"
-                                                        style="color: #fff; font-size: 18px;"></i>
+                                                      <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
                                                       <div class="address-2 inter-normal-alabaster-10px">
                                                         <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
                                                       </div>
@@ -210,8 +213,8 @@
                                                       enctype="multipart/form-data">
                                                       {{ csrf_field() }}
                                                     </form>
-                                                    <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}"
-                                                      method="POST" enctype="multipart/form-data">
+                                                    <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}" method="POST"
+                                                      enctype="multipart/form-data">
                                                       {{ csrf_field() }}
                                                     </form>
 
@@ -262,7 +265,7 @@
                           </div>
             </div>
 
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -275,9 +278,10 @@
             <div class="content2">
               <div class="header-card-dan-progress">
                 <div class="header-and-tags">
-                              <span class="tx-t inter-medium-sweet-pink-12px" style="background: var(--falu-red);
+                  <span class="tx-t inter-medium-sweet-pink-12px"
+                    style="background: var(--falu-red);
     border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;" id="category"></span>
-                                <div class="header">
+                  <div class="header">
                     <div class="saka-logistics inter-medium-alabaster-20px">
                       <span class="tx-pt inter-medium-alabaster" id="trademark"></span>
                     </div>
@@ -325,13 +329,11 @@
                           </div>
                         </div>
                       </a>
-                      <form id="like" action=""  method="POST"
-                        enctype="multipart/form-data">
+                      <form id="like" action="" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                       </form>
 
-                      <form id="sublike" action=""  method="POST"
-                        enctype="multipart/form-data">
+                      <form id="sublike" action="" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                       </form>
                       @endguest
@@ -353,9 +355,11 @@
                       @else
                       @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
 
-                      <a class="col-3" onclick="document.getElementById('subvote{{$cs->id}}').submit();" style="cursor: pointer">
+                      <a class="col-3" onclick="document.getElementById('subvote{{$cs->id}}').submit();"
+                        style="cursor: pointer">
                         @else
-                        <a class="col-3" onclick="document.getElementById('vote{{$cs->id}}').submit();" style="cursor: pointer">
+                        <a class="col-3" onclick="document.getElementById('vote{{$cs->id}}').submit();"
+                          style="cursor: pointer">
                           @endif
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
@@ -377,8 +381,8 @@
                         </form>
 
                         @endguest
-                        <a class="col-3" style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal" data-dismiss="modal"
-                          data-target="#modal" class="cmt">
+                        <a class="col-3" style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal"
+                          data-dismiss="modal" data-target="#modal" class="cmt">
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-comments"
                               style="color: #fff; font-size: 18px; margin-left: -15px;"></i>
@@ -390,7 +394,7 @@
                             </div>
                           </div>
                         </a>
-                        <a class="col-3" style="cursor: pointer" id="msb" data-id="{{$cs->id}}"  data-toggle="modal"
+                        <a class="col-3" style="cursor: pointer" id="msb" data-id="{{$cs->id}}" data-toggle="modal"
                           data-target="#modalShareButton" data-dismiss="modal">
                           <div class="icon-and-supporting-text-1">
                             <i class="icon-com iconheart fas fa-share" style="color: #fff; font-size: 18px;"></i>
@@ -401,23 +405,24 @@
                         </a>
                 </div>
               </div>
-              
-  <div class="footer-card3">
-    <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-    <a id="dbi" class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</a>
-  </div>
-</div>
-</div>
-<div class="modal-footer" style="background-color: var(--shark);">
-  <a class="b-daf btn btn-danger btn-lg btn-block" id="sel" href="">Selengkapnya</a>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-      <script>
-  $(document).ready(function() {
+
+              <div class="footer-card3">
+                <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                <a id="dbi" class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</a>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer" style="background-color: var(--shark);">
+            <a class="b-daf btn btn-danger btn-lg btn-block" id="sel" href="">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+    $(document).ready(function() {
     $(document).on('click', '.mod', function() {
       var category = $(this).data('category');
       var trademark = $(this).data('trademark');
@@ -432,7 +437,7 @@
       $('#category').text(category);
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
-      $('#image').prop('src', 'public/upload/' + image);
+      $('#image').prop('src', 'public/storage/pictures/' + image);
       $('#like').text(like);
       $('#minat').text(minat);
       $('#comments').text(comment);
@@ -456,7 +461,7 @@
       // $("#ll").onclick = 'l';
     })
   })
-</script>
+  </script>
 @section('js')
 <script type='text/javascript'>
   $(document).ready(function(){
