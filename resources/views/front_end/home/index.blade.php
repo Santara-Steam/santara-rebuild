@@ -736,7 +736,7 @@
             </div>
           </div>
           <div class="modal-footer" style="background-color: var(--shark);">
-            <a class="b-daf btn btn-danger btn-lg btn-block" data-toggle="modal"
+            <a class="b-daf btn btn-danger btn-lg btn-block" data-dismiss="modal" data-toggle="modal"
               data-target="#exampleModal">Selengkapnya</a>
           </div>
         </div>
