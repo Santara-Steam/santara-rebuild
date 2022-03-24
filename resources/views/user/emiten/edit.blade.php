@@ -51,7 +51,7 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="projectinput6">Kategori</label>
                                                     <select required id="projectinput6" name="kategori" class="form-control">
-                                                        <option value="0" selected="" disabled="" hidden>-- Pilih
+                                                        <option value="" disabled="" hidden>-- Pilih
                                                             Kategori
                                                             --</option>
                                                         @foreach ($kategori as $item)
@@ -235,13 +235,13 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Nama Owner</label>
                                                     <input required type="text" value="{{$emiten->owner_name}}" name="nama_owner"
-                                                        id="companyName" class="form-control" placeholder="harga_saham">
+                                                        id="companyName" class="form-control">
                                                     <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="number" name="harga_saham" value="{{round($emiten->price,0)}}"
+                                                        <input required type="text" name="harga_saham" value="{{round($emiten->price,0)}}"
                                                             class="form-control ribuan" placeholder="Harga Saham Per Lembar"
                                                             aria-describedby="basic-addon1">
                                                     </div>
@@ -250,7 +250,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="number" value="{{round($emiten->avg_capital_needs,0)}}"
+                                                        <input required type="text" value="{{round($emiten->avg_capital_needs,0)}}"
                                                             name="perkiraan_dana" class="form-control ribuan"
                                                             placeholder="Perkiraan Dana yang di Butuhkan"
                                                             aria-describedby="basic-addon1">
@@ -279,7 +279,7 @@
                                                                     <span class="input-group-text"
                                                                         id="basic-addon1">Rp</span>
                                                                 </div>
-                                                                <input required type="number"
+                                                                <input required type="text"
                                                                     value="{{round($emiten->avg_annual_turnover_previous_year,0)}}"
                                                                     name="omset1" class="form-control ribuan"
                                                                     placeholder="Omset 2021"
@@ -293,7 +293,7 @@
                                                                     <span class="input-group-text"
                                                                         id="basic-addon1">Rp</span>
                                                                 </div>
-                                                                <input required type="number"
+                                                                <input required type="text"
                                                                     value="{{round($emiten->avg_annual_turnover_current_year,0)}}"
                                                                     name="omset2" class="form-control ribuan"
                                                                     placeholder="Omset 2022"
@@ -310,7 +310,7 @@
                                                         Umum</label>
                                                     <div class="input-group">
 
-                                                        <input required type="number" value="{{round($emiten->avg_general_share_amount,0)}}"
+                                                        <input required type="text" value="{{round($emiten->avg_general_share_amount,0)}}"
                                                             name="saham_dilepas" class="form-control ribuan"
                                                             placeholder="Perkiraan Saham yang di lepas ke Umum"
                                                             aria-describedby="basic-addon4">
@@ -327,7 +327,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="number"
+                                                        <input required type="text"
                                                             value="{{round($emiten->avg_turnover_after_becoming_a_publisher,0)}}"
                                                             name="omset_penerbit" class="form-control ribuan"
                                                             placeholder="Perkiraan Omzet Setelah Jadi Penerbit"
@@ -338,7 +338,7 @@
                                                     <label for="companyName">Perkiraan Deviden Tahunan</label>
                                                     <div class="input-group">
 
-                                                        <input required  type="number" value="{{round($emiten->avg_annual_dividen,0)}}"
+                                                        <input required  type="text" value="{{round($emiten->avg_annual_dividen,0)}}"
                                                             name="deviden_tahunan" class="form-control ribuan"
                                                             placeholder="Perkiraan Deviden Tahunan"
                                                             aria-describedby="basic-addon4">
@@ -349,7 +349,7 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Video Profile Perusahaan</label>
-                                                    <input pattern="https?://youtu.be.+" title="Include http://" type="text" value="{{$emiten->youtube}}" id="companyName"
+                                                    <input pattern="https?://youtu.be.+" title="Include http://youtu.be/..." type="text" value="{{$emiten->youtube}}" id="companyName"
                                                         name="video_profile" class="form-control"
                                                         placeholder="Video Profile Perusahaan">
                                                 </div>
@@ -1054,7 +1054,7 @@ $('#crop6').click(function(){
 <script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
 <script>
     $("#sav").on("click", function () {
-
+// console.log($('.ssa').html())
         if ($('.ssa').html() == '-') {
             $('.req').prop('required',true);
             // console.log('sip')
@@ -1063,14 +1063,14 @@ $('#crop6').click(function(){
 
     });
 </script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
 <script>
     document.querySelectorAll('.ribuan').forEach(inp => new Cleave(inp, {
     numeral: true,
     numeralDecimalMark: ',',
     delimiter: '.'
     }));
-</script> --}}
+</script>
 @endsection
 @section('style')
 {{--
