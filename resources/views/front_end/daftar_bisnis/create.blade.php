@@ -165,7 +165,7 @@
                 </div>
                 --}}
                 <div class="form-group col-md-12 mt-2">
-                    <label style="    margin-bottom: 0px;" for="exampleFormControlInput1" class="form-label">Deskripsi
+                    <label for="exampleFormControlInput1" class="form-label">Deskripsi
                         Usaha <span style="color: red">*</span></label>
                     <textarea required class="form-control" id="exampleFormControlTextarea1" name="deskripsi"
                         placeholder="Isi Caption dan Biografi" rows="3"></textarea>
