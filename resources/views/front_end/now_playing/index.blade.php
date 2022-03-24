@@ -93,7 +93,7 @@
 
                   {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
 
-                  <a type="button" data-toggle="modal" id="detail_now" class="mod_now detail_now moldla"
+                  <a data-toggle="modal" id="detail_now" class="mod_now detail_now moldla"
                     style="width: 100%;" data-target="#modal_now" data-id="<?=$np->id?>"data-ktg="<?=$np->ktg?>"
                     data-trademark_now="<?=$np->trademark?>" data-mulai="<?= number_format(round(100 * $np->price,0),0,',','.')?>" data-company_name_now="<?=$np->company_name?>" data-image_now="<?=$picture[0]?>" 
                     data-tot_pendanaan="<?=number_format(round($np->avg_capital_needs,0),0,',','.')?>">

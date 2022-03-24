@@ -105,7 +105,7 @@
                                             ?>
                                     
                                     <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;">
-                                    <a type="button" data-toggle="modal" id="detail" class="mod moldla" style="width: 100%;"
+                                    <a data-toggle="modal" id="detail" class="mod moldla" style="width: 100%;"
                                       data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
                                       data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
                                       data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"

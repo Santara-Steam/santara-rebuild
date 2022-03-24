@@ -70,7 +70,7 @@
                             <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;">
 
 
-                              <a type="button" data-toggle="modal" id="detail_sold" style="width: 100%;"
+                              <a data-toggle="modal" id="detail_sold" style="width: 100%;"
                                 class="mod_sold detail_sold moldla" data-target="#modal_sold" data-ktg_sold="<?=$item->ktg?>"
                                 data-trademark_sold="<?=$item->trademark?>" data-company_name_sold="<?=$item->company_name?>"
                                 data-tot_pendanaan_sold="<?=$tot?>" data-image_sold="<?=$picture[0]?>">
