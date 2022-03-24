@@ -17,7 +17,7 @@
                     </div>
                   </div>
                   <div class="actions2"> 
-                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route ('login')}}">Mulai Investasi</a>
+                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}">Mulai Investasi</a>
                   </div>
                 </div>
               </div>
@@ -113,7 +113,7 @@
             <span class="text-urun inter-normal-alabaster">Ayo Investasi di Santara!</span>
           </div>
           <div class="actions3 "> 
-                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route ('login')}}">Mulai Investasi</a>
+                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}}">Mulai Investasi</a>
                   </div>
           </div>
         </div>
