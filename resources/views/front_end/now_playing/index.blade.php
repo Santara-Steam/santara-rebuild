@@ -143,7 +143,7 @@
                                                       ?>
                                     {{round($datediff / (60 * 60 * 24))}} --}}
                                     {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
-                                    40
+                                    45
                                   </b></span>
                               </div>
                               {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
@@ -239,7 +239,7 @@
                   <div class="address">
                     <div class="hr inter-bold-white-14px">
                       <span class="tx-sold inter-medium-white"><b style="font-weight: bold" id="hari">
-                      40
+                      45
                         </b></span>
                     </div>
                     <span class="inter-normal-mercury-12px">&nbsp;</span>
