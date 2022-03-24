@@ -341,7 +341,7 @@
 
 
 
-  <div class="actions-com">
+  <!-- <div class="actions-com">
     @guest
     <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
       <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
@@ -411,7 +411,7 @@
         </span>
       </div>
     </a>
-  </div>
+  </div> -->
   @if ($emt->youtube == null)
 
   @else

@@ -72,7 +72,8 @@
 
                   <a type="button" data-toggle="modal" id="detail_now" class="mod_now detail_now moldla"
                     style="width: 100%;" data-target="#modal_now" data-id="<?=$np->id?>"data-ktg="<?=$np->ktg?>"
-                    data-trademark_now="<?=$np->trademark?>" data-mulai="<?= number_format(round(100 * $np->price,0),0,',','.')?>" data-company_name_now="<?=$np->company_name?>" data-image_now="<?=$picture[0]?>" >
+                    data-trademark_now="<?=$np->trademark?>" data-mulai="<?= number_format(round(100 * $np->price,0),0,',','.')?>" data-company_name_now="<?=$np->company_name?>" data-image_now="<?=$picture[0]?>" 
+                    data-tot_pendanaan="<? number_format(round($np->avg_capital_needs,0),0,',','.')?>">
                     <div class="card moldla">
                       <img class="rectangle-2 moldla" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
                     </div>
