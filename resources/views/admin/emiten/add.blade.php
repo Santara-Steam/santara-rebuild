@@ -38,18 +38,18 @@
                                             </div> --}}
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Brand</label>
+                                                    <label for="companyName">Nama Brand <span style="color: red">*</span></label>
                                                     <input required type="text" id="companyName" 
                                                         name="brand" class="form-control" placeholder="Nama Brand">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Perusahaan</label>
+                                                    <label for="companyName">Nama Perusahaan <span style="color: red">*</span></label>
                                                     <input required type="text" id="companyName" name="company_name"
                                                         class="form-control"
                                                         placeholder="Nama Perusahaan">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="projectinput6">Kategori</label>
+                                                    <label for="projectinput6">Kategori <span style="color: red">*</span></label>
                                                     <select required id="projectinput6" name="kategori" class="form-control">
                                                         <option value="" selected="" disabled="" hidden>-- Pilih Kategori
                                                             --</option>
@@ -60,7 +60,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="projectinput6">Trader Email</label>
+                                                    <label for="projectinput6">Trader Email <span style="color: red">*</span></label>
                                                     <select required id="projectinput6" name="trader" class="form-control">
                                                         <option value="" selected="" disabled="" hidden>-- Pilih Email
                                                             --</option>
@@ -72,7 +72,7 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput8">Deskripsi
-                                                        Usaha</label>
+                                                        Usaha <span style="color: red">*</span></label>
                                                     <textarea required id="projectinput8" rows="5" class="form-control"
                                                         name="deskripsi"
                                                         placeholder="Deskripsi Usaha"></textarea>
@@ -182,7 +182,9 @@
                                                     </div>
                                                 </div> --}}
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Thumbnail</label>
+                                                    <label for="companyName">Thumbnail <span style="color: red">*</span></label>
+                                                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended)</small>
                                                     <div class="custom-file">
                                                         <input class="custom-file-input req" id="fil" accept="image/*" type="file" name="thumbnail" 
                                                             id="inputGroupFile02">
@@ -191,7 +193,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Banner</label>
+                                                    <label for="companyName">Banner <span style="color: red">*</span></label>
+                                                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended)</small>
                                                     <div class="custom-file">
                                                         <input accept="image/*" type="file" name="banner" class="custom-file-input req"
                                                             id="inputGroupFile02">
@@ -200,8 +204,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Foto Owner</label>
-
+                                                    <label for="companyName">Foto Owner <span style="color: red">*</span></label>
+                                                    <br>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
                                                     <div class="custom-file">
                                                         <input accept="image/*" type="file" name="owner" class="custom-file-input req"
                                                             id="inputGroupFile02">
@@ -210,8 +215,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri</label>
-
+                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <br>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
                                                     <div class="custom-file">
                                                         <input accept="image/*" type="file" name="galeri1" class="custom-file-input req"
                                                             id="inputGroupFile02">
@@ -220,8 +226,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri</label>
-
+                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <br>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
                                                     <div class="custom-file">
                                                         <input accept="image/*" type="file" name="galeri2" class="custom-file-input req"
                                                             id="inputGroupFile02">
@@ -230,8 +237,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri</label>
-
+                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <br>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
                                                     <div class="custom-file">
                                                         <input  accept="image/*" type="file" name="galeri3" class="custom-file-input req"
                                                             id="inputGroupFile02">
@@ -241,10 +249,10 @@
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Owner</label>
+                                                    <label for="companyName">Nama Owner <span style="color: red">*</span></label>
                                                     <input required type="text" name="nama_owner"
                                                         id="companyName" class="form-control" placeholder="Nama Owner" >
-                                                    <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar</label>
+                                                    <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar <span style="color: red">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
@@ -253,7 +261,7 @@
                                                             class="form-control ribuan" placeholder="Harga Saham Per Lembar"
                                                             aria-describedby="basic-addon1">
                                                     </div>
-                                                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana yang di Butuhkan</label>
+                                                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana yang di Butuhkan <span style="color: red">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
@@ -265,7 +273,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-8">
-                                                    <label for="projectinput8">Biografi Owner </label>
+                                                    <label for="projectinput8">Biografi Owner  <span style="color: red">*</span></label>
                                                     <textarea required id="projectinput8" rows="11" cols="100" class="form-control"
                                                         name="bio_owner"
                                                         placeholder="Biografi Owner"></textarea>
@@ -281,7 +289,7 @@
                                                 {{-- <div class="form-group"> --}}
                                                     {{-- <div class="form-group row"> --}}
                                                         <div class="col-md-4">
-                                                            <label for="projectinput5">Omset Tahun 2021</label>
+                                                            <label for="projectinput5">Omset Tahun 2021 <span style="color: red">*</span></label>
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text"
@@ -295,7 +303,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label for="projectinput5">Omset Tahun 2022</label>
+                                                            <label for="projectinput5">Omset Tahun 2022 <span style="color: red">*</span></label>
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text"
@@ -315,10 +323,10 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Perkiraan Saham yang di lepas ke
-                                                        Umum</label>
+                                                        Umum </label>
                                                     <div class="input-group">
 
-                                                        <input required type="text"
+                                                        <input type="text"
                                                             name="saham_dilepas" class="form-control ribuan"
                                                             placeholder="Perkiraan Saham yang di lepas ke Umum"
                                                             aria-describedby="basic-addon4">
@@ -330,12 +338,12 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Perkiraan Omzet Setelah Jadi
-                                                        Penerbit</label>
+                                                        Penerbit </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="text"
+                                                        <input type="text"
                                                             
                                                             name="omset_penerbit" class="form-control ribuan"
                                                             placeholder="Perkiraan Omzet Setelah Jadi Penerbit"

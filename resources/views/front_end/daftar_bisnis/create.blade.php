@@ -165,13 +165,15 @@
                 </div>
                 --}}
                 <div class="form-group col-md-12 mt-2">
-                    <label for="exampleFormControlInput1" class="form-label">Deskripsi
+                    <label style="    margin-bottom: 0px;" for="exampleFormControlInput1" class="form-label">Deskripsi
                         Usaha <span style="color: red">*</span></label>
                     <textarea required class="form-control" id="exampleFormControlTextarea1" name="deskripsi"
                         placeholder="Isi Caption dan Biografi" rows="3"></textarea>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="companyName">Thumbnail <span style="color: red">*</span></label>
+                    <label style="    margin-bottom: 0px;" for="companyName">Thumbnail <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended)</small>
                     <div class="custom-file">
                         <input value='' class="custom-file-input req" id="fil" accept="image/*" type="file" name="thumbnail" 
                             id="inputGroupFile02">
@@ -180,7 +182,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="companyName">Banner <span style="color: red">*</span></label>
+                    <label style="    margin-bottom: 0px;" for="companyName">Banner <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended)</small>
                     <div class="custom-file">
                         <input value='' accept="image/*" type="file" name="banner" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -189,8 +193,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="companyName">Foto Owner <span style="color: red">*</span></label>
-
+                    <label style="    margin-bottom: 0px;" for="companyName">Foto Owner <span style="color: red">*</span></label>
+<br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
                     <div class="custom-file">
                         <input value='' accept="image/*" type="file" name="owner" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -199,8 +204,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="companyName">Galeri <span style="color: red">*</span></label>
-
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
                     <div class="custom-file">
                         <input value='' accept="image/*" type="file" name="galeri1" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -209,8 +215,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="companyName">Galeri <span style="color: red">*</span></label>
-
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
                     <div class="custom-file">
                         <input value='' accept="image/*" type="file" name="galeri2" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -219,8 +226,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="companyName">Galeri <span style="color: red">*</span></label>
-
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
                     <div class="custom-file">
                         <input value='' accept="image/*" type="file" name="galeri3" class="custom-file-input req"
                             id="inputGroupFile02">
