@@ -349,23 +349,23 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Video Profile Perusahaan</label>
-                                                    <input pattern="https?://youtu.be.+" title="Include http://" required type="text" value="{{$emiten->youtube}}" id="companyName"
+                                                    <input pattern="https?://youtu.be.+" title="Include http://" type="text" value="{{$emiten->youtube}}" id="companyName"
                                                         name="video_profile" class="form-control"
                                                         placeholder="Video Profile Perusahaan">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Alamat Website</label>
-                                                    <input required type="text" value="{{$emiten->website}}" id="companyName"
+                                                    <input type="text" value="{{$emiten->website}}" id="companyName"
                                                         name="web" class="form-control" placeholder="Alamat Website">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Facebook</label>
-                                                    <input required type="text" value="{{$emiten->facebook}}" id="companyName"
+                                                    <input type="text" value="{{$emiten->facebook}}" id="companyName"
                                                         name="fb" class="form-control" placeholder="Facebook">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Instagram</label>
-                                                    <input required type="text" value="{{$emiten->instagram}}" id="companyName"
+                                                    <input type="text" value="{{$emiten->instagram}}" id="companyName"
                                                         name="ig" class="form-control" placeholder="Instagram">
                                                 </div>
 
