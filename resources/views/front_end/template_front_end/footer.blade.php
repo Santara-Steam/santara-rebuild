@@ -100,12 +100,12 @@
                  responsiveClass:true,
                   responsive:{
                       0:{
-                          items:2,
+                          items:4,
                           nav:true,
                           loop:false
                       },
                       600:{
-                          items:2,
+                          items:4,
                           nav:true,
                           loop:false
                       },
@@ -125,12 +125,12 @@
                   responsiveClass:true,
                   responsive:{
                       0:{
-                          items:2,
+                          items:4,
                           nav:true,
                           loop:false
                       },
                       600:{
-                          items:2,
+                          items:4,
                           nav:true,
                           loop:false
                       },
@@ -150,12 +150,12 @@
                  responsiveClass:true,
                   responsive:{
                       0:{
-                          items:2,
+                          items:4,
                           nav:true,
                           loop:false
                       },
                       600:{
-                          items:2,
+                          items:4,
                           nav:true,
                           loop:false
                       },
