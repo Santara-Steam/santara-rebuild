@@ -671,10 +671,10 @@
               <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled=""
                 style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
-                placeholder="https://dev.santara.co.id/detail-coming-soon/{{$item->id}}">
+                placeholder="https://ceo.santara.co.id/detail-coming-soon/{{$item->id}}">
               <span id="copy-link" class="input-group-text"
                 style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer"
-                onclick="shareButton('https://dev.santara.co.id/detail-coming-soon/{{$item->id}}')">Copy Link</span>
+                onclick="shareButton('https://ceo.santara.co.id/detail-coming-soon/{{$item->id}}')">Copy Link</span>
             </div>
           </div>
 
