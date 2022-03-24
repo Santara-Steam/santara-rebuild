@@ -68,8 +68,8 @@
                                                         <option value="" selected="" disabled="" hidden>-- Pilih Email
                                                             --</option>
                                                         @foreach ($user as $item)
-                                                        <option <?php if ($emiten->trader_id == $item->id) {
-                                                            echo 'selected'; } ?> value="{{$item->id}}">{{$item->email}}</option>
+                                                        <option <?php if ($emiten->trader_id == $item->trader->id) {
+                                                            echo 'selected'; } ?> value="{{$item->trader->id}}">{{$item->email}}</option>
     
                                                         @endforeach
                                                     </select>

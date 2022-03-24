@@ -65,7 +65,7 @@
                                                         <option value="" selected="" disabled="" hidden>-- Pilih Email
                                                             --</option>
                                                         @foreach ($user as $item)
-                                                        <option value="{{$item->id}}">{{$item->email}}</option>
+                                                        <option value="{{$item->trader->id}}">{{$item->email}}</option>
     
                                                         @endforeach
                                                     </select>
