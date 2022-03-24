@@ -154,7 +154,7 @@
                             <div class="footer-card-1">
                               <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                 <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
-                                  class="inter-medium-alabaster-12px">Rp{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</span>
+                                  class="inter-medium-alabaster-12px">Rp{{number_format(round($np->avg_capital_needs,0),0,',','.')}}</span>
                               </div>
                               <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
                                 <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
