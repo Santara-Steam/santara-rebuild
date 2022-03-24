@@ -123,6 +123,7 @@ class BookSahamController extends Controller
         }
 
         $book = book_saham::where('id',$id)->first();
+        $book->isValid = 0;
         $book->bukti_tranfer = $BuktiTransferFileSave;
         $book->save();
 
@@ -159,6 +160,7 @@ class BookSahamController extends Controller
                 );
                 return redirect()->back()->with($notif);
             }else{
+                $book->isValid = 0;
                 $book->bukti_tranfer = $BuktiTransferFileSave;
                 $book->save();
                 $notif = array(
