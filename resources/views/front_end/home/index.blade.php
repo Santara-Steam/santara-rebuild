@@ -631,7 +631,7 @@
                       <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
                   </div> -->
               <div class="col-4 col-md-2">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://dev.santara.co.id/detail-coming-soon/{{$item->id}}"
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://ceo.santara.co.id/detail-coming-soon/{{$item->id}}"
                   id="shareFacebook" target="_blank" style="text-decoration: none;">
                   <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/facebook.png"
                     class="lazyload">
@@ -639,7 +639,7 @@
                 </a>
               </div>
               <div class="col-4 col-md-2">
-                <a href="https://twitter.com/intent/tweet?url=https://dev.santara.co.id/detail-coming-soon/{{$item->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
+                <a href="https://twitter.com/intent/tweet?url=https://ceo.santara.co.id/detail-coming-soon/{{$item->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
                   id="shareTwitter" style="text-decoration: none;" target="_blank">
                   <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/twitter.png"
                     class="lazyload">
@@ -647,7 +647,7 @@
                 </a>
               </div>
               <div class="col-4 col-md-2">
-                <a href="https://telegram.me/share/url?url=https://dev.santara.co.id/detail-coming-soon/{{$item->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
+                <a href="https://telegram.me/share/url?url=https://ceo.santara.co.id/detail-coming-soon/{{$item->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
                   id="shareTelegram" target="_blank" style="text-decoration: none;">
                   <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/telegram.png"
                     class="lazyload">
@@ -659,7 +659,7 @@
                       <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
                   </div> -->
               <div class="col-4 col-md-2">
-                <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A https://dev.santara.co.id/detail-coming-soon/{{$item->id}}"
+                <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A https://ceo.santara.co.id/detail-coming-soon/{{$item->id}}"
                   id="shareWhatsapp" target="_blank" style="text-decoration: none;">
                   <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/whatsapp.png"
                     class="lazyload">
