@@ -14,7 +14,7 @@
 
                   <p class="tx-f inter-normal-mercury-14px">
                       <span class="text-f inter-normal-mercury-14px"
-                        >Santara Website Ver 5.8.0 - Business Ver 3.6.1 | Copyright © 2020 Santara, All rights reserved.</span
+                        >Santara Website Ver 5.8.0 - Business Ver 3.6.1 | Copyright © 2022 Santara, All rights reserved.</span
                       >
                     </p>
 
