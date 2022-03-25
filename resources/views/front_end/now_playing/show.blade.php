@@ -284,7 +284,7 @@
         </div>
       </div> --}}
       <div class="col-lg-6 col-sm-6 container">
-        <div class="info-deviden border-1px-cape-cod" style="width: 300px; height: 320px;">
+        <div class="info-deviden border-1px-cape-cod" style="width: 300px; height: 330px;">
           <div class="pembagian-deviden-1 inter-normal-delta-12px">
             <span class="inter-normal-delta-12px">Mulai dari</span>
           </div>
@@ -307,12 +307,18 @@
               <img class="divider" style="min-width: 270px; margin-top: 30px;"
                 src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
 
-              <br><br><span class="inter-medium-delta-12px">Bagikan: &nbsp;&nbsp;</span><i
-                style="font-size: 20px; margin-top: " class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;<i
-                style="font-size: 20px;" class="fa fa-clone"></i><br><br>
+              <br><br><span class="inter-medium-delta-12px">Bagikan: &nbsp;&nbsp;</span>
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{url('detail-now-playing')}}/{{$emt->id}}"
+                  id="shareFacebook" target="_blank" style="text-decoration: none;">
+                  <i style="font-size: 20px; margin-top; color: #a3a3a3; " class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;
+              </a>
+              <a>
+                <i style="font-size: 20px; cursor:pointer;" class="fa fa-clone" onclick="shareButton('{{url('detail-now-playing')}}/{{$emt->id}}')"></i>
+              </a>
+                <br><br>
               <img class="divider" style="min-width: 270px;"
                 src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-            <div style="min-width: 270px; margin-top: -10px;">
+            <div style="min-width: 270px; margin-top: 10px;">
               {{-- <a class="b-daf btn btn-danger btn-lg btn-block" href=""><i class="fas fa-shopping-cart"></i>&nbsp; Beli
                 Saham</a><br>
               <a style="margin-left: -1px; margin-top: -10px;" class="b-mul btn btn-light btn-lg btn-block"
