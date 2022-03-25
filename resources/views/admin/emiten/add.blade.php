@@ -354,7 +354,7 @@
                                                     <label for="companyName">Perkiraan Deviden Tahunan</label>
                                                     <div class="input-group">
 
-                                                        <input required  type="text" 
+                                                        <input  type="text" 
                                                             name="deviden_tahunan" class="form-control ribuan"
                                                             placeholder="Perkiraan Deviden Tahunan"
                                                             aria-describedby="basic-addon4">
