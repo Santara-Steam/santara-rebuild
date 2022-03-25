@@ -116,7 +116,7 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Saham Tersisa <br> {{number_format(round(($emt->avg_capital_needs-$bok->tot)/$emt->price,0),0,',','.')}}</td>
+                    <td>Saham Tersisa <br> {{number_format(round((($emt->avg_capital_needs-$bok->tot)/$emt->avg_capital_needs)*100,0),0,',','.')}}%</td>
                   </tr>
                   <tr>
                     <td>Dalam Lembar <br> {{number_format(round(($emt->avg_capital_needs-$bok->tot)/$emt->price,0),0,',','.')}}</td>
@@ -133,7 +133,7 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Saham Terjual <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}}</td>
+                    <td>Saham Terjual <br> {{number_format(round(($bok->tot/$emt->avg_capital_needs)*100,0),0,',','.')}}%</td>
                   </tr>
                   <tr>
                     <td>Dalam Lembar <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}}</td>
