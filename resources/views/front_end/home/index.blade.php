@@ -682,6 +682,7 @@
       </div>
     </div>
 
+    
     <div class="modal fade" id="modal_sold" tabindex="-1" role="dialog" aria-labelledby="detail_sold"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
