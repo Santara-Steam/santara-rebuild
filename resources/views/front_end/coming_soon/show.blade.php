@@ -133,22 +133,22 @@
       </div>
       <div class="col-lg-6 col-sm-6 container">
         <div class="info-deviden border-1px-cape-cod boxi">
-          <div class="pembagian-deviden-1 inter-medium-alabaster-18px">
-            <span class="inter-medium-alabaster-18px">Informasi Bisnis:</span>
+          <div class="pembagian-deviden-1 inter-medium-alabaster-18px tx-pt">
+            <span class="inter-medium-alabaster">Informasi Bisnis:</span>
           </div>
           <div class="table-2">
             <div class="table-cell-row-1">
               <div class="table-cell">
-                <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                  <span class="inter-normal-delta-12px">Saham yang dilepas</span><br><span
-                    class="inter-normal-delta-12px"
+                <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table ">
+                  <span class="inter-normal-delta">Saham yang dilepas</span><br><span
+                    class="inter-normal-delta"
                     style="font-weight: bold; color: #fff">{{round($emt->avg_general_share_amount,0)}}%</span>
                 </p>
               </div>
               <div class="table-cell">
-                <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                  <span class="inter-normal-delta-12px">Perkiraan omzet penerbit</span><br><span
-                    class="inter-normal-delta-12px"
+                <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table ">
+                  <span class="inter-normal-delta">Perkiraan omzet <br> penerbit</span><br><span
+                    class="inter-normal-delta"
                     style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_turnover_after_becoming_a_publisher,0),0,',','.')}}</span>
                 </p>
               </div>
@@ -156,16 +156,16 @@
             <div class="overlap-group-3">
               <div class="table-cell-row">
                 <div class="table-cell">
-                  <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                    <span class="inter-normal-delta-12px">Perkiraan Dividen</span><br><span
-                      class="inter-normal-delta-12px"
+                  <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table">
+                    <span class="inter-normal-delta">Perkiraan Dividen</span><br><span
+                      class="inter-normal-delta"
                       style="font-weight: bold; color: #fff">{{round($emt->avg_annual_dividen,0)}}%</span>
                   </p>
                 </div>
                 <div class="table-cell">
-                  <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                    <span class="inter-normal-delta-12px">Dana yang dibutuhkan</span><br><span
-                      class="inter-normal-delta-12px"
+                  <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table">
+                    <span class="inter-normal-delta">Dana yang dibutuhkan</span><br><span
+                      class="inter-normal-delta"
                       style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</span>
                   </p>
                 </div>
@@ -175,16 +175,16 @@
               <img class="divider" src="img/divider-114@2x.png" />
               <div class="table-cell-row">
                 <div class="table-cell">
-                  <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                    <span class="inter-normal-delta-12px" style="white-space: nowrap;">Omzet 2 tahun
-                      sebelumnya</span><br><span class="inter-normal-delta-12px">2020:</span><br><span
-                      class="inter-medium-delta-12px"
+                  <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table">
+                    <span class="inter-normal-delta" style="white-space: nowrap;">Omzet 2 tahun
+                      sebelumnya</span><br><span class="inter-normal-delta">2020:</span><br><span
+                      class="inter-medium-delta"
                       style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_annual_turnover_previous_year,0),0,',','.')}}</span>
                   </p>
                 </div>
                 <div class="table-cell" style="margin-top: 10px;">
-                  <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                    <span class="inter-normal-delta-12px">2021:</span><br><span class="inter-normal-delta-12px"
+                  <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table">
+                    <span class="inter-normal-delta">2021:</span><br><span class="inter-normal-delta"
                       style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_annual_turnover_current_year,0),0,',','.')}}</span>
                   </p>
                 </div>

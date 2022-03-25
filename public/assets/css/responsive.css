@@ -843,7 +843,6 @@
   display: flex;
   }
   .boxi{
-    width: 100%;
     margin-left: 0px;
     margin-right: 10px;
   }
@@ -1280,8 +1279,15 @@
   display: flex;
   }
   .boxi{
-    width: 100%;
-    margin-left: 0px;
+    width: 330px;
+    margin: 0 auto;
     margin-right: 10px;
+  }
+  
+  .table-2 {
+    width: 80%;
+  }
+  .tx-table{
+    font-size: 10px;
   }
 }
