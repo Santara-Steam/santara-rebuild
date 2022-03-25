@@ -43,12 +43,14 @@
         </div>
     </div>
 
+         <!-- footer section start -->
+<div class="footer_section ">
          <div class="container-fluid disclaimer-outer-bg bg-disclaimer ">
 
           <div class="container disclaimer-inner-bg" style="font-size: 11px;">
 
-            <h4 class="text-danger ff-a fs-16" style="font-size: 16px; font-family: 'acumin-pro'; margin-left: 20px; margin-bottom: -2px">Disclaimer:</h4>
-            <div class="row ff-n" style="font-weight: normal;     text-align: justify; margin-right: 25px; font-family: 'Nunito'; font-size: 11px;">
+            <h4 class="text-danger ff-a fs-16" style="font-size: 16px; font-family: 'acumin-pro'; margin-left: 5px; margin-bottom: -2px">Disclaimer:</h4>
+            <div class="row ff-n" style="font-weight: normal;     text-align: justify; margin-right: -15px; font-family: 'Nunito'; font-size: 11px;">
               <p class="mt-2" style="margin-bottom: 8px; color: #fff; font-size: 11px;line-height:1.5;">Pembelian saham bisnis merupakan aktivitas beresiko tinggi. Anda berinvestasi pada bisnis yang mungkin saja mengalami kenaikan dan penurunan kinerja bahkan mengalami kegagalan. Harap menggunakan pertimbangan ekstra dalam membuat keputusan untuk membeli saham. Ada kemungkinan Anda tidak bisa menjual kembali saham bisnis dengan cepat. Lakukan diversifikasi investasi, hanya gunakan dana yang siap Anda lepaskan (affors to loose) dan atau disimpan dalam jangka panjang. Santara tidak memaksa pengguna untuk membeli saham bisnis sebagai investasi. Semua keputusan pembelian merupakan keputusan independen oleh pengguna.
               </p>
               <p style="margin-bottom: 8px; color: #fff; font-size: 11px;line-height:1.5; "; >
@@ -67,7 +69,7 @@
           </div>
 
         </div>
-</div>
+      </div>
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">

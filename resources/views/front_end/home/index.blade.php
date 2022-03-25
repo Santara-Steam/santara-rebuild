@@ -531,7 +531,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Halaman masih dalam pengembangan.
+        Tidak tersedia pada event ini.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -721,18 +721,18 @@
                 </div>
               </div>
               <div class="footer-card">
-                <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                <div class="footer-card-2">
-                  <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
-                    <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span><span
+                            <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                            <div class="footer-card-1">
+                              <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
+                              <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span><span
                       class="inter-medium-alabaster-12px">Rp250.000.000</span>
-                  </div>
-                  <div class="pembagian-dividen-1-kali inter-normal-mercury-10px">
-                    <span class="inter-normal-quill-gray-12px">Pembagian Dividen<br /></span><span
+                              </div>
+                              <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
+                              <span class="inter-normal-quill-gray-12px">Pembagian Dividen<br /></span><span
                       class="inter-medium-alabaster-12px">1 Kali</span>
-                  </div>
-                </div>
-              </div>
+                              </div>
+                            </div>
+                          </div>
             </div>
           </div>
           <div class="modal-footer" style="background-color: var(--shark);">
