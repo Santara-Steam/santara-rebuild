@@ -46,6 +46,20 @@ class Daftar_bisnisController extends Controller
     {
         // $this->validator($request->all())->validate();
         // $file = $request->file('logo')->store('logo_perusahaan', 'public');
+        
+        $namapt = emiten::where('company_name', 'like', '%' .  $request->get('company_name') . '%')->first();
+
+        if ($namapt) {
+            $notif = array(
+                'message' => 'Nama Perusahaan Sama!!',
+                'alert-type' => 'fail'
+            );
+    
+            // $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
+            // dd($em);
+            // return response()->json(['status' => 'Mantap']);
+            return redirect()->back()->with($notif);
+        }else{
         if($request->hasFile('thumbnail')){
             $logoNameWithExt = $request->file('thumbnail')->getClientOriginalName() ;
             $logoFileName = pathinfo ($logoNameWithExt, PATHINFO_FILENAME);
@@ -174,6 +188,7 @@ class Daftar_bisnisController extends Controller
         // dd($em);
         // return response()->json(['status' => 'Mantap']);
         return redirect('/')->with($notif);
+        }
     }
 
     /**
