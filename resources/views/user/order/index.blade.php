@@ -164,7 +164,7 @@
         $('#tabel').DataTable({
             responsive: true,
             "columnDefs": [
-    { "width": "23%", "targets": 5 },
+    { "width": "23%", "targets": 6 },
     { "width": "5%", "targets": 4 },
   ],
         });
