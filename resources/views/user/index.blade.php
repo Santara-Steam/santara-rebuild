@@ -218,51 +218,21 @@
                 {{ csrf_field() }}
 
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row text-center">
+                        <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                                <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
+                                <div class="card-header" style="background-color: #ffffff;border-radius: 5px;">
+                                    <img src="{{asset('public')}}/bca.png" class="img-fluid" width="100px" alt="">
+                                    </div>
                                 <div class="card-body " style="padding: 20px 0px 10px 0px;">
-                                    <h2 class="c-margin-b-20"
-                                        style="color: white;font-family: Arial, Helvetica, sans-serif;">
-                                        12313-123123-12313123</h2>
-                                    <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
+                                    <h2 class="c-margin-b-20" style="color: white;font-family: Arial, Helvetica, sans-serif;"> 4567255777</h2>
+                                    <p class="card-text" style="margin: 0;">A.n. PT Santara Daya Inspiratama</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                                <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
-                                <div class="card-body " style="padding: 20px 0px 10px 0px;">
-                                    <h2 class="c-margin-b-20"
-                                        style="color: white;font-family: Arial, Helvetica, sans-serif;">
-                                        12313-123123-12313123</h2>
-                                    <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                                <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
-                                <div class="card-body " style="padding: 20px 0px 10px 0px;">
-                                    <h2 class="c-margin-b-20"
-                                        style="color: white;font-family: Arial, Helvetica, sans-serif;">
-                                        12313-123123-12313123</h2>
-                                    <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                                <div class="card-header" style="background-color: #af2a37;border-radius: 5px;">BCA</div>
-                                <div class="card-body " style="padding: 20px 0px 10px 0px;">
-                                    <h2 class="c-margin-b-20"
-                                        style="color: white;font-family: Arial, Helvetica, sans-serif;">
-                                        12313-123123-12313123</h2>
-                                    <p class="card-text" style="margin: 0;">A.n. Santara Santara Santara</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-md-3"></div>
+                        
 
                     </div>
                     <div class="col-md-12 text-center" style="margin-top: -20px">
