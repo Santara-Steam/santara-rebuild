@@ -854,21 +854,17 @@
                     </div>
                   </div>
                 </div>
-                <div class="icon-card row">
+                <div class="icon-card row" style="display: flex;
+                justify-content: center;
+                align-items: center;">
                   @guest
                   <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
-                    <div class="icon-and-supporting-text">
-                      <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
-                      &ensp;
-                      <div class="lk inter-normal-alabaster-10px">
-                        <span class="tx-icon inter-normal-alabaster">
-                          <p class="ic-sz tx-icon lkk" style="margin-top: -25px;" id="like">
-
-                          </p>
-                          <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
-                        </span>
-                      </div>
-                    </div>
+                  <div class="icon-and-supporting-text">
+                                <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
+                                <div class="address-2 inter-normal-alabaster-10px">
+                                  <span class="tx-icon inter-normal-alabaster" id="like" style="margin-left:2px;"> Suka</span>
+                                </div>
+                              </div>
                   </a>
                   @else
                   @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
@@ -881,17 +877,11 @@
                       {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();" style="cursor: pointer">
                         --}}
                         <div class="icon-and-supporting-text">
-                          <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
-                          &ensp;
-                          <div class="lk inter-normal-alabaster-10px">
-                            <span class="tx-icon inter-normal-alabaster">
-                              <p class="ic-sz tx-icon lkk" style="margin-top: -25px;" id="like">
-
-                              </p>
-                              <p class="ic-sz com-u tx-tp">&ensp;Likes</p>
-                            </span>
-                          </div>
-                        </div>
+                                <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
+                                <div class="address-2 inter-normal-alabaster-10px">
+                                  <span class="tx-icon inter-normal-alabaster" id="like" style="margin-left:2px;"> Suka</span>
+                                </div>
+                              </div>
                       </a>
                       <form id="like" action="" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -906,15 +896,12 @@
 
                       @guest
                       <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
-                        <div class="icon-and-supporting-text-1">
-                          <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
-                          <div class="lk inter-normal-alabaster-10px">
-                            <span class="tx-icon inter-normal-alabaster">
-                              <p class="ic-sz tx-icon lkk" style="margin-top: -0px;" id="minat"> </p>
-                              <p class="ic-sz com-u mnt">&ensp;Minat</p>
-                            </span>
-                          </div>
-                        </div>
+                      <div class="icon-and-supporting-text-1">
+                                    <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
+                                    <div class="address-2 inter-normal-alabaster-10px">
+                                      <span class="tx-icon inter-normal-alabaster" id="minat"> Minat</span>
+                                    </div>
+                                  </div>
                       </a>
                       @else
                       @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
@@ -926,14 +913,11 @@
                           style="cursor: pointer">
                           @endif
                           <div class="icon-and-supporting-text-1">
-                            <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
-                            <div class="lk inter-normal-alabaster-10px">
-                              <span class="tx-icon inter-normal-alabaster">
-                                <p class="ic-sz tx-icon lkk" style="margin-top: -0px;" id="minat"> </p>
-                                <p class="ic-sz com-u mnt">&ensp;Minat</p>
-                              </span>
-                            </div>
-                          </div>
+                                    <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
+                                    <div class="address-2 inter-normal-alabaster-10px">
+                                      <span class="tx-icon inter-normal-alabaster" id="minat"> Minat</span>
+                                    </div>
+                                  </div>
                         </a>
                         <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
                           enctype="multipart/form-data">
@@ -947,16 +931,13 @@
                         @endguest
                         <a class="col-3" style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal"
                           data-dismiss="modal" data-target="#modal" class="cmt">
-                          <div class="icon-and-supporting-text-1">
-                            <i class="icon-com iconheart fas fa-comments"
-                              style="color: #fff; font-size: 18px; margin-left: -15px;"></i>
-                            <div class=" inter-normal-alabaster-10px">
-                              <span class="tx-icon inter-normal-alabaster">
-                                <p class="ic-sz tx-icon" style="margin-top: -0px;" id="comments"> </p>
-                                <p class="ic-sz com-u mnt">&ensp;Komentar</p>
-                              </span>
-                            </div>
-                          </div>
+                          <div class="icon-and-supporting-text-2">
+                                      <i class="icon-com iconheart fas fa-comments"
+                                        style="color: #fff; font-size: 18px;"></i>
+                                      <div class="address-2 inter-normal-alabaster-10px">
+                                        <span class="tx-icon inter-normal-alabaster" id="comments" style="margin-left:5px;"> Komentar</span>
+                                      </div>
+                                    </div>
                         </a>
                         <a class="col-3" style="cursor: pointer" id="msb" data-id="{{$cs->id}}" data-toggle="modal"
                           data-target="#modalShareButton" data-dismiss="modal">
