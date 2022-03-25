@@ -763,16 +763,16 @@
                 <div class="header-and-tags">
                   <span class="tx-t inter-medium-sweet-pink-12px"
                     style="background: var(--falu-red);
-    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;" ><?php echo \Illuminate\Support\Str::limit(strip_tags( $np->ktg ), 20, $end='...') ?></span>
+    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;" >{{$np->ktg}}</span>
                   <div class="header">
                     <div class="saka-logistics inter-medium-alabaster-20px">
                       <span class="tx-pt inter-medium-alabaster">
-                      <?php echo \Illuminate\Support\Str::limit(strip_tags( $np->trademark ), 20, $end='...') ?>
+                      {{ $np->trademark }}
                       </span>
                     </div>
                     <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                       <span class="tx-np inter-normal-quill-gray">
-                      <?php echo \Illuminate\Support\Str::limit(strip_tags( $np->company_name ), 30, $end='...') ?>
+                      {{ $np->company_name }}
                       </span>
                     </div>
                   </div>
