@@ -177,9 +177,9 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Thumbnail <span style="color: red">*</span></label>
                                                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended)</small>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" id="fil" accept="image/*" type="file" name="thumbnail" 
+                                                        <input class="custom-file-input req" id="fil" accept=".png, .jpg" type="file" name="thumbnail" 
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[0]}}</label>
@@ -188,9 +188,9 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Banner <span style="color: red">*</span></label>
                                                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended)</small>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[1]}}' accept="image/*" type="file" name="banner" class="custom-file-input req"
+                                                        <input value='{{$picture[1]}}' accept=".png, .jpg" type="file" name="banner" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[1]}}</label>
@@ -199,9 +199,9 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Foto Owner <span style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[2]}}' accept="image/*" type="file" name="owner" class="custom-file-input req"
+                                                        <input value='{{$picture[2]}}' accept=".png, .jpg" type="file" name="owner" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[2]}}</label>
@@ -210,9 +210,9 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[3]}}' accept="image/*" type="file" name="galeri1" class="custom-file-input req"
+                                                        <input value='{{$picture[3]}}' accept=".png, .jpg" type="file" name="galeri1" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[3]}}</label>
@@ -221,9 +221,9 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[4]}}' accept="image/*" type="file" name="galeri2" class="custom-file-input req"
+                                                        <input value='{{$picture[4]}}' accept=".png, .jpg" type="file" name="galeri2" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[4]}}</label>
@@ -232,9 +232,9 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[5]}}' accept="image/*" type="file" name="galeri3" class="custom-file-input req"
+                                                        <input value='{{$picture[5]}}' accept=".png, .jpg" type="file" name="galeri3" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[5]}}</label>
