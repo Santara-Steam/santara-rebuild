@@ -137,16 +137,16 @@
                                   aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}"
                                   aria-valuemin="0" aria-valuemax="100"> --}}
                                   <div class="progress-bar "
-                                    style="width: {{round($np->per,0)}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                    style="width: {{round($np->per,4)*100}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
                                     role="progressbar" aria-valuenow="{{round($np->per,0)}}" aria-valuemin="0" aria-valuemax="100">
 
                                     <span class="tx-np percen inter-medium-white">
 
                                       {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
-                                    @if ($np->per == 0.0)
+                                    @if (($np->per*100) == 0.0)
                                         0
                                     @else
-                                    {{round($np->per,2)}}
+                                    {{round($np->per,4)*100}}
                                     @endif  
                                       {{-- 0 --}}
                                       %</span>
