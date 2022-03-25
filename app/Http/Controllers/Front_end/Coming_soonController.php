@@ -25,6 +25,7 @@ class Coming_soonController extends Controller
             ) as cmt'))
         ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
         ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        ->where('emitens.is_deleted',0)
         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
         ->where('emiten_journeys.title','=','Pra Penawaran Saham')
         // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
