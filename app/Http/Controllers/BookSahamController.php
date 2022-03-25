@@ -167,7 +167,7 @@ class BookSahamController extends Controller
                     'message' => 'Bukti Transfer Berhasil Di Upload',
                     'alert-type' => 'success'
                 );
-                return redirect('detail-coming-soon/'.$book->emiten_id)->with($notif);
+                return redirect('detail-now-playing/'.$book->emiten_id)->with($notif);
             }
         }
     }
