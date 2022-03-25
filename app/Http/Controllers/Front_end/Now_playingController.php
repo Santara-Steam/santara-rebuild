@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front_end;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\book_saham;
 use App\Models\emiten;
 use App\Models\emiten_comment;
 use App\Models\emiten_journey;
@@ -20,12 +21,13 @@ class Now_playingController extends Controller
      */
     public function index()
     {
-        $now_playing = emiten::select('emitens.*','categories.category as ktg')
+        $now_playing = emiten::select('emitens.*','emitens.avg_capital_needs as lbr','categories.category as ktg', 'emiten_journeys.date as sd', 'emiten_journeys.end_date as ed', db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0))  as terjual'),db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0)) / emitens.avg_capital_needs  as per'))
         // ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        ->leftjoin('book_sahams', 'book_sahams.emiten_id','=','emitens.id')
         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
-        ->where('emitens.is_deleted',0)
+        ->where('emitens.is_deleted',0) 
         ->where('emiten_journeys.title','=','Penawaran Saham')
         // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
         ->groupBy('emitens.id')
@@ -38,6 +40,9 @@ class Now_playingController extends Controller
     public function detail($id)
     {
         $emt = emiten::where('id',$id)->first();
+        $bok = book_saham::select(db::raw('SUM(total_amount) as tot'))
+        ->where('emiten_id',$id)->where('isValid',1)->first();
+        
         $clike = emiten_vote::select(DB::raw('COALESCE(SUM(likes),0) as l'))
         ->where('emiten_id',$id)
         ->first();
@@ -51,7 +56,7 @@ class Now_playingController extends Controller
         where emiten_id = '.$id.')')
         ->first();
 
-        return view('front_end/now_playing/show',compact('emt','clike','cvote','ccmt','status'));
+        return view('front_end/now_playing/show',compact('emt','clike','cvote','ccmt','status','bok'));
     }
 
     /**

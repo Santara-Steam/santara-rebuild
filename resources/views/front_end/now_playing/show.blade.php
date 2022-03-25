@@ -116,13 +116,13 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Saham Tersisa <br> -</td>
+                    <td>Saham Tersisa <br> {{number_format(round(($emt->avg_capital_needs-$bok->tot)/$emt->price,0),0,',','.')}}</td>
                   </tr>
                   <tr>
-                    <td>Dalam Lembar <br> -</td>
+                    <td>Dalam Lembar <br> {{number_format(round(($emt->avg_capital_needs-$bok->tot)/$emt->price,0),0,',','.')}}</td>
                   </tr>
                   <tr>
-                    <td>Total Rupiah <br> -</td>
+                    <td>Total Rupiah <br> Rp{{number_format(round(($emt->avg_capital_needs-$bok->tot),0),0,',','.')}}</td>
                   </tr>
                 </table>
               </div>
@@ -133,13 +133,13 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Saham Terjual <br> -</td>
+                    <td>Saham Terjual <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}}</td>
                   </tr>
                   <tr>
-                    <td>Dalam Lembar <br> -</td>
+                    <td>Dalam Lembar <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}}</td>
                   </tr>
                   <tr>
-                    <td>Dalam Rupiah<br> -</td>
+                    <td>Dalam Rupiah<br> Rp{{number_format(round($bok->tot,0),0,',','.')}}</td>
                   </tr>
                 </table>
               </div>
@@ -154,7 +154,7 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Harga Saham <br> Rp{{number_format(round($emt->price * 100,0),0,',','.')}}</td>
+                    <td>Harga Saham <br> Rp{{number_format(round($emt->price,0),0,',','.')}}</td>
                   </tr>
                   <tr>
                     <td>Total Saham <br> {{number_format(round($emt->avg_capital_needs / $emt->price,0),0,',','.')}}</td>
@@ -174,7 +174,13 @@
                     <td>Kode Saham <br> -</td>
                   </tr>
                   <tr>
-                    <td>Sisa Waktu <br> 45 Hari</td>
+                    <td>Sisa Waktu <br> <?php 
+                      $now = time();
+                      $start = strtotime($status->date);
+                      $end = strtotime($status->end_date);
+                      $datediff = $end - $start;
+                      ?>
+    {{round($datediff / (60 * 60 * 24))}} Hari</td>
                   </tr>
                   <tr>
                     <td>Periode Deviden<br> 6 Bulan</td>
@@ -298,12 +304,33 @@
             </p>
             <div class="overlap-group" style=" min-width: 270px;">
               <div class="percent inter-medium-white-12px">
-                <span class="tx-np percen inter-medium-white">0%</span>
+                <div class="progress-bar "
+                                  style="width: {{round($bok->tot/$emt->avg_capital_needs,0)}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                  role="progressbar" aria-valuenow="{{round($bok->tot/$emt->avg_capital_needs,0)}}" aria-valuemin="0" aria-valuemax="100">
+
+                                  <span class="tx-np percen inter-medium-white">
+
+                                    {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
+                                  @if ($bok->tot/$emt->avg_capital_needs == 0.0)
+                                      0
+                                  @else
+                                  {{round($bok->tot/$emt->avg_capital_needs,2)}}
+                                  @endif  
+                                      %</span>
+                                  </div>
               </div>
             </div>
             <p class="pembagian-deviden-ta inter-normal-delta-12px">
               <span class="inter-normal-delta-12px" style="white-space: nowrap;">Sisa waktu:</span>&nbsp;<span
-                class="inter-normal-delta-12px">30 Hari</span>
+                class="inter-normal-delta-12px">
+                <?php 
+                      $now = time();
+                      $start = strtotime($status->date);
+                      $end = strtotime($status->end_date);
+                      $datediff = $end - $start;
+                      ?>
+    {{round($datediff / (60 * 60 * 24))}}
+                Hari</span>
               <img class="divider" style="min-width: 270px; margin-top: 30px;"
                 src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
 
