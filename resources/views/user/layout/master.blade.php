@@ -67,10 +67,11 @@
     <div class="drag-target"></div>
 
     <!-- BEGIN: Footer-->
-    <footer class="footer footer-on-sidemenu footer-static footer-light navbar-border navbar-shadow">
+    <footer style="background-color: #7f1d1d" class="footer footer-on-sidemenu footer-static footer-dark navbar-border navbar-shadow">
         <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 pb-2">
             <span class="float-md-left d-block d-md-inline-block">Santara Website Ver 5.8.8 - Business Ver 3.6.2 | Copyright © 2022
-                <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon-16x16.png"> Santara, All rights reserved. </span>
+                {{-- <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon-16x16.png">  --}}
+                Santara, All rights reserved. </span>
             
         </p>
     </footer>

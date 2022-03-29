@@ -1,5 +1,5 @@
 <nav
-    class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-shadow">
+    class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow" style="background-color: #7f1d1d">
     <div class="navbar-wrapper">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
@@ -8,13 +8,13 @@
                             class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item mr-auto">
                     <a class="navbar-brand" href="{{url('/')}}">
-                        <img class="brand-logo" alt="modern admin logo" style="width:65%"
-                            src="{{asset('public/admin')}}/img/santara-tidur-dark.png">
+                        <img class="brand-logo" alt="modern admin logo" style="width:100%"
+                            src="{{asset('public')}}/assets/images/logo_header.png">
                         {{-- <h3 class="brand-text">Modern</h3> --}}
                     </a>
                 </li>
                 <li class="nav-item d-none d-lg-block nav-toggle"><a class="nav-link modern-nav-toggle pr-0"
-                        data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 dark"
+                        data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 light"
                             data-ticon="ft-toggle-right"></i></a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                         data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a></li>
@@ -23,7 +23,7 @@
         <div class="navbar-container content">
             <div class="collapse navbar-collapse" id="navbar-mobile">
             <ul class="nav navbar-nav mr-auto float-left">
-                    <a class="btn btn-secondary float-right" href="{{url('/')}}">Back to Homepage</a>
+                    <a class="btn btn-dark float-right" href="{{url('/')}}">Back to Homepage</a>
                 </ul>
                 <ul class="nav navbar-nav mr-auto float-left">
                 </ul>
