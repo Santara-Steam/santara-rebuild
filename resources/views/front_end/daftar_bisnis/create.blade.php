@@ -170,7 +170,123 @@
                     <textarea required class="form-control" id="exampleFormControlTextarea1" name="deskripsi"
                         placeholder="Isi Caption dan Biografi" rows="3"></textarea>
                 </div>
-                <div class="col-md-4 form-group">
+                <div class="form-group col-md-12 mt-2">
+                    <fieldset class="form-group row">
+                    <div class="col-2 text-center">
+                    <label style="    margin-bottom: 0px;" for="companyName">Thumbnail <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
+                    <div class="image_area text-center">
+                            <label for="upload_image">
+                                <img src="{{asset('public')}}/default1.png" id="uploaded_image"
+                                    class="img-responsive" />
+                                <div class="overlay">
+                                    <div class="text">Thumbnail</div>
+                                </div>
+                            </label>
+                            <input type="file" name="image" class="image" id="upload_image"
+                                style="display: none" />
+                            <input type="text" hidden name="logo" class="image"
+                                id="logo" />
+                        </div>
+                    </div>
+                    <div class="col-8 text-center">
+                    <label style="    margin-bottom: 0px;" for="companyName">Banner <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg / .png only)</small>
+                    <div class="image_area text-center">
+                            <label for="upload_image2">
+                                <img src="{{asset('public')}}/default2.png" id="uploaded_image2"
+                                    class="img-responsive" />
+                                <div class="overlay">
+                                    <div class="text">Banner</div>
+                                </div>
+                            </label>
+                            <input type="file" name="image2" class="image" id="upload_image2"
+                                style="display: none" />
+                            <input type="text" hidden name="cover" class="image"
+                                id="cover" />
+                        </div>
+                    </div>
+                    <div class="col-2 text-center">
+                    <label style="    margin-bottom: 0px;" for="companyName">Foto Owner <span style="color: red">*</span></label>
+<br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                    <div class="image_area text-center">
+                            <label for="upload_image4">
+                                <img src="{{asset('public')}}/default1.png" id="uploaded_image4"
+                                    class="img-responsive" />
+                                <div class="overlay">
+                                    <div class="text">Foto <br> Owner</div>
+                                </div>
+                            </label>
+                            <input type="file" name="image4" class="image" id="upload_image4"
+                                style="display: none" />
+                            <input type="text" hidden name="owner" class="image"
+                                id="owner" />
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+
+                    <div class="col-4 text-center">
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                    <div class="image_area text-center">
+                            <label for="upload_image3">
+                                <img src="{{asset('public')}}/default.png" id="uploaded_image3"
+                                    class="img-responsive" />
+                                <div class="overlay">
+                                    <div class="text">Galeri</div>
+                                </div>
+                            </label>
+                            <input type="file" name="image3" class="image" id="upload_image3"
+                                style="display: none" />
+                            <input type="text" hidden name="galeri" class="image"
+                                id="galeri" />
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                    <div class="image_area text-center">
+                            <label for="upload_image5">
+                                <img src="{{asset('public')}}/default.png" id="uploaded_image5"
+                                    class="img-responsive" />
+                                <div class="overlay">
+                                    <div class="text">Galeri</div>
+                                </div>
+                            </label>
+                            <input type="file" name="image5" class="image" id="upload_image5"
+                                style="display: none" />
+                            <input type="text" hidden name="galeri2" class="image"
+                                id="galeri2" />
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                    <div class="image_area text-center">
+                            <label for="upload_image6">
+                                <img src="{{asset('public')}}/default.png" id="uploaded_image6"
+                                    class="img-responsive" />
+                                <div class="overlay">
+                                    <div class="text">Galeri</div>
+                                </div>
+                            </label>
+                            <input type="file" name="image6" class="image" id="upload_image6"
+                                style="display: none" />
+                            <input type="text" hidden name="galeri3" class="image"
+                                id="galeri3" />
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+                {{-- <div class="col-md-4 form-group">
                     <label style="    margin-bottom: 0px;" for="companyName">Thumbnail <span style="color: red">*</span></label>
                     <br>
                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
@@ -236,6 +352,7 @@
                             aria-describedby="inputGroupFile02">Pilih File</label>
                     </div>
                 </div>
+                --}}
                 
                 <div class="form-group col-md-4">
                     <label for="companyName">Nama Owner <span style="color: red">*</span></label>
@@ -432,7 +549,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crop Logo Perusahaan</h5>
+                <h5 class="modal-title">Crop Thumbnail</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -463,7 +580,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crop Cover Profile Perusahaan</h5>
+                <h5 class="modal-title">Crop Banner</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -525,7 +642,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha</h5>
+                <h5 class="modal-title">Crop Galeri</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -556,7 +673,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha 2</h5>
+                <h5 class="modal-title">Crop Galeri</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -587,7 +704,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Crop Galeri Foto/Tempat Usaha 3</h5>
+                <h5 class="modal-title">Crop Galeri</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
