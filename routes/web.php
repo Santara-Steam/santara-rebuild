@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () 
     Route::post('/upload_bukti/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti']);
     Route::get('/edit_bisnis/{id}', [App\Http\Controllers\EmitenController::class, 'edit_bisnis']);
     Route::post('/update_bisnis/{id}',[App\Http\Controllers\EmitenController::class, 'update_bisnis']);
+
+    Route::get('/edit_profile/{id}',[App\Http\Controllers\TraderController::class, 'edit_profile']);
     
 });
 Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);
