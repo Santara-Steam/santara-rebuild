@@ -64,6 +64,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/pesan_saham/approve/{id}', [App\Http\Controllers\BookSahamController::class, 'approve']);
     Route::post('/admin/pesan_saham/reject/{id}', [App\Http\Controllers\BookSahamController::class, 'reject']);
     
+    Route::get('/admin/transactions', [App\Http\Controllers\TransactionsController::class, 'index']);
+    Route::get('/admin/get_transactions', [App\Http\Controllers\TransactionsController::class, 'fetchData']);
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
