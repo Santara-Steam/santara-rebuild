@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () 
     Route::post('/update_bisnis/{id}',[App\Http\Controllers\EmitenController::class, 'update_bisnis']);
 
     Route::get('/edit_profile/{id}',[App\Http\Controllers\TraderController::class, 'edit_profile']);
+    Route::post('/update_profile/{id}',[App\Http\Controllers\TraderController::class, 'update_profile']);
     
 });
 Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);
@@ -100,6 +101,7 @@ Route::get('/getlike/{id}',[App\Http\Controllers\EmitenVoteController::class,'cl
 Route::get('/getvote/{id}',[App\Http\Controllers\EmitenVoteController::class,'cvote']);
 // Route::post('/cropImg', [App\Http\Controllers\EmitenController::class, 'logoCropImg'])->name('cropImg');
 Route::post('/logocropImg', [App\Http\Controllers\EmitenController::class, 'logocropImg'])->name('logocropImg');
+Route::post('/profilecropImg', [App\Http\Controllers\EmitenController::class, 'profilecropImg'])->name('profilecropImg');
 Route::post('/covercropImg', [App\Http\Controllers\EmitenController::class, 'covercropImg'])->name('covercropImg');
 Route::post('/galericropImg', [App\Http\Controllers\EmitenController::class, 'galericropImg'])->name('galericropImg');
 Route::post('/ownercropImg', [App\Http\Controllers\EmitenController::class, 'ownercropImg'])->name('ownercropImg');

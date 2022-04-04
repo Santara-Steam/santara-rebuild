@@ -610,7 +610,17 @@ class EmitenController extends Controller
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'storage/app/public/pictures/logo_' . time() . '.png';
+            $image_name = 'public/storage/pictures/logo_' . time() . '.png';
+            file_put_contents($image_name, $data);
+            echo $image_name;
+    }
+    public function profilecropImg()
+    {
+          $data = $_POST['image'];
+            $image_array_1 = explode(";", $data);
+            $image_array_2 = explode(",", $image_array_1[1]);
+            $data = base64_decode($image_array_2[1]);
+            $image_name = 'public/storage/pictures/profile_' . time() . '.png';
             file_put_contents($image_name, $data);
             echo $image_name;
     }
@@ -620,7 +630,7 @@ class EmitenController extends Controller
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'storage/app/public/pictures/galeri_' . time() . '.png';
+            $image_name = 'public/storage/pictures/galeri_' . time() . '.png';
             file_put_contents($image_name, $data);
             echo $image_name;
     }
@@ -630,7 +640,7 @@ class EmitenController extends Controller
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'storage/app/public/pictures/cover_' . time() . '.png';
+            $image_name = 'public/storage/pictures/cover_' . time() . '.png';
             file_put_contents($image_name, $data);
             echo $image_name;
     }
@@ -640,7 +650,7 @@ class EmitenController extends Controller
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'storage/app/public/pictures/owner_' . time() . '.png';
+            $image_name = 'public/storage/pictures/owner_' . time() . '.png';
             file_put_contents($image_name, $data);
             echo $image_name;
     }
