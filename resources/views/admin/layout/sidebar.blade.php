@@ -11,6 +11,8 @@
             </li>
             <li class=" nav-item {{ 'admin/pesan_saham' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/pesan_saham')}}"><i class="la la-pencil-square"></i><span class="menu-title" data-i18n="eCommerce">Pesan Saham</span></a>
             </li>
+            <li class=" nav-item {{ 'admin/transactions' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/transactions')}}"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="eCommerce">Transaksi</span></a>
+            </li>
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li> --}}
             
