@@ -44,9 +44,9 @@
                                                                 <div class="text">Foto Profile</div>
                                                             </div>
                                                         </label>
-                                                        <input required type="file" name="image" class="image"
+                                                        <input type="file" name="image" class="image"
                                                             id="upload_image" style="display: none" />
-                                                        <input required type="text" value="" hidden
+                                                        <input type="text" value="{{$user->trader->photo}}" hidden
                                                             name="profile" class="image" id="profile" />
                                                     </div>
                                                 </div>

@@ -24,7 +24,10 @@ class TraderController extends Controller
         $trader->name = $request->name;
         $trader->photo = $profile;
         $trader->save();
-
-        return redirect()->back();
+        $notif = array(
+            'message' => 'Edit Profile Berhasil!!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notif);
     }
 }
