@@ -123,9 +123,17 @@ class TransactionsController extends Controller
         return response()->json(["data" => $data]);
     }
 
-    public function index_user()
+    public function user_transaksi()
     {
         return view('user.transactions.index');
+    }
+    public function user_depo()
+    {
+        return view('user.deposit.index');
+    }
+    public function user_tarik()
+    {
+        return view('user.penarikan.index');
     }
 
 }

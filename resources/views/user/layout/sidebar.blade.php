@@ -5,7 +5,7 @@
             <div class="menu-profile">
                 <div class="profile-greeting">Hallo,</div>
                 <div class="profile-name">
-                    <b>Satrya Wira Wicaksana</b>
+                    <b>{{Auth::user()->trader->name}}</b>
                 </div>
                 <div class="profile-aset mb-2">
                     <table class="table-fixed">
@@ -28,9 +28,9 @@
                     Mulai Investasi
                 </a>
             </div>
-            <li class=" nav-item "><a href="#"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
+            <li class=" nav-item {{ 'user/deposit' == request()->path() ? 'active' : '' }}"><a href="{{url('user/deposit')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
             </li>
-            <li class=" nav-item "><a href="#"><i class="la la-arrow-circle-down"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>
+            <li class=" nav-item {{ 'user/penarikan' == request()->path() ? 'active' : '' }}"><a href="{{url('user/penarikan')}}"><i class="la la-arrow-circle-down"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>
             </li>
             <hr>
             <li class=" nav-item {{ 'user' == request()->path() ? 'active' : '' }}"><a href="{{url('user')}}"><i class="la la-home"></i><span class="menu-title" data-i18n="eCommerce">Dashboard</span></a>
