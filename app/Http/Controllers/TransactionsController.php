@@ -88,4 +88,9 @@ class TransactionsController extends Controller
         return response()->json(["data" => $data]);
     }
 
+    public function index_user()
+    {
+        return view('user.transactions.index');
+    }
+
 }
