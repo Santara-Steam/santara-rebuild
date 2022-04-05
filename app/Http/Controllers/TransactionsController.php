@@ -123,13 +123,9 @@ class TransactionsController extends Controller
         return response()->json(["data" => $data]);
     }
 
-<<<<<<< HEAD
-}
-=======
     public function index_user()
     {
         return view('user.transactions.index');
     }
 
 }
->>>>>>> b8ea37367e37d41393a282562f2aef39e1cdb1d0
