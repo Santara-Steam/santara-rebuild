@@ -1,5 +1,24 @@
 <?php
 
-function formatHariJam($tanggal) {
-   return date('d M Y', strtotime($tanggal)).' '.date("H:i", strtotime($tanggal));
+function formatJam($tanggal) {
+   return date("H:i", strtotime($tanggal));
+}
+
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 => 'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
 }

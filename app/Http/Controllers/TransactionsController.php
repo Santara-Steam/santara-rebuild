@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Transactions;
+use App\Models\Transaction;
 use App\Models\User;
+use App\Models\Markets;
 use DB;
 
 class TransactionsController extends Controller
@@ -13,6 +14,41 @@ class TransactionsController extends Controller
     public function index()
     {
         return view('admin.transactions.index');
+    }
+
+    public function detail($uuid, $status_transaction)
+    {
+        $transaction = User::join('traders as t', 't.user_id', '=', 'users.id')
+            ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+            ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+            ->where('tr.is_deleted', 0)
+            ->select('tr.id', 'tr.uuid', 'tr.created_at as created_at', 'tr.fee', 'tr.channel', 
+                'users.email', 't.phone', 't.name', 
+                'tr.amount', 'tr.is_verified', 'e.company_name', 
+                'e.price', 'e.code_emiten', DB::raw('(tr.amount/e.price) as qty'))
+            ->where('tr.uuid', $uuid)
+            ->first();
+        
+        $channel = "";
+        $stock = 0;
+        $stock_price = 0;
+        if($transaction->channel == 'VA'){
+            $channel = 'Virtual Account';
+        }else if($transaction->channel == 'BANKTRANSFER'){
+            $channel = 'Transfer Bank';
+        }else if($transaction->channel == 'WALLET'){
+            $channel = 'Saldo Dompet';
+        }else if($transaction->channel == 'DANA'){
+            $channel = 'DANA';
+        }else if($transaction->channel == 'MARKET'){
+            $market = Markets::where('transaction_id', $transaction->id)
+                ->select('stock', 'stock_price')
+                ->first();
+            $stock = $market->stock;
+            $stock_price = $market->stock_price;
+            $channel = 'MARKET';
+        }
+        return view('admin.transactions.detail', compact('transaction', 'channel', 'stock', 'stock_price', 'status_transaction'));
     }
 
     public function fetchData(Request $request)
@@ -47,26 +83,25 @@ class TransactionsController extends Controller
             $class_action = "btn btn-outline-info btn-sm";
 			$text_action  = "Detail";
 
-            if ($row->status == 'CREATED') :
-				$status = '<div class="status badge badge-secondary badge-sm" style="display:block">Belum Konfirmasi</div>';
+            if($row->status == 'CREATED'){
+                $status = '<div class="status badge badge-secondary badge-sm" style="display:block">Belum Konfirmasi</div>';
 				$status_transaction = 1;
-			elseif ($row->status == 'WAITING FOR VERIFICATION') :
+            }elseif($row->status == 'WAITING FOR VERIFICATION'){
 				$status = '<div class="status badge badge-warning badge-sm" style="display:block">Menunggu Konfirmasi</div>';
 				$status_transaction = 2;
-
 				// confirm button
 				$class_action = "btn btn-info btn-sm";
 				$text_action = "Konfirmasi";
-			elseif ($row->status == 'VERIFIED') :
-				$status = '<div class="status badge badge-success badge-sm" style="display:block">Lunas</div>';
+            }elseif ($row->status == 'VERIFIED') {
+                $status = '<div class="status badge badge-success badge-sm" style="display:block">Lunas</div>';
 				$status_transaction = 3;
-			elseif ($row->status == 'EXPIRED') :
+            }elseif ($row->status == 'EXPIRED'){
 				$status = '<div class="status badge badge-danger badge-sm" style="display:block">Kadaluarsa</div>';
 				$status_transaction = 4;
-			else :
+            }else{
 				$status = '<div class="status badge badge-secondary badge-sm" style="display:block">Belum Konfirmasi</div>';
 				$status_transaction = 5;
-			endif;
+            }
 
             array_push($data, [
                 "id" => $row->id,
@@ -79,10 +114,10 @@ class TransactionsController extends Controller
                         $row->channel == "WALLET" ? "Saldo Dompet" : $row->channel == "DANA" ? "DATA" : 
                         $row->channel == "MARKET" ? "MARKET " : " - ".$row->description,
                 "amount" => rupiah($row->amount),
-                "created_at" => formatHariJam($row->created_at),
+                "created_at" => tgl_indo(date('Y-m-d', strtotime($row->created_at))).' '.formatJam($row->created_at),
                 "split_fee" => rupiah($row->split_fee),
                 "status" => $status,
-                "link" => '<a href="#" class="'.$class_action.'">'.$text_action.'</a>'
+                "link" => '<a href="'.url('/admin/transaction/detail/'.$row->uuid.'/'.$status_transaction).'" class="'.$class_action.'">'.$text_action.'</a>'
             ]);
         }
         return response()->json(["data" => $data]);

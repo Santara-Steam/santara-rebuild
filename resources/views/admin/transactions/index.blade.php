@@ -19,9 +19,9 @@
                                        @foreach([
                                             '' => 'Semua',
                                             'lunas' => 'Lunas',
-                                            'menunggu' => 'Menunggu Konfirmasi',
-                                            'belumbayar' => 'Belum Konfirmasi',
-                                            'kadaluarsa' => 'Kadaluarsa'
+                                            'WAITING FOR VERIFICATION' => 'Menunggu Konfirmasi',
+                                            'VERIFIED' => 'Belum Konfirmasi',
+                                            'EXPIRED' => 'Kadaluarsa'
                                         ] as $key => $value)
                                              <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -104,15 +104,6 @@
                 },
                 {
                     data: "status", 
-                    render: function(data, type, row, meta) {
-                        return type === "display" ?  
-                            data === "CREATED" ? '<div class="status badge badge-secondary badge-sm" style="display:block">Belum Konfirmasi</div>' :
-                            data === "WAITING FOR VERIFICATION" ? '<div class="status badge badge-warning badge-sm" style="display:block">Menunggu Konfirmasi</div>' :
-                            data === "VERIFIED" ? '<div class="status badge badge-success badge-sm" style="display:block">Lunas</div>' :
-                            data === "EXPIRED" ? '<div class="status badge badge-danger badge-sm" style="display:block">Kadaluarsa</div>' :
-                            '<div class="status badge badge-secondary badge-sm" style="display:block">Belum Konfirmasi</div>'
-                            : data;
-                    }
                 },
                 {
                     data: "link",
