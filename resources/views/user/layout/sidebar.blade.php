@@ -28,8 +28,14 @@
                     Mulai Investasi
                 </a>
             </div>
+            <li class=" nav-item "><a href="#"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
+            </li>
+            <li class=" nav-item "><a href="#"><i class="la la-arrow-circle-down"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>
+            </li>
             <hr>
             <li class=" nav-item {{ 'user' == request()->path() ? 'active' : '' }}"><a href="{{url('user')}}"><i class="la la-home"></i><span class="menu-title" data-i18n="eCommerce">Dashboard</span></a>
+            </li>
+            <li class=" nav-item {{ 'user/transaksi' == request()->path() ? 'active' : '' }}"><a href="{{url('user/transaksi')}}"><i class="la la-money"></i><span class="menu-title" data-i18n="eCommerce">Transaksi</span></a>
             </li>
             {{-- <li class="navigation-header"><span data-i18n="Layouts">Penerbit</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li> --}}
@@ -48,6 +54,10 @@
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li>
              --}}
+             <li class=" nav-item "><a href="#"><i class="la la-calendar"></i><span class="menu-title" data-i18n="eCommerce">Dividen</span></a>
+             </li>
+             <li class=" nav-item "><a href="#"><i class="la la-history"></i><span class="menu-title" data-i18n="eCommerce">Riwayat Pengguna</span></a>
+             </li>
         </ul>
     </div>
 </div>
