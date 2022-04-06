@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () 
 
     Route::get('/edit_profile/{id}',[App\Http\Controllers\TraderController::class, 'edit_profile']);
     Route::post('/update_profile/{id}',[App\Http\Controllers\TraderController::class, 'update_profile']);
+    
+    Route::get('/user/portfolio',[App\Http\Controllers\TraderController::class, 'portofolio']);
 
     Route::get('/user/transaksi', [App\Http\Controllers\TransactionsController::class, 'user_transaksi']);
     Route::get('/user/deposit', [App\Http\Controllers\DepositController::class, 'user_depo']);
