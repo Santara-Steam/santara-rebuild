@@ -45,8 +45,8 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () 
     Route::post('/update_profile/{id}',[App\Http\Controllers\TraderController::class, 'update_profile']);
 
     Route::get('/user/transaksi', [App\Http\Controllers\TransactionsController::class, 'user_transaksi']);
-    Route::get('/user/deposit', [App\Http\Controllers\TransactionsController::class, 'user_depo']);
-    Route::get('/user/penarikan', [App\Http\Controllers\TransactionsController::class, 'user_tarik']);
+    Route::get('/user/deposit', [App\Http\Controllers\DepositController::class, 'user_depo']);
+    Route::get('/user/penarikan', [App\Http\Controllers\PenarikanController::class, 'user_tarik']);
     
 });
 Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);

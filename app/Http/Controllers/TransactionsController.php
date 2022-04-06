@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Markets;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionsController extends Controller
 {
@@ -125,15 +126,25 @@ class TransactionsController extends Controller
 
     public function user_transaksi()
     {
-        return view('user.transactions.index');
+        $uid = Auth::user()->id;
+        $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->where('users.id', $uid)
+                ->where('tr.is_deleted', 0)
+                ->where('tr.last_status', 'EXPIRED')
+                ->orwhere('users.id', $uid)
+                ->where('tr.is_deleted', 0)
+                ->where('tr.last_status', 'VERIFIED')
+                ->select('tr.id', 'tr.uuid','e.pictures', 't.name as trader_name', 'users.email as user_email', 
+                    't.id as trader_id','e.trademark','e.company_name', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
+                    'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
+                    'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
+                    'tr.last_status as status')
+                ->get();
+        return view('user.transactions.index',compact('transactions'));
     }
-    public function user_depo()
-    {
-        return view('user.deposit.index');
-    }
-    public function user_tarik()
-    {
-        return view('user.penarikan.index');
-    }
+    
+    
 
 }

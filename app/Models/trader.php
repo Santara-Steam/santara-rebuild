@@ -17,4 +17,8 @@ class trader extends Model
     {
         return $this->belongsTo(user::class,'user_id')->withDefault();
     }
+    public function saldo()
+    {
+        return $this->hasOne(saldo::class,'trader_id');
+    }
 }

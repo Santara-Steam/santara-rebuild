@@ -11,15 +11,27 @@
                     <table class="table-fixed">
                         <tr>
                             <td>Saldo</td>
-                            <td>Rp. 0</td>
+                            <td>Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</td>
                         </tr>
                                                         <tr style="border-bottom: 1rem solid transparent;">
                             <td>Nilai Investasi</td>
-                            <td>Rp. 7.500.000</td>
+                            <?php 
+                            use App\Models\User;
+                            $uid = Auth::user()->id;
+                            $asset =  User::join('traders as t', 't.user_id', '=', 'users.id')
+                            ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                            ->where('users.id', $uid)
+                            ->where('tr.is_deleted', 0)
+                            ->where('tr.last_status', 'VERIFIED')
+                            ->select(db::raw('SUM(tr.amount) as amo'))
+                            ->groupBy('users.id')
+                            ->first();
+                            ?>
+                            <td>Rp. {{number_format($asset->amo,0,',','.')}}</td>
                         </tr>
                                                             <tr>
                                 <td>Total Aset</td>
-                                <td>Rp. 7.500.000</td>
+                                <td>Rp. {{number_format(Auth::user()->trader->saldo->balance+$asset->amo, 0, ',', '.')}}</td>
                             </tr>
                         
                     </table>

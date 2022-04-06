@@ -39,7 +39,7 @@
                                                     <div class="total-amount-member">
                                                         <div>
                                                             <h3>Saldo Anda</h3>
-                                                            <span class="withdraw-saldo">000</span>
+                                                            <span class="withdraw-saldo">Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</span>
                                                         </div>
                                                     </div>
                                                     <form action="">
