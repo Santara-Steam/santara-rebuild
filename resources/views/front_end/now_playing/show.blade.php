@@ -178,7 +178,7 @@
                       $now = time();
                       $start = strtotime($status->date);
                       $end = strtotime($status->end_date);
-                      $datediff = $end - $start;
+                      $datediff = $end - $now;
                       ?>
     {{round($datediff / (60 * 60 * 24))}} Hari</td>
                   </tr>
@@ -327,7 +327,7 @@
                       $now = time();
                       $start = strtotime($status->date);
                       $end = strtotime($status->end_date);
-                      $datediff = $end - $start;
+                      $datediff = $end - $now;
                       ?>
     {{round($datediff / (60 * 60 * 24))}}
                 Hari</span>
