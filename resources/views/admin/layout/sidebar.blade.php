@@ -13,6 +13,10 @@
             </li>
             <li class=" nav-item {{ 'admin/transactions' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/transactions')}}"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="eCommerce">Transaksi</span></a>
             </li>
+            <li class=" nav-item {{ 'admin/withdraw' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/withdraw')}}"><i class="la la-money"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>
+            </li>
+            <li class=" nav-item {{ 'admin/deposit' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/deposit')}}"><i class="la la-university"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
+            </li>
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li> --}}
             

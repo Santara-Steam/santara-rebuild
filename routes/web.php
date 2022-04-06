@@ -72,6 +72,12 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/get_transactions', [App\Http\Controllers\TransactionsController::class, 'fetchData']);
     Route::get('/admin/transaction/detail/{uuid}/{status}', [App\Http\Controllers\TransactionsController::class, 'detail']);
     
+    Route::get('/admin/withdraw', [App\Http\Controllers\WithdrawController::class, 'index']);
+    Route::get('/admin/get_withdraw', [App\Http\Controllers\WithdrawController::class, 'fetchData']);
+
+    Route::get('/admin/deposit', [App\Http\Controllers\DepositController::class, 'admin_deposit']);
+    Route::get('/admin/get_deposit', [App\Http\Controllers\DepositController::class, 'fetchDataAdminDeposit']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

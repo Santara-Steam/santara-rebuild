@@ -11,17 +11,17 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Transactions</h4>
+                                <h4 class="card-title">Lihat Deposit</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                    <select class="custom-select" onchange="filterTr()" id="filter">
                                        <option disabled selected>Filter Status</option>
                                        @foreach([
                                             '' => 'Semua',
-                                            'VERIFIED' => 'Lunas',
-                                            'WAITING FOR VERIFICATION' => 'Menunggu Konfirmasi',
-                                            'CREATED' => 'Belum Konfirmasi',
-                                            'EXPIRED' => 'Kadaluarsa'
+                                            'verifikasi' => 'Verifikasi',
+                                            'ditolak' => 'Ditolak',
+                                            'sudahverifikasi' => 'Sudah Verifikasi',
+                                            'menuggupembayaran' => 'Menunggu Pembayaran'
                                         ] as $key => $value)
                                              <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -31,20 +31,20 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table" id="tableTransaction"> 
+                                        <table class="table" id="tableDeposit"> 
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID Transaksi</th>
                                                     <th>Nama</th>
                                                     <th>Email</th>
-                                                    <th>Token</th>
-                                                    <th>Pembayaran</th>
-                                                    <th>Total (Rp)</th>
-                                                    <th>Created at</th>
+                                                    <th>Nominal</th>
+                                                    <th>Metode Pembayaran</th>
+                                                    <th>Bank Pengirim</th>
+                                                    <th>Nomor Rekening</th>
+                                                    <th>Bank Tujuan</th>
+                                                    <th>Tanggal</th>
                                                     <th>Split Fee</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -67,8 +67,8 @@
 
     loadData("");
     function loadData(filter){
-        var tableTransaction = $("#tableTransaction").DataTable({
-            ajax: '{{ url("/admin/get_transactions?filter=") }}'+filter,
+        var tableDeposit = $("#tableDeposit").DataTable({
+            ajax: '{{ url("/admin/get_deposit?filter=") }}'+filter,
             responsive: true,
             order: [[0, "asc"]],
             columns: [
@@ -79,22 +79,25 @@
                     }
                 },
                 {
-                    data: "transaction_serial"
-                },
-                {
                     data: "trader_name"
                 },
                 {
-                    data: "user_email"
+                    data: "email"
                 },
                 {
-                    data: "code_emiten"
+                    data: "nominal"
                 },
                 {
                     data: "channel"
                 },
                 {
-                    data: "amount"
+                    data: "bank_from"
+                },
+                {
+                    data: "account_number"
+                },
+                {
+                    data: "bank_to"
                 },
                 {
                     data: "created_at"
@@ -105,9 +108,6 @@
                 {
                     data: "status", 
                 },
-                {
-                    data: "link",
-                },
             ]
         });
     }
@@ -115,7 +115,7 @@
 
     function filterTr(){
         const filter = $("#filter").val();
-        $("#tableTransaction").DataTable().clear().destroy();
+        $("#tableDeposit").DataTable().clear().destroy();
         loadData(filter);
     }
 </script>
