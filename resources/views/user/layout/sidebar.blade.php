@@ -17,6 +17,7 @@
                             <td>Nilai Investasi</td>
                             <?php 
                             use App\Models\User;
+                            use Illuminate\Support\Facades\DB;
                             $uid = Auth::user()->id;
                             $asset =  User::join('traders as t', 't.user_id', '=', 'users.id')
                             ->join('transactions as tr', 'tr.trader_id', '=', 't.id')

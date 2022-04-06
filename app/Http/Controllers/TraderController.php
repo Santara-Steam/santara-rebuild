@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\trader;
 use App\Models\User;
+use DB;
+
 use Illuminate\Http\Request;
 
 class TraderController extends Controller
