@@ -39,7 +39,9 @@
                                                     <div class="total-amount-member">
                                                         <div>
                                                             <h3>Saldo Anda</h3>
-                                                            <span class="withdraw-saldo">Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</span>
+                                                            <span class="withdraw-saldo">Rp.
+                                                                {{number_format(Auth::user()->trader->saldo->balance, 0,
+                                                                ',', '.')}}</span>
                                                         </div>
                                                     </div>
                                                     <form action="">
@@ -130,9 +132,11 @@
                                                             Rupiah)</li>
                                                         <li>Transaksi deposit akan dikenakan <b>biaya admin</b> sebesar
                                                             <b>Rp
-                                                                {{-- <?= number_format($fee, 0, ',', '.') ?> --}}
+                                                                {{--
+                                                                <?= number_format($fee, 0, ',', '.') ?> --}}
                                                             </b> (
-                                                            {{-- <?= $terbilang ?>  --}}
+                                                            {{--
+                                                            <?= $terbilang ?> --}}
                                                             Rupiah)
                                                         </li>
                                                     </ul>
@@ -152,10 +156,54 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($deposit as $item)
+
+                                                        <tr role="row" class="odd">
+                                                            <td class="sorting_1">
+                                                                <div class="media" style="align-items: flex-end;">
+                                                                    <img class="mr-1"
+                                                                        src="https://santara.co.id/assets/images/icon/wallet.png">
+                                                                    <div class="media-body">
+                                                                        <div><b>Deposit</b></div>
+                                                                        <div><small>-</small></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="font-berhasil"><b>Berhasil</b></div>
+                                                                <div><small>{{tgl_indo(date('Y-m-d',
+                                                                        strtotime($item->created_at))).'
+                                                                        '.formatJam($item->created_at),}}</small></div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="row mx-1">
+                                                                    <span style="width:50%"><small>Metode
+                                                                            Pembayaran</small><br><b>-</b></span>
+                                                                    <span style="width:25%"><small>Nilai
+                                                                            Deposit</small><br><b
+                                                                            style="color: green;">Rp.
+                                                                            {{number_format($item->amount,0,',','.')}}</b></span>
+                                                                    <span style="width:25%"><small>Biaya
+                                                                            Admin</small><br><b
+                                                                            style="color: green;">Rp. {{number_format($item->fee,0,',','.')}}</b></span>
+                                                                </div>
+                                                                <div class="row mx-1 py-1">
+
+                                                                    <span style="width:50%"><small>Total
+                                                                            Pembayaran</small><br><b
+                                                                            style="color: green;">Rp.
+                                                                            {{number_format($item->amount+$item->fee,0,',','.')}}</b></span>
+                                                                </div>
+                                                                <div class="row mx-1"></div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
