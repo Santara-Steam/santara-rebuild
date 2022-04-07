@@ -63,7 +63,7 @@ class WithdrawController extends Controller
                 $status = '<div class="status badge badge-warning badge-pill badge-sm" style="display:block">Tidak Diketahui</div>';
             }
 
-            $updated_at = tgl_indo(date('Y-m-d', strtotime($row->updated_at))).' '.formatJam($row->updated_at);
+            $created_at = tgl_indo(date('Y-m-d', strtotime($row->created_at))).' '.formatJam($row->created_at);
             
             array_push($data, [
                 "trader_name" => $row->trader_name,
@@ -71,7 +71,7 @@ class WithdrawController extends Controller
                 "amount" => rupiah($row->amount),
                 "fee" => rupiah($row->fee),
                 "bank_to" => $row->bank_to,
-                "updated_at" => $updated_at,
+                "created_at" => $created_at,
                 "split_fee" => rupiah($row->split_fee),
                 "status" => $status
             ]);
