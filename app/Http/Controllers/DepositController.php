@@ -5,13 +5,25 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Deposit;
+use DB;
+use Illuminate\Support\Facades\Auth;
 
 class DepositController extends Controller
 {
     //
     public function user_depo()
     {
-        return view('user.deposit.index');
+        $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+            ->join('users as u', 'u.id', '=', 't.user_id')
+            ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+            ->where('deposits.trader_id',Auth::user()->trader->id)
+            ->select('deposits.id', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
+                'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
+                'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
+                'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
+                'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+            ->get();
+        return view('user.deposit.index',compact('deposit'));
     }
 
     public function admin_deposit()

@@ -168,9 +168,9 @@
                                                                                             </span>
                                                                                             <small class="ml-1">
                                                                                                 <a data-toggle="collapse"
-                                                                                                    href="#detail_SAN-110319-KKNI_transaksi"
+                                                                                                    href="#detail_{{$item->transaction_serial}}"
                                                                                                     aria-expanded="false"
-                                                                                                    aria-controls="detail_SAN-110319-KKNI_transaksi">
+                                                                                                    aria-controls="detail_{{$item->transaction_serial}}">
                                                                                                     Detail
                                                                                                     <i
                                                                                                         class="la la-angle-right"></i>
@@ -180,7 +180,7 @@
                                                                                             </small>
                                                                                         </p>
                                                                                         <div class="row col-12 py-1 collapse"
-                                                                                            id="detail_SAN-110319-KKNI_transaksi">
+                                                                                            id="detail_{{$item->transaction_serial}}">
                                                                                             <span class="w-50">
                                                                                                 <div>No. Transaksi :
                                                                                                     <b>{{$item->transaction_serial}}</b>
