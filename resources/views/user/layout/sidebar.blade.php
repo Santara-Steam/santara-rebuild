@@ -64,14 +64,16 @@
             </li>
             <li class=" nav-item {{ 'user/bisnis_anda' == request()->path() ? 'active' : '' }}"><a href="{{url('user/bisnis_anda')}}"><i class="la la-briefcase"></i><span class="menu-title" data-i18n="eCommerce">Bisnis Anda</span></a>
             </li>
-            <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-briefcase"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>
+            <li class=" nav-item "><a href="#"><i class="la la-play-circle"></i><span class="menu-title" data-i18n="eCommerce">Video Tutorial</span></a>
+            </li>
+            <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>
             </li>
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li>
              --}}
              {{-- <li class=" nav-item "><a href="#"><i class="la la-calendar"></i><span class="menu-title" data-i18n="eCommerce">Dividen</span></a>
              </li> --}}
-             <li class=" nav-item "><a href="#"><i class="la la-history"></i><span class="menu-title" data-i18n="eCommerce">Riwayat Pengguna</span></a>
+             <li class=" nav-item {{ 'user/riwayat_aktifitas' == request()->path() ? 'active' : '' }}"><a href="{{url('/user/riwayat_aktifitas')}}"><i class="la la-history"></i><span class="menu-title" data-i18n="eCommerce">Riwayat Pengguna</span></a>
              </li>
         </ul>
     </div>

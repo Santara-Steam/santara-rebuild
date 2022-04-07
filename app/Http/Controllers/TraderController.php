@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\riwayat_user;
 use App\Models\trader;
 use App\Models\User;
 use DB;
@@ -47,5 +48,11 @@ class TraderController extends Controller
                 ->groupBy('e.id')
                 ->get();
         return view('user.portofolio.index',compact('port'));
+    }
+
+    public function history(){
+        $jour = riwayat_user::where('trader_id',Auth::user()->trader->id)->get();
+        // dd($jour);
+        return view('user.riwayat_user.index',compact('jour'));
     }
 }
