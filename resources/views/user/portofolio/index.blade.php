@@ -63,7 +63,7 @@
                                     <div class="item-portofolio">
                                         <div class="head-item-portofolio">
                                             <div class="flex-head">
-                                                <p>Peternakan</p>
+                                                <p>{{$item->cat}}</p>
                                                 <div class="label-item-portoflio-saham">SAHAM</div>
                                             </div>
                                             <h4>{{$item->trademark}}</h4>
