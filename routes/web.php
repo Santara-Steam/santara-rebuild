@@ -81,6 +81,11 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/deposit', [App\Http\Controllers\DepositController::class, 'admin_deposit']);
     Route::get('/admin/get_deposit', [App\Http\Controllers\DepositController::class, 'fetchDataAdminDeposit']);
     
+    Route::get('/admin/dividen', [App\Http\Controllers\DevidenController::class, 'index']);
+    Route::get('/admin/get_dividen', [App\Http\Controllers\DevidenController::class, 'fetchData']);
+    Route::get('/admin/detail_dividen', [App\Http\Controllers\DevidenController::class, 'detail']);
+    Route::get('/admin/add_dividen', [App\Http\Controllers\DevidenController::class, 'create']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
