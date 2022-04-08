@@ -85,7 +85,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/get_dividen', [App\Http\Controllers\DevidenController::class, 'fetchData']);
     Route::get('/admin/detail_dividen', [App\Http\Controllers\DevidenController::class, 'detail']);
     Route::get('/admin/add_dividen', [App\Http\Controllers\DevidenController::class, 'create']);
+    Route::get('/admin/get_dividen_by_uuid', [App\Http\Controllers\DevidenController::class, 'getEmitenByUuid']);
+    Route::get('/admin/get_history_dividend', [App\Http\Controllers\DevidenController::class, 'getAdminHistoryDividend']);
     
+    Route::get('/admin/wallet', [App\Http\Controllers\WalletController::class, 'index']);
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\Deviden;
+use App\Models\HistoriDividen;
 use App\Models\emiten;
 use DB;
 
@@ -187,6 +189,94 @@ class DevidenController extends Controller
                 "updated_at" => $updated_at,
                 "pencarian" => $pencairan,
                 "detail" => $detail
+            ]);
+        }
+        return response()->json(["data" => $data]);
+    }
+
+    public function getEmitenByUuid(Request $request)
+    {
+        $emiten = emiten::where('is_deleted', 0)
+            ->where('uuid', $request->emiten_uuid)
+            ->orderBy('code_emiten')
+            ->select('id', 'uuid as emiten_uuid', 'company_name', 'trademark', 'code_emiten')
+            ->first();
+        return response()->json(["data" => $emiten]);
+    }
+
+    public function generateDividend(Request $request)
+    {   
+        $this->validate($request,[
+            'code_emiten' => 'required',
+            'company_name' => 'required',
+            'trademark' => 'required',
+            'phase' => 'required',
+            'trademark' => 'required',
+            'date' => 'required',
+            'month' => 'required',
+            'year' => 'required',
+            'amount' => 'required'
+         ]);
+
+         $date = $request->date.'-'.$request->month.'-'.$request->year;
+         $dividend_date_time = tgl_indo(date('Y-m-d', strtotime($date))).' '.formatJamLengkap($date);
+         $dividend_detail = [
+            'emiten_uuid' => $request->emiten_uuid,
+            'code_emiten' => $request->code_emiten,
+            'trademark' => $request->trademark,
+            'company_name' => $request->company_name,
+            'phase' => $request->phase,
+            'date' => $dividend_date,
+            'amount' => $request->amount,
+            'date_time' => $dividend_date_time
+        ];
+
+        $dividends = null;
+        $amount = (int)str_replace(".", "", $request->amount);
+
+        // Belum selesai
+        $response = Http::withHeaders([
+            'Authorization' => config('global.TOKEN'),
+        ])->get(config('global.BASE_API_ADMIN_URL').'/dividend/generate', [
+            'uuid' => $request->emiten_uuid,
+            'total_dividend' => $amount
+        ]);
+
+        if($response->status() == 200){
+            $dividends = json_decode($response->body()->getContents(), TRUE);
+        }
+
+        $dividend['dividend_detail'] = $dividend_detail;
+    }
+
+    public function getAdminHistoryDividend()
+    {
+        $dividen = HistoriDividen::join('emitens as e', 'e.id', '=', 'devidend.emiten_id')
+            ->where('devidend.is_deleted', 0)
+            ->select('devidend.id', 'devidend.emiten_id', 'e.company_name', 'e.code_emiten', 'devidend.phase', 
+                'e.trademark', 'devidend.devidend', 'devidend.created_at', 'devidend.updated_at')
+            ->get();
+
+        $viewDeleteDividen = 0;
+        
+        $data = [];
+        foreach($dividen as $row){
+
+            $updated_at = formatTanggalJamSistem(strtotime($row->updated_at));
+            $action = '<a href="#" onClick="getDetailHistory(\'' . $row->devidend . '\',\'' . $row->phase . '\')" 
+                            class="btn btn-info btn-sm btn-block" title="Detail">Detail</a>';
+            
+            if($viewDeleteDividen) {
+                $action .= '<a href="#" onClick="deleteDividen(\'' . $row->id . '\',\'' . $row->company_name . '\',\'' . $row->code_emiten . '\',\'' . $row->phase . '\')" 
+                                class="btn btn-danger btn-sm btn-block" title="Hapus Dividen">Hapus Dividen</a>';
+            }
+            array_push($data, [
+                "updated_at" => $updated_at,
+                "code_emiten" => $row->code_emiten,
+                "company_name" => $row->company_name,
+                "trademark" => $row->trademark,
+                "phase" => $row->phase,
+                "aksi" => $action
             ]);
         }
         return response()->json(["data" => $data]);

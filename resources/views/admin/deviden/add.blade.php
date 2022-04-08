@@ -173,6 +173,25 @@
                                                 </div>
                                             </form>
                                         </div>
+                                        {{-- History Dividen --}}
+                                        <div class="tab-pane active show fade" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab">
+                                            <div class="table-responsive">
+                                                <table class="table" id="tableHistoryDividen"> 
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Tanggal</th>
+                                                            <th>ID Saham</th>
+                                                            <th>Nama PT</th>
+                                                            <th>Nama Brand</th>
+                                                            <th>Tahap</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -189,13 +208,102 @@
 <script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
 <script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+
+    var tableHistoryDividen = $("#tableHistoryDividen").DataTable({
+        ajax: '{{ url("/admin/get_history_dividend") }}',
+        responsive: true,
+        order: [[0, "asc"]],
+        columns: [
+            {
+                data: "id",
+                render: function(data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
+            },
+            {
+                data: "updated_at"
+            },
+            {
+                data: "code_emiten"
+            },
+            {
+                data: "company_name"
+            },
+            {
+                data: "trademark"
+            },
+            {
+                data: "phase"
+            },
+            {
+                data: "aksi"
+            },
+        ]
+    });
+
     $(document).ready(function() {
         $('#code_emiten').select2();
+
+        const amount = document.getElementById("amount");
+        if (amount) {
+            amount.addEventListener("keyup", function (e) {
+            this.value = formatRupiah(parseInt(this.value.replace(/\./g, "")))
+                .slice(3)
+                .slice(0, -3);
+            });
+        }
+
+        $("#code_emiten").change(function (e) {
+            $("#datatableDividend").DataTable().clear().draw();
+            $("#dividend-container").css("display", "none");
+
+            var emiten_uuid = $(this).find(":selected").attr("data-id");
+            if (emiten_uuid != "" && emiten_uuid != undefined) {
+                $.ajax({
+                url: "{{ url('admin/get_dividen_by_uuid') }}",
+                method: "GET",
+                data: {
+                    emiten_uuid: emiten_uuid
+                },
+                timeout: 20000, // sets timeout to 20 seconds
+                beforeSend: function () {
+                    $("#loader").show();
+                },
+                success: function (data) {
+                    data = data.data;
+                    $("#trademark").val(data.trademark);
+                    $("#company_name").val(data.company_name);
+                    $("#emiten_uuid").val(data.emiten_uuid);
+                    $("#loader").hide();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (textStatus === "timeout" || textStatus === "error") {
+                    $("#loader").hide();
+                    Swal.fire({
+                        title: "Ooops...",
+                        text: "Mohon periksa koneksi internet anda",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonText: "Muat ulang",
+                        cancelButtonText: "Tutup",
+                    }).then((result) => {
+                        if (result.value) {
+                        location.reload();
+                        }
+                    });
+                    }
+                },
+                });
+            }
+            }).change();
     });
 </script>
 @endsection
 
 @section('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection

@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Deposit extends Model
+class HistoriDividen extends Model
 {
     use HasFactory;
     protected $connection = 'mysql';
-    protected $table = "deposits";
+    protected $table = "devidend";
 }

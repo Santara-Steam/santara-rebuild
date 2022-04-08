@@ -19,6 +19,8 @@
             </li>
             <li class=" nav-item {{ 'admin/dividen' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/dividen')}}"><i class="la la-calendar"></i><span class="menu-title" data-i18n="eCommerce">Dividen</span></a>
             </li>
+            <li class=" nav-item {{ 'admin/wallet' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/wallet')}}"><i class="la la-tablet"></i><span class="menu-title" data-i18n="eCommerce">Wallet</span></a>
+            </li>
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li> --}}
             

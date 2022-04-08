@@ -4,6 +4,14 @@ function formatJam($tanggal) {
    return date("H:i", strtotime($tanggal));
 }
 
+function formatJamLengkap($tanggal) {
+	return date("H:i:s", strtotime($tanggal));
+}
+
+function formatTanggalJamSistem($tanggal) {
+	return date("Y-m-d H:i:s", strtotime($tanggal));
+}
+
 function tgl_indo($tanggal){
 	$bulan = array (
 		1 => 'Januari',
