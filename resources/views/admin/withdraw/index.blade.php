@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">List Withdraw</h4>
+                                <h2><strong>Penarikan</strong></h2>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                    <select class="custom-select" onchange="filterTr()" id="filter">
@@ -67,6 +67,8 @@
         var tableWithDraw = $("#tableWithDraw").DataTable({
             ajax: '{{ url("/admin/get_withdraw?filter=") }}'+filter,
             responsive: true,
+            processing: true,
+            serverSide: true,
             order: [[0, "asc"]],
             columns: [
                 {

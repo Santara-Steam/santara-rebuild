@@ -8,7 +8,7 @@
         <div class="content-body">
             <section id="configuration">
                 <div class="row">
-                    <div class="col-xl-6 col-md-12">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Detail Transaksi</h4>
@@ -81,21 +81,21 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            @if($transaction->is_verified == 0):
+                                            @if($transaction->is_verified == 0)
                                             <button
-                                                onclick="confirm('Konfirmasi Transaksi', 'Konfirmasi transaksi pembayaran ?', '#')"
-                                                class="btn btn-primary btn-block"
-                                                <?= (($channel == 'BANKTRANSFER')) || ($channel == 'VA') ? 'disabled' : '' ?>>Konfirmasi
+                                                onclick="confirm('Konfirmasi Transaksi', 'Konfirmasi transaksi pembayaran ?', '{{ url('admin/transaction/confirm/'.$transaction->uuid) }}')"
+                                                class="btn btn-primary btn-block mt-0"
+                                                {{ $channel == 'BANKTRANSFER' || $channel == 'VA' ? 'disabled' : '' }}>Konfirmasi
                                             </button>
                                             @else
                                             <button
-                                                onclick="confirm('Pembatalan Transaksi', 'Pembatalan konfirmasi pembayaran ?', '#')"
+                                                onclick="confirm('Pembatalan Transaksi', 'Pembatalan konfirmasi pembayaran ?', '{{ url('admin/transaction/cancel_confirm/'.$transaction->uuid) }}')"
                                                 class="btn btn-primary btn-block">Batal
                                             </button>
                                             @endif
                                         </div>
                                         <div class="col-md-4">
-                                            <button onclick="remove('#')" class="btn btn-danger btn-block">Hapus
+                                            <button onclick="remove('{{ url('admin/transaction/delete_transaction') }}', '{{ $transaction->id }}')" class="btn btn-danger btn-block">Hapus
                                             </button>
                                         </div>
                                         <div class="col-md-4">
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-md-12 text-center">
+                    {{-- <div class="col-xl-6 col-md-12 text-center">
                         @if($transaction->channel == 'BANKTRANSFER')
                             @if($transaction->verification_photo)
                                 <p>{{ $verification_photo_jwt }}</p>
@@ -133,7 +133,7 @@
                             </form>
                             @endif
                         @endif
-                    </div>
+                    </div> --}}
                 </div>
             </section>
         </div>
@@ -210,7 +210,7 @@ function confirm(title, text, link) {
     })
 }
 
-function remove(link, id) {
+function remove(link, trId) {
     Swal.fire({
         title: 'Apakan anda yakin ?',
         text: 'Data yang sudah dihapus tidak dapat dikembalikan!',
@@ -219,13 +219,12 @@ function remove(link, id) {
         confirmButtonText: 'Ya',
         cancelButtonText: 'Tidak'
     }).then((result) => {
-
         if (result.value) {
             $("#loader").show();
             $.ajax({
                 type: 'POST',
                 url: link,
-                data: 'id=' + id,
+                data: {id: trId},
                 cache: false,
                 success: function(data) {
                     $("#loader").hide();
@@ -233,7 +232,7 @@ function remove(link, id) {
                     if (data.msg == 200) {
                         Swal.fire("Success!", 'Data berhasil dihapus.', "success").then((
                             result) => {
-                            window.location = '/user/transactions';
+                            window.location = '/admin/transactions';
                         });
                     } else {
                         Swal.fire("Error!", "Data gagal dihapus!", "error");

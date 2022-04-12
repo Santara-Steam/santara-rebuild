@@ -16,11 +16,43 @@ class WithdrawController extends Controller
     
     public function fetchData(Request $request)
     {
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length");
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $filter = $request->get('filter');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; 
+        $columnName = $columnName_arr[$columnIndex]['data'];
+        $columnSortOrder = $order_arr[0]['dir']; 
+        $searchValue = $search_arr['value'];
+
         if($request->filter != ""){
+            $totalRecords = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->where('withdraws.is_deleted', 0)
+                ->where('withdraws.is_verified', $request->filter)
+                ->orderBy('withdraws.id', 'DESC')
+                ->select('count(*) as allcount')
+                ->count();
+            $totalRecordswithFilter = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->where('withdraws.is_deleted', 0)
+                ->where('withdraws.is_verified', $request->filter)
+                ->where('withdraws.account_name', 'like', '%' .$searchValue . '%')
+                ->orderBy('withdraws.id', 'DESC')
+                ->count();
+
             $withdraws = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
                 ->join('users as u', 'u.id', '=', 't.user_id')
                 ->where('withdraws.is_deleted', 0)
                 ->where('withdraws.is_verified', $request->filter)
+                ->skip($start)
+                ->take($rowperpage)
                 ->orderBy('withdraws.id', 'DESC')
                 ->select('withdraws.uuid', 't.uuid as trader_uuid', 'withdraws.id', 
                     'withdraws.is_verified', 'withdraws.account_name','withdraws.account_number', 
@@ -29,9 +61,23 @@ class WithdrawController extends Controller
                     'withdraws.split_fee')
                 ->get();
         }else{
+            $totalRecords = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->where('withdraws.is_deleted', 0)
+                ->orderBy('withdraws.id', 'DESC')
+                ->select('count(*) as allcount')
+                ->count();
+            $totalRecordswithFilter = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->where('withdraws.is_deleted', 0)
+                ->where('withdraws.account_name', 'like', '%' .$searchValue . '%')
+                ->orderBy('withdraws.id', 'DESC')
+                ->count();
             $withdraws = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
                 ->join('users as u', 'u.id', '=', 't.user_id')
                 ->where('withdraws.is_deleted', 0)
+                ->skip($start)
+                ->take($rowperpage)
                 ->orderBy('withdraws.id', 'DESC')
                 ->select('withdraws.uuid', 't.uuid as trader_uuid', 'withdraws.id', 
                     'withdraws.is_verified', 'withdraws.account_name','withdraws.account_number', 
@@ -76,7 +122,15 @@ class WithdrawController extends Controller
                 "status" => $status
             ]);
         }
-        return response()->json(["data" => $data]);
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data
+        );
+    
+        echo json_encode($response);
+        exit;
     }
 
     

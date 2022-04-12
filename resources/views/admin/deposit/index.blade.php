@@ -11,16 +11,16 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Lihat Deposit</h4>
+                                <h2><strong>Deposit</strong></h2>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                    <select class="custom-select" onchange="filterTr()" id="filter">
                                        <option disabled selected>Filter Status</option>
                                        @foreach([
                                             '' => 'Semua',
-                                            'verifikasi' => 'Verifikasi',
-                                            'ditolak' => 'Ditolak',
-                                            'sudahverifikasi' => 'Sudah Verifikasi',
+                                            0 => 'Verifikasi',
+                                            2 => 'Ditolak',
+                                            1 => 'Sudah Verifikasi',
                                             'menuggupembayaran' => 'Menunggu Pembayaran'
                                         ] as $key => $value)
                                              <option value="{{ $key }}">{{ $value }}</option>
@@ -70,6 +70,8 @@
         var tableDeposit = $("#tableDeposit").DataTable({
             ajax: '{{ url("/admin/get_deposit?filter=") }}'+filter,
             responsive: true,
+            processing: true,
+            serverSide: true,
             order: [[0, "asc"]],
             columns: [
                 {

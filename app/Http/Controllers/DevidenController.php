@@ -76,16 +76,53 @@ class DevidenController extends Controller
 
     public function fetchData(Request $request)
     {
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length");
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $filter = $request->get('filter');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; 
+        $columnName = $columnName_arr[$columnIndex]['data'];
+        $columnSortOrder = $order_arr[0]['dir']; 
+        $searchValue = $search_arr['value'];
+
         if($request->filter != ""){
             if($request->filter == 'wallet' || $request->filter == 'rekening'){
+                $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('bagihasils.status', $request->filter)
+                    ->whereNull('bagihasils.deposit_id')
+                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('bagihasils.status', $request->filter)
+                    ->whereNull('bagihasils.deposit_id')
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->count();
                 $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                     ->where('bagihasils.is_deleted', 0)
                     ->where('bagihasils.status', $request->filter)
-                    ->where('bagihasils.deposit_id', null )
+                    ->whereNull('bagihasils.deposit_id')
                     ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->skip($start)
+                    ->take($rowperpage)
                     ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 'e.company_name', 
                         'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
                         'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
@@ -94,6 +131,24 @@ class DevidenController extends Controller
                         'bagihasils.channel')
                     ->get();
             }else{
+                $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('bagihasils.status', $request->filter)
+                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('bagihasils.status', $request->filter)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->count();
                 $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
@@ -101,6 +156,8 @@ class DevidenController extends Controller
                     ->where('bagihasils.status', $request->filter)
                     ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->skip($start)
+                    ->take($rowperpage)
                     ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 'e.company_name', 
                         'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
                         'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
@@ -110,12 +167,30 @@ class DevidenController extends Controller
                     ->get();
             }
         }else{
+            $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                ->where('bagihasils.is_deleted', 0)
+                ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                ->orderBy('bagihasils.updated_at', 'DESC')
+                ->select('count(*) as allcount')
+                ->count();
+            $totalRecordswithFilter = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                ->where('bagihasils.is_deleted', 0)
+                ->where('t.name', 'like', '%' .$searchValue . '%')
+                ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                ->orderBy('bagihasils.updated_at', 'DESC')
+                ->count();
             $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
                 ->join('users as u', 'u.id', '=', 't.user_id')
                 ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                 ->where('bagihasils.is_deleted', 0)
                 ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                 ->orderBy('bagihasils.updated_at', 'DESC')
+                ->skip($start)
+                ->take($rowperpage)
                 ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 'e.company_name', 
                     'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
                     'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
@@ -191,7 +266,15 @@ class DevidenController extends Controller
                 "detail" => $detail
             ]);
         }
-        return response()->json(["data" => $data]);
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data
+        );
+    
+        echo json_encode($response);
+        exit;
     }
 
     public function getEmitenByUuid(Request $request)
@@ -219,6 +302,7 @@ class DevidenController extends Controller
          ]);
 
          $date = $request->date.'-'.$request->month.'-'.$request->year;
+         $dividend_date = date('Y-m-d', strtotime($date));
          $dividend_date_time = tgl_indo(date('Y-m-d', strtotime($date))).' '.formatJamLengkap($date);
          $dividend_detail = [
             'emiten_uuid' => $request->emiten_uuid,
@@ -235,24 +319,69 @@ class DevidenController extends Controller
         $amount = (int)str_replace(".", "", $request->amount);
 
         // Belum selesai
-        $response = Http::withHeaders([
-            'Authorization' => config('global.TOKEN'),
-        ])->get(config('global.BASE_API_ADMIN_URL').'/dividend/generate', [
-            'uuid' => $request->emiten_uuid,
-            'total_dividend' => $amount
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get(config('global.BASE_API_ADMIN_URL').'dividend/generate', [
+            'headers' => [
+                'Authorization' => config('global.TOKEN')
+            ],
+            'form_params' => [
+                'uuid' => 'd5fdbe8b-d784-11e9-bec9-00163e014eba',
+                'total_dividend' => 55000000
+            ]
         ]);
+        
+        // $response = Http::withHeaders([
+        //     'Authorization' => config('global.TOKEN'),
+        // ])->get(config('global.BASE_API_ADMIN_URL').'/dividend/generate', [
+        //     'uuid' => $request->emiten_uuid,
+        //     'total_dividend' => $amount
+        // ]);
 
-        if($response->status() == 200){
-            $dividends = json_decode($response->body()->getContents(), TRUE);
+        // if($response->status() == 200){
+        //     $dividends = json_decode($response->body()->getContents(), TRUE);
+        // }
+        if ($response->getStatusCode() == 200) {
+            $dividends = json_decode($response->getBody()->getContents(), TRUE);
         }
-
         $dividend['dividend_detail'] = $dividend_detail;
+        $dividend['dividends'] = $dividends;
+        return response()->json([
+            "msg" => $response->getStatusCode(), 
+            "dividend" => $dividend
+        ]);
     }
 
-    public function getAdminHistoryDividend()
+    public function getAdminHistoryDividend(Request $request)
     {
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length");
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; 
+        $columnName = $columnName_arr[$columnIndex]['data'];
+        $columnSortOrder = $order_arr[0]['dir']; 
+        $searchValue = $search_arr['value'];
+
+        $totalRecords = HistoriDividen::join('emitens as e', 'e.id', '=', 'devidend.emiten_id')
+            ->where('devidend.is_deleted', 0)
+            ->select('count(*) as allcount')
+            ->count();
+
+        $totalRecordswithFilter = HistoriDividen::join('emitens as e', 'e.id', '=', 'devidend.emiten_id')
+            ->where('devidend.is_deleted', 0)
+            ->select('count(*) as allcount')
+            ->where('e.company_name', 'like', '%' .$searchValue . '%')
+            ->count();
+
         $dividen = HistoriDividen::join('emitens as e', 'e.id', '=', 'devidend.emiten_id')
             ->where('devidend.is_deleted', 0)
+            ->skip($start)
+            ->take($rowperpage)
             ->select('devidend.id', 'devidend.emiten_id', 'e.company_name', 'e.code_emiten', 'devidend.phase', 
                 'e.trademark', 'devidend.devidend', 'devidend.created_at', 'devidend.updated_at')
             ->get();
@@ -279,7 +408,15 @@ class DevidenController extends Controller
                 "aksi" => $action
             ]);
         }
-        return response()->json(["data" => $data]);
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data
+        );
+    
+        echo json_encode($response);
+        exit;
     }
 
 }

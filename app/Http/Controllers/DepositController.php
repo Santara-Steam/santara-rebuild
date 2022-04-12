@@ -33,15 +33,102 @@ class DepositController extends Controller
 
     public function fetchDataAdminDeposit(Request $request)
     {
-        $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
-            ->join('users as u', 'u.id', '=', 't.user_id')
-            ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
-            ->select('deposits.id', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
-                'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
-                'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
-                'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
-                'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
-            ->get();
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length");
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $filter = $request->get('filter');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; 
+        $columnName = $columnName_arr[$columnIndex]['data'];
+        $columnSortOrder = $order_arr[0]['dir']; 
+        $searchValue = $search_arr['value'];
+
+        if($request->filter != ""){
+            if($request->filter == "menuggupembayaran"){
+                $totalRecords = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->where('deposits.status', $request->filter)
+                    ->whereNull('deposits.confirmation_photo')  
+			        ->whereNull('deposits.bank_to')
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->where('deposits.status', $request->filter)
+                    ->whereNull('deposits.confirmation_photo')  
+			        ->whereNull('deposits.bank_to')
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->count();
+                $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->where('deposits.status', $request->filter)
+                    ->whereNull('deposits.confirmation_photo')  
+			        ->whereNull('deposits.bank_to')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->select('deposits.id', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
+                        'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
+                        'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
+                        'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
+                        'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                    ->get();
+            }else{
+                $totalRecords = $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->where('deposits.status', $request->filter)
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->where('deposits.status', $request->filter)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->count();
+                $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->where('deposits.status', $request->filter)
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->select('deposits.id', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
+                        'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
+                        'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
+                        'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
+                        'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                    ->get();
+            }
+        }else{
+            $totalRecords = $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                ->select('count(*) as allcount')
+                ->count();
+            $totalRecordswithFilter = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                ->where('t.name', 'like', '%' .$searchValue . '%')
+                ->count();
+            $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+                ->join('users as u', 'u.id', '=', 't.user_id')
+                ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                ->skip($start)
+                ->take($rowperpage)
+                ->select('deposits.id', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
+                    'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
+                    'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
+                    'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
+                    'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                ->get();
+        }
 
         $data = [];
         foreach($deposit as $row){
@@ -138,6 +225,14 @@ class DepositController extends Controller
                 "status" => $status
             ]);
         }            
-        return response()->json(["data" => $data]);
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data
+        );
+    
+        echo json_encode($response);
+        exit;
     }
 }

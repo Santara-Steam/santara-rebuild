@@ -74,6 +74,9 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/transactions', [App\Http\Controllers\TransactionsController::class, 'index']);
     Route::get('/admin/get_transactions', [App\Http\Controllers\TransactionsController::class, 'fetchData']);
     Route::get('/admin/transaction/detail/{uuid}/{status}', [App\Http\Controllers\TransactionsController::class, 'detail']);
+    Route::get('/admin/transaction/confirm/{uuid}', [App\Http\Controllers\TransactionsController::class, 'confirm']);
+    Route::get('/admin/transaction/cancel_confirm/{uuid}', [App\Http\Controllers\TransactionsController::class, 'cancelConfirm']);
+    Route::post('/admin/transaction/delete_transaction', [App\Http\Controllers\TransactionsController::class, 'deleteTransaction']);
     
     Route::get('/admin/withdraw', [App\Http\Controllers\WithdrawController::class, 'index']);
     Route::get('/admin/get_withdraw', [App\Http\Controllers\WithdrawController::class, 'fetchData']);
@@ -85,6 +88,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/get_dividen', [App\Http\Controllers\DevidenController::class, 'fetchData']);
     Route::get('/admin/detail_dividen', [App\Http\Controllers\DevidenController::class, 'detail']);
     Route::get('/admin/add_dividen', [App\Http\Controllers\DevidenController::class, 'create']);
+    Route::post('/admin/generate_dividend', [App\Http\Controllers\DevidenController::class, 'generateDividend']);
     Route::get('/admin/get_dividen_by_uuid', [App\Http\Controllers\DevidenController::class, 'getEmitenByUuid']);
     Route::get('/admin/get_history_dividend', [App\Http\Controllers\DevidenController::class, 'getAdminHistoryDividend']);
     

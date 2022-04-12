@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Markets;
+use App\Models\emiten;
+use App\Models\TransactionStatus;
+use App\Models\StatusHistori;
+use Illuminate\Support\Str;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,12 +58,44 @@ class TransactionsController extends Controller
 
     public function fetchData(Request $request)
     {
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length");
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $filter = $request->get('filter');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; 
+        $columnName = $columnName_arr[$columnIndex]['data'];
+        $columnSortOrder = $order_arr[0]['dir']; 
+        $searchValue = $search_arr['value'];
+
         if($request->filter != ""){
+            $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->where('tr.last_status', $request->filter)
+                ->where('tr.is_deleted', 0)
+                ->select('count(*) as allcount')
+                ->count();
+            $totalRecordswithFilter = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->where('tr.last_status', $request->filter)
+                ->where('tr.is_deleted', 0)
+                ->where('t.name', 'like', '%' .$searchValue . '%')
+                ->count();
+    
             $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
                 ->where('tr.is_deleted', 0)
                 ->where('tr.last_status', $request->filter)
+                ->skip($start)
+                ->take($rowperpage)
                 ->select('tr.id', 'tr.uuid', 't.name as trader_name', 'users.email as user_email', 
                     't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
@@ -67,10 +103,25 @@ class TransactionsController extends Controller
                     'tr.last_status as status')
                 ->get();
         }else{
+            $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->where('tr.is_deleted', 0)
+                ->select('count(*) as allcount')
+                ->count();
+            $totalRecordswithFilter = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->where('tr.is_deleted', 0)
+                ->where('t.name', 'like', '%' .$searchValue . '%')
+                ->count();
+    
             $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
                 ->where('tr.is_deleted', 0)
+                ->skip($start)
+                ->take($rowperpage)
                 ->select('tr.id', 'tr.uuid', 't.name as trader_name', 'users.email as user_email', 
                     't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
@@ -121,7 +172,16 @@ class TransactionsController extends Controller
                 "link" => '<a href="'.url('/admin/transaction/detail/'.$row->uuid.'/'.$status_transaction).'" class="'.$class_action.'">'.$text_action.'</a>'
             ]);
         }
-        return response()->json(["data" => $data]);
+
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data
+        );
+    
+        echo json_encode($response);
+        exit;
     }
 
     public function user_transaksi()
@@ -143,6 +203,118 @@ class TransactionsController extends Controller
                     'tr.last_status as status')
                 ->get();
         return view('user.transactions.index',compact('transactions'));
+    }
+
+    public function confirm($uuid)
+    {
+        try {
+			$client = new \GuzzleHttp\Client();
+
+			$headers = [
+				'Authorization' => config('global.TOKEN'),
+				'Accept'        => 'application/json',
+				'Content-type'  => 'application/json'
+			];
+
+			$response = $client->request('POST', config('global.BASE_API_ADMIN_URL').'transaction/confirm/'.$uuid, [
+				'headers' => $headers,
+			]);
+
+			if ($response->getStatusCode() == 200) {
+				echo json_encode(['msg' => 200]);
+			}
+		} catch (\Exception $exception) {
+			$statusCode = $exception->getResponse()->getStatusCode();
+            echo json_encode(['msg' => $statusCode]);
+		}
+    }
+
+    public function cancelConfirm($uuid)
+    {
+        try {
+			$client = new \GuzzleHttp\Client();
+
+			$headers = [
+				'Authorization' => config('global.TOKEN'),
+				'Accept'        => 'application/json',
+				'Content-type'  => 'application/json'
+			];
+
+			$response = $client->request('POST', config('global.BASE_API_ADMIN_URL').'transaction/unconfirm/'.$uuid, [
+				'headers' => $headers,
+			]);
+
+			if ($response->getStatusCode() == 200) {
+                return response()->json(['msg' => 200]);
+			}
+		} catch (\Exception $exception) {
+			$statusCode = $exception->getResponse()->getStatusCode();
+            return response()->json(['msg' => $statusCode]);
+		}
+    }
+
+    public function deleteTransaction(Request $request)
+    {
+        DB::transaction(function() use ($request) {
+            $emiten = Transaction::join('emitens as e', 'e.id', '=', 'transactions.emiten_id')
+                ->where('transactions.id', $request->id)
+                ->select('e.id as emiten_id', 'e.sold as sold', 'e.price as price', 'transactions.amount')
+                ->first();
+            if($emiten != null) {
+                $emiten = emiten::find($emiten->emiten_id);
+                $emiten->sold = $emiten->sold - ($emiten->amount / $emiten->price);
+                $emiten->save();
+
+                $transaction = Transaction::find($request->id);
+                $transaction->is_verified = 0;
+                $transaction->save();
+
+                $data_status = [
+                    'status' => 'created',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'is_deleted' => 0,
+                    'created_by' => NULL,
+                    'updated_by' => NULL
+                ];
+
+                $trStatus = TransactionStatus::create($data_status);
+                $data_status_id = $trStatus->id;
+
+                $data_status_histories = [
+                    'uuid' => Str::uuid(),
+                    'transaction_id' => $request->id,
+                    'status_id' => $data_status_id,
+                    'created_by' => NULL,
+                    'updated_at' => NULL,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'is_deleted' => 0
+                ];
+
+                $insertHistori = StatusHistori::create($data_status_histories);
+                if($insertHistori){
+                    
+                    $transaction = Transaction::find($request->id);
+                    if($transaction->is_verified != 0) {
+                        $emiten = emiten::find($transaction->emiten_id);
+                        $emiten->sold = $emiten->sold - ($transaction->amount / $transaction->price);
+                        $emiten->save();
+                    }
+
+                    $deleted = Transaction::where('id', $request->id)->update([
+                        'is_deleted' => 1
+                    ]);
+                    if($deleted){
+                        echo json_encode(['msg' => 200]);
+                    }
+
+                }else{
+                    echo json_encode(['msg' => 500]);
+                }
+
+            }
+        });
     }
     
     
