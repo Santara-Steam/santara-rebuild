@@ -9,5 +9,7 @@ class saldo extends Model
 {
     use HasFactory;
     protected $table = 'balance_utama';
+    protected $guarded = ['id']; 
+
 
 }

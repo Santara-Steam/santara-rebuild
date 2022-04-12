@@ -133,7 +133,11 @@
                                 <a class="dropdown-item" href="{{url('/edit_profile')}}/{{Auth::user()->id}}"><i
                                         class="ft-user"></i> Edit Profile</a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item"
-                                    href="login-with-bg-image.html"><i class="ft-power red"></i> Logout</a>
+                                href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i class="ft-power red"></i> Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                             </div>
                         </li>
                     </ul>

@@ -20,7 +20,7 @@
                             use Illuminate\Support\Facades\DB;
                             $uid = Auth::user()->id;
                             $asset =  User::join('traders as t', 't.user_id', '=', 'users.id')
-                            ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                            ->leftjoin('transactions as tr', 'tr.trader_id', '=', 't.id')
                             ->where('users.id', $uid)
                             ->where('tr.is_deleted', 0)
                             ->where('tr.last_status', 'VERIFIED')
@@ -28,11 +28,11 @@
                             ->groupBy('users.id')
                             ->first();
                             ?>
-                            <td>Rp. {{number_format($asset->amo,0,',','.')}}</td>
+                            <td>Rp. {{number_format($asset,0,',','.')}}</td>
                         </tr>
                                                             <tr>
                                 <td>Total Aset</td>
-                                <td>Rp. {{number_format(Auth::user()->trader->saldo->balance+$asset->amo, 0, ',', '.')}}</td>
+                                <td>Rp. {{number_format(Auth::user()->trader->saldo->balance+$asset, 0, ',', '.')}}</td>
                             </tr>
                         
                     </table>
