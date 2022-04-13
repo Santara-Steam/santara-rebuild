@@ -6,7 +6,7 @@ use App\Models\riwayat_user;
 use App\Models\trader;
 use App\Models\User;
 use DB;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -64,13 +64,13 @@ class TraderController extends Controller
     }
 
     
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         // 'name' => ['required', 'string', 'max:255'],
-    //         'pin' => ['required', 'string', 'min:8', 'confirmed'],
-    //     ]);
-    // }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            // 'name' => ['required', 'string', 'max:255'],
+            'pin' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
     public function pinv(){
         return view('user.pin');
     }
@@ -86,7 +86,7 @@ class TraderController extends Controller
         }else{
 
             $user = User::where('id',$request->userid)->first();
-            $user->pin = $request->pin;
+            $user->pin = Hash::make($request->pin);
             $user->save();
             $notif = array(
                 'message' => 'Pin Berhasil Di buat',
