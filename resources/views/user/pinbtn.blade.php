@@ -1,0 +1,1 @@
+<a href="{{url('/pin')}}">Buat pin</a>

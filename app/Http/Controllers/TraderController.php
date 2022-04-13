@@ -9,6 +9,8 @@ use DB;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class TraderController extends Controller
 {
@@ -59,5 +61,38 @@ class TraderController extends Controller
     public function video(){
         
         return view('user.video.index');
+    }
+
+    
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         // 'name' => ['required', 'string', 'max:255'],
+    //         'pin' => ['required', 'string', 'min:8', 'confirmed'],
+    //     ]);
+    // }
+    public function pinv(){
+        return view('user.pin');
+    }
+
+    public function pin(request $request){
+        if ($request->pin != $request->cpin) {
+            # code...
+            $notif = array(
+                'message' => 'Pin Konfirmasi Tidak Sama',
+                'alert-type' => 'fail'
+            );
+            return redirect()->back()->with($notif);
+        }else{
+
+            $user = User::where('id',$request->userid)->first();
+            $user->pin = $request->pin;
+            $user->save();
+            $notif = array(
+                'message' => 'Pin Berhasil Di buat',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notif);
+        }
     }
 }

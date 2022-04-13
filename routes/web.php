@@ -30,7 +30,7 @@ Auth::routes(['verify' => true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
-Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () {
+Route::group(['middleware' => ['auth','pin', 'checkRole:2', "verified"]], function () {
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
     Route::get('/user/emiten', [App\Http\Controllers\EmitenController::class, 'index_user']);
     Route::get('/user/bisnis_anda', [App\Http\Controllers\EmitenController::class, 'user_emiten']);
@@ -47,12 +47,17 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () 
     Route::get('/user/portfolio',[App\Http\Controllers\TraderController::class, 'portofolio']);
     Route::get('/user/riwayat_aktifitas',[App\Http\Controllers\TraderController::class, 'history']);
     Route::get('/user/video_tutorial',[App\Http\Controllers\TraderController::class, 'video']);
-
+    
     Route::get('/user/transaksi', [App\Http\Controllers\TransactionsController::class, 'user_transaksi']);
     Route::get('/user/deposit', [App\Http\Controllers\DepositController::class, 'user_depo']);
     Route::get('/user/penarikan', [App\Http\Controllers\PenarikanController::class, 'user_tarik']);
     
+    
 });
+
+Route::get('pin',[App\Http\Controllers\TraderController::class, 'pinv'])->name('pinv');
+Route::post('pin_post',[App\Http\Controllers\TraderController::class, 'pin']);
+
 Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);
 Route::post('/upload_bukti_user/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti_user']);
 Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () {
