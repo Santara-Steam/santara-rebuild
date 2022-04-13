@@ -64,7 +64,7 @@
             </li>
             <li class=" nav-item {{ 'user/bisnis_anda' == request()->path() ? 'active' : '' }}"><a href="{{url('user/bisnis_anda')}}"><i class="la la-briefcase"></i><span class="menu-title" data-i18n="eCommerce">Bisnis Anda</span></a>
             </li>
-            <li class=" nav-item "><a href="#"><i class="la la-play-circle"></i><span class="menu-title" data-i18n="eCommerce">Video Tutorial</span></a>
+            <li class=" nav-item {{ 'user/video_tutorial' == request()->path() ? 'active' : '' }}"><a href="{{url('user/video_tutorial')}}"><i class="la la-play-circle"></i><span class="menu-title" data-i18n="eCommerce">Video Tutorial</span></a>
             </li>
             <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>
             </li>

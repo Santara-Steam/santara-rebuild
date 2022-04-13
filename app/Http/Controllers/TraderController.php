@@ -55,4 +55,9 @@ class TraderController extends Controller
         // dd($jour);
         return view('user.riwayat_user.index',compact('jour'));
     }
+
+    public function video(){
+        
+        return view('user.video.index');
+    }
 }

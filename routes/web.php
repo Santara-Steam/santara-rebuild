@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified"]], function () 
     
     Route::get('/user/portfolio',[App\Http\Controllers\TraderController::class, 'portofolio']);
     Route::get('/user/riwayat_aktifitas',[App\Http\Controllers\TraderController::class, 'history']);
+    Route::get('/user/video_tutorial',[App\Http\Controllers\TraderController::class, 'video']);
 
     Route::get('/user/transaksi', [App\Http\Controllers\TransactionsController::class, 'user_transaksi']);
     Route::get('/user/deposit', [App\Http\Controllers\DepositController::class, 'user_depo']);
