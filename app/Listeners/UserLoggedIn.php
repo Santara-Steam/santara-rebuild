@@ -33,9 +33,9 @@ class UserLoggedIn
         try {
             $client = new Client();
   
-            $response = $client->request('POST', 'https://tulabi.com:3801/v3.7.1/auth/login/', [
+            $response = $client->request('POST', env("BASE_API_CLIENT_URL").'/v3.7.1/auth/login/', [
               'headers' => [
-                'Origin'        => 'https://santara.co.id'
+                'Origin'        => env("BASE_API_FILE")
               ],
               'form_params' => [
                 'email' => Auth::user()->email,

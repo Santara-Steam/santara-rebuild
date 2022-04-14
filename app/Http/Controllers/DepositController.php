@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Deposit;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
 
 class DepositController extends Controller
 {
@@ -237,5 +238,35 @@ class DepositController extends Controller
     
         echo json_encode($response);
         exit;
+    }
+
+    public function user_cdepo(Request $request){
+        // try {
+            $client = new Client();
+            $response = $client->request('POST', env("BASE_API_CLIENT_URL") . '/v3.7.1/deposit/idr', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+                    'Origin'        => env("BASE_API_FILE")
+                ],
+                'form_params' => [
+                    'amount'         => $request->amount,
+                    // 'bank_from'      => strip_tags('BNI'),
+                    // 'account_number' => strip_tags(),
+                    // 'bank'           => strip_tags($data['bank']),
+                    'channel'        => "ONEPAY",
+                    // 'channel'        => $data['channel'],
+                    // 'fee'            => $fee,
+                    'pin'            => '111111',
+                    'finger'         => true
+                ]
+            ]);
+
+
+            echo json_encode(json_decode($response->getBody()->getContents()));
+            return;
+        // } catch (\Exception $exception) {
+        //     echo json_encode(errorcatch($exception, 'deposit'));
+        //     return;
+        // }
     }
 }
