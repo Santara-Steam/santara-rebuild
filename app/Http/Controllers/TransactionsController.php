@@ -211,7 +211,7 @@ class TransactionsController extends Controller
 			$client = new \GuzzleHttp\Client();
 
 			$headers = [
-				'Authorization' => config('global.TOKEN'),
+				'Authorization' => 'Bearer '.config('global.TOKEN'),
 				'Accept'        => 'application/json',
 				'Content-type'  => 'application/json'
 			];
@@ -235,7 +235,7 @@ class TransactionsController extends Controller
 			$client = new \GuzzleHttp\Client();
 
 			$headers = [
-				'Authorization' => config('global.TOKEN'),
+				'Authorization' => 'Bearer '.config('global.TOKEN'),
 				'Accept'        => 'application/json',
 				'Content-type'  => 'application/json'
 			];

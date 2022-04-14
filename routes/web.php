@@ -99,6 +99,11 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/get_history_dividend', [App\Http\Controllers\DevidenController::class, 'getAdminHistoryDividend']);
     
     Route::get('/admin/wallet', [App\Http\Controllers\WalletController::class, 'index']);
+
+    Route::get('/admin/laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'index']);
+    Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'getLaporanKeuangan']);
+    Route::post('/admin/konfirmasi-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'confirmLaporan']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
