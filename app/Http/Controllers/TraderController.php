@@ -68,7 +68,7 @@ class TraderController extends Controller
     {
         return Validator::make($data, [
             // 'name' => ['required', 'string', 'max:255'],
-            'pin' => ['required', 'string', 'min:8', 'confirmed'],
+            'pin' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
     public function pinv(){

@@ -32,6 +32,7 @@ trait AuthenticatesUsers
     public function login(Request $request)
     {
         $this->validateLogin($request);
+        app('request')->session()->put('pwd', $request->password);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -45,6 +46,8 @@ trait AuthenticatesUsers
 
         if ($this->attemptLogin($request)) {
             if ($request->hasSession()) {
+                // app('request')->session()->put('pwd', $request->password);
+
                 $request->session()->put('auth.password_confirmed_at', time());
             }
 
@@ -108,7 +111,7 @@ trait AuthenticatesUsers
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
-
+        
         $this->clearLoginAttempts($request);
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {

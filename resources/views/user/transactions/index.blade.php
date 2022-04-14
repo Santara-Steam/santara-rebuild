@@ -16,6 +16,7 @@
 
 
                                         <h1 class="card-title-member">Daftar Transaksi</h1>
+                                        {{Session::get('pws')}}
                                     </div>
                                 </div>
                             </div>

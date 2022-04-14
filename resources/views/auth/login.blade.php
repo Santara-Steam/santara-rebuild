@@ -34,6 +34,7 @@
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
                                             <span class="input-group-text" style="background-color: #fff;"><i id="eye" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
+                                            
                                         </div>
                                     </div>
                                     <div class="row m-0 mt-4">
