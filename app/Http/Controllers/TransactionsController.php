@@ -101,6 +101,7 @@ class TransactionsController extends Controller
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
                     'tr.last_status as status')
+                ->orderBy('tr.created_at', 'DESC')
                 ->get();
         }else{
             $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
@@ -127,6 +128,7 @@ class TransactionsController extends Controller
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
                     'tr.last_status as status')
+                ->orderBy('tr.created_at', 'DESC')
                 ->get();
         }
        

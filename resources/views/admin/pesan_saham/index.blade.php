@@ -28,11 +28,11 @@
                                                     <th>#</th>
                                                     <th>Order ID</th>
                                                     <th>Trader</th>
-                                                    <th>Emiten</th>
+                                                    <th width="200">Emiten</th>
                                                     <th>Lembar Saham</th>
                                                     <th>Total</th>
-                                                    <th>Status</th>
-                                                    <th width="18%">Action</th>
+                                                    <th width="10">Status</th>
+                                                    <th width="20">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

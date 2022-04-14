@@ -129,6 +129,7 @@ class DevidenController extends Controller
                         'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
                         'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
                         'bagihasils.channel')
+                    ->orderBy('bagihasils.created_at', 'DESC')
                     ->get();
             }else{
                 $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
@@ -164,6 +165,7 @@ class DevidenController extends Controller
                         'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
                         'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
                         'bagihasils.channel')
+                    ->orderBy('bagihasils.created_at', 'DESC')
                     ->get();
             }
         }else{
@@ -197,6 +199,7 @@ class DevidenController extends Controller
                     'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
                     'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
                     'bagihasils.channel')
+                ->orderBy('bagihasils.created_at', 'DESC')
                 ->get();
         }
         

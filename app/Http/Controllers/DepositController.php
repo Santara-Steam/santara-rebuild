@@ -79,6 +79,7 @@ class DepositController extends Controller
                         'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                         'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
                         'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                    ->orderBy('deposits.created_at', 'DESC')
                     ->get();
             }else{
                 $totalRecords = $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
@@ -104,6 +105,7 @@ class DepositController extends Controller
                         'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                         'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
                         'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                    ->orderBy('deposits.created_at', 'DESC')
                     ->get();
             }
         }else{
@@ -127,6 +129,7 @@ class DepositController extends Controller
                     'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                     'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
                     'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                ->orderBy('deposits.created_at', 'DESC')
                 ->get();
         }
 
