@@ -44,7 +44,9 @@
                                                                 ',', '.')}}</span>
                                                         </div>
                                                     </div>
-                                                    <form action="">
+                                                    <form class="form" action="{{url('/user/create_deposit')}}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
                                                         <div class="form-group">
                                                             <label for="lastName1">Jumlah Deposit</label>
                                                             <input type="text"
@@ -116,7 +118,7 @@
                                                             </select>
                                                             <span id="bank_error" class="text-danger"></span>
                                                         </div>
-                                                        <button
+                                                        <button type="submit"
                                                             class="btn btn-santara-red btn-block 
                                                             <?= (Auth::user()->is_verified == 1) ? 'submit-form-deposit' : 'disabled' ?>"
                                                             <?=(Auth::user()->is_verified == 1) ?

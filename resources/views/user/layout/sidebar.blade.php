@@ -27,12 +27,22 @@
                             ->select(db::raw('SUM(tr.amount) as amo'))
                             ->groupBy('users.id')
                             ->first();
+
+                            // dd($asset)
                             ?>
-                            <td>Rp. {{number_format($asset,0,',','.')}}</td>
+                            @if ($asset)
+                            <td>Rp. {{number_format($asset->amo,0,',','.')}}</td>
+                            @else
+                            <td>Rp. 0</td>
+                            @endif
                         </tr>
                                                             <tr>
                                 <td>Total Aset</td>
-                                <td>Rp. {{number_format(Auth::user()->trader->saldo->balance+$asset, 0, ',', '.')}}</td>
+                                @if ($asset)
+                                <td>Rp. {{number_format(Auth::user()->trader->saldo->balance+$asset->amo, 0, ',', '.')}}</td>
+                                @else
+                                <td>Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</td>
+                                @endif
                             </tr>
                         
                     </table>
