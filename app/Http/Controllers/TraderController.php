@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\notification;
 use App\Models\riwayat_user;
 use App\Models\trader;
 use App\Models\User;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 
 class TraderController extends Controller
@@ -60,9 +63,67 @@ class TraderController extends Controller
 
     public function video(){
         
-        return view('user.video.index');
+    
+        if (session('search_query')) {
+            $videoLists = $this->_videoLists(session('search_query'));
+        } else {
+            $videoLists = $this->_videoLists(session(['search_query' => '']));
+        }
+        return view('user.video.index', compact('videoLists'));
+        // dd($videoLists);
+        // return view('index', compact('videoLists'));
     }
 
+    public function results(Request $request)
+    {
+        session(['search_query' => $request->search_query]);
+        $videoLists = $this->_videoLists($request->search_query);
+        return view('user.video.index', compact('videoLists'));
+    }
+
+    public function watch($id)
+    {
+        $singleVideo = $this->_singleVideo($id);
+        if (session('search_query')) {
+            $videoLists = $this->_videoLists(session('search_query'));
+        } else {
+            $videoLists = $this->_videoLists(session(['search_query' => '']));
+        }
+        return view('user.video.watch', compact('singleVideo', 'videoLists'));
+    }
+
+    // We will get search result here
+    protected function _videoLists($keywords)
+    {
+        $part = 'snippet';
+        $country = 'ID';
+        $channelId = 'UCUW2hstBsaIbZFIi3ea4DTQ';
+        $apiKey = config('services.youtube.api_key');
+        $maxResults = 12;
+        $youTubeEndPoint = config('services.youtube.search_endpoint');
+        $type = 'video'; // You can select any one or all, we are getting only videos
+
+        $url = "$youTubeEndPoint?part=$part&channelId=$channelId&maxResults=$maxResults&regionCode=$country&type=$type&key=$apiKey&q=$keywords";
+        $response = Http::get($url);
+        $results = json_decode($response);
+
+        // We will create a json file to see our response
+        File::put(storage_path() . '/app/public/results.json', $response->body());
+        return $results;
+    }
+
+    protected function _singleVideo($id)
+    {
+        $apiKey = config('services.youtube.api_key');
+        $part = 'snippet';
+        $url = "https://www.googleapis.com/youtube/v3/videos?part=$part&id=$id&key=$apiKey";
+        $response = Http::get($url);
+        $results = json_decode($response);
+
+        // Will create a json file to see our single video details
+        File::put(storage_path() . '/app/public/single.json', $response->body());
+        return $results;
+    }
     
     protected function validator(array $data)
     {
@@ -94,5 +155,12 @@ class TraderController extends Controller
             );
             return redirect()->back()->with($notif);
         }
+    }
+
+    public function read_message(){
+
+        $notif = notification::where('user_id',Auth::user()->id)->update(['is_deleted' => 1]);
+
+        return redirect()->back();
     }
 }
