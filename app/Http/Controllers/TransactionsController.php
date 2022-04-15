@@ -213,12 +213,12 @@ class TransactionsController extends Controller
 			$client = new \GuzzleHttp\Client();
 
 			$headers = [
-				'Authorization' => 'Bearer '.config('global.TOKEN'),
+				'Authorization' => 'Bearer '.app('request')->session()->get('token'),
 				'Accept'        => 'application/json',
 				'Content-type'  => 'application/json'
 			];
 
-			$response = $client->request('POST', config('global.BASE_API_ADMIN_URL').'transaction/confirm/'.$uuid, [
+			$response = $client->request('POST', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'transaction/confirm/'.$uuid, [
 				'headers' => $headers,
 			]);
 
@@ -237,12 +237,12 @@ class TransactionsController extends Controller
 			$client = new \GuzzleHttp\Client();
 
 			$headers = [
-				'Authorization' => 'Bearer '.config('global.TOKEN'),
+				'Authorization' => 'Bearer '.app('request')->session()->get('token'),
 				'Accept'        => 'application/json',
 				'Content-type'  => 'application/json'
 			];
 
-			$response = $client->request('POST', config('global.BASE_API_ADMIN_URL').'transaction/unconfirm/'.$uuid, [
+			$response = $client->request('POST', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'transaction/unconfirm/'.$uuid, [
 				'headers' => $headers,
 			]);
 

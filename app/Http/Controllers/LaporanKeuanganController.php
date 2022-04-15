@@ -41,7 +41,7 @@ class LaporanKeuanganController extends Controller
 				}
 
 				$version = '<a href="' . $laporan['finance_report'] . '" target="_blank" title="unduh">Version ' . $laporan['version'] . '</a>';
-				$file = '<a href="' . $laporan['download'] . '?token=' . config('global.TOKEN') . '" title="unduh">Unduh</a>';
+				$file = '<a href="' . $laporan['download'] . '?token=' . app('request')->session()->get('token') . '" title="unduh">Unduh</a>';
 
 				if ($laporan['status'] == 'rejected') {
 					$status = '<a href="#" title="deskripsi" onclick="showDesc(\'' . $laporan['last_status_desc'] . '\')">Ditolak</a>';
@@ -90,11 +90,11 @@ class LaporanKeuanganController extends Controller
         try {
 			$client = new \GuzzleHttp\Client();
 			$headers = [
-				'Authorization' => 'Bearer '.config('global.TOKEN'),
+				'Authorization' => 'Bearer '.app('request')->session()->get('token'),
 				'Accept'        => 'application/json',
 				'Content-type'  => 'application/json'
 			];
-			$response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'finance-report/'.$url, [
+			$response = $client->request('GET', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'finance-report/'.$url, [
 				'headers' => $headers,
 			]);
 
@@ -128,9 +128,9 @@ class LaporanKeuanganController extends Controller
 
 		try {
 			$client = new \GuzzleHttp\Client();
-			$response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').'finance-report?id='.$id, [
+			$response = $client->request('PUT', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'finance-report?id='.$id, [
 				'headers' => [
-					'Authorization' => 'Bearer '.config('global.TOKEN')
+					'Authorization' => 'Bearer '.app('request')->session()->get('token')
 				],
 				'form_params' => $data
 			]);

@@ -678,4 +678,14 @@ class EmitenController extends Controller
         return view('user.emiten.bisnis',compact('emiten'));
 
     }
+
+    public function fetchEmiten(Request $request)
+    {
+        $emiten = emiten::where('is_deleted', 0)
+            ->where('company_name', 'like', '%'.$request->search.'%')
+            ->select('id', 'company_name')
+            ->limit(5)
+            ->get();
+        return response()->json($emiten);
+    }
 }

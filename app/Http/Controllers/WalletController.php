@@ -21,7 +21,7 @@ class WalletController extends Controller
         $client = new \GuzzleHttp\Client();
 
         $headers = [
-            'Authorization' => 'Bearer '.config('global.TOKEN'),        
+            'Authorization' => 'Bearer '.app('request')->session()->get('token'),        
             'Accept'        => 'application/json',
             'Content-type'  => 'application/json'
         ];
@@ -30,11 +30,11 @@ class WalletController extends Controller
             try {
                 $client = new \GuzzleHttp\Client();
                 $headers = [
-                    'Authorization' => 'Bearer '.config('global.TOKEN'),        
+                    'Authorization' => 'Bearer '.app('request')->session()->get('token'),        
                     'Accept'        => 'application/json',
                     'Content-type'  => 'application/json'
                 ];          
-                $responseToken = $client->request('GET', config('global.BASE_API_ADMIN_URL').'tokens/', [
+                $responseToken = $client->request('GET', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'tokens/', [
                     'headers' => $headers,
                 ]);
                 if ( $responseToken->getStatusCode() == 200 ) {
@@ -49,7 +49,7 @@ class WalletController extends Controller
         if($type == 'saldo'):
             $saldo = 0;
             try {        
-                $responseSaldo = $client->request('GET', config('global.BASE_API_ADMIN_URL').'traders/idr', [
+                $responseSaldo = $client->request('GET', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'traders/idr', [
                     'headers' => $headers,
                 ]);
 
@@ -67,7 +67,7 @@ class WalletController extends Controller
         if($type == 'emiten'):
             $token = 0;
             try {        
-                $responseToken = $client->request('GET', config('global.BASE_API_ADMIN_URL').'tokens/', [
+                $responseToken = $client->request('GET', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'tokens/', [
                     'headers' => $headers,
                 ]);
 

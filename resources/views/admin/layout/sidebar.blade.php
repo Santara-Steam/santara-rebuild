@@ -23,6 +23,10 @@
             </li>
             <li class=" nav-item {{ 'admin/wallet' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/wallet')}}"><i class="la la-tablet"></i><span class="menu-title" data-i18n="eCommerce">Wallet</span></a>
             </li>
+            <li class="navigation-header"><span data-i18n="Layouts">CRM</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item {{ 'admin/crm/target-user' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/crm/target-user')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Target User</span></a>
+            </li>
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li> --}}
             

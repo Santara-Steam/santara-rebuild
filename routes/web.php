@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/emiten/update/{id}',[App\Http\Controllers\EmitenController::class, 'update']);
     Route::post('/emiten/delete/{id}',[App\Http\Controllers\EmitenController::class, 'delete']);
     Route::post('/emiten/update_status/{id}',[App\Http\Controllers\EmitenController::class, 'emiten_status']);
+    Route::get('/emiten/fetch-emiten',[App\Http\Controllers\EmitenController::class, 'fetchEmiten']);
     
     Route::get('/admin/pesan_saham', [App\Http\Controllers\BookSahamController::class, 'index']);
     Route::get('/admin/pesan_saham/add', [App\Http\Controllers\BookSahamController::class, 'create']);
@@ -104,6 +105,19 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'index']);
     Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'getLaporanKeuangan']);
     Route::post('/admin/konfirmasi-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'confirmLaporan']);
+    
+    Route::get('/admin/crm/target-user', [App\Http\Controllers\CRMController::class, 'viewTargetUser']);
+    Route::post('/admin/crm/get-target-user', [App\Http\Controllers\CRMController::class, 'getListUserTarget']);
+    Route::get('/admin/crm/add-broadcasting/{id}', [App\Http\Controllers\CRMController::class, 'addBroadcasting']);
+    Route::get('/admin/crm/edit-target-user/{id}', [App\Http\Controllers\CRMController::class, 'editTargetUser']);
+    Route::get('/admin/crm/add-target-user', [App\Http\Controllers\CRMController::class, 'addTargetUser']);
+    Route::post('/admin/crm/get-version', [App\Http\Controllers\CRMController::class, 'getVersion']);
+    Route::post('/admin/crm/store-target', [App\Http\Controllers\CRMController::class, 'saveTarget']);
+    Route::post('/admin/crm/update-target', [App\Http\Controllers\CRMController::class, 'updateTarget']);
+    Route::post('/admin/crm/delete-target/{id}', [App\Http\Controllers\CRMController::class, 'deleteTarget']);
+    
+    Route::get('/admin/get-provinsi', [App\Http\Controllers\AddressController::class, 'getProvince']);
+    Route::get('/admin/get-regency', [App\Http\Controllers\AddressController::class, 'getRegency']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
