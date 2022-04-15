@@ -50,6 +50,9 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/admin') }}/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public') }}/assets/css/wizard.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public') }}/assets/css/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public') }}/assets/css/fileinput.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <style>
@@ -61,6 +64,7 @@
 
     <!-- END: Custom CSS-->
     @yield('style')
+    <script src="{{ asset('public/admin') }}/app-assets/vendors/js/vendors.min.js"></script>
 </head>
 <!-- END: Head-->
 
@@ -102,7 +106,7 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="{{ asset('public/admin') }}/app-assets/vendors/js/vendors.min.js"></script>
+    
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->

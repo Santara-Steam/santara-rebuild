@@ -11,20 +11,26 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2><strong>Target User Tersedia</strong></h2>
+                                    <h2><strong>Broadcast Notification</strong></h2>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
-                                            <li><a href="{{url('admin/crm/add-target-user')}}" class="btn btn-primary">Tambah
-                                                    Target User</a></li>
+                                            <li><a href="{{ url('admin/crm/broadcasting/add') }}"
+                                                    class="btn btn-primary">Tambah</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table dataTable-table" id="tableTagetUser" style="width: 100%">
-                                            <thead style="display: none;">
+                                        <table class="table dataTable-table" id="tableBroadcasting" style="width: 100%">
+                                            <thead>
                                                 <tr>
-                                                    <th class="border-top-0">Target User</th>
+                                                    <th>No</th>
+                                                    <th>Nama</th>
+                                                    <th>Tipe</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Jam</th>
+                                                    <th>Status</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -58,31 +64,33 @@
                 };
             };
 
-            var table = $("#tableTagetUser").DataTable({
-                buttons: [
-                    'print', 'csv'
-                ],
+            var table = $("#tableBroadcasting").DataTable({
                 initComplete: function() {
                     var api = this.api();
-                    $('#mytable_filter input')
-                        .off('.DT')
-                        .on('keyup.DT', function(e) {
-                            if (e.keyCode == 13) {
-                                api.search(this.value).draw();
-                            }
-                        });
+                    var textBox = $('#datatable_filter label input');
+                    textBox.unbind();
+                    textBox.bind('keyup input', function(e) {
+                        if (e.keyCode == 8 && !textBox.val() || e.keyCode == 46 && !textBox
+                            .val()) {
+                            // do nothing ¯\_(ツ)_/¯
+                        } else if (e.keyCode == 13 || !textBox.val()) {
+                            api.search(this.value).draw();
+                        }
+                    });
                 },
                 search: {
                     "caseInsensitive": false
                 },
+                ordering: false,
                 scrollX: true,
+                oLanguage: {
+                    sProcessing: '<div id="tableloading" class="tableloading"></div>',
+                    sZeroRecords: 'Data tidak tersedia'
+                },
                 processing: true,
                 serverSide: true,
-                bLengthChange: false,
-                bFilter: false,
-                bInfo: false,
                 ajax: {
-                    "url": "{{ url('admin/crm/get-target-user') }}",
+                    "url": "{{ url('admin/crm/get-broadcasting') }}",
                     "type": "POST",
                     "data": function(data) {
                         data.filter = $('#filter').val();
@@ -93,6 +101,10 @@
                 ],
                 rowCallback: function(row, data, iDisplayIndex) {
                     var info = this.fnPagingInfo();
+                    var page = info.iPage;
+                    var length = info.iLength;
+                    var index = page * length + (iDisplayIndex + 1);
+                    $('td:eq(0)', row).html(index);
                 }
             });
 
@@ -100,56 +112,9 @@
                 table.draw();
             });
         });
-
-        function sendTarget(target) {
-            console.log(target);
-        }
-
-        $(document).on('click', '.delete-target', function() {
-            var id = $(this).val();
-
-            Swal.fire({
-                title: 'Hapus data target',
-                html: 'Yakin akan menghapus data target ?',
-                type: 'info',
-                showCancelButton: true,
-            }).then((result) => {
-                if (result.value) {
-                    $("#loader").show();
-                    $.ajax({
-                        url: "{{ url('admin/crm/delete-target') }}" + '/' + id,
-                        type: 'POST',
-                        timeout: 20000, // sets timeout to 20 seconds
-                        cache: false,
-                        success: function(data) {
-                            $("#loader").hide();
-                            data = JSON.parse(data);
-                            if (data.msg == 200) {
-                                Swal.fire(
-                                    'Berhasil',
-                                    'Data target berhasil dihapus',
-                                    'success'
-                                ).then((result) => {
-                                    location.reload();
-                                });
-                            } else {
-                                Swal.fire("Error!", data.msg, "error");
-                            }
-
-                        },
-                        error: function(msg) {
-                            $("#loader").hide();
-                            Swal.fire("Error!", "Data gagal dihapus", "error").then((
-                            result) => {
-                                location.reload();
-                            });
-                        }
-                    });
-                }
-            })
-        });
     </script>
 @endsection
+
 @section('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="

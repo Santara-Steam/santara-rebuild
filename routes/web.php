@@ -110,11 +110,19 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/crm/get-target-user', [App\Http\Controllers\CRMController::class, 'getListUserTarget']);
     Route::get('/admin/crm/add-broadcasting/{id}', [App\Http\Controllers\CRMController::class, 'addBroadcasting']);
     Route::get('/admin/crm/edit-target-user/{id}', [App\Http\Controllers\CRMController::class, 'editTargetUser']);
+    Route::get('/admin/crm/target-user-tersedia', [App\Http\Controllers\CRMController::class, 'viewTargetUserTersedia']);
+    Route::post('/admin/crm/get-target-user-tersedia', [App\Http\Controllers\CRMController::class, 'getListUserTargetTersedia']);
     Route::get('/admin/crm/add-target-user', [App\Http\Controllers\CRMController::class, 'addTargetUser']);
     Route::post('/admin/crm/get-version', [App\Http\Controllers\CRMController::class, 'getVersion']);
     Route::post('/admin/crm/store-target', [App\Http\Controllers\CRMController::class, 'saveTarget']);
     Route::post('/admin/crm/update-target', [App\Http\Controllers\CRMController::class, 'updateTarget']);
     Route::post('/admin/crm/delete-target/{id}', [App\Http\Controllers\CRMController::class, 'deleteTarget']);
+    Route::get('/admin/crm/broadcasting', [App\Http\Controllers\CRMController::class, 'viewListBroadcasting']);
+    Route::post('/admin/crm/get-broadcasting', [App\Http\Controllers\CRMController::class, 'getBroadcasting']);
+    Route::get('/admin/crm/broadcasting/add', [App\Http\Controllers\CRMController::class, 'viewAddBroadcastiong']);
+    Route::post('/admin/crm/save-konten', [App\Http\Controllers\CRMController::class, 'saveKonten']);
+    Route::post('/admin/crm/save-publish', [App\Http\Controllers\CRMController::class, 'savePublish']);
+    Route::get('/admin/crm/get-category', [App\Http\Controllers\CRMController::class, 'getCategories']);
     
     Route::get('/admin/get-provinsi', [App\Http\Controllers\AddressController::class, 'getProvince']);
     Route::get('/admin/get-regency', [App\Http\Controllers\AddressController::class, 'getRegency']);

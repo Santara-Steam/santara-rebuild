@@ -12,12 +12,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h2><strong>Target User Tersedia</strong></h2>
-                                    <div class="heading-elements">
-                                        <ul class="list-inline mb-0">
-                                            <li><a href="{{url('admin/crm/add-target-user')}}" class="btn btn-primary">Tambah
-                                                    Target User</a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -82,7 +76,7 @@
                 bFilter: false,
                 bInfo: false,
                 ajax: {
-                    "url": "{{ url('admin/crm/get-target-user') }}",
+                    "url": "{{ url('admin/crm/get-target-user-tersedia') }}",
                     "type": "POST",
                     "data": function(data) {
                         data.filter = $('#filter').val();

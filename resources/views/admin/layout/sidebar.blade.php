@@ -27,6 +27,8 @@
             </li>
             <li class=" nav-item {{ 'admin/crm/target-user' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/crm/target-user')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Target User</span></a>
             </li>
+            <li class=" nav-item {{ 'admin/crm/broadcasting' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/crm/broadcasting')}}"><i class="la la-bell"></i><span class="menu-title" data-i18n="eCommerce">Broadcast Notification</span></a>
+            </li>
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li> --}}
             
