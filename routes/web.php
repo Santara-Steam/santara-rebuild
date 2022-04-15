@@ -103,7 +103,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/wallet', [App\Http\Controllers\WalletController::class, 'index']);
 
     Route::get('/admin/laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'index']);
-    Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'getLaporanKeuangan']);
+    Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporangKeuanganController::class, 'getLaporanKeuangan']);
     Route::post('/admin/konfirmasi-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'confirmLaporan']);
     
     Route::get('/admin/crm/target-user', [App\Http\Controllers\CRMController::class, 'viewTargetUser']);
