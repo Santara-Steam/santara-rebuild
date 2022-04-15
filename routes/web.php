@@ -47,7 +47,10 @@ Route::group(['middleware' => ['auth','pin', 'checkRole:2', "verified"]], functi
     Route::get('/user/portfolio',[App\Http\Controllers\TraderController::class, 'portofolio']);
     Route::get('/user/riwayat_aktifitas',[App\Http\Controllers\TraderController::class, 'history']);
     Route::get('/user/video_tutorial',[App\Http\Controllers\TraderController::class, 'video']);
+    Route::get('/results', [App\Http\Controllers\TraderController::class, 'results'])->name('results');
+    Route::get('/watch/{id}', [App\Http\Controllers\TraderController::class, 'watch'])->name('watch');
     
+    Route::post('/user/read',[App\Http\Controllers\TraderController::class, 'read_message']);
     Route::get('/user/transaksi', [App\Http\Controllers\TransactionsController::class, 'user_transaksi']);
     Route::get('/user/deposit', [App\Http\Controllers\DepositController::class, 'user_depo']);
     Route::post('/user/create_deposit', [App\Http\Controllers\DepositController::class, 'user_cdepo']);
