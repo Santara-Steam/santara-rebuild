@@ -1,0 +1,134 @@
+    .card-1 {
+        display: flex;
+        /* flex-wrap: nowrap; */
+        /* align-items: center; */
+        /* flex-direction: row; */
+        /* justify-content: space-between; */
+    }
+
+    .container {
+        /* background-color: #fff; */
+    }
+
+    .banner {
+        background: #2C303A;
+        overflow: hidden;
+    }
+
+
+    .applikasi {
+        background: #2C303A;
+        padding: 2rem 5rem 0
+    }
+
+    .color-gold {
+        color: #D2B353;
+        font-weight: bold;
+    }
+
+    .c-row {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        padding-top: 100 px;
+        padding-right: 100 px;
+        padding-bottom: 103 px;
+    }
+
+    .text-1 {
+        display: flex;
+    }
+
+    .text-1 p {
+        color: #FFC65C;
+        display: flex;
+        font-weight: bold;
+        padding-right: 60px;
+        padding-left: 0px;
+        font-family: 'acumin-pro';
+        font-size: 41pt;
+        line-height: 55px;
+        position: relative;
+    }
+
+    .info-santara {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .text-2 {
+        display: flex;
+        padding-bottom: 50px;
+        padding-right: 60px;
+        align-content: flex-start;
+    }
+
+    .text-3 {
+        display: flex;
+        color: #FFC65C;
+        font-weight: bold;
+        font-family: muli;
+        font-size: 17pt;
+        margin-top: 25px;
+    }
+
+    .video {
+        overflow: hidden;
+
+    }
+
+    .cara-investasi>.container>.row>.col-sm-12>h6 {
+        color: #DF2426 !important;
+    }
+
+    .boxradius {
+        background-color: #21252E;
+        border: 2px solid #707070;
+        color: #FFFFFF;
+        border-radius: 32px;
+        padding: 30px
+    }
+
+    .boxradius>.col-lg-12>h5 {
+        color: #DF2426 !important;
+    }
+
+    .youtube {
+        width: 100%;
+        height: 480px;
+    }
+
+    @media only screen and (max-width:600px) {
+        .text-1 {
+            text-align: center;
+        }
+
+        .text-1 p {
+            color: #FFC65C;
+            display: flex;
+            font-weight: bold;
+            padding-right: 0px;
+            padding-left: 0px;
+           font-family: 'acumin-pro';
+            font-size: 30pt;
+            line-height: 55px;
+            position: relative;
+        }
+
+        .text-2 {
+            text-align: center;
+            padding-right: 0px;
+            padding-bottom: 15px;
+        }
+
+        .text-3 {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .youtube {
+            height: 280px;
+        }
+    }

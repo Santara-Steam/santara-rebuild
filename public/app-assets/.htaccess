@@ -1,0 +1,11 @@
+# Disable access to all file types except the following
+Order deny,allow
+Deny from all
+<Files ~ ".(jpe?g|png|pdf|gif|docx|js|css|scss|ttf|woff|woff2|ico)$">
+    Allow from all
+</Files>
+
+<FilesMatch ".(jpe?g|png|pdf|gif|docx|js|css|scss|ttf|woff|woff2|ico)$">
+    Order Deny,Allow
+    Allow from all
+</FilesMatch>

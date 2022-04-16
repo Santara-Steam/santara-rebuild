@@ -1,0 +1,44 @@
+.umkm-homepage {
+    background-image: url("../../../images/content/umkm.png");
+    height: 530px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-umkm {
+    position: absolute;
+    right: 4rem;
+    width: 510px;
+    height: 350px;
+    border-radius: 0;
+    padding: 2rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .umkm-homepage {
+        height: 380px;
+    }
+    .card-umkm {
+        right: 2rem;
+        width: 455px;
+        height: 260px;
+        padding: 1rem;
+    }
+    .card-component-title {
+        font-size: 1.3rem;
+    }
+    .card-component-description {
+        font-size: 1rem;
+        padding: 1rem 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .umkm-homepage {
+        background-size: 100rem;
+    }
+}

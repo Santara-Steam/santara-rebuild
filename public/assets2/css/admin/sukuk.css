@@ -1,0 +1,23 @@
+.clear{
+    clear:both;
+    margin-top: 20px;
+}
+
+#companyResult{
+    list-style: none;
+    padding: 6px;
+    width: 96%;
+    position: absolute;
+    margin: 0;
+    z-index: 3;
+}
+
+#companyResult li{
+    padding: 6px;
+    margin-bottom: 1px;
+    background: aliceblue;
+}
+
+#companyResult li:hover{
+cursor: pointer;
+}

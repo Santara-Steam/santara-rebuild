@@ -1,0 +1,58 @@
+.emiten-serial {
+    font-size: 12px;
+    background-color: rgba(229, 160, 55, 0.33);
+    color: #4f5056;
+    padding: 5px;
+    margin-top: 5px;
+    text-align: center;
+    width: 50%;
+    font-weight: bold;
+    border-radius: .5rem;
+}
+
+.status-transaction {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: .5rem;
+    display: block;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sorting_1 {
+    width: 60%;
+}
+
+.table th,
+.table td {
+    border-right: 1px solid #e3ebf3 !important;
+    border-left: 1px solid #e3ebf3 !important;
+    border-top: 1px solid #e3ebf3 !important;
+    margin-bottom: 1rem;
+}
+
+[aria-expanded="true"] .la-angle-right, 
+[aria-expanded="false"] .la-angle-down {
+    display:none;
+}
+
+.type-trx {
+    width: 150px;
+    padding: .3em 0;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: .3em;
+}
+
+.card-type-label-sukuk {
+    background: #C7971E;
+}
+
+.card-type-label-saham {
+    background: #BF2D30;
+}

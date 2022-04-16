@@ -1,0 +1,54 @@
+.error {
+    color: red;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-input-prospektus {
+    display: block;
+}
+
+.file-input:last-child {
+    display: block;
+}
+
+.file-input.file-input-new
+{
+    display:block;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    /* top: 52%;
+     left: 45%; */
+    transform: translate(190%, -250%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.container-foto:hover img {
+    opacity: 0.3;
+}
+
+.container-foto:hover .middle {
+    opacity: 1;
+}
+
+.hapus-foto {
+    text-align: center;
+    background: #BF2D30;
+    padding: 5px;
+    border-radius: 30px;
+    width: 30px;
+    box-shadow: 0px 0px 0 2px #6b6f82;
+    color: white;
+    cursor: pointer;
+}
+
+.hapus-foto:active {
+    box-shadow: 0px 0px 0 2px #fff;
+}

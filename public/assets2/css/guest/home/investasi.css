@@ -1,0 +1,88 @@
+.cara-investasi {
+    background: #2c303b;
+    padding: 4rem 5rem;
+    color: white;
+}
+
+.cara-investasi>.row>.title>h3 {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.cara-investasi>.row>.description>p {
+    font-size: 1.1rem;
+}
+
+#circle-search {
+    float: right;
+    border-radius: 50%;
+    padding: 2rem;
+    font-size: 3rem;
+    background: #BF2D30;
+    cursor: pointer;
+    color: white;
+}
+
+.cara-investasi-icon {
+    display: block;
+}
+
+.cara-investasi-link {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .cara-investasi {
+        padding: 1rem .5rem !important;
+    }
+    .cara-investasi>.row>.title>h3 {
+        font-size: 1.7rem !important;
+    }
+    .cara-investasi>.row>.description>p {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .cara-investasi {
+        padding: 2rem;
+    }
+    .cara-investasi>.row>.title>h3 {
+        font-size: 2.2rem;
+    }
+    .cara-investasi>.row>.description>p {
+        font-size: 1rem;
+    }
+    .cara-investasi-icon {
+        display: none;
+    }
+    .cara-investasi-link {
+        display: block;
+        color: white;
+        background-color: #BF2D30;
+        padding: .5rem;
+        text-align: center;
+        border-radius: .35rem;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    #circle-search {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cara-investasi {
+        padding: 2rem;
+    }
+    .cara-investasi>.row>.title>h3 {
+        font-size: 2rem;
+    }
+    #circle-search {
+        padding: 1rem;
+        font-size: 2rem;
+    }
+}

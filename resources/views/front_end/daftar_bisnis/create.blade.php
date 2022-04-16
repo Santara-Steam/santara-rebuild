@@ -6,8 +6,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     crossorigin="anonymous">
 
-<div class="container-fluid d-flex align-content-center justify-content-center bg-header-daftarkan-bisnis text-center" style="margin-top: 96px;">
-    <div class="row col-12 col-md-9"  style="margin-top: 70px;">
+<div class="container-fluid d-flex align-content-center justify-content-center bg-header-daftarkan-bisnis text-center"
+    style="margin-top: 96px;">
+    <div class="row col-12 col-md-9" style="margin-top: 70px;">
         <div class="col-12 align-self-end">
             <img src="https://santara.co.id/assets/new-santara/img/logo/logo_header.png" class="img-fluid" width="270px"
                 alt="logo santara" />
@@ -42,18 +43,21 @@
             </div> --}}
             <div class="col-12 col-xl-10 mt-5 row">
                 <div class="col-md-4 form-group">
-                    <label for="exampleFormControlInput1" class="form-label">Nama Brand <span style="color: red">*</span></label>
+                    <label for="exampleFormControlInput1" class="form-label">Nama Brand <span
+                            style="color: red">*</span></label>
                     <input required type="text" id="companyName" name="nama_brand" class="form-control"
                         placeholder="Isi Nama Brand">
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="exampleFormControlInput1" class="form-label">Nama Perusahaan <span style="color: red">*</span></label>
+                    <label for="exampleFormControlInput1" class="form-label">Nama Perusahaan <span
+                            style="color: red">*</span></label>
                     <input required type="text" id="companyName" name="company_name" class="form-control"
                         placeholder="Isi Nama Perusahaan">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="exampleFormControlInput1" class="form-label">Kategori Bisnis <span style="color: red">*</span></label>
-                    <select  required id="projectinput6" name="kategori" class="form-control">
+                    <label for="exampleFormControlInput1" class="form-label">Kategori Bisnis <span
+                            style="color: red">*</span></label>
+                    <select required id="projectinput6" name="kategori" class="form-control">
                         <option value="" selected="" disabled="" hidden>-- Pilih Kategori
                             --</option>
                         @foreach ($kategori as $item)
@@ -73,10 +77,8 @@
                                     <div class="text">Logo <br> Perusahaan</div>
                                 </div>
                             </label>
-                            <input type="file" name="image" class="image" id="upload_image"
-                                style="display: none" />
-                            <input type="text" hidden name="logo" class="image"
-                                id="logo" />
+                            <input type="file" name="image" class="image" id="upload_image" style="display: none" />
+                            <input type="text" hidden name="logo" class="image" id="logo" />
                         </div>
                     </div>
                     <div class="col-8 text-center">
@@ -89,10 +91,8 @@
                                     <div class="text">Cover Profile</div>
                                 </div>
                             </label>
-                            <input type="file" name="image2" class="image" id="upload_image2"
-                                style="display: none" />
-                            <input type="text" hidden name="cover" class="image"
-                                id="cover" />
+                            <input type="file" name="image2" class="image" id="upload_image2" style="display: none" />
+                            <input type="text" hidden name="cover" class="image" id="cover" />
                         </div>
                     </div>
                     <div class="col-2 text-center">
@@ -105,10 +105,8 @@
                                     <div class="text">Foto <br> Owner</div>
                                 </div>
                             </label>
-                            <input type="file" name="image4" class="image" id="upload_image4"
-                                style="display: none" />
-                            <input type="text" hidden name="owner" class="image"
-                                id="owner" />
+                            <input type="file" name="image4" class="image" id="upload_image4" style="display: none" />
+                            <input type="text" hidden name="owner" class="image" id="owner" />
                         </div>
                     </div>
                 </fieldset>
@@ -124,10 +122,8 @@
                                     <div class="text">Galeri Foto/Tempat Usaha</div>
                                 </div>
                             </label>
-                            <input type="file" name="image3" class="image" id="upload_image3"
-                                style="display: none" />
-                            <input type="text" hidden name="galeri" class="image"
-                                id="galeri" />
+                            <input type="file" name="image3" class="image" id="upload_image3" style="display: none" />
+                            <input type="text" hidden name="galeri" class="image" id="galeri" />
                         </div>
                     </div>
                     <div class="col-4">
@@ -140,10 +136,8 @@
                                     <div class="text">Galeri Foto/Tempat Usaha 2</div>
                                 </div>
                             </label>
-                            <input type="file" name="image5" class="image" id="upload_image5"
-                                style="display: none" />
-                            <input type="text" hidden name="galeri2" class="image"
-                                id="galeri2" />
+                            <input type="file" name="image5" class="image" id="upload_image5" style="display: none" />
+                            <input type="text" hidden name="galeri2" class="image" id="galeri2" />
                         </div>
                     </div>
                     <div class="col-4">
@@ -156,10 +150,8 @@
                                     <div class="text">Galeri Foto/Tempat Usaha 3</div>
                                 </div>
                             </label>
-                            <input type="file" name="image6" class="image" id="upload_image6"
-                                style="display: none" />
-                            <input type="text" hidden name="galeri3" class="image"
-                                id="galeri3" />
+                            <input type="file" name="image6" class="image" id="upload_image6" style="display: none" />
+                            <input type="text" hidden name="galeri3" class="image" id="galeri3" />
                         </div>
                     </div>
                 </div>
@@ -172,135 +164,144 @@
                 </div>
                 <div class="form-group col-md-12 mt-2">
                     <fieldset class="form-group row">
-                    <div class="col-2 text-center">
-                    <label style="    margin-bottom: 0px;" for="companyName">Thumbnail <span style="color: red">*</span></label>
-                    <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
-                    <div class="image_area text-center">
-                            <label for="upload_image">
-                                <img src="{{asset('public')}}/default1.png" id="uploaded_image"
-                                    class="img-responsive" />
-                                <div class="overlay">
-                                    <div class="text">Thumbnail</div>
-                                </div>
-                            </label>
-                            <input type="file" name="image" class="image" id="upload_image"
-                                style="display: none" />
-                            <input type="text" hidden name="logo" class="image"
-                                id="logo" />
+                        <div class="col-2 text-center">
+                            <label style="    margin-bottom: 0px;" for="companyName">Thumbnail <span
+                                    style="color: red">*</span></label>
+                            <br>
+                            <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel
+                                (recomended) (.jpg / .png only)</small>
+                            <div class="image_area text-center">
+                                <label for="upload_image">
+                                    <img src="{{asset('public')}}/default1.png" id="uploaded_image"
+                                        class="img-responsive" />
+                                    <div class="overlay">
+                                        <div class="text">Thumbnail</div>
+                                    </div>
+                                </label>
+                                <input type="file" name="image" class="image" id="upload_image" style="display: none" />
+                                <input type="text" hidden name="logo" class="image" id="logo" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-8 text-center">
-                    <label style="    margin-bottom: 0px;" for="companyName">Banner <span style="color: red">*</span></label>
-                    <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg / .png only)</small>
-                    <div class="image_area text-center">
-                            <label for="upload_image2">
-                                <img src="{{asset('public')}}/default2.png" id="uploaded_image2"
-                                    class="img-responsive" />
-                                <div class="overlay">
-                                    <div class="text">Banner</div>
-                                </div>
-                            </label>
-                            <input type="file" name="image2" class="image" id="upload_image2"
-                                style="display: none" />
-                            <input type="text" hidden name="cover" class="image"
-                                id="cover" />
+                        <div class="col-8 text-center">
+                            <label style="    margin-bottom: 0px;" for="companyName">Banner <span
+                                    style="color: red">*</span></label>
+                            <br>
+                            <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel
+                                (recomended) (.jpg / .png only)</small>
+                            <div class="image_area text-center">
+                                <label for="upload_image2">
+                                    <img src="{{asset('public')}}/default2.png" id="uploaded_image2"
+                                        class="img-responsive" />
+                                    <div class="overlay">
+                                        <div class="text">Banner</div>
+                                    </div>
+                                </label>
+                                <input type="file" name="image2" class="image" id="upload_image2"
+                                    style="display: none" />
+                                <input type="text" hidden name="cover" class="image" id="cover" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-2 text-center">
-                    <label style="    margin-bottom: 0px;" for="companyName">Foto Owner <span style="color: red">*</span></label>
-<br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
-                    <div class="image_area text-center">
-                            <label for="upload_image4">
-                                <img src="{{asset('public')}}/default1.png" id="uploaded_image4"
-                                    class="img-responsive" />
-                                <div class="overlay">
-                                    <div class="text">Foto <br> Owner</div>
-                                </div>
-                            </label>
-                            <input type="file" name="image4" class="image" id="upload_image4"
-                                style="display: none" />
-                            <input type="text" hidden name="owner" class="image"
-                                id="owner" />
+                        <div class="col-2 text-center">
+                            <label style="    margin-bottom: 0px;" for="companyName">Foto Owner <span
+                                    style="color: red">*</span></label>
+                            <br>
+                            <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg /
+                                .png only)</small>
+                            <div class="image_area text-center">
+                                <label for="upload_image4">
+                                    <img src="{{asset('public')}}/default1.png" id="uploaded_image4"
+                                        class="img-responsive" />
+                                    <div class="overlay">
+                                        <div class="text">Foto <br> Owner</div>
+                                    </div>
+                                </label>
+                                <input type="file" name="image4" class="image" id="upload_image4"
+                                    style="display: none" />
+                                <input type="text" hidden name="owner" class="image" id="owner" />
+                            </div>
                         </div>
-                    </div>
-                </fieldset>
-                <div class="form-group row">
+                    </fieldset>
+                    <div class="form-group row">
 
-                    <div class="col-4 text-center">
-                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
-                    <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
-                    <div class="image_area text-center">
-                            <label for="upload_image3">
-                                <img src="{{asset('public')}}/default.png" id="uploaded_image3"
-                                    class="img-responsive" />
-                                <div class="overlay">
-                                    <div class="text">Galeri</div>
-                                </div>
-                            </label>
-                            <input type="file" name="image3" class="image" id="upload_image3"
-                                style="display: none" />
-                            <input type="text" hidden name="galeri" class="image"
-                                id="galeri" />
+                        <div class="col-4 text-center">
+                            <label style="    margin-bottom: 0px;" for="companyName">Galeri <span
+                                    style="color: red">*</span></label>
+                            <br>
+                            <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg /
+                                .png only)</small>
+                            <div class="image_area text-center">
+                                <label for="upload_image3">
+                                    <img src="{{asset('public')}}/default.png" id="uploaded_image3"
+                                        class="img-responsive" />
+                                    <div class="overlay">
+                                        <div class="text">Galeri</div>
+                                    </div>
+                                </label>
+                                <input type="file" name="image3" class="image" id="upload_image3"
+                                    style="display: none" />
+                                <input type="text" hidden name="galeri" class="image" id="galeri" />
+                            </div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <label style="    margin-bottom: 0px;" for="companyName">Galeri <span
+                                    style="color: red">*</span></label>
+                            <br>
+                            <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg /
+                                .png only)</small>
+                            <div class="image_area text-center">
+                                <label for="upload_image5">
+                                    <img src="{{asset('public')}}/default.png" id="uploaded_image5"
+                                        class="img-responsive" />
+                                    <div class="overlay">
+                                        <div class="text">Galeri</div>
+                                    </div>
+                                </label>
+                                <input type="file" name="image5" class="image" id="upload_image5"
+                                    style="display: none" />
+                                <input type="text" hidden name="galeri2" class="image" id="galeri2" />
+                            </div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <label style="    margin-bottom: 0px;" for="companyName">Galeri <span
+                                    style="color: red">*</span></label>
+                            <br>
+                            <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg /
+                                .png only)</small>
+                            <div class="image_area text-center">
+                                <label for="upload_image6">
+                                    <img src="{{asset('public')}}/default.png" id="uploaded_image6"
+                                        class="img-responsive" />
+                                    <div class="overlay">
+                                        <div class="text">Galeri</div>
+                                    </div>
+                                </label>
+                                <input type="file" name="image6" class="image" id="upload_image6"
+                                    style="display: none" />
+                                <input type="text" hidden name="galeri3" class="image" id="galeri3" />
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4 text-center">
-                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
-                    <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
-                    <div class="image_area text-center">
-                            <label for="upload_image5">
-                                <img src="{{asset('public')}}/default.png" id="uploaded_image5"
-                                    class="img-responsive" />
-                                <div class="overlay">
-                                    <div class="text">Galeri</div>
-                                </div>
-                            </label>
-                            <input type="file" name="image5" class="image" id="upload_image5"
-                                style="display: none" />
-                            <input type="text" hidden name="galeri2" class="image"
-                                id="galeri2" />
-                        </div>
-                    </div>
-                    <div class="col-4 text-center">
-                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
-                    <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
-                    <div class="image_area text-center">
-                            <label for="upload_image6">
-                                <img src="{{asset('public')}}/default.png" id="uploaded_image6"
-                                    class="img-responsive" />
-                                <div class="overlay">
-                                    <div class="text">Galeri</div>
-                                </div>
-                            </label>
-                            <input type="file" name="image6" class="image" id="upload_image6"
-                                style="display: none" />
-                            <input type="text" hidden name="galeri3" class="image"
-                                id="galeri3" />
-                        </div>
-                    </div>
-                </div>
-                
+
                 </div>
                 {{-- <div class="col-md-4 form-group">
-                    <label style="    margin-bottom: 0px;" for="companyName">Thumbnail <span style="color: red">*</span></label>
+                    <label style="    margin-bottom: 0px;" for="companyName">Thumbnail <span
+                            style="color: red">*</span></label>
                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg
+                        / .png only)</small>
                     <div class="custom-file">
-                        <input value='' class="custom-file-input req" id="fil" accept=".png, .jpg" type="file" name="thumbnail" 
-                            id="inputGroupFile02">
+                        <input value='' class="custom-file-input req" id="fil" accept=".png, .jpg" type="file"
+                            name="thumbnail" id="inputGroupFile02">
                         <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
                             aria-describedby="inputGroupFile02">Pilih File</label>
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label style="    margin-bottom: 0px;" for="companyName">Banner <span style="color: red">*</span></label>
+                    <label style="    margin-bottom: 0px;" for="companyName">Banner <span
+                            style="color: red">*</span></label>
                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg / .png only)</small>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg
+                        / .png only)</small>
                     <div class="custom-file">
                         <input value='' accept=".png, .jpg" type="file" name="banner" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -309,9 +310,11 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label style="    margin-bottom: 0px;" for="companyName">Foto Owner <span style="color: red">*</span></label>
-<br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                    <label style="    margin-bottom: 0px;" for="companyName">Foto Owner <span
+                            style="color: red">*</span></label>
+                    <br>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png
+                        only)</small>
                     <div class="custom-file">
                         <input value='' accept=".png, .jpg" type="file" name="owner" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -320,9 +323,11 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span
+                            style="color: red">*</span></label>
                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png
+                        only)</small>
                     <div class="custom-file">
                         <input value='' accept=".png, .jpg" type="file" name="galeri1" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -331,9 +336,11 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span
+                            style="color: red">*</span></label>
                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png
+                        only)</small>
                     <div class="custom-file">
                         <input value='' accept=".png, .jpg" type="file" name="galeri2" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -342,9 +349,11 @@
                     </div>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span style="color: red">*</span></label>
+                    <label style="    margin-bottom: 0px;" for="companyName">Galeri <span
+                            style="color: red">*</span></label>
                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png
+                        only)</small>
                     <div class="custom-file">
                         <input value='' accept=".png, .jpg" type="file" name="galeri3" class="custom-file-input req"
                             id="inputGroupFile02">
@@ -353,38 +362,36 @@
                     </div>
                 </div>
                 --}}
-                
+
                 <div class="form-group col-md-4">
                     <label for="companyName">Nama Owner <span style="color: red">*</span></label>
-                    <input required type="text" value="" name="nama_owner"
-                        id="companyName" class="form-control" placeholder="Nama Owner">
-                    <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar <span style="color: red">*</span></label>
+                    <input required type="text" value="" name="nama_owner" id="companyName" class="form-control"
+                        placeholder="Nama Owner">
+                    <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar <span
+                            style="color: red">*</span></label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Rp</span>
                         </div>
-                        <input required type="text" name="harga_saham" value=""
-                            class="form-control ribuan" placeholder="Harga Saham Per Lembar"
-                            aria-describedby="basic-addon1">
+                        <input required type="text" name="harga_saham" value="" class="form-control ribuan"
+                            placeholder="Harga Saham Per Lembar" aria-describedby="basic-addon1">
                     </div>
-                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana yang di Butuhkan <span style="color: red">*</span></label>
+                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana yang di Butuhkan <span
+                            style="color: red">*</span></label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Rp</span>
                         </div>
-                        <input required type="text" value=""
-                            name="perkiraan_dana" class="form-control ribuan"
-                            placeholder="Perkiraan Dana yang di Butuhkan"
-                            aria-describedby="basic-addon1">
+                        <input required type="text" value="" name="perkiraan_dana" class="form-control ribuan"
+                            placeholder="Perkiraan Dana yang di Butuhkan" aria-describedby="basic-addon1">
                     </div>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="projectinput8">Biografi Owner <span style="color: red">*</span></label>
-                    <textarea required id="projectinput8" rows="9" cols="30" class="form-control"
-                        name="bio_owner"
+                    <textarea required id="projectinput8" rows="9" cols="30" class="form-control" name="bio_owner"
                         placeholder="Biografi Owner"></textarea>
                 </div>
-                
+
                 <p class="mt-3">Omzet 2 Tahun Sebelumnya 2021 dan 2022</p>
                 <div class="form-group col-md-6 mt-2">
                     {{-- <div class="mb-3 row"> --}}
@@ -398,12 +405,15 @@
                                     id="amount" name="omset1" placeholder="0" style="background-color:#fff"
                                     aria-label="" aria-describedby="basic-addon1">
                             </div>
-                        {{-- </div> --}}
-                    {{-- </div> --}}
+                            {{--
+                        </div> --}}
+                        {{--
+                    </div> --}}
                 </div>
                 <div class="form-group col-md-6 mt-2">
                     {{-- <div class="mb-3 row"> --}}
-                        <label class="col-form-label" style="font-weight: 700;">Tahun 2022 (Berjalan) <span style="color: red">*</span></label>
+                        <label class="col-form-label" style="font-weight: 700;">Tahun 2022 (Berjalan) <span
+                                style="color: red">*</span></label>
                         {{-- <div class="col-sm-9"> --}}
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"
@@ -412,8 +422,10 @@
                                     placeholder="0" style="background-color:#fff" aria-label=""
                                     aria-describedby="basic-addon1">
                             </div>
-                        {{-- </div> --}}
-                    {{-- </div> --}}
+                            {{--
+                        </div> --}}
+                        {{--
+                    </div> --}}
                 </div>
                 <div class="form-group col-md-6 mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Perkiraan Saham yang di Lepas ke
@@ -447,10 +459,11 @@
                 </div>
                 <div class="form-group col-md-4 mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Video Profile Perusahaan</label>
-                    <input type="text" class="form-control username" pattern="https?://youtu.be.+" title="Include http://youtu.be/..." type="text" name="video_profile"
+                    <input type="text" class="form-control username" pattern="https?://youtu.be.+"
+                        title="Include http://youtu.be/..." type="text" name="video_profile"
                         placeholder="https://youtu.be/7wh2fyn">
                 </div>
-                
+
                 <div class="form-group col-md-4 mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Facebook</label>
                     <input type="text" class="form-control username" name="fb" placeholder="Isi Username Facebook">
@@ -555,11 +568,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="img-container" style="padding: 30px" >
-                    <div class="row" >
+                <div class="img-container" style="padding: 30px">
+                    <div class="row">
                         {{-- <div class="col-md-8"> --}}
                             <img src="" id="sample_image" />
-                        {{-- </div>
+                            {{--
+                        </div>
                         <div class="col-md-4">
                             <div class="preview"></div>
                         </div> --}}
@@ -590,7 +604,8 @@
                     <div class="row">
                         {{-- <div class="col-md-8"> --}}
                             <img src="" id="sample_image2" />
-                        {{-- </div>
+                            {{--
+                        </div>
                         <div class="col-md-4">
                             <div class="preview2"></div>
                         </div> --}}
@@ -621,7 +636,8 @@
                     <div class="row">
                         {{-- <div class="col-md-8"> --}}
                             <img src="" id="sample_image4" />
-                        {{-- </div>
+                            {{--
+                        </div>
                         <div class="col-md-4">
                             <div class="preview3"></div>
                         </div> --}}
@@ -652,7 +668,8 @@
                     <div class="row">
                         {{-- <div class="col-md-8"> --}}
                             <img src="" id="sample_image3" />
-                        {{-- </div>
+                            {{--
+                        </div>
                         <div class="col-md-4">
                             <div class="preview3"></div>
                         </div> --}}
@@ -683,7 +700,8 @@
                     <div class="row">
                         {{-- <div class="col-md-8"> --}}
                             <img src="" id="sample_image5" />
-                        {{-- </div>
+                            {{--
+                        </div>
                         <div class="col-md-4">
                             <div class="preview3"></div>
                         </div> --}}
@@ -714,7 +732,8 @@
                     <div class="row">
                         {{-- <div class="col-md-8"> --}}
                             <img src="" id="sample_image6" />
-                        {{-- </div>
+                            {{--
+                        </div>
                         <div class="col-md-4">
                             <div class="preview3"></div>
                         </div> --}}
@@ -740,7 +759,6 @@
 @section('js')
 {{-- <script src="{{asset('public')}}/cropImage.js"></script> --}}
 <script>
-    
     $(document).ready(function(){
 
 var $modal = $('#modal');

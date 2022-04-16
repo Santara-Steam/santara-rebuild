@@ -1,0 +1,497 @@
+.pra-listing {
+    padding: 2rem 4rem;
+}
+
+.container-pralisting-bisnis {
+    background-color: #fff;
+    padding: 1rem 4rem;
+}
+
+.search-pralisting {
+    padding: 10px !important;
+}
+
+.carousel-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.card-body-pralisting {
+    padding: 2rem;
+    height: 320px;
+}
+
+.pralisting-header-description {
+    height: 60%;
+}
+
+.card-body-pralisting>h2 {
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.card-pralisting-bisnis {
+    padding: 1rem 0;
+}
+
+.card-pralisting-bisnis>.card-content {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.card-content-pralisting-bisnis {
+    color: #6b6f82;
+}
+
+.pralisting-bisnis-item {
+    width: 100%;
+}
+
+.toppralisting-bisnis-img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    padding: 1rem;
+}
+
+.pralisting-bisnis-img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    padding: 1rem;
+}
+
+.pralisting-title-main {
+    height: 4rem;
+    border-bottom: 1px solid #eee;
+    padding: .75rem 0;
+    margin-bottom: .5rem;
+}
+
+.pralisting-title {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.pralisting-title-company {
+    font-size: 0.8rem;
+}
+
+.pralisting-card-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #BF2D30;
+}
+
+.toppralisting-info-description {
+    width: 70%;
+    float: right;
+}
+
+.toppralisting-info-icon {
+    width: 30%;
+    float: left;
+    font-size: 24px;
+    padding-right: 1.8rem;
+}
+
+.toppralisting-info {
+    font-size: .9rem;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.toppralisting-info-type {
+    font-size: .7rem;
+    margin-bottom: 0;
+}
+
+.pralisting-info {
+    font-size: .6rem;
+    margin-bottom: 0;
+    font-weight: bold;
+    text-align: left;
+}
+
+.pralisting-info-type {
+    font-size: .6rem;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.pralisting-info-icon {
+    width: 30%;
+    float: left;
+    font-size: 20px;
+    padding-right: 1rem;
+}
+
+.pralisting-info-icon {
+    width: 30%;
+    float: left;
+    font-size: 20px;
+}
+
+.pralisting-info-description {
+    width: 70%;
+    float: right;
+}
+
+.pralisting-item-footer {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pralisting-item-footer>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33.33%;
+}
+
+.card-pralisting-item {
+    border: 1px solid #eee;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-pralisting-item:hover {
+    -webkit-box-shadow: 0 1px 15px 10px rgba(62, 57, 107, .07) !important;
+    box-shadow: 0 1px 15px 10px rgba(62, 57, 107, .07) !important;
+}
+
+.form-input-search {
+    border-radius: 0 !important;
+    border-color: #BF2D30;
+    border: 1px solid #eee;
+}
+
+.pralisting-container-item {
+    padding: 0;
+    margin: 0;
+}
+
+.pralisting-card-content-title {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-pralisting-item {
+    margin-bottom: 1rem;
+    padding: 0 .5rem;
+}
+
+#list-pralisting {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.lazyloading {
+    background: #fff url(/assets/images/animation/image-loader.gif) no-repeat center;
+    min-height: 60px;
+}
+
+.swiper-container {
+    position: unset !important;
+}
+
+#swiper-container-pralisting {
+    padding: 1rem 0 !important;
+}
+
+.swipper-pralisting-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-pralisting-next {
+    left: 94%;
+}
+
+.swiper-button-pralisting-prev {
+    right: 7%;
+}
+
+.swiper-button-pralisting-next,
+.swiper-button-pralisting-prev {
+    width: 2rem;
+    height: 2rem;
+    z-index: 10;
+    cursor: pointer;
+    background-color: #BF2D30 !important;
+    margin: 0 .5rem;
+}
+
+.swiper-button-pralisting-prev {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23fff\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z\'/%3E%3C/svg%3E') !important;
+    background-repeat: no-repeat;
+    border: inset .3rem transparent;
+    box-sizing: border-box;
+    border-radius: .3rem;
+}
+
+.swiper-button-pralisting-next {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23fff\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z\'/%3E%3C/svg%3E') !important;
+    background-repeat: no-repeat;
+    border: inset .3rem transparent;
+    box-sizing: border-box;
+    border-radius: .3rem;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: auto !important;
+}
+
+.swiper-pagination-pralisting-header {
+    bottom: 10% !important;
+    right: 5% !important;
+    position: absolute;
+}
+
+.swiper-pagination-pralisting-header>.swiper-pagination-bullet {
+    width: 14px !important;
+    height: 14px !important;
+    background: #BF2D30;
+}
+
+.card-title-toppralisting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0 .5rem;
+}
+
+input:focus,
+input.form-input-search:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: #eee !important;
+}
+
+
+/* phone only */
+
+@media only screen and (max-width: 600px) {
+    .card-body-pralisting {
+        height: 240px;
+    }
+    .card-body-pralisting {
+        padding: 1rem;
+    }
+    .card-body-pralisting>h2 {
+        font-size: 1.3rem;
+    }
+    .card-body-pralisting>p {
+        font-size: .8rem;
+        margin: 0;
+    }
+    .col-pralisting-item {
+        padding-right: 2px;
+        padding-left: 2px;
+        margin-bottom: .5rem;
+    }
+    .card-pralisting-item {
+        margin: .2rem !important;
+    }
+    .card-content-pralisting-bisnis {
+        padding: 0rem;
+    }
+    .pralisting-header-description {
+        font-size: .9rem;
+    }
+    .pralisting-bisnis-img {
+        height: 120px !important;
+    }
+    .toppralisting-bisnis-img {
+        height: 250px !important;
+    }
+    .toppralisting-info-icon {
+        font-size: 24px;
+    }
+    .toppralisting-info {
+        font-size: .5rem;
+    }
+    .toppralisting-info-type {
+        font-size: .4rem;
+    }
+    .toppralisting-info-description {
+        width: 65%;
+    }
+    .toppralisting-footer {
+        padding: .2rem .5rem .5rem;
+    }
+    .pralisting-footer {
+        padding: .2rem;
+    }
+    .pralisting-info {
+        font-size: .5rem;
+    }
+    .pralisting-info-type {
+        font-size: .4rem;
+    }
+    .pralisting-item-footer {
+        padding: 0;
+    }
+    .pralisting-info-icon {
+        font-size: 12px;
+        padding-right: 1rem;
+    }
+    .item-footer {
+        font-size: .7rem
+    }
+    .pralisting-info-description {
+        width: 55%;
+    }
+    .pralisting-card-title {
+        font-size: .85rem !important;
+    }
+    .pralisting-title {
+        font-size: .7rem;
+        height: 1.5rem;
+    }
+    .pralisting-title-company {
+        font-size: .6rem;
+    }
+    .pralisting-card-description {
+        font-size: .7rem;
+    }
+    .lazyloading {
+        background: #fff url(/assets/images/animation/image-loader-small.gif) no-repeat center;
+        min-height: 60px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .pra-listing {
+        padding: 0;
+    }
+    .pra-listing>div {
+        padding: 0;
+    }
+    .container-pralisting-bisnis {
+        padding: 1rem;
+    }
+    .toppralisting-bisnis-img {
+        height: 500px;
+    }
+    .pralisting-title-main {
+        height: 4.5rem;
+        padding: .5rem;
+    }
+    .card-pralisting-bisnis {
+        padding: 0;
+    }
+    .card-pralisting-bisnis>.card-content {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .search-pralisting {
+        padding: 10px 70px;
+    }
+    .search-pralisting .search {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+    }
+    .search-pralisting .category {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+    }
+    .search-pralisting .sort {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .pralisting-card-content-title {
+        display: none !important;
+    }
+    /* swipper */
+    .swipper-pralisting-navigation {
+        display: none;
+    }
+    .swiper-container-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-custom,
+    .swiper-pagination-fraction {
+        bottom: auto !important;
+    }
+    .swiper-pagination-pralisting-header {
+        bottom: 7% !important;
+        right: 5% !important;
+        position: absolute;
+    }
+    .swiper-pagination-pralisting-header>.swiper-pagination-bullet {
+        width: 9px !important;
+        height: 9px !important;
+        background: #BF2D30;
+    }
+    #swiper-pagination-pralisting>.swiper-pagination-bullet {
+        width: 9px !important;
+        height: 9px !important;
+        border: none;
+        background: #BF2D30;
+    }
+    .card-pralisting-bisnis>.card-content>.card-title {
+        padding: 0 !important;
+    }
+    .card-pralisting-bisnis>div>.card-title {
+        margin: .7rem 0 !important;
+    }
+    .pralisting-card-title {
+        font-size: 1.4rem;
+        margin: 0 .5rem;
+    }
+    .pralisting-card-description {
+        padding: 0 .5rem;
+    }
+    .col-pralisting {
+        padding: 0 .5rem;
+    }
+    .card-title-toppralisting {
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .pra-listing {
+        padding: 1rem 2rem;
+    }
+    .card-body-pralisting {
+        padding: 2rem;
+    }
+    .card-pralisting-bisnis {
+        padding: 1rem;
+    }
+    .card-pralisting-bisnis>.card-content {
+        margin: 0;
+    }
+    .col-pralisting-item {
+        padding: .5rem;
+    }
+    .pralisting-bisnis-img {
+        height: 200px;
+    }
+    .toppralisting-bisnis-img {
+        height: 200px;
+    }
+    .toppralisting-info-icon {
+        font-size: 15px;
+        padding-right: .5rem !important;
+    }
+    .toppralisting-info {
+        font-size: .6rem;
+    }
+    .toppralisting-info-type {
+        font-size: .5rem;
+    }
+}

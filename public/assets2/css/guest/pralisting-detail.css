@@ -1,0 +1,555 @@
+.container-pralisting-bisnis {
+    padding: 2rem 4rem;
+    background-color: white;
+}
+
+.pralisting-detail-title>.title-left>h1 {
+    font-size: 2.5rem;
+}
+
+.pralisting-detail-title>.title-left>h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+#pralisting-title-category {
+    color: #BF2D30;
+    margin-left: 1rem;
+}
+
+.pralisting-detail-img {
+    width: 100%;
+    height: 480px;
+    object-fit: contain;
+}
+
+.pralisting-info {
+    font-size: .8rem;
+    margin-bottom: 0;
+    font-weight: bold;
+    text-align: left;
+}
+
+.pralisting-info-type {
+    font-size: .6rem;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.pralisting-info-icon {
+    width: 20%;
+    float: left;
+    font-size: 20px;
+    padding-right: .5rem;
+}
+
+.pralisting-info-description {
+    width: 80%;
+    float: left;
+}
+
+.pralisting-item-footer {
+    padding: 0;
+    margin: 0;
+    padding-top: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pralisting-item-footer>div {
+    width: 33.33%;
+}
+
+.card-detail-pralisting {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.pralisting-keterangan {
+    margin-bottom: 1rem;
+}
+
+.pralisting-keterangan>h4 {
+    font-weight: bold;
+}
+
+.comment-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.comment-date {
+    font-size: 1rem;
+    margin-left: .5rem;
+}
+
+.comment-action-box {
+    font-size: .8rem;
+}
+
+.comment-action {
+    cursor: pointer;
+    font-weight: 500;
+    margin-right: .5rem;
+    color: #adadad;
+    font-size: .7rem;
+}
+
+.pralisting-content {
+    margin: 0;
+    padding: 0;
+    height: 480px;
+    max-height: 480px;
+}
+
+.pralisting-detail-info-icon {
+    cursor: pointer;
+    float: right;
+    font-size: 24px;
+}
+
+.pralisting-comment {
+    background: #F4F5FA;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+.pralisting-comment-text {
+    font-size: 1rem;
+    margin: .5rem 0 0 0;
+    font-weight: 500;
+}
+
+.pralisting-comment-body {
+    padding: 0 1rem;
+}
+
+.pralisting-comment-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.pralisting-comment-replay-img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.form-vote {
+    border-radius: 0 !important;
+    border-color: #BF2D30;
+    border: 1px solid #eee;
+}
+
+.form-vote-button {
+    background-color: #BF2D30;
+    color: white;
+    border-radius: 0;
+    border: none;
+    height: unset;
+    line-height: unset;
+}
+
+.label-investmentplan {
+    font-size: .8rem
+}
+
+.pralisting-comment-footer {
+    text-align: right;
+}
+
+.pralisting-nav-tabs {
+    border-bottom: 0;
+}
+
+.pralisting-nav-link {
+    border: none !important;
+    border-bottom: 1px solid #babfc7;
+    font-weight: bold !important;
+    color: #6b6f82 !important;
+    border-radius: 0;
+}
+
+.pralisting-nav-link.active {
+    border-bottom: 5px solid #BF2D30 !important;
+}
+
+.pralisting-nav-link:hover {
+    color: #6b6f82 !important;
+    border-bottom: 5px solid #BF2D30 !important;
+}
+
+.pralisting-keterangan-content {
+    padding: 3rem 0 0 5rem;
+}
+
+.pralisting-nav {
+    height: 28rem;
+    max-height: 28rem;
+}
+
+.pralisting-progress>.progress {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pralisting-button-pengajuan {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.pengajuan-description {
+    font-size: .8rem;
+}
+
+.button-load-comments {
+    margin: 3rem auto 1rem !important;
+    display: flex;
+    align-items: center;
+}
+
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    border: 2px solid white;
+}
+
+.comment-title {
+    display: flex;
+    align-items: center;
+}
+
+.comment_count {
+    padding: 0 1rem;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+    .pralisting-content-image {
+        height: 160px !important;
+        padding: 0;
+    }
+    .pralisting-detail-img {
+        height: 150px !important;
+        max-height: 150px !important;
+    }
+    .tentang-santara-video {
+        height: 100% !important;
+        max-height: 100% !important;
+    }
+    .pralisting-detail-title>.title-left>h1 {
+        font-size: 1.3rem;
+    }
+    .pralisting-detail-title>.title-left>h3 {
+        font-size: .6rem;
+    }
+    .pralisting-button-pengajuan>h5 {
+        font-size: .8rem;
+    }
+    .pralisting-keterangan-content {
+        font-size: .8rem !important;
+    }
+    .pralisting-button-panel {
+        font-size: 1rem !important;
+    }
+    .pralisting-comment-text {
+        font-size: .7rem !important;
+    }
+    .pralisting-button-pengajuan>h5 {
+        font-size: .8rem !important;
+        text-align: center;
+    }
+    .pengajuan-description {
+        font-size: .7rem !important;
+    }
+    .pralisting-info-icon {
+        width: 25% !important;
+    }
+    .pralisting-info-description {
+        width: 75% !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .pralisting-comment-container {
+        padding: 0;
+        margin: 0;
+    }
+    .pralisting-title {
+        padding: 0;
+        border-bottom: 1px dashed #ddd;
+    }
+    .container-pralisting-bisnis {
+        padding: .9rem;
+    }
+    .pralisting-content-image {
+        height: 360px;
+        padding: 0;
+    }
+    .pralisting-detail-img {
+        width: 100%;
+        height: 350px;
+        max-height: 350px;
+    }
+    .tentang-santara-video {
+        width: 100%;
+        height: 100%;
+        height: 350px;
+        max-height: 350px;
+    }
+    .pralisting-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 100% !important;
+        max-height: 100% !important;
+    }
+    .pralisting-pengajuan {
+        padding: 0;
+    }
+    .pralisting-detail-title>.title-left>h1 {
+        font-size: 1.3rem;
+        text-align: left;
+    }
+    .pralisting-detail-title>.title-left>h3 {
+        font-size: .8rem;
+        text-align: left;
+    }
+    .nav-tabs-responsive {
+        overflow: auto;
+    }
+    .emiten-detail-title {
+        font-size: 0.8rem;
+    }
+    #pralisting-title-category {
+        margin-left: 0;
+        margin-top: .3rem;
+        display: table;
+    }
+    .card-detail-pralisting {
+        padding: .5rem;
+    }
+    .comment-title {
+        display: table;
+    }
+    .comment-name {
+        font-size: .8rem;
+    }
+    .comment-date {
+        font-size: .7rem;
+        margin-left: 0;
+    }
+    .pralisting-progress {
+        font-size: .7rem;
+        text-align: center;
+    }
+    .pralisting-comment-list {
+        padding: 0 !important;
+        margin-top: 1rem !important;
+    }
+    .pralisting-comment-img {
+        width: 30px;
+        height: 30px;
+        margin-right: .5rem;
+    }
+    .pralisting-comment-replay-img {
+        width: 20px;
+        height: 20px;
+        margin-right: .5rem;
+    }
+    .pralisting-comment-text {
+        font-size: .8rem;
+        margin-top: .5rem;
+    }
+    .pralisting-comment-body {
+        padding: 0 .2rem;
+    }
+    .pralisting-comment-body>div {
+        line-height: 1rem;
+        padding-left: 0 !important;
+    }
+    .pralisting-comment-input {
+        font-size: .8rem;
+    }
+    .pralisting-keterangan-content {
+        padding: 0 .2rem;
+        font-size: 1rem;
+        text-align: left;
+    }
+    .pralisting-button-panel {
+        color: #6b6f82;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .pralisting-button-panel:hover {
+        color: #BF2D30;
+    }
+    .pralisting-keterangan>h4 {
+        font-size: .8rem;
+    }
+    .pralisting-keterangan>p {
+        font-size: .8rem;
+    }
+    .pralisting-collapse-card {
+        border-bottom: 1px dashed #ddd !important;
+    }
+    .pralisting-info-icon {
+        width: 20%;
+    }
+    .pralisting-info-description {
+        width: 80%;
+    }
+    .form-vote {
+        padding: .5rem;
+        line-height: 1rem;
+        font-size: .75rem;
+        height: calc(2rem + 2px);
+    }
+    .pralisting-button-pengajuan {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .pralisting-button-pengajuan>h5 {
+        font-size: 1rem;
+    }
+    #button-load-comments {
+        margin: 2rem auto 1rem;
+        font-size: 0.7rem;
+    }
+    #button-load-comments>i {
+        font-size: 1.2rem;
+    }
+    #comment-loader {
+        border: 2px solid #eed4ec;
+        border-top: 2px solid #168dee;
+        width: 20px;
+        height: 20px;
+    }
+    .comment-action {
+        font-size: .6rem;
+    }
+    .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+        margin: 0 2px !important;
+    }
+    .swiper-pagination-bullet {
+        width: 6px !important;
+        height: 6px !important;
+        border: 1px solid white;
+    }
+    .button-load-comments {
+        margin: 1rem auto !important;
+    }
+    .comment_count {
+        padding: 1rem 1rem 0;
+        font-size: 1rem;
+    }
+    #commenttext {
+        font-size: .9rem;
+    }
+    .pengajuan-description {
+        font-size: .9rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container-pralisting-bisnis {
+        padding: 1rem;
+    }
+    .pralisting-detail-img {
+        width: 100%;
+        height: 310px;
+        max-height: 310px;
+        object-fit: cover;
+    }
+    .tentang-santara-video {
+        width: 100%;
+        height: 310px;
+    }
+    .pralisting-info {
+        font-size: .6rem;
+    }
+    .pralisting-info-type {
+        font-size: .5rem;
+    }
+    .pralisting-info-icon {
+        font-size: 17px;
+    }
+    .pralisting-progress {
+        font-size: .7rem;
+        text-align: center;
+    }
+    .pralisting-progress>.progress {
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+    }
+    .pralisting-progress>p {
+        margin-bottom: .5rem;
+    }
+    .pralisting-button-pengajuan {
+        margin-top: .75rem;
+        margin-bottom: .75rem;
+    }
+    .pralisting-button-pengajuan>h5 {
+        font-size: .6rem;
+        text-align: center;
+        margin-top: .5rem !important;
+        margin-bottom: .5rem !important;
+    }
+    .pengajuan-description {
+        font-size: .6rem
+    }
+    .label-investmentplan {
+        font-size: 0.6rem;
+    }
+    .card-detail-pralisting {
+        padding: .5rem;
+        margin-bottom: .5rem !important;
+    }
+    .form-vote {
+        padding: .5rem;
+        line-height: 1rem;
+        font-size: .75rem;
+        height: calc(2rem + 2px);
+    }
+    .pralisting-content {
+        height: 330px;
+        max-height: 330px;
+    }
+    .pralisting-nav>.nav>.nav-item>.pralisting-nav-link {
+        font-size: .85rem;
+        padding: 0;
+    }
+    .pralisting-keterangan-content {
+        padding: 2rem;
+        font-size: .9rem;
+        width: 50%;
+    }
+    .pralisting-keterangan>h4 {
+        font-size: .9rem;
+    }
+    .pralisting-keterangan>p {
+        font-size: .8rem;
+    }
+    .pralisting-nav {
+        height: 20rem;
+        max-height: 20rem;
+    }
+    .comment-name {
+        font-size: 1rem;
+    }
+    .comment-date {
+        font-size: .9rem;
+    }
+    .pralisting-comment-text {
+        font-size: 1rem;
+    }
+    .pralisting-detail-title>.title-left>h3 {
+        font-size: .9rem;
+    }
+    .pralisting-detail-title>.title-left>h1 {
+        font-size: 2.2rem;
+    }
+}

@@ -13,16 +13,41 @@
                             <div class="card-header">
                                 <div class="row">
 
-                                    <div class="col-md-8">
+                                    <div class="col-md-9">
                                         <h1 class="card-title-member">Video Tutorial</h1>
                                     </div>
-                                    <div class="col-md-4">
-                                        <form class="form-inline my-2 my-lg-0" method="GET"
-                                            action="{{ route('results') }}">
-                                            <input class="form-control mr-sm-2" type="search" name="search_query"
-                                                placeholder="Search" aria-label="Search">
-                                            <button class="btn btn-outline-success my-2 my-sm-0"
-                                                type="submit">Search</button>
+                                    <div class="col-md-3" style="margin-top: 5px;">
+                                        {{-- {{session('search_query')}} --}}
+                                        <form class="form-inline" method="GET" action="{{ route('results') }}">
+                                            {{-- <input class="form-control mr-sm-2" type="search" name="search_query"
+                                                placeholder="Search" aria-label="Search"> --}}
+                                            <fieldset class="form-group">
+                                                <label for="filter" style="margin-right: 20px;
+                                                margin-left: -20px;
+                                                font-size: 16px;
+                                                font-weight: 600;">Filter</label>
+                                                
+                                                <select class="form-control" name="search_query" id="filter"
+                                                    onchange="if(this.value != 'kosong') { this.form.submit(); }">
+                                                    <option {{ session('search_query')=='' ? 'selected' : '' }}
+                                                        value="">
+                                                        Semua</option>
+                                                    <option {{ session('search_query')=='Tutorial' ? 'selected' : '' }}
+                                                        value="Tutorial">Tutorial</option>
+                                                    <option {{ session('search_query')=='Equity Crowdfunding'
+                                                        ? 'selected' : '' }} value="Equity Crowdfunding">Equity
+                                                        Crowdfunding</option>
+                                                    <option {{ session('search_query')=='Santara' ? 'selected' : '' }}
+                                                        value="Santara">Santara</option>
+                                                    <option {{ session('search_query')=='Penerbit' ? 'selected' : '' }}
+                                                        value="Penerbit">Penerbit</option>
+                                                    <option {{ session('search_query')=='Sharing Session' ? 'selected'
+                                                        : '' }} value="Sharing Session">Sharing Session</option>
+                                                    <option {{ session('search_query')=='Mindset' ? 'selected' : '' }}
+                                                        value="Mindset">Mindset</option>
+                                                </select>
+                                            </fieldset>
+
                                         </form>
                                     </div>
                                 </div>

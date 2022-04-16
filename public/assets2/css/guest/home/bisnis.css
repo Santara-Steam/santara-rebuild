@@ -1,0 +1,250 @@
+.bisnis-home {
+    padding: 1rem;
+}
+
+.bisnis-home>div {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.card-bisnis-item {
+    position: relative;
+    -webkit-box-shadow: 0 1px 15px 1px rgba(62, 57, 107, .07) !important;
+    box-shadow: 0 1px 15px 1px rgba(62, 57, 107, .07) !important;
+    border: 1px solid #eee;
+    border-radius: .35rem;
+    height: 100%;
+}
+
+.card-bisnis-item:hover {
+    -webkit-box-shadow: 0 1px 15px 10px rgba(62, 57, 107, .07) !important;
+    box-shadow: 0 1px 15px 10px rgba(62, 57, 107, .07) !important;
+}
+
+.col-bisnis-item {
+    margin-bottom: 1rem;
+}
+
+.badge-bisnis {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    opacity: 92%;
+}
+
+.list-bisnis-img {
+    width: 100%;
+    height: 263.25px;
+    object-fit: cover;
+}
+
+.list-bisnis-title-main {
+    height: 4rem;
+    padding: .75rem 0;
+    margin-bottom: .5rem;
+}
+
+.list-bisnis-title {
+    font-size: 1rem;
+    font-weight: bold;
+    word-wrap: anywhere;
+}
+
+.list-bisnis-title-company {
+    font-size: 0.8rem;
+}
+
+.bisnis-diff {
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.item-footer {
+    font-size: .8rem
+}
+
+.media-body-bisnis>.mulai {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    padding: 0.15rem 0
+}
+
+.media-body-bisnis>.mulai>b {
+    font-size: 1rem
+}
+
+.lazyloading {
+    background: #fff url(/assets/images/animation/image-loader.gif) no-repeat center;
+    min-height: 60px;
+}
+
+.bisnis-title-right {
+    display: none;
+}
+
+.fund-sukuk {
+    margin-top: .3em;
+    color: #858585;
+}
+
+.fund-price {
+    color: #2D7E4A;
+}
+
+.item-footer-sukuk {
+    text-align: center;
+    font-size: 1em;
+}
+
+.value-footer-sukuk {
+    color: #BF2D30;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+@media only screen and (max-width: 600px) {
+    .badge-bisnis {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: .5rem;
+        font-size: .9rem;
+        border-radius: 0;
+        opacity: 100%;
+    }
+    .list-bisnis-title {
+        font-size: .8rem;
+        height: 1.6rem;
+    }
+    .list-bisnis-title-company {
+        font-size: .6rem
+    }
+    .list-bisnis-img {
+        height: 150px;
+    }
+    .lazyloading {
+        background: #fff url(/assets/images/animation/image-loader-small.gif) no-repeat center;
+        min-height: 60px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .bisnis-home {
+        padding: 0 !important;
+    }
+    .bisnis-home>div {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .bisnis-home>.row {
+        padding: 0;
+        margin: 0;
+    }
+    .bisnis-home>.row>.col-6 {
+        padding: 0 !important;
+    }
+    .list-bisnis-title-main {
+        padding: 0;
+    }
+    tr.row-period>td {
+        padding-top: .7rem;
+    }
+    .bisnis-diff {
+        font-size: 0.7rem;
+        margin-bottom: 0 !important;
+    }
+    .bisnis-title-right {
+        float: none;
+        width: 100%;
+        text-align: center !important;
+        display: block;
+    }
+    .item-footer {
+        font-size: .7rem
+    }
+    .card-bisnis-item {
+        margin: .2rem;
+    }
+    .card-bisnis-item:hover {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+    .card-content-bisnis {
+        padding: .75rem;
+        padding-bottom: 0;
+    }
+    .media-body-bisnis>.harga-mulai {
+        font-size: 0.6rem;
+    }
+    .media-body-bisnis>.harga-mulai>b {
+        font-size: .8rem
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .card-home-title {
+        padding: 1rem 3rem;
+    }
+    .bisnis-title-left {
+        width: 70%;
+    }
+    .bisnis-title-right {
+        width: 30%;
+    }
+    .bisnis-home {
+        padding: 1rem;
+    }
+    .bisnis-home>div {
+        margin: 0;
+    }
+    .list-bisnis-img {
+        height: 230px;
+    }
+    .list-bisnis-title {
+        font-size: .9rem;
+        height: 2.7rem;
+    }
+    .list-bisnis-title-company {
+        font-size: .7rem;
+    }
+    .list-bisnis-title-main {
+        height: 5rem;
+        padding: .5rem 0;
+    }
+    tr.row-period>td {
+        padding-top: .7rem;
+    }
+    .bisnis-diff {
+        font-size: 0.7rem;
+    }
+    .badge-bisnis {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: .5rem;
+        font-size: .9rem;
+        border-radius: 0;
+        opacity: 100%;
+    }
+    .item-footer {
+        font-size: .8rem
+    }
+    .col-bisnis-item {
+        padding-right: 2px;
+        padding-left: 2px;
+    }
+    .bisnis-home {
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .list-bisnis-img {
+        height: 401.75px;
+    }
+}

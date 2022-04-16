@@ -1,0 +1,171 @@
+.header-homepage {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)), url(../../../images/header/home.png);
+    background-color: #fff;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.header-homepage-img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.header-title {
+    position: absolute;
+    top: 15rem;
+    left: 5rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: black;
+    font-variant-caps: normal;
+    font-family: sans-serif;
+}
+
+.header-description {
+    position: absolute;
+    top: 26rem;
+    left: 5rem;
+    font-size: 1.7rem;
+}
+
+.header-button {
+    position: absolute;
+    top: 31rem;
+    left: 5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card-counter-header {
+    position: relative;
+    width: 75%;
+    margin: 2rem auto 2rem;
+    z-index: 1;
+}
+
+.counter-header {
+    margin-top: 0;
+}
+
+.counter-header-title {
+    color: #BF2D30;
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.counter-header-item {
+    width: 25%;
+    padding: 15px 20px !important;
+}
+
+.btn-header {
+    height: 35px !important;
+    line-height: 35px !important;
+    padding-left: .75rem !important;
+    padding-right: .75rem !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .header-homepage {
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)), url(../../../images/header/home-mobile.png);
+        height: 450px;
+        text-align: center;
+    }
+    .header-homepage-content {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+    }
+    .header-title {
+        position: initial;
+        font-size: 1.7rem;
+        margin-bottom: 1.8rem;
+    }
+    .header-description {
+        position: initial;
+        font-size: 1.4rem;
+    }
+    .header-button {
+        position: initial;
+    }
+    .header-button>a>.btn {
+        width: 20rem;
+    }
+    .content-header {
+        margin-left: -15px;
+        background-color: white;
+    }
+    .counter-header-title {
+        font-size: 1.7rem;
+    }
+    #swiper-pagination-header>.swiper-pagination-bullet {
+        width: 10px !important;
+        height: 10px !important;
+        border: 2px solid white;
+        background: #BF2D30;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .counter-header {
+        margin: 0;
+    }
+    .card-counter-header {
+        width: 100%;
+        bottom: 0;
+        border-radius: 0;
+        margin-bottom: 1rem;
+        margin-top: 0;
+    }
+    .card-homepage-counter {
+        margin: 0;
+    }
+    .carousel-inner-header {
+        object-fit: fill;
+        margin: 0 auto;
+    }
+    .counter-header-item {
+        width: 50%;
+    }
+    .counter-header-item>span {
+        font-size: 10px;
+    }
+    .carousel-homepage-header {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 767px) {
+    .list-bisnis-img {
+        height: 250px;
+    }
+    .homepage-counter {
+        padding: 15px !important;
+        font-size: 15px;
+    }
+    .header-navbar .navbar-header .navbar-brand .brand-logo {
+        width: 130px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .card-counter-header {
+        width: 85%;
+    }
+    .counter-header-item {
+        padding: 10px !important;
+    }
+    .counter-header-title {
+        font-size: 1.6rem;
+    }
+    .counter-header-item>span {
+        font-size: .8rem;
+    }
+}

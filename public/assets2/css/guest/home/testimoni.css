@@ -1,0 +1,152 @@
+.testimoni-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.testimoni-photo {
+    height: 270px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.testimoni-subtitle {
+    font-size: 13px;
+}
+
+.photo-profile {
+    height: 70%;
+    width: 70%;
+}
+
+.swipper-testimoni-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-testimoni-next {
+    left: 90%;
+}
+
+.swiper-button-testimoni-prev {
+    right: 11%;
+}
+
+.swiper-button-testimoni-next,
+.swiper-button-testimoni-prev {
+    position: absolute;
+    bottom: 0;
+    width: 2rem;
+    height: 2rem;
+    z-index: 10;
+    cursor: pointer;
+    background-color: #BF2D30 !important;
+}
+
+.swiper-button-testimoni-prev {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23fff\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z\'/%3E%3C/svg%3E') !important;
+    background-repeat: no-repeat;
+    border: inset .3rem transparent;
+    box-sizing: border-box;
+    border-radius: .3rem;
+}
+
+.swiper-button-testimoni-next {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23fff\' viewBox=\'0 0 8 8\'%3E%3Cpath d=\'M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z\'/%3E%3C/svg%3E') !important;
+    background-repeat: no-repeat;
+    border: inset .3rem transparent;
+    box-sizing: border-box;
+    border-radius: .3rem;
+}
+
+.card-body-testimoni {
+    border-radius: 0;
+    margin-bottom: 0 !important;
+    padding: 2rem 0;
+}
+
+.swiper-pagination-testimoni {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .testimoni-title {
+        font-size: .8rem !important;
+    }
+    .testimoni-photo {
+        object-fit: scale-down;
+        max-height: 90px;
+        max-width: 90px;
+    }
+    .testimoni-subtitle {
+        font-size: .8rem !important;
+    }
+    .testimoni-description {
+        font-size: .7rem !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .padding-testimoni {
+        padding: .5rem 0 !important;
+        font-size: 1.1em;
+    }
+    .padding-testimoni>h2 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    .testimoni-photo {
+        object-fit: scale-down;
+        max-height: 100px;
+        max-width: 100px;
+    }
+    .testimoni-title {
+        font-size: 1rem !important;
+    }
+    .testimoni-subtitle {
+        font-size: .9rem;
+        margin-bottom: .5rem !important;
+    }
+    .testimoni-description {
+        font-size: .8rem;
+        height: 5rem;
+    }
+    .swipper-testimoni-navigation {
+        display: none;
+    }
+    .swiper-pagination-testimoni {
+        display: block;
+    }
+    .swiper-pagination-testimoni>.swiper-pagination-bullet {
+        width: 8px !important;
+        height: 8px !important;
+        border: 1px solid white;
+        background-color: #BF2D30;
+    }
+    .card-body-testimoni {
+        border: 1px solid rgba(0, 0, 0, .06);
+        margin: .5rem !important;
+        border-radius: .35rem;
+        padding: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .testimoni-photo {
+        height: 210px;
+        width: 360px;
+        max-width: 360px;
+    }
+    .padding-testimoni {
+        padding-left: 7rem !important;
+        font-size: .8rem;
+        text-align: justify;
+    }
+    .carousel-testimoni {
+        height: 280px;
+    }
+    .carousel-testimoni-control {
+        margin-right: 0rem;
+        margin-top: 0rem;
+    }
+}

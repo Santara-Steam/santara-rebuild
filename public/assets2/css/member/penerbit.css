@@ -1,0 +1,115 @@
+.penerbit-item-img {
+    width: 100%;
+    max-height: revert;
+    height: auto;
+    object-fit: contain;
+}
+
+.penerbit-detail-item-img{
+    width: 100%;
+    max-height: revert;
+    height: auto;
+    object-fit: contain;
+}
+
+.penerbit-info-report {
+    background: #FDE9CD;
+    border-radius: 6px;
+    height: 6rem;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.tab-penerbit-detail{
+    padding: .5rem 1rem !important;
+    font-weight: bold;
+    width: 15rem;
+    display: block !important;
+    color: #A5A5A5 !important;
+    border: none !important;
+}
+
+.tab-penerbit-detail.active{
+    background: #BF2D30 !important;
+    color: white !important;
+}
+
+.penerbit-info-report.running {
+    background: #EEF1FF;
+}
+
+.penerbit-info-report.failed {
+    background: #FFE2DF;
+}
+
+.penerbit-info-report.created {
+    background: #FFF;
+}
+
+.penerbit-diff {
+    font-size: 0.8rem;
+    text-align: left;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.penerbit-nav {
+    height: auto;
+    max-height: 58rem;
+}
+
+.penerbit-nav-tabs {
+    border-bottom: 0;
+}
+
+.penerbit-nav-link {
+    border: none !important;
+    border-bottom: 1px solid #babfc7;
+    font-weight: bold !important;
+    color: #6b6f82 !important;
+    border-radius: 0;
+}
+
+.penerbit-nav-link.active {
+    border-bottom: 5px solid #BF2D30 !important;
+}
+
+.penerbit-nav-link:hover {
+    color: #6b6f82 !important;
+    border-bottom: 5px solid #BF2D30 !important;
+}
+
+.total-rencana {
+    line-height: 10px;
+    background: #F5F5F5;
+    border: 1.00583px solid #917B7B;
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.total-rencana-text {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 65px;
+    color: #BF2D30;
+}
+
+[contenteditable] {
+    border: solid 1px lightgreen;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.center-pralisting {
+    margin-top: 2.5em;
+}
+
+.center-pralisting > h3 {
+    margin-bottom: 1em;
+}
+
+.apps-download > a > img {
+    width: 170px;
+    height: auto;
+    margin: 0 1em;
+}

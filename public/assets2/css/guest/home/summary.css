@@ -1,0 +1,48 @@
+.summary {
+    padding: 0;
+    margin: 0;
+}
+
+.summary>div {
+    padding: 0;
+}
+
+.summary>.tree {
+    background-image: url("../../../images/content/tree.png");
+    height: 430px;
+    max-height: 430px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.summary>.tree>.card-summary {
+    right: -10rem;
+}
+
+.summary>.people>.card-summary {
+    left: 3rem;
+}
+
+.summary>.people {
+    background-image: url(../../../images/content/people.png);
+    height: 430px;
+    max-height: 430px;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.card-summary {
+    height: 300px;
+    max-height: 300px;
+    padding: 2rem 1.5rem;
+    border-radius: 0;
+    width: 470px;
+    max-width: 470px;
+    margin: 0;
+}

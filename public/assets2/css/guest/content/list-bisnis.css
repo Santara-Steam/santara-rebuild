@@ -1,0 +1,217 @@
+.container-bisnis {
+    background-color: #fff;
+    padding: 3rem 4rem;
+}
+
+.container-bisnis>.title>h3 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem 6rem 0;
+    margin-bottom: 1rem;
+    color: #BF2D30;
+}
+
+.search-bisnis {
+    padding: 10px !important;
+}
+
+.form-input-search {
+    border-radius: 0 !important;
+    border-color: #BF2D30;
+    border: 1px solid #eee;
+}
+
+.list-bisnis {
+    margin: 0 auto;
+    width: 100%
+}
+
+.card-list-bisnis {
+    border: 1px solid #eee;
+    border-radius: 0;
+}
+
+.list-bisnis-item {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.list-bisnis-title {
+    font-size: 1rem;
+    font-weight: bold;
+    word-wrap: anywhere;
+}
+
+.list-bisnis-title-company {
+    font-size: .65rem;
+    font-weight: 500;
+    word-wrap: anywhere;
+    max-width: 215px;
+    color: #464855;
+}
+
+.title-list-bisnis {
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: #BF2D30;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.btn-soon {
+    color: #fff;
+    border-color: #666EE8 !important;
+    background-color: #666EE8 !important;
+}
+
+input:focus,
+input.form-input-search:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: #eee !important;
+}
+
+
+/* Safari */
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.lazyloading {
+    background: #fff url(/assets/images/animation/image-loader.gif) no-repeat center;
+    min-height: 60px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container-bisnis>.title>h3 {
+        font-size: .9rem !important;
+        padding: .5rem 0 !important;
+    }
+    .search-bisnis {
+        padding: 10px 70px;
+    }
+    .search-bisnis .search {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+    }
+    .search-bisnis .range {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .search-bisnis .category {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .search-bisnis .sort {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .sort-bisnis {
+        margin-top: 1rem;
+    }
+    .lazyloading {
+        background: #fff url(/assets/images/animation/image-loader-small.gif) no-repeat center;
+        min-height: 60px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .container-bisnis>.title>h3 {
+        font-size: 1.6rem;
+        padding: 1rem;
+    }
+    .container-bisnis {
+        padding: 1rem;
+    }
+    .list-bisnis {
+        margin: 0 auto;
+        width: 100%
+    }
+    .list-bisnis-title {
+        max-width: 100%;
+    }
+    .title-list-bisnis {
+        font-size: 17px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .list-bisnis>div {
+        padding: 0;
+    }
+    .list-bisnis-item {
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 767px) {
+    .title-list-bisnis {
+        font-size: 22px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .search-bisnis {
+        padding: 10px 140px;
+    }
+    .search-bisnis .search {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 10px;
+    }
+    .search-bisnis .range {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .search-bisnis .category {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .search-bisnis .sort {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .sort-bisnis {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .title-list-bisnis {
+        font-size: 20px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .container-bisnis>.title>h3 {
+        font-size: 1.8rem;
+        padding: 1rem 0;
+    }
+    .search-bisnis {
+        padding: 10px 0px !important;
+    }
+}
+
+@media only screen and (min-width: 1470px) {
+    .search-bisnis {
+        padding: 10px 245px !important;
+    }
+}

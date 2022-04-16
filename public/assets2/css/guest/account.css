@@ -1,0 +1,95 @@
+.card-account {
+    text-align: center;
+    padding: 1rem 2rem 2rem;
+    border: 1px solid #eee;
+    margin-top: 3rem;
+}
+
+.card-account>.logo-password {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+/* code verifikasi OTP */
+
+#code {
+    padding-left: 10px;
+    letter-spacing: 32px;
+    border: 0;
+    background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 50px 1px;
+    background-repeat: repeat-x;
+    background-position-x: 35px;
+    height: 50px;
+    font-size: 30px;
+    background-color: transparent;
+}
+
+#divInner {
+    left: 0;
+    position: sticky;
+}
+
+#divOuter {
+    width: 190px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.card-body-account {
+    padding: 3rem;
+    margin: auto 20rem;
+}
+
+.error-account-alert {
+    text-align: left;
+    min-height: 25px;
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .account-footer {
+        font-size: 0.7rem;
+        padding-bottom: 1rem;
+    }
+    .card-body-account {
+        padding: 0 !important;
+        margin: 0rem !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .content-account {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .card-account {
+        padding: 1rem;
+        margin-top: 0;
+    }
+    .card-body-account {
+        padding: 0;
+        margin: 3rem 5rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .content-account {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .card-body-account {
+        padding: 2rem;
+        margin: auto 8rem;
+    }
+    .account-footer {
+        font-size: 0.8rem;
+    }
+    .card-account {
+        padding: 1rem;
+        margin-top: 0;
+    }
+}

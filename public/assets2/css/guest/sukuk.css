@@ -1,0 +1,374 @@
+.detail-wrapper {
+  border: 1px solid #DADADA;
+  border-radius: 5px;
+  padding: 1em;
+  text-align: left;
+}
+
+.detail-wrapper > .counter-wrapper {
+  background-color: #FFE7E0;
+  padding: .4em 0;
+  text-align: center;
+  border-radius: 7px;
+  font-size: .8em;
+  font-weight: bold;
+  color: #D23737;
+  margin-bottom: .6em;
+}
+
+.detail-wrapper > .title-wrapper > p {
+  color: #000000;
+  margin-bottom: .3em;
+  font-size: .9em;
+}
+
+.detail-wrapper > .title-wrapper > h2 {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.detail-wrapper >.title-wrapper {
+  margin-bottom: 1.2em;
+}
+
+.detail-wrapper > .code-wrapper > p {
+  margin-bottom: .1em;
+  font-size: .7em;
+  color: #858585;
+}
+
+.detail-wrapper > .code-wrapper > .flex-wrap {
+  display: flex;
+}
+
+.detail-wrapper > .code-wrapper > .flex-wrap > h2 {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: .15em .5em 0 0;
+}
+
+.detail-wrapper > .code-wrapper > .flex-wrap > .sukuk-card {
+  background: #C7971E;
+  padding: .25em 2em;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.detail-wrapper > .code-wrapper {
+  margin-bottom: 1.2em;
+}
+
+.detail-wrapper > .info-flex-wrap {
+  margin-bottom: 1.2em;
+}
+
+.item-info > p {
+  margin-bottom: .3em;
+  font-size: .9em;
+  color: #000000;
+  font-weight: 600;
+}
+
+.item-info > h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #000000;
+  font-weight: 600;
+}
+
+.detail-wrapper > .unit-price-wrapper > h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.detail-wrapper > .unit-price-wrapper > h2 > span {
+  color: #2D7E4A;
+}
+
+.detail-wrapper > .progress-wrapper > p {
+  margin: 0;
+  color: #858585;
+  font-size: .9em;
+}
+
+.detail-wrapper > .progress-wrapper > p > span {
+  color: #2D7E4A;
+}
+
+.detail-wrapper > .btn-download-wrapper > .buy-sukuk {
+  background: #8C8C8C;
+  box-shadow: 0px 4px 4px #FFCCCD;
+  border-radius: 4px;
+  color: #fff;
+  width: 65%;
+  margin: 0 auto;
+}
+
+.btn-buy-sukuk {
+  font-weight: 600;
+  font-size: 1.3em;
+  border-radius: 5px;
+}
+
+.detail-wrapper > .btn-download-wrapper > .download-pros {
+  background: #FFFFFF;
+  border: 2px solid #D23737;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(218, 218, 218, 0.5);
+  border-radius: 4px;
+  width: 65%;
+  margin: 0 auto;
+}
+
+.btn-prospectus-sukuk, .btn-prospectus-sukuk:hover {
+  font-weight: 600;
+  font-size: .9em;
+  color: #D23737;
+}
+
+.tabs-wrapper {
+  margin-top: 3.5em;
+}
+
+.tabs-wrapper > nav > .tabs-custom {
+  border-radius: 0 !important;
+  border-bottom: 2px solid #DDDDDD;
+}
+
+.tabs-wrapper > nav > .tabs-custom > .nav-item {
+  color: #000000;
+  background: transparent;
+  border: 0;
+  font-weight: 400;
+  font-size: 1.2em;
+  width: 18%;
+  text-align: center;
+}
+
+.tabs-wrapper > nav > .tabs-custom > .nav-item:hover {
+  color: #D23737;
+  border-bottom: 2px solid #D23737;
+}
+
+.tabs-wrapper > nav > .tabs-custom > .active {
+  color: #D23737;
+  border-bottom: 2px solid #D23737;
+}
+
+.tabs-wrapper > .tab-content > .tab-pane > .content-benefit {
+  width: 100%;
+  margin-top: 3em;
+  border: 1px solid #686868;
+  border-radius: 5px;
+  padding: 2em;
+}
+
+.tabs-wrapper > .tab-content > .tab-pane > .content-benefit
+> table > tbody > tr > .title {
+  width: 32%;
+  font-size: 18px;
+}
+
+.tabs-wrapper > .tab-content > .tab-pane > .content-benefit
+> table > tbody > tr > .value {
+  font-size: 18px;
+  text-align: right;
+  width: 32%;
+}
+
+.tabs-wrapper > .tab-content > .tab-pane > .content-benefit
+> table > tbody > tr > .value > p {
+  color: #000;
+  font-weight: 600;
+}
+
+.tabs-wrapper > .tab-content > .tab-pane > .content-benefit
+> h3 {
+  font-weight: bold;
+  color: #000000;
+}
+
+.tabs-wrapper > .tab-content > .tab-pane > .content-benefit
+> p {
+  color: #000000;
+}
+
+.trx-title {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.border-custom {
+  border-bottom: 2px solid #F4F4F4;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.company-name {
+  margin: 0;
+  font-size: .9em;
+  font-weight: 400;
+  color: #000;
+}
+
+.sukuk-name {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.code-title {
+  margin: .8em 0 0 0;
+  font-size: .85em;
+  color: #858585;
+  font-weight: 300;
+}
+
+.project-code-sukuk {
+  margin: 0;
+  font-weight: bold;
+  margin: 0;
+}
+
+.trx-title-wrap, .total-fund-wrap, .trx-form-wrapper {
+  border-bottom: 2px solid #F4F4F4;
+  padding: 1.5em;
+}
+
+.title-fund > p {
+  color: #000;
+  font-weight: 400;
+  margin-bottom: .4em;
+}
+
+.value-fund > p {
+  font-weight: bold;
+  color: #000;
+  margin-bottom: .4em;
+  text-align: right;
+}
+
+.btn-trx-buy-sukuk, .btn-trx-buy-sukuk:hover {
+  background: #0E7E4A;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.prediction-wrap {
+  background: #E1E7FF;
+  border: 1px solid #D0D0D0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 1.2em;
+  padding: 1em;
+}
+
+.flex-prediction {
+  display: flex;
+}
+
+.flex-prediction > .left-text {
+  margin: 0;
+  width: 70%;
+  color: #000;
+}
+
+.flex-prediction > .right-text,
+.flex-prediction > .right-text:hover {
+  margin: 0;
+  width: 30%;
+  text-align: right;
+  text-decoration: underline;
+  color: #666EE8;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.prediction-wrap > h3 {
+  margin-top: .2em;
+  font-weight: bold;
+  font-size: 1.7em;
+  margin-bottom: 0;
+  color: #000;
+}
+
+.dividen-title-monthly {
+  font-weight: bold;
+  margin-bottom: 1.1em;
+}
+
+.disclaimer-sukuk-dividen {
+  background: #FFF1DB;
+  border: 1px solid #C8C8C8;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 1.4em;
+}
+
+.disc {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.value-validate {
+  color: #000;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.validate-title {
+  color: #000;
+  margin: 0;
+}
+
+.value-validate-red {
+  color: #D23737;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.btn-red-trx {
+  background: #D23737;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1em;
+  border-radius: 5px;
+}
+
+.sukuk-title-head {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 38px;
+  line-height: 52px;
+}
+
+.company-name-head {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  color: #000000;
+}
+
+#errorUnitRequired {
+  /* background: #FFCCCD; */
+  text-align: center;
+  font-size: .9em;
+  padding: .5em 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-top: .5em;
+  margin-bottom: 0;
+  color: #D23737;
+}
+
+.sukuk-detail-img {
+  width: 100%;
+  height: 480px;
+  object-fit: contain;
+}

@@ -1,0 +1,123 @@
+.container-skema {
+    background-color: #fff;
+}
+
+.container-skema>.title>h3 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: bold;
+    padding: 3rem 6rem 0;
+}
+
+.container-skema>.title>div {
+    text-align: center;
+    font-size: 1.4rem;
+    padding: 0 6rem 0;
+}
+
+.container-skema>.item {
+    padding: 1rem 8rem;
+}
+
+.skema-progress {
+    padding: 2rem;
+}
+
+.skema-progress>.description>h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    height: 7rem;
+}
+
+.skema-progress>.description>p {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.5;
+    height: 6rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .container-skema>.title>h3 {
+        font-size: 1rem !important;
+    }
+    .container-skema>.title>div {
+        font-size: .7rem !important;
+    }
+    .skema-progress>img {
+        width: 20%;
+    }
+    .skema-progress>.description {
+        width: 75%;
+    }
+    .skema-progress>.description>h4 {
+        font-size: .9rem !important;
+    }
+    .skema-progress>.description>p {
+        font-size: .8rem !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .container-skema>.title {
+        padding-top: 1rem;
+    }
+    .container-skema>.title>h3 {
+        font-size: 1.4rem;
+        padding: 1rem 1rem 0;
+    }
+    .container-skema>.title>div {
+        font-size: 1rem;
+        padding: 0 1rem 1rem 1rem;
+    }
+    .container-skema>.item {
+        padding: 1rem;
+        padding: 0 1rem;
+    }
+    .skema-progress {
+        padding: 0;
+    }
+    .skema-progress>img {
+        width: 15%;
+    }
+    .skema-progress>.description {
+        float: right;
+        width: 80%;
+    }
+    .skema-progress>.description>h4 {
+        padding: .5rem 0;
+        margin: 0;
+        height: auto;
+        font-size: 1.4rem;
+        line-height: 1.4;
+        text-align: left;
+    }
+    .skema-progress>.description>p {
+        font-size: 1rem;
+        line-height: 1.4;
+        text-align: left;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container-skema>.item {
+        padding: 1rem;
+    }
+    .container-skema>.title>h3 {
+        font-size: 2rem;
+    }
+    .skema-progress {
+        padding: 1rem;
+    }
+    .skema-progress>.description>p {
+        font-size: .85rem;
+    }
+    .skema-progress>.description>h4 {
+        font-size: 1.2rem;
+        padding: 1rem 1rem;
+        height: 5rem;
+    }
+}

@@ -30,9 +30,9 @@ class Daftar_bisnisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        $user = User::where('role_id',2)->get();
+        // $user = User::where('role_id',2)->get();
         $kategori = kategori::all();
-        return view('front_end.daftar_bisnis.create',compact('kategori','user'));
+        return view('front_end.daftar_bisnis.create',compact('kategori'));
     }
 
     public function validator(array $data){

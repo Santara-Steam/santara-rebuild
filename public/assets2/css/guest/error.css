@@ -1,0 +1,108 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: white;
+}
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.page-container>div {
+    background-color: #fff;
+    margin: 1rem;
+    padding: 2rem;
+}
+
+.img-logo {
+    text-align: center;
+}
+
+.img-logo>img {
+    width: 100%;
+}
+
+.title {
+    font-size: 2rem;
+    color: #BF2D30;
+}
+
+.description {
+    font-size: 1rem;
+    color: #6b6f82;
+}
+
+.app-download {
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.app-download>a {
+    padding-right: 2rem;
+}
+
+.app-download>a>img {
+    width: 20%;
+}
+
+.btn-santara-red {
+    background-color: #BF2D30 !important;
+    color: #fff !important;
+    border-color: #BF2D30;
+}
+
+.btn-santara-white {
+    background-color: #fff !important;
+    color: #BF2D30 !important;
+    border-color: #BF2D30;
+}
+
+.btn-santara:active,
+.btn-santara:hover {
+    color: #BF2D30 !important;
+}
+
+.btn {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .page-container {
+        display: table;
+        padding: 0;
+    }
+    .page-container>div {
+        padding: 0;
+    }
+    .title {
+        font-size: 1.2rem;
+    }
+    .description {
+        font-size: .7rem;
+    }
+    .app-download {
+        text-align: center;
+    }
+    .app-download>a {
+        padding: 0 1rem;
+    }
+    .app-download>a>img {
+        width: 30%;
+    }
+    .btn {
+        height: 30px;
+        line-height: 30px;
+        font-size: .7rem;
+    }
+}

@@ -1,0 +1,188 @@
+.card-body-payment {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.payment-box {
+    background: #F5F5F5;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.payment-box-img {
+    margin: 10px;
+    object-fit: cover;
+    width: 90px;
+    height: 90px;
+}
+
+.payment-detail-font {
+    color: #464855;
+    float: right;
+}
+
+.channel-box {
+    border-bottom: 1px solid rgba(0, 0, 0, .1) !important;
+    margin-bottom: 0 !important;
+}
+
+.payment-method-box {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    cursor: pointer;
+}
+
+.bank-title {
+    font-size: 13px;
+}
+
+.payment-logo {
+    object-fit: contain;
+    width: 100px;
+    height: 35px;
+}
+
+.payment-icon-right {
+    display: table-column;
+}
+
+.bank-title>div {
+    padding: 7px 0 0;
+}
+
+.payment-box>div {
+    height: 110px !important;
+}
+
+.col-saldo-idr {
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.btn-wallet {
+    padding-left: .5rem;
+}
+
+.btn-wallet>.btn {
+    color: white;
+    font-size: 1rem;
+    height: 40px;
+    line-height: 40px;
+}
+
+.channel-box>.collapse>.card-body>.card {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.badge-delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: .1rem;
+    font-size: 1rem;
+    opacity: 100%;
+    background-color: white;
+    color: #C4C4C4;
+    border-bottom: 1px solid #C4C4C4;
+    border-left: 1px solid #C4C4C4;
+    border-top-right-radius: .35rem;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .payment-icon-right {
+        display: none;
+    }
+    .payment-box-img {
+        margin: 5px;
+        width: 80px !important;
+        height: 80px !important;
+    }
+    .payment-box>div {
+        height: 90px !important;
+    }
+    .bank-title>div {
+        font-size: .7rem !important;
+    }
+    .col-saldo-idr {
+        margin-bottom: .5rem !important;
+    }
+    .bank-title>div {
+        font-size: .8rem !important;
+    }
+    .channel-box>.card-header>.card-title {
+        font-size: 0.95rem !important;
+    }
+    .card-payment-bank>p {
+        font-size: .8rem !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .card-body-payment {
+        margin-top: 0 !important;
+    }
+    .payment-box>div {
+        height: 100px;
+    }
+    .payment-box>.row>.col-7 {
+        font-size: 0.8rem !important;
+    }
+    .payment-box>.row>.col-7>hr {
+        margin: 0.5rem 0;
+    }
+    .payment-box-img {
+        width: 90px;
+        height: 90px;
+    }
+    .channel-box>.card-header {
+        padding: 1rem 0.5rem;
+    }
+    .channel-box>.card-header>.card-title {
+        font-size: 1.2rem;
+    }
+    .payment-method-box {
+        padding: 0.25rem;
+        text-align: center;
+    }
+    .bank-title {
+        padding: 5px 20px 10px;
+    }
+    .payment-logo {
+        width: 40px !important;
+    }
+    .bank-title>div {
+        font-size: 1rem;
+        text-align: left;
+        padding-left: .5rem !important;
+        padding-top: .5rem !important;
+    }
+    .card-payment-bank>p {
+        font-size: .9rem;
+    }
+    .confirm-wallet-box {
+        padding: .5rem;
+    }
+    .saldo-idr {
+        font-size: 1.3rem;
+    }
+    .btn-wallet>.btn {
+        font-size: .9rem;
+        height: 30px;
+        line-height: 30px;
+    }
+    .payment-icon-right {
+        padding: 0 .5rem 0 0 !important;
+    }
+    .col-saldo-idr {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    .payment-logo {
+        padding-left: .5rem;
+    }
+}

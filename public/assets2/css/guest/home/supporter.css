@@ -1,0 +1,22 @@
+.supporter {
+    background-color: #fff;
+    padding: 2rem 4rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .supporter {
+        padding: 1rem;
+    }
+    .supporter>div>h3 {
+        font-size: 1rem;
+    }
+    .logo-ojk {
+        width: 50%;
+    }
+    .supporter-logo {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        margin: 0 -8px;
+    }
+}

@@ -1,0 +1,415 @@
+.informasi {
+    padding: 0 4rem;
+}
+
+.informasi-text>h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.informasi-text>h4 {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.informasi-text>h4:last-child {
+    color: #BF2D30;
+    margin-top: 1.5rem;
+}
+
+.btn-informasi {
+    width: 16rem;
+}
+
+.btn-informasi-left {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn-informasi-right {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.informasi-header {
+    margin: 3rem 0 1rem;
+}
+
+.informasi-footer {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-pralisting {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.center-pralisting > p {
+    font-size: 1.5em;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #000;
+}
+
+.center-pralisting > .home-download > a > img {
+    width: 170px;
+    height: auto;
+    margin: 1em;
+}
+
+.informasi-footer>div>a>button {
+    width: 17rem;
+}
+
+.pralisting-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.pralisting-content>div {
+    position: relative;
+}
+
+.pralisting-content>div:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 2rem;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #ddd;
+}
+
+.pralisting-bisnis-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: .35rem;
+}
+
+.pralisting-content>.pralisting-info {
+    flex-basis: 60%;
+    height: 80%;
+}
+
+.pralisting-content>.pralisting-action {
+    flex-basis: 40%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pralisting-content>.pralisting-link {
+    flex-basis: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pralisting-content-trademark {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.pralisting-content-company {
+    font-size: 1rem;
+    margin: .5rem 0 1rem;
+}
+
+.pralisting-content-company-category {
+    color: #D23737;
+    font-size: .85rem;
+    margin-left: 1rem;
+}
+
+.pralisting-content-description {
+    font-size: .8rem;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    margin-top: 1.5rem;
+    height: 35px;
+    white-space: pre-line;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.pralisting-action {
+    font-size: 1.3rem !important;
+}
+
+.pralisting-action-description {
+    display: flex;
+    align-items: center;
+}
+
+.pralisting-action-description>div>i {
+    font-size: 2rem;
+}
+
+.pralisting-action-info {
+    line-height: 0;
+    margin-left: .5rem;
+    text-align: left;
+}
+
+.pralisting-action-people {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.pralisting-action-type {
+    font-size: .8rem;
+    margin: 1rem 0;
+}
+
+.pralisting-link>a>div {
+    font-size: 1.1rem;
+    color: #BF2D30;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.pralisting-action>.col-6 {
+    margin-bottom: 2rem;
+}
+
+.pralisting-info>.pralisting-content-company-category {
+    display: none;
+}
+
+.pralisting-content>.pralisting-info>.pralisting-action-small {
+    display: none;
+}
+
+.card-pralisting-item {
+    margin-bottom: .5rem !important;
+    -webkit-box-shadow: 0 1px 15px 1px rgba(62, 57, 107, .07) !important;
+    box-shadow: 0 1px 15px 1px rgba(62, 57, 107, .07) !important;
+    border: 1px solid #eee;
+    border-radius: .35rem;
+}
+
+.card-pralisting-item:hover {
+    -webkit-box-shadow: 0 1px 15px 10px rgba(62, 57, 107, .07) !important;
+    box-shadow: 0 1px 15px 10px rgba(62, 57, 107, .07) !important;
+}
+
+.pralisting-description {
+    padding-right: 0 !important;
+}
+
+.card-content-pralisting>.pralisting-image {
+    max-width: 12% !important;
+}
+
+.lazyloading {
+    background: #fff url(/assets/images/animation/image-loader.gif) no-repeat center;
+    min-height: 60px;
+}
+
+@media only screen and (max-width: 600px) {
+    .informasi {
+        height: 650px;
+        padding: 1rem;
+    }
+    .informasi-text {
+        padding-left: .5rem;
+        padding-right: .5rem;
+        margin-bottom: 1rem;
+    }
+    .informasi-text>h2 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 1rem 0;
+    }
+    .informasi-text>p {
+        font-size: 0.9rem;
+    }
+    .informasi-text>h4 {
+        font-size: .9rem;
+    }
+    .informasi-footer {
+        margin: 1rem 0 0;
+    }
+    .informasi-footer>div {
+        margin: 0 0 1rem 0;
+    }
+    .informasi-text>h4:last-child {
+        margin-top: 1rem;
+    }
+    .btn-informasi {
+        width: 14rem;
+        height: 35px;
+        line-height: 35px;
+        font-size: .8rem;
+    }
+    .btn-informasi-left {
+        padding-right: 0;
+        margin: 0;
+    }
+    .btn-informasi-right {
+        padding-left: 0;
+        margin: 0;
+    }
+    .card-pralisting-item>.card-body {
+        padding: .5rem .5rem 0 !important;
+    }
+    .pralisting-content-company-category {
+        font-size: .5rem;
+    }
+    .pralisting-content-trademark {
+        font-size: .8rem;
+        margin-bottom: 0;
+    }
+    .pralisting-content-company {
+        font-size: .6rem;
+        margin: 0 0 1rem;
+        font-weight: 600;
+    }
+    .pralisting-bisnis-img {
+        height: 90px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .pralisting-content-description {
+        max-width: 190px;
+        font-size: .5rem;
+        margin-bottom: 0;
+        margin-top: .5rem;
+        height: 20px;
+        width: 100%;
+        padding-right: .5rem;
+    }
+    .pralisting-description {
+        padding: 0 0 0 .5rem !important;
+    }
+    .pralisting-action-description>div>i {
+        font-size: .9rem;
+    }
+    .pralisting-action-people {
+        font-size: .6rem;
+    }
+    .lazyloading {
+        background: #fff url(/assets/images/animation/image-loader-small.gif) no-repeat center;
+        min-height: 60px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .informasi {
+        height: 100%;
+        padding: 1rem 1rem .5rem;
+    }
+    .pralisting-description {
+        padding: 0 0 0 1rem;
+    }
+    .card-pralisting-item>.card-body {
+        cursor: pointer;
+        padding: 1rem 1rem .5rem;
+    }
+    .card-content-pralisting>.pralisting-image {
+        max-width: unset !important;
+    }
+    .pralisting-info>.pralisting-content-company-category {
+        display: block;
+    }
+    .pralisting-content>.pralisting-info>.pralisting-action-small {
+        display: inline-flex;
+    }
+    .pralisting-content {
+        display: block;
+    }
+    .pralisting-content>div:not(:last-child)::after {
+        content: none;
+    }
+    .pralisting-content>.pralisting-info {
+        flex-basis: auto;
+        height: auto;
+    }
+    .pralisting-action-info {
+        margin-left: .1rem;
+    }
+    .card-content-pralisting {
+        display: flex;
+    }
+    .pralisting-content-company>.pralisting-content-company-category,
+    .pralisting-content-date,
+    .pralisting-action,
+    .pralisting-link {
+        display: none !important;
+    }
+    .pralisting-content-company-category {
+        font-size: .6rem;
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .pralisting-action-description>div>i {
+        font-size: 1.5rem;
+    }
+    .pralisting-content-description {
+        width: 100%;
+        margin: 0 0 .5rem;
+        height: 20px;
+    }
+    .informasi-footer {
+        margin: 1rem 0 1rem;
+    }
+    .btn-informasi-left {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-right: 1rem;
+    }
+    .btn-informasi-right {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .informasi {
+        padding: 0 3rem;
+    }
+    .card-pralisting-item>.card-body {
+        cursor: pointer;
+    }
+    .pralisting-content>.pralisting-info {
+        flex-basis: 80%;
+    }
+    .pralisting-content>div:not(:last-child)::after {
+        content: none;
+    }
+    .pralisting-content>.pralisting-link {
+        flex-basis: 0%;
+        display: none;
+    }
+    .pralisting-action-people {
+        font-size: .8rem;
+    }
+    .pralisting-action-type {
+        font-size: .7rem;
+    }
+    .pralisting-action-description>div>i {
+        font-size: 1.5rem;
+    }
+    .informasi-footer {
+        margin: 1rem 0 1rem;
+    }
+    .pralisting-content>.pralisting-action {
+        flex-basis: 60%;
+    }
+}

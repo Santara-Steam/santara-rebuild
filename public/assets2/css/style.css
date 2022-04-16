@@ -1,0 +1,1070 @@
+input:focus {
+    outline: none;
+}
+
+.table th,
+.table td {
+    padding: .75rem .5rem !important;
+}
+
+.iti {
+    width: 100%;
+}
+
+.confirm-register {
+    border: none;
+    border-color: white;
+    text-align: left;
+    width: 80%;
+    font-weight: bold;
+    margin: auto;
+}
+
+.alert-success-dashboard {
+    color: white !important;
+    text-align: center;
+    border-color: #28d094 !important;
+    background-color: #5fe0b2 !important;
+}
+
+.btn-danger-ghost {
+    color: #ff4961 !important;
+    border-color: #ff394f !important;
+    background-color: #fff !important;
+    margin-left: 30px;
+}
+
+.btn-welcome {
+    color: #9e1e1e !important;
+    border-color: #9e1e1e !important;
+    background-color: #fff !important;
+    padding: 0.65rem 2rem;
+    border-radius: 0;
+}
+
+.form-input-home {
+    border-radius: 0 !important;
+    box-shadow: 0 1px 15px 1px rgba(62, 57, 107, .07);
+    border-color: #9e1e1e;
+    border: none;
+}
+
+.modal-detail {
+    border-radius: 0;
+    border: 2px solid #9e1e1e;
+}
+
+.button-alert {
+    color: #963b00 !important;
+    border-color: #963b00 !important;
+    background-color: #fff !important;
+    border-radius: 0;
+}
+
+
+/* tooltip copy to clipboard */
+
+.tooltip-copy {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-copy .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -125px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+.tooltip-copy .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+}
+
+.tooltip-copy:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.alert-smaller-center {
+    font-size: 12px;
+    border: none;
+    display: inline-block;
+    font-size: smaller;
+}
+
+.alert-copy-va {
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.alert-dashboard {
+    background: #ffe;
+    border: 1px solid #ddd;
+    padding: 15px;
+    font-weight: bolder;
+}
+
+.alert-kyc-admin {
+    background: #ffe;
+    border: 1px solid #ddd;
+    padding: 15px 0 10px;
+    font-weight: bolder;
+}
+
+.ticket-comment-trader,
+.ticket-comment-admin {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    width: fit-content;
+    clear: both;
+    display: block;
+    position: relative;
+}
+
+.ticket-comment-trader {
+    background: azure;
+    float: left;
+}
+
+.ticket-comment-admin {
+    background: white;
+    float: right;
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('../images/animation/loader.gif') 50% 50% no-repeat rgb(249, 249, 249);
+    opacity: .6;
+}
+
+.tableloading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../images/animation/loading.gif) 50% 50%no-repeat rgb(249, 249, 249);
+    opacity: 0.4;
+}
+
+.flatpickr-input {
+    background-color: white;
+}
+
+.dividend-detail,
+.history-detail {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background: azure;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dividend-detail>tbody>tr>td {
+    padding: 0.5rem 2rem !important;
+}
+
+.history-detail>tbody>tr>td {
+    padding: 0.5rem 1rem !important;
+}
+
+.form-control-white {
+    background-color: #fff;
+}
+
+.confirm-kyc-invalid {
+    background-color: #ffdddd !important;
+}
+
+.doc-tnc {
+    margin-bottom: 50px;
+    padding: 5px 100px;
+}
+
+.doc-tnc-iframe {
+    height: 800px;
+}
+
+.doc-tnc-ok {
+    padding: 5px;
+    width: 80%;
+    margin: auto;
+}
+
+.rotated {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+
+.img {
+    transition: all 0.5s ease;
+}
+
+.swal2-popup #swal2-content {
+    text-align: center;
+    display: block;
+    overflow: overlay;
+}
+
+.form-control-plaintext {
+    border: dashed 1px #ddd;
+}
+
+.option-payment {
+    width: 100%;
+    background: #ffe;
+    padding: 10px 10px;
+    margin: 0 auto;
+}
+
+.confirm-wallet-box {
+    background: #fbfbfb;
+    border-radius: 3px;
+    padding: 10px 5px 5px 5px;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.confirm-bank-box {
+    padding: 10px 5px 0 5px;
+    margin-bottom: 1rem;
+}
+
+.payment-method-confirm-bank .card-body {
+    padding: 0.5rem;
+}
+
+.payment-method-confirm-bank .card-title {
+    font-size: 0.75rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.payment-method-confirm-bank .card-text {
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.deposit-va {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffe;
+    border: 1px solid #ddd;
+    padding: 10px 10px;
+    margin: 0 35%;
+}
+
+.img-confirm-bank {
+    width: 25%;
+}
+
+.swal-welcome {
+    width: 550px !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+.swal-welcome-click {
+    width: 550px !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    cursor: pointer;
+}
+
+.swal-welcome .swal2-image {
+    margin: 0 !important;
+}
+
+.swal-welcome .swal2-actions {
+    margin: -45px auto 0.25em !important;
+    font-size: 12px;
+}
+
+.swal-welcome .swal2-title {
+    margin: 0 !important;
+}
+
+.swal-welcome .swal2-close {
+    background: white !important;
+    color: #ff0000 !important;
+}
+
+#count-payment-expired {
+    font-size: 54px;
+    color: #464855;
+    font-weight: 500;
+}
+
+#count-payment-expired>span {
+    display: table-cell;
+    line-height: 2.5rem;
+}
+
+#count-payment-expired>span>b {
+    font-weight: 500;
+}
+
+#count-payment-expired>span>p {
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+.payment-confirmation-text {
+    color: #FF9149;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.btn-copy {
+    background: #eee;
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, .125);
+    width: 150px;
+}
+
+.confirm-bank-box>div>ul>li {
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+.payment-success-box {
+    padding: 50px 30px;
+    background-repeat: repeat-x;
+    box-shadow: 0 1px 15px 1px rgba(62, 57, 107, .07);
+    border: 1px solid #eee;
+    border-radius: 10px;
+    margin-top: 60px;
+    width: 100%;
+}
+
+.card-collapse {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125) !important;
+    border-radius: .25rem;
+    cursor: pointer;
+}
+
+.confirm-bank-box>.text-center>h4 {
+    font-size: 1rem;
+}
+
+.count-payment-title {
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+
+/* .channel-box > .collapse > .card-body > .card {
+  width: 60%;
+}   */
+
+.confirm-wallet-box>.text-left>h3 {
+    font-size: 1.25rem !important;
+}
+
+.btn-wallet {
+    padding: 10px;
+}
+
+.card-payment-bank {
+    width: "90%";
+}
+
+.wallet-box-payment {
+    display: flex;
+}
+
+.bank-account-name {
+    font-size: 0.85rem;
+    margin-bottom: .25rem;
+}
+
+.ovo-box-payment {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.payment-success-img {
+    margin: 10px;
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+}
+
+.success-amount {
+    color: red;
+    font-size: 20px;
+}
+
+
+/*.app-content .wizard > .actions > ul > li > a[href='#previous'] {
+  display: none;
+}
+
+.app-content .wizard > .actions > ul {
+  float: none !important;
+  display: grid !important;  
+  text-align: center !important;
+}*/
+
+.label-radio {
+    display: inline-flex;
+    width: 100%;
+}
+
+.radio-button {
+    width: 3%;
+}
+
+#code {
+    padding-left: 10px;
+    letter-spacing: 32px;
+    border: 0;
+    background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 50px 1px;
+    background-repeat: repeat-x;
+    background-position-x: 35px;
+    height: 50px;
+    font-size: 30px;
+    background-color: transparent;
+}
+
+#divInner {
+    left: 0;
+    position: sticky;
+}
+
+#divOuter {
+    width: 190px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.wrapper-password {
+    position: relative;
+}
+
+.toggler-ico {
+    border: none;
+    background: none;
+    padding: 0;
+    width: 30px;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background: #D23737 !important;
+}
+
+.font-danger {
+    color: #D23737;
+    font-weight: bold;
+}
+
+.withdraw-saldo {
+    font-size: 20px;
+}
+
+.total-dividend {
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 65px;
+    color: #BF2D30;
+}
+
+.total-dividend-form {
+    line-height: 10px;
+    background: #F5F5F5;
+    border: 1.00583px solid #917B7B;
+    margin-bottom: 20px;
+}
+
+.form-text-alert {
+    font-size: 12px;
+    font-weight: 600;
+    color: #B42E2E;
+}
+
+.error {
+    color: #ff4961 !important;
+}
+
+.info-upload {
+    padding: 10px 5px 5px;
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.detail-input-label {
+    font-size: 12px;
+    font-family: 'Quicksand', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: #464855;
+}
+
+.btn-bisnis {
+    color: #fff;
+    border-color: #D23737;
+    background-color: #D23737;
+    width: 220px
+}
+
+.label-notif {
+    font-size: 11px;
+    font-style: italic;
+}
+
+.btn-success-old {
+    color: #fff !important;
+    border-color: #1BC47D !important;
+    background-color: #1BC47D !important;
+}
+
+.btn-info-ghost {
+    color: #168dee !important;
+    border-color: #168dee !important;
+    background-color: #fff !important;
+}
+
+.btn-small {
+    font-size: 11px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.wallet-info {
+    height: 10px;
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    color: #6b6f82;
+}
+
+.emiten-serial {
+    font-size: 12px;
+    background-color: #E5A037;
+    color: #4f5056;
+    padding: 5px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.owner-name {
+    font-size: 1.25rem;
+}
+
+.card-dashboard-finance {
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    font-size: 2rem;
+}
+
+.card-dashboard-bisnis {
+    height: 120px;
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0px;
+    font-size: 1.75rem;
+}
+
+.card-dashboard-download,
+.card-dashboard-channel {
+    height: 470px;
+}
+
+.card-dashboard-emiten {
+    height: 200px;
+    border: 2px solid #666ee8;
+}
+
+.card-dashboard-emiten>.card-body>.card-emiten-header {
+    margin-bottom: 20px;
+}
+
+.card-dashboard-emiten>.card-body>.card-emiten-header h2 {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.card-dashboard-emiten>.card-body>.card-emiten-header span {
+    font-weight: 300;
+    margin-bottom: 0;
+    font-size: 11px;
+}
+
+.card-dashboard-emiten>.card-body>.card-emiten-body span {
+    font-size: 12px;
+    color: #000;
+    font-weight: 400;
+}
+
+.card-dashboard-emiten>.card-body>.card-emiten-body .amount {
+    font-weight: bold;
+    font-size: 17px;
+    color: #464855;
+}
+
+.card-dashboard-emiten>.card-body>.card-emiten-body .investor {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 400;
+    color: #000;
+}
+
+.progress-bar-vertical {
+    width: 50px;
+    min-height: 220px;
+    display: flex;
+    align-items: flex-end;
+    margin: auto;
+}
+
+.progress-bar-vertical .progress-bar {
+    width: 100%;
+    height: 0;
+    -webkit-transition: height 0.6s ease;
+    -o-transition: height 0.6s ease;
+    transition: height 0.6s ease;
+}
+
+.progress-bar-download {
+    text-align: center;
+}
+
+.progress-bar-download>.title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 20px auto 10px;
+}
+
+.progress-bar-download>.total {
+    font-size: 22px;
+    color: #666ee8;
+    font-weight: 600;
+}
+
+.progress-bar-download>.label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #464855;
+}
+
+.progress-bar-channel {
+    display: flex;
+    margin: 20px 0 20px 60px;
+    padding: 10px 0;
+}
+
+.progress-bar-channel>.label {
+    width: 50%;
+    font-size: 20px;
+    font-weight: 600;
+    color: #464855;
+}
+
+.progress-bar-channel>.percentage {
+    width: 50%;
+    font-size: 27px;
+    padding: 5px 0;
+    font-weight: 600;
+}
+
+.multi-progress-bar-vertical {
+    width: 50px;
+    min-height: 300px;
+    margin-right: 20px;
+    vertical-align: bottom;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+    transform: rotate(180deg);
+}
+
+.multi-progress-bar-vertical .progress-bar {
+    width: 100%;
+    height: 0;
+    -webkit-transition: height 0.6s ease;
+    -o-transition: height 0.6s ease;
+    transition: height 0.6s ease;
+    display: block;
+}
+
+.card-report {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.print-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    margin: 0;
+}
+
+.print-menu>div {
+    width: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px 10px;
+    text-align: center;
+    line-height: 15px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.card-title-admin {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    height: 65px;
+}
+
+.ul-title {
+    list-style: none;
+    font-size: 22px;
+    padding-top: 5px;
+    padding-left: 30px;
+    font-weight: 600;
+}
+
+.ul-title li::before {
+    display: inline-block;
+    margin: 0 10px 0 5px;
+    font-size: 30px;
+    content: "\25A0";
+    color: #666ee8;
+}
+
+.label-bold {
+    font-weight: bold;
+}
+
+.label-font {
+    color: #0E7E4A
+}
+
+.badge-ghost {
+    color: blue !important;
+    font-size: 11px;
+    background-color: white;
+    border: 1px solid blue;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    .mini-banner-home {
+        width: 90px;
+        height: 90px;
+        margin: 10px;
+    }
+    .card-ticket {
+        padding-left: 1rem !important;
+    }
+    .ticket-comment-trader,
+    .ticket-comment-admin {
+        padding: 7px 7px 5px;
+        font-size: 11px;
+    }
+    .ticket-comment-p {
+        margin-bottom: 0.5rem;
+    }
+    .ticket-comment-hr {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .ticket-label {
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+    .doc-tnc {
+        margin-bottom: 20px;
+        padding: 5px;
+    }
+    .doc-tnc-iframe {
+        height: 300px;
+    }
+    .doc-tnc-ok {
+        padding: 5px;
+        width: 100%;
+        margin: auto;
+        font-size: 11px;
+    }
+    .alert-dashboard {
+        font-size: 12px;
+    }
+    .owner-name {
+        font-size: 16px;
+    }
+    .properti-emiten {
+        font-size: 11px;
+    }
+    .properti-emiten-text {
+        font-size: 14px;
+    }
+    .list-product-home {
+        height: auto;
+    }
+    .option-payment {
+        width: 100%;
+        background: #ffe;
+        border: 1px solid #ddd;
+        padding: 10px 5px;
+        margin: 0 auto;
+    }
+    .option-payment>h4 {
+        font-size: 1rem;
+    }
+    .payment-method-confirm .card-title {
+        font-size: 0.75rem;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .payment-method-confirm .card-text {
+        font-size: 0.75rem;
+        text-align: center;
+    }
+    .payment-method-confirm-bank .card-title {
+        text-align: center;
+    }
+    .payment-method-confirm-bank .card-text {
+        text-align: center;
+    }
+    .deposit-va {
+        margin: 0
+    }
+    .img-confirm-bank {
+        width: 50%;
+    }
+    #count-payment-expired {
+        font-size: 21px;
+    }
+    #count-payment-expired>span {
+        line-height: 1.5rem;
+    }
+    .payment-confirmation-text {
+        font-size: 23px !important;
+    }
+    .card-collapse>.card-header {
+        padding: 1.25rem;
+    }
+    .card-collapse>.card-header>.card-title {
+        font-size: 1rem;
+    }
+    .card-confirm>.confirm-title {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    .card-confirm>ul>li {
+        font-size: 12px;
+    }
+    .count-payment-title {
+        letter-spacing: 0;
+    }
+    .option-payment>p {
+        margin-bottom: 0 !important;
+    }
+    .confirm-wallet-box {
+        width: 100% !important;
+    }
+    .confirm-wallet-box>div>div>h3 {
+        font-size: 1.25rem;
+        text-align: center !important;
+    }
+    .confirm-wallet-box>div>div>h5 {
+        text-align: center !important;
+    }
+    .btn-wallet {
+        padding: 5px 25px;
+    }
+    .btn-wallet>a {
+        padding: 5px 20px !important;
+    }
+    .card-payment-bank {
+        width: 100%;
+        font-size: 12px;
+        word-break: break-word;
+    }
+    .card-payment-bank>.card-body>a {
+        padding: 5px 15px !important;
+        font-size: 12px;
+        margin-top: 0 !important;
+    }
+    .card-payment-emoney>.card-body>p {
+        font-size: 10px;
+        margin-bottom: 0;
+    }
+    .card-payment-emoney>.card-body>a {
+        padding: 7px 20px !important;
+        font-size: 12px;
+    }
+    .card-payment-emoney>.card-body>img {
+        margin-bottom: 5px;
+        width: 70px;
+        height: 20px;
+    }
+    .wallet-box-payment {
+        display: block;
+    }
+    .confirm-wallet-box>.row>div>.btn {
+        padding: 7px;
+    }
+    .confirm-wallet-box>.row>div>.btn-success {
+        margin-bottom: 10px;
+    }
+    .confirm-bank-box>.card-confirm>ul {
+        padding-left: 20px;
+    }
+    .confirm-bank-box>.card-confirm>h4 {
+        font-size: 1rem;
+    }
+    .bank-account-name {
+        font-size: 0.75rem;
+        margin-top: 1rem;
+    }
+    .ovo-box-payment {
+        width: 100%;
+        font-size: 12px;
+    }
+    .ovo-box-payment>div>div>.btn {
+        padding: 7px;
+    }
+    .form-confirm-bank>div>div>div>.btn {
+        padding: 7px;
+    }
+    .form-confirm-bank>div>div>div>.btn {
+        padding: 7px;
+    }
+    .form-confirm-bank>div>div>div>.btn {
+        padding: 7px;
+    }
+    .payment-success-box {
+        padding: 10px;
+        width: 100%;
+        margin: auto;
+    }
+    .payment-success-box>h3 {
+        font-size: 14px;
+        text-align: center;
+        display: flow-root;
+        padding: 5px;
+    }
+    .payment-success-box>h5 {
+        font-size: 12px;
+    }
+    .payment-success-img {
+        margin: 3px;
+        object-fit: cover;
+        width: 70px;
+        height: 70px;
+    }
+    .success-amount {
+        font-size: 14px
+    }
+    .card-payment-success {
+        padding: .5rem;
+    }
+    .withdraw-saldo {
+        font-size: 13px;
+    }
+    .total-dividend {
+        font-size: 26px;
+    }
+    .photo-profile {
+        height: 30%;
+        width: 30%;
+    }
+    .carousel-item-testimoni {
+        height: 250px;
+    }
+    .padding-footer-home {
+        color: #777;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 10px;
+        border: solid 1px #777;
+        border-radius: 6px;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .search-emiten {
+        padding: 10px 140px !important;
+    }
+    .header-navbar .navbar-container ul.nav li>a.nav-link {
+        font-size: 1rem !important;
+        padding: 1rem .5rem !important;
+    }
+    .header-navbar .nav-item+.nav-item {
+        padding: 1rem 0;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1470px) {
+    .card-ticket {
+        padding: 1rem 3rem !important;
+    }
+    .ticket-comment-trader,
+    .ticket-comment-admin {
+        padding: 20px 20px 10px;
+    }
+    .swal-wide {
+        width: 1000px !important;
+    }
+    .payment-success-box {
+        padding: 30px;
+        width: 80%;
+    }
+    .padding-footer-home {
+        color: #777;
+        padding: 20px;
+        border: solid 1px #777;
+        border-radius: 6px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}

@@ -64,11 +64,11 @@ class TraderController extends Controller
     public function video(){
         
     
-        if (session('search_query')) {
-            $videoLists = $this->_videoLists(session('search_query'));
-        } else {
+        // if (session('search_query')) {
+        //     $videoLists = $this->_videoLists(session(['search_query' => '']));
+        // } else {
             $videoLists = $this->_videoLists(session(['search_query' => '']));
-        }
+        // }
         return view('user.video.index', compact('videoLists'));
         // dd($videoLists);
         // return view('index', compact('videoLists'));

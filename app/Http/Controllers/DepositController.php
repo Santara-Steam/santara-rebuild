@@ -263,7 +263,7 @@ class DepositController extends Controller
 
 
             echo json_encode(json_decode($response->getBody()->getContents()));
-            return;
+            return redirect()->back();
         // } catch (\Exception $exception) {
         //     echo json_encode(errorcatch($exception, 'deposit'));
         //     return;

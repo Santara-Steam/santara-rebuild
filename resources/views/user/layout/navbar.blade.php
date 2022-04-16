@@ -93,7 +93,7 @@
                                     {{-- <a href="{{$item->action}}"> --}}
                                         <div class="media">
                                             <div class="media-left align-self-center"><i
-                                                    class="ft-download-cloud icon-bg-circle bg-cyan bg-darken-1 mr-0"></i>
+                                                    class="ft-mail icon-bg-circle bg-cyan bg-darken-1 mr-0"></i>
                                             </div>
                                             <div class="media-body">
                                                 <h6 class="media-heading darken-1 
