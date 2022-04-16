@@ -106,7 +106,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/wallet', [App\Http\Controllers\WalletController::class, 'index']);
 
     Route::get('/admin/laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'index']);
-    Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporangKeuanganController::class, 'getLaporanKeuangan']);
+    Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'getLaporanKeuangan']);
     Route::post('/admin/konfirmasi-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'confirmLaporan']);
     
     Route::get('/admin/crm/target-user', [App\Http\Controllers\CRMController::class, 'viewTargetUser']);
@@ -129,6 +129,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     
     Route::get('/admin/get-provinsi', [App\Http\Controllers\AddressController::class, 'getProvince']);
     Route::get('/admin/get-regency', [App\Http\Controllers\AddressController::class, 'getRegency']);
+
+    Route::get('/admin/push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'pushNotif']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

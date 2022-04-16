@@ -464,7 +464,6 @@ class CRMController extends Controller
         $method_upload = 'POST';
         for ($i = 0; $i < count($_FILES['data_image']); $i++) {
             $image[$i] = isset($input[$i]['filename']) ? $input[$i]['filename'] : '';
-
             if (isset($_FILES['data_image']['name'][$i]) && !$_FILES['data_image']['error'][$i]) {
                 $data = [
                     [
@@ -504,7 +503,7 @@ class CRMController extends Controller
                 try {
                     $client = new \GuzzleHttp\Client();
 
-                    $response = $client->request($method_upload, env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'upload', [
+                    $response = $client->request($method_upload, env('BASE_API_ADMIN_URL').'upload', [
                         'headers' => [
                             'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
                         ],
