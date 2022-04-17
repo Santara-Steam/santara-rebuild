@@ -84,6 +84,7 @@
 
     <!-- END: Main Menu-->
     <!-- BEGIN: Content-->
+    <div id="loader" class="loader" style="display:none"></div>
     @yield('content')
     <!-- END: Content-->
 

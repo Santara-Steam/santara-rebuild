@@ -25,7 +25,7 @@
                                                 @foreach([
                                                      ''  => 'Semua',
                                                      '0' => 'Tersedia',
-                                                     '1' => 'Verifikasi',
+                                                    //  '1' => 'Verifikasi',
                                                      '2' => 'Terverifikasi',
                                                      '3' => 'Ditolak',
                                                      'wallet' => 'Wallet',
@@ -90,6 +90,10 @@
             responsive: true,
             processing: true,
             serverSide: true,
+            oLanguage: {
+                sProcessing: '<div id="tableloading" class="tableloading"></div>',
+                sZeroRecords: 'Data tidak tersedia'
+            },
             order: [[0, "asc"]],
             columns: [
                 {

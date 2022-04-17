@@ -7,11 +7,24 @@ use Illuminate\Http\Request;
 use App\Models\notification;
 use App\Models\Users;
 use App\Models\trader;
+use Carbon\Carbon;
 
 class PushNotificationController extends Controller
 {
+
+    public $limit = 100;
+
+    public function index($broadcastId)
+    {
+        $detailBroadcast = $this->getDetailBroadcast($broadcastId);
+        $kategori = $detailBroadcast['broadcast_category_name'];
+        $targets = $detailBroadcast['target'];
+        $notif = $detailBroadcast['list'][0];
+        $limit = $this->limit;
+        return view('admin.crm.push-notif', compact('broadcastId', 'targets', 'notif', 'kategori', 'limit'));
+    }
     
-    public function pushNotif($id)
+    public function pushNotif($id, Request $request)
     {
         $detailBroadcast = $this->getDetailBroadcast($id);
         $userId = [];
@@ -21,132 +34,174 @@ class PushNotificationController extends Controller
         $umurAkhir = 0;
         $depoAwal = 0;
         $depoAkhir = 0;
-        $beforeSkema = '';
+        $regencyName = '';
+        $provinsiName = '';
+        $totalSahamMinimal = 0;
+        $totalSahamMaksimal = 0;
+        $jumlahSahamMinimal = 0;
+        $jumlahSahamMaksimal = 0;
+        $skemaKYC = '';
+        $skemaGender = '';
+        $skemaUmur = '';
+        $skemaPendapatan = '';
+        $skemaKota = '';
+        $skemaProvinsi = '';
+        $skemaKepemilikanSaham = '';
+        $skemaJumlahSahamRP = '';
+        $skemaJumlahSahamCount = '';
+        $skemaSisaLimitInvestasi = '';
+        $skemaRataRataPembelian = '';
+        $skemaDeposit = '';
+        $skemaSID = '';
+        $skemaIOS = '';
+        $skemaAndroid = '';
+
         foreach($detailBroadcast['target'] as $target){
             if($target['name'] == 'Status KYC'){
-                $beforeSkema .= 1;
+                $skemaKYC .= 1;
                 $statusKYC = $target['params'];
             }
             if($target['name'] == 'Gender'){
-               $beforeSkema .= 2;
+               $skemaGender .= 2;
                $gender = $target['params'];
             }
             if($target['name'] == 'Umur'){
-                $beforeSkema .= 3; 
+                $skemaUmur .= 3; 
                 $age = explode(" ", $target['params']);
                 $umurAwal = $age[0];
                 $umurAkhir = $age[2];
             }
             if($target['name'] == 'Pendapatan Per Tahun'){
-                $beforeSkema .= 4; 
+                $skemaPendapatan .= 4; 
             }
             if($target['name'] == 'Kota/Kabupaten'){
-                $beforeSkema .= 5; 
+                $skemaKota .= 5; 
+                $regencyName = $target['params'];
             }
             if($target['name'] == 'Provinsi'){
-                $beforeSkema .= 6; 
+                $skemaProvinsi .= 6; 
+                $provinsiName = $target['params'];
             }
             if($target['name'] == 'Kepemilikan Saham'){
-                $beforeSkema .= 7; 
-            }
-            if($target['name'] == 'Kepemilikan Saham'){
-                $beforeSkema .= 7; 
+                $skemaKepemilikanSaham .= 7; 
             }
             if($target['name'] == 'Jumlah Saham (Rp)'){
-                $beforeSkema .= 8; 
+                $skemaJumlahSahamRP .= 8; 
+                $saham = explode(" ", $target['params']);
+                $totalSahamMinimal = $saham[0];
+                $totalSahamMaksimal = $saham[0];
             }
             if($target['name'] == 'Jumlah Saham (Count)'){
-                $beforeSkema .= 8; 
+                $skemaJumlahSahamCount .= 9; 
+                $saham = explode(" ", $target['params']);
+                $jumlahSahamMinimal = $saham[0];
+                $jumlahSahamMaksimal = $saham[0];
+            }
+            if($target['name'] == 'Sisa Limit Investasi'){
+                $skemaSisaLimitInvestasi .= 10; 
             }
             if($target['name'] == 'Rata-rata Pembelian'){
-                $beforeSkema .= 9; 
-            }
-            if($target['name'] == 'Kepemilikan Saham'){
-                $beforeSkema .= 10; 
-            }
-            if($target['name'] == 'SID'){
-                $beforeSkema .= 10; 
+                $skemaRataRataPembelian .= 11; 
             }
             if($target['name'] == 'Deposit'){
-                $beforeSkema .= 12; 
+                $skemaDeposit .= 12; 
                 $depo = explode(" ", $target['params']);
                 $depoAwal = $depo[0];
                 $depoAkhir = $depo[2];
             }
+            if($target['name'] == 'SID'){
+                $skemaSID .= 13; 
+            }
             if($target['name'] == 'Versi Aplikasi (iOs)'){
-                $beforeSkema .= 13; 
+                $skemaIOS .= 14; 
             }
             if($target['name'] == 'Versi Aplikasi (Android)'){
-                $beforeSkema .= 14; 
+                $skemaAndroid .= 15; 
             }
         }
-        if($beforeSkema == 123456771088912101314){
-            # oke
-        }
-        if($beforeSkema == 12){
-            if($statusKYC == "1"){
-                $traders = trader::join('kyc_submissions as ks', 'ks.trader_id', '=', 'traders.id')
-                            ->where('traders.is_deleted', 0)
-                            ->where('ks.status', 'verified')
-                            ->where('traders.gender', $gender)
-                            ->select('traders.user_id')
-                            ->get();
-                foreach($traders as $row){
-                    array_push($userId, $row->user_id);
+        
+            $traders = trader::query();
+
+            $traders->leftJoin('deposits as depo', 'depo.trader_id', '=', 'traders.id')
+                ->leftJoin('transactions as tr', 'tr.trader_id', '=', 'traders.id');
+            $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo');
+            $traders->where('traders.is_deleted', 0);
+            
+            if($skemaKYC == 1){
+                if($statusKYC == 1){
+                    $traders->where('traders.status_kyc1', 'verified');
+                    $traders->where('traders.status_kyc2', 'verified');
+                    $traders->where('traders.status_kyc3', 'verified');
+                    $traders->where('traders.status_kyc4', 'verified');
+                    $traders->where('traders.status_kyc5', 'verified');
+                    $traders->where('traders.status_kyc6', 'verified');
+                }else{
+                    $traders->where('traders.status_kyc1', 'empty');
+                    $traders->where('traders.status_kyc2', 'empty');
+                    $traders->where('traders.status_kyc3', 'empty');
+                    $traders->where('traders.status_kyc4', 'empty');
+                    $traders->where('traders.status_kyc5', 'empty');
+                    $traders->where('traders.status_kyc6', 'empty');
                 }
             }
-        }
-        if($beforeSkema == 2312){
-            $traders = trader::join('kyc_submissions as ks', 'ks.trader_id', '=', 'traders.id')
-                        ->select('traders.user_id', \DB::raw('FLOOR(DATEDIFF(CURDATE(), traders.birth_date) / 365) as age'))
-                        ->where('traders.is_deleted', 0)
-                        ->whereBetween('age', [$umurAwal, $umurAkhir])
-                        ->where('ks.status', 'verified')
-                        ->get();
-            foreach($traders as $row){
-                array_push($userId, $row->user_id);
-            }
-        }
-        return response()->json($traders);
 
-        //for($i = 0; $i < count($detailBroadcast['target']); $i++){
-            //if($detailBroadcast['target'][$i]['name']);
-            // if($target['name'] == 'Status KYC'){
-            //     if(intval($target['params']) == 0){
-            //         $traders = trader::leftJoin('kyc_submissions as ks', 'ks.trader_id', '=', 'traders.id')
-            //             ->whereNull('ks.status')
-            //             ->where('traders.is_deleted', 0)
-            //             ->select('traders.user_id')
-            //             ->get();
-            //         foreach($traders as $row){
-            //             array_push($userIdKYC, $row->user_id);
-            //         }
-            //     }else{
-            //         $traders = trader::join('kyc_submissions as ks', 'ks.trader_id', '=', 'traders.id')
-            //             ->where('traders.is_deleted', 0)
-            //             ->where('ks.status', 'verified')
-            //             ->select('traders.user_id')
-            //             ->get();
-            //         foreach($traders as $row){
-            //             array_push($userIdKYC, $row->user_id);
-            //         }
-            //     }
-            // }
-            // if($target['name'] == 'Gender'){
-            //     $traders = trader::where('gender', 'm')
-            //         ->where('is_deleted', 0)
-            //         ->select('traders.user_id')
-            //         ->get();
-            //     foreach($traders as $row){
-            //         array_push($userIdGender, $row->user_id);
-            //     }
-            // }
-        //}
-        // echo $detailBroadcast['target'][0]['name'];
-        // return response()->json([
-        //     "kyc" => $userIdKYC, 
-        //     "gender" => $userIdGender
-        // ]);
+            if($skemaUmur == 2){
+                $traders->where('traders.gender', $gender);
+            }
+
+            if($skemaUmur == 3){
+                $traders->having(\DB::raw('FLOOR(DATEDIFF(CURDATE(), traders.birth_date) / 365)'), '>=' ,$umurAwal);
+                $traders->having(\DB::raw('FLOOR(DATEDIFF(CURDATE(), traders.birth_date) / 365)'), '<=' ,$umurAkhir);
+            }
+
+            if($skemaKota == 5){
+                $traders->where('traders.regency', $regencyName);
+            }
+
+            if($skemaProvinsi == 6){
+                $traders->where('traders.province', $provinsiName);
+            }
+
+            if($skemaJumlahSahamRP == 8){
+                $traders->having(\DB::raw('SUM(amo)'), '>=' ,$totalSahamMinimal);       
+                $traders->having(\DB::raw('SUM(amo)'), '<=' ,$totalSahamMaksimal);
+                $traders->groupBy('tr.trader_id');
+            }
+
+            if($skemaJumlahSahamCount == 9){
+                $traders->having(\DB::raw('COUNT(amo)'), '>=' ,$jumlahSahamMinimal);       
+                $traders->having(\DB::raw('COUNT(amo)'), '<=' ,$jumlahSahamMaksimal);
+                $traders->groupBy('tr.trader_id');
+            }
+
+            if($skemaDeposit == 12){
+                $traders->having(\DB::raw('SUM(depo.amount)'), '>=' ,$depoAwal);       
+                $traders->having(\DB::raw('SUM(depo.amount)'), '<=' ,$depoAkhir);
+                $traders->groupBy('depo.trader_id');
+            }
+            $count = $traders->count();
+            $traders->groupBy('traders.id');
+            $results = $traders->paginate($this->limit);
+        return response()->json(["results" => $results, "amount" => $count]);
+    }
+
+    public function broadcastNotif(Request $request)
+    {
+        $userId = explode(",", $request->userId);
+        for($i = 0; $i < count($userId); $i++){
+            $notif = new notification();
+            $notif->uuid = \Str::uuid();
+            $notif->action = $request->broadcastCategoryName;
+            $notif->user_id = $userId[$i];
+            $notif->message = $request->message;
+            $notif->title = $request->title;
+            $notif->created_at = Carbon::now();
+            $notif->updated_at = Carbon::now();
+            $notif->is_deleted = 0;
+            $notif->created_by = \Auth::user()->id;
+            $notif->save();
+        }
+        return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast"]);
     }
 
     public function getDetailBroadcast($id)
@@ -154,9 +209,9 @@ class PushNotificationController extends Controller
         $result = null;
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION'). 'broadcast/detail/' . $id, [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION'). 'broadcast/detail/' . $id, [
                 'form_params' => [
-                    'token'     => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjg3MDI4LCJkYXRhIjp7ImlkIjo4NzAyOCwidXVpZCI6ImIzNDM2MjZkLTE4MTktNDk1My04OWQ0LTBjMTZlMTdjZTAwNCIsImVtYWlsIjoibWFyaW9naWxAc3BhbTQubWUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wNi0wNCAwMTo1MTo0NyIsInVwZGF0ZWRfYXQiOiIyMDIwLTEwLTAxIDE1OjQzOjI0IiwiZGVsZXRlZF9hdCI6bnVsbCwicm9sZV9pZCI6MiwiaXNfdmVyaWZpZWQiOjEsInR3b19mYWN0b3JfYXV0aCI6MCwidHdvX2ZhY3Rvcl9zZWNyZXQiOm51bGwsImlzX2xvZ2dlZF9pbiI6MSwiaXNfZGVsZXRlZCI6MCwiY3JlYXRlZF9ieSI6bnVsbCwidXBkYXRlZF9ieSI6bnVsbCwiaXNfb3RwIjoxLCJhdHRlbXB0IjowLCJhdHRlbXB0X2VtYWlsIjowLCJmaW5nZXJfcHJpbnQiOjAsImF0dGVtcHRfb3RwIjoxfSwiaWF0IjoxNjAxNTQyMDY3fQ.hF9V_fFbYD_QQZAHFz2N7rf1X6x3UEf4EPi3WD7d1OM',
+                    'token'     => app('request')->session()->get('token'),
                 ]
             ]);
 

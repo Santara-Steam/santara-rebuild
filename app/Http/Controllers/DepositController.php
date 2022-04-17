@@ -246,7 +246,7 @@ class DepositController extends Controller
             $response = $client->request('POST', env("BASE_API_CLIENT_URL") . '/v3.7.1/deposit/idr', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
-                    'Origin'        => env("BASE_API_FILE")
+                    'Origin'        => config('global.BASE_API_FILE')
                 ],
                 'form_params' => [
                     'amount'         => $request->amount,

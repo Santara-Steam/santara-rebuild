@@ -71,9 +71,7 @@
                     textBox.unbind();
                     textBox.bind('keyup input', function(e) {
                         if (e.keyCode == 8 && !textBox.val() || e.keyCode == 46 && !textBox
-                            .val()) {
-                            // do nothing ¯\_(ツ)_/¯
-                        } else if (e.keyCode == 13 || !textBox.val()) {
+                            .val()) {} else if (e.keyCode == 13 || !textBox.val()) {
                             api.search(this.value).draw();
                         }
                     });
@@ -111,6 +109,49 @@
             $('#filter').change(function() {
                 table.draw();
             });
+        });
+
+        $(document).on('click', '.delete-broadcast', function() {
+            var id = $(this).val();
+            Swal.fire({
+                title: 'Yakin Ingin Menghapus Broadcast ?',
+                html: 'Catatan : Broadcast yang di hapus tidak dapat dikembalikan. Pastikan Anda yakin ingin menghapus broadcast.',
+                type: 'info',
+                showCancelButton: true,
+            }).then((result) => {
+                if (result.value) {
+                    $("#loader").show();
+                    $.ajax({
+                        url: "{{ url('admin/crm/broadcasting/delete') }}" + '/' + id,
+                        type: 'GET',
+                        timeout: 20000, // sets timeout to 20 seconds
+                        cache: false,
+                        success: function(data) {
+                            $("#loader").hide();
+                            data = JSON.parse(data);
+                            if (data.msg == 200) {
+                                Swal.fire(
+                                    'Berhasil',
+                                    'Data broadcast berhasil dihapus',
+                                    'success'
+                                ).then((result) => {
+                                    location.reload();
+                                });
+                            } else {
+                                Swal.fire("Error!", data.msg, "error");
+                            }
+
+                        },
+                        error: function(msg) {
+                            $("#loader").hide();
+                            Swal.fire("Error!", "Data gagal dihapus", "error").then((
+                            result) => {
+                                location.reload();
+                            });
+                        }
+                    });
+                }
+            })
         });
     </script>
 @endsection

@@ -94,7 +94,7 @@ class LaporanKeuanganController extends Controller
 				'Accept'        => 'application/json',
 				'Content-type'  => 'application/json'
 			];
-			$response = $client->request('GET', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'finance-report/'.$url, [
+			$response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'finance-report/'.$url, [
 				'headers' => $headers,
 			]);
 
@@ -128,7 +128,7 @@ class LaporanKeuanganController extends Controller
 
 		try {
 			$client = new \GuzzleHttp\Client();
-			$response = $client->request('PUT', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'finance-report?id='.$id, [
+			$response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'finance-report?id='.$id, [
 				'headers' => [
 					'Authorization' => 'Bearer '.app('request')->session()->get('token')
 				],

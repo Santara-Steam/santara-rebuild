@@ -59,9 +59,6 @@
             };
 
             var table = $("#tableTagetUser").DataTable({
-                buttons: [
-                    'print', 'csv'
-                ],
                 initComplete: function() {
                     var api = this.api();
                     $('#mytable_filter input')
@@ -121,6 +118,9 @@
                         type: 'POST',
                         timeout: 20000, // sets timeout to 20 seconds
                         cache: false,
+                        beforeSend: function() {
+                            $("#loader").show();
+                        },
                         success: function(data) {
                             $("#loader").hide();
                             data = JSON.parse(data);

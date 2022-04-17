@@ -11,7 +11,7 @@
                         <div style="font-size: 11px;"><span id="preview_content_0"><?= ( isset($broadcast['list'][0]) ) ? $broadcast['list'][0]['content'] : '' ?></span></div>
                     </div>
                     <div class="col-2">
-                        <img id="preview_image_0" src="" nerror="this.onerror=null;this.src='{{ env('STORAGE_GOOGLE') }}images/error/no-image.png';" width="80%" style="width: auto; height: 65px; float: right;">
+                        <img id="preview_image_0" src="" nerror="this.onerror=null;this.src='{{ config('global.STORAGE_GOOGLE') }}images/error/no-image.png';" width="80%" style="width: auto; height: 65px; float: right;">
                     </div>
                 </div>
             <?php 
@@ -24,7 +24,7 @@
                         <div style="font-size: 11px;"><span id="preview_content_0"></span></div>
                     </div>
                     <div class="col-2">
-                        <img id="preview_image_0" src="" nerror="this.onerror=null;this.src='{{ env('STORAGE_GOOGLE') }}images/error/no-image.png';" width="80%" style="width: auto; height: 65px; float: right;">
+                        <img id="preview_image_0" src="" nerror="this.onerror=null;this.src='{{ config('global.STORAGE_GOOGLE') }}images/error/no-image.png';" width="80%" style="width: auto; height: 65px; float: right;">
                     </div>
                 </div>
             <?php

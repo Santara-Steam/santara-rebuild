@@ -323,7 +323,7 @@ class DevidenController extends Controller
 
         // Belum selesai
         $client = new \GuzzleHttp\Client();
-        $response = $client->get(env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'dividend/generate', [
+        $response = $client->get(config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'dividend/generate', [
             'headers' => [
                 'Authorization' => app('request')->session()->get('token')
             ],
@@ -335,7 +335,7 @@ class DevidenController extends Controller
         
         // $response = Http::withHeaders([
         //     'Authorization' => app('request')->session()->get('token'),
-        // ])->get(env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'/dividend/generate', [
+        // ])->get(config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'/dividend/generate', [
         //     'uuid' => $request->emiten_uuid,
         //     'total_dividend' => $amount
         // ]);
