@@ -19,7 +19,7 @@
                                             value="<?= isset($type) ? $type : '' ?>" />
                                         <input type="hidden" name="broadcast_id" id="broadcast_id"
                                             value="<?= isset($broadcast['id']) ? $broadcast['id'] : '' ?>" />
-                                        <input type="hidden" id="storage" value="{{ env('STORAGE_BUCKET') }}" />
+                                        <input type="hidden" id="storage" value="{{ config('global.STORAGE_BUCKET') }}" />
                                         <input type="hidden" id="token" value="{{ '?token=' . Session::get('token') }}" />
 
                                         <h6>Target User</h6>
@@ -65,7 +65,7 @@
                     dataType: "json",
                     data: function(params) {
                         return {
-                            regency: params.term
+                            search: params.term
                         };
                     },
                     processResults: function(data) {
@@ -234,7 +234,7 @@
                         } else {
                             Swal.fire({
                                 title: 'Gagal',
-                                text: data.msg,
+                                text: data.message,
                                 type: 'warning',
                                 showCancelButton: false,
                                 confirmButtonText: 'Ok'
@@ -405,7 +405,7 @@
                             } else {
                                 Swal.fire({
                                     title: 'Gagal',
-                                    text: data.msg,
+                                    text: data.msg.message,
                                     type: 'warning',
                                     showCancelButton: false,
                                     confirmButtonText: 'Ok'
@@ -497,7 +497,7 @@
                             } else {
                                 Swal.fire({
                                     title: 'Gagal',
-                                    text: data.msg,
+                                    text: data.msg.message,
                                     type: 'warning',
                                     showCancelButton: false,
                                     confirmButtonText: 'Ok'
@@ -574,7 +574,7 @@
                             },
                             success: function(data) {
                                 $("#loader").hide();
-                                window.location = '/user/crm/broadcasting';
+                                window.location = '{{ url("admin/crm/broadcasting") }}';
 
                             },
                             error: function(jqXHR, textStatus, errorThrown) {

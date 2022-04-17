@@ -687,7 +687,7 @@
                     dataType: "json",
                     data: function(params) {
                         return {
-                            regency: params.term
+                            search: params.term
                         };
                     },
                     processResults: function(data) {
@@ -822,7 +822,6 @@
             });
 
             $("#btnSubmitTarget").click(function(event) {
-                //stop submit the form, we will post it manually.
                 event.preventDefault();
 
                 var url = "{{ url('admin/crm/store-target') }}";

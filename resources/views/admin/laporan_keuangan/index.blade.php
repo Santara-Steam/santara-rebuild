@@ -129,6 +129,10 @@
                 processing: true,
                 serverSide: true,
                 bInfo: false,
+                oLanguage: {
+                    sProcessing: '<div id="tableloading" class="tableloading"></div>',
+                    sZeroRecords: 'Data tidak tersedia'
+                },
                 pagingType: "simple_numbers",
                 ajax: {
                     "url": "{{ url('admin/get-laporan-keuangan') }}",

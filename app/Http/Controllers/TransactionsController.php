@@ -218,7 +218,7 @@ class TransactionsController extends Controller
 				'Content-type'  => 'application/json'
 			];
 
-			$response = $client->request('POST', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'transaction/confirm/'.$uuid, [
+			$response = $client->request('POST', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'transaction/confirm/'.$uuid, [
 				'headers' => $headers,
 			]);
 
@@ -242,7 +242,7 @@ class TransactionsController extends Controller
 				'Content-type'  => 'application/json'
 			];
 
-			$response = $client->request('POST', env('BASE_API_ADMIN_URL').env('API_ADMIN_VERSION').'transaction/unconfirm/'.$uuid, [
+			$response = $client->request('POST', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'transaction/unconfirm/'.$uuid, [
 				'headers' => $headers,
 			]);
 

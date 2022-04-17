@@ -19,7 +19,7 @@
                                        @foreach([
                                             '' => 'Semua',
                                             'VERIFIED' => 'Lunas',
-                                            'WAITING FOR VERIFICATION' => 'Menunggu Konfirmasi',
+                                            // 'WAITING FOR VERIFICATION' => 'Menunggu Konfirmasi',
                                             'CREATED' => 'Belum Konfirmasi',
                                             'EXPIRED' => 'Kadaluarsa'
                                         ] as $key => $value)
@@ -73,6 +73,10 @@
             processing: true,
             serverSide: true,
             order: [[0, "asc"]],
+            oLanguage: {
+                sProcessing: '<div id="tableloading" class="tableloading"></div>',
+                sZeroRecords: 'Data tidak tersedia'
+            },
             columns: [
                 {
                     data: "id",

@@ -1,8 +1,13 @@
 <?php
 
 return [
-    "BASE_API_CLIENT_URL" => "https://fire.santarax.com:3701/v3.7.1",
-    "BASE_API_ADMIN_URL" => "https://tulabi.com:3701/v3.7.1/",
+    "API_ADMIN_VERSION" => "v3.7.1/",
+    "API_CLIENT_VERSION" => "v3.7.1",
+    "BASE_API_CLIENT_URL" => "https://tulabi.com:3801",
+    "BASE_API_ADMIN_URL" => "https://tulabi.com:3701/",
     "BASE_FILE_URL" => "https://dev.santara.id",
-    "TOKEN" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjg3MDI4LCJkYXRhIjp7ImlkIjo4NzAyOCwidXVpZCI6ImIzNDM2MjZkLTE4MTktNDk1My04OWQ0LTBjMTZlMTdjZTAwNCIsImVtYWlsIjoibWFyaW9naWxAc3BhbTQubWUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wNi0wNCAwMTo1MTo0NyIsInVwZGF0ZWRfYXQiOiIyMDIwLTEwLTAxIDE1OjQzOjI0IiwiZGVsZXRlZF9hdCI6bnVsbCwicm9sZV9pZCI6MiwiaXNfdmVyaWZpZWQiOjEsInR3b19mYWN0b3JfYXV0aCI6MCwidHdvX2ZhY3Rvcl9zZWNyZXQiOm51bGwsImlzX2xvZ2dlZF9pbiI6MSwiaXNfZGVsZXRlZCI6MCwiY3JlYXRlZF9ieSI6bnVsbCwidXBkYXRlZF9ieSI6bnVsbCwiaXNfb3RwIjoxLCJhdHRlbXB0IjowLCJhdHRlbXB0X2VtYWlsIjowLCJmaW5nZXJfcHJpbnQiOjAsImF0dGVtcHRfb3RwIjoxfSwiaWF0IjoxNjAxNTQyMDY3fQ.hF9V_fFbYD_QQZAHFz2N7rf1X6x3UEf4EPi3WD7d1OM"
+    "BASE_API_FILE" => "https://dev.santara.id",
+    "STORAGE_GOOGLE" => "https://storage.googleapis.com/asset-santara-staging/santara.co.id/",
+    "STORAGE_GOOGLE_BUCKET" => "asset-santara-staging",
+    "STORAGE_BUCKET" => "https://storage.googleapis.com/asset-bucket-staging/"
 ];

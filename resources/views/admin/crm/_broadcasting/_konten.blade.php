@@ -45,8 +45,8 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                <label for="konten_broadcast_categories_id">Kategori</label>
-                <select name="konten_broadcast_categories_id" id="category" class="form-control">
+                <label for="konten_broadcast_categories_id">Kategori</label><br/>
+                <select name="konten_broadcast_categories_id" style="width: 100%" id="category" class="form-control">
                     <?php if($type == 'update') : ?>
                     <option selected value="<?= $broadcast['broadcast_category_id'] ?>">
                         <?= $broadcast['broadcast_category_name'] ?> </option>
@@ -95,7 +95,7 @@
                         <?php if($type == 'update') : ?>
                         <div class="row col-12 p-1">
                             <img src="<?= isset($broadcast['list'][0]) ? $broadcast['list'][0]['image'] : '' ?>"
-                                onerror="this.onerror=null;this.src='<?= STORAGE_GOOGLE ?>token/avatar.png';"
+                                onerror="this.onerror=null;this.src='{{ config('global.STORAGE_GOOGLE') }}token/avatar.png';"
                                 class="img-thumbnail" width="200" />
                         </div>
                         <?php endif; ?>
@@ -157,7 +157,7 @@
                         <?php if($type == 'update') : ?>
                         <div class="row col-12 p-1">
                             <img src="<?= isset($broadcast['list'][1]) ? $broadcast['list'][1]['image'] : '' ?>"
-                                onerror="this.onerror=null;this.src='<?= STORAGE_GOOGLE ?>token/avatar.png';"
+                                onerror="this.onerror=null;this.src='{{ config('global.STORAGE_GOOGLE') }}token/avatar.png';"
                                 class="img-thumbnail" width="200" />
                         </div>
                         <?php endif; ?>

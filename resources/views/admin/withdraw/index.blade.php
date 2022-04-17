@@ -18,7 +18,7 @@
                                        <option disabled selected>Filter Status</option>
                                        @foreach([
                                             ''  => 'Semua',
-                                            '0' => 'Verifikasi',
+                                            // '0' => 'Verifikasi',
                                             '1' => 'Sudah Verifikasi',
                                             '2' => 'Ditolak'
                                         ] as $key => $value)
@@ -69,6 +69,10 @@
             responsive: true,
             processing: true,
             serverSide: true,
+            oLanguage: {
+                sProcessing: '<div id="tableloading" class="tableloading"></div>',
+                sZeroRecords: 'Data tidak tersedia'
+            },
             order: [[0, "asc"]],
             columns: [
                 {

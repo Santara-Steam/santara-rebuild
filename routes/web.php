@@ -107,7 +107,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/wallet', [App\Http\Controllers\WalletController::class, 'index']);
 
     Route::get('/admin/laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'index']);
-    Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporangKeuanganController::class, 'getLaporanKeuangan']);
+    Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'getLaporanKeuangan']);
     Route::post('/admin/konfirmasi-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'confirmLaporan']);
     
     Route::get('/admin/crm/target-user', [App\Http\Controllers\CRMController::class, 'viewTargetUser']);
@@ -124,12 +124,18 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/crm/broadcasting', [App\Http\Controllers\CRMController::class, 'viewListBroadcasting']);
     Route::post('/admin/crm/get-broadcasting', [App\Http\Controllers\CRMController::class, 'getBroadcasting']);
     Route::get('/admin/crm/broadcasting/add', [App\Http\Controllers\CRMController::class, 'viewAddBroadcastiong']);
+    Route::get('/admin/crm/broadcasting/edit/{id}', [App\Http\Controllers\CRMController::class, 'editBroadcasting']);
+    Route::get('/admin/crm/broadcasting/delete/{id}', [App\Http\Controllers\CRMController::class, 'deleteBroadcasting']);
     Route::post('/admin/crm/save-konten', [App\Http\Controllers\CRMController::class, 'saveKonten']);
     Route::post('/admin/crm/save-publish', [App\Http\Controllers\CRMController::class, 'savePublish']);
     Route::get('/admin/crm/get-category', [App\Http\Controllers\CRMController::class, 'getCategories']);
     
     Route::get('/admin/get-provinsi', [App\Http\Controllers\AddressController::class, 'getProvince']);
     Route::get('/admin/get-regency', [App\Http\Controllers\AddressController::class, 'getRegency']);
+
+    Route::get('/admin/get-push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'pushNotif']);
+    Route::get('/admin/push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'index']);
+    Route::post('/admin/broadcast-notif', [App\Http\Controllers\PushNotificationController::class, 'broadcastNotif']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

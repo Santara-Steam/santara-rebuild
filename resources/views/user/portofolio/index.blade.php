@@ -39,7 +39,7 @@
                                     <div class="shadow mb-1" style="background-color: #C7971E; border-radius:5px; border: 1px solid">
                                         <div class="p-1 ">
                                             <div class="inner">
-                                                <p style="color: white;">TOTAL SUKUK</p>
+                                                <p style="color: white;">TOTAL SUKUK {{ Auth::user()->id }}</p>
                                                 <h3 style="color: white;">Rp&nbsp;0,00</h3>
                                             </div>
                                         </div>
