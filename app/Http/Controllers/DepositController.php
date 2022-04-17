@@ -23,6 +23,7 @@ class DepositController extends Controller
                 'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                 'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
                 'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+            ->orderBy('deposits.created_at','DESC')
             ->get();
         return view('user.deposit.index',compact('deposit'));
     }
@@ -249,7 +250,7 @@ class DepositController extends Controller
                     'Origin'        => env("BASE_API_FILE")
                 ],
                 'form_params' => [
-                    'amount'         => $request->amount,
+                    'amount'         => $request->am,
                     // 'bank_from'      => strip_tags('BNI'),
                     // 'account_number' => strip_tags(),
                     // 'bank'           => strip_tags($data['bank']),
@@ -262,8 +263,17 @@ class DepositController extends Controller
             ]);
 
 
-            echo json_encode(json_decode($response->getBody()->getContents()));
+            // echo json_encode(json_decode($response->getBody()->getContents()));
+            $rsp = json_encode(json_decode($response->getBody()->getContents()));
+            $r = json_decode($rsp, true);
+            // return;
+            $newUrl = $r['data']['deposit']['redirectURL'];
+            session()->flash('newurl', $newUrl);
             return redirect()->back();
+            // return redirect()->away($r['data']['deposit']['redirectURL']);
+
+            // dd($rsp);
+            // print_r($r['data']['deposit']['redirectURL']);
         // } catch (\Exception $exception) {
         //     echo json_encode(errorcatch($exception, 'deposit'));
         //     return;

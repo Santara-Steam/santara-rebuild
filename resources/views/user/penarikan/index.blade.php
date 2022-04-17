@@ -33,80 +33,160 @@
                                     </ul>
 
                                     <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-tambah" role="tabpanel" aria-labelledby="pills-tambah-tab">
+
+                                        @if ($trader_bank)
+
+                                        <div class="tab-pane fade show active" id="pills-tambah" role="tabpanel"
+                                            aria-labelledby="pills-tambah-tab">
                                             <div class="alert alert-success" style="display:none"></div>
-                                                                                                <div class="row m-0">
-                                                                                            <div class="col-md-7">
-                                                                <div class="total-amount-member">
-                                                                    <div>
-                                                                        <h3>Dana Tersedia <i class="la la-info-circle" onclick="infoWithdraw('Dana tersedia adalah dana yang bisa kamu tarik.')" style="cursor: pointer;padding: 5px 10px"></i></h3>
-                                                                        <span class="withdraw-saldo">Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</span>
-                                                                    </div>
-                                                                    <div class="mt-2">
-                                                                        <h3>Dana Tertahan <i class="la la-info-circle" onclick="infoWithdraw('Dana tertahan adalah jumlah dana Anda yang telah ditransaksikan di pasar sekunder. Dana dapat ditarik setelah 2 hari dari masa transaksi')" style="cursor: pointer;padding: 5px 10px"></i></h3>
-                                                                        <span class="withdraw-pending">Rp. 0</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="col-12 bank-user">
-                                                                            <h3>Dana Akan di Transfer ke Rekening: </h3>
-                                                                            <hr>
-                                                                            <h4 class="font-weight-bold">Bank Central Asia (BCA) - 123456789</h4>
-                                                                            <h5 class="text-uppercase">Bank Account Name </h5>
-                                                                            <h5 class="font-weight-bold small" style="color: #BF2D30;">
-                                                                                                                                    </h5>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="hidden" class="form-control" name="saldo" id="saldo" value="0">
-                                                                <input type="hidden" class="form-control" name="refund" id="refund" value="">
-                        
-                                                                <form action="#" method="post">
-                                                                    <div class="form-group">
-                                                                        <label for="lastName1">Jumlah Penarikan</label>
-                                                                        <input type="text" class="form-control required-form-withdraw number-only" placeholder="" name="amount" id="amount">
-                                                                        <input type="hidden" name="amount_limit" id="amount_limit" value="0">
-                                                                        <span id="amount_error" class="text-danger"></span>
-                                                                        <span id="amount_limit_alert" class="text-danger" style="display: none">
-                                                                            Saldo tidak cukup. Saldo Anda Rp. 0                                                </span>
-                                                                        <span id="amount_minimum_alert" class="text-danger" style="display: none">
-                                                                            Minimal penarikan adalah Rp 100.000,00
-                                                                        </span>
-                                                                    </div>
-                        
-                                                                    <div class="hidden" id="terimaBersih">
-                                                                        <div class="form-group">
-                                                                            <label for="lastName1">Biaya Penarikan</label>
-                                                                            <input type="text" class="form-control" placeholder="" name="fee" id="fee" readonly="readonly">
-                                                                            <span id="fee_error" class="text-danger"></span>
-                                                                        </div>
-                        
-                                                                        <div class="form-group">
-                                                                            <label for="lastName1">Terima Bersih</label>
-                                                                            <input type="text" class="form-control" placeholder="" name="total" id="total" readonly="readonly">
-                                                                            <span id="total_error" class="text-danger"></span>
-                                                                        </div>
-                                                                    </div>
-                        
-                                                                    <button class="btn btn-santara-red btn-block submit-form-withdraw" id="submitWithdraw" type="button" disabled="">
-                                                                        Tarik Dana                                            </button>
-                                                                </form>
-                        
-                                                            </div>
-                                                            <div class="col-md-5 disclamer-member">
-                                                                <strong>Ketentuan:</strong>
-                                                                <ul>
-                                                                    <li>Minimal penarikan dana adalah Rp 100.000.</li>
-                                                                    <li>Maksimal penarikan dana adalah Rp200.000.000/hari.</li>
-                                                                    <li>Lama waktu pencairan ke rekening pengguna maksimal 3x24 jam hari kerja bank.</li>
-                                                                    <li>Setiap transaksi penarikan dikenakan biaya sebesar Rp7.500.</li>
-                                                                </ul>
-                                                            </div>
-                        
-                                                        
+                                            <div class="row m-0">
+                                                <div class="col-md-7">
+                                                    <div class="total-amount-member">
+                                                        <div>
+                                                            <h3>Dana Tersedia <i class="la la-info-circle"
+                                                                    onclick="infoWithdraw('Dana tersedia adalah dana yang bisa kamu tarik.')"
+                                                                    style="cursor: pointer;padding: 5px 10px"></i></h3>
+                                                            <span class="withdraw-saldo">Rp.
+                                                                {{number_format(Auth::user()->trader->saldo->balance, 0,
+                                                                ',', '.')}}</span>
+                                                        </div>
+                                                        <div class="mt-2">
+                                                            <h3>Dana Tertahan <i class="la la-info-circle"
+                                                                    onclick="infoWithdraw('Dana tertahan adalah jumlah dana Anda yang telah ditransaksikan di pasar sekunder. Dana dapat ditarik setelah 2 hari dari masa transaksi')"
+                                                                    style="cursor: pointer;padding: 5px 10px"></i></h3>
+                                                            <span class="withdraw-pending">Rp. 0</span>
+                                                        </div>
                                                     </div>
-                                                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="col-12 bank-user">
+                                                                <h3>Dana Akan di Transfer ke Rekening: </h3>
+                                                                <hr>
+                                                                <h4 class="font-weight-bold">Bank Central Asia (BCA) -
+                                                                    123456789</h4>
+                                                                <h5 class="text-uppercase">Bank Account Name </h5>
+                                                                <h5 class="font-weight-bold small"
+                                                                    style="color: #BF2D30;">
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" class="form-control" name="saldo" id="saldo"
+                                                        value="0">
+                                                    <input type="hidden" class="form-control" name="refund" id="refund"
+                                                        value="">
+
+                                                    <form action="#" method="post">
+                                                        <div class="form-group">
+                                                            <label for="lastName1">Jumlah Penarikan</label>
+                                                            <input type="text"
+                                                                class="form-control required-form-withdraw number-only"
+                                                                placeholder="" name="amount" id="amount">
+                                                            <input type="hidden" name="amount_limit" id="amount_limit"
+                                                                value="0">
+                                                            <span id="amount_error" class="text-danger"></span>
+                                                            <span id="amount_limit_alert" class="text-danger"
+                                                                style="display: none">
+                                                                Saldo tidak cukup. Saldo Anda Rp. 0 </span>
+                                                            <span id="amount_minimum_alert" class="text-danger"
+                                                                style="display: none">
+                                                                Minimal penarikan adalah Rp 100.000,00
+                                                            </span>
+                                                        </div>
+
+                                                        <div class="hidden" id="terimaBersih">
+                                                            <div class="form-group">
+                                                                <label for="lastName1">Biaya Penarikan</label>
+                                                                <input type="text" class="form-control" placeholder=""
+                                                                    name="fee" id="fee" readonly="readonly">
+                                                                <span id="fee_error" class="text-danger"></span>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="lastName1">Terima Bersih</label>
+                                                                <input type="text" class="form-control" placeholder=""
+                                                                    name="total" id="total" readonly="readonly">
+                                                                <span id="total_error" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <button
+                                                            class="btn btn-santara-red btn-block submit-form-withdraw"
+                                                            id="submitWithdraw" type="button" disabled="">
+                                                            Tarik Dana </button>
+                                                    </form>
+
+                                                </div>
+                                                <div class="col-md-5 disclamer-member">
+                                                    <strong>Ketentuan:</strong>
+                                                    <ul>
+                                                        <li>Minimal penarikan dana adalah Rp 100.000.</li>
+                                                        <li>Maksimal penarikan dana adalah Rp200.000.000/hari.</li>
+                                                        <li>Lama waktu pencairan ke rekening pengguna maksimal 3x24 jam
+                                                            hari kerja bank.</li>
+                                                        <li>Setiap transaksi penarikan dikenakan biaya sebesar Rp7.500.
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                        @else
+                                        <div class="tab-pane fade active show" id="pills-tambah" role="tabpanel"
+                                            aria-labelledby="pills-tambah-tab" data-select2-id="pills-tambah">
+                                            <div class="alert alert-success" style="display:none"></div>
+                                            <div class="row m-0" data-select2-id="6">
+                                                <div class="col-md-12" data-select2-id="5">
+                                                    <div class="disclamer-member">
+                                                        {{-- {{Session::get('token')}} --}}
+                                                        <strong>Note:</strong>
+                                                        Bank yang Anda daftarkan seterusnya akan digunakan untuk
+                                                        melakukan penarikan dana dan dividen
+                                                    </div>
+                                                    {{-- <form action="#" class="mt-2" id="submitBank" method="post"
+                                                        data-select2-id="submitBank"> --}}
+                                                        <form class="form" action="{{url('/user/add_bank')}}" method="POST"
+                                                            enctype="multipart/form-data">
+                                                            {{ csrf_field() }}
+                                                        <div class="form-group">
+                                                            <label for="lastName1">Bank<small
+                                                                    class="text-danger">*</small></label>
+                                                            <select class="form-control" name="bank" id="bank">
+                                                                @foreach ($bwd as $item)
+                                                                    <option value="{{$item->id}}">{{$item->bank}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <small id="bank_error" class="text-danger"></small>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="lastName1">Nama<small
+                                                                    class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control" placeholder=""
+                                                                name="nama" value="{{Auth::user()->trader->name}}" id="nama"
+                                                                readonly="">
+                                                            <small id="nama_error" class="text-danger"></small>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="lastName1">No. Rekening<small
+                                                                    class="text-danger">*</small></label>
+                                                            <input type="text" class="form-control number-only"
+                                                                placeholder="" maxlength="20" name="norek" id="norek">
+                                                            <small id="norek_error" class="text-danger"></small>
+                                                        </div>
+
+                                                        <button class="btn btn-santara-red btn-block" type="submit"
+                                                            id="bsubmitBank">
+                                                            Daftar Bank </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
+
                                         <div class="tab-pane fade" id="pills-data" role="tabpanel"
                                             aria-labelledby="pills-data-tab">
                                             <div class="table-responsive">
@@ -129,13 +209,17 @@
                                                                         src="https://santara.co.id/assets/images/icon/wallet.png">
                                                                     <div class="media-body">
                                                                         <div><b>Penarikan</b></div>
-                                                                        <div><small>{{Auth::user()->trader->name}}</small></div>
+                                                                        <div>
+                                                                            <small>{{Auth::user()->trader->name}}</small>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div class="font-berhasil"><b>Berhasil</b></div>
-                                                                <div><small>{{tgl_indo(date('Y-m-d', strtotime($item->created_at))).' '.formatJam($item->created_at),}}</small></div>
+                                                                <div><small>{{tgl_indo(date('Y-m-d',
+                                                                        strtotime($item->created_at))).'
+                                                                        '.formatJam($item->created_at),}}</small></div>
                                                             </td>
                                                             <td>
                                                                 <div><small>Bank</small></div>
@@ -143,7 +227,9 @@
                                                             </td>
                                                             <td>
                                                                 <div><small>Nilai Penarikan</small></div>
-                                                                <div><b>Rp. {{number_format($item->amount,0,',','.')}}</b></div>
+                                                                <div><b>Rp.
+                                                                        {{number_format($item->amount,0,',','.')}}</b>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                         @endforeach
@@ -170,12 +256,12 @@
 @section('style')
 <style>
     .bank-user {
-    padding: 10px;
-    border-radius: 5px;
-    border-color: #bf2d30 !important;
-    background-color: #d9e4f5;
-    background-image: linear-gradient(315deg, #edf4ff 0%, #f4dfe2 74%);
-    margin-bottom: 10px;
-}
+        padding: 10px;
+        border-radius: 5px;
+        border-color: #bf2d30 !important;
+        background-color: #d9e4f5;
+        background-image: linear-gradient(315deg, #edf4ff 0%, #f4dfe2 74%);
+        margin-bottom: 10px;
+    }
 </style>
 @endsection

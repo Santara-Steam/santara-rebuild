@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+
 
 
 class TraderController extends Controller
@@ -162,5 +164,22 @@ class TraderController extends Controller
         $notif = notification::where('user_id',Auth::user()->id)->update(['is_deleted' => 1]);
 
         return redirect()->back();
+    }
+
+    public function add_bank(request $request){
+        // echo $request->bank;
+        $client = new Client();
+                    $res = $client->request('POST', env("BASE_API_CLIENT_URL")  . '/v3.7.1/withdraw/insert-new-bankwd', [
+                        'headers' => [
+                            'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+                        ],
+                        'form_params' => [
+                            "bank_wd_id" => $request->bank,
+                            "account_currency_bwd" => "IDR",
+                            "account_number_bwd" => $request->norek
+                        ]
+                    ]);
+
+                    echo $res->getBody()->getContents();
     }
 }

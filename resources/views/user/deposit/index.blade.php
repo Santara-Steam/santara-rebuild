@@ -36,6 +36,7 @@
                                             aria-labelledby="pills-tambah-tab">
                                             <div class="row m-0">
                                                 <div class="col-md-7">
+                                                    {{-- {{Session::get('newurl')}} --}}
                                                     <div class="total-amount-member">
                                                         <div>
                                                             <h3>Saldo Anda</h3>
@@ -44,14 +45,15 @@
                                                                 ',', '.')}}</span>
                                                         </div>
                                                     </div>
-                                                    <form class="form" action="{{url('/user/create_deposit')}}" method="POST"
-                                                        enctype="multipart/form-data">
+                                                    <form class="form" action="{{url('/user/create_deposit')}}"
+                                                        method="POST" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
                                                         <div class="form-group">
                                                             <label for="lastName1">Jumlah Deposit</label>
                                                             <input type="text"
                                                                 class="form-control required-form-deposit number-only"
                                                                 name="amount" id="amount" maxlength="20">
+                                                            <input type="text" id="am" name="am" hidden>
                                                             <span id="amount_error" class="text-danger"></span>
                                                             <span id="amount_limit" class="text-danger"
                                                                 style="display: none">
@@ -118,11 +120,11 @@
                                                             </select>
                                                             <span id="bank_error" class="text-danger"></span>
                                                         </div>
-                                                        <button
+                                                        <button type="submit"
                                                             class="btn btn-santara-red btn-block 
                                                             <?= (Auth::user()->is_verified == 1) ? 'submit-form-deposit' : 'disabled' ?>"
                                                             <?=(Auth::user()->is_verified == 1) ?
-                                                            'id="submitDeposit"' : '' ?> type="button">
+                                                            'id=""' : '' ?> type="button">
                                                             <?= (Auth::user()->is_verified == 1) ? 'Deposit' : 'Akun belum verifikasi' ?>
                                                         </button>
                                                     </form>
@@ -143,6 +145,11 @@
                                                         </li>
                                                     </ul>
                                                 </div>
+                                                {{-- @if (Session::has('newurl'))
+                                                <a id="link" class="link" href="{{Session::get('newurl')}}"
+                                                    target="_blank">Link</a>
+                                                @endif --}}
+
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="pills-data" role="tabpanel"
@@ -172,7 +179,17 @@
                                                                 </div>
                                                             </td>
                                                             <td>
+                                                                @if ($item->status == 0)
+                                                                <div class="font-menunggu-verifikasi"><b>Menunggu
+                                                                        Verifikasi</b></div>
+                                                                @elseif ($item->status == 1)
                                                                 <div class="font-berhasil"><b>Berhasil</b></div>
+                                                                @elseif ($item->status == 2)
+                                                                <div class="font-gagal"><b>Gagal</b></div>
+                                                                @else
+                                                                <div class="font-menunggu-verifikasi"><b>Menunggu
+                                                                        Verifikasi</b></div>
+                                                                @endif
                                                                 <div><small>{{tgl_indo(date('Y-m-d',
                                                                         strtotime($item->created_at))).'
                                                                         '.formatJam($item->created_at),}}</small></div>
@@ -180,14 +197,23 @@
                                                             <td>
                                                                 <div class="row mx-1">
                                                                     <span style="width:50%"><small>Metode
-                                                                            Pembayaran</small><br><b>-</b></span>
+                                                                            Pembayaran</small><br><b>
+                                                                            @if ($item->channel == 'ONEPAY')
+                                                                            OTHER PAYMENT
+                                                                            @else
+                                                                            -
+                                                                            @endif
+
+
+                                                                        </b></span>
                                                                     <span style="width:25%"><small>Nilai
                                                                             Deposit</small><br><b
                                                                             style="color: green;">Rp.
                                                                             {{number_format($item->amount,0,',','.')}}</b></span>
                                                                     <span style="width:25%"><small>Biaya
                                                                             Admin</small><br><b
-                                                                            style="color: green;">Rp. {{number_format($item->fee,0,',','.')}}</b></span>
+                                                                            style="color: green;">Rp.
+                                                                            {{number_format($item->fee,0,',','.')}}</b></span>
                                                                 </div>
                                                                 <div class="row mx-1 py-1">
 
@@ -196,7 +222,15 @@
                                                                             style="color: green;">Rp.
                                                                             {{number_format($item->amount+$item->fee,0,',','.')}}</b></span>
                                                                 </div>
-                                                                <div class="row mx-1"></div>
+                                                                <div class="row mx-1">
+                                                                    @if ($item->status == 0)
+                                                                    <a href="" target="_blank"
+                                                                        class="btn btn-info btn-sm btn-block"
+                                                                        title="Ubah">Lanjut Pembayaran</a>
+                                                                    @endif
+                                                                </div>
+
+
                                                             </td>
                                                         </tr>
                                                         @endforeach
@@ -221,7 +255,6 @@
 <script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/alert/sweetalert.min.js"></script>
 <script src="{{asset('public')}}/assets2/js/global.js?v=5.8.8"></script>
 <script>
-    
     const feeDeposit = "4000"
     const amount = document.getElementById("amount");
 const channel = document.getElementById("channel");
@@ -274,7 +307,8 @@ $(".required-form-deposit").on("keyup change blur input", function () {
 
 $("#amount").on("keyup change blur input", function (e) {
   this.value = parseInt(this.value.replace(/\./g, ""));
-
+    $("#am").val(this.value);
+    // console.log($("#am").val());
   if (this.value != "" && !isNaN(this.value)) {
     if (this.value < 100000) {
       $("#amount_limit").show();
@@ -556,6 +590,16 @@ function depositProcess(dataDeposit) {
   }).then((data) => {});
 }
 </script>
+
+<script>
+
+</script>
+@if (Session::has('newurl'))
+<script>
+    window.open('{{session()->get('newurl')}}', "_blank");
+    // $('#pills-data').tab('show');
+</script>
+@endif
 @endsection
 @section('style')
 
