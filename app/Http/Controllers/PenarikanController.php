@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use DB;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Ui\Presets\React;
 
 class PenarikanController extends Controller
@@ -27,23 +28,36 @@ class PenarikanController extends Controller
     }
 
     public function create(Request $request){
-        $client = new Client();
+        $pin = Auth::user()->pin;
+        if (Hash::check($request->pin, $pin) == true) {
+                                        $client = new Client();
                                         $response = $client->request('POST', env("BASE_API_CLIENT_URL") . '/v3.7.1/withdraw/', [
                                             'headers' => [
                                                 'Authorization' => 'Bearer ' .  app('request')->session()->get('token')
                                             ],
                                             'form_params' => [
-                                                'amount'         => $request->amount,
+                                                'amount'         => $request->amou,
                                                 // 'account_name'   => strip_tags($data['account_name']),
                                                 // 'account_number' => strip_tags($data['account_number']),
                                                 // 'bank_to'        => strip_tags($data['bank_to']),
-                                                'pin'            => 111111,
+                                                'pin'            => $request->pin,
                                                 'finger'         => false
                                             ]
                                         ]);
 
-                                        echo json_encode(['msg' => $response->getStatusCode()]);
-                                        return;
+                                        // echo json_encode(['msg' => $response->getStatusCode()]);
+                                        $notif = array(
+                                            'message' => 'Request withdraw dalam proses',
+                                            'alert-type' => 'success'
+                                        );
+                                        return redirect()->back()->with($notif);
+                                    }else{
+                                        $notif = array(
+                                            'message' => 'Pin yang anda masukan salah',
+                                            'alert-type' => 'fail'
+                                        );
+                                        return redirect()->back()->with($notif);
+                                    }
     }
     
 }

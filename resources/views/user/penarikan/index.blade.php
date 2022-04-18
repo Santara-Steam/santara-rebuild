@@ -62,9 +62,11 @@
                                                             <div class="col-12 bank-user">
                                                                 <h3>Dana Akan di Transfer ke Rekening: </h3>
                                                                 <hr>
-                                                                <h4 class="font-weight-bold">{{$trader_bank->bank}} ({{$trader_bank->bank_code}}) -
+                                                                <h4 class="font-weight-bold">{{$trader_bank->bank}}
+                                                                    ({{$trader_bank->bank_code}}) -
                                                                     {{$trader_bank->account_number_bwd}}</h4>
-                                                                <h5 class="text-uppercase">{{$trader_bank->account_name_bwd}} </h5>
+                                                                <h5 class="text-uppercase">
+                                                                    {{$trader_bank->account_name_bwd}} </h5>
                                                                 <h5 class="font-weight-bold small"
                                                                     style="color: #BF2D30;">
                                                                 </h5>
@@ -75,9 +77,9 @@
                                                         value="{{round(Auth::user()->trader->saldo->balance,0)}}">
                                                     <input type="hidden" class="form-control" name="refund" id="refund"
                                                         value="">
-                                                        
 
-                                                        <form class="form" action="{{url('/user/penarikan/create')}}"
+
+                                                    <form class="form" action="{{url('/user/penarikan/create')}}"
                                                         method="POST" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
                                                         <div class="form-group">
@@ -90,8 +92,9 @@
                                                             <span id="amount_error" class="text-danger"></span>
                                                             <span id="amount_limit_alert" class="text-danger"
                                                                 style="display: none">
-                                                                Saldo tidak cukup. Saldo Anda Rp. {{number_format(Auth::user()->trader->saldo->balance, 0,
-                                                                    ',', '.')}} </span>
+                                                                Saldo tidak cukup. Saldo Anda Rp.
+                                                                {{number_format(Auth::user()->trader->saldo->balance, 0,
+                                                                ',', '.')}} </span>
                                                             <span id="amount_minimum_alert" class="text-danger"
                                                                 style="display: none">
                                                                 Minimal penarikan adalah Rp 100.000,00
@@ -114,21 +117,20 @@
                                                             </div>
                                                         </div>
 
-                                                        <button type="submit"
-                                                            class="btn btn-santara-red btn-block sippp"
-                                                            type="button" disabled="">
-                                                            Tarik Dana </button>
                                                         {{-- <button type="submit"
                                                             class="btn btn-santara-red btn-block submit-form-withdraw"
                                                             id="submitWithdraw" type="button" disabled="">
                                                             Tarik Dana </button> --}}
                                                     </form>
+                                                    <button id="withdraw" class="btn btn-santara-red btn-block sippp"
+                                                        disabled="">
+                                                        Tarik Dana </button>
 
                                                     {{-- <form class="form" action="{{url('/pin_check')}}" method="POST"
-                                                            enctype="multipart/form-data">
-                                                            {{ csrf_field() }}
-                                                            <input type="password" name="pin">
-                                                    <button type="submit">Kirim</button>
+                                                        enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                                                        <input type="password" name="pin">
+                                                        <button type="submit">Kirim</button>
                                                     </form> --}}
 
                                                 </div>
@@ -162,41 +164,43 @@
                                                     </div>
                                                     {{-- <form action="#" class="mt-2" id="submitBank" method="post"
                                                         data-select2-id="submitBank"> --}}
-                                                        <form class="form" action="{{url('/user/add_bank')}}" method="POST"
-                                                            enctype="multipart/form-data">
+                                                        <form class="form" action="{{url('/user/add_bank')}}"
+                                                            method="POST" enctype="multipart/form-data">
                                                             {{ csrf_field() }}
-                                                        <div class="form-group">
-                                                            <label for="lastName1">Bank<small
-                                                                    class="text-danger">*</small></label>
-                                                            <select class="form-control" name="bank" id="bank">
-                                                                @foreach ($bwd as $item)
-                                                                    <option value="{{$item->id}}">{{$item->bank}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <small id="bank_error" class="text-danger"></small>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <label for="lastName1">Bank<small
+                                                                        class="text-danger">*</small></label>
+                                                                <select class="form-control" name="bank" id="bank">
+                                                                    @foreach ($bwd as $item)
+                                                                    <option value="{{$item->id}}">{{$item->bank}}
+                                                                    </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <small id="bank_error" class="text-danger"></small>
+                                                            </div>
 
-                                                        <div class="form-group">
-                                                            <label for="lastName1">Nama<small
-                                                                    class="text-danger">*</small></label>
-                                                            <input type="text" class="form-control" placeholder=""
-                                                                name="nama" value="{{Auth::user()->trader->name}}" id="nama"
-                                                                readonly="">
-                                                            <small id="nama_error" class="text-danger"></small>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <label for="lastName1">Nama<small
+                                                                        class="text-danger">*</small></label>
+                                                                <input type="text" class="form-control" placeholder=""
+                                                                    name="nama" value="{{Auth::user()->trader->name}}"
+                                                                    id="nama" readonly="">
+                                                                <small id="nama_error" class="text-danger"></small>
+                                                            </div>
 
-                                                        <div class="form-group">
-                                                            <label for="lastName1">No. Rekening<small
-                                                                    class="text-danger">*</small></label>
-                                                            <input type="text" class="form-control number-only"
-                                                                placeholder="" maxlength="20" name="norek" id="norek">
-                                                            <small id="norek_error" class="text-danger"></small>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <label for="lastName1">No. Rekening<small
+                                                                        class="text-danger">*</small></label>
+                                                                <input type="text" class="form-control number-only"
+                                                                    placeholder="" maxlength="20" name="norek"
+                                                                    id="norek">
+                                                                <small id="norek_error" class="text-danger"></small>
+                                                            </div>
 
-                                                        <button class="btn btn-santara-red btn-block" type="submit"
-                                                            id="bsubmitBank">
-                                                            Daftar Bank </button>
-                                                    </form>
+                                                            <button class="btn btn-santara-red btn-block" type="submit"
+                                                                id="bsubmitBank">
+                                                                Daftar Bank </button>
+                                                        </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -269,8 +273,7 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form class="form" action="" method="POST"
-                enctype="multipart/form-data">
+            <form class="form" action="" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel1">Update Status</h4>
@@ -279,7 +282,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
@@ -294,7 +297,8 @@
 <script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/alert/sweetalert.min.js"></script>
 <script src="{{asset('public')}}/assets2/js/global.js?v=5.8.8"></script>
 <script src="app-assets/css/select2.min.css"></script>
-<script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/libraries/select2/select2.min.js" defer></script>
+<script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/libraries/select2/select2.min.js" defer>
+</script>
 <script>
     const fee_bank = "0";
     const maksimalPenarikan = "500000000";
@@ -367,6 +371,7 @@ amount.addEventListener("keyup", function (e) {
   this.value = this.value.replace(/\./, "");
   $("#amount_limit_alert").hide();
   $("#amount_minimum_alert").show();
+//   $("#amou").val(this.value);
 
   if (this.value != "" && !isNaN(this.value)) {
 
@@ -417,6 +422,43 @@ $("#submitWithdrawKYC").click(function () {
     },
   });
 });
+
+$("#withdraw").click(function () {
+//   console.log('ok');
+    
+    Swal.fire({
+    html: `<div><img src="{{asset('public')}}/assets2/images/content/account/password.png" width="35%" alt="security token"></div>
+                <div class="mt-1"><b class="swal-popup-title">Masukan PIN Anda</b></div> 
+                <div><p style="font-size: .9rem;">Masukan kode 6 angka security pin akun anda</p></div>
+                <p><span id="pin_error" class="text-danger" style="font-size:12px"></span></p>
+                <form class="form" id="penarikanc" action="{{url('/user/penarikan/create')}}"
+                                                        method="POST" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                <input type="hidden" name="amou" id="amou">
+                <input type="password" name="pin" class="form-control form-control-no-radius swal-popup-input" id="pin" onkeypress="return isNumberKey(event)" maxlength="6">
+                </form>`,
+                inputAttributes: {
+      autocapitalize: "off",
+    },
+    customClass: "swal-popup",
+    showCancelButton: false,
+    showConfirmButton: true,
+    showLoaderOnConfirm: true,
+    confirmButtonText: "Verifikasi",
+    footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="/user/security/email">Reset PIN</a></p>',
+    focusConfirm: false,
+    preConfirm: () => {
+        $("#amou").val(amount.value.replace(/\./, ""));
+        const login = Swal.getPopup().querySelector('#amou').value
+        const password = Swal.getPopup().querySelector('#pin').value
+        return { login: login, password: password }
+    }
+    }).then((result) => {
+    // console.log(result.value.login);
+    document.getElementById('penarikanc').submit();
+    });
+});
+
 $("#submitWithdraw").click(function () {
   var dataWithdraw = {
     amount: $("input[name='amount']").val(),
@@ -465,7 +507,8 @@ function withdrawProcess(dataWithdraw) {
                 <div class="mt-1"><b class="swal-popup-title">Masukan PIN Anda</b></div> 
                 <div><p style="font-size: .9rem;">Masukan kode 6 angka security pin akun anda</p></div>
                  <p><span id="pin_error" class="text-danger" style="font-size:12px"></span></p>
-                <input type="password" class="form-control form-control-no-radius swal-popup-input" id="pin" onkeypress="return isNumberKey(event)" maxlength="6">`,
+                <input type="password" class="form-control form-control-no-radius swal-popup-input" id="pin" onkeypress="return isNumberKey(event)" maxlength="6">
+                `,
 
     inputAttributes: {
       autocapitalize: "off",
