@@ -322,36 +322,106 @@ class DevidenController extends Controller
         $amount = (int)str_replace(".", "", $request->amount);
 
         // Belum selesai
-        $client = new \GuzzleHttp\Client();
-        $response = $client->get(config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'dividend/generate', [
-            'headers' => [
-                'Authorization' => app('request')->session()->get('token')
-            ],
-            'form_params' => [
-                'uuid' => 'd5fdbe8b-d784-11e9-bec9-00163e014eba',
-                'total_dividend' => 55000000
-            ]
-        ]);
-        
-        // $response = Http::withHeaders([
-        //     'Authorization' => app('request')->session()->get('token'),
-        // ])->get(config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'/dividend/generate', [
-        //     'uuid' => $request->emiten_uuid,
-        //     'total_dividend' => $amount
-        // ]);
-
-        // if($response->status() == 200){
-        //     $dividends = json_decode($response->body()->getContents(), TRUE);
-        // }
-        if ($response->getStatusCode() == 200) {
-            $dividends = json_decode($response->getBody()->getContents(), TRUE);
+        try {
+            $client = new \GuzzleHttp\Client();
+            $response = $client->get(config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'dividend/generate', [
+                'headers' => [
+                    'Authorization' => 'Bearer '.app('request')->session()->get('token')
+                ],
+                'form_params' => [
+                    'uuid' => $request->emiten_uuid,
+                    'total_dividend' => $amount
+                ]
+            ]);
+            
+            if ($response->getStatusCode() == 200) {
+                $dividends = json_decode($response->getBody()->getContents(), TRUE);
+            }
+            $dividend['dividend_detail'] = $dividend_detail;
+            $dividend['dividends'] = $dividends;
+            $request->session()->put('dividend', $dividend);
+            echo json_encode(['msg' => $response->getStatusCode(), 'dividend' => $dividend]);
+        } catch (\Exception $exception) {
+            $statusCode = $exception->getResponse()->getStatusCode();
+            echo json_encode(['msg' => $statusCode]);
         }
-        $dividend['dividend_detail'] = $dividend_detail;
-        $dividend['dividends'] = $dividends;
-        return response()->json([
-            "msg" => $response->getStatusCode(), 
-            "dividend" => $dividend
-        ]);
+    }
+
+    public function saveGenerateDividen(Request $request)
+    {
+        if($request->session()->has('dividend')){
+            $dividend_session = $request->session()->get('dividend');
+            $uuid = $request->uuid;
+            $data_array = $dividend_session['dividends'];
+            $name_file = 'dividend.json';
+            $path_file = public_path().'/temp/';
+
+            $fp = fopen($name_file, 'w');
+            fwrite($fp, json_encode($data_array));
+            fclose($fp);
+            $amount = (int)str_replace(".", "", $dividend_session['dividend_detail']['amount']);
+            $data_dividend = [
+                [
+                    'name' => 'uuid',
+                    'contents' => $dividend_session['dividend_detail']['emiten_uuid']
+                ],
+                [
+                    'name' => 'total_dividend',
+                    'contents' => $amount
+                ],
+                [
+                    'name' => 'date_dividen',
+                    'contents' => $dividend_session['dividend_detail']['date_time']
+                ],
+                [
+                    'name' => 'phase',
+                    'contents' => $dividend_session['dividend_detail']['phase']
+                ],
+                [
+                    'name' => 'data',
+                    'contents' => fopen($name_file, 'r'),
+                    'filename' => $name_file
+                ],
+            ];
+
+            if ($dividend_session['dividend_detail']['emiten_uuid'] == $uuid) {
+                try {
+                    $client = new \GuzzleHttp\Client();
+
+                    $response = $client->request('POST', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION') . 'dividend/', [
+                        'headers' => [
+                            'Authorization' => 'Bearer '.app('request')->session()->get('token')
+                        ],
+                        'multipart' =>  $data_dividend,
+                        'timeout' => 500, // Response timeout
+                        'connect_timeout' => 501, // Connection timeout
+                    ]);
+                    $request->session()->forget('dividend');
+
+                    if ($response->getStatusCode() == 200) {
+                        echo json_encode(['msg' => $response->getStatusCode()]);
+                    }
+                } catch (\Exception $exception) {
+
+                    $request->session()->forget('dividend');
+                    $response = $exception->getResponse();
+                    $responseBody = $response->getBody()->getContents();
+                    $body = json_decode($responseBody, true);
+                    echo json_encode(['msg' => isset($body['message']) ?  $body['message'] : 'Server error ' . $exception->getMessage()]);
+                }
+            } else {
+                echo json_encode(['msg' => 404]);
+            }
+        }else{
+            echo json_encode(['msg' => 404]);
+        }
+        unlink($name_file);
+    }
+
+    public function hapusSession(Request $request)
+    {
+        //echo json_encode($request->session()->get('dividend'));
+        $request->session()->forget('dividend');
     }
 
     public function getAdminHistoryDividend(Request $request)
@@ -387,6 +457,7 @@ class DevidenController extends Controller
             ->take($rowperpage)
             ->select('devidend.id', 'devidend.emiten_id', 'e.company_name', 'e.code_emiten', 'devidend.phase', 
                 'e.trademark', 'devidend.devidend', 'devidend.created_at', 'devidend.updated_at')
+            ->orderBy('devidend.updated_at', 'DESC')
             ->get();
 
         $viewDeleteDividen = 0;
@@ -394,7 +465,7 @@ class DevidenController extends Controller
         $data = [];
         foreach($dividen as $row){
 
-            $updated_at = formatTanggalJamSistem(strtotime($row->updated_at));
+            $updated_at = formatTanggalJamSistem($row->updated_at);
             $action = '<a href="#" onClick="getDetailHistory(\'' . $row->devidend . '\',\'' . $row->phase . '\')" 
                             class="btn btn-info btn-sm btn-block" title="Detail">Detail</a>';
             

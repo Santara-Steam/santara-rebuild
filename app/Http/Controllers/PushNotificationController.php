@@ -193,6 +193,7 @@ class PushNotificationController extends Controller
             $notif->uuid = \Str::uuid();
             $notif->action = $request->broadcastCategoryName;
             $notif->user_id = $userId[$i];
+            //$notif->user_id = 190382;
             $notif->message = $request->message;
             $notif->title = $request->title;
             $notif->created_at = Carbon::now();

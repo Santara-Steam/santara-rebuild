@@ -106,7 +106,9 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/generate_dividend', [App\Http\Controllers\DevidenController::class, 'generateDividend']);
     Route::get('/admin/get_dividen_by_uuid', [App\Http\Controllers\DevidenController::class, 'getEmitenByUuid']);
     Route::get('/admin/get_history_dividend', [App\Http\Controllers\DevidenController::class, 'getAdminHistoryDividend']);
-    
+    Route::post('/admin/save-generate-dividen', [App\Http\Controllers\DevidenController::class, 'saveGenerateDividen']);
+    Route::get('/hapus-session', [App\Http\Controllers\DevidenController::class, 'hapusSession']);
+
     Route::get('/admin/wallet', [App\Http\Controllers\WalletController::class, 'index']);
 
     Route::get('/admin/laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'index']);

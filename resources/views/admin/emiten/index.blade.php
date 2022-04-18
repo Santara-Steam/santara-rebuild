@@ -32,8 +32,8 @@
                                                     <th>Nama Brand</th>
                                                     <th>Kode</th>
                                                     <th>Kategori</th>
-                                                    <th width="30%">Status</th>
-                                                    <th width="18%">Action</th>
+                                                    <th width="200">Status</th>
+                                                    <th width="150">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -49,15 +49,15 @@
                                                     <td>{{$item->ktg}}</td>
                                                     <td>
                                                         <div class="row">
-                                                            <div class="col-8">
+                                                            <div class="col-6">
                                                                 {{$item->sts}}
                                                             </div>
                                                             @if ($item->sts == 'Pembagian Dividen')
-                                                            <div class="col-4">
+                                                            <div class="col-2">
                                                                 
                                                             </div>
                                                             @else
-                                                            <div class="col-4">
+                                                            <div class="col-3">
                                                                 <button type="button" class="btn btn-sm btn-success"
                                                                     data-toggle="modal"
                                                                     data-target="#default{{$item->id}}">
@@ -68,12 +68,12 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="row flex">
-                                                            <div class="col-6">
+                                                        <div class="row">
+                                                            <div class="col-5">
                                                                 <a href="{{url('admin/emiten/edit')}}/{{$item->id}}"
                                                                     class="btn btn-block btn-sm btn-warning">Edit</a>
                                                             </div>
-                                                            <div class="col-6">
+                                                            <div class="col-3 mr-0">
                                                             <form id="del{{$item->id}}" method="post"
                                                                 action="{{url('/emiten/delete')}}/{{$item->id}}"
                                                                 enctype="multipart/form-data">
