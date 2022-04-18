@@ -38,6 +38,10 @@
                               }else{
                                   $picture[6];
                               }
+ if ($emt->avg_capital_needs == null) {
+  $emt->avg_capital_needs = 1;
+ }
+
                               ?>
 <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
@@ -133,7 +137,7 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Saham Terjual <br> {{number_format(round(($bok->tot/$emt->avg_capital_needs)*100,0),0,',','.')}}%</td>
+                    {{-- <td>Saham Terjual <br> {{number_format(round(($bok->tot/$emt->avg_capital_needs)*100,0),0,',','.')}}%</td> --}}
                   </tr>
                   <tr>
                     <td>Dalam Lembar <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}}</td>

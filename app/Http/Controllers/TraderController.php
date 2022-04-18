@@ -182,4 +182,13 @@ class TraderController extends Controller
 
                     echo $res->getBody()->getContents();
     }
+
+    public function pin_check(Request $request){
+        $pin = Auth::user()->pin;
+        if (Hash::check($request->pin, $pin) == true) {
+            dd('ok');
+        }else{
+            dd('salah');
+        }
+    }
 }

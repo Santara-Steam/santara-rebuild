@@ -52,10 +52,13 @@ Route::group(['middleware' => ['auth','pin', 'checkRole:2', "verified"]], functi
     
     Route::post('/user/read',[App\Http\Controllers\TraderController::class, 'read_message']);
     Route::post('/user/add_bank',[App\Http\Controllers\TraderController::class, 'add_bank']);
+    Route::post('/pin_check',[App\Http\Controllers\TraderController::class, 'pin_check']);
+
     Route::get('/user/transaksi', [App\Http\Controllers\TransactionsController::class, 'user_transaksi']);
     Route::get('/user/deposit', [App\Http\Controllers\DepositController::class, 'user_depo']);
     Route::post('/user/create_deposit', [App\Http\Controllers\DepositController::class, 'user_cdepo']);
     Route::get('/user/penarikan', [App\Http\Controllers\PenarikanController::class, 'user_tarik']);
+    Route::post('/user/penarikan/create', [App\Http\Controllers\PenarikanController::class, 'create']);
     
     
 });
