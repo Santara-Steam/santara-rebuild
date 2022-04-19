@@ -92,6 +92,14 @@ class WithdrawController extends Controller
             $totalWithdraw = rupiah(($row->amount - $row->fee));
             // saldo Available didapat dari proses fetch api, itu menyusul
             // $saldoAvailable = rupiah($this->get_saldo($withdraw->trader_uuid), 2, ',', '.');
+            $member = '<div class="row"><div class="col-4">Nama :</div><div class="col-8">'.$row->trader_name
+                .'</div></div><div class="row"><div class="col-4">Email :</div><div class="col-8">'
+                .$row->email.'</div></div><div class="row"><div class="col-4">HP :</div><div class="col-8">'.$row->phone.'</div></div><div class="row"><div class="col-4">Bank to :</div><div class="col-8">'
+                .$row->bank_to.'</div></div>';
+            $date = '<div class="row"><div class="col-4">Date :</div><div class="col-8">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
+                .'</div></div><div class="row"><div class="col-4">Time :</div><div class="col-8">'.formatJam($row->created_at).'</div></div>';
+            $amount = '<div class="row"><div class="col-4">Withdrawal :</div><div class="col-8">'.rupiah($row->amount).'</div></div><div class="row"><div class="col-4">Fee :</div><div class="col-8">'
+                .rupiah($row->fee).'</div></div><div class="row"><div class="col-4">Total :</div><div class="col-8">'.(rupiah($row->amount - $row->fee)).'</div></div>';
             $saldoAvailable = "";
             if($row->is_verified == 0 || $row->is_verified == null){
                 $status = '<a href="#" onClick="confirmWithdraw(\''.$row->uuid.'\',
@@ -112,12 +120,9 @@ class WithdrawController extends Controller
             $created_at = tgl_indo(date('Y-m-d', strtotime($row->created_at))).' '.formatJam($row->created_at);
             
             array_push($data, [
-                "trader_name" => $row->trader_name,
-                "email" =>$row->email,
-                "amount" => rupiah($row->amount),
-                "fee" => rupiah($row->fee),
-                "bank_to" => $row->bank_to,
-                "created_at" => $created_at,
+                "member" => $member,
+                "date" => $date,
+                "amount" => $amount,
                 "split_fee" => rupiah($row->split_fee),
                 "status" => $status
             ]);

@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h2><strong>Penarikan</strong></h2>
+                                <h1 class="card-title-member">Penarikan</h1>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                    <select class="custom-select" onchange="filterTr()" id="filter">
@@ -34,14 +34,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Email</th>
-                                                    <th>Amount</th>
-                                                    <th>Fee</th>
-                                                    <th>Bank to</th>
-                                                    <th>Created at</th>
+                                                    <th>Member</th>
+                                                    <th width="180">Created</th>
+                                                    <th width="310">Amount</th>
                                                     <th>Split Fee</th>
-                                                    <th>Status</th>
+                                                    <th width="50">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -82,22 +79,13 @@
                     }
                 },
                 {
-                    data: "trader_name"
+                    data: "member"
                 },
                 {
-                    data: "email"
+                    data: "date"
                 },
                 {
                     data: "amount"
-                },
-                {
-                    data: "fee"
-                },
-                {
-                    data: "bank_to"
-                },
-                {
-                    data: "created_at"
                 },
                 {
                     data: "split_fee"
