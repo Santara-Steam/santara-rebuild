@@ -135,6 +135,11 @@
         // Swal.fire("Berhasil","{{Session::get('message')}}","success");
         // Swal.fire("Good job!", "You clicked the button!", "success");
         break;
+        case 'warning':
+        toastr.warning("{{Session::get('message')}}");
+        // Swal.fire("Berhasil","{{Session::get('message')}}","success");
+        // Swal.fire("Good job!", "You clicked the button!", "success");
+        break;
     }
     </script>
     @endif
