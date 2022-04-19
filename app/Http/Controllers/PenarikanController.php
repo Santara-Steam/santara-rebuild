@@ -16,7 +16,9 @@ class PenarikanController extends Controller
     //
     public function user_tarik()
     {
-        $wd = Withdraw::where('trader_id',Auth::user()->trader->id)->get();
+        $wd = Withdraw::where('trader_id',Auth::user()->trader->id)
+        ->orderBy('id','DESC')
+        ->get();
         $trader_bank = db::table('trader_banks')
         ->select('trader_banks.*','bank_withdraws.bank','bank_withdraws.bank_code')
         ->join('bank_withdraws','bank_withdraws.id','=','trader_banks.bank_wd_id')
