@@ -263,16 +263,16 @@ class DepositController extends Controller
             ]);
 
 
-            echo json_encode(json_decode($response->getBody()->getContents()));
-            // $rsp = json_encode(json_decode($response->getBody()->getContents()));
-            // $r = json_decode($rsp, true);
+            // echo json_encode(json_decode($response->getBody()->getContents()));
+            $rsp = json_encode(json_decode($response->getBody()->getContents()));
+            $r = json_decode($rsp, true);
             // return;
             // $newUrl = $r['data']['deposit']['redirectURL'];
             // session()->flash('newurl', $newUrl);
             // return redirect()->back();
             // return redirect()->away($r['data']['deposit']['redirectURL']);
 
-            // dd($rsp);
+            dd($r);
             // print_r($r['data']['deposit']['redirectURL']);
         // } catch (\Exception $exception) {
         //     echo json_encode(errorcatch($exception, 'deposit'));
