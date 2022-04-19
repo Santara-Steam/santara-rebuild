@@ -272,7 +272,7 @@ class DepositController extends Controller
             // return redirect()->back();
             // return redirect()->away($r['data']['deposit']['redirectURL']);
 
-            dd($r);
+            dd($r['data']);
             // print_r($r['data']['deposit']['redirectURL']);
         // } catch (\Exception $exception) {
         //     echo json_encode(errorcatch($exception, 'deposit'));
