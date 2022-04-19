@@ -53,7 +53,7 @@ class PenarikanController extends Controller
                                         return redirect()->back()->with($notif);
                                     }else{
                                         $notif = array(
-                                            'message' => 'Pin yang anda masukan salah',
+                                            'message' => 'PIN yang anda masukan salah',
                                             'alert-type' => 'fail'
                                         );
                                         return redirect()->back()->with($notif);
