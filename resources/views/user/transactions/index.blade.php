@@ -16,7 +16,7 @@
 
 
                                         <h1 class="card-title-member">Daftar Transaksi</h1>
-                                        {{Session::get('pws')}}
+                                        {{-- {{Session::get('pws')}} --}}
                                     </div>
                                 </div>
                             </div>
@@ -122,12 +122,12 @@
                                                                                 <td class="sorting_1">
                                                                                     <div
                                                                                         style="display: flex;align-content: center;justify-content: flex-start;">
-                                                                                        <div class="d-flex col-10">
-                                                                                            <div><img
-                                                                                                    src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}"
+                                                                                        <div class="d-flex col-12 row">
+                                                                                            <div class="col-md-3"><img
+                                                                                                    src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
                                                                                                     width="150px"></div>
-                                                                                            <div class="px-2"
-                                                                                                style="width: 70%;">
+                                                                                            <div class="col-md-5"
+                                                                                                >
                                                                                                 <div
                                                                                                     style="font-size:18px">
                                                                                                     <b>{{$item->trademark}}</b></div>
@@ -140,15 +140,15 @@
                                                                                                         style="font-size:13px">{{tgl_indo(date('Y-m-d', strtotime($item->created_at))).' '.formatJam($item->created_at),}}</span>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div style="width: 30%">
+                                                                                            <div class="col-md-4" >
                                                                                                 @if ($item->status == 'EXPIRED')
                                                                                                 <div
-                                                                                                    class="p-1 font-gagal">
+                                                                                                    class="font-gagal">
                                                                                                     <small><b>Pembelian Gagal</b></small>
                                                                                                 </div>
                                                                                                 @elseif ($item->status == 'VERIFIED')
                                                                                                 <div
-                                                                                                    class="p-1 font-berhasil">
+                                                                                                    class="font-berhasil">
                                                                                                     <small><b>Pembelian Berhasil</b></small>
                                                                                                 </div>
                                                                                                 @endif

@@ -64,7 +64,7 @@
             </li>
             {{-- <li class="navigation-header"><span data-i18n="Layouts">Penerbit</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li> --}}
-            <li class=" nav-item {{ 'user/emiten' == request()->path() ? 'active' : '' }}"><a href="{{url('user/emiten')}}"><i class="la la-list"></i><span class="menu-title" data-i18n="eCommerce">List Penerbit</span></a>
+            <li hidden class=" nav-item {{ 'user/emiten' == request()->path() ? 'active' : '' }}"><a href="{{url('user/emiten')}}"><i class="la la-list"></i><span class="menu-title" data-i18n="eCommerce">List Penerbit</span></a>
             </li>
             {{-- <li class="navigation-header"><span data-i18n="Layouts">Transaksi</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li> --}}
