@@ -228,35 +228,35 @@ class DevidenController extends Controller
                                         \'' . $row->uuid . '\',
                                         \'' . $row->devidend . '\',
                                         \'' . $row->updated_at . '\')" 
-                        class="btn btn-info btn-sm btn-block" title="Verifikasi" >Verifikasi</a> 
+                        class="btn btn-info btn-sm " title="Verifikasi" >Verifikasi</a> 
                     
                     <a href="#" onClick="rejectDividend(\'' . $row->id . '\',
                                                             \'' . $row->uuid . '\',
                                                             \'' . $row->company_name . '\',
                                                             \'' . $row->devidend . '\',
                                                             \'' . $row->trader_id . '\',
-                                                            \'' . $row->updated_at . '\')" class="btn btn-danger btn-sm btn-block" title="Tolak" >Tolak</a>';
+                                                            \'' . $row->updated_at . '\')" class="btn btn-danger btn-sm " title="Tolak" >Tolak</a>';
 
             $pencairan = 'Belum Dicairkan';
             $detail = '<a href="#" onClick="getEmitenDetailConfirm(
                                 \'' . $row->trader_id . '\',
                                 \'' . $row->status . '\',
-                                \'' . $row->updated_at . '\')" class="btn btn-warning btn-sm btn-block" title="Tolak" >Detail</a>';
+                                \'' . $row->updated_at . '\')" class="btn btn-warning btn-sm " title="Tolak" >Detail</a>';
             
             if ($row->status == 0) {
-                $status = '<div class="status" style="color: #1e9ff2; font-weight: bold;">Tersedia</div>';
+                $status = '<div class="status" style="color: #1e9ff2; font-weight: bold;">&nbsp;Tersedia </div>';
             } elseif ($row->status == 1) {
                 $status = $confirm;
             } elseif ($row->status == 2) {
-                $status = '<div class="status" style="color: #28d094; font-weight: bold;">Terverifikasi</div>';
+                $status = '<div class="status" style="color: #28d094; font-weight: bold;">&nbsp;Terverifikasi </div>';
                 $pencairan = ($row->deposit_id != null) ? 'Wallet' : (($row->channel == 'Dana') ? 'Dana' : 'Rekening');
                 if ($row->channel == 'DANA') {
                     $pencairan = 'DANA';
                 }
             } elseif ($row->status == 3) {
-                $status = '<div class="status" style="color: #ff4961; font-weight: bold;">Ditolak</div>';
+                $status = '<div class="status" style="color: #ff4961; font-weight: bold;">&nbsp;Ditolak</div>';
             } else {
-                $status = '<div class="status badge badge-warning badge-pill badge" style="display:block">Undefined</div>';
+                $status = '<div class="status badge badge-warning badge-pill badge">&nbsp;Undefined</div>';
                 $pencairan = '-';
             }
 
@@ -473,11 +473,11 @@ class DevidenController extends Controller
 
             $updated_at = formatTanggalJamSistem($row->updated_at);
             $action = '<a href="#" onClick="getDetailHistory(\'' . $row->devidend . '\',\'' . $row->phase . '\')" 
-                            class="btn btn-info btn-sm btn-block" title="Detail">Detail</a>';
+                            class="btn btn-info btn-sm " title="Detail">Detail</a>';
             
             if($viewDeleteDividen) {
                 $action .= '<a href="#" onClick="deleteDividen(\'' . $row->id . '\',\'' . $row->company_name . '\',\'' . $row->code_emiten . '\',\'' . $row->phase . '\')" 
-                                class="btn btn-danger btn-sm btn-block" title="Hapus Dividen">Hapus Dividen</a>';
+                                class="btn btn-danger btn-sm " title="Hapus Dividen">Hapus Dividen</a>';
             }
             array_push($data, [
                 "updated_at" => $updated_at,

@@ -37,7 +37,7 @@
                                                     <th>No</th>
                                                     <th width="250">Transaksi</th>
                                                     <th>Member</th>
-                                                    <th>Created at</th>
+                                                    <th width="150">Created at</th>
                                                     <th>Total (Rp)</th>
                                                     <th>Split Fee</th>
                                                     <th>Status</th>
