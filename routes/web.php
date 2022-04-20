@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth','pin', 'checkRole:2', "verified"]], functi
     Route::post('/pin_check',[App\Http\Controllers\TraderController::class, 'pin_check']);
 
     Route::get('/user/transaksi', [App\Http\Controllers\TransactionsController::class, 'user_transaksi']);
+    Route::post('/user/cancel_transaksi', [App\Http\Controllers\TransactionsController::class, 'canceltrx']);
     Route::get('/user/deposit', [App\Http\Controllers\DepositController::class, 'user_depo']);
     Route::post('/user/create_deposit', [App\Http\Controllers\DepositController::class, 'user_cdepo']);
     Route::get('/user/penarikan', [App\Http\Controllers\PenarikanController::class, 'user_tarik']);

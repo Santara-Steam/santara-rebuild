@@ -53,13 +53,126 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($rtransactions as $item)
+                                                        <?php 
+                                                                            $picture = explode(',',$item->pictures);
+                                                                            ?>
+                                                        <tr role="row" class="odd">
+                                                            <td class="sorting_1">
+                                                                <div
+                                                                    style="align-content: center;justify-content: flex-start;">
+                                                                    <div class="d-flex row">
+                                                                        <div class="col-md-2"><img
+                                                                                src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
+                                                                                width="150px"></div>
+                                                                        <div class="col-md-4">
+                                                                            <div style="font-size:18px"><b>{{$item->trademark}}</b>
+                                                                            </div>
+                                                                            <div style="font-size:15px">{{$item->company_name}}</div>
+                                                                            <div
+                                                                                style="display: flex; align-content: center;justify-content: space-between; margin: .5rem 0;">
+                                                                                <span style="font-size:13px">{{tgl_indo(date('Y-m-d',
+                                                                                    strtotime($item->created_at))).'
+                                                                                    '.formatJam($item->created_at),}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            @if ($item->status ==
+                                                                            'CREATED')
+                                                                            <div class="font-berhasil">
+                                                                                <small><b>Menunggu Pembayaran</b></small>
+                                                                            </div>
+                                                                            @elseif ($item->status
+                                                                            == 'WAITING FOR VERIFICATION')
+                                                                            <div class="font-berhasil">
+                                                                                <small><b>Menunggu Verifikasi</b></small>
+                                                                            </div>
+                                                                            @endif
+
+                                                                            <button class="btn btn-santara-white"
+                                                                                style="cursor: default;">
+                                                                                <span
+                                                                                    style="color: #BF2D30; font-size:12px"><b>Batas
+                                                                                        : {{tgl_indo(date('Y-m-d',
+                                                                                        strtotime($item->expired_date))).'
+                                                                                        '.formatJam($item->expired_date),}}</b></span>
+                                                                            </button>
+                                                                        </div>
+                                                                    
+                                                                        <div class="col-md-3 mt-1">
+                                                                            <a href="" target="_blank"
+                                                                                class="btn btn-success"
+                                                                                style="width:100px"
+                                                                                title="Bayar">Bayar</a>
+                                                                            <a class="btn btn-santara-red  cancelbtn"
+                                                                            data-id="{{$item->id}}"
+                                                                                style="width:100px"
+                                                                                title="Bayar">Batal</a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <form action="{{ url('/user/cancel_transaksi')}}" id="cancel{{$item->id}}" method="POST">
+                                                                        @csrf
+                                                                        <input type="hidden" name="uuid" value="{{$item->id}}">
+                                                                    </form>
+                                                                </div>
+                                                                <div class="col-12 pt-1 pb-0">
+                                                                    <div><b>Total</b></div>
+                                                                    <p class="mb-0">
+                                                                        <span
+                                                                            style="font-size: 2rem;font-weight: bold;">
+                                                                            Rp.
+                                                                            {{number_format($item->amount+$item->fee,0,',','.')}}
+                                                                        </span>
+                                                                        <small class="ml-1">
+                                                                            <a data-toggle="collapse"
+                                                                                href="#detail_{{$item->transaction_serial}}"
+                                                                                aria-expanded="false"
+                                                                                aria-controls="detail_{{$item->transaction_serial}}">
+                                                                                Detail
+                                                                                <i
+                                                                                    class="la la-angle-right"></i>
+                                                                                <i
+                                                                                    class="la la-angle-down"></i>
+                                                                            </a>
+                                                                        </small>
+                                                                    </p>
+                                                                    <div class="row col-12 py-1 collapse"
+                                                                        id="detail_{{$item->transaction_serial}}">
+                                                                        <span class="w-50">
+                                                                            <div>No. Transaksi :
+                                                                                <b>{{$item->transaction_serial}}</b>
+                                                                            </div>
+                                                                            <div>Harga Saham :
+                                                                                <b>Rp.
+                                                                                    {{number_format($item->price,0,',','.')}}</b>
+                                                                            </div>
+                                                                            <div>Jumlah Saham :
+                                                                                <b>{{number_format($item->qty,0,',','.')}}
+                                                                                    Lembar</b>
+                                                                            </div>
+                                                                            <div>Biaya Admin :
+                                                                                <b>Rp.
+                                                                                    {{number_format($item->fee,0,',','.')}}
+                                                                                    (
+                                                                                    {{$item->channel}}
+                                                                                    )</b>
+                                                                            </div>
+                                                                        </span>
+                                                                        <span class="w-50">
+
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="pills-data" role="tabpanel"
                                             aria-labelledby="pills-data-tab">
-                                            <div class="table-responsive">
+                                            {{-- <div class="table-responsive">
                                                 <div id="datatable-invest_wrapper"
                                                     class="dataTables_wrapper dt-bootstrap4 no-footer">
                                                     <div class="row">
@@ -121,38 +234,45 @@
                                                                             <tr role="row" class="odd">
                                                                                 <td class="sorting_1">
                                                                                     <div
-                                                                                        style="display: flex;align-content: center;justify-content: flex-start;">
-                                                                                        <div class="d-flex col-12 row">
-                                                                                            <div class="col-md-3"><img
+                                                                                        style="align-content: center;justify-content: flex-start;">
+                                                                                        <div class="d-flex row">
+                                                                                            <div class="col-md-2"><img
                                                                                                     src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
                                                                                                     width="150px"></div>
-                                                                                            <div class="col-md-5"
-                                                                                                >
+                                                                                            <div class="col-md-5">
                                                                                                 <div
                                                                                                     style="font-size:18px">
-                                                                                                    <b>{{$item->trademark}}</b></div>
+                                                                                                    <b>{{$item->trademark}}</b>
+                                                                                                </div>
                                                                                                 <div
                                                                                                     style="font-size:15px">
-                                                                                                    {{$item->company_name}} ({{$item->code_emiten}})</div>
+                                                                                                    {{$item->company_name}}
+                                                                                                    ({{$item->code_emiten}})
+                                                                                                </div>
                                                                                                 <div
                                                                                                     style="display: flex; align-content: center;justify-content: space-between; margin: .5rem 0;">
                                                                                                     <span
-                                                                                                        style="font-size:13px">{{tgl_indo(date('Y-m-d', strtotime($item->created_at))).' '.formatJam($item->created_at),}}</span>
+                                                                                                        style="font-size:13px">{{tgl_indo(date('Y-m-d',
+                                                                                                        strtotime($item->created_at))).'
+                                                                                                        '.formatJam($item->created_at),}}</span>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="col-md-4" >
-                                                                                                @if ($item->status == 'EXPIRED')
-                                                                                                <div
-                                                                                                    class="font-gagal">
-                                                                                                    <small><b>Pembelian Gagal</b></small>
+                                                                                            <div class="col-md-4">
+                                                                                                @if ($item->status ==
+                                                                                                'EXPIRED')
+                                                                                                <div class="font-gagal">
+                                                                                                    <small><b>Pembelian
+                                                                                                            Gagal</b></small>
                                                                                                 </div>
-                                                                                                @elseif ($item->status == 'VERIFIED')
+                                                                                                @elseif ($item->status
+                                                                                                == 'VERIFIED')
                                                                                                 <div
                                                                                                     class="font-berhasil">
-                                                                                                    <small><b>Pembelian Berhasil</b></small>
+                                                                                                    <small><b>Pembelian
+                                                                                                            Berhasil</b></small>
                                                                                                 </div>
                                                                                                 @endif
-                                                                                                
+
 
                                                                                             </div>
                                                                                         </div>
@@ -165,7 +285,8 @@
                                                                                         <p class="mb-0">
                                                                                             <span
                                                                                                 style="font-size: 2rem;font-weight: bold;">
-                                                                                                Rp. {{number_format($item->amount,0,',','.')}}
+                                                                                                Rp.
+                                                                                                {{number_format($item->amount+$item->fee,0,',','.')}}
                                                                                             </span>
                                                                                             <small class="ml-1">
                                                                                                 <a data-toggle="collapse"
@@ -187,12 +308,19 @@
                                                                                                     <b>{{$item->transaction_serial}}</b>
                                                                                                 </div>
                                                                                                 <div>Harga Saham :
-                                                                                                    <b>Rp. {{number_format($item->price,0,',','.')}}</b>
+                                                                                                    <b>Rp.
+                                                                                                        {{number_format($item->price,0,',','.')}}</b>
                                                                                                 </div>
                                                                                                 <div>Jumlah Saham :
-                                                                                                    <b>{{number_format($item->qty,0,',','.')}} Lembar</b></div>
+                                                                                                    <b>{{number_format($item->qty,0,',','.')}}
+                                                                                                        Lembar</b>
+                                                                                                </div>
                                                                                                 <div>Biaya Admin :
-                                                                                                    <b>Rp. {{number_format($item->fee,0,',','.')}} ( {{$item->channel}} )</b>
+                                                                                                    <b>Rp.
+                                                                                                        {{number_format($item->fee,0,',','.')}}
+                                                                                                        (
+                                                                                                        {{$item->channel}}
+                                                                                                        )</b>
                                                                                                 </div>
                                                                                             </span>
                                                                                             <span class="w-50">
@@ -203,8 +331,8 @@
                                                                                 </td>
                                                                             </tr>
                                                                             @endforeach
-                                                                            
-                                                                            
+
+
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -219,6 +347,124 @@
                                                         <div class="col-sm-12 col-md-7"></div>
                                                     </div>
                                                 </div>
+                                            </div> --}}
+                                            <div class="table-responsive">
+                                                <table class="table table-hover" id="datatable-checkout"
+                                                    style="width:auto; border-spacing: .25rem 1em;">
+                                                    <thead style="display: none;">
+                                                        <tr>
+                                                            <th class="border-top-0">Nama Saham</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($transactions as $item)
+                                                        <?php 
+                                                        $picture = explode(',',$item->pictures);
+                                                        ?>
+                                                        <tr role="row" class="odd">
+                                                            <td class="sorting_1">
+                                                                <div
+                                                                    style="align-content: center;justify-content: flex-start;">
+                                                                    <div class="d-flex row">
+                                                                        <div class="col-md-2"><img
+                                                                                src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
+                                                                                width="150px"></div>
+                                                                        <div class="col-md-5">
+                                                                            <div
+                                                                                style="font-size:18px">
+                                                                                <b>{{$item->trademark}}</b>
+                                                                            </div>
+                                                                            <div
+                                                                                style="font-size:15px">
+                                                                                {{$item->company_name}}
+                                                                                ({{$item->code_emiten}})
+                                                                            </div>
+                                                                            <div
+                                                                                style="display: flex; align-content: center;justify-content: space-between; margin: .5rem 0;">
+                                                                                <span
+                                                                                    style="font-size:13px">{{tgl_indo(date('Y-m-d',
+                                                                                    strtotime($item->created_at))).'
+                                                                                    '.formatJam($item->created_at),}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            @if ($item->status ==
+                                                                            'EXPIRED')
+                                                                            <div class="font-gagal">
+                                                                                <small><b>Pembelian
+                                                                                        Gagal</b></small>
+                                                                            </div>
+                                                                            @elseif ($item->status
+                                                                            == 'VERIFIED')
+                                                                            <div
+                                                                                class="font-berhasil">
+                                                                                <small><b>Pembelian
+                                                                                        Berhasil</b></small>
+                                                                            </div>
+                                                                            @endif
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <div class="col-12"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 pt-1 pb-0">
+                                                                    <div><b>Total</b></div>
+                                                                    <p class="mb-0">
+                                                                        <span
+                                                                            style="font-size: 2rem;font-weight: bold;">
+                                                                            Rp.
+                                                                            {{number_format($item->amount+$item->fee,0,',','.')}}
+                                                                        </span>
+                                                                        <small class="ml-1">
+                                                                            <a data-toggle="collapse"
+                                                                                href="#detail_{{$item->transaction_serial}}"
+                                                                                aria-expanded="false"
+                                                                                aria-controls="detail_{{$item->transaction_serial}}">
+                                                                                Detail
+                                                                                <i
+                                                                                    class="la la-angle-right"></i>
+                                                                                <i
+                                                                                    class="la la-angle-down"></i>
+                                                                            </a>
+                                                                        </small>
+                                                                    </p>
+                                                                    <div class="row col-12 py-1 collapse"
+                                                                        id="detail_{{$item->transaction_serial}}">
+                                                                        <span class="w-50">
+                                                                            <div>No. Transaksi :
+                                                                                <b>{{$item->transaction_serial}}</b>
+                                                                            </div>
+                                                                            <div>Harga Saham :
+                                                                                <b>Rp.
+                                                                                    {{number_format($item->price,0,',','.')}}</b>
+                                                                            </div>
+                                                                            <div>Jumlah Saham :
+                                                                                <b>{{number_format($item->qty,0,',','.')}}
+                                                                                    Lembar</b>
+                                                                            </div>
+                                                                            <div>Biaya Admin :
+                                                                                <b>Rp.
+                                                                                    {{number_format($item->fee,0,',','.')}}
+                                                                                    (
+                                                                                    {{$item->channel}}
+                                                                                    )</b>
+                                                                            </div>
+                                                                        </span>
+                                                                        <span class="w-50">
+
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+
+
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -233,7 +479,53 @@
 </div>
 @endsection
 @section('js')
+<script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/alert/sweetalert.min.js"></script>
+<script>
+    // $(".deletebtn").click(function(e) {
+    //     id = e.target.dataset.id;
+    //     Swal.fire({
+    //         title: "Apakah anda yakin?",
+    //         text: "Data yang sudah anda hapus tidak akan bisa kembali!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonText: "Ya, Hapus"
+    //     }).then(function(result) {
+    //         if (result.value) {
+    //             Swal.fire(
+    //                 "Terhapus!",
+    //                 "Data telah terhapus.",
+    //                 "success"
+    //             );
+    //             $(`#delete${id}`).submit();
+    //         } else {
 
+    //         }
+    //     });
+    // });
+    
+        $(".cancelbtn").click(function(e) {
+            id = e.target.dataset.id;
+            Swal.fire({
+                title: "Batalkan Transaksi ?",
+                text: "Apakah Anda yakin ingin menghapus dan membatalkan proses transaksi ini ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Ya",
+                cancelButtonText: "Close",
+            }).then(function(result) {
+                if (result.value) {
+                    Swal.fire(
+                        "Berhasil Dibatalkan!",
+                        "Data telah berhasil di batalkan.",
+                        "success"
+                    );
+                    $(`#cancel${id}`).submit();
+                } else {
+
+                }
+            });
+        });
+</script>
 @endsection
 @section('style')
 <style>
