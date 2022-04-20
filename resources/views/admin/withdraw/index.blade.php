@@ -36,7 +36,7 @@
                                                     <th>No</th>
                                                     <th>Member</th>
                                                     <th width="180">Created</th>
-                                                    <th width="310">Amount</th>
+                                                    <th width="350">Amount</th>
                                                     <th>Split Fee</th>
                                                     <th width="50">Status</th>
                                                 </tr>

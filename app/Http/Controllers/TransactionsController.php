@@ -157,6 +157,8 @@ class TransactionsController extends Controller
 				$status_transaction = 5;
             }
 
+            //$member = '<div class="row"></div>'
+
             array_push($data, [
                 "id" => $row->id,
                 "uuid" => $row->uuid,
