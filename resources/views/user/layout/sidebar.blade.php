@@ -51,6 +51,8 @@
                     Mulai Investasi
                 </a>
             </div>
+            <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>
+            </li>
             <li class=" nav-item {{ 'user/deposit' == request()->path() ? 'active' : '' }}"><a href="{{url('user/deposit')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
             </li>
             <li class=" nav-item {{ 'user/penarikan' == request()->path() ? 'active' : '' }}"><a href="{{url('user/penarikan')}}"><i class="la la-arrow-circle-down"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>
@@ -76,8 +78,7 @@
             </li>
             <li class=" nav-item {{ 'user/video_tutorial' == request()->path() ? 'active' : '' }}"><a href="{{url('user/video_tutorial')}}"><i class="la la-play-circle"></i><span class="menu-title" data-i18n="eCommerce">Video Tutorial</span></a>
             </li>
-            <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>
-            </li>
+            
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li>
              --}}

@@ -39,7 +39,7 @@
                                     <div class="shadow mb-1" style="background-color: #C7971E; border-radius:5px; border: 1px solid">
                                         <div class="p-1 ">
                                             <div class="inner">
-                                                <p style="color: white;">TOTAL SUKUK {{ Auth::user()->id }}</p>
+                                                <p style="color: white;">TOTAL SUKUK</p>
                                                 <h3 style="color: white;">Rp&nbsp;0,00</h3>
                                             </div>
                                         </div>
@@ -49,7 +49,7 @@
                                     <div class="shadow mb-1" style="background-color: #28d094; border-radius:5px; border: 1px solid">
                                         <div class="p-1 ">
                                             <div class="inner">
-                                                <p style="color: white;">TOTAL</p>
+                                                <p style="color: white;">TOTAL INVESTASI</p>
                                                 <h3 style="color: white;">Rp&nbsp;{{number_format($assett->amo,0,',','.')}}</h3>
                                             </div>
                                         </div>
@@ -64,7 +64,7 @@
                                         <div class="head-item-portofolio">
                                             <div class="flex-head">
                                                 <p>{{$item->cat}}</p>
-                                                <div class="label-item-portoflio-saham">SAHAM</div>
+                                                <div class="label-item-portoflio-saham">{{$item->code_emiten}}</div>
                                             </div>
                                             <h4>{{$item->trademark}}</h4>
                                             <p class="company-portofolio">{{$item->company_name}}</p>

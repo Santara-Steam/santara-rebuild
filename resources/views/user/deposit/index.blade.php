@@ -59,6 +59,15 @@
                                                                 style="display: none">
                                                                 Minimal Jumlah Deposit Rp.100.000<br>
                                                             </span>
+                                                            <div class="hidden" id="biaya">
+                                                                <div class="form-group">
+                                                                    <label for="lastName1">Biaya Deposit</label>
+                                                                    <input type="text" class="form-control" placeholder=""
+                                                                        name="fee" id="fee" value="4000" readonly="readonly">
+                                                                    <span id="fee_error" class="text-danger"></span>
+                                                                </div>
+
+                                                            </div>
                                                             <span class="withdraw-saldo"
                                                                 style="display: none; font-size:16px" id="total">Total:
                                                             </span>
@@ -138,9 +147,11 @@
                                                             <b>Rp
                                                                 {{--
                                                                 <?= number_format($fee, 0, ',', '.') ?> --}}
+                                                                4.000
                                                             </b> (
                                                             {{--
                                                             <?= $terbilang ?> --}}
+                                                            Empat Ribu
                                                             Rupiah)
                                                         </li>
                                                     </ul>
@@ -286,7 +297,10 @@ function validateForm() {
       parseInt(amount.value.replace(/\./g, "")) < 100000 ||
       amount.value == 0
     ) {
+      $("#biaya").addClass("hidden");
       requiredAllCompleted = false;
+    } else {
+      $("#biaya").removeClass("hidden");
     }
 
     // if (channel.value == "" || (channel.value == "VA" && bank.value == "")) {

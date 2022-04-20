@@ -35,6 +35,7 @@
                             $notif = notification::where('user_id',Auth::user()->id)
                             // ->where('is_deleted',1)
                             ->select('*')
+                            ->where('created_at', '>', now()->subDays(30)->endOfDay())
                             ->orderBy('created_at','DESC')
                             ->get();
                             $notifnew = notification::where('user_id',Auth::user()->id)
@@ -74,7 +75,7 @@
                                     @endif
 
                                 </li>
-                                <li class="scrollable-container media-list w-100">
+                                <li class="scrollable-container media-list w-100" style="max-height: 35rem;">
                                     {{-- <a href="javascript:void(0)">
                                         <div class="media">
                                             <div class="media-left align-self-center"><i

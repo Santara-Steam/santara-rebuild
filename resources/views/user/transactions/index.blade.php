@@ -133,7 +133,7 @@
                                                                                                     <b>{{$item->trademark}}</b></div>
                                                                                                 <div
                                                                                                     style="font-size:15px">
-                                                                                                    {{$item->company_name}}</div>
+                                                                                                    {{$item->company_name}} ({{$item->code_emiten}})</div>
                                                                                                 <div
                                                                                                     style="display: flex; align-content: center;justify-content: space-between; margin: .5rem 0;">
                                                                                                     <span
@@ -190,7 +190,7 @@
                                                                                                     <b>Rp. {{number_format($item->price,0,',','.')}}</b>
                                                                                                 </div>
                                                                                                 <div>Jumlah Saham :
-                                                                                                    <b>{{number_format($item->qty,0,',','.')}}</b></div>
+                                                                                                    <b>{{number_format($item->qty,0,',','.')}} Lembar</b></div>
                                                                                                 <div>Biaya Admin :
                                                                                                     <b>{{$item->fee}} ( {{$item->channel}} )</b>
                                                                                                 </div>
