@@ -164,14 +164,14 @@ class TransactionsController extends Controller
                 $row->channel == "MARKET" ? "MARKET " : " - ".$row->description;
 
             $transaction = '<div class="row"><div class="col-5">ID:</div><div class="col-7">'.$row->transaction_serial.'</div></div><div class="row"><div class="col-5">Token:</div><div class="col-7">'.$row->code_emiten.'</div></div><div class="row">
-                <div class="col-5">Pembayaran:</div><div class="col-7">'.$channel.'</div></div>';
+                <div class="col-5">Payment:</div><div class="col-7">'.$channel.'</div></div>';
 
-            $member = '<div class="row"><div class="col-3">Nama:</div><div class="col-9">'.$row->trader_name.'</div></div>'
-                .'<div class="row"><div class="col-3">Email:</div><div class="col-9">'.$row->user_email.'</div></div>'
-                .'<div class="row"><div class="col-3">HP:</div><div class="col-9">'.$row->phone.'</div></div>';
+            $member = '<div class="row"><div class="col-4">Nama:</div><div class="col-8">'.$row->trader_name.'</div></div>'
+                .'<div class="row"><div class="col-4">Email:</div><div class="col-8">'.$row->user_email.'</div></div>'
+                .'<div class="row"><div class="col-4">HP:</div><div class="col-8">'.$row->phone.'</div></div>';
 
-            $created_at = '<div class="row"><div class="col-4">Date:</div><div class="col-8">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
-                .'</div></div><div class="row"><div class="col-4">Time:</div><div class="col-8">'.formatJam($row->created_at).'</div></div>';              
+            $created_at = '<div class="row"><div class="col-6">Date:</div><div class="col-6">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
+                .'</div></div><div class="row"><div class="col-6">Time:</div><div class="col-6">'.formatJam($row->created_at).'</div></div>';              
 
             array_push($data, [
                 "id" => $row->id,

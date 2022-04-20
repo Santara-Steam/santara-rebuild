@@ -96,8 +96,8 @@ class WithdrawController extends Controller
                 .'</div></div><div class="row"><div class="col-5">Email :</div><div class="col-7">'
                 .$row->email.'</div></div><div class="row"><div class="col-5">HP :</div><div class="col-7">'.$row->phone.'</div></div><div class="row"><div class="col-5">Bank to:</div><div class="col-7">'
                 .$row->bank_to.'</div></div>';
-            $date = '<div class="row"><div class="col-5">Date :</div><div class="col-7">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
-                .'</div></div><div class="row"><div class="col-5">Time :</div><div class="col-7">'.formatJam($row->created_at).'</div></div>';
+            $date = '<div class="row"><div class="col-6">Date :</div><div class="col-6">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
+                .'</div></div><div class="row"><div class="col-6">Time :</div><div class="col-6">'.formatJam($row->created_at).'</div></div>';
             $amount = '<div class="row"><div class="col-5">Withdrawal :</div><div class="col-7">'.rupiah($row->amount).'</div></div><div class="row"><div class="col-5">Fee :</div><div class="col-7">'
                 .rupiah($row->fee).'</div></div><div class="row"><div class="col-5">Total :</div><div class="col-7">'.(rupiah($row->amount - $row->fee)).'</div></div>';
             $saldoAvailable = "";

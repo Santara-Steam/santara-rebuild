@@ -140,10 +140,10 @@ class DepositController extends Controller
 
             $totalDeposit = rupiah($row->amount);
             if(($row->status == 1 && $row->confirmation_photo != null && $row->bank_to != null) || ($row->status == 1 && $row->confirmation_photo == null && $row->bank_to == null)) {
-                $status = '<div class="status badge badge-success badge-pill badge" style="margin-bottom:0.5rem;display: block;">Sudah Verifikasi</div> ';
+                $status = '<div class="status badge badge-success badge-pill badge" style="margin-bottom:0.5rem;">Sudah<br/>Verifikasi</div> ';
                 if($row->channel == 'BANKTRANSFER') {
                     //$status .= '<a href="#" onClick="detailDeposit(\'' . BASE_API_FILE . '' . $deposit->confirmation_photo . '?token=' . $this->session->token . '\')" class="btn btn-info btn-sm btn-block" title="Detail" >Lihat Bukti</a>';
-                    $status .= '<a href="#" class="btn btn-info btn-sm btn-block" title="Detail">Lihat Bukti</a>'; 
+                    $status .= '<a href="#" class="btn btn-info btn-sm" title="Detail">Lihat Bukti</a>'; 
                 }
             }elseif($row->status == 0 && $row->confirmation_photo != null && $row->bank_to != null){
                 $photo = null;
@@ -164,17 +164,17 @@ class DepositController extends Controller
                         //     \'' . $row->uuid . '\',
                         //     \'' . $photo . '\',
                         //     \'' . $row->trader_name . '\',
-                        //     \'' . $totalDeposit . '\')" class="btn btn-info btn-sm btn-block" title="Verifikasi" >
+                        //     \'' . $totalDeposit . '\')" class="btn btn-info btn-sm" title="Verifikasi" >
                         //     Verifikasi
                         // </a>';
-                    $status .= '<a href="#" onClick="rejectDeposit(\''. $row->uuid.'\')" class="btn btn-danger btn-sm btn-block" title="Tolak" >Tolak</a>';
+                    $status .= '<a href="#" onClick="rejectDeposit(\''. $row->uuid.'\')" class="btn btn-danger btn-sm" title="Tolak" >Tolak</a>';
                 //} else {
                 //    $status = '<div class="status badge badge-warning badge-pill badge" style="display: block;">Menuggu Verifikasi</div>';
                 //}
             }elseif($row->status == 2) {
-                $status = '<div class="status badge badge-danger badge-pill badge" style="display: block;">Ditolak</div>';
+                $status = '<div class="status badge badge-danger badge-pill badge">Ditolak</div>';
             }else {
-                $status = '<div class="status badge badge-warning badge-pill badge" style="display: block;">Menunggu Pembayaran</div>';
+                $status = '<div class="status badge badge-warning badge-pill badge">Menunggu<br/>Pembayaran</div>';
             }
 
             $bank_to = '-';
@@ -215,15 +215,15 @@ class DepositController extends Controller
                 $channel = $row->created_by;
             }
 
-            $member = '<div class="row"><div class="col-3">Nama:</div><div class="col-9">'.$row->trader_name.'</div></div>'.
-                '<div class="row"><div class="col-3">Email:</div><div class="col-9">'.$row->email.'</div></div>'.
-                '<div class="row"><div class="col-3">HP:</div><div class="col-9">'.$row->phone.'</div></div>';
-            $payment = '<div class="row"><div class="col-4">Method:</div><div class="col-8">'.$channel.'</div></div>'.
-                '<div class="row"><div class="col-4">Sender:</div><div class="col-8">'.$bank_from.'</div></div>'.
-                '<div class="row"><div class="col-4">Receiver:</div><div class="col-8">'.$bank_from.'</div></div>'.
-                '<div class="row"><div class="col-4">Account:</div><div class="col-8">'.$account_number.'</div></div>';
-            $created_at = '<div class="row"><div class="col-4">Date:</div><div class="col-8">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
-                .'</div></div><div class="row"><div class="col-4">Time:</div><div class="col-8">'.formatJam($row->created_at).'</div></div>';              
+            $member = '<div class="row"><div class="col-6">Nama:</div><div class="col-6">'.$row->trader_name.'</div></div>'.
+                '<div class="row"><div class="col-6">Email:</div><div class="col-6">'.$row->email.'</div></div>'.
+                '<div class="row"><div class="col-6">HP:</div><div class="col-6">'.$row->phone.'</div></div>';
+            $payment = '<div class="row"><div class="col-6">Method:</div><div class="col-6">'.$channel.'</div></div>'.
+                '<div class="row"><div class="col-6">Sender:</div><div class="col-6">'.$bank_from.'</div></div>'.
+                '<div class="row"><div class="col-6">Receiver:</div><div class="col-6">'.$bank_from.'</div></div>'.
+                '<div class="row"><div class="col-6">Account:</div><div class="col-6">'.$account_number.'</div></div>';
+            $created_at = '<div class="row"><div class="col-6">Date:</div><div class="col-6">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
+                .'</div></div><div class="row"><div class="col-6">Time:</div><div class="col-6">'.formatJam($row->created_at).'</div></div>';              
 
             array_push($data, [
                 "member" => $member,

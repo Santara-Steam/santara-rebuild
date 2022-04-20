@@ -11,7 +11,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2><strong>Target User Tersedia</strong></h2>
+                                    <h1 class="card-title-member">Target User Tersedia</h1>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
                                             <li><a href="{{url('admin/crm/add-target-user')}}" class="btn btn-primary">Tambah

@@ -35,12 +35,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th width="300">Member</th>
-                                                    <th width="200">Tanggal</th>
-                                                    <th width="300">Payment</th>
+                                                    <th>Member</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Payment</th>
                                                     <th>Nominal</th>
-                                                    <th>Split Fee</th>
-                                                    <th>Status</th>
+                                                    <th width="50">Split Fee</th>
+                                                    <th width="20">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>

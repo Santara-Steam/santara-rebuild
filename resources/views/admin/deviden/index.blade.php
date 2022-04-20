@@ -37,12 +37,12 @@
                                         </div>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table" id="tableDeviden"> 
+                                        <table class="table" id="tableDeviden" style="width: 100%"> 
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Member</th>
-                                                    <th>Date Dividen</th>
+                                                    <th width="200">Date Dividen</th>
                                                     <th>Total</th>
                                                     <th>Availability</th>
                                                     <th>Status</th>
