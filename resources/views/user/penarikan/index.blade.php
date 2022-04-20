@@ -300,7 +300,7 @@
 <script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/libraries/select2/select2.min.js" defer>
 </script>
 <script>
-    const fee_bank = "0";
+    const fee_bank = "7500";
     const maksimalPenarikan = "500000000";
     const amount = document.getElementById("amount");
 const fee = document.getElementById("fee");
@@ -312,8 +312,8 @@ const amount_limit = document.getElementById("amount_limit");
 $(document).ready(function () {
   var amount_val = 0;
   var fee_val = refund.value ? 0 : fee_bank;
-  amount.value = formatNumber(parseInt(amount_val));
   fee.value = formatNumber(parseInt(fee_val));
+  amount.value = formatNumber(parseInt(amount_val));
   total.value = formatNumber(
     parseInt(amount.value.replace(/\./g, "")) -
     parseInt(fee.value.replace(/\./g, ""))

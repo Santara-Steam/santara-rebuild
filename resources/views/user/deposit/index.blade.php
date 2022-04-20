@@ -63,7 +63,7 @@
                                                                 <div class="form-group">
                                                                     <label for="lastName1">Biaya Deposit</label>
                                                                     <input type="text" class="form-control" placeholder=""
-                                                                        name="fee" id="fee" value="4000" readonly="readonly">
+                                                                        name="fee" id="fee" readonly="readonly">
                                                                     <span id="fee_error" class="text-danger"></span>
                                                                 </div>
 
@@ -269,6 +269,7 @@
     const feeDeposit = "4000"
     const amount = document.getElementById("amount");
 const channel = document.getElementById("channel");
+const fee = document.getElementById("fee");
 const bank_from = document.getElementById("bank_from");
 const bank = document.getElementById("bank");
 const bank_from_text = document.getElementById("bank_from_text");
@@ -276,6 +277,8 @@ const account_number = document.getElementById("account_number");
 
 $(document).ready(function () {
   $("#amount_limit").hide();
+  var fee_val = feeDeposit;
+  fee.value = formatNumber(parseInt(fee_val));
   amount.value = 0;
   validateForm();
 });
