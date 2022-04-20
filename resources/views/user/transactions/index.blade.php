@@ -16,7 +16,7 @@
 
 
                                         <h1 class="card-title-member">Daftar Transaksi</h1>
-                                        {{Session::get('pws')}}
+                                        {{-- {{Session::get('pws')}} --}}
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                                                                         style="display: flex;align-content: center;justify-content: flex-start;">
                                                                                         <div class="d-flex col-10">
                                                                                             <div><img
-                                                                                                    src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}"
+                                                                                                    src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
                                                                                                     width="150px"></div>
                                                                                             <div class="px-2"
                                                                                                 style="width: 70%;">

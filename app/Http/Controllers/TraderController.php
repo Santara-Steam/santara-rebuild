@@ -58,7 +58,9 @@ class TraderController extends Controller
     }
 
     public function history(){
-        $jour = riwayat_user::where('trader_id',Auth::user()->trader->id)->get();
+        $jour = riwayat_user::where('trader_id',Auth::user()->trader->id)
+        ->orderBy('id','DESC')
+        ->get();
         // dd($jour);
         return view('user.riwayat_user.index',compact('jour'));
     }
