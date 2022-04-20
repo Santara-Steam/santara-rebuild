@@ -192,7 +192,7 @@
                                                                                                 <div>Jumlah Saham :
                                                                                                     <b>{{number_format($item->qty,0,',','.')}} Lembar</b></div>
                                                                                                 <div>Biaya Admin :
-                                                                                                    <b>{{$item->fee}} ( {{$item->channel}} )</b>
+                                                                                                    <b>Rp. {{number_format($item->fee,0,',','.')}} ( {{$item->channel}} )</b>
                                                                                                 </div>
                                                                                             </span>
                                                                                             <span class="w-50">
