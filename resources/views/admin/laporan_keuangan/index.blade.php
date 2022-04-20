@@ -11,7 +11,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2><strong>Laporan Keuangan</strong></h2>
+                                    <h1 class="card-title-member">Laporan Keuangan</h1>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 </div>
                                 <div class="card-content collapse show">

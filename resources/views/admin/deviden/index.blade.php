@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h2><strong>Dividen</strong></h2>
+                                <h1 class="card-title-member">Dividen</h1>
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
@@ -41,12 +41,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Email</th>
-                                                    <th>Bagi Hasil</th>
+                                                    <th>Member</th>
+                                                    <th>Date Dividen</th>
+                                                    <th>Total</th>
+                                                    <th>Availability</th>
                                                     <th>Status</th>
-                                                    <th>Tanggal Dividen</th>
-                                                    <th>Pencarian</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -103,19 +102,16 @@
                     }
                 },
                 {
-                    data: "name"
+                    data: "member"
                 },
                 {
-                    data: "email"
+                    data: "updated_at"
                 },
                 {
                     data: "devidend"
                 },
                 {
                     data: "status"
-                },
-                {
-                    data: "updated_at"
                 },
                 {
                     data: "pencarian"

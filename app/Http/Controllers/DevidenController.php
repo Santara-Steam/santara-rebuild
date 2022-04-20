@@ -159,7 +159,7 @@ class DevidenController extends Controller
                     ->orderBy('bagihasils.updated_at', 'DESC')
                     ->skip($start)
                     ->take($rowperpage)
-                    ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 'e.company_name', 
+                    ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 't.phone', 'e.company_name', 
                         'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
                         'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
                         'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
@@ -193,7 +193,7 @@ class DevidenController extends Controller
                 ->orderBy('bagihasils.updated_at', 'DESC')
                 ->skip($start)
                 ->take($rowperpage)
-                ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 'e.company_name', 
+                ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 't.phone', 'e.company_name', 
                     'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
                     'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
                     'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
@@ -259,9 +259,15 @@ class DevidenController extends Controller
                 $status = '<div class="status badge badge-warning badge-pill badge" style="display:block">Undefined</div>';
                 $pencairan = '-';
             }
+
+            $member = '<div class="row"><div class="col-3">Nama:</div><div class="col-9">'.$row->name.'</div></div>'
+                .'<div class="row"><div class="col-3">Email:</div><div class="col-9">'.$row->email.'</div></div>'
+                .'<div class="row"><div class="col-3">Hp:</div><div class="col-9">'.$row->phone.'</div></div>';
+            $updated_at = '<div class="row"><div class="col-4">Date:</div><div class="col-8">'.tgl_indo(date('Y-m-d', strtotime($row->updated_at)))
+                .'</div></div><div class="row"><div class="col-4">Time:</div><div class="col-8">'.formatJam($row->updated_at).'</div></div>';              
+
             array_push($data, [
-                "name" => $row->name,
-                "email" => $row->email,
+                "member" => $member,
                 "devidend" => rupiah($row->devidend),
                 "status" => $status,
                 "updated_at" => $updated_at,

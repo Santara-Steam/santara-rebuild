@@ -118,6 +118,7 @@
                                         class="form-control input_3"
                                         value="<?= isset($target['list'][3]) ? explode('-', $target['list'][3])[0] : '' ?>">
                                 </div>
+                                <div class="pr-1"><h4>Sampai</h4></div>
                                 <div class="pr-1"><input type="text" id="input_3_end"
                                         class="form-control input_3"
                                         value="<?= isset($target['list'][3]) ? explode('-', $target['list'][3])[1] : '' ?>">
@@ -149,6 +150,7 @@
                                         class="form-control value="
                                         <?= isset($target['list'][4]) ? explode('-', $target['list'][4])[0] : '' ?>">
                                 </div>
+                                <div class="pr-1"><h4>Sampai</h4></div>
                                 <div class="pr-1"><input type="text" id="input_4_end"
                                         class="form-control value="
                                         <?= isset($target['list'][4]) ? explode('-', $target['list'][4])[1] : '' ?>">
@@ -281,6 +283,7 @@
                                         class="form-control value="
                                         <?= isset($target['list'][8]) ? explode('-', $target['list'][8])[0] : '' ?>">
                                 </div>
+                                <div class="pr-1"><h4>Sampai</h4></div>
                                 <div class="pr-1"><input type="text" id="input_8_end"
                                         class="form-control value="
                                         <?= isset($target['list'][8]) ? explode('-', $target['list'][8])[1] : '' ?>">
@@ -312,6 +315,7 @@
                                         class="form-control value="
                                         <?= isset($target['list'][9]) ? explode('-', $target['list'][9])[0] : '' ?>">
                                 </div>
+                                <div class="pr-1"><h4>Sampai</h4></div>
                                 <div class="pr-1"><input type="text" id="input_9_end"
                                         class="form-control value="
                                         <?= isset($target['list'][9]) ? explode('-', $target['list'][9])[1] : '' ?>">
@@ -362,6 +366,7 @@
                                                 class="form-control"
                                                 value="<?= isset($target['list'][10]['id']) && $target['list'][10]['id'] != '999999999999' ? explode('-', $target['list'][10]['text'])[0] : '' ?>">
                                         </div>
+                                        <div class="pr-1"><h4>Sampai</h4></div>
                                         <div class="pr-1"><input type="text" id="input_10_end"
                                                 class="form-control"
                                                 value="<?= isset($target['list'][10]['id']) && $target['list'][10]['id'] != '999999999999' ? explode('-', $target['list'][10]['text'])[1] : '' ?>">
@@ -397,6 +402,7 @@
                                         class="form-control value="
                                         <?= isset($target['list'][11]) ? explode('-', $target['list'][11])[0] : '' ?>">
                                 </div>
+                                <div class="pr-1"><h4>Sampai</h4></div>
                                 <div class="pr-1"><input type="text" id="input_11_end"
                                         class="form-control value="
                                         <?= isset($target['list'][11]) ? explode('-', $target['list'][11])[1] : '' ?>">
@@ -428,6 +434,7 @@
                                         class="form-control" value="
                                         <?= isset($target['list'][12]) ? explode('-', $target['list'][12])[0] : '' ?>">
                                 </div>
+                                <div class="pr-1"><h4>Sampai</h4></div>
                                 <div class="pr-1"><input type="text" id="input_12_end"
                                         class="form-control" value="
                                         <?= isset($target['list'][12]) ? explode('-', $target['list'][12])[1] : '' ?>">
@@ -550,6 +557,17 @@
     input_11_start.addEventListener('keyup', function(e) {
         input_11_start.value = formatRupiah(this.value, '');
     });
+
+    var input_4_start = document.getElementById('input_4_start');
+    input_4_start.addEventListener('keyup', function(e) {
+        input_4_start.value = formatRupiah(this.value, '');
+    });
+
+    var input_4_end = document.getElementById('input_4_end');
+    input_4_end.addEventListener('keyup', function(e) {
+        input_4_end.value = formatRupiah(this.value, '');
+    });
+
     
     var input_8_start = document.getElementById('input_8_start');
     input_8_start.addEventListener('keyup', function(e) {

@@ -141,6 +141,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/get-push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'pushNotif']);
     Route::get('/admin/push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'index']);
     Route::post('/admin/broadcast-notif', [App\Http\Controllers\PushNotificationController::class, 'broadcastNotif']);
+
+    Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, 'index']);
+    Route::post('/admin/category/store', [App\Http\Controllers\CategoryController::class, 'store']);
+    Route::get('/admin/fetch_category', [App\Http\Controllers\CategoryController::class, "fethData"]);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

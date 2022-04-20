@@ -100,7 +100,7 @@ class TransactionsController extends Controller
                     't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
-                    'tr.last_status as status')
+                    'tr.last_status as status', 't.phone')
                 ->orderBy('tr.created_at', 'DESC')
                 ->get();
         }else{
@@ -127,7 +127,7 @@ class TransactionsController extends Controller
                     't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
-                    'tr.last_status as status')
+                    'tr.last_status as status', 't.phone')
                 ->orderBy('tr.created_at', 'DESC')
                 ->get();
         }
@@ -158,19 +158,27 @@ class TransactionsController extends Controller
             }
 
             //$member = '<div class="row"></div>'
+            $channel = $row->channel == "VA" ? "Virtual Account" : $row->channel == "BANKTRANSFER" ? "Transfer Bank" : 
+                $row->channel == "WALLET" ? "Saldo Dompet" : $row->channel == "DANA" ? "DATA" : 
+                $row->channel == "MARKET" ? "MARKET " : " - ".$row->description;
+
+            $transaction = '<div class="row"><div class="col-5">ID:</div><div class="col-7">'.$row->transaction_serial.'</div></div><div class="row"><div class="col-5">Token:</div><div class="col-7">'.$row->code_emiten.'</div></div><div class="row">
+                <div class="col-5">Pembayaran:</div><div class="col-7">'.$channel.'</div></div>';
+
+            $member = '<div class="row"><div class="col-3">Nama:</div><div class="col-9">'.$row->trader_name.'</div></div>'
+                .'<div class="row"><div class="col-3">Email:</div><div class="col-9">'.$row->user_email.'</div></div>'
+                .'<div class="row"><div class="col-3">HP:</div><div class="col-9">'.$row->phone.'</div></div>';
+
+            $created_at = '<div class="row"><div class="col-4">Date:</div><div class="col-8">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
+                .'</div></div><div class="row"><div class="col-4">Time:</div><div class="col-8">'.formatJam($row->created_at).'</div></div>';              
 
             array_push($data, [
                 "id" => $row->id,
                 "uuid" => $row->uuid,
-                "transaction_serial" => $row->transaction_serial,
-                "trader_name" => $row->trader_name,
-                "user_email" => $row->user_email,
-                "code_emiten" => $row->code_emiten,
-                "channel" => $row->channel == "VA" ? "Virtual Account" : $row->channel == "BANKTRANSFER" ? "Transfer Bank" : 
-                        $row->channel == "WALLET" ? "Saldo Dompet" : $row->channel == "DANA" ? "DATA" : 
-                        $row->channel == "MARKET" ? "MARKET " : " - ".$row->description,
+                "transaksi" => $transaction,
+                "member" => $member,
                 "amount" => rupiah($row->amount),
-                "created_at" => tgl_indo(date('Y-m-d', strtotime($row->created_at))).' '.formatJam($row->created_at),
+                "created_at" => $created_at,
                 "split_fee" => rupiah($row->split_fee),
                 "status" => $status,
                 "link" => '<a href="'.url('/admin/transaction/detail/'.$row->uuid.'/'.$status_transaction).'" class="'.$class_action.'">'.$text_action.'</a>'

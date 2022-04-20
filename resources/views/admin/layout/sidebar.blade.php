@@ -29,6 +29,9 @@
             </li>
             <li class=" nav-item {{ 'admin/crm/broadcasting' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/crm/broadcasting')}}"><i class="la la-bell"></i><span class="menu-title" data-i18n="eCommerce">Broadcast Notification</span></a>
             </li>
+            <li class="navigation-header"><span data-i18n="Layouts">Category</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
+            <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/category')}}"><i class="la la-list"></i><span class="menu-title" data-i18n="eCommerce">Category</span></a>
+            </li>
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li> --}}
             

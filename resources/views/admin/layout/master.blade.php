@@ -60,6 +60,10 @@
             text-align: center;
         }
 
+        table.tabel-tabel td, table.tabel-tabel th {
+            padding: 0; 
+        }
+
     </style>
 
     <!-- END: Custom CSS-->

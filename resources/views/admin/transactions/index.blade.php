@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h2><strong>Transaksi</strong></h2>
+                                <h1 class="card-title-member">Transaksi</h1>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                    <select class="custom-select" onchange="filterTr()" id="filter">
@@ -35,16 +35,13 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>ID Transaksi</th>
-                                                    <th>Nama</th>
-                                                    <th>Email</th>
-                                                    <th>Token</th>
-                                                    <th>Pembayaran</th>
-                                                    <th>Total (Rp)</th>
+                                                    <th width="250">Transaksi</th>
+                                                    <th>Member</th>
                                                     <th>Created at</th>
+                                                    <th>Total (Rp)</th>
                                                     <th>Split Fee</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
+                                                    {{-- <th>Action</th> --}}
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -85,25 +82,16 @@
                     }
                 },
                 {
-                    data: "transaction_serial"
+                    data: "transaksi"
                 },
                 {
-                    data: "trader_name"
-                },
-                {
-                    data: "user_email"
-                },
-                {
-                    data: "code_emiten"
-                },
-                {
-                    data: "channel"
-                },
-                {
-                    data: "amount"
+                    data: "member"
                 },
                 {
                     data: "created_at"
+                },
+                {
+                    data: "amount"
                 },
                 {
                     data: "split_fee"
@@ -111,9 +99,9 @@
                 {
                     data: "status", 
                 },
-                {
-                    data: "link",
-                },
+                // {
+                //     data: "link",
+                // },
             ]
         });
     }

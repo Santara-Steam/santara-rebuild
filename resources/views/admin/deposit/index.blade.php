@@ -11,7 +11,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h2><strong>Deposit</strong></h2>
+                                <h1 class="card-title-member">Deposit</h1>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                    <select class="custom-select" onchange="filterTr()" id="filter">
@@ -35,14 +35,10 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Email</th>
+                                                    <th width="300">Member</th>
+                                                    <th width="200">Tanggal</th>
+                                                    <th width="300">Payment</th>
                                                     <th>Nominal</th>
-                                                    <th>Metode Pembayaran</th>
-                                                    <th>Bank Pengirim</th>
-                                                    <th>Nomor Rekening</th>
-                                                    <th>Bank Tujuan</th>
-                                                    <th>Tanggal</th>
                                                     <th>Split Fee</th>
                                                     <th>Status</th>
                                                 </tr>
@@ -85,28 +81,16 @@
                     }
                 },
                 {
-                    data: "trader_name"
-                },
-                {
-                    data: "email"
-                },
-                {
-                    data: "nominal"
-                },
-                {
-                    data: "channel"
-                },
-                {
-                    data: "bank_from"
-                },
-                {
-                    data: "account_number"
-                },
-                {
-                    data: "bank_to"
+                    data: "member"
                 },
                 {
                     data: "created_at"
+                },
+                {
+                    data: "payment"
+                },
+                {
+                    data: "nominal"
                 },
                 {
                     data: "split_fee"

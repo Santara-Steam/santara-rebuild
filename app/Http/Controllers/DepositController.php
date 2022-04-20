@@ -106,7 +106,7 @@ class DepositController extends Controller
                         'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
                         'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                         'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
-                        'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                        'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank', 't.phone')
                     ->orderBy('deposits.created_at', 'DESC')
                     ->get();
             }
@@ -130,7 +130,7 @@ class DepositController extends Controller
                     'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
                     'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                     'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
-                    'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                    'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank', 't.phone')
                 ->orderBy('deposits.created_at', 'DESC')
                 ->get();
         }
@@ -177,8 +177,6 @@ class DepositController extends Controller
                 $status = '<div class="status badge badge-warning badge-pill badge" style="display: block;">Menunggu Pembayaran</div>';
             }
 
-            $created_at = tgl_indo(date('Y-m-d', strtotime($row->created_at))).' '.formatJam($row->created_at);
-
             $bank_to = '-';
             $bank_from = '-';
             $account_number = '-';
@@ -217,14 +215,20 @@ class DepositController extends Controller
                 $channel = $row->created_by;
             }
 
+            $member = '<div class="row"><div class="col-3">Nama:</div><div class="col-9">'.$row->trader_name.'</div></div>'.
+                '<div class="row"><div class="col-3">Email:</div><div class="col-9">'.$row->email.'</div></div>'.
+                '<div class="row"><div class="col-3">HP:</div><div class="col-9">'.$row->phone.'</div></div>';
+            $payment = '<div class="row"><div class="col-4">Method:</div><div class="col-8">'.$channel.'</div></div>'.
+                '<div class="row"><div class="col-4">Sender:</div><div class="col-8">'.$bank_from.'</div></div>'.
+                '<div class="row"><div class="col-4">Receiver:</div><div class="col-8">'.$bank_from.'</div></div>'.
+                '<div class="row"><div class="col-4">Account:</div><div class="col-8">'.$account_number.'</div></div>';
+            $created_at = '<div class="row"><div class="col-4">Date:</div><div class="col-8">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
+                .'</div></div><div class="row"><div class="col-4">Time:</div><div class="col-8">'.formatJam($row->created_at).'</div></div>';              
+
             array_push($data, [
-                "trader_name" => $row->trader_name,
-                "email" => $row->email,
+                "member" => $member,
                 "nominal" => rupiah($row->amount + $row->fee),
-                "channel" => $channel,
-                "bank_from" => $bank_from,
-                "account_number" => $account_number,
-                "bank_to" => $bank_to,
+                "payment" => $payment,
                 "created_at" => $created_at,
                 "split_fee" => rupiah($row->split_fee),
                 "status" => $status
