@@ -30,7 +30,7 @@ Auth::routes(['verify' => true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
-Route::group(['middleware' => ['auth','pin', 'checkRole:2', "verified"]], function () {
+Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin']], function () {
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
     Route::get('/user/emiten', [App\Http\Controllers\EmitenController::class, 'index_user']);
     Route::get('/user/bisnis_anda', [App\Http\Controllers\EmitenController::class, 'user_emiten']);
@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth','pin', 'checkRole:2', "verified"]], functi
     Route::post('/pin_check',[App\Http\Controllers\TraderController::class, 'pin_check']);
 
     Route::get('/user/transaksi', [App\Http\Controllers\TransactionsController::class, 'user_transaksi']);
+    Route::post('/user/cancel_transaksi', [App\Http\Controllers\TransactionsController::class, 'canceltrx']);
     Route::get('/user/deposit', [App\Http\Controllers\DepositController::class, 'user_depo']);
     Route::post('/user/create_deposit', [App\Http\Controllers\DepositController::class, 'user_cdepo']);
     Route::get('/user/penarikan', [App\Http\Controllers\PenarikanController::class, 'user_tarik']);

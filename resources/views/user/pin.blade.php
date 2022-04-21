@@ -28,7 +28,7 @@
                                                 <form class="form" action="{{url('pin_post')}}" method="POST"
                                                     enctype="multipart/form-data">
                                                     {{ csrf_field() }}
-                                                    <input type="text" value="{{Auth::user()->id}}" name="userid">
+                                                    <input type="text" hidden value="{{Auth::user()->id}}" name="userid">
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
