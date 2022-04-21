@@ -139,22 +139,22 @@ class TransactionsController extends Controller
 			$text_action  = "Detail";
 
             if($row->status == 'CREATED'){
-                $status = '<div class="status badge badge-secondary badge-sm" style="display:block">Belum Konfirmasi</div>';
+                $status = '<div class="status badge badge-secondary">Belum Konfirmasi</div>';
 				$status_transaction = 1;
             }elseif($row->status == 'WAITING FOR VERIFICATION'){
-				$status = '<div class="status badge badge-warning badge-sm" style="display:block">Menunggu Konfirmasi</div>';
+				$status = '<div class="status badge badge-warning">Menunggu Konfirmasi</div>';
 				$status_transaction = 2;
 				// confirm button
 				$class_action = "btn btn-info btn-sm";
 				$text_action = "Konfirmasi";
             }elseif ($row->status == 'VERIFIED') {
-                $status = '<div class="status badge badge-success badge-sm" style="display:block">Lunas</div>';
+                $status = '<div class="status badge badge-success">Lunas</div>';
 				$status_transaction = 3;
             }elseif ($row->status == 'EXPIRED'){
-				$status = '<div class="status badge badge-danger badge-sm" style="display:block">Kadaluarsa</div>';
+				$status = '<div class="status badge badge-danger">Kadaluarsa</div>';
 				$status_transaction = 4;
             }else{
-				$status = '<div class="status badge badge-secondary badge-sm" style="display:block">Belum Konfirmasi</div>';
+				$status = '<div class="status badge badge-secondary">Belum Konfirmasi</div>';
 				$status_transaction = 5;
             }
 

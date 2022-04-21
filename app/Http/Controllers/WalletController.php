@@ -4,16 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\BalanceUtama;
+use App\Models\Transactions;
 
 class WalletController extends Controller
 {
     
     public function index()
     {
-        $token = $this->fetchData('token');
-        $balance = $this->fetchData('emiten') + $this->fetchData('saldo');
-        $saldo = $this->fetchData('saldo');
-        return view('admin.wallet.index', compact('token', 'balance', 'saldo'));
+        $saldoData = BalanceUtama::select(\DB::raw('SUM(balance) as jumlahBalance'))->first();
+        $transaksiData = Transactions::join('traders as t', 't.id', '=', 'transactions.trader_id')
+            ->join('emitens as e', 'e.id', '=', 'transactions.emiten_id')
+            ->where('transactions.is_verified', 1)
+            ->select(\DB::raw('SUM(transactions.amount) as amo'))
+            ->first();
+        $saldo = $saldoData->jumlahBalance;
+        $transaksi = $transaksiData->amo;
+        // $token = $this->fetchData('token');
+        // $balance = $this->fetchData('emiten') + $this->fetchData('saldo');
+        // $saldo = $this->fetchData('saldo');
+        return view('admin.wallet.index', compact('saldo', 'transaksi'));
     }
 
     public function fetchData($type) {

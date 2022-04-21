@@ -11,21 +11,30 @@
         <div class="content-body">
             <section id="configuration">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="card card-body card-saldo">
-                            <h4 class="text-center"><strong>Asset Balance</strong></h4>
-                            <span class="text-center">Asset balance adalah gabungan dari saldo rupiah dan total saham yang anda milki.</span>
+                            <h4 class="text-center"><strong>Investasi</strong></h4>
+                            <span class="text-center">Total semua investasi yang dilakukan oleh user.</span>
                             <h2 class="text-primary text-center mt-2">
-                                <b class="label-font">{{ rupiah($balance) }}</b>
+                                <b class="label-font"><?= rupiah($transaksi) ?></b>
                             </h2>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="card card-body card-saldo">
                             <h4 class="text-center"><strong>Saldo Rupiah</strong></h4>
                             <span class="text-center">Saldo rupiah diambil dari dana deposit anda.</span>
                             <h2 class="text-primary text-center mt-2">
-                                <b class="label-font">{{ rupiah($saldo) }}</b>
+                                <b class="label-font"><?= rupiah($saldo) ?></b>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-body card-saldo">
+                            <h4 class="text-center"><strong>Asset Balance</strong></h4>
+                            <span class="text-center">Asset balance adalah gabungan dari saldo rupiah dan total saham yang anda milki.</span>
+                            <h2 class="text-primary text-center mt-2">
+                                <b class="label-font"><?= rupiah(($saldo + $transaksi)) ?></b>
                             </h2>
                         </div>
                     </div>

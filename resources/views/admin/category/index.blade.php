@@ -120,7 +120,8 @@
                     data: "id",
                     render: function(data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
-                    }
+                    },
+                    className: 'text-center'
                 },
                 {
                     data: "category"
@@ -132,7 +133,8 @@
                             '<button id="btnEdit" class="btn btn-sm btn-warning"><span class="la la-pencil"></span></button> ' +
                             '<button id="btnDelete" class="btn btn-sm btn-danger"><span class="la la-trash"></span></button>' :
                             data;
-                    }
+                    },
+                    className: 'text-center'
 
                 },
             ]

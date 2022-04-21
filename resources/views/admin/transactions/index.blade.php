@@ -34,10 +34,10 @@
                                         <table class="table" id="tableTransaction"> 
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th width="250">Transaksi</th>
-                                                    <th>Member</th>
-                                                    <th width="150">Created at</th>
+                                                    <th width="20">No</th>
+                                                    <th>Transaksi</th>
+                                                    {{-- <th>Member</th>
+                                                    <th>Created at</th> --}}
                                                     <th>Total (Rp)</th>
                                                     <th>Split Fee</th>
                                                     <th>Status</th>
@@ -84,12 +84,12 @@
                 {
                     data: "transaksi"
                 },
-                {
-                    data: "member"
-                },
-                {
-                    data: "created_at"
-                },
+                // {
+                //     data: "member"
+                // },
+                // {
+                //     data: "created_at"
+                // },
                 {
                     data: "amount"
                 },
@@ -98,6 +98,7 @@
                 },
                 {
                     data: "status", 
+                    className: "text-center"
                 },
                 // {
                 //     data: "link",
