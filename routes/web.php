@@ -30,7 +30,7 @@ Auth::routes(['verify' => true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
-Route::group(['middleware' => ['auth','pin', 'checkRole:2', "verified"]], function () {
+Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin']], function () {
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
     Route::get('/user/emiten', [App\Http\Controllers\EmitenController::class, 'index_user']);
     Route::get('/user/bisnis_anda', [App\Http\Controllers\EmitenController::class, 'user_emiten']);
