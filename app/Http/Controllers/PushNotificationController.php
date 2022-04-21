@@ -209,7 +209,7 @@ class PushNotificationController extends Controller
     public function broadcastEmail(Request $request)
     {
         $email = explode(",", $request->email);
-        //for($i = 0; $i < count($email); $i++){
+        for($i = 0; $i < count($email); $i++){
             $details = [
                 'title' => $request->title,
                 'body' => $request->message,
@@ -217,9 +217,8 @@ class PushNotificationController extends Controller
                 'redirection' => $request->redirection
             ]; 
     
-            // \Mail::to($email[$i])->send(new \App\Mail\NotificationMail($details));
-            \Mail::to("fatakhulafi11@gmail.com")->send(new \App\Mail\NotificationMail($details));
-        //}
+            \Mail::to($email[$i])->send(new \App\Mail\NotificationMail($details));
+        }
         return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast email"]);
     }
 
