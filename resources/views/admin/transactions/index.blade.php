@@ -34,10 +34,10 @@
                                         <table class="table" id="tableTransaction"> 
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th width="250">Transaksi</th>
-                                                    <th>Member</th>
-                                                    <th width="150">Created at</th>
+                                                    <th width="20">No</th>
+                                                    <th>Transaksi</th>
+                                                    {{-- <th>Member</th>
+                                                    <th>Created at</th> --}}
                                                     <th>Total (Rp)</th>
                                                     <th>Split Fee</th>
                                                     <th>Status</th>
@@ -84,12 +84,12 @@
                 {
                     data: "transaksi"
                 },
-                {
-                    data: "member"
-                },
-                {
-                    data: "created_at"
-                },
+                // {
+                //     data: "member"
+                // },
+                // {
+                //     data: "created_at"
+                // },
                 {
                     data: "amount"
                 },
@@ -98,6 +98,7 @@
                 },
                 {
                     data: "status", 
+                    className: "text-center"
                 },
                 // {
                 //     data: "link",
@@ -117,4 +118,7 @@
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+    integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection

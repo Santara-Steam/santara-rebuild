@@ -525,4 +525,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('public/admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+        integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection

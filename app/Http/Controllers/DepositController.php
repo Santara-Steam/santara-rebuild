@@ -175,7 +175,7 @@ class DepositController extends Controller
             }elseif($row->status == 2) {
                 $status = '<div class="status badge badge-danger badge-pill badge">Ditolak</div>';
             }else {
-                $status = '<div class="status badge badge-warning badge-pill badge">Menunggu<br/>Pembayaran</div>';
+                $status = '<div class="status badge badge-warning badge-pill badge">Menunggu Pembayaran</div>';
             }
 
             $bank_to = '-';

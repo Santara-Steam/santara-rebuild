@@ -64,6 +64,10 @@
             padding: 0; 
         }
 
+        .img-broadcast {
+            width: 100px;
+        }
+
     </style>
 
     <!-- END: Custom CSS-->

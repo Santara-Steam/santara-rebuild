@@ -142,11 +142,14 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/get-push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'pushNotif']);
     Route::get('/admin/push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'index']);
     Route::post('/admin/broadcast-notif', [App\Http\Controllers\PushNotificationController::class, 'broadcastNotif']);
+    Route::post('/admin/broadcast-email', [App\Http\Controllers\PushNotificationController::class, 'broadcastEmail']);
 
     Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, 'index']);
     Route::post('/admin/category/store', [App\Http\Controllers\CategoryController::class, 'store']);
-    Route::get('/admin/fetch_category', [App\Http\Controllers\CategoryController::class, "fethData"]);
+    Route::put('/admin/category/update/{id}', [App\Http\Controllers\CategoryController::class, 'update']);
+    Route::post('/admin/category/delete/{id}', [App\Http\Controllers\CategoryController::class, 'destroy']);
     
+    Route::get('/admin/fetch_category', [App\Http\Controllers\CategoryController::class, "fethData"]);
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

@@ -33,12 +33,12 @@
                                         <table class="table" id="tableWithDraw"> 
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Member</th>
-                                                    <th width="180">Created</th>
-                                                    <th width="350">Amount</th>
+                                                    <th width="20">No</th>
+                                                    {{-- <th>Member</th>
+                                                    <th width="180">Created</th> --}}
+                                                    <th>Amount</th>
                                                     <th>Split Fee</th>
-                                                    <th width="50">Status</th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -78,12 +78,12 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                {
-                    data: "member"
-                },
-                {
-                    data: "date"
-                },
+                // {
+                //     data: "member"
+                // },
+                // {
+                //     data: "date"
+                // },
                 {
                     data: "amount"
                 },
@@ -92,6 +92,7 @@
                 },
                 {
                     data: "status", 
+                    className: "text-center"
                 },
             ]
         });

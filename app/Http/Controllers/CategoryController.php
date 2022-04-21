@@ -59,22 +59,38 @@ class CategoryController extends Controller
             "is_deleted" => 0,
             "created_by" => \Auth::user()->id
         ]);
-        return response()->json(["message" => "Berhasil Tambah Kategori"]);
+        $notif = array(
+            'message' => 'Berhasil menambahkan kategori',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notif);
     }
 
     public function update(Request $request, $id)
     {
         $update = Category::where('id', $id)->update([
             "category" => $request->category,
-            "updated_at" => \Auth::user()->id
+            "updated_by" => \Auth::user()->id,
+            "updated_at" => \Carbon\Carbon::now()
         ]);
-        return response()->json(["message" => "Berhasil Update Kategori"]);
+        $notif = array(
+            'message' => 'Berhasil menambahkan kategori',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notif);
     }
 
     public function destroy($id)
     {
-        $update = Category::where('id', $id)->delete();
-        return response()->json(["message" => "Berhasil Hapus Kategori"]);
+        $update = Category::find($id);
+        $update->is_deleted = 1;
+        $update->updated_at = \Carbon\Carbon::now();
+        $update->save();
+        $notif = array(
+            'message' => 'Berhasil menambahkan kategori',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notif);
     }
 
 }

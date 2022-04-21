@@ -31,16 +31,16 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table" id="tableDeposit"> 
+                                        <table class="table" id="tableDeposit" style="width: 100%"> 
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Member</th>
-                                                    <th>Tanggal</th>
+                                                    <th width="20">No</th>
+                                                    {{-- <th>Member</th>
+                                                    <th>Tanggal</th> --}}
                                                     <th>Payment</th>
                                                     <th>Nominal</th>
-                                                    <th width="50">Split Fee</th>
-                                                    <th width="20">Status</th>
+                                                    <th>Split Fee</th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -80,12 +80,12 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                {
-                    data: "member"
-                },
-                {
-                    data: "created_at"
-                },
+                // {
+                //     data: "member"
+                // },
+                // {
+                //     data: "created_at"
+                // },
                 {
                     data: "payment"
                 },
@@ -97,6 +97,7 @@
                 },
                 {
                     data: "status", 
+                    className: "text-center"
                 },
             ]
         });

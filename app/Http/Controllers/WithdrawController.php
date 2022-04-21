@@ -98,8 +98,8 @@ class WithdrawController extends Controller
                 .$row->bank_to.'</div></div>';
             $date = '<div class="row"><div class="col-6">Date :</div><div class="col-6">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
                 .'</div></div><div class="row"><div class="col-6">Time :</div><div class="col-6">'.formatJam($row->created_at).'</div></div>';
-            $amount = '<div class="row"><div class="col-5">Withdrawal :</div><div class="col-7">'.rupiah($row->amount).'</div></div><div class="row"><div class="col-5">Fee :</div><div class="col-7">'
-                .rupiah($row->fee).'</div></div><div class="row"><div class="col-5">Total :</div><div class="col-7">'.(rupiah($row->amount - $row->fee)).'</div></div>';
+            $amount = '<div class="row"><div class="col-4">Withdrawal :</div><div class="col-5">'.rupiah($row->amount).'</div></div><div class="row"><div class="col-4">Fee :</div><div class="col-5">'
+                .rupiah($row->fee).'</div></div><div class="row"><div class="col-4">Total :</div><div class="col-5">'.(rupiah($row->amount - $row->fee)).'</div></div>';
             $saldoAvailable = "";
             if($row->is_verified == 0 || $row->is_verified == null){
                 $status = '<a href="#" onClick="confirmWithdraw(\''.$row->uuid.'\',
@@ -107,14 +107,14 @@ class WithdrawController extends Controller
                             \''.$row->account_number.'\',
                             \''.$row->bank_to.'\',                                                                    
                             \''.$totalWithdraw.'\',
-                            \''.$saldoAvailable.'\')"  class="btn btn-info btn-sm btn-block" title="Verifikasi" >Verifikasi</a> 
-                    <a href="#" onClick="rejectWithdraw(\'' . $row->uuid . '\')" class="btn btn-danger btn-sm btn-block" title="Tolak" >Tolak</a>';
+                            \''.$saldoAvailable.'\')"  class="btn btn-info" title="Verifikasi" >Verifikasi</a> 
+                    <a href="#" onClick="rejectWithdraw(\'' . $row->uuid . '\')" class="btn btn-danger" title="Tolak" >Tolak</a>';
             }elseif($row->is_verified == 2){
-                $status = '<div class="status badge badge-danger badge-pill badge-sm" style="display:block">Ditolak</div>';
+                $status = '<div class="status badge badge-danger badge-pill">Ditolak</div>';
             }elseif($row->is_verified == 1) {
-                $status = '<div class="status badge badge-success badge-pill badge-sm" style="display:block">Sudah Verifikasi</div>';
+                $status = '<div class="status badge badge-success badge-pill">Sudah Verifikasi</div>';
             }else{
-                $status = '<div class="status badge badge-warning badge-pill badge-sm" style="display:block">Tidak Diketahui</div>';
+                $status = '<div class="status badge badge-warning badge-pill">Tidak Diketahui</div>';
             }
 
             $created_at = tgl_indo(date('Y-m-d', strtotime($row->created_at))).' '.formatJam($row->created_at);

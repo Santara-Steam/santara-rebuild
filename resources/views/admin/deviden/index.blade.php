@@ -40,9 +40,9 @@
                                         <table class="table" id="tableDeviden" style="width: 100%"> 
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Member</th>
-                                                    <th width="200">Date Dividen</th>
+                                                    <th width="20">No</th>
+                                                    {{-- <th>Member</th>
+                                                    <th width="200">Date Dividen</th> --}}
                                                     <th>Total</th>
                                                     <th>Availability</th>
                                                     <th>Status</th>
@@ -101,23 +101,26 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                {
-                    data: "member"
-                },
-                {
-                    data: "updated_at"
-                },
+                // {
+                //     data: "member"
+                // },
+                // {
+                //     data: "updated_at"
+                // },
                 {
                     data: "devidend"
                 },
                 {
-                    data: "status"
+                    data: "status",
+                    className: "text-center"
                 },
                 {
-                    data: "pencarian"
+                    data: "pencarian",
+                    className: "text-center"
                 },
                 {
-                    data: "detail"
+                    data: "detail",
+                    className: "text-center"
                 },
             ]
         });

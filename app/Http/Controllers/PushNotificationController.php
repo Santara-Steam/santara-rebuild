@@ -122,9 +122,10 @@ class PushNotificationController extends Controller
         
             $traders = trader::query();
 
-            $traders->leftJoin('deposits as depo', 'depo.trader_id', '=', 'traders.id')
+            $traders->join('users as u', 'u.id', '=', 'traders.user_id')
+                ->leftJoin('deposits as depo', 'depo.trader_id', '=', 'traders.id')
                 ->leftJoin('transactions as tr', 'tr.trader_id', '=', 'traders.id');
-            $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo');
+            $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo', 'u.email');
             $traders->where('traders.is_deleted', 0);
             
             if($skemaKYC == 1){
@@ -203,6 +204,22 @@ class PushNotificationController extends Controller
             $notif->save();
         }
         return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast"]);
+    }
+
+    public function broadcastEmail(Request $request)
+    {
+        $email = explode(",", $request->email);
+        for($i = 0; $i < count($email); $i++){
+            $details = [
+                'title' => $request->title,
+                'body' => $request->message,
+                'image' => $request->image,
+                'redirection' => $request->redirection
+            ]; 
+    
+            \Mail::to($email[$i])->send(new \App\Mail\NotificationMail($details));
+        }
+        return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast email"]);
     }
 
     public function getDetailBroadcast($id)

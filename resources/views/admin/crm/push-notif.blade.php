@@ -18,20 +18,36 @@
                                         <h5>Mengirim ke broadcast ke <span id="totalUser"></span> user dengan setiap halaman {{ $limit }} user</h5>
                                     </div>
                                     <form id="frmTambahNotifikasi" enctype="multipart/form-data">
-                                        <h3>Kontent Pemberitahuan :</h3>
+                                        <h3>Kontent Pemberitahuan : </h3>
                                         <div class="card border border-light card-body">
-                                            <h5 class="text-left text-danger"><strong>{{ $kategori }}</strong></h5>
-                                            <h2>{{ $notif['title'] }}</h2>
-                                            <p>{{ $notif['content'] }}</p>
+                                            <div class="row justify-content-between">
+                                                <div>
+                                                    <h5 class="text-left text-danger"><strong>{{ $kategori }}</strong></h5>
+                                                    <h2>{{ $notif['title'] }}</h2>
+                                                    <p>{{ $notif['content'] }}</p>
+                                                </div>
+                                                <div>
+                                                    @if($notif['image'] != "")
+                                                    <img class="img-broadcast" src="{{ $notif['image'] }}" />
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
                                         <input type="hidden" id="broadcastCategoryName" name="broadcastCategoryName"
                                             value="{{ $kategori }}" />
                                         <input type="hidden" name="message" id="message"
                                             value="{{ $notif['content'] }}" />
+                                        <input type="hidden" name="redirection" id="redirection"
+                                            value="{{ $notif['redirection'] }}" />
+                                        <input type="hidden" name="image" id="image"
+                                            value="{{ $notif['image'] }}" />
                                         <input type="hidden" name="title" id="title" value="{{ $notif['title'] }}" />
                                         <input class="form-control" name="userId" id="userId" type="hidden" />
+                                        <input class="form-control" name="email" id="email" type="hidden" />
                                         <button class="btn btn-primary" id="btnPushNotif" type="submit">Kirim <i
                                                 class="la la-bell"></i></button>
+                                        <button class="btn btn-warning" id="btnPushNotifEmail" type="submit">Kirim Broadcast Email <i
+                                                class="la la-envelop"></i></button>
                                     </form>
                                     <nav class="row justify-content-between p-2">
                                         <h5 class="mt-1"><strong>Halaman</strong></h5>
@@ -65,6 +81,7 @@
 
         loadData(1);
         var dataUserId = [];
+        var emailUser = [];
 
         function loadData(page) {
             $.ajax({
@@ -79,8 +96,12 @@
                     res.results.data.forEach(row => {
                         dataUserId.push(row['user_id']);
                     });
+                    res.results.data.forEach(row => {
+                        emailUser.push(row['email']);
+                    });
                     console.log(dataUserId);
                     $("#userId").val(dataUserId);
+                    $("#email").val(emailUser);
                     $("#totalUser").html(res.amount);
                     var stringPaginate = "";
                     res.results.links.forEach(row => {
@@ -143,5 +164,60 @@
                 }
             });
         });
+
+        $("#btnPushNotifEmail").click(function(event) {
+            event.preventDefault();
+            var form = $("#frmTambahNotifikasi")[0];
+            var data = new FormData(form);
+
+            $.ajax({
+                url: "{{ url('admin/broadcast-email') }}",
+                type: 'POST',
+                dataType: "json",
+                data: data,
+                cache: false,
+                async: true,
+                processData: false,
+                contentType: false,
+                timeout: 60000, // sets timeout to 20 seconds
+                beforeSend: function() {
+                    $("#loader").show();
+                },
+                success: function(data) {
+                    $("#loader").hide();
+                    Swal.fire(
+                        'Berhasil!',
+                        data.message,
+                        'success'
+                    );
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    if (textStatus === "timeout" || textStatus === "error") {
+                        $("#loader").hide();
+                        Swal.fire({
+                            title: 'Ooops...',
+                            text: "Mohon periksa koneksi internet anda",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Muat ulang',
+                            cancelButtonText: 'Tutup'
+                        }).then((result) => {
+                            if (result.value) {
+                                location.reload();
+                            }
+                        })
+                    }
+                },
+                complete: function() {
+                    $("#loader").hide();
+                }
+            });
+        });
+
     </script>
+@endsection
+@section('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+        integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
