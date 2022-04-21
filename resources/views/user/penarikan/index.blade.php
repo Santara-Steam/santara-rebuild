@@ -235,7 +235,13 @@
                                                                 </div>
                                                             </td>
                                                             <td>
+                                                                @if ($item->is_verified == 0)
+                                                                <div class="font-menunggu-verifikasi"><b>Menunggu Verifikasi</b></div>
+                                                                @elseif ($item->is_verified == 1)
                                                                 <div class="font-berhasil"><b>Berhasil</b></div>
+                                                                @elseif ($item->is_verified == 2)
+                                                                <div class="font-gagal"><b>Gagal</b></div>
+                                                                @endif
                                                                 <div><small>{{tgl_indo(date('Y-m-d',
                                                                         strtotime($item->created_at))).'
                                                                         '.formatJam($item->created_at),}}</small></div>

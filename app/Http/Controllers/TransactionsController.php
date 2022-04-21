@@ -203,13 +203,14 @@ class TransactionsController extends Controller
         $rtransactions = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftJoin('onepay_transaction as ot','ot.transaction_id','=','tr.id')
                 ->where('users.id', $uid)
                 ->where('tr.is_deleted', 0)
                 ->where('tr.last_status', 'CREATED')
                 ->orwhere('users.id', $uid)
                 ->where('tr.is_deleted', 0)
                 ->where('tr.last_status', 'WAITING FOR VERIFICATION')
-                ->select('tr.id','tr.expired_date', 'tr.uuid','e.pictures', 't.name as trader_name', 'users.email as user_email', 
+                ->select('tr.id','ot.redirect_url','tr.expired_date', 'tr.uuid','e.pictures', 't.name as trader_name', 'users.email as user_email', 
                     't.id as trader_id','e.trademark','e.company_name', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 

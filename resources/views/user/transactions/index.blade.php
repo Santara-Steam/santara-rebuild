@@ -62,7 +62,7 @@
                                                                 <div
                                                                     style="align-content: center;justify-content: flex-start;">
                                                                     <div class="d-flex row">
-                                                                        <div class="col-md-2"><img
+                                                                        <div class="col-6 col-sm-6 col-md-2"><img
                                                                                 src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
                                                                                 width="150px"></div>
                                                                         <div class="col-md-4">
@@ -76,15 +76,15 @@
                                                                                     '.formatJam($item->created_at),}}</span>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-md-2">
+                                                                        <div class="col-6 col-sm-6 col-md-2">
                                                                             @if ($item->status ==
                                                                             'CREATED')
-                                                                            <div class="font-berhasil">
+                                                                            <div class="p-1 font-berhasil">
                                                                                 <small><b>Menunggu Pembayaran</b></small>
                                                                             </div>
                                                                             @elseif ($item->status
                                                                             == 'WAITING FOR VERIFICATION')
-                                                                            <div class="font-berhasil">
+                                                                            <div class="p-1 font-berhasil">
                                                                                 <small><b>Menunggu Verifikasi</b></small>
                                                                             </div>
                                                                             @endif
@@ -100,7 +100,7 @@
                                                                         </div>
                                                                     
                                                                         <div class="col-md-3 mt-1">
-                                                                            <a href="" target="_blank"
+                                                                            <a href="{{$item->redirect_url}}" target="_blank"
                                                                                 class="btn btn-success"
                                                                                 style="width:100px"
                                                                                 title="Bayar">Bayar</a>
@@ -138,7 +138,7 @@
                                                                     </p>
                                                                     <div class="row col-12 py-1 collapse"
                                                                         id="detail_{{$item->transaction_serial}}">
-                                                                        <span class="w-50">
+                                                                        <span >
                                                                             <div>No. Transaksi :
                                                                                 <b>{{$item->transaction_serial}}</b>
                                                                             </div>
@@ -158,9 +158,7 @@
                                                                                     )</b>
                                                                             </div>
                                                                         </span>
-                                                                        <span class="w-50">
-
-                                                                        </span>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -366,10 +364,10 @@
                                                                 <div
                                                                     style="align-content: center;justify-content: flex-start;">
                                                                     <div class="d-flex row">
-                                                                        <div class="col-md-2"><img
+                                                                        <div class="col-6 col-sm-6 col-md-2"><img
                                                                                 src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
                                                                                 width="150px"></div>
-                                                                        <div class="col-md-5">
+                                                                        <div class="col-6 col-sm-6 col-md-5">
                                                                             <div
                                                                                 style="font-size:18px">
                                                                                 <b>{{$item->trademark}}</b>
@@ -390,14 +388,14 @@
                                                                         <div class="col-md-4">
                                                                             @if ($item->status ==
                                                                             'EXPIRED')
-                                                                            <div class="font-gagal">
+                                                                            <div class="p-1 font-gagal">
                                                                                 <small><b>Pembelian
                                                                                         Gagal</b></small>
                                                                             </div>
                                                                             @elseif ($item->status
                                                                             == 'VERIFIED')
                                                                             <div
-                                                                                class="font-berhasil">
+                                                                                class="p-1 font-berhasil">
                                                                                 <small><b>Pembelian
                                                                                         Berhasil</b></small>
                                                                             </div>
@@ -433,7 +431,7 @@
                                                                     </p>
                                                                     <div class="row col-12 py-1 collapse"
                                                                         id="detail_{{$item->transaction_serial}}">
-                                                                        <span class="w-50">
+                                                                        <span>
                                                                             <div>No. Transaksi :
                                                                                 <b>{{$item->transaction_serial}}</b>
                                                                             </div>
@@ -453,9 +451,7 @@
                                                                                     )</b>
                                                                             </div>
                                                                         </span>
-                                                                        <span class="w-50">
-
-                                                                        </span>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </td>

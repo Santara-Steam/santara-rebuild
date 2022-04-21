@@ -179,8 +179,8 @@
                                                         @foreach ($deposit as $item)
 
                                                         <tr role="row" class="odd">
-                                                            <td class="sorting_1">
-                                                                <div class="media" style="align-items: flex-end;">
+                                                            <td class="sorting_1 row">
+                                                                <div class="media col-6 col-sm-6 col-md-3" >
                                                                     <img class="mr-1"
                                                                         src="https://santara.co.id/assets/images/icon/wallet.png">
                                                                     <div class="media-body">
@@ -188,8 +188,8 @@
                                                                         <div><small>-</small></div>
                                                                     </div>
                                                                 </div>
-                                                            </td>
-                                                            <td>
+                                                                <div class="col-6 col-sm-6 col-md-3">
+
                                                                 @if ($item->status == 0)
                                                                 <div class="font-menunggu-verifikasi"><b>Menunggu
                                                                         Verifikasi</b></div>
@@ -204,10 +204,9 @@
                                                                 <div><small>{{tgl_indo(date('Y-m-d',
                                                                         strtotime($item->created_at))).'
                                                                         '.formatJam($item->created_at),}}</small></div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="row mx-1">
-                                                                    <span style="width:50%"><small>Metode
+                                                                </div>
+                                                                <div class="row col-md-6">
+                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Metode
                                                                             Pembayaran</small><br><b>
                                                                             @if ($item->channel == 'ONEPAY')
                                                                             OTHER PAYMENT
@@ -217,28 +216,37 @@
 
 
                                                                         </b></span>
-                                                                    <span style="width:25%"><small>Nilai
+                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Nilai
                                                                             Deposit</small><br><b
                                                                             style="color: green;">Rp.
                                                                             {{number_format($item->amount,0,',','.')}}</b></span>
-                                                                    <span style="width:25%"><small>Biaya
+                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Biaya
                                                                             Admin</small><br><b
                                                                             style="color: green;">Rp.
                                                                             {{number_format($item->fee,0,',','.')}}</b></span>
                                                                 </div>
-                                                                <div class="row mx-1 py-1">
+                                                                <div class="col-md-6"></div>
+                                                                <div class="row col-md-6">
+                                                                    <div class="col-12">
 
-                                                                    <span style="width:50%"><small>Total
+                                                                        <span><small>Total
                                                                             Pembayaran</small><br><b
                                                                             style="color: green;">Rp.
                                                                             {{number_format($item->amount+$item->fee,0,',','.')}}</b></span>
+                                                                        </div>
                                                                 </div>
-                                                                <div class="row mx-1">
-                                                                    @if ($item->status == 0)
-                                                                    <a href="" target="_blank"
+                                                                <div class="col-md-6"></div>
+
+                                                                <div class="row col-md-6">
+                                                                    <div class="col-12">
+
+                                                                        
+                                                                        @if ($item->status == 0)
+                                                                        <a href="{{$item->redirect_url}}" target="_blank"
                                                                         class="btn btn-info btn-sm btn-block"
                                                                         title="Ubah">Lanjut Pembayaran</a>
-                                                                    @endif
+                                                                        @endif
+                                                                    </div>
                                                                 </div>
 
 
