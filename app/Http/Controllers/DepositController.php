@@ -274,7 +274,7 @@ class DepositController extends Controller
             // return;
             $newUrl = $r['data']['deposit']['redirectURL'];
             session()->flash('newurl', $newUrl);
-            return redirect()->back();
+            return redirect()->to($newUrl);
             // return redirect()->away($r['data']['deposit']['redirectURL']);
 
             // dd($r['data']['deposit']['redirectURL']);

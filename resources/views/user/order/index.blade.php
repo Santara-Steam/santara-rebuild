@@ -9,6 +9,7 @@
             <section id="configuration">
                 <div class="row">
                     <div class="col-12">
+                        @include('user.is_kyc')
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Daftar Pesan Saham Anda</h4>

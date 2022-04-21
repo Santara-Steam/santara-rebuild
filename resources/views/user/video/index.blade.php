@@ -4,11 +4,13 @@
     <div class="content-overlay"></div>
     <div class="content-wrapper">
         <div class="content-header row">
+            
         </div>
         <div class="content-body">
             <section id="configuration">
                 <div class="row">
                     <div class="col-12">
+                        @include('user.is_kyc')
                         <div class="card">
                             <div class="card-header">
                                 <div class="row">

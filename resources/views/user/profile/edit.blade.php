@@ -9,6 +9,7 @@
             <section id="basic-form-layouts">
                 <div class="row match-height">
                     <div class="col-md-12">
+                        @include('user.is_kyc')
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title" id="basic-layout-form">Edit Profile</h4>

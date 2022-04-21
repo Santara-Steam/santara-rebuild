@@ -9,6 +9,7 @@
             <section id="configuration">
                 <div class="row">
                     <div class="col-12">
+                        @include('user.is_kyc')
                         <div class="card" style="width: 100%;">
                             <div class="card-header">
                                 <div class="row">
