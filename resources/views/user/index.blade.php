@@ -15,7 +15,7 @@
                         {{-- {{Session::get('token')}} --}}
                     </div>
                 </div>
-
+                @include('user.is_kyc')
                 <div class="row">
                     <div class="col-xl-6 col-md-12">
                         <div class="card overflow-hidden">

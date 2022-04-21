@@ -77,6 +77,7 @@
                 $tersisa_percentage = number_format($tersisa / $np['supply'] * 100, 2, ',', '.');
                 $tersisa_total = number_format($tersisa, 0, ',', '.');
                 $tersisa_total_rp = number_format($tersisa * $np['price'], 0, ',', '.');
+                $terjual_percentage_f = number_format($terjual_percentage, 3, '.', ',');
                 $terjual_percentage = number_format($terjual_percentage, 3, ',', '.');
                 $terjual_total = number_format($terjual, 0, ',', '.');
                 $terjual_total_rp = number_format($terjual * $np['price'], 0, ',', '.');
@@ -112,12 +113,12 @@
                   <a data-toggle="modal" id="detail_now" class="mod_now detail_now moldla" style="width: 100%;"
                     data-target="#modal_now{{$np['id']}}" data-id="{{$np['id']}}">
                     <div class="card moldla">
-                      <img class="rectangle-2 moldla" src="{{ asset('public/storage/pictures') }}" />
+                      <img class="rectangle-2 moldla" src="{{$np['pictures'][0]['picture']}}" />
                     </div>
                   </a>
                   <a class="molpli" href="{{url('detail-now-playing')}}/{{$np['id']}}">
                     <div class="card molpli">
-                      <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}" />
+                      <img class="rectangle-2" src="{{$np['pictures'][0]['picture']}}" />
                       <div class="content">
                         <div class="header-card-dan-progress">
                           <div class="header-and-tags">
@@ -152,21 +153,21 @@
                                 <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
 
                                     <?php 
-                                                      // $now = time();
-                                                      // $start = strtotime($np->sd);
-                                                      // $end = strtotime($np->ed);
-                                                      // $datediff = $end - $now ;
+                                                      $now = time();
+                                                      $start = strtotime($emj->date);
+                                                      $end = strtotime($emj->end_date);
+                                                      $datediff = $end - $now ;
                                                       ?>
-                                    {{-- {{round($datediff / (60 * 60 * 24))}} --}}
+                                    {{round($datediff / (60 * 60 * 24))}}
                                     {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                     {{-- 45 --}}
-                                    <?= $diff ?>
+                                    {{-- <?= $diff ?> --}}
                                   </b></span>
                               </div>
                               {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                               <span class="inter-normal-mercury-12px">&nbsp;</span>
                               <div class="hr-lg inter-normal-mercury-14px">
-                                <span class="tx-sold inter-normal-mercury"></span>
+                                <span class="tx-sold inter-normal-mercury">Hari Lagi</span>
                               </div>
                             </div>
                             <div class="overlap-group">
@@ -177,8 +178,8 @@
                                   aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}"
                                   aria-valuemin="0" aria-valuemax="100"> --}}
                                   <div class="progress-bar "
-                                    style="width: {{$terjual_percentage}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
-                                    role="progressbar" aria-valuenow="{{$terjual_percentage}}"
+                                    style="width: {{$terjual_percentage_f}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                    role="progressbar" aria-valuenow="{{$terjual_percentage_f}}"
                                     aria-valuemin="0" aria-valuemax="100">
 
                                     {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
@@ -813,6 +814,8 @@
         $tersisa_percentage = number_format($tersisa / $np['supply'] * 100, 2, ',', '.');
         $tersisa_total = number_format($tersisa, 0, ',', '.');
         $tersisa_total_rp = number_format($tersisa * $np['price'], 0, ',', '.');
+        $terjual_percentage_f = number_format($terjual_percentage, 2, '.', ',');
+        // $terjual_percentage_f = number_format($terjual_percentage, 3, '.', ',');
         $terjual_percentage = number_format($terjual_percentage, 2, ',', '.');
         $terjual_total = number_format($terjual, 0, ',', '.');
         $terjual_total_rp = number_format($terjual * $np['price'], 0, ',', '.');
@@ -821,13 +824,17 @@
                 $format = ($diff_now->days > 0) ? "%a Hari" : "%h Jam %i Menit";
                 $diff = $diff_now->format($format);
             }
-        } ?>
+        };
+        $emj = db::table('emiten_journeys')->select('*')->where('emiten_id',$np['id'])
+                ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
+                where emiten_id = '.$np['id'].')')
+                ->first(); ?>
     <div class="modal fade" id="modal_now{{$np['id']}}" tabindex="-1" role="dialog" aria-labelledby="detail_now"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="card" style="margin-bottom: -1px;">
-            <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}" />
+            <img class="rectangle-2" src="{{$np['pictures'][0]['picture']}}" />
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"
               style="margin-right: 10px; margin-top: 0px; width: 30px;">
               <span aria-hidden="true">&times;</span>
@@ -866,15 +873,15 @@
                     <div class="hr inter-bold-white-14px">
                       <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
                           <?php 
-                                                      // $now = time();
-                                                      // $start = strtotime($np->sd);
-                                                      // $end = strtotime($np->ed);
-                                                      // $datediff = $end - $start;
+                                                      $now = time();
+                                                      $start = strtotime($emj->date);
+                                                      $end = strtotime($emj->end_date);
+                                                      $datediff = $end - $start;
                                                       ?>
-                          {{-- {{round($datediff / (60 * 60 * 24))}} --}}
+                          {{round($datediff / (60 * 60 * 24))}}
                           {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                           {{-- 45 --}}
-                          {{$diff}}
+                          {{-- {{$diff}} --}}
                         </b></span>
                     </div>
                     <span class="inter-normal-mercury-12px">&nbsp;</span>
@@ -885,8 +892,8 @@
                   <div class="overlap-group">
                     <div class="percent inter-medium-white-12px">
                       <div class="progress-bar "
-                        style="width: {{round($terjual_percentage,4)*100}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
-                        role="progressbar" aria-valuenow="{{round($terjual_percentage,0)}}" aria-valuemin="0"
+                        style="width: {{$terjual_percentage_f}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                        role="progressbar" aria-valuenow="{{$terjual_percentage_f}}" aria-valuemin="0"
                         aria-valuemax="100">
 
                         {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
@@ -896,6 +903,7 @@
                         {{round($np->per,4)*100}}
                         @endif --}}
                         {{-- 0 --}}
+                        {{$terjual_percentage}}
                         %
                       </div>
                     </div>

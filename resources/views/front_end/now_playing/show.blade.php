@@ -38,14 +38,14 @@
                               }else{
                                   $picture[6];
                               }
- if ($emt->avg_capital_needs == null) {
-  $emt->avg_capital_needs = 1;
- }
+                              if ($emt->avg_capital_needs == null) {
+                                $emt->avg_capital_needs = $emt->supply*$emt->price;
+                              }
 
                               ?>
 <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
-<div class="banner_bg_main" style="background-image: url({{ asset('public/storage/pictures') }}/{{$picture[1]}});" style="margin-top: 96px;">
+<div class="banner_bg_main" style="background-image: url(https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[1]}});" style="margin-top: 96px;">
   <div class="banner_section layout_padding">
     <div class="container" style="margin-top: 15px;">
       <div class="section">
@@ -67,7 +67,7 @@
         </div>
         <div class="profil">
           <img style="border-radius: 50%;" class="image-69"
-            src="{{ asset('public/storage/pictures') }}/{{$picture[2]}}" />
+            src="https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[2]}}" />
           <div class="pemilik-bisnis">
             <div class="m-khemal-nugroho inter-medium-alabaster-18px">
               <span class="text-mulai inter-medium-alabaster">{{$emt->owner_name}}</span>
@@ -137,7 +137,7 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    {{-- <td>Saham Terjual <br> {{number_format(round(($bok->tot/$emt->avg_capital_needs)*100,0),0,',','.')}}%</td> --}}
+                    <td>Saham Terjual <br> {{number_format(round(($bok->tot/$emt->avg_capital_needs)*100,0),0,',','.')}}%</td>
                   </tr>
                   <tr>
                     <td>Dalam Lembar <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}}</td>
@@ -175,7 +175,7 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr>
-                    <td>Kode Saham <br> -</td>
+                    <td>Kode Saham <br> {{$emt->code_emiten}}</td>
                   </tr>
                   <tr>
                     <td>Sisa Waktu <br> <?php 
@@ -196,7 +196,7 @@
           <!-- 2nd card -->
           <div class="tab-pane fade" id="pills-des" role="tabpanel" aria-labelledby="pills-des-tab">
             <div class="table-row-1">
-              <span class="inter-medium-delta-16px">{{$emt->business_description}}</span>
+              <span class="inter-medium-delta-16px" style="text-align: justify;">{{$emt->business_description}}</span>
             </div>
           </div> <!-- 3nd card -->
           <!-- 2nd card -->
@@ -481,21 +481,21 @@
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[3]}}" />
+                    <img class="rectangle-2" src="https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[3]}}" />
                   </div>
                   @endif
                   @if ($picture[4] == 'default.png')
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[4]}}" />
+                    <img class="rectangle-2" src="https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[4]}}" />
                   </div>
                   @endif
                   @if ($picture[5] == 'default.png')
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[5]}}" />
+                    <img class="rectangle-2" src="https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[5]}}" />
                   </div>
                   @endif
 
@@ -517,7 +517,7 @@
 <div class="modal fade" id="beliSahamModal" tabindex="-1" aria-labelledby="beliSahamModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <img src="{{ asset('public/storage/pictures') }}/{{$picture[1]}}"
+      <img src="https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[1]}}"
         onerror="this.onerror=null;this.src='https://santara.co.id//assets/images/error/no-image-user.png';"
         height="200px">
       <div class="p-4 modal-body beli-saham-modal">

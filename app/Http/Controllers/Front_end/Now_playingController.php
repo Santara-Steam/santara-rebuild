@@ -10,6 +10,7 @@ use App\Models\emiten_comment;
 use App\Models\emiten_journey;
 use App\Models\emiten_vote;
 use App\Models\emitens_old;
+use App\Models\Transactions;
 use Illuminate\Support\Facades\DB;
 
 class Now_playingController extends Controller
@@ -40,8 +41,11 @@ class Now_playingController extends Controller
     public function detail($id)
     {
         $emt = emiten::where('id',$id)->first();
-        $bok = book_saham::select(db::raw('SUM(total_amount) as tot'))
+        $boks = book_saham::select(db::raw('SUM(total_amount) as tot'))
         ->where('emiten_id',$id)->where('isValid',1)->first();
+
+        $bok = Transactions::select(db::raw('SUM(IF(transactions.is_verified = 1 AND transactions.is_deleted = 0, transactions.amount, 0))  as tot'))
+        ->where('emiten_id',$id)->first();
         
         $clike = emiten_vote::select(DB::raw('COALESCE(SUM(likes),0) as l'))
         ->where('emiten_id',$id)
@@ -57,6 +61,7 @@ class Now_playingController extends Controller
         ->first();
 
         return view('front_end/now_playing/show',compact('emt','clike','cvote','ccmt','status','bok'));
+        
     }
 
     /**
