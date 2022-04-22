@@ -371,12 +371,12 @@
                                                                         <div class="col-6 col-sm-6 col-md-5">
                                                                             <div
                                                                                 style="font-size:18px">
-                                                                                <b>{{$item->trademark}}</b>
+                                                                                <b>({{$item->code_emiten}}) {{$item->trademark}}</b>
                                                                             </div>
                                                                             <div
                                                                                 style="font-size:15px">
                                                                                 {{$item->company_name}}
-                                                                                ({{$item->code_emiten}})
+                                                                                
                                                                             </div>
                                                                             <div
                                                                                 style="display: flex; align-content: center;justify-content: space-between; margin: .5rem 0;">
