@@ -30,7 +30,6 @@ class NotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject("Uji Coba")
-                    ->view('mail.notification');
+        return $this->subject($this->details['subject'])->view('mail.notification');
     }
 }

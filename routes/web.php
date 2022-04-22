@@ -148,8 +148,18 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/category/store', [App\Http\Controllers\CategoryController::class, 'store']);
     Route::put('/admin/category/update/{id}', [App\Http\Controllers\CategoryController::class, 'update']);
     Route::post('/admin/category/delete/{id}', [App\Http\Controllers\CategoryController::class, 'destroy']);
-    
     Route::get('/admin/fetch_category', [App\Http\Controllers\CategoryController::class, "fethData"]);
+
+    Route::get('/admin/cms/header', [App\Http\Controllers\HeaderController::class, 'index']);
+    Route::get('/admin/cms/header/create', [App\Http\Controllers\HeaderController::class, 'create']);
+    Route::get('/admin/cms/header/edit/{id}', [App\Http\Controllers\HeaderController::class, 'edit']);
+    Route::post('/admin/cms/header/store', [App\Http\Controllers\HeaderController::class, 'store']);
+    Route::post('/admin/cms/header/delete/{id}', [App\Http\Controllers\HeaderController::class, 'destroy']);
+
+    Route::get('/admin/kyc/belum-kyc', [App\Http\Controllers\NewKycController::class, 'belumKyc']);
+    Route::get('/admin/kyc/get-belum-kyc', [App\Http\Controllers\NewKycController::class, 'getBelumKyc']);
+    Route::get('/admin/kyc/get-trail-user/{id}', [App\Http\Controllers\NewKycController::class, 'getQueryTrail']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

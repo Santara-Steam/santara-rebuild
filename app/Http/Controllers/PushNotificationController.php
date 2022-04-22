@@ -18,10 +18,11 @@ class PushNotificationController extends Controller
     {
         $detailBroadcast = $this->getDetailBroadcast($broadcastId);
         $kategori = $detailBroadcast['broadcast_category_name'];
+        $namaBroadcast = $detailBroadcast['name'];
         $targets = $detailBroadcast['target'];
         $notif = $detailBroadcast['list'][0];
         $limit = $this->limit;
-        return view('admin.crm.push-notif', compact('broadcastId', 'targets', 'notif', 'kategori', 'limit'));
+        return view('admin.crm.push-notif', compact('broadcastId', 'targets', 'kategori', 'notif', 'namaBroadcast', 'limit'));
     }
     
     public function pushNotif($id, Request $request)
@@ -32,6 +33,8 @@ class PushNotificationController extends Controller
         $gender = "";
         $umurAwal = 0;
         $umurAkhir = 0;
+        $pendapatanAwal = 0;
+        $pendapatanAkhir = 0;
         $depoAwal = 0;
         $depoAkhir = 0;
         $regencyName = '';
@@ -40,6 +43,7 @@ class PushNotificationController extends Controller
         $totalSahamMaksimal = 0;
         $jumlahSahamMinimal = 0;
         $jumlahSahamMaksimal = 0;
+        $statusSID = '';
         $skemaKYC = '';
         $skemaGender = '';
         $skemaUmur = '';
@@ -73,6 +77,9 @@ class PushNotificationController extends Controller
             }
             if($target['name'] == 'Pendapatan Per Tahun'){
                 $skemaPendapatan .= 4; 
+                $income = explode(" ", $target['params']);
+                $pendapatanAwal = $income[0];
+                $pendapatanAkhir = $income[2];
             }
             if($target['name'] == 'Kota/Kabupaten'){
                 $skemaKota .= 5; 
@@ -111,6 +118,7 @@ class PushNotificationController extends Controller
             }
             if($target['name'] == 'SID'){
                 $skemaSID .= 13; 
+                $statusSID = $target['params'];
             }
             if($target['name'] == 'Versi Aplikasi (iOs)'){
                 $skemaIOS .= 14; 
@@ -123,9 +131,12 @@ class PushNotificationController extends Controller
             $traders = trader::query();
 
             $traders->join('users as u', 'u.id', '=', 'traders.user_id')
+                ->join('jobs as j', 'j.trader_id', '=', 'traders.id')
+                ->leftJoin('trader_banks as tb', 'tb.trader_id', 'traders.id')
                 ->leftJoin('deposits as depo', 'depo.trader_id', '=', 'traders.id')
                 ->leftJoin('transactions as tr', 'tr.trader_id', '=', 'traders.id');
-            $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo', 'u.email');
+            $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo', 'u.email',
+                    'j.income');
             $traders->where('traders.is_deleted', 0);
             
             if($skemaKYC == 1){
@@ -146,13 +157,18 @@ class PushNotificationController extends Controller
                 }
             }
 
-            if($skemaUmur == 2){
+            if($skemaGender == 2){
                 $traders->where('traders.gender', $gender);
             }
 
             if($skemaUmur == 3){
                 $traders->having(\DB::raw('FLOOR(DATEDIFF(CURDATE(), traders.birth_date) / 365)'), '>=' ,$umurAwal);
                 $traders->having(\DB::raw('FLOOR(DATEDIFF(CURDATE(), traders.birth_date) / 365)'), '<=' ,$umurAkhir);
+            }
+
+            if($skemaPendapatan == 4){
+                $traders->having(\DB::raw('j.income'), '>=', $pendapatanAwal);
+                $traders->having(\DB::raw('j.income'), '<=', $pendapatanAkhir);
             }
 
             if($skemaKota == 5){
@@ -180,6 +196,15 @@ class PushNotificationController extends Controller
                 $traders->having(\DB::raw('SUM(depo.amount)'), '<=' ,$depoAkhir);
                 $traders->groupBy('depo.trader_id');
             }
+
+            if($skemaSID == 13){
+                if($statusSID == 'IS NOT NULL'){
+                    $traders->whereNotNull('tb.sid_number');
+                }else{
+                    $traders->whereNull('tb.sid_number');
+                }
+            }
+
             $count = $traders->count();
             $traders->groupBy('traders.id');
             $results = $traders->paginate($this->limit);
@@ -209,16 +234,17 @@ class PushNotificationController extends Controller
     public function broadcastEmail(Request $request)
     {
         $email = explode(",", $request->email);
-        for($i = 0; $i < count($email); $i++){
+        //for($i = 0; $i < count($email); $i++){
             $details = [
                 'title' => $request->title,
                 'body' => $request->message,
                 'image' => $request->image,
-                'redirection' => $request->redirection
+                'redirection' => $request->redirection,
+                'subject' => $request->namaBroadcast
             ]; 
     
-            \Mail::to($email[$i])->send(new \App\Mail\NotificationMail($details));
-        }
+            \Mail::to("fatakhulafi11@gmail.com")->send(new \App\Mail\NotificationMail($details));
+        //}
         return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast email"]);
     }
 

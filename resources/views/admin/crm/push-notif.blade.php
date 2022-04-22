@@ -33,8 +33,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="hidden" id="broadcastCategoryName" name="broadcastCategoryName"
-                                            value="{{ $kategori }}" />
                                         <input type="hidden" name="message" id="message"
                                             value="{{ $notif['content'] }}" />
                                         <input type="hidden" name="redirection" id="redirection"
@@ -43,6 +41,7 @@
                                             value="{{ $notif['image'] }}" />
                                         <input type="hidden" name="title" id="title" value="{{ $notif['title'] }}" />
                                         <input class="form-control" name="userId" id="userId" type="hidden" />
+                                        <input class="form-control" name="namaBroadcast" id="namaBroadcast" type="hidden" value="{{ $namaBroadcast }}" />
                                         <input class="form-control" name="email" id="email" type="hidden" />
                                         <button class="btn btn-primary" id="btnPushNotif" type="submit">Kirim <i
                                                 class="la la-bell"></i></button>

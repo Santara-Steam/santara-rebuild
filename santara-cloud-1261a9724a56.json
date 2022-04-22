@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "santara-cloud",
+  "private_key_id": "1261a9724a56ebad311eb94dbfc66a1490421572",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC7Nq/1O55MexoW\nJshNY1Z34caZ0BivJYccuEdjedi5FUGQpEUDHA5bfGdZDq3x62zx0Y3D8Z1EP3mb\nPijdLe5Ah0rpMqt72QD44ShTqycWfnBdHdGQ7dd4iHb+qTFOQRg2nyA01YFHF5j7\nbYobS0f4iiZNVg7gd2kDIJiATOJM0KX/9VistYz+rvihm3s3ahEGicqdXbR/HlSH\nHeam6nL07MQ7Hm56nYnIoWYaGfc+rMk6uY642juqqKtROqQaAAM4VQdyESTDjDEI\ntnEO7oyCTm6I8fkikQkDivBSs+CQdAwTck1x+E8edt/7jdd6HxcorB1LZdt0+zhT\nmjt8uFKtAgMBAAECggEADSkvMycG81XKGS7jxjugBgXLX4psryS3vAdLuXdaNXSu\n6xtT4KqVwHeyj4+udG3PoaumHYARmrfNoDdn9FiOFwo2dBtZnndnD+1K16BAu15A\ndENW4ACLCmWphoXgD0zDMNUnP0pCcCbSsduFqcff3jM0CxwW0qUtBDPD6he9kZcQ\nVFTs/E1asDLheKP7ou4U4O8YgkVFz05AohNLiYkzQ1zPbBRaEKRFnuTPNDb8GngG\nr2NU+a0Ls/yALQ5hsJPeUGjUc3ylm9KBKmX+2sW96QoN0j4BB9STqyTk6nS8mNwE\nlYt6a/Lup7SA7Xp2jO9LRa3cL7Ip25uz4iVtE26/kQKBgQD7RquGZk/wgxmhVX7/\nCZYKgincH2tfUvzQb4DSG4dkkuXkttD/3n9rtKqq19v0a+svEfIDhy+TZYUViIHD\nckL3rRcG1hcuXyw7G4Jb7Y4SuBERWF1/kWJ4kgdQLZW12CVQ6W60T7V6n9Ts25N0\nyIz4wyWz8u6OAZsMF75k9sCuBQKBgQC+u7NXY2R9wISWeWZYGm7XhFku/hfRBhVj\nN1rUncsygZ7+9FzyA3qOCJFFw5HoG6kPuOzKHyJjrot+NjrB/Dtjhp9L1jaGDwUQ\ntJBai3I8wQurGEU93v7ceQC1rPxcjDW4cBtKHUStLKMB4OrMOkeyFQpJEW8J7sF3\n+Ahx38MKiQKBgHBmmGuycKfhvSFSIVDsdNWWjCsPUvR9JuIGPtW9wr7Wh0fcD3ml\nidIgKwfpL1cSv0169YtmeX2xt+p9+a33+sTYBKjmM9Bmel6mW5XLmfX9qITdxlU+\nL5JHoEXZXlLNsUOUaBT4YvHLdW/OeROQcp8EjGUGknereDPcmyqGxoIRAoGBAKvT\nLJ1tTPp8lPV6KFj2dyRwdmd/QLVtZZccJxejj4rQewvz2EeuGpoZ3cWbibYwNP2U\n+rybj799Xu00rXpUYKwoexk2wafDoCyMff8T4LYaswhPtREn8zFrUNhaHn7BUSP2\n2p7J/zSDIdZvaRbS6gPkMH/i1MV98YzCRdlQW8UBAoGBAMgIFO1lnkQHOIT9prPf\naTfG2mHy6MGxsoCWYPNHTwln/CLL9XJZN0zm7VPYlt6i/mfMFifTtwqCUe5QHKYt\ni+SkuoPajohAdrR7biwlTUjJEwL8ihhe370/YDNEvZp7o9GgPmutbfVlV7sUnN55\nAdSzX0bdWVVg8pYv1PQjnbP8\n-----END PRIVATE KEY-----\n",
+  "client_email": "api-jakarta-server@santara-cloud.iam.gserviceaccount.com",
+  "client_id": "113094498459657509581",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/api-jakarta-server%40santara-cloud.iam.gserviceaccount.com"
+}

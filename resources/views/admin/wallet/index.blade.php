@@ -38,11 +38,6 @@
                             </h2>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="card card-body">
-                            <h4 class="text-center">Anda belum mempunyai saham</h4>
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>

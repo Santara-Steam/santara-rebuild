@@ -32,8 +32,12 @@
             <li class="navigation-header"><span data-i18n="Layouts">Category</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/category')}}"><i class="la la-list"></i><span class="menu-title" data-i18n="eCommerce">Category</span></a>
             </li>
-            {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
-            </li> --}}
+            <li class="navigation-header"><span data-i18n="Layouts">New KYC</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/belum-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Belum KYC</span></a>
+            <li class="navigation-header"><span data-i18n="Layouts">Content Management System</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
+            </li>
+            <li class=" nav-item {{ 'admin/cms/header' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/header')}}"><i class="la la-image"></i><span class="menu-title" data-i18n="eCommerce">Headers</span></a>
             
         </ul>
     </div>
