@@ -357,13 +357,13 @@
                 @guest
             @if ($status->title == 'Pra Penawaran Saham')
             @elseif ($status->title == 'Penawaran Saham')
-            <a href="{{route('login')}}" class="btn btn-danger btn-block">Pesan Saham</a>
+            <a href="{{route('login')}}" class="btn btn-danger btn-block">Beli Saham</a>
             @endif
             @else
             @if ($status->title == 'Pra Penawaran Saham')
 
             @elseif ($status->title == 'Penawaran Saham')
-            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Pesan
+            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Beli
               Saham</button>
             @endif
             @endguest
@@ -517,7 +517,7 @@
 <div class="modal fade" id="beliSahamModal" tabindex="-1" aria-labelledby="beliSahamModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <img src="https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[1]}}"
+      <img src="https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[0]}}"
         onerror="this.onerror=null;this.src='https://santara.co.id//assets/images/error/no-image-user.png';"
         height="200px">
       <div class="p-4 modal-body beli-saham-modal">
@@ -527,7 +527,9 @@
           {{number_format(round($emt->price* 100,0),0,',','.') }} - 100
           Lembar</p>
         <hr>
-        <form action="{{url('pesan_saham/store_user')}}" method="POST" enctype="multipart/form-data">
+        {{-- <form action="{{url('pesan_saham/store_user')}}" method="POST" enctype="multipart/form-data">
+          {{ csrf_field() }} --}}
+        <form action="{{url('transaksi/pembayaran')}}" method="GET" enctype="multipart/form-data">
           {{ csrf_field() }}
 
           <input type="hidden" name="emiten_id" value="{{$emt->id}}">
@@ -537,11 +539,15 @@
                 <label for="jumlah_saham" class="mb-2 text-bold col-12">Jumlah Saham yang akan dibeli dalam kelipatan
                   100 lembar </label>
                 <div class="input-group mb-3 text-center" style="width:80%">
+                  <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minusx()">--</span>
                   <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minus()">-</span>
                   <input type="text" class="form-control text-center number-only-phone" style="background-color: #fff;"
                     id="jumlah_saham" value="0" disabled aria-label="Lembar saham">
+                  <input type="hidden" name="emid" value="{{$emt->id}}">
+                  <input type="hidden" name="uuid" value="{{$emt->uuid}}">
                   <input type="hidden" id="lembar_saham" name="lembar_saham">
                   <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plus()">+</span>
+                  <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plusx()">++</span>
                 </div>
                 <span class="error invalid-feedback text-center" style="display:none" id="alertmaks"></span>
               </div>
@@ -557,7 +563,7 @@
             <div class="col-lg-12">
               <div class="gap-2 d-grid">
                 <button type="submit" id="btnbeli" class="btn btn-danger btn-block"><i class="fa fa-book"></i>
-                  Pesan Saham</button>
+                  Beli Saham</button>
               </div>
             </div>
           </div>
@@ -1063,6 +1069,7 @@
   };
 
   const kelipatan = 100;
+  const kelipatanx = 1000;
 
   function minus() {
       let jumlah = $('#jumlah_saham').val();
@@ -1081,10 +1088,34 @@
       }
       checkValidasi(total)
   }
+  function minusx() {
+      let jumlah = $('#jumlah_saham').val();
+      if (jumlah == '') {
+
+      }
+      jumlah.replace(/^0+/, "");
+      jumlah.replace(/\./g, "");
+      total = parseInt(jumlah) - parseInt(kelipatanx)
+      if (parseInt(jumlah) == 100) {
+          $('#jumlah_saham').val(100)
+          $('#lembar_saham').val(100);
+      } else {
+          $('#jumlah_saham').val(total)
+          $('#lembar_saham').val(total);
+      }
+      checkValidasi(total)
+  }
 
   function plus() {
       let jumlah = $('#jumlah_saham').val();
       total = parseInt(jumlah) + parseInt(kelipatan);
+      $('#jumlah_saham').val(total)
+      $('#lembar_saham').val(total);
+      checkValidasi(total)
+  }
+  function plusx() {
+      let jumlah = $('#jumlah_saham').val();
+      total = parseInt(jumlah) + parseInt(kelipatanx);
       $('#jumlah_saham').val(total)
       $('#lembar_saham').val(total);
       checkValidasi(total)
