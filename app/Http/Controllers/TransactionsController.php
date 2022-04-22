@@ -357,7 +357,7 @@ class TransactionsController extends Controller
 				]
 			]);
 
-			echo json_encode(['msg' => $response->getStatusCode()]);
+			// echo json_encode(['msg' => $response->getStatusCode()]);
             $notif = array(
                 'message' => 'Transaksi Berhasil Di Batalkan!',
                 'alert-type' => 'success'
