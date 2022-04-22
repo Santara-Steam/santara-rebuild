@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use DB;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class TransactionsController extends Controller
 {
@@ -215,6 +216,7 @@ class TransactionsController extends Controller
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
                     'tr.last_status as status')
+                ->orderBy('tr.id','DESC')
                 ->get();
         $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
@@ -230,6 +232,7 @@ class TransactionsController extends Controller
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
                     'tr.last_status as status')
+                ->orderBy('tr.id','DESC')
                 ->get();
         return view('user.transactions.index',compact('transactions','rtransactions'));
     }
@@ -354,14 +357,105 @@ class TransactionsController extends Controller
 				]
 			]);
 
-			echo json_encode(['msg' => $response->getStatusCode()]);
+			// echo json_encode(['msg' => $response->getStatusCode()]);
             $notif = array(
                 'message' => 'Transaksi Berhasil Di Batalkan!',
                 'alert-type' => 'success'
             );
 			return redirect()->back()->with($notif);
     }
-    
+
+    public function checkout(Request $request){
+        // dd('ok');
+
+        $emiten = emiten::where('id',$request->emid)->first();
+        $lembar_saham = $request->lembar_saham;
+        $uuid = $request->uuid;
+        $request->session()->put('emid', $request->emid);
+        $request->session()->put('lembar_saham', $request->lembar_saham);
+        $request->session()->put('uuid', $request->uuid);
+
+        return view('user.transactions.checkout',compact('emiten','lembar_saham','uuid'));
+    }
+    public function buy_token(Request $request){
+        // echo $request->uuid.$request->amount.$request->pinx.$request->channelx;
+        $pin = Auth::user()->pin;
+        if (Hash::check($request->pinx, $pin) == true) {
+            $dataBody =  [
+				'emiten_uuid' => strip_tags($request->uuid),
+				'amount'      => (int)strip_tags($request->amount),
+				'channel'     => strip_tags($request->channelx),
+				'pin'         => $request->pinx,
+				'finger'      => 'false'
+			];
+
+			$removeSpace = str_replace(' ', '', json_encode($dataBody));
+
+			$authKey = hash_hmac('sha256', hash('sha256', $removeSpace), app('request')->session()->get('token'));
+
+			$client = new \GuzzleHttp\Client();
+			$response = $client->request('POST', env('BASE_API_CLIENT_URL') . '/v3.7.1/transactions/buy-token', [
+				'headers' => [
+					'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+					'accesskeytoken' => app('request')->session()->get('token'),
+					'authkey' 		=> $authKey
+				],
+				'form_params' => $dataBody
+			]);
+
+			
+
+			// echo $response->getBody()->getContents();
+            // echo $response->getStatusCode() ;
+
+			// return;
+            if ($request->channelx == 'ONEPAY') {
+                # code...
+            
+            if ($response->getStatusCode() == 200) {
+                $rsp = json_encode(json_decode($response->getBody()->getContents()));
+                $r = json_decode($rsp, true);
+
+                // dd($r['data']['transaksi']['redirectURL']);
+                $newUrl = $r['data']['transaksi']['redirectURL'];
+                // session()->flash('newurl', $newUrl);
+                return redirect()->to($newUrl);
+            }else{
+                $notif = array(
+                    'message' => 'Error',
+                    'alert-type' => 'fail'
+                );
+                return redirect()->back()->with($notif);
+            }
+
+            }elseif($request->channelx == 'WALLET'){
+                if ($response->getStatusCode() == 200) {
+                $notif = array(
+                    'message' => 'Pembelian Saham Berhasil!!',
+                    'alert-type' => 'success'
+                );
+                return redirect('/user/transaksi')->with($notif);
+                }else{
+                    $notif = array(
+                        'message' => 'Error',
+                        'alert-type' => 'fail'
+                    );
+                    return redirect()->back()->with($notif);
+                }
+            }
+
+                                    }else{
+                                        $emiten = emiten::where('id',$request->session()->get('emid'))->first();
+                                        $lembar_saham = $request->session()->get('lembar_saham');
+                                        $uuid = $request->session()->get('uuid');
+                                        $notif = array(
+                                            'message' => 'PIN yang anda masukan salah',
+                                            'alert-type' => 'fail'
+                                        );
+                                        return redirect()->back()->with($notif);
+                                        // dd('w');
+                                    }
+    }
     
 
 }

@@ -462,7 +462,10 @@ $("#withdraw").click(function () {
     }
     }).then((result) => {
     // console.log(result.value.login);
-    document.getElementById('penarikanc').submit();
+    // document.getElementById('penarikanc').submit();
+    if (result.value.password != '') {
+            document.getElementById('penarikanc').submit();
+            }
     });
 });
 

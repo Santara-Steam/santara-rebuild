@@ -60,7 +60,8 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin']], functi
     Route::post('/user/create_deposit', [App\Http\Controllers\DepositController::class, 'user_cdepo']);
     Route::get('/user/penarikan', [App\Http\Controllers\PenarikanController::class, 'user_tarik']);
     Route::post('/user/penarikan/create', [App\Http\Controllers\PenarikanController::class, 'create']);
-    
+    Route::get('/transaksi/pembayaran',[App\Http\Controllers\TransactionsController::class, 'checkout']);
+    Route::post('/transaksi/buy',[App\Http\Controllers\TransactionsController::class, 'buy_token']);
     
 });
 
@@ -165,6 +166,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/pesan_saham/store_user',[App\Http\Controllers\BookSahamController::class, 'store_user']);
+
 
 
 
