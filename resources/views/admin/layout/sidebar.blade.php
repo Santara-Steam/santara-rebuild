@@ -35,6 +35,9 @@
             <li class="navigation-header"><span data-i18n="Layouts">New KYC</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li>
             <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/belum-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Belum KYC</span></a>
+            <li class=" nav-item {{ 'admin/kyc/sudah-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/sudah-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Sudah KYC</span></a>
+            <li class=" nav-item {{ 'admin/kyc/approve-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/approve-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Approve KYC</span></a>
+            <li class=" nav-item {{ 'admin/kyc/reject-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/reject-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Reject KYC</span></a>
             <li class="navigation-header"><span data-i18n="Layouts">Content Management System</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li>
             <li class=" nav-item {{ 'admin/cms/header' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/header')}}"><i class="la la-image"></i><span class="menu-title" data-i18n="eCommerce">Headers</span></a>

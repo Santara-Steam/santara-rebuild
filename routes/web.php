@@ -160,7 +160,14 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/kyc/belum-kyc', [App\Http\Controllers\NewKycController::class, 'belumKyc']);
     Route::get('/admin/kyc/get-belum-kyc', [App\Http\Controllers\NewKycController::class, 'getBelumKyc']);
     Route::get('/admin/kyc/get-trail-user/{id}', [App\Http\Controllers\NewKycController::class, 'getQueryTrail']);
-    
+    Route::get('/admin/kyc/sudah-kyc', [App\Http\Controllers\NewKycController::class, 'sudahKyc']);
+    Route::get('/admin/kyc/get-sudah-kyc', [App\Http\Controllers\NewKycController::class, 'getSudahKyc']);
+    Route::get('/admin/kyc/approve-kyc/{id}', [App\Http\Controllers\NewKycController::class, 'putApprove']);
+    Route::put('/admin/kyc/reject-kyc/{id}', [App\Http\Controllers\NewKycController::class, 'putReject']);
+    Route::get('/admin/kyc/approve-kyc', [App\Http\Controllers\NewKycController::class, 'approveKyc']);
+    Route::get('/admin/kyc/get-approve-kyc', [App\Http\Controllers\NewKycController::class, 'getApproveKyc']);
+    Route::get('/admin/kyc/reject-kyc', [App\Http\Controllers\NewKycController::class, 'rejectKyc']);
+    Route::get('/admin/kyc/get-reject-kyc', [App\Http\Controllers\NewKycController::class, 'getRejectKyc']);
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

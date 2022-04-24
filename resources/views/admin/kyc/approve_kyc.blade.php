@@ -11,20 +11,21 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h1 class="card-title-member">Belum New KYC</h1>
+                                    <h1 class="card-title-member">Approve New KYC</h1>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements"></div>
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
                                         <div class="table-responsive">
-                                            <table class="table" id="tableBelumKyc">
+                                            <table class="table" id="tableApproveKyc">
                                                 <thead>
                                                     <tr>
                                                         <th width="20">No</th>
                                                         <th>Nama</th>
                                                         <th>Email</th>
                                                         <th>HP</th>
+                                                        <th>Admin Approve</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -41,6 +42,34 @@
         </div>
     </div>
 
+    {{-- Foto --}}
+    <div class="modal fade bd-example-modal-lg" id="foto" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="headerFoto"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><b>Baru</b></p>
+                            <img id="newfotoKYC" width="100%" alt="kyc approve">
+                        </div>
+                        <div class="col-6">
+                            <p><b>Lama</b></p>
+                            <img id="fotoKYC" width="100%" alt="kyc approve">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{-- Histori --}}
     <div class="modal fade bd-example-modal-lg" tabindex="-1" id="history" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -76,12 +105,13 @@
 @section('js')
     <script src="{{ asset('public/admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
     <script src="{{ asset('public/admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         loadData("");
 
         function loadData(filter) {
-            var tableBelumKyc = $("#tableBelumKyc").DataTable({
-                ajax: '{{ url('/admin/kyc/get-belum-kyc') }}',
+            var tableApproveKyc = $("#tableApproveKyc").DataTable({
+                ajax: '{{ url("/admin/kyc/get-approve-kyc") }}',
                 responsive: true,
                 processing: true,
                 serverSide: true,
@@ -108,6 +138,9 @@
                         data: "hp"
                     },
                     {
+                        data: "admin"
+                    },
+                    {
                         data: "action",
                         className: 'text-center'
                     },
@@ -118,19 +151,16 @@
         function tabelHistory(id, name) {
             $("#headerHistory").html("<b>Data History " + name + "</b>");
             $("#history").modal("show");
-            loadHistory(id);
-        }
-
-        function loadHistory(id){
+            //$(".datatableHistory").DataTable().ajax.reload();
             $(".datatableHistory").DataTable({
-                ajax: '{{ url("admin/kyc/get-trail-user") }}'+'/'+id,
+                ajax: '{{ url("admin/kyc/get-trail-user") }}' + '/' + id,
                 dom: 'frtip',
                 processing: true,
                 order: [
                     [0, "asc"]
                 ],
                 columns: [{
-                    data: "id",
+                        data: "id",
                         render: function(data, type, row, meta) {
                             return meta.row + meta.settings._iDisplayStart + 1;
                         }
@@ -148,6 +178,74 @@
                         data: "created_at"
                     },
                 ]
+            });
+        }
+
+        function foto(param, param1, name) {
+            console.log(param1);
+            $("#headerFoto").html("<b>" + name + "</b>");
+            $("#newfotoKYC").attr("src", param);
+            $("#fotoKYC").attr("src", '{{ config('global.BASE_API_FILE') }}' + param1);
+            $("#foto").modal("show");
+        }
+
+        function reject(id, name) {
+            Swal.fire({
+                html: `<img src="{{ asset('public/assets/images/failed.png') }}" width="60%" alt="kyc approve">
+                        <h3 class="mt-2">Reject Data New KYC ${name}</h3> 
+                        <span class="text-danger mt-2" style="font-size: 12px"><p id="error_keterangan"></p></span>
+                        <textarea name="keterangan" rows="5" id="keteranganReject" placeholder="Keterangan Reject" class="form-control" ></textarea>`,
+                showCancelButton: true,
+                showCloseButton: true,
+                showConfirmButton: true,
+                // showLoaderOnConfirm: true,
+                confirmButtonText: "Reject",
+                cancelButtonText: "Tidak",
+                preConfirm: function() {
+                    return new Promise((resolve, reject) => {
+                        let ket = $("#keteranganReject").val();
+
+                        if (ket.length >= 10) {
+                            $("#error_keterangan").html("");
+                            $.ajax({
+                                url: '{{ url("admin/kyc/reject-kyc") }}'+'/'+id,
+                                type: "PUT",
+                                dataType: "json",
+                                data: {
+                                    keterangan: ket,
+                                },
+                                timeout: 20000,
+                                beforeSend: function() {
+                                    $("#loader").show();
+                                },
+                                success: function(data) {
+                                    $("#loader").hide();
+                                    if (data.status == true) {
+                                        Swal.fire("Success!", data.data.message, "success")
+                                            .then(
+                                                function() {
+                                                    window.location.reload();
+                                                }
+                                            );
+                                    } else if (data.status == false) {
+                                        Swal.fire("Error!", data.error[0].message, "error")
+                                            .then(
+                                                function() {}
+                                            );
+                                    } else {
+                                        $("#error_keterangan").html(data.keterangan_error);
+                                        Swal.getConfirmButton().removeAttribute('disabled')
+                                        Swal.getCancelButton().removeAttribute('disabled')
+                                    }
+                                },
+                            });
+                        } else {
+                            $("#error_keterangan").html("Keterangan reject minimal 10 karakter");
+                            Swal.getConfirmButton().removeAttribute('disabled')
+                            Swal.getCancelButton().removeAttribute('disabled')
+                        }
+                    });
+                },
             });
         }
     </script>
