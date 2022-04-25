@@ -53,13 +53,13 @@ class HeaderController extends Controller
         $header = Header::find($id);
         $header->title = $request->title;
         if($request->hasFile('pictures')){
-            \File::delete(public_path('public/headers/'.$header->pictures));
+            \File::delete(public_path('headers/'.$header->pictures));
             $pictures = time().'.'.$request->pictures->extension();  
             $request->pictures->move(public_path('headers'), $pictures);
             $header->pictures = $pictures;
         }
         if($request->hasFile('mobile')){
-            \File::delete(public_path('public/headers/'.$header->mobile));
+            \File::delete(public_path('headers/'.$header->mobile));
             $mobile = time().'.'.$request->mobile->extension();  
             $request->mobile->move(public_path('headers'), $mobile);
             $header->mobile = $mobile;
@@ -77,6 +77,7 @@ class HeaderController extends Controller
     public function destroy($id)
     {
         $header = Header::find($id);
+        \File::delete(public_path('headers/'.$header->pictures));
         $header->status = 0;
         $header->save();
     }

@@ -169,6 +169,14 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/kyc/get-approve-kyc', [App\Http\Controllers\NewKycController::class, 'getApproveKyc']);
     Route::get('/admin/kyc/reject-kyc', [App\Http\Controllers\NewKycController::class, 'rejectKyc']);
     Route::get('/admin/kyc/get-reject-kyc', [App\Http\Controllers\NewKycController::class, 'getRejectKyc']);
+
+    Route::get('/admin/cms/testimoni', [App\Http\Controllers\SuccessStoriesController::class, 'index']);
+    Route::get('/admin/cms/testimoni/create', [App\Http\Controllers\SuccessStoriesController::class, 'create']);
+    Route::post('/admin/cms/testimoni/store', [App\Http\Controllers\SuccessStoriesController::class, 'store']);
+    Route::get('/admin/cms/testimoni/edit/{id}', [App\Http\Controllers\SuccessStoriesController::class, 'edit']);
+    Route::post('/admin/cms/testimoni/update/{id}', [App\Http\Controllers\SuccessStoriesController::class, 'update']);
+    Route::post('/admin/cms/testimoni/delete/{id}', [App\Http\Controllers\SuccessStoriesController::class, 'destroy']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
