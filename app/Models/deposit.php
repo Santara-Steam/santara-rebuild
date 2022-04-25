@@ -9,5 +9,4 @@ class Deposit extends Model
 {
     use HasFactory;
     protected $table = "deposits";
-
 }
