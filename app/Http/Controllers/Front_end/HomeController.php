@@ -9,6 +9,7 @@ use App\Models\emiten_vote;
 use App\Models\emitens_old;
 use Illuminate\Support\Facades\DB;
 use App\Models\emiten_journey;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -73,6 +74,31 @@ class HomeController extends Controller
     //     // dd($now_playing);
     // }
 
+    private function getPeekPralisting()
+    {
+        $pralisting = null;
+            $client = new \GuzzleHttp\Client();
+                $url = '/emitens/pre-listing/paginate-no-auth?category=&sort=&search=&limit=1&offset=999';
+                $headers = [
+                    'Content-type' => 'application/json'
+                ];
+            
+
+            $response = $client->request('GET', 'https://fire.santarax.com:3701/v3.7.1' . $url, [
+            // $response = $client->request('GET', env('BASE_API_CLIENT_URL') . $url, [
+                'headers' => $headers,
+            ]);
+
+            if ($response->getStatusCode() == 200) {
+                $pralisting = json_decode($response->getBody()->getContents());
+                // echo $pralisting;
+                // dd($pralisting);
+            }
+        return $pralisting;
+        
+    }
+
+
     public function index(){
         $np = emiten(4, 1, null, null, null, null, null, 'saham', 'notfull');
         
@@ -84,26 +110,36 @@ class HomeController extends Controller
         ->orderby('emitens.id','DESC')
         ->get();
 
-        $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+        
+        $now_playing = collect($np);
+        // $prelist = $this->getPeekPralisting();
+        // $soon = collect($prelist['data']);
+        // dd(collect($now_playing));
+        // =
+
+            $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
             SELECT count(id) from emiten_comments
             where emiten_id = emitens.id
             ) as cmt'))
-        ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
-        ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
-        ->where('emitens.is_deleted',0)
-        ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
-        ->where('emiten_journeys.title','=','Pra Penawaran Saham')
-        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
-        ->groupBy('emitens.id')
-        ->orderby('emitens.id','DESC')
-        ->get()
-        ;
-        $now_playing = collect($np);
-        // dd(collect($now_playing));
-        // =
+            ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+            ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+            ->where('emitens.is_deleted',0)
+            ->where('emitens.is_active',0)
+            ->where('emitens.is_verified',1)
+            ->where('emitens.is_pralisting',1)
+            ->where('emitens.is_coming_soon',1)
+            // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+            // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+            // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+            ->groupBy('emitens.id')
+            ->orderby('vot','DESC')
+            ->get()
+            ;
+        
         return view('front_end/home/index',compact('now_playing','sold_out','soon'));
         // // dd(count($now_playing));
-        // dd($now_playing);
+        // dd(count($soon['data']));
+        // dd($this->getPeekPralisting());
     }
 
     /**
