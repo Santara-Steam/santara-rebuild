@@ -260,11 +260,11 @@ class DevidenController extends Controller
                 $pencairan = '-';
             }
 
-            $member = '<div class="row"><div class="col-3">Nama:</div><div class="col-9">'.$row->name.'</div></div>'
-                .'<div class="row"><div class="col-3">Email:</div><div class="col-9">'.$row->email.'</div></div>'
-                .'<div class="row"><div class="col-3">Hp:</div><div class="col-9">'.$row->phone.'</div></div>';
-            $updated_at = '<div class="row"><div class="col-4">Date:</div><div class="col-8">'.tgl_indo(date('Y-m-d', strtotime($row->updated_at)))
-                .'</div></div><div class="row"><div class="col-4">Time:</div><div class="col-8">'.formatJam($row->updated_at).'</div></div>';              
+            $member = '<div class="col-12">'.$row->name.'</div>'
+                .'<div class="col-12">'.$row->email.'</div>'
+                .'<div class="col-12">'.$row->phone.'</div>';
+            $updated_at = '<div class="col-12">'.tgl_indo(date('Y-m-d', strtotime($row->updated_at)))
+                .'</div><div class="col-12">'.formatJam($row->updated_at).'</div>';              
 
             array_push($data, [
                 "member" => $member,

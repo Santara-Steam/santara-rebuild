@@ -36,8 +36,8 @@
                                                 <tr>
                                                     <th width="20">No</th>
                                                     <th>Transaksi</th>
-                                                    {{-- <th>Member</th>
-                                                    <th>Created at</th> --}}
+                                                    <th>Member</th>
+                                                    <th>Created at</th>
                                                     <th>Total (Rp)</th>
                                                     <th>Split Fee</th>
                                                     <th>Status</th>
@@ -85,12 +85,12 @@
                 {
                     data: "transaksi"
                 },
-                // {
-                //     data: "member"
-                // },
-                // {
-                //     data: "created_at"
-                // },
+                {
+                    data: "member"
+                },
+                {
+                    data: "created_at"
+                },
                 {
                     data: "amount"
                 },

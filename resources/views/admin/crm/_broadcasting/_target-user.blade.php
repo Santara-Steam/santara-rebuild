@@ -553,6 +553,12 @@
 
 <script>
 
+    var input_10_start = document.getElementById('input_10_start');
+    input_10_start.addEventListener('keyup', function(e) {
+        input_10_start.value = formatRupiah(this.value, '');
+    });
+
+
     var input_11_start = document.getElementById('input_11_start');
     input_11_start.addEventListener('keyup', function(e) {
         input_11_start.value = formatRupiah(this.value, '');
@@ -587,6 +593,11 @@
     var input_12_end = document.getElementById('input_12_end');
     input_12_end.addEventListener('keyup', function(e) {
         input_12_end.value = formatRupiah(this.value, '');
+    });
+
+    var input_10_end = document.getElementById('input_10_end');
+    input_10_end.addEventListener('keyup', function(e) {
+        input_10_end.value = formatRupiah(this.value, '');
     });
 
     function formatRupiah(angka, prefix) {

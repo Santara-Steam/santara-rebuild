@@ -35,8 +35,8 @@
                                             <thead>
                                                 <tr>
                                                     <th width="20">No</th>
-                                                    {{-- <th>Member</th>
-                                                    <th>Tanggal</th> --}}
+                                                    <th>Member</th>
+                                                    <th>Tanggal</th>
                                                     <th>Payment</th>
                                                     <th>Nominal</th>
                                                     <th>Split Fee</th>
@@ -80,12 +80,12 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                // {
-                //     data: "member"
-                // },
-                // {
-                //     data: "created_at"
-                // },
+                {
+                    data: "member"
+                },
+                {
+                    data: "created_at"
+                },
                 {
                     data: "payment"
                 },

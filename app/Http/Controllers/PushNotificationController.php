@@ -39,10 +39,16 @@ class PushNotificationController extends Controller
         $depoAkhir = 0;
         $regencyName = '';
         $provinsiName = '';
+        $kepemilikanSaham = ''; 
         $totalSahamMinimal = 0;
         $totalSahamMaksimal = 0;
         $jumlahSahamMinimal = 0;
         $jumlahSahamMaksimal = 0;
+        $unlimitedInvest = false;
+        $limitAwalInvest = 0;
+        $limitAkhirInvest = 0;
+        $rataPembelianAwal = 0;
+        $rataPembelianAkhir = 0;
         $statusSID = '';
         $skemaKYC = '';
         $skemaGender = '';
@@ -91,24 +97,35 @@ class PushNotificationController extends Controller
             }
             if($target['name'] == 'Kepemilikan Saham'){
                 $skemaKepemilikanSaham .= 7; 
+                $kepemilikanSaham = $target['params'];
             }
             if($target['name'] == 'Jumlah Saham (Rp)'){
                 $skemaJumlahSahamRP .= 8; 
                 $saham = explode(" ", $target['params']);
                 $totalSahamMinimal = $saham[0];
-                $totalSahamMaksimal = $saham[0];
+                $totalSahamMaksimal = $saham[2];
             }
             if($target['name'] == 'Jumlah Saham (Count)'){
                 $skemaJumlahSahamCount .= 9; 
                 $saham = explode(" ", $target['params']);
                 $jumlahSahamMinimal = $saham[0];
-                $jumlahSahamMaksimal = $saham[0];
+                $jumlahSahamMaksimal = $saham[2];
             }
             if($target['name'] == 'Sisa Limit Investasi'){
                 $skemaSisaLimitInvestasi .= 10; 
+                if($target['params'] == '999999999999'){
+                    $unlimitedInvest = true;
+                }else{
+                    $limit = explode(" ", $target['params']);
+                    $limitAwalInvest = $limit[0];
+                    $limitAkhirInvest = $limit[2];
+                }
             }
             if($target['name'] == 'Rata-rata Pembelian'){
                 $skemaRataRataPembelian .= 11; 
+                $rata2 = explode(" ", $target['params']);
+                $rataPembelianAwal = $rata2[0];
+                $rataPembelianAkhir = $rata2[2];
             }
             if($target['name'] == 'Deposit'){
                 $skemaDeposit .= 12; 
@@ -136,7 +153,7 @@ class PushNotificationController extends Controller
                 ->leftJoin('deposits as depo', 'depo.trader_id', '=', 'traders.id')
                 ->leftJoin('transactions as tr', 'tr.trader_id', '=', 'traders.id');
             $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo', 'u.email',
-                    'j.income');
+                    'j.income', 'tr.trader_id');
             $traders->where('traders.is_deleted', 0);
             
             if($skemaKYC == 1){
@@ -179,6 +196,14 @@ class PushNotificationController extends Controller
                 $traders->where('traders.province', $provinsiName);
             }
 
+            if($skemaProvinsi == 7){
+                if($kepemilikanSaham == "1"){
+                    $traders->whereNotNull("tr.trader_id");
+                }else{
+                    $traders->whereNull("tr.trader_id");
+                }
+            }
+
             if($skemaJumlahSahamRP == 8){
                 $traders->having(\DB::raw('SUM(amo)'), '>=' ,$totalSahamMinimal);       
                 $traders->having(\DB::raw('SUM(amo)'), '<=' ,$totalSahamMaksimal);
@@ -189,6 +214,25 @@ class PushNotificationController extends Controller
                 $traders->having(\DB::raw('COUNT(amo)'), '>=' ,$jumlahSahamMinimal);       
                 $traders->having(\DB::raw('COUNT(amo)'), '<=' ,$jumlahSahamMaksimal);
                 $traders->groupBy('tr.trader_id');
+            }
+
+            if($skemaSisaLimitInvestasi == 10){
+                if($unlimitedInvest){
+                    $traders->where('j.is_unlimited_invest', 1);
+                }else{
+                    if($limitAwalInvest > 500000000){
+                        $traders->having(\DB::raw('income * 10 /100'), '>=' ,$limitAwalInvest); 
+                        $traders->having(\DB::raw('income * 10 /100'), '<=' ,$limitAkhirInvest); 
+                    }else{
+                        $traders->having(\DB::raw('income * 5 /100'), '>=' ,$limitAwalInvest); 
+                        $traders->having(\DB::raw('income * 5 /100'), '<=' ,$limitAkhirInvest); 
+                    }
+                }
+            }
+
+            if($skemaRataRataPembelian == 11){
+                $traders->having(\DB::raw('SUM(amo) / COUNT(amo)'), '>=' ,$rataPembelianAwal); 
+                $traders->having(\DB::raw('SUM(amo) / COUNT(amo)'), '<=' ,$rataPembelianAkhir); 
             }
 
             if($skemaDeposit == 12){
@@ -207,6 +251,7 @@ class PushNotificationController extends Controller
 
             $count = $traders->count();
             $traders->groupBy('traders.id');
+            $traders->orderBy('traders.user_id', 'ASC');
             $results = $traders->paginate($this->limit);
         return response()->json(["results" => $results, "amount" => $count]);
     }
@@ -234,7 +279,7 @@ class PushNotificationController extends Controller
     public function broadcastEmail(Request $request)
     {
         $email = explode(",", $request->email);
-        //for($i = 0; $i < count($email); $i++){
+        for($i = 0; $i < count($email); $i++){
             $details = [
                 'title' => $request->title,
                 'body' => $request->message,
@@ -243,8 +288,8 @@ class PushNotificationController extends Controller
                 'subject' => $request->namaBroadcast
             ]; 
     
-            \Mail::to("fatakhulafi11@gmail.com")->send(new \App\Mail\NotificationMail($details));
-        //}
+            \Mail::to($email[$i])->send(new \App\Mail\NotificationMail($details));
+        }
         return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast email"]);
     }
 

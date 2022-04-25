@@ -216,15 +216,15 @@ class DepositController extends Controller
                 $channel = $row->created_by;
             }
 
-            $member = '<div class="row"><div class="col-6">Nama:</div><div class="col-6">'.$row->trader_name.'</div></div>'.
-                '<div class="row"><div class="col-6">Email:</div><div class="col-6">'.$row->email.'</div></div>'.
-                '<div class="row"><div class="col-6">HP:</div><div class="col-6">'.$row->phone.'</div></div>';
+            $member = '<div class="col-12">'.$row->trader_name.'</div>'.
+                '<div class="col-12">'.$row->email.'</div>'.
+                '<div class="col-12">'.$row->phone.'</div>';
             $payment = '<div class="row"><div class="col-6">Method:</div><div class="col-6">'.$channel.'</div></div>'.
                 '<div class="row"><div class="col-6">Sender:</div><div class="col-6">'.$bank_from.'</div></div>'.
                 '<div class="row"><div class="col-6">Receiver:</div><div class="col-6">'.$bank_from.'</div></div>'.
                 '<div class="row"><div class="col-6">Account:</div><div class="col-6">'.$account_number.'</div></div>';
-            $created_at = '<div class="row"><div class="col-6">Date:</div><div class="col-6">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
-                .'</div></div><div class="row"><div class="col-6">Time:</div><div class="col-6">'.formatJam($row->created_at).'</div></div>';              
+            $created_at = '<div class="col-12">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
+                .'</div><div class="col-12">'.formatJam($row->created_at).'</div>';              
 
             array_push($data, [
                 "member" => $member,

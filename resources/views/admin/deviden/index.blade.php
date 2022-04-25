@@ -41,8 +41,8 @@
                                             <thead>
                                                 <tr>
                                                     <th width="20">No</th>
-                                                    {{-- <th>Member</th>
-                                                    <th width="200">Date Dividen</th> --}}
+                                                    <th>Member</th>
+                                                    <th width="200">Date Dividen</th>
                                                     <th>Total</th>
                                                     <th>Availability</th>
                                                     <th>Status</th>
@@ -101,12 +101,12 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                // {
-                //     data: "member"
-                // },
-                // {
-                //     data: "updated_at"
-                // },
+                {
+                    data: "member"
+                },
+                {
+                    data: "updated_at"
+                },
                 {
                     data: "devidend"
                 },
