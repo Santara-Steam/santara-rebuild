@@ -13,7 +13,7 @@ trait MustVerifyEmail
      */
     public function hasVerifiedEmail()
     {
-        return !$this->is_verified == 0;
+        return ! is_null($this->email_verified_at);
     }
 
     /**
@@ -24,7 +24,7 @@ trait MustVerifyEmail
     public function markEmailAsVerified()
     {
         return $this->forceFill([
-            'is_verified' => 1,
+            'email_verified_at' => $this->freshTimestamp(),
         ])->save();
     }
 

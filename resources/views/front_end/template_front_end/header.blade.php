@@ -92,11 +92,11 @@
                           </div>
 
                           <li class="nav-item">
-                            <a class=" navbar-nav" href="https://santara.co.id/tentang-santara">Tentang Santara</a>
+                            <a class=" navbar-nav" href="{{ route('tentang-santara') }}">Tentang Santara</a>
                           </li>
 
                           <li class="nav-item">
-                            <a class=" navbar-nav" href="https://santara.co.id/testimoni">Testimoni</a>
+                            <a class=" navbar-nav" href="{{ route('testimoni') }}">Testimoni</a>
                           </li>
 
                           <li class="nav-item">
@@ -112,21 +112,21 @@
                           </li>
                           <div class="collapse" id="syarat" style="padding-left: 20px;">
                             <li class="nav-item">
-                              <a class=" navbar-nav" href="https://santara.co.id/syarat-ketentuan-pemodal">Pemodal</a>
+                              <a class=" navbar-nav" href="{{ route('pemodal') }}">Pemodal</a>
                             </li>
                             <li class="nav-item">
-                              <a class=" navbar-nav" href="https://santara.co.id/syarat-ketentuan-penerbit">Penerbit</a>
+                              <a class=" navbar-nav" href="{{ route('penerbit') }}">Penerbit</a>
                             </li>
                           </div>
 
 
                           <li class="nav-item">
-                            <a class=" navbar-nav" href="https://santara.co.id/pertanyaan">Pertanyaan</a>
+                            <a class=" navbar-nav" href="{{ route('pertanyaan') }}">Pertanyaan</a>
                           </li>
 
 
                           <li class="nav-item">
-                            <a class=" navbar-nav" href="https://santara.co.id/supported-by">SUPPORTED BY</a>
+                            <a class=" navbar-nav" href="{{ route('support-by') }}">SUPPORTED BY</a>
                           </li>
                           <li class="nav-item">
                             <a class=" navbar-nav d-inline-block" id="menu-dropdown3" data-bs-toggle="collapse"
@@ -136,7 +136,7 @@
                           </li>
                           <div class="collapse" id="tentangKami" style="padding-left: 20px;">
                             <li class="nav-item">
-                              <a class=" navbar-nav" href="https://santara.co.id/kontak-kami">Kontak Kami</a>
+                              <a class=" navbar-nav" href="{{ route('kontak') }}">Kontak Kami</a>
                             </li>
                             <li class="nav-item">
                               <a class=" navbar-nav" target="_blank" href="https://santara.co.id/berita">Berita</a>

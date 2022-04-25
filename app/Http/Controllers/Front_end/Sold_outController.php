@@ -26,9 +26,12 @@ class Sold_outController extends Controller
         return view('front_end/sold_out/index',compact('sold_out'));
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('front_end/sold_out/show');
+        $emt = emitens_old::where('id',$id)->first();
+
+        return view('front_end/sold_out/show',compact('emt'));
+        
     }
 
     /**

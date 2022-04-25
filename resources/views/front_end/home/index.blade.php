@@ -495,17 +495,15 @@
                 <div class="item">
 
 
-                  <a data-toggle="modal" id="detail_sold" style="width: 100%;" class="mod_sold detail_sold moldla"
-                    data-target="#modal_sold" data-ktg_sold="<?=$item->ktg?>"
-                    data-trademark_sold="<?=$item->trademark?>" data-company_name_sold="<?=$item->company_name?>"
-                    data-tot_pendanaan_sold="<?=$tot?>" data-image_sold="<?=$picture[0]?>">
+                <a data-toggle="modal" id="detail_sold" style="width: 100%;" class="mod_sold detail_sold moldla"
+                    data-target="#modal_sold">
                     <div class="card moldla">
                       <img class="rectangle-2 moldla"
                         src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
                     </div>
                   </a>
 
-                  <a type="button" class="molpli" data-toggle="modal" data-target="#exampleModal">
+                  <a type="button" class="molpli" href="{{ url('detail-sold-out') }}/{{$item->id}}">
                     <div class="card molpli">
                       <img class="rectangle-2"
                         src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
@@ -738,12 +736,18 @@
     </div>
 
 
+    @foreach ($sold_out as $item)
+    <?php 
+        $picture = explode(',',$item->pictures);
+        $tot=number_format(round($item->supply * $item->price),0,',','.');
+    ?>
+
     <div class="modal fade" id="modal_sold" tabindex="-1" role="dialog" aria-labelledby="detail_sold"
-      aria-hidden="true">
+          aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="card" style="margin-bottom: -1px;">
-            <img class="rectangle-2" id="image_sold" />
+            <img class="rectangle-2" src="https://storage.googleapis.com/asset-santara/santara.co.id/token/{{$picture[0]}}" />
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"
               style="margin-right: 10px; margin-top: 0px; width: 30px;">
               <span aria-hidden="true">&times;</span>
@@ -753,14 +757,14 @@
                 <div class="header-and-tags">
                   <span class="tx-t inter-medium-sweet-pink-12px"
                     style="background: var(--falu-red);
-    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;" id="ktg_sold"></span>
+    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$item->ktg}}</span>
                   <div class="header">
                     <div class="saka-logistics inter-medium-alabaster-20px">
-                      <span class="tx-pt inter-medium-alabaster" id="trademark_sold">
+                      <span class="tx-pt inter-medium-alabaster"> {{$item->trademark}}
                       </span>
                     </div>
                     <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                      <span class="tx-np inter-normal-quill-gray" id="company_name_sold">
+                      <span class="tx-np inter-normal-quill-gray"> {{$item->company_name}}
                       </span>
                     </div>
                   </div>
@@ -771,7 +775,7 @@
                   </div>
                 </div>
                 <div class="addr inter-bold-white-14px">
-                  <span class="tx-sold inter-bold-white" style="font-weight: bold" id="tot_pendanaan_sold">Rp</span>
+                  <span class="tx-sold inter-bold-white" style="font-weight: bold">Rp {{number_format(round($item->supply * $item->price),0,',','.')}}</span>
                 </div>
                 <div>
                 </div>
@@ -792,12 +796,13 @@
             </div>
           </div>
           <div class="modal-footer" style="background-color: var(--shark);">
-            <a class="b-daf btn btn-danger btn-lg btn-block" data-dismiss="modal" data-toggle="modal"
-              data-target="#exampleModal">Selengkapnya</a>
+            <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ url('detail-sold-out') }}/{{$item->id}}">Selengkapnya</a>
           </div>
         </div>
       </div>
     </div>
+    
+    @endforeach
 
     @foreach ($now_playing as $np)
     <?php

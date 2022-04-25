@@ -9,6 +9,7 @@ use App\Http\Controllers\Front_end\Coming_soonController;
 use App\Http\Controllers\Front_end\Sold_outController;
 use App\Http\Controllers\Front_end\Daftar_bisnisController;
 use App\Http\Controllers\Front_end\Mulai_investasiController;
+use App\Http\Controllers\Front_end\SubMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -192,9 +193,17 @@ Route::resource('/sold-out', Sold_outController::class);
 Route::resource('/daftar-bisnis', Daftar_bisnisController::class);
 Route::resource('/mulai-investasi', Mulai_investasiController::class);
 
+Route::get('/tentang-santara', [SubMenuController::class, 'tentang'])->name('tentang-santara');
+Route::get('/testimoni', [SubMenuController::class, 'testimoni'])->name('testimoni');
+Route::get('/pemodal', [SubMenuController::class, 'pemodal'])->name('pemodal');
+Route::get('/penerbit', [SubMenuController::class, 'penerbit'])->name('penerbit');
+Route::get('/support-by', [SubMenuController::class, 'support'])->name('support-by');
+Route::get('/kontak', [SubMenuController::class, 'kontak'])->name('kontak');
+Route::get('/pertanyaan', [SubMenuController::class, 'pertanyaan'])->name('pertanyaan');
+
 Route::get('/detail-now-playing/{id}', [Now_playingController::class, 'detail'])->name('now-playing.detail');
 Route::get('/detail-coming-soon/{id}', [Coming_soonController::class, 'detail'])->name('coming-soon.detail');
-Route::get('/detail-sold-out', [Sold_outController::class, 'detail'])->name('sold-out.detail');
+Route::get('/detail-sold-out/{id}', [Sold_outController::class, 'detail'])->name('sold-out.detail');
 
 Route::group(['middleware' => ['auth', "verified"]], function () {
     Route::get('/daftar-bisnis/create', [Daftar_bisnisController::class, 'create'])->name('daftar-bisnis.create');
