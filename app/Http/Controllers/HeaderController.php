@@ -39,10 +39,36 @@ class HeaderController extends Controller
         $header->pictures = $pictures;
         $header->mobile = $mobile;
         $header->redirection = $request->redirection;
-        $header->status = 0;
+        $header->status = 1;
         $header->save();
         $notif = array(
             'message' => 'Berhasil menambahkan kategori',
+            'alert-type' => 'success'
+        );
+        return redirect('admin/cms/header')->with($notif);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $header = Header::find($id);
+        $header->title = $request->title;
+        if($request->hasFile('pictures')){
+            \File::delete(public_path('public/headers/'.$header->pictures));
+            $pictures = time().'.'.$request->pictures->extension();  
+            $request->pictures->move(public_path('headers'), $pictures);
+            $header->pictures = $pictures;
+        }
+        if($request->hasFile('mobile')){
+            \File::delete(public_path('public/headers/'.$header->mobile));
+            $mobile = time().'.'.$request->mobile->extension();  
+            $request->mobile->move(public_path('headers'), $mobile);
+            $header->mobile = $mobile;
+        }
+        $header->redirection = $request->redirection;
+        $header->status = 1;
+        $header->save();
+        $notif = array(
+            'message' => 'Berhasil mengubah kategori',
             'alert-type' => 'success'
         );
         return redirect('admin/cms/header')->with($notif);

@@ -11,27 +11,27 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h1 class="card-title-member">Tambah Header</h1>
+                                    <h1 class="card-title-member">Edit Header</h1>
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <form enctype="multipart/form-data" action="{{ url('admin/cms/header/store') }}" method="POST">
+                                        <form enctype="multipart/form-data" action="{{ url('admin/cms/header/update/'.$header->id) }}" method="POST">
                                             @csrf
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input class="form-control" name="title" required />
+                                                <input class="form-control" name="title" value="{{ $header->title }}" required />
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Pictures</label>
                                                         <div class="custom-file">
-                                                            <input accept="image/*" name="pictures" required type="file"
+                                                            <input accept="image/*" name="pictures" type="file"
                                                                 class="custom-file-input" id="customFile" onchange="showPreview(event);">
                                                             <label class="custom-file-label" for="customFile">Pilih Gambar</label>
                                                         </div>
                                                         <div class="preview">
-                                                            <img id="file-ip-1-preview">
+                                                            <img id="file-ip-1-preview" src="{{ asset('public/headers').'/'.$header->pictures }}" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -39,19 +39,19 @@
                                                     <div class="form-group">
                                                         <label>Mobile</label>
                                                         <div class="custom-file">
-                                                            <input accept="image/*" name="mobile" required type="file"
+                                                            <input accept="image/*" name="mobile" type="file"
                                                                 class="custom-file-input" id="customFile2" onchange="showPreview2(event);">
                                                             <label class="custom-file-label" for="customFile2">Pilih Gambar</label>
                                                         </div>
                                                         <div class="preview">
-                                                            <img id="file-ip-2-preview">
+                                                            <img id="file-ip-2-preview" src="{{ asset('public/headers').'/'.$header->mobile }}">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Redirection</label>
-                                                <input class="form-control" name="redirection" required />
+                                                <input class="form-control" name="redirection" required value="{{ $header->redirection }}" />
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn btn-primary" type="submit">Simpan</button>

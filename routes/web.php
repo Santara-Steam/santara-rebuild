@@ -155,6 +155,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/cms/header/create', [App\Http\Controllers\HeaderController::class, 'create']);
     Route::get('/admin/cms/header/edit/{id}', [App\Http\Controllers\HeaderController::class, 'edit']);
     Route::post('/admin/cms/header/store', [App\Http\Controllers\HeaderController::class, 'store']);
+    Route::post('/admin/cms/header/update/{id}', [App\Http\Controllers\HeaderController::class, 'update']);
     Route::post('/admin/cms/header/delete/{id}', [App\Http\Controllers\HeaderController::class, 'destroy']);
 
     Route::get('/admin/kyc/belum-kyc', [App\Http\Controllers\NewKycController::class, 'belumKyc']);

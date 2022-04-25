@@ -38,10 +38,10 @@
                                                     <tr>
                                                         <td>{{ $no }}</td>
                                                         <td>{{ $row->title }}</td>
-                                                        <td><img height="100" src="{{  config('global.STORAGE_GOOGLE').'header/'.$row->pictures }}"></td>
-                                                        <td><img height="100" src="{{  config('global.STORAGE_GOOGLE').'header/'.$row->mobile }}"></td>
+                                                        <td><img height="100" src="{{ asset('public/headers').'/'.$row->pictures }}"></td>
+                                                        <td><img height="100" src="{{ asset('public/headers').'/'.$row->mobile }}"></td>
                                                         <td style="text-align: center">
-                                                            <a href="#" class="btn btn-primary"><span class="la la-pencil"></a>
+                                                            <a href="{{ url('admin/cms/header/edit/'.$row->id.'') }}" class="btn btn-primary"><span class="la la-pencil"></a>
                                                             <button id="btnDelete" class="btn btn-danger" data-id="{{ $row->id }}"><span class="la la-trash"></span></button>
                                                         </td>
                                                     </tr>
