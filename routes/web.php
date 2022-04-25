@@ -10,6 +10,7 @@ use App\Http\Controllers\Front_end\Sold_outController;
 use App\Http\Controllers\Front_end\Daftar_bisnisController;
 use App\Http\Controllers\Front_end\Mulai_investasiController;
 use App\Http\Controllers\Front_end\SubMenuController;
+use App\Http\Controllers\Front_end\ErrorPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -200,6 +201,8 @@ Route::get('/penerbit', [SubMenuController::class, 'penerbit'])->name('penerbit'
 Route::get('/support-by', [SubMenuController::class, 'support'])->name('support-by');
 Route::get('/kontak', [SubMenuController::class, 'kontak'])->name('kontak');
 Route::get('/pertanyaan', [SubMenuController::class, 'pertanyaan'])->name('pertanyaan');
+
+Route::get('/error-404', [ErrorPageController::class, 'index'])->name('notfound');
 
 Route::get('/detail-now-playing/{id}', [Now_playingController::class, 'detail'])->name('now-playing.detail');
 Route::get('/detail-coming-soon/{id}', [Coming_soonController::class, 'detail'])->name('coming-soon.detail');

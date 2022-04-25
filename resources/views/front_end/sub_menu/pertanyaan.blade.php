@@ -10,6 +10,12 @@
     <link rel="stylesheet" type="text/css" href="https://santara.co.id/app-assets/new-santara/bootstrap/css/bootstrap.css">
 
     <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/new-pertanyaan.css?v=5.8.8">
+    <style>
+        .menu-view-body .navbar-nav{
+            padding: 0px 0px;
+            margin-left: 0px;
+        }
+    </style>
     <main>
         <div style="padding-top: 80px;">
 <div class="content-header">
