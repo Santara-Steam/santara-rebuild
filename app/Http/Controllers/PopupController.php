@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Popup;
 use App\Models\PopupDetail;
+use App\Models\trader;
+use DB;
 use Google\Cloud\Storage\StorageClient;
 
 class PopupController extends Controller
@@ -15,6 +17,7 @@ class PopupController extends Controller
     {
         $popups = Popup::join('pop_up_details as pp_detail', 'pp_detail.pop_up_id', '=', 'pop_up.id')
             ->where('pop_up.is_deleted', 0)
+            ->orderBy('pp_detail.start_date', 'DESC')
             ->select('pop_up.uuid', 'pop_up.is_active', 'pp_detail.title', 
                 'pp_detail.type', 'pp_detail.start_date', 'pp_detail.finish_date')
             ->get();
@@ -39,55 +42,93 @@ class PopupController extends Controller
 
     public function store(Request $request)
     {
-        $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
-        $storage = new StorageClient([
-            'keyFile' => json_decode($googleConfigFile, true)
-        ]);
-        $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
-        $bucket = $storage->bucket($storageBucketName);
+        if($request->action_button == 1 && $request->action_text == ''){
+            $request->action_text = 'Ok';
+        }
 
-        $filePicture = fopen($request->file('website_pict')->getPathName(), 'r');
-        $newFolderName = 'santara.co.id/popup';
-        $website_pict = $newFolderName.'/'.$request->file('website_pict')->getClientOriginalName();
-        $bucket->upload($filePicture, [
-            'predefinedAcl' => 'publicRead',
-            'name' => $website_pict
-        ]);
+        $data_array = [
+            [
+                'name' => 'is_active',
+                'contents' => $request->is_active
+            ],                        
+            [
+                'name' => 'title',
+                'contents' => $request->title
+            ],
+            [
+                'name' => 'type',
+                'contents' => $request->type
+            ],                        
+            [
+                'name' => 'action_text',
+                'contents' => $request->action_text
+            ],						
+            [
+                'name' => 'website_url',
+                'contents' => $request->website_url
+            ],
+            [
+                'name' => 'mobile_url',
+                'contents' => $request->mobile_url
+            ],
+            [
+                'name' => 'emiten_uuid',
+                'contents' => null
+            ],
+            [
+                'name' => 'start_date',
+                'contents' => $request->start_date
+            ],
+            [
+                'name' => 'finish_date',
+                'contents' => $request->finish_date
+            ]
+        ];
 
-        $filePicture2 = fopen($request->file('mobile_pict')->getPathName(), 'r');
-        $mobile_pict = $newFolderName.'/'.$request->file('mobile_pict')->getClientOriginalName();
-        $bucket->upload($filePicture2, [
-            'predefinedAcl' => 'publicRead',
-            'name' => $mobile_pict
-        ]);
+        if($request->hasFile('website_pict')) {			
+            $website_pict_photo = [
+                [
+                    'name' => 'website_pict',
+                    'contents' => fopen($request->file('website_pict')->getPathName(), 'r'),
+                    'filename' => $request->file('website_pict')->getClientOriginalName()
+                ]
+            ];
 
-        DB::transaction(function() use ($request) {
-            $popup = new Popup();
-            $popup->uuid = \Str::uuid();
-            $popup->is_active = $request->is_active;
-            $popup->created_by = \Auth::user()->id;
-            $popup->save();
+            $data_array = array_merge($data_array, $website_pict_photo);   
+        }
+        
+        if($request->hasFile('mobile_pict')) {			
+            $mobile_pict_photo = [
+                [
+                    'name' => 'mobile_pict',
+                    'contents' => fopen($request->file('mobile_pict')->getPathName(), 'r'),
+                    'filename' => $request->file('mobile_pict')->getClientOriginalName()
+                ]
+            ];
 
-            $popupDetail = new PopupDetail();
-            $popupDetail->uuid = \Str::uuid();
-            $popupDetail->pop_up_id = $popup->id;
-            $popupDetail->title = $request->title;
-            $popupDetail->type = $request->type;
-            $popupDetail->action_text = $request->action_text;
-            $popupDetail->website_pict = $request->file('website_pict')->getClientOriginalName();
-            $popupDetail->mobile_pict = $request->file('mobile_pict')->getClientOriginalName();
-            $popupDetail->website_url = $request->website_url;
-            $popupDetail->mobile_url = $request->mobile_url;
-            $popupDetail->start_date = $request->start_date;
-            $popupDetail->finish_date = $request->finish_date;
-            $popupDetail->save();
-        });
+            $data_array = array_merge($data_array, $mobile_pict_photo);   
+        }
 
-        $notif = array(
-            'message' => 'Berhasil menambahkan popup',
-            'alert-type' => 'success'
-        );
-        return redirect('admin/cms/popup')->with($notif);
+        try {
+            $client = new \GuzzleHttp\Client();       
+
+            $response = $client->request('POST', config('global.BASE_API_CLIENT_URL').'/'.config('global.API_CLIENT_VERSION') . '/information/create-pop-up', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . app('request')->session()->get('token')
+                ],
+                'multipart' => $data_array
+            ]);
+            
+            $notif = array(
+                'message' => 'Berhasil menambahkan popup',
+                'alert-type' => 'success'
+            );
+            return redirect('admin/cms/popup')->with($notif);
+
+        } catch (\Exception $exception) {
+            $statusCode = $exception->getResponse()->getStatusCode();
+            echo json_encode(['msg' => $statusCode]);         
+        }
 
     }
 

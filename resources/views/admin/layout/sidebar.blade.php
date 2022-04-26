@@ -36,14 +36,15 @@
             </li>
             <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/belum-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Belum KYC</span></a>
             <li class=" nav-item {{ 'admin/kyc/sudah-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/sudah-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Sudah KYC</span></a>
-            <li class=" nav-item {{ 'admin/kyc/approve-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/approve-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Approve KYC</span></a>
-            <li class=" nav-item {{ 'admin/kyc/reject-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/reject-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">Reject KYC</span></a>
+            <li class=" nav-item {{ 'admin/kyc/approve-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/approve-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">KYC Disetujui</span></a>
+            <li class=" nav-item {{ 'admin/kyc/reject-kyc' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/kyc/reject-kyc')}}"><i class="la la-user"></i><span class="menu-title" data-i18n="eCommerce">KYC Ditolak</span></a>
             <li class="navigation-header"><span data-i18n="Layouts">Content Management System</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li>
             <li class=" nav-item {{ 'admin/cms/header' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/header')}}"><i class="la la-image"></i><span class="menu-title" data-i18n="eCommerce">Headers</span></a>
             <li class=" nav-item {{ 'admin/cms/testimoni' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/testimoni')}}"><i class="la la-comment"></i><span class="menu-title" data-i18n="eCommerce">Testimoni</span></a>
-            <li class=" nav-item {{ 'admin/cms/supporter' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/supporter')}}"><i class="la la-ad"></i><span class="menu-title" data-i18n="eCommerce">Supporters</span></a>
+            <li class=" nav-item {{ 'admin/cms/supporter' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/supporter')}}"><i class="la la-life-ring "></i><span class="menu-title" data-i18n="eCommerce">Supporters</span></a>
             <li class=" nav-item {{ 'admin/cms/shortened' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/shortened')}}"><i class="la la-link"></i><span class="menu-title" data-i18n="eCommerce">Shorteneds</span></a>
+            <li class=" nav-item {{ 'admin/cms/popup' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/popup')}}"><i class="la la-image"></i><span class="menu-title" data-i18n="eCommerce">Popup Management</span></a>
         </ul>
     </div>
 </div>

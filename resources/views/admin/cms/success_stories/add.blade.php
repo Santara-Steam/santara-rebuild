@@ -18,15 +18,15 @@
                                         <form enctype="multipart/form-data" action="{{ url('admin/cms/testimoni/store') }}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Title</label>
+                                                <label><strong>Title</strong></label>
                                                 <input class="form-control" name="title" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Subtitle</label>
+                                                <label><strong>Subtitle</strong></label>
                                                 <input class="form-control" name="subtitle" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Image</label>
+                                                <label><strong>Image</strong></label>
                                                 <div class="custom-file">
                                                     <input accept="image/*" name="image" required type="file"
                                                         class="custom-file-input" id="customFile" onchange="showPreview(event);">
@@ -37,7 +37,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Description</label>
+                                                <label><strong>Description</strong></label>
                                                 <textarea class="form-control" name="description" required></textarea>
                                             </div>
                                             <div class="form-group">

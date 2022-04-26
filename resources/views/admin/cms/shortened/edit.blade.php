@@ -18,11 +18,11 @@
                                         <form action="{{ url('admin/cms/shortened/update/'.$shortened->id) }}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Title</label>
+                                                <label><strong>Title</strong></label>
                                                 <input class="form-control" value="{{ $shortened->title }}" name="title" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Url</label>
+                                                <label><strong>Url</strong></label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">{{ config('global.BASE_FILE_URL') }}</div>
@@ -31,7 +31,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Link</label>
+                                                <label><strong>Link</strong></label>
                                                 <input class="form-control" value="{{ $shortened->link }}" name="link" placeholder="http://berita.santara.co.id" required />
                                                 <small class="text-danger">Harus di awali http:// atau https://</small>
                                             </div>
