@@ -8,6 +8,7 @@ use App\Models\emiten;
 use App\Models\emiten_comment;
 use App\Models\emiten_journey;
 use App\Models\emiten_vote;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Coming_soonController extends Controller
@@ -56,8 +57,12 @@ class Coming_soonController extends Controller
         // where emiten_id = '.$id.')')
         // ->first();
         // dd($emt->id);
+        $value = db::table('emiten_votes')->where('emiten_id',$emt->id)
+        ->where('trader_id',Auth::user()->trader->id)
+        ->select(db::raw('COALESCE(minat,0) as m'))
+        ->first();
 
-        return view('front_end/coming_soon/show',compact('emt','clike','cvote','ccmt'));
+        return view('front_end/coming_soon/show',compact('emt','clike','cvote','ccmt','value'));
     }
 
     /**

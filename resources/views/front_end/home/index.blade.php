@@ -390,14 +390,16 @@
                                   </div>
                                 </a>
                                 @else
-                                @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
+                                {{-- @if (in_array(Auth::user()->trader->id,[$cs->trdvote])) --}}
 
-                                <a onclick="document.getElementById('subvote{{$cs->id}}').submit();"
+                                {{-- <a onclick="document.getElementById('subvote{{$cs->id}}').submit();"
                                   style="cursor: pointer">
                                   @else
                                   <a onclick="document.getElementById('vote{{$cs->id}}').submit();"
                                     style="cursor: pointer">
-                                    @endif
+                                    @endif --}}
+                                  <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
+                                    data-target="#mdlvot{{$cs->id}}">
                                     <div class="icon-and-supporting-text-1">
                                       <i class="icon-com iconheart fas fa-user"
                                         style="color: #fff; font-size: 18px;"></i>
@@ -406,16 +408,18 @@
                                       </div>
                                     </div>
                                   </a>
-                                  <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
+                                  {{-- <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
                                     enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                   </form>
                                   <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}" method="POST"
                                     enctype="multipart/form-data">
                                     {{ csrf_field() }}
-                                  </form>
+                                  </form> --}}
 
                                   @endguest
+
+
                                   <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
                                     data-target="#modal{{$cs->id}}" class="cmt">
                                     <div class="icon-and-supporting-text-2">
@@ -595,6 +599,65 @@
 </div>
 
 @foreach ($soon as $item)
+
+<div class="modal fade" id="mdlvot{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{$item->company_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @guest
+      <?php 
+      $s['m'] = 0;
+      ?>
+      @else
+      <?php 
+      $value = db::table('emiten_votes')->where('emiten_id',$item->id)
+      ->where('trader_id',Auth::user()->trader->id)
+      ->select(db::raw('COALESCE(minat,0) as m'))
+      ->first();
+      
+      // print_r($value)
+      $s = json_decode(json_encode($value), true);
+      // print_r($s['m']);
+      if ($s['m'] != null) {
+        $s['m'];
+      }else{
+        $s['m'] = 0;
+      }
+      ?>
+      @endguest
+      
+
+      <form action="{{url('addVot')}}/{{$item->id}}" method="POST"
+        enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body">
+          {{-- Tidak tersedia pada event ini. {{$item->id}} --}}
+          <label for="minat">Lembar yang anda minat</label>
+          {{-- <input type="number" name="minat" class="form-control"> --}}
+          <div class="input-group mb-3 text-center" style="width:80%">
+            <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minusx()">--</span>
+            <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minus()">-</span>
+            <input type="text" class="form-control text-center number-only-phone" style="background-color: #fff;"
+              id="jumlah_saham" value="{{$s['m']}}" disabled aria-label="Lembar saham">
+            <input type="hidden" id="lembar_saham" name="minat">
+            <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plus()">+</span>
+            <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plusx()">++</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Send</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="modal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
   aria-hidden="true">
@@ -810,7 +873,7 @@
                         </div>
                       </a>
                       @else
-                      @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
+                      {{-- @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
 
                       <a class="col-3" onclick="document.getElementById('subvote{{$cs->id}}').submit();"
                         style="cursor: pointer">
@@ -824,15 +887,25 @@
                               <span class="tx-icon inter-normal-alabaster" id="minat"> Minat</span>
                             </div>
                           </div>
-                        </a>
-                        <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
+                        </a> --}}
+                        {{-- <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
                           enctype="multipart/form-data">
                           {{ csrf_field() }}
                         </form>
                         <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}" method="POST"
                           enctype="multipart/form-data">
                           {{ csrf_field() }}
-                        </form>
+                        </form> --}}
+                        <a style="cursor: pointer" data-toggle="modal"
+                          data-target="#mdlvot" data-dismiss="modal" id="mdlvotbtn">
+                          <div class="icon-and-supporting-text-1">
+                            <i class="icon-com iconheart fas fa-user"
+                              style="color: #fff; font-size: 18px;"></i>
+                            <div class="address-2 inter-normal-alabaster-10px">
+                              <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
+                            </div>
+                          </div>
+                        </a>
 
                         @endguest
                         <a class="col-3" style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal"
@@ -1100,7 +1173,7 @@
       $('#category').text(category);
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
-      $('#image').prop('src', 'public/storage/pictures/' + image);
+      $('#image').prop('src', 'https://storage.googleapis.com/santara-bucket-prod/' + image);
       $('#like').text(like);
       $('#minat').text(minat);
       $('#comments').text(comment);
@@ -1113,6 +1186,7 @@
       $("form#sublike").prop('id','sublike'+id).prop('action',"{{url('subLike')}}/"+id);
       $("#msb").attr('data-target', "#modalShareButton"+id);
       $("#mct").attr('data-target', "#modal"+id).attr('data-id', id);
+      $("#mdlvotbtn").attr('data-target', "#mdlvot"+id).attr('data-id', id);
 // console.log($("#msb").dataset.target);
       $("#sl").attr('onclick',"document.getElementById('sublike"+id+"').submit()");
       $("#ll").attr('onclick',"document.getElementById('sublike"+id+"').submit()");
@@ -1261,6 +1335,142 @@
        });
   });
 });
+  </script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+      },
+      autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+      },
+      breakpoints: {
+          "@0.00": {
+              slidesPerView: 1,
+              spaceBetween: 10,
+          },
+          "@0.75": {
+              slidesPerView: 2,
+              spaceBetween: 20,
+          },
+          "@1.00": {
+              slidesPerView: 3,
+              spaceBetween: 40,
+          },
+          "@1.50": {
+              slidesPerView: 3,
+              spaceBetween: 50,
+          },
+      },
+  });
+
+  function checkValidasi(total) {
+      const total_price = document.getElementById("total_harga_saham");
+      const detail_price = document.getElementById("detail-price");
+      const alertmaks = document.getElementById("alertmaks");
+
+      total_price.value = parseInt(total) * parseInt(detail_price.value);
+      if (!isNaN(total_price.value) && total_price.value > 0) {
+          btnbeli.disabled = false;
+          var invest_value = parseInt(total);
+          var maksimal_token_value = parseInt(
+              maksimal_token.innerHTML.replace(/\./g, "")
+          );
+          var minimum_invest_value = parseInt(
+              minimum_invest.innerHTML.replace(/\./g, "")
+          );
+
+          if (invest_value > maksimal_token_value) {
+              alertmaks.innerHTML = `<i class="la la-exclamation-triangle"></i> Maksimal <strong>${maksimal_token.innerHTML} Lembar</strong>`;
+              alertmaks.style.display = "block";
+              $('#jumlah_saham').addClass('is-invalid')
+              total_price.value = 0;
+              btnbeli.disabled = true;
+          } else if (maksimal_token_value > minimum_invest_value) {
+              if (invest_value >= minimum_invest_value) {
+                  alertmaks.style.display = "none";
+                  btnbeli.disabled = false;
+                  $('#jumlah_saham').addClass('is-valid')
+                  $('#jumlah_saham').removeClass('is-invalid')
+
+              } else {
+                  alertmaks.innerHTML = `<i class="la la-exclamation-triangle"></i> Minimal <strong>${minimum_invest.innerHTML} Lembar</strong>`;
+                  alertmaks.style.display = "block";
+                  $('#jumlah_saham').addClass('is-invalid')
+                  btnbeli.disabled = true;
+                  total_price.value = 0;
+              }
+          } else {
+              alertmaks.style.display = "none";
+              $('#jumlah_saham').addClass('is-valid')
+              $('#jumlah_saham').removeClass('is-invalid')
+          }
+
+          total = formatNumber(total);
+          total_price.value = formatNumber(
+              parseInt(total_price.value)
+          );
+      } else {
+          total_price.value = 0;
+      }
+  };
+
+  const kelipatan = 100;
+  const kelipatanx = 1000;
+
+  function minus() {
+      let jumlah = $('#jumlah_saham').val();
+      if (jumlah == '') {
+
+      }
+      jumlah.replace(/^0+/, "");
+      jumlah.replace(/\./g, "");
+      total = parseInt(jumlah) - parseInt(kelipatan)
+      if (parseInt(jumlah) == 100) {
+          $('#jumlah_saham').val(100)
+          $('#lembar_saham').val(100);
+      } else {
+          $('#jumlah_saham').val(total)
+          $('#lembar_saham').val(total);
+      }
+      checkValidasi(total)
+  }
+  function minusx() {
+      let jumlah = $('#jumlah_saham').val();
+      if (jumlah == '') {
+
+      }
+      jumlah.replace(/^0+/, "");
+      jumlah.replace(/\./g, "");
+      total = parseInt(jumlah) - parseInt(kelipatanx)
+      if (parseInt(jumlah) == 100) {
+          $('#jumlah_saham').val(100)
+          $('#lembar_saham').val(100);
+      } else {
+          $('#jumlah_saham').val(total)
+          $('#lembar_saham').val(total);
+      }
+      checkValidasi(total)
+  }
+
+  function plus() {
+      let jumlah = $('#jumlah_saham').val();
+      total = parseInt(jumlah) + parseInt(kelipatan);
+      $('#jumlah_saham').val(total)
+      $('#lembar_saham').val(total);
+      checkValidasi(total)
+  }
+  function plusx() {
+      let jumlah = $('#jumlah_saham').val();
+      total = parseInt(jumlah) + parseInt(kelipatanx);
+      $('#jumlah_saham').val(total)
+      $('#lembar_saham').val(total);
+      checkValidasi(total)
+  }
   </script>
   @endforeach
   @endsection

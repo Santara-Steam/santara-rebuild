@@ -243,7 +243,8 @@
           </span>
         </div>
       </a>
-      <a class="button-5" data-id={{$emt->id}} id="cvote" style="cursor: pointer;">
+      <a class="button-5" data-id={{$emt->id}} data-toggle="modal"
+        data-target="#mdlvot{{$emt->id}}" style="cursor: pointer;">
         <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
@@ -251,14 +252,14 @@
           </span>
         </div>
       </a>
-      <a class="button-5" data-id={{$emt->id}} id="svote" style="cursor: pointer;display:none;">
+      {{-- <a class="button-5" data-id={{$emt->id}} id="svote" style="cursor: pointer;display:none;">
         <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="subcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
           </span>
         </div>
-      </a>
+      </a> --}}
       @endguest
       <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
         data-target="#modal{{$emt->id}}">
@@ -344,62 +345,62 @@
 </div>
 <input type="hidden" name="detail-price" id="detail-price" value="{{$emt->price}}">
 
-<div class="modal fade" id="beliSahamModal" tabindex="-1" aria-labelledby="beliSahamModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+
+
+<div class="modal fade" id="mdlvot{{$emt->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <img src="https://storage.googleapis.com/santara-bucket-prod/{{$picture[1]}}"
-        onerror="this.onerror=null;this.src='https://santara.co.id//assets/images/error/no-image-user.png';"
-        height="200px">
-      <div class="p-4 modal-body beli-saham-modal">
-        <h3 class="text-danger font-poppins" style="font-weight: 800;">{{$emt->trademark}}</h3>
-        <h6>{{$emt->company_name}}</h6>
-        <p><span class=" font-weight-lighter">Minimum Pembelian</span> &nbsp;: &nbsp; Rp
-          {{number_format(round($emt->price* 100,0),0,',','.') }} - 100
-          Lembar</p>
-        <hr>
-        <form action="{{url('pesan_saham/store_user')}}" method="POST" enctype="multipart/form-data">
-          {{ csrf_field() }}
-
-          <input type="hidden" name="emiten_id" value="{{$emt->id}}">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="form-group row d-flex justify-content-center text-center">
-                <label for="jumlah_saham" class="mb-2 text-bold col-12">Jumlah Saham yang akan dibeli dalam kelipatan
-                  100 lembar </label>
-                <div class="input-group mb-3 text-center" style="width:80%">
-                  <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minus()">-</span>
-                  <input type="text" class="form-control text-center number-only-phone" style="background-color: #fff;"
-                    id="jumlah_saham" value="0" disabled aria-label="Lembar saham">
-                  <input type="hidden" id="lembar_saham" name="lembar_saham">
-                  <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plus()">+</span>
-                </div>
-                <span class="error invalid-feedback text-center" style="display:none" id="alertmaks"></span>
-              </div>
-              <div class="mt-4 text-center row d-flex justify-content-center form-group">
-                <label for="total_harga_saham" class="mb-2 text-bold">Total Harga Saham (IDR)</label>
-                <input class="form-control text-center" type="text" id="total_harga_saham" style="width: 80%;"
-                  placeholder="Rp 0" disabled>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 row">
-            <div class="col-lg-12">
-              <div class="gap-2 d-grid">
-                <button type="submit" id="btnbeli" class="btn btn-danger btn-block"><i class="fa fa-book"></i>
-                  Pesan Saham</button>
-              </div>
-            </div>
-          </div>
-
-        </form>
-
-
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{$emt->company_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      @guest
+      <?php 
+      $s['m'] = 0;
+      ?>
+      @else
+      <?php 
+      
+      
+      // print_r($value)
+      $s = json_decode(json_encode($value), true);
+      // print_r($s['m']);
+      if ($s['m'] != null) {
+        $s['m'];
+      }else{
+        $s['m'] = 0;
+      }
+      ?>
+      @endguest
+      
 
+      <form action="{{url('addVot')}}/{{$emt->id}}" method="POST"
+        enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body">
+          {{-- Tidak tersedia pada event ini. {{$emt->id}} --}}
+          <label for="minat">Lembar yang anda minat</label>
+          {{-- <input type="number" name="minat" class="form-control"> --}}
+          <div class="input-group mb-3 text-center" style="width:80%">
+            <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minusx()">--</span>
+            <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minus()">-</span>
+            <input type="text" class="form-control text-center number-only-phone" style="background-color: #fff;"
+              id="jumlah_saham" value="{{$s['m']}}" disabled aria-label="Lembar saham">
+            <input type="hidden" id="lembar_saham" name="minat">
+            <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plus()">+</span>
+            <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plusx()">++</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Send</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
     </div>
   </div>
-
 </div>
 
 
@@ -788,114 +789,139 @@
 </script>
 <script>
   var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-      },
-      autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-      },
-      breakpoints: {
-          "@0.00": {
-              slidesPerView: 1,
-              spaceBetween: 10,
-          },
-          "@0.75": {
-              slidesPerView: 2,
-              spaceBetween: 20,
-          },
-          "@1.00": {
-              slidesPerView: 3,
-              spaceBetween: 40,
-          },
-          "@1.50": {
-              slidesPerView: 3,
-              spaceBetween: 50,
-          },
-      },
-  });
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        "@0.00": {
+            slidesPerView: 1,
+            spaceBetween: 10,
+        },
+        "@0.75": {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        "@1.00": {
+            slidesPerView: 3,
+            spaceBetween: 40,
+        },
+        "@1.50": {
+            slidesPerView: 3,
+            spaceBetween: 50,
+        },
+    },
+});
 
-  function checkValidasi(total) {
-      const total_price = document.getElementById("total_harga_saham");
-      const detail_price = document.getElementById("detail-price");
-      const alertmaks = document.getElementById("alertmaks");
+function checkValidasi(total) {
+    const total_price = document.getElementById("total_harga_saham");
+    const detail_price = document.getElementById("detail-price");
+    const alertmaks = document.getElementById("alertmaks");
 
-      total_price.value = parseInt(total) * parseInt(detail_price.value);
-      if (!isNaN(total_price.value) && total_price.value > 0) {
-          btnbeli.disabled = false;
-          var invest_value = parseInt(total);
-          var maksimal_token_value = parseInt(
-              maksimal_token.innerHTML.replace(/\./g, "")
-          );
-          var minimum_invest_value = parseInt(
-              minimum_invest.innerHTML.replace(/\./g, "")
-          );
+    total_price.value = parseInt(total) * parseInt(detail_price.value);
+    if (!isNaN(total_price.value) && total_price.value > 0) {
+        btnbeli.disabled = false;
+        var invest_value = parseInt(total);
+        var maksimal_token_value = parseInt(
+            maksimal_token.innerHTML.replace(/\./g, "")
+        );
+        var minimum_invest_value = parseInt(
+            minimum_invest.innerHTML.replace(/\./g, "")
+        );
 
-          if (invest_value > maksimal_token_value) {
-              alertmaks.innerHTML = `<i class="la la-exclamation-triangle"></i> Maksimal <strong>${maksimal_token.innerHTML} Lembar</strong>`;
-              alertmaks.style.display = "block";
-              $('#jumlah_saham').addClass('is-invalid')
-              total_price.value = 0;
-              btnbeli.disabled = true;
-          } else if (maksimal_token_value > minimum_invest_value) {
-              if (invest_value >= minimum_invest_value) {
-                  alertmaks.style.display = "none";
-                  btnbeli.disabled = false;
-                  $('#jumlah_saham').addClass('is-valid')
-                  $('#jumlah_saham').removeClass('is-invalid')
+        if (invest_value > maksimal_token_value) {
+            alertmaks.innerHTML = `<i class="la la-exclamation-triangle"></i> Maksimal <strong>${maksimal_token.innerHTML} Lembar</strong>`;
+            alertmaks.style.display = "block";
+            $('#jumlah_saham').addClass('is-invalid')
+            total_price.value = 0;
+            btnbeli.disabled = true;
+        } else if (maksimal_token_value > minimum_invest_value) {
+            if (invest_value >= minimum_invest_value) {
+                alertmaks.style.display = "none";
+                btnbeli.disabled = false;
+                $('#jumlah_saham').addClass('is-valid')
+                $('#jumlah_saham').removeClass('is-invalid')
 
-              } else {
-                  alertmaks.innerHTML = `<i class="la la-exclamation-triangle"></i> Minimal <strong>${minimum_invest.innerHTML} Lembar</strong>`;
-                  alertmaks.style.display = "block";
-                  $('#jumlah_saham').addClass('is-invalid')
-                  btnbeli.disabled = true;
-                  total_price.value = 0;
-              }
-          } else {
-              alertmaks.style.display = "none";
-              $('#jumlah_saham').addClass('is-valid')
-              $('#jumlah_saham').removeClass('is-invalid')
-          }
+            } else {
+                alertmaks.innerHTML = `<i class="la la-exclamation-triangle"></i> Minimal <strong>${minimum_invest.innerHTML} Lembar</strong>`;
+                alertmaks.style.display = "block";
+                $('#jumlah_saham').addClass('is-invalid')
+                btnbeli.disabled = true;
+                total_price.value = 0;
+            }
+        } else {
+            alertmaks.style.display = "none";
+            $('#jumlah_saham').addClass('is-valid')
+            $('#jumlah_saham').removeClass('is-invalid')
+        }
 
-          total = formatNumber(total);
-          total_price.value = formatNumber(
-              parseInt(total_price.value)
-          );
-      } else {
-          total_price.value = 0;
-      }
-  };
+        total = formatNumber(total);
+        total_price.value = formatNumber(
+            parseInt(total_price.value)
+        );
+    } else {
+        total_price.value = 0;
+    }
+};
 
-  const kelipatan = 100;
+const kelipatan = 100;
+const kelipatanx = 1000;
 
-  function minus() {
-      let jumlah = $('#jumlah_saham').val();
-      if (jumlah == '') {
+function minus() {
+    let jumlah = $('#jumlah_saham').val();
+    if (jumlah == '') {
 
-      }
-      jumlah.replace(/^0+/, "");
-      jumlah.replace(/\./g, "");
-      total = parseInt(jumlah) - parseInt(kelipatan)
-      if (parseInt(jumlah) == 100) {
-          $('#jumlah_saham').val(100)
-          $('#lembar_saham').val(100);
-      } else {
-          $('#jumlah_saham').val(total)
-          $('#lembar_saham').val(total);
-      }
-      checkValidasi(total)
-  }
+    }
+    jumlah.replace(/^0+/, "");
+    jumlah.replace(/\./g, "");
+    total = parseInt(jumlah) - parseInt(kelipatan)
+    if (parseInt(jumlah) == 100) {
+        $('#jumlah_saham').val(100)
+        $('#lembar_saham').val(100);
+    } else {
+        $('#jumlah_saham').val(total)
+        $('#lembar_saham').val(total);
+    }
+    checkValidasi(total)
+}
+function minusx() {
+    let jumlah = $('#jumlah_saham').val();
+    if (jumlah == '') {
 
-  function plus() {
-      let jumlah = $('#jumlah_saham').val();
-      total = parseInt(jumlah) + parseInt(kelipatan);
-      $('#jumlah_saham').val(total)
-      $('#lembar_saham').val(total);
-      checkValidasi(total)
-  }
+    }
+    jumlah.replace(/^0+/, "");
+    jumlah.replace(/\./g, "");
+    total = parseInt(jumlah) - parseInt(kelipatanx)
+    if (parseInt(jumlah) == 100) {
+        $('#jumlah_saham').val(100)
+        $('#lembar_saham').val(100);
+    } else {
+        $('#jumlah_saham').val(total)
+        $('#lembar_saham').val(total);
+    }
+    checkValidasi(total)
+}
+
+function plus() {
+    let jumlah = $('#jumlah_saham').val();
+    total = parseInt(jumlah) + parseInt(kelipatan);
+    $('#jumlah_saham').val(total)
+    $('#lembar_saham').val(total);
+    checkValidasi(total)
+}
+function plusx() {
+    let jumlah = $('#jumlah_saham').val();
+    total = parseInt(jumlah) + parseInt(kelipatanx);
+    $('#jumlah_saham').val(total)
+    $('#lembar_saham').val(total);
+    checkValidasi(total)
+}
 </script>
 @endsection
 

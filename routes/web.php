@@ -234,6 +234,7 @@ Route::group(['middleware' => ['auth', "verified"]], function () {
     Route::post('/daftar-bisnis/store',[Daftar_bisnisController::class, 'store'])->name('daftar-bisnis.store');
     Route::post('/addLike/{id}',[App\Http\Controllers\EmitenVoteController::class,'addlike']);
     Route::post('/addVote/{id}',[App\Http\Controllers\EmitenVoteController::class,'addvote']);
+    Route::post('/addVot/{id}',[App\Http\Controllers\EmitenVoteController::class,'addvot']);
     Route::post('/subLike/{id}',[App\Http\Controllers\EmitenVoteController::class,'sublike']);
     Route::post('/subVote/{id}',[App\Http\Controllers\EmitenVoteController::class,'subvote']);
     Route::post('/addLikeajx/{id}',[App\Http\Controllers\EmitenVoteController::class,'addlikeajx']);

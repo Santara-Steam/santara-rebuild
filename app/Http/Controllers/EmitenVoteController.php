@@ -161,4 +161,22 @@ class EmitenVoteController extends Controller
 
         echo $count;
     }
+
+    public function addvot(Request $request,$id){
+        $vote = emiten_vote::where('trader_id',Auth::user()->trader->id)
+        ->where('emiten_id',$id)->first();
+
+        if($vote){
+            $em = $vote;
+        }else{
+            $em = new emiten_vote();
+        }
+        $em->trader_id = Auth::user()->trader->id;
+        $em->emiten_id = $id;
+        $em->vote = 1;
+        $em->minat = $request->minat;
+        $em->save();
+
+        return redirect()->back();
+    }
 }

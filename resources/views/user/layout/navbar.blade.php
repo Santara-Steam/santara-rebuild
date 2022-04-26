@@ -40,6 +40,7 @@
                             ->get();
                             $notifnew = notification::where('user_id',Auth::user()->id)
                             ->where('is_deleted',0)
+                            ->where('created_at', '>', now()->subDays(30)->endOfDay())
                             ->select('*')
                             ->orderBy('created_at','DESC')
                             ->get();
