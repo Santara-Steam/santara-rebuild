@@ -207,7 +207,7 @@
                               </div>
                               <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
                                 <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
-                                  class="inter-medium-alabaster-12px">{{$np['period']}} Bulan</span>
+                                  class="inter-medium-alabaster-12px">{{$np['period']}} </span>
                               </div>
                             </div>
                           </div>
@@ -1002,7 +1002,7 @@
                   </div>
                   <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
                     <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
-                      class="inter-medium-alabaster-12px">{{$np['period']}} Bulan</span>
+                      class="inter-medium-alabaster-12px">{{$np['period']}}</span>
                   </div>
                 </div>
               </div>
