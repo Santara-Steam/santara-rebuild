@@ -133,6 +133,7 @@ class HomeController extends Controller
             // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
             ->groupBy('emitens.id')
             ->orderby('vot','DESC')
+            ->limit(12)
             ->get()
             ;
         

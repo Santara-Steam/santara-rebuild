@@ -51,12 +51,13 @@ class Coming_soonController extends Controller
         ->first();
         $ccmt = emiten_comment::where('emiten_id',$id)
         ->count();
-        $status = emiten_journey::select('*')->where('emiten_id',$id)
-        ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
-        where emiten_id = '.$id.')')
-        ->first();
+        // $status = emiten_journey::select('*')->where('emiten_id',$id)
+        // ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
+        // where emiten_id = '.$id.')')
+        // ->first();
+        // dd($emt->id);
 
-        return view('front_end/coming_soon/show',compact('emt','clike','cvote','ccmt','status'));
+        return view('front_end/coming_soon/show',compact('emt','clike','cvote','ccmt'));
     }
 
     /**
