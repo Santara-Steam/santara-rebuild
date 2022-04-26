@@ -103,11 +103,13 @@ class HomeController extends Controller
         $np = emiten(4, 1, null, null, null, null, null, 'saham', 'notfull');
         
         $sold_out = emitens_old::where('emitens.is_active',1)
-        ->select('emitens.*','categories.category as ktg')
+        ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
         ->where('emitens.is_deleted',0)
         ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
         ->orderby('emitens.id','DESC')
+        ->groupBy('emitens.id')
         ->get();
 
         

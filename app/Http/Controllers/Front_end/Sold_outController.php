@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front_end;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\emitens_old;
+use Illuminate\Support\Facades\DB;
 
 class Sold_outController extends Controller
 {
@@ -16,11 +17,13 @@ class Sold_outController extends Controller
     public function index()
     {
         $sold_out = emitens_old::where('emitens.is_active',1)
-        ->select('emitens.*','categories.category as ktg')
+        ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
         ->where('emitens.is_deleted',0)
         ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
         ->orderby('emitens.id','DESC')
+        ->groupBy('emitens.id')
         ->get();
 
         return view('front_end/sold_out/index',compact('sold_out'));
