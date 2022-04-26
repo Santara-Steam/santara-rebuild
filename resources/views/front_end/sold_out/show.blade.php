@@ -126,66 +126,164 @@
       <div class="fashion_section">
          <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-sm-6">
-               <!-- nav options -->
-               <ul class="nav nav-pills mb-3 shadow-sm" id="pills-tab" role="tablist">
-                   <li class="nav-item sp-tab"> <a class="nav-link active inter-medium-alabaster" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Informasi Saham</a> </li>
-                   <li class="nav-item sp-tab"> <a class="nav-link iinter-medium-alabaster" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detail Saham</a> </li>
-                   <li class="nav-item sp-tab"> <a class="nav-link inter-medium-alabaster" id="pills-contact-tab" data-toggle="pill" href="#pills-des" role="tab" aria-controls="pills-des" aria-selected="false">Deskripsi Bisnis</a> </li>
-                   <li class="nav-item sp-tab"> <a class="nav-link inter-medium-alabaster" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Kontak</a> </li>
-               </ul> <!-- content -->
-               <div class="tab-content" id="pills-tabContent p-3">
-                   <!-- 1st card -->
-                   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                       <div class="table-row-1">
-                        <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                      </div>
-                      <div class="table-row">
-                        <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                      </div>
-                      <div class="table-row">
-                        <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                      </div>
-                   </div> <!-- 2nd card -->
-                   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                       <div class="table-row-1">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                        <div class="table-row">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                        <div class="table-row">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                   </div> <!-- 3nd card --> <!-- 2nd card -->
-                   <div class="tab-pane fade" id="pills-des" role="tabpanel" aria-labelledby="pills-des-tab">
-                       <div class="table-row-1">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                        <div class="table-row">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                        <div class="table-row">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                   </div> <!-- 3nd card -->
-                    <!-- 2nd card -->
-                   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                       <div class="table-row-1">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                        <div class="table-row">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                        <div class="table-row">
-                          <span class="inter-medium-delta-16px">Deskripsi Bisnis</span>
-                        </div>
-                   </div> <!-- 3nd card -->
-                                
+          <div class="col-lg-6 col-sm-6">
+        <!-- nav options -->
+        <ul class="nav nav-pills mb-3 shadow-sm" id="pills-tab" role="tablist">
+          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta active show" id="pills-home-tab"
+              data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Informasi
+              Saham</a> </li>
+          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-profile-tab" data-toggle="pill"
+              href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detail Saham</a>
+          </li>
+          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill"
+              href="#pills-des" role="tab" aria-controls="pills-des" aria-selected="false">Deskripsi Bisnis</a> </li>
+          <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill"
+              href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Kontak</a> </li>
+        </ul> <!-- content -->
+        <div class="tab-content" id="pills-tabContent p-3">
+          <!-- 1st card -->
+          <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            {{-- <div class="table-row-1">
+              <span class="inter-medium-delta-16px">Saham Tersisa : 100</span>
+            </div>
+            <div class="table-row">
+              <span class="inter-medium-delta-16px">Dalam Lembar : 100</span>
+            </div>
+            <div class="table-row">
+              <span class="inter-medium-delta-16px">Total Rupiah : 100</span>
+            </div> --}}
+            <div class="row">
+              <div class="col-6">
+                <table style="color: var(--delta);
+                font-family: var(--font-family-inter);
+                font-size: var(--font-size-l);
+                font-style: normal;
+                font-weight: 500;">
+                  <tr>
+                    <td>Saham Tersisa <br> 
+                    @if ($emt->avg_capital_needs < 0)
+                    {{number_format(round((($emt->avg_capital_needs-$bok->tot)/$emt->avg_capital_needs)*100,0),0,',','.')}}%
+                    @else
+                       0,00%
+                    @endif
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Dalam Lembar <br> 
+                    @if ($emt->price < 0)
+                    {{number_format(round(($emt->avg_capital_needs-$bok->tot)/$emt->price,0),0,',','.')}} Lembar
+                    @else
+                       0 Lembar
+                    @endif</td>
+                  </tr>
+                  <tr>
+                    <td>Total Rupiah <br> 
+                    @if ($emt->avg_capital_needs-$bok->tot > 0)
+                    Rp{{number_format(round(($emt->avg_capital_needs-$bok->tot),0),0,',','.')}}
+                    @else
+                       Rp 0
+                    @endif</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-6">
+                <table style="color: var(--delta);
+                font-family: var(--font-family-inter);
+                font-size: var(--font-size-l);
+                font-style: normal;
+                font-weight: 500;">
+                  <tr>
+                    <td>Saham Terjual <br>
+                    @if ($emt->avg_capital_needs < 0)
+                    {{number_format(round(($bok->tot/$emt->avg_capital_needs)*100,0),0,',','.')}}%
+                    @else
+                       100%
+                    @endif </td>
+                  </tr>
+                  <tr>
+                    <td>Dalam Lembar <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}}</td>
+                  </tr>
+                  <tr>
+                    <td>Dalam Rupiah<br> Rp{{number_format(round($bok->tot,0),0,',','.')}}</td>
+                  </tr>
+                </table>
               </div>
             </div>
+          </div> <!-- 2nd card -->
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="row">
+              <div class="col-6">
+                <table style="color: var(--delta);
+                font-family: var(--font-family-inter);
+                font-size: var(--font-size-l);
+                font-style: normal;
+                font-weight: 500;">
+                  <tr>
+                    <td>Harga Saham <br> Rp{{number_format(round($emt->price,0),0,',','.')}}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Saham <br> {{number_format(round($emt->avg_capital_needs / $emt->price,0),0,',','.')}}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Saham (Rp) <br> Rp{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-6">
+                <table style="color: var(--delta);
+                font-family: var(--font-family-inter);
+                font-size: var(--font-size-l);
+                font-style: normal;
+                font-weight: 500;">
+                  <tr>
+                    <td>Kode Saham <br> {{$emt->code_emiten}}</td>
+                  </tr>
+                  <tr>
+                    <td>Sisa Waktu <br> 
+                    <?php 
+                      $now = time();
+                      $start = strtotime($status->date);
+                      $end = strtotime($status->end_date);
+                      $datediff = $end - $now;
+                      $dt = ($datediff / (60 * 60 * 24));
+                    ?>
+                    @if ($dt < 0)
+                    0 Hari
+                    @else
+                    {{round($datediff / (60 * 60 * 24))}} Hari
+                    @endif 
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Periode Deviden<br> 6 Bulan</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div> <!-- 3nd card -->
+          <!-- 2nd card -->
+          <div class="tab-pane fade" id="pills-des" role="tabpanel" aria-labelledby="pills-des-tab">
+            <div class="table-row-1">
+              <span class="inter-medium-delta-16px" style="text-align: justify;">{{$emt->business_description}}</span>
+            </div>
+          </div> <!-- 3nd card -->
+          <!-- 2nd card -->
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="table-row-1">
+              <span class="inter-medium-delta-16px">Instagram : {{$emt->instagram}}</span>
+            </div>
+            <div class="table-row">
+              <span class="inter-medium-delta-16px">Facebook : {{$emt->facebook}}</span>
+            </div>
+            <div class="table-row">
+              <span class="inter-medium-delta-16px">Website : {{$emt->website}}</span>
+            </div>
+          </div> <!-- 3nd card -->
+        </div>
+            </div>
             <div class="col-lg-6 col-sm-6">
-                <div class="info-deviden border-1px-cape-cod" style="width: 100%; height: 100%;">
+                <div class="info-deviden border-1px-cape-cod" style="width: 100%;">
             <div class="pembagian-deviden-1 inter-medium-alabaster-18px">
               <span class="inter-medium-alabaster-18px">Pembagian Deviden</span>
             </div>
