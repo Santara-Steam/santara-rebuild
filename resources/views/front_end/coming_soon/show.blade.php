@@ -14,7 +14,7 @@
                                   $picture[1];
                               }
                               if(empty($picture[2])){
-                                  $picture[2] = 'default.png';
+                                  $picture[2] = $emt->owner_picture;
                               }else{
                                   $picture[2];
                               }

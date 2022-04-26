@@ -240,7 +240,7 @@
         <div class="container">
           <div class="col-12 d-flex justify-content-between" style="padding-bottom:10px">
             <div class="now-playing inter-bold-alabaster-24px">
-              <span class="tx-lf inter-bold-alabaster">Coming Soon ({{count($soon)}})</span>
+              <span class="tx-lf inter-bold-alabaster">Coming Soon ({{count($soonc)}})</span>
             </div>
 
 
