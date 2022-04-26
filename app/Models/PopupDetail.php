@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category_old extends Model
+class PopupDetail extends Model
 {
     use HasFactory;
-    protected $connection = 'mysql2';
-    protected $table = 'categories';
+    protected $table = 'pop_up_details';
 }

@@ -192,6 +192,14 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/cms/shortened/edit/{id}', [App\Http\Controllers\ShortenedController::class, 'edit']);
     Route::post('/admin/cms/shortened/update/{id}', [App\Http\Controllers\ShortenedController::class, 'update']);
     Route::post('/admin/cms/shortened/delete/{id}', [App\Http\Controllers\ShortenedController::class, 'destroy']);
+
+    Route::get('/admin/cms/popup', [App\Http\Controllers\PopupController::class, 'index']);
+    Route::get('/admin/cms/popup/create', [App\Http\Controllers\PopupController::class, 'create']);
+    Route::post('/admin/cms/popup/store', [App\Http\Controllers\PopupController::class, 'store']);
+    Route::get('/admin/cms/popup/edit/{id}', [App\Http\Controllers\PopupController::class, 'edit']);
+    Route::post('/admin/cms/popup/update/{id}', [App\Http\Controllers\PopupController::class, 'update']);
+    Route::post('/admin/cms/popup/delete/{id}', [App\Http\Controllers\PopupController::class, 'destroy']);
+
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
