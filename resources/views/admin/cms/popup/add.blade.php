@@ -15,20 +15,77 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <form enctype="multipart/form-data" action="{{ url('admin/cms/popup/store') }}" method="POST">
+                                        <form enctype="multipart/form-data" action="{{ url('admin/cms/popup/store') }}"
+                                            method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Name</label>
+                                                <label><strong>Judul Popup</strong></label>
                                                 <input class="form-control" name="title" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label><strong>Jenis Popup</strong></label>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="type" id="customRadio1"
+                                                        class="custom-control-input" value="ONETIME" checked>
+                                                    <label class="custom-control-label" for="customRadio1">One Time Popup (
+                                                        Hanya muncul 1 kali selama masa periode )</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="type" id="customRadio2"
+                                                        class="custom-control-input" value="FREQUENTLY">
+                                                    <label class="custom-control-label" for="customRadio2">Frequently Popup
+                                                        ( Selalu muncul saat masuk
+                                                        platform selama masih dalam masa periode )</label>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>Pictures</label>
+                                                        <div class="form-group">
+                                                            <label><strong>Tanggal awal Popup ditampilkan</strong></label>
+                                                            <input type="date" class="form-control" name="start_date"
+                                                                required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                            <label><strong>Tanggal akhir Popup ditampilkan</strong></label>
+                                                            <input type="date" class="form-control" name="finish_date"
+                                                                required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label><strong>Action Button</strong></label>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="action_button" id="customRadio3"
+                                                        class="custom-control-input" value="0" checked>
+                                                    <label class="custom-control-label" for="customRadio3">Tanpa Action
+                                                        button</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="action_button" id="customRadio4" value="1"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadio4">Menggunakan
+                                                        Action Button</label>
+                                                </div>
+                                                <small><i>Masukan text yang akan ditampilkan di action button</i></small>
+                                                <input type="text" class="form-control" name="action_text"
+                                                    placeholder="Contoh Beli Sekarang" />
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label><strong>Gambar Website</strong></label>
                                                         <div class="custom-file">
-                                                            <input accept="image/*" name="pictures" required type="file"
-                                                                class="custom-file-input" id="customFile" onchange="showPreview(event);">
-                                                            <label class="custom-file-label" for="customFile">Pilih Gambar</label>
+                                                            <input accept="image/*" name="website_pict" required type="file"
+                                                                class="custom-file-input" id="customFile"
+                                                                onchange="showPreview(event);">
+                                                            <label class="custom-file-label" for="customFile">Pilih
+                                                                Gambar</label>
                                                         </div>
                                                         <div class="preview">
                                                             <img id="file-ip-1-preview">
@@ -37,11 +94,13 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>Mobile</label>
+                                                        <label><strong>Gambar Aplikasi</strong></label>
                                                         <div class="custom-file">
-                                                            <input accept="image/*" name="mobile" required type="file"
-                                                                class="custom-file-input" id="customFile2" onchange="showPreview2(event);">
-                                                            <label class="custom-file-label" for="customFile2">Pilih Gambar</label>
+                                                            <input accept="image/*" name="mobile_pict" required type="file"
+                                                                class="custom-file-input" id="customFile2"
+                                                                onchange="showPreview2(event);">
+                                                            <label class="custom-file-label" for="customFile2">Pilih
+                                                                Gambar</label>
                                                         </div>
                                                         <div class="preview">
                                                             <img id="file-ip-2-preview">
@@ -49,9 +108,41 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label><strong>Link redirect action button ( Webstite
+                                                                )</strong></label>
+                                                        <input class="form-control" name="website_url"
+                                                            placeholder="Contoh: https://santara.co.id/detail/deck/219"
+                                                            required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label><strong>Link redirect action button ( Aplikasi
+                                                                )</strong></label>
+                                                        <input class="form-control" name="website_url"
+                                                            placeholder="Contoh: https://santara.co.id/detail/deck/219"
+                                                            required />
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
-                                                <label>Redirection</label>
-                                                <input class="form-control" name="redirection" required />
+                                                <label><strong>Status</strong></label>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="is_active" value="1" checked="checked"
+                                                        id="customRadio5" class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadio5">Aktif (Popup akan
+                                                        muncul jika berada dalam masa periode yang sudah ditentukan)</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="is_active" value="0" id="customRadio6"
+                                                        class="custom-control-input" />
+                                                    <label class="custom-control-label" for="customRadio6">Tidak Aktif
+                                                        (Popup tidak akan muncul meskipun dalam masa periode yang sudah
+                                                        ditentukan )</label>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn btn-primary" type="submit">Simpan</button>
@@ -112,10 +203,12 @@
             margin-top: 8px;
             margin-bottom: 8px;
         }
+
         img#file-ip-2-preview {
             width: 200px;
             margin-top: 8px;
             margin-bottom: 8px;
         }
+
     </style>
 @endsection

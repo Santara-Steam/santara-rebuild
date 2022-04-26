@@ -18,11 +18,11 @@
                                         <form enctype="multipart/form-data" action="{{ url('admin/cms/supporter/update/'.$supporter->id) }}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Name</label>
+                                                <label><strong>Name</strong></label>
                                                 <input class="form-control" value="{{ $supporter->name }}" name="name" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Logo</label>
+                                                <label><strong>Logo</strong></label>
                                                 <div class="custom-file">
                                                     <input accept="image/*" name="logo" required type="file"
                                                         class="custom-file-input" id="customFile" onchange="showPreview(event);">
@@ -33,7 +33,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Link</label>
+                                                <label><strong>Link</strong></label>
                                                 <input class="form-control" value="{{ $supporter->link }}" name="link" required />
                                             </div>
                                             <div class="form-group">
