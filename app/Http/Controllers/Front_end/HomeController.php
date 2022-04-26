@@ -135,10 +135,29 @@ class HomeController extends Controller
             // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
             ->groupBy('emitens.id')
             ->orderby('vot','DESC')
+            ->limit(12)
+            ->get()
+            ;
+            $soonc = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+            SELECT count(id) from emiten_comments
+            where emiten_id = emitens.id
+            ) as cmt'))
+            ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+            ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+            ->where('emitens.is_deleted',0)
+            ->where('emitens.is_active',0)
+            ->where('emitens.is_verified',1)
+            ->where('emitens.is_pralisting',1)
+            ->where('emitens.is_coming_soon',1)
+            // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+            // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+            // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+            ->groupBy('emitens.id')
+            ->orderby('vot','DESC')
             ->get()
             ;
         
-        return view('front_end/home/index',compact('now_playing','sold_out','soon'));
+        return view('front_end/home/index',compact('now_playing','sold_out','soon','soonc'));
         // // dd(count($now_playing));
         // dd(count($soon['data']));
         // dd($this->getPeekPralisting());

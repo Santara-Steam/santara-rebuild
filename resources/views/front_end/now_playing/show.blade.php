@@ -42,6 +42,12 @@
                                 $emt->avg_capital_needs = $emt->supply*$emt->price;
                               }
 
+                              if(empty($emt->trademark)){
+                                                $emt->trademark = $emt->company_name;
+                                            }else{
+                                                $emt->trademark;
+                                            }
+
                               ?>
 <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
