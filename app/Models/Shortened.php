@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Deposit extends Model
+class Shortened extends Model
 {
     use HasFactory;
-    protected $table = "deposits";
+    protected $table = 'shortened';
 }

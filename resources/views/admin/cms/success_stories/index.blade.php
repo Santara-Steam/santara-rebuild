@@ -41,8 +41,7 @@
                                                         <td>{{ $row->title }}</td>
                                                         <td>{{ $row->subtitle }}</td>
                                                         <td>{{ $row->created_at }}</td>
-                                                        <td><img height="50px" src="{{ asset('public/testimoni').'/'.$row->image }}"/></td>
-                                                        {{-- <td><img height="50px" src="{{ config('global.STORAGE_GOOGLE').'success_story/'.$row->image }}"/></td> --}}
+                                                        <td><img height="50px" src="{{ config('global.STORAGE_GOOGLE').'success_story/'.$row->image }}"/></td>
                                                         <td style="text-align: center">
                                                             <a href="{{ url('admin/cms/testimoni/edit/'.$row->id.'') }}" class="btn btn-primary"><span class="la la-pencil"></a>
                                                             <button id="btnDelete" class="btn btn-danger" data-id="{{ $row->id }}"><span class="la la-trash"></span></button>

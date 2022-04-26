@@ -42,7 +42,8 @@
             </li>
             <li class=" nav-item {{ 'admin/cms/header' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/header')}}"><i class="la la-image"></i><span class="menu-title" data-i18n="eCommerce">Headers</span></a>
             <li class=" nav-item {{ 'admin/cms/testimoni' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/testimoni')}}"><i class="la la-comment"></i><span class="menu-title" data-i18n="eCommerce">Testimoni</span></a>
-            
+            <li class=" nav-item {{ 'admin/cms/supporter' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/supporter')}}"><i class="la la-ad"></i><span class="menu-title" data-i18n="eCommerce">Supporters</span></a>
+            <li class=" nav-item {{ 'admin/cms/shortened' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/shortened')}}"><i class="la la-link"></i><span class="menu-title" data-i18n="eCommerce">Shorteneds</span></a>
         </ul>
     </div>
 </div>

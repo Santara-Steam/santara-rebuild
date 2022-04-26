@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Header;
+use Google\Cloud\Storage\StorageClient;
 
 class HeaderController extends Controller
 {
@@ -27,17 +28,32 @@ class HeaderController extends Controller
     }
 
     public function store(Request $request)
-    {  
-        $pictures = time().'.'.$request->pictures->extension();  
-        $request->pictures->move(public_path('headers'), $pictures);
+    { 
+        $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+        $storage = new StorageClient([
+            'keyFile' => json_decode($googleConfigFile, true)
+        ]);
+        $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+        $bucket = $storage->bucket($storageBucketName);
+        $filePicture = fopen($request->file('pictures')->getPathName(), 'r');
+        $newFolderName = 'santara.co.id/header';
+        $pictures = $newFolderName.'/'.$request->file('pictures')->getClientOriginalName();
+        $bucket->upload($filePicture, [
+            'predefinedAcl' => 'publicRead',
+            'name' => $pictures
+        ]);
 
-        $mobile = time().'.'.$request->mobile->extension();  
-        $request->mobile->move(public_path('headers'), $mobile);
+        $fileMobile = fopen($request->file('mobile')->getPathName(), 'r');
+        $mobile = $newFolderName.'/'.$request->file('mobile')->getClientOriginalName();
+        $bucket->upload($fileMobile, [
+            'predefinedAcl' => 'publicRead',
+            'name' => $mobile
+        ]);
 
         $header = new Header();
         $header->title = $request->title;
-        $header->pictures = $pictures;
-        $header->mobile = $mobile;
+        $header->pictures = $request->file('pictures')->getClientOriginalName();
+        $header->mobile = $request->file('mobile')->getClientOriginalName();
         $header->redirection = $request->redirection;
         $header->status = 1;
         $header->save();
@@ -50,19 +66,33 @@ class HeaderController extends Controller
 
     public function update(Request $request, $id)
     {
+        $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+        $storage = new StorageClient([
+            'keyFile' => json_decode($googleConfigFile, true)
+        ]);
+        $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+        $bucket = $storage->bucket($storageBucketName);
+        $newFolderName = 'santara.co.id/header';
+
         $header = Header::find($id);
         $header->title = $request->title;
         if($request->hasFile('pictures')){
-            \File::delete(public_path('headers/'.$header->pictures));
-            $pictures = time().'.'.$request->pictures->extension();  
-            $request->pictures->move(public_path('headers'), $pictures);
-            $header->pictures = $pictures;
+            $filePicture = fopen($request->file('pictures')->getPathName(), 'r');
+            $pictures = $newFolderName.'/'.$request->file('pictures')->getClientOriginalName();
+            $bucket->upload($filePicture, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+            $header->pictures = $request->file('pictures')->getClientOriginalName();
         }
         if($request->hasFile('mobile')){
-            \File::delete(public_path('headers/'.$header->mobile));
-            $mobile = time().'.'.$request->mobile->extension();  
-            $request->mobile->move(public_path('headers'), $mobile);
-            $header->mobile = $mobile;
+            $fileMobile = fopen($request->file('mobile')->getPathName(), 'r');
+            $mobile = $newFolderName.'/'.$request->file('mobile')->getClientOriginalName();
+            $bucket->upload($fileMobile, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $mobile
+            ]);
+            $header->mobile = $request->file('mobile')->getClientOriginalName();
         }
         $header->redirection = $request->redirection;
         $header->status = 1;

@@ -31,7 +31,7 @@
                                                             <label class="custom-file-label" for="customFile">Pilih Gambar</label>
                                                         </div>
                                                         <div class="preview">
-                                                            <img id="file-ip-1-preview" src="{{ asset('public/headers').'/'.$header->pictures }}" />
+                                                            <img id="file-ip-1-preview" src="{{ config('global.STORAGE_GOOGLE').'header/'.$row->pictures }}" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -44,7 +44,7 @@
                                                             <label class="custom-file-label" for="customFile2">Pilih Gambar</label>
                                                         </div>
                                                         <div class="preview">
-                                                            <img id="file-ip-2-preview" src="{{ asset('public/headers').'/'.$header->mobile }}">
+                                                            <img id="file-ip-2-preview" src="{{ config('global.STORAGE_GOOGLE').'header/'.$row->mobile }}">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -179,6 +179,19 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/cms/testimoni/update/{id}', [App\Http\Controllers\SuccessStoriesController::class, 'update']);
     Route::post('/admin/cms/testimoni/delete/{id}', [App\Http\Controllers\SuccessStoriesController::class, 'destroy']);
     
+    Route::get('/admin/cms/supporter', [App\Http\Controllers\SupportersController::class, 'index']);
+    Route::get('/admin/cms/supporter/create', [App\Http\Controllers\SupportersController::class, 'create']);
+    Route::post('/admin/cms/supporter/store', [App\Http\Controllers\SupportersController::class, 'store']);
+    Route::get('/admin/cms/supporter/edit/{id}', [App\Http\Controllers\SupportersController::class, 'edit']);
+    Route::post('/admin/cms/supporter/update/{id}', [App\Http\Controllers\SupportersController::class, 'update']);
+    Route::post('/admin/cms/supporter/delete/{id}', [App\Http\Controllers\SupportersController::class, 'destroy']);
+
+    Route::get('/admin/cms/shortened', [App\Http\Controllers\ShortenedController::class, 'index']);
+    Route::get('/admin/cms/shortened/create', [App\Http\Controllers\ShortenedController::class, 'create']);
+    Route::post('/admin/cms/shortened/store', [App\Http\Controllers\ShortenedController::class, 'store']);
+    Route::get('/admin/cms/shortened/edit/{id}', [App\Http\Controllers\ShortenedController::class, 'edit']);
+    Route::post('/admin/cms/shortened/update/{id}', [App\Http\Controllers\ShortenedController::class, 'update']);
+    Route::post('/admin/cms/shortened/delete/{id}', [App\Http\Controllers\ShortenedController::class, 'destroy']);
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

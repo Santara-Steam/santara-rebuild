@@ -29,28 +29,25 @@ class SuccessStoriesController extends Controller
 
     public function store(Request $request)
     {
-        // $storage = new StorageClient([
-		// 	'keyFilePath' => 'santara-cloud-1261a9724a56.json',
-		// 	'projectId' => 'santara-cloud'
-		// ]);
-        // $bucket = $storage->bucket(env('STORAGE_GOOGLE_BUCKET'));
-        // $uploadPicture = $bucket->upload(
-        //     file_get_contents($request->file('image')->getPathName()),
-        //     [
-        //         'name' => "santara.co.id/success_story/" . $request->file('image')->getClientOriginalName()
-        //     ]
-        // );
-        // $uploadPicture->acl()->add('allUsers', 'READER');
-
-        $image = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('testimoni'), $image);
+        $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+        $storage = new StorageClient([
+            'keyFile' => json_decode($googleConfigFile, true)
+        ]);
+        $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+        $bucket = $storage->bucket($storageBucketName);
+        $fileSource = fopen($request->file('image')->getPathName(), 'r');
+        $newFolderName = 'santara.co.id/success_story';
+        $googleCloudStoragePath = $newFolderName.'/'.$request->file('image')->getClientOriginalName();
+        $bucket->upload($fileSource, [
+            'predefinedAcl' => 'publicRead',
+            'name' => $googleCloudStoragePath
+        ]);
     
         $successStories = new SuccessStories();
         $successStories->title = $request->title;
         $successStories->subtitle = $request->subtitle;
         $successStories->description = $request->description;
-        //$successStories->image = $request->file('image')->getClientOriginalName();
-        $successStories->image = $image;
+        $successStories->image = $request->file('image')->getClientOriginalName();
         $successStories->save();
         $notif = array(
             'message' => 'Berhasil menambahkan testimoni',
@@ -66,10 +63,20 @@ class SuccessStoriesController extends Controller
         $successStories->subtitle = $request->subtitle;
         $successStories->description = $request->description;
         if($request->hasFile('image')){
-            \File::delete(public_path('testimoni/'.$successStories->image));
-            $image = time().'.'.$request->image->extension();  
-            $request->image->move(public_path('testimoni'), $image);
-            $successStories->image = $image;
+            $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+            $storage = new StorageClient([
+                'keyFile' => json_decode($googleConfigFile, true)
+            ]);
+            $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+            $bucket = $storage->bucket($storageBucketName);
+            $fileSource = fopen($request->file('image')->getPathName(), 'r');
+            $newFolderName = 'santara.co.id/success_story';
+            $googleCloudStoragePath = $newFolderName.'/'.$request->file('image')->getClientOriginalName();
+            $bucket->upload($fileSource, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $googleCloudStoragePath
+            ]);
+            $successStories->image = $request->file('image')->getClientOriginalName();
         }
         $successStories->save();
         $notif = array(
@@ -82,9 +89,9 @@ class SuccessStoriesController extends Controller
     public function destroy($id)
     {
         $successStories = SuccessStories::find($id);
-        \File::delete(public_path('testimoni/'.$successStories->image));
         $successStories->status = 0;
         $successStories->save();
+        echo json_encode(['msg' => 200]); 
     }
 
 }

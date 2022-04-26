@@ -11,34 +11,30 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h1 class="card-title-member">Edit Testimoni</h1>
+                                    <h1 class="card-title-member">Edit Supporter</h1>
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <form enctype="multipart/form-data" action="{{ url('admin/cms/testimoni/update/'.$testimoni->id) }}" method="POST">
+                                        <form enctype="multipart/form-data" action="{{ url('admin/cms/supporter/update/'.$supporter->id) }}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Title</label>
-                                                <input class="form-control" value="{{ $testimoni->title }}" name="title" required />
+                                                <label>Name</label>
+                                                <input class="form-control" value="{{ $supporter->name }}" name="name" required />
                                             </div>
                                             <div class="form-group">
-                                                <label>Subtitle</label>
-                                                <input class="form-control" value="{{ $testimoni->subtitle }}" name="subtitle" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Image</label>
+                                                <label>Logo</label>
                                                 <div class="custom-file">
-                                                    <input accept="image/*" name="image" type="file"
+                                                    <input accept="image/*" name="logo" required type="file"
                                                         class="custom-file-input" id="customFile" onchange="showPreview(event);">
                                                     <label class="custom-file-label" for="customFile">Pilih Gambar</label>
                                                 </div>
                                                 <div class="preview">
-                                                    <img id="file-ip-1-preview" src="{{ config('global.STORAGE_GOOGLE').'success_story/'.$row->image }}">
+                                                    <img id="file-ip-1-preview" src="{{ config('global.STORAGE_GOOGLE').'supporter/'.$supporter->logo }}">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea class="form-control" name="description" required>{{ $testimoni->description }}</textarea>
+                                                <label>Link</label>
+                                                <input class="form-control" value="{{ $supporter->link }}" name="link" required />
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn btn-primary" type="submit">Simpan</button>

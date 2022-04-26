@@ -11,9 +11,9 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h1 class="card-title-member">Headers</h1>
+                                    <h1 class="card-title-member">Shortened</h1>
                                     <div class="heading-elements">
-                                        <a class="btn btn-primary" href="{{ url('admin/cms/header/create') }}">
+                                        <a class="btn btn-primary" href="{{ url('admin/cms/shortened/create') }}">
                                             Tambah
                                         </a>
                                     </div>
@@ -25,23 +25,21 @@
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>
-                                                        <th>Name</th>
-                                                        <th>Picture</th>
-                                                        <th>Mobile</th>
+                                                        <th width="30%">Title</th>
+                                                        <th>Url</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @php $no = 0; @endphp
-                                                    @foreach($headers as $row)
+                                                    @foreach($shorteneds as $row)
                                                     @php $no++; @endphp
                                                     <tr>
-                                                        <td>{{ $no }}</td>
+                                                        <td class="text-center">{{ $no }}</td>
                                                         <td>{{ $row->title }}</td>
-                                                        <td><img height="100" src="{{ config('global.STORAGE_GOOGLE').'header/'.$row->pictures }}"/></td>
-                                                        <td><img height="100" src="{{ config('global.STORAGE_GOOGLE').'header/'.$row->mobile }}"/></td>
+                                                        <td><a href="{{ config('global.BASE_FILE_URL').'/'.$row->url }}">{{ config('global.BASE_FILE_URL').'/'.$row->url }}</a></td>
                                                         <td style="text-align: center">
-                                                            <a href="{{ url('admin/cms/header/edit/'.$row->id.'') }}" class="btn btn-primary"><span class="la la-pencil"></a>
+                                                            <a href="{{ url('admin/cms/shortened/edit/'.$row->id.'') }}" class="btn btn-primary"><span class="la la-pencil"></a>
                                                             <button id="btnDelete" class="btn btn-danger" data-id="{{ $row->id }}"><span class="la la-trash"></span></button>
                                                         </td>
                                                     </tr>
@@ -85,7 +83,7 @@
                 if (result.value) {
                     $("#loader").show();
                     $.ajax({
-                        url: '{{ url("admin/cms/header/delete") }}' + '/' + data_id,
+                        url: '{{ url("admin/cms/shortened/delete") }}' + '/' + data_id,
                         type: 'POST',
                         success: function() {
                             $("#loader").hide();
