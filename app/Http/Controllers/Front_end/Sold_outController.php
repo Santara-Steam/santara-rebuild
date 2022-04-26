@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\emitens_old;
 use Illuminate\Support\Facades\DB;
+use App\Models\Transactions_old;
+use App\Models\emiten_journey_old;
 
 class Sold_outController extends Controller
 {
@@ -32,8 +34,16 @@ class Sold_outController extends Controller
     public function detail($id)
     {
         $emt = emitens_old::where('id',$id)->first();
+        
+        $bok = Transactions_old::select(db::raw('SUM(IF(transactions.is_verified = 1 AND transactions.is_deleted = 0, transactions.amount, 0))  as tot'))
+        ->where('emiten_id',$id)->first();
 
-        return view('front_end/sold_out/show',compact('emt'));
+        $status = emiten_journey_old::select('*')->where('emiten_id',$id)
+        ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
+        where emiten_id = '.$id.')')
+        ->first();
+
+        return view('front_end/sold_out/show',compact('emt','bok','status'));
         
     }
 
