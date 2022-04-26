@@ -529,7 +529,7 @@
                             </div>
                           </div>
                           <div class="info-pendanaan">
-                            <div class="mul inter-normal-mercury-14px">
+                            <div class="mul inter-normal-mercury-12px">
                               <span class="tx-sold span-1 inter-normal-quill-gray">Total Pendanaan <span
                                   class="tx-sold inter-bold-white" style="font-weight: bold">Rp
                                   {{number_format(round($item->supply * $item->price),0,',','.')}}</span></span>
@@ -543,11 +543,11 @@
                           <div class="footer-card-1">
                             <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                               <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span><span
-                                class="inter-medium-alabaster-12px">Rp250.000.000</span>
+                                class="inter-medium-alabaster-12px">Rp{{number_format(round($item->dvd),0,',','.')}}</span>
                             </div>
                             <div class="pembagian-dividen-1-kali inter-normal-mercury-10px">
                               <span class="inter-normal-quill-gray-12px">Pembagian Dividen<br /></span><span
-                                class="inter-medium-alabaster-12px">1 Kali</span>
+                                class="inter-medium-alabaster-12px">{{$item->dvc}} Kali</span>
                             </div>
                           </div>
                         </div>
@@ -1051,13 +1051,12 @@
                   </div>
                 </div>
                 <div class="info-pendanaan">
-                  <div class="mul inter-normal-mercury-14px">
-                    <span class="tx-sold span-1 inter-normal-quill-gray">Total Pendanaan</span>
-                  </div>
-                </div>
-                <div class="addr inter-bold-white-14px">
-                  <span class="tx-sold inter-bold-white" style="font-weight: bold">Rp {{number_format(round($item->supply * $item->price),0,',','.')}}</span>
-                </div>
+                            <div class="mul inter-normal-mercury-12px">
+                              <span class="tx-sold span-1 inter-normal-quill-gray">Total Pendanaan <span
+                                  class="tx-sold inter-bold-white" style="font-weight: bold">Rp
+                                  {{number_format(round($item->supply * $item->price),0,',','.')}}</span></span>
+                            </div>
+                          </div>
                 <div>
                 </div>
               </div>
@@ -1066,11 +1065,11 @@
                 <div class="footer-card-1">
                   <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                     <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span><span
-                      class="inter-medium-alabaster-12px">Rp250.000.000</span>
+                      class="inter-medium-alabaster-12px">Rp{{number_format(round($item->dvd),0,',','.')}}</span>
                   </div>
                   <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
                     <span class="inter-normal-quill-gray-12px">Pembagian Dividen<br /></span><span
-                      class="inter-medium-alabaster-12px">1 Kali</span>
+                      class="inter-medium-alabaster-12px">{{$item->dvc}} Kali</span>
                   </div>
                 </div>
               </div>

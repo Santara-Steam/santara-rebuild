@@ -9,9 +9,5 @@ class Category_old extends Model
 {
     use HasFactory;
     protected $connection = 'mysql2';
-    protected $table = 'category';
-    public function ctg()
-    {
-        return $this->belongsTo(kategori::class,"category_id")->withDefault();
-    }
+    protected $table = 'categories';
 }
