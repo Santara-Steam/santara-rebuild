@@ -45,6 +45,7 @@
             <li class=" nav-item {{ 'admin/cms/supporter' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/supporter')}}"><i class="la la-life-ring "></i><span class="menu-title" data-i18n="eCommerce">Supporters</span></a>
             <li class=" nav-item {{ 'admin/cms/shortened' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/shortened')}}"><i class="la la-link"></i><span class="menu-title" data-i18n="eCommerce">Shorteneds</span></a>
             <li class=" nav-item {{ 'admin/cms/popup' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/popup')}}"><i class="la la-image"></i><span class="menu-title" data-i18n="eCommerce">Popup Management</span></a>
+            <li class=" nav-item {{ 'admin/cms/video' == request()->path() ? 'active' : '' }}"><a href="{{url('admin/cms/video')}}"><i class="la la-play"></i><span class="menu-title" data-i18n="eCommerce">Video Management</span></a>
         </ul>
     </div>
 </div>

@@ -202,6 +202,13 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/cms/popup/update/{id}', [App\Http\Controllers\PopupController::class, 'update']);
     Route::post('/admin/cms/popup/delete/{id}', [App\Http\Controllers\PopupController::class, 'destroy']);
 
+    Route::get('/admin/cms/video', [App\Http\Controllers\SantaraVideosController::class, 'index']);
+    Route::get('/admin/cms/video/create', [App\Http\Controllers\SantaraVideosController::class, 'create']);
+    Route::post('/admin/cms/video/store', [App\Http\Controllers\SantaraVideosController::class, 'saveData']);
+    Route::get('/admin/cms/video/edit/{id}', [App\Http\Controllers\SantaraVideosController::class, 'edit']);
+    Route::post('/admin/cms/video/delete/{id}', [App\Http\Controllers\SantaraVideosController::class, 'destroy']);
+    Route::get('/admin/cms/video/set-status/{uuid}/{status}', [App\Http\Controllers\SantaraVideosController::class, 'setStatus']);
+
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
