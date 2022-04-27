@@ -384,7 +384,7 @@
             </div>
             <div class="table-2 border-1px-cape-cod" style="width: 90%; height: 100%;">
               <div class="table-cell-row-1">
-                <div class="table-cell">
+                <div class="table-cell" style="margin-left: 10px;">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
                     <span class="inter-normal-delta-12px">Pembagian Deviden Tahap I - </span
                     ><span class="inter-normal-delta-12px">
@@ -409,7 +409,7 @@
               <div class="overlap-group-3">
                 <img class="divider" src="img/divider-114@2x.png" />
                 <div class="table-cell-row">
-                  <div class="table-cell">
+                  <div class="table-cell" style="margin-left: 10px;">
                     <p class="pembagian-deviden-ta inter-normal-delta-12px">
                       <span class="inter-normal-delta-12px">Pembagian Deviden Tahap II - 
                       @if(is_null($dv2))  
@@ -436,7 +436,7 @@
               <div class="overlap-group-3">
                 <img class="divider" src="img/divider-114@2x.png" />
                 <div class="table-cell-row">
-                  <div class="table-cell">
+                  <div class="table-cell" style="margin-left: 10px;">
                     <p class="pembagian-deviden-ta inter-normal-delta-12px">
                       <span class="inter-normal-delta-12px">Pembagian Deviden Tahap III - 
                       @if(is_null($dv3))  

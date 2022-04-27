@@ -234,6 +234,7 @@ Route::get('/penerbit', [SubMenuController::class, 'penerbit'])->name('penerbit'
 Route::get('/support-by', [SubMenuController::class, 'support'])->name('support-by');
 Route::get('/kontak', [SubMenuController::class, 'kontak'])->name('kontak');
 Route::get('/pertanyaan', [SubMenuController::class, 'pertanyaan'])->name('pertanyaan');
+Route::get('/video', [SubMenuController::class, 'video'])->name('video');
 
 Route::get('/error-404', [ErrorPageController::class, 'index'])->name('notfound');
 

@@ -35,4 +35,9 @@ class SubMenuController extends Controller
     {
         return view('front_end/sub_menu/pertanyaan');
     }
+
+    public function video()
+    {
+        return view('front_end/sub_menu/video');
+    }
 }
