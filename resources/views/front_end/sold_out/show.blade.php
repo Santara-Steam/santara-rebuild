@@ -83,39 +83,81 @@
                 <div class="col-lg-12">
                     <div class="np-timeline">
                         <ul class="timeline d-flex justify-content-evenly">
-                            <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="22 Juni 2021">
-                            <div class="timeline-caption">
-                               <p class="timeline-text">Pra Penawaran Saham
-                            </div>
-                            <div class="timeline-caption"> <p class="timeline-text">22-06-2021</div>
-                            </li>
-                            <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="23 Juni 2021">
-                                <div class="timeline-caption">
-                                   <p class="timeline-text">Penawaran Saham
-                                </div>
-                                <div class="timeline-caption"> <p class="timeline-text" >23-06-2021</div>
-                            </li>
-                            <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
-                                <div class="timeline-caption">
-                                  <p class="timeline-text">Pendanaan Terpenuhi
-                                </div>
-                                <div class="timeline-caption">
-                                   <p class="timeline-text" >11-07-2021
-                                </div>
-                            </li>
-                            <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
-                                <div class="timeline-caption">
-                                   <p class="timeline-text">Penyerahan Dana
-                                </div>
-                                <div class="timeline-caption">
-                                  <p class="timeline-text" >12-08-2021
-                                </div>
-                            </li>
-                            <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
-                                <div class="timeline-caption">
-                                    <p class="timeline-text">Pembagian Dividen</p>
-                                </div>
-                            </li>
+                          @if(is_null($tmpra))
+                              <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Pra Penawaran Saham
+                              </div>
+                              <div class="timeline-caption"> <p class="timeline-text"></div>
+                              </li>
+                              @else
+                              <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="{{date('d M Y', strtotime($tmpra->date))}}">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Pra Penawaran Saham
+                              </div>
+                              <div class="timeline-caption"><p class="timeline-text">{{date('d-m-Y', strtotime($tmpra->date))}}</div>
+                              </li>
+                            @endif
+                            @if(is_null($tmpen))
+                              <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Penawaran Saham
+                              </div>
+                              <div class="timeline-caption"> <p class="timeline-text"></div>
+                              </li>
+                              @else
+                              <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="{{date('d M Y', strtotime($tmpen->date))}}">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Penawaran Saham
+                              </div>
+                              <div class="timeline-caption"><p class="timeline-text">{{date('d-m-Y', strtotime($tmpen->date))}}</div>
+                              </li>
+                            @endif
+                            @if(is_null($tmpd))
+                              <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Pendanaan Terpenuhi
+                              </div>
+                              <div class="timeline-caption"> <p class="timeline-text"></div>
+                              </li>
+                              @else
+                              <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="{{date('d M Y', strtotime($tmpd->date))}}">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Pendanaan Terpenuhi
+                              </div>
+                              <div class="timeline-caption"><p class="timeline-text">{{date('d-m-Y', strtotime($tmpd->date))}}</div>
+                              </li>
+                            @endif
+                            @if(is_null($tmpyd))
+                              <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Penyerahan Dana
+                              </div>
+                              <div class="timeline-caption"> <p class="timeline-text"></div>
+                              </li>
+                              @else
+                              <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="{{date('d M Y', strtotime($tmpyd->date))}}">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Penyerahan Dana
+                              </div>
+                              <div class="timeline-caption"><p class="timeline-text">{{date('d-m-Y', strtotime($tmpyd->date))}}</div>
+                              </li>
+                            @endif
+                            @if(is_null($tm))
+                              <li class="" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Pembagian Dividen
+                              </div>
+                              <div class="timeline-caption"> <p class="timeline-text"></div>
+                              </li>
+                              @else
+                              <li class="active-tl" data-bs-toggle="tooltip" data-bs-placement="top" title="{{date('d M Y', strtotime($tm->date))}}">
+                              <div class="timeline-caption">
+                                <p class="timeline-text">Pembagian Dividen
+                              </div>
+                              <div class="timeline-caption"><p class="timeline-text">{{date('d-m-Y', strtotime($tm->date))}}</div>
+                              </li>
+                            @endif
                        </ul>
                     </div>
                 </div>
@@ -201,7 +243,7 @@
                     @endif </td>
                   </tr>
                   <tr>
-                    <td>Dalam Lembar <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}}</td>
+                    <td>Dalam Lembar <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}} Lembar</td>
                   </tr>
                   <tr>
                     <td>Dalam Rupiah<br> Rp{{number_format(round($bok->tot,0),0,',','.')}}</td>
@@ -222,7 +264,7 @@
                     <td>Harga Saham <br> Rp{{number_format(round($emt->price,0),0,',','.')}}</td>
                   </tr>
                   <tr>
-                    <td>Total Saham <br> {{number_format(round($emt->avg_capital_needs / $emt->price,0),0,',','.')}}</td>
+                    <td>Total Saham <br> {{number_format(round($emt->avg_capital_needs / $emt->price,0),0,',','.')}} Lembar</td>
                   </tr>
                   <tr>
                     <td>Total Saham (Rp) <br> Rp{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</td>
@@ -283,7 +325,7 @@
         </div>
             </div>
             <div class="col-lg-6 col-sm-6">
-                <div class="info-deviden border-1px-cape-cod" style="width: 100%;">
+                <div class="info-deviden border-1px-cape-cod">
             <div class="pembagian-deviden-1 inter-medium-alabaster-18px">
               <span class="inter-medium-alabaster-18px">Pembagian Deviden</span>
             </div>
@@ -296,8 +338,13 @@
                   </p>
                 </div>
                 <div class="table-cell">
-                  <div class="price inter-medium-white-16px">
-                    <span class="inter-medium-white-16px">Rp10.000.000</span>
+                  <div class=" inter-medium-white-14px">
+                    <span class="inter-medium-white-14px">
+                  @if(is_null($dv))  
+                  Rp0
+                  @else
+                  Rp{{number_format(round($dv->devidend),0,',','.')}}
+                  @endif</span>
                   </div>
                 </div>
               </div>
@@ -310,8 +357,14 @@
                     </p>
                   </div>
                   <div class="table-cell">
-                    <div class="price inter-medium-white-16px">
-                      <span class="inter-medium-white-16px">Rp10.000.000</span>
+                    <div class=" inter-medium-white-14px">
+                      <span class="inter-medium-white-14px">
+                      @if(is_null($dv2))  
+                      Rp0
+                      @else
+                      Rp{{number_format(round($dv2->devidend),0,',','.')}}
+                      @endif
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -327,8 +380,14 @@
                     </p>
                   </div>
                   <div class="table-cell">
-                    <div class="price inter-medium-white-16px">
-                      <span class="inter-medium-white-16px">Rp10.000.000</span>
+                    <div class=" inter-medium-white-14px">
+                      <span class="inter-medium-white-14px">
+                      @if(is_null($dv3))  
+                      Rp0
+                      @else
+                      Rp{{number_format(round($dv3->devidend),0,',','.')}}
+                      @endif
+                      </span>
                     </div>
                   </div>
                 </div>

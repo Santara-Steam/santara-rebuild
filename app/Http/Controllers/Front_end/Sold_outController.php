@@ -8,6 +8,7 @@ use App\Models\emitens_old;
 use Illuminate\Support\Facades\DB;
 use App\Models\Transactions_old;
 use App\Models\emiten_journey_old;
+use App\Models\Devidend_old;
 
 class Sold_outController extends Controller
 {
@@ -33,17 +34,98 @@ class Sold_outController extends Controller
 
     public function detail($id)
     {
-        $emt = emitens_old::where('id',$id)->first();
+        $emt = emitens_old::where('id',$id)
+        ->first();
         
         $bok = Transactions_old::select(db::raw('SUM(IF(transactions.is_verified = 1 AND transactions.is_deleted = 0, transactions.amount, 0))  as tot'))
         ->where('emiten_id',$id)->first();
+
+        $dv = Devidend_old::select('devidend.*','emitens.*')
+        ->leftjoin('emitens', 'emitens.id','=','devidend.emiten_id')
+        ->where('devidend.emiten_id',$id)
+        ->where('devidend.phase',1)
+        ->where('emitens.is_active',1)
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->groupBy('emitens.id')
+        ->first();
+
+        $dv2 = Devidend_old::select('devidend.*','emitens.*')
+        ->leftjoin('emitens', 'emitens.id','=','devidend.emiten_id')
+        ->where('devidend.emiten_id',$id)
+        ->where('devidend.phase',2)
+        ->where('emitens.is_active',1)
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->groupBy('emitens.id')
+        ->first();
+
+        $dv3 = Devidend_old::select('devidend.*','emitens.*')
+        ->leftjoin('emitens', 'emitens.id','=','devidend.emiten_id')
+        ->where('devidend.emiten_id',$id)
+        ->where('devidend.phase',3)
+        ->where('emitens.is_active',1)
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->groupBy('emitens.id')
+        ->first();
 
         $status = emiten_journey_old::select('*')->where('emiten_id',$id)
         ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
         where emiten_id = '.$id.')')
         ->first();
 
-        return view('front_end/sold_out/show',compact('emt','bok','status'));
+        $tmpra = emiten_journey_old::select('emiten_journeys.*','emitens.*')
+        ->leftjoin('emitens', 'emitens.id','=','emiten_journeys.emiten_id')
+        ->where('emiten_journeys.emiten_id',$id)
+        ->where('emiten_journeys.title','Pra Penawaran Saham')
+        ->where('emitens.is_active',1)
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->groupBy('emitens.id')
+        ->first();
+
+        $tmpen = emiten_journey_old::select('emiten_journeys.*','emitens.*')
+        ->leftjoin('emitens', 'emitens.id','=','emiten_journeys.emiten_id')
+        ->where('emiten_journeys.emiten_id',$id)
+        ->where('emiten_journeys.title','Penawaran Saham')
+        ->where('emitens.is_active',1)
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->groupBy('emitens.id')
+        ->first();
+
+        $tmpd = emiten_journey_old::select('emiten_journeys.*','emitens.*')
+        ->leftjoin('emitens', 'emitens.id','=','emiten_journeys.emiten_id')
+        ->where('emiten_journeys.emiten_id',$id)
+        ->where('emiten_journeys.title','Pendanaan Terpenuhi')
+        ->where('emitens.is_active',1)
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->groupBy('emitens.id')
+        ->first();
+
+        $tmpyd = emiten_journey_old::select('emiten_journeys.*','emitens.*')
+        ->leftjoin('emitens', 'emitens.id','=','emiten_journeys.emiten_id')
+        ->where('emiten_journeys.emiten_id',$id)
+        ->where('emiten_journeys.title','Penyerahan Dana')
+        ->where('emitens.is_active',1)
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->groupBy('emitens.id')
+        ->first();
+
+        $tm = emiten_journey_old::select('emiten_journeys.*','emitens.*')
+        ->leftjoin('emitens', 'emitens.id','=','emiten_journeys.emiten_id')
+        ->where('emiten_journeys.emiten_id',$id)
+        ->where('emiten_journeys.title','Pembagian Dividen')
+        ->where('emitens.is_active',1)
+        ->where('emitens.is_deleted',0)
+        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->groupBy('emitens.id')
+        ->first();
+
+        return view('front_end/sold_out/show',compact('emt','bok','status','dv','tm','tmpra','tmpen','tmpd','tmpyd','dv2','dv3'));
         
     }
 
