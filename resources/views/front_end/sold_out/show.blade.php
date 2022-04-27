@@ -334,7 +334,12 @@
                 <div class="table-cell">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
                     <span class="inter-normal-delta-12px">Pembagian Deviden Tahap I - </span
-                    ><span class="inter-normal-delta-12px">08 Jan 2022</span>
+                    ><span class="inter-normal-delta-12px">
+                      @if(is_null($dv))  
+                      
+                      @else
+                      {{date('d M Y', strtotime($dv->devidend_date))}}
+                      @endif</span>
                   </p>
                 </div>
                 <div class="table-cell">
@@ -353,7 +358,13 @@
                 <div class="table-cell-row">
                   <div class="table-cell">
                     <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap II - 08 Aug 2022</span>
+                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap II - 
+                      @if(is_null($dv2))  
+                      
+                      @else
+                      {{date('d M Y', strtotime($dv2->devidend_date))}}
+                      @endif
+                      </span>
                     </p>
                   </div>
                   <div class="table-cell">
@@ -374,9 +385,14 @@
                 <div class="table-cell-row">
                   <div class="table-cell">
                     <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap III</span
-                      ><span class="inter-normal-delta-12px"> - </span
-                      ><span class="inter-medium-delta-12px">08 Jan 2023</span>
+                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap III - 
+                      @if(is_null($dv3))  
+                      
+                      @else
+                      {{date('d M Y', strtotime($dv3->devidend_date))}}
+                      @endif  
+                      </span
+                      >
                     </p>
                   </div>
                   <div class="table-cell">
