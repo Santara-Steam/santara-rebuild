@@ -52,7 +52,7 @@
                     <div class="col-xl-6 col-md-6 col-sm-12">
                         <div class="card">
                             <div class="card-content">
-                                <img class="card-img-top img-fluid" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}"
+                                <img class="card-img-top img-fluid" src="https://storage.googleapis.com/santara-bucket-staging/{{$picture[0]}}"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title" style="margin-bottom: 0px;">{{$item->trademark}}</h4>
@@ -78,7 +78,9 @@
                                         </div>
                                     </div>
                                     @else
-                                    {{-- <a href="#" class="btn btn-sm btn-block btn-outline-warning">Edit Bisnis</a> --}}
+                                    <div class="col-6">
+                                        <a href="{{url('edit_bisnis/')}}/{{$item->id}}" class="btn btn-sm btn-block btn-outline-warning">Edit Bisnis</a>
+                                    </div>
                                     @endif
                                 </div>
                             </div>

@@ -8,6 +8,7 @@ use App\Models\notification;
 use App\Models\Users;
 use App\Models\trader;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PushNotificationController extends Controller
@@ -26,7 +27,7 @@ class PushNotificationController extends Controller
         return view('admin.crm.push-notif', compact('broadcastId', 'targets', 'kategori', 'notif', 'namaBroadcast', 'limit'));
     }
     
-    public function pushNotif($id, Request $request)
+    public function pushNotif($id)
     {
         $detailBroadcast = $this->getDetailBroadcast($id);
         $userId = [];
@@ -277,16 +278,30 @@ class PushNotificationController extends Controller
         return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast"]);
     }
 
-    public function schedulerbroadcastNotif()
+    public function schedulerbroadcastNotif(Request $request)
     {
         $s = Carbon::now();
-        $broad = DB::table('broadcasts')->where('send_on',$s->toDateTimeString())->first();
-        if ($broad) {
-            # code...
-            dd('ok');
-        }else{
-            dd('okk');
-        }
+        $broad = DB::table('broadcasts')->whereDate('send_on',$s->toDateString())->first();
+        // $id = $broad->id;
+        // $test = $this->pushNotif($id);
+        // if ($broad) {
+        //     # code...
+        //     $userId = explode(",", $request->userId);
+        //     for($i = 0; $i < count($userId); $i++){
+        //         $notif = new notification();
+        //         $notif->uuid = \Str::uuid();
+        //         $notif->action = 'Informasi';
+        //         $notif->user_id = $userId[$i];
+        //         //$notif->user_id = 190382;
+        //         $notif->message = $request->message;
+        //         $notif->title = $request->title;
+        //         $notif->created_at = Carbon::now();
+        //         $notif->updated_at = Carbon::now();
+        //         $notif->is_deleted = 0;
+        //         $notif->created_by = Auth::user()->id;
+        //         $notif->save();
+        //     }
+        // }
         // $userId = explode(",", $request->userId);
         // for($i = 0; $i < count($userId); $i++){
         //     $notif = new notification();
@@ -304,7 +319,7 @@ class PushNotificationController extends Controller
         // }
         // return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast"]);
         
-        // dd($broad);
+        dd($this->getDetailBroadcast(321));
         // echo $dt->toDateString();	2015-04-21
         // echo $dt->toFormattedDateString();	Apr 21, 2015
         // echo $dt->toTimeString();	22:32:05

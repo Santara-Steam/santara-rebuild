@@ -217,6 +217,16 @@ class TraderController extends Controller
             ->join('bank_withdraws','bank_withdraws.id','=','trader_banks.bank_wd_id')
             ->where('trader_id',Auth::user()->trader->id)->first();
             $bwd = db::table('bank_withdraws')->select('*')->where('is_deleted',0)->get();
-        return view('user.wallet.index',compact('deposit','wd','trader_bank','bwd'));
+
+            $se = db::select(db::raw("SELECT deposits.created_at,'DEPOSIT',deposits.amount,onepay_transaction.redirect_url,deposits.`status` from deposits 
+            LEFT JOIN onepay_transaction on onepay_transaction.deposit_id = deposits.id
+            where deposits.trader_id = ".Auth::user()->trader->id."
+            UNION ALL
+            SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = 190001
+            ORDER BY created_at DESC"));
+
+            // dd($se);
+
+        return view('user.wallet.index',compact('deposit','wd','trader_bank','bwd','se'));
     }
 }
