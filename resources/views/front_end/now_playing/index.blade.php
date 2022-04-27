@@ -73,16 +73,60 @@
                       </fieldset>
                      <div class="fashion_section_2">
                         <div class="row" style="padding-left: 10px; padding-right: 10px;">
-                        @foreach ($now_playing as $np)
+                        {{-- @foreach ($now_playing as $np) --}}
+                        <?php 
+                use Illuminate\Support\Facades\DB;
+                  
+                  ?>
+
+                @foreach($now_playing as $k => $np)
+                <?php
+                $now      = new DateTime(); // or your date as well
+                $start    = new DateTime($np['begin_period']);
+                $finish   = new DateTime($np['end_period']);
+                $period   = $finish->format('d M Y');
+                $offer   = $start->format('d M Y');
+                $supply   = $np['supply'] * $np['price'];
+                $start_offer = $start->format("Y-m-d");
+                $str_time    = strtotime($start_offer);
+
+                $diff_now              = $finish->diff($now);
+                $diff                    = "0 Hari";
+                // var_dump($np->created_at);
+                $tersisa = ($np['supply'] - $np['terjual'] > 0) ? ($np['supply'] - $np['terjual']) : 0;
+                $terjual = ($np['terjual'] > $np['supply']) ? $np['supply'] : $np['terjual'];
+                // terjual dalam persen 0 -100
+                $terjual_percentage = ($terjual / $np['supply']) * 100;
+                $terjual_percentage = ($terjual_percentage >= 0) ? ($terjual_percentage > 100 ? 100 : $terjual_percentage) : 0;
+
+                $tersisa_percentage = number_format($tersisa / $np['supply'] * 100, 2, ',', '.');
+                $tersisa_total = number_format($tersisa, 0, ',', '.');
+                $tersisa_total_rp = number_format($tersisa * $np['price'], 0, ',', '.');
+                $terjual_percentage_f = number_format($terjual_percentage, 3, '.', ',');
+                $terjual_percentage = number_format($terjual_percentage, 3, ',', '.');
+                $terjual_total = number_format($terjual, 0, ',', '.');
+                $terjual_total_rp = number_format($terjual * $np['price'], 0, ',', '.');
+                if (($now > $start) && ($now < $finish)) {
+                    if ($np['terjual'] < $np['supply']) {
+                        $format = ($diff_now->days > 0) ? "%a Hari Lagi" : "%h Jam %i Menit Lagi";
+                        $diff = $diff_now->format($format);
+                    }
+                };
+                // use App\Models\emiten_journey;
+                $emj = db::table('emiten_journeys')->select('*')->where('emiten_id',$np['id'])
+                ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
+                where emiten_id = '.$np['id'].')')
+                ->first();
+                ?>
                         <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;"> 
                   <?php 
-                                      $picture = explode(',',$np->pictures);
+                                      // $picture = explode(',',$np->pictures);
                                       ?>
 
                   <?php 
-                                // $mul=number_format(round($np->minimum_invest * $np->price,0),0,',','.');
+                                // $mul=number_format(round($np->minimum_invest * $np['price'],0),0,',','.');
                                 // $prog=round((round($np->terjual,0)/round($np->supply))*100,2);
-                                // $pend=number_format(round($np->supply*$np->price,0),0,',','.');
+                                // $pend=number_format(round($np->supply*$np['price'],0),0,',','.');
                                 // $now = time();
                                 // $start = strtotime($np->begin_period);
                                 // $end = strtotime($np->end_period);
@@ -94,29 +138,29 @@
                   {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
 
                   <a data-toggle="modal" id="detail_now" class="mod_now detail_now moldla"
-                    style="width: 100%;" data-target="#modal_now{{$np->id}}" data-id="{{$np->id}}">
+                    style="width: 100%;" data-target="#modal_now{{$np['id']}}" data-id="{{$np['id']}}">
                     <div class="card moldla">
-                      <img class="rectangle-2 moldla" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
+                      <img class="rectangle-2 moldla" src="{{$np['pictures'][0]['picture']}}" />
                     </div>
                   </a>
-                  <a class="molpli" href="{{url('detail-now-playing')}}/{{$np->id}}">
+                  <a class="molpli" href="{{url('detail-now-playing')}}/{{$np['id']}}">
                     <div class="card molpli">
-                      <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
+                      <img class="rectangle-2" src="{{$np['pictures'][0]['picture']}}" />
                       <div class="content">
                         <div class="header-card-dan-progress">
                           <div class="header-and-tags">
                             <span class="tx-t inter-medium-sweet-pink-12px"
                               style="background: var(--falu-red);
-            border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;"><?php echo \Illuminate\Support\Str::limit(strip_tags( $np->ktg ), 20, $end='...') ?></span>
+            border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;"><?php echo \Illuminate\Support\Str::limit(strip_tags( $np['category'] ), 20, $end='...') ?></span>
                             <div class="header">
                               <div class="saka-logistics inter-medium-alabaster-20px">
                                 <span class="tx-pt inter-medium-alabaster">
-                                  <?php echo \Illuminate\Support\Str::limit(strip_tags( $np->trademark ), 20, $end='...') ?>
+                                  <?php echo \Illuminate\Support\Str::limit(strip_tags( $np['trademark'] ), 20, $end='...') ?>
                                 </span>
                               </div>
                               <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                                 <span class="tx-np inter-normal-quill-gray">
-                                  <?php echo \Illuminate\Support\Str::limit(strip_tags( $np->company_name ), 30, $end='...') ?>
+                                  <?php echo \Illuminate\Support\Str::limit(strip_tags( $np['company_name'] ), 30, $end='...') ?>
                                 </span>
                               </div>
                             </div>
@@ -126,19 +170,19 @@
                               <div class="mulai-rp1000000 inter-normal-mercury-14px">
                                 <span class="tx-sold span-1 inter-normal-mercury">Mulai &nbsp;<span
                                     class="tx-sold span-1 inter-bold-white-14px" style="font-weight: bold">Rp
-                                    {{number_format(round(100 * $np->price,0),0,',','.')}}</span> </span>
+                                    {{number_format(round(100 * $np['price'],0),0,',','.')}}</span> </span>
                               </div>
                             </div>
                             <div class="address">
                               <div class="hr inter-bold-white-14px">
                                 <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
                                   <?php 
-                                  $now = time();
-                                  $start = strtotime($np->sd);
-                                  $end = strtotime($np->ed);
-                                  $datediff = $end - $start;
-                                  ?>
-                {{round($datediff / (60 * 60 * 24))}}
+                                                      $now = time();
+                                                      $start = strtotime($emj->date);
+                                                      $end = strtotime($emj->end_date);
+                                                      $datediff = $end - $now ;
+                                                      ?>
+                                    {{round($datediff / (60 * 60 * 24))}}
                                     {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                     
                                   </b></span>
@@ -157,15 +201,11 @@
                                   aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}"
                                   aria-valuemin="0" aria-valuemax="100"> --}}
                                   <div class="progress-bar "
-                                  style="width: {{round($np->per,4)*100}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
-                                  role="progressbar" aria-valuenow="{{round($np->per,0)}}" aria-valuemin="0" aria-valuemax="100">
+                                  style="width:{{$terjual_percentage_f}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                  role="progressbar" aria-valuenow="{{$terjual_percentage_f}}" aria-valuemin="0" aria-valuemax="100">
 
                                     {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
-                                  @if ($np->per*100 == 0.0)
-                                      0
-                                  @else
-                                  {{round($np->per,4)*100}}
-                                  @endif  
+                                    {{$terjual_percentage}} 
                                       %
                                   </div>
                                 </div>
@@ -177,11 +217,12 @@
                             <div class="footer-card-1">
                               <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                 <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
-                                  class="inter-medium-alabaster-12px">Rp{{number_format(round($np->avg_capital_needs,0),0,',','.')}}</span>
+                                  class="inter-medium-alabaster-12px">Rp{{number_format($np['supply'] * $np['price'], 0,
+                                  ',', '.')}}</span>
                               </div>
                               <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
                                 <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
-                                  class="inter-medium-alabaster-12px">6 Bulan</span>
+                                  class="inter-medium-alabaster-12px">{{$np['period']}} </span>
                               </div>
                             </div>
                           </div>
@@ -199,15 +240,55 @@
          </div>
       </div>
 
-      @foreach ($now_playing as $np)
+      {{-- @foreach ($now_playing as $np) --}}
+
+                @foreach($now_playing as $k => $np)
+                <?php
+                $now      = new DateTime(); // or your date as well
+                $start    = new DateTime($np['begin_period']);
+                $finish   = new DateTime($np['end_period']);
+                $period   = $finish->format('d M Y');
+                $offer   = $start->format('d M Y');
+                $supply   = $np['supply'] * $np['price'];
+                $start_offer = $start->format("Y-m-d");
+                $str_time    = strtotime($start_offer);
+
+                $diff_now              = $finish->diff($now);
+                $diff                    = "0 Hari";
+                // var_dump($np->created_at);
+                $tersisa = ($np['supply'] - $np['terjual'] > 0) ? ($np['supply'] - $np['terjual']) : 0;
+                $terjual = ($np['terjual'] > $np['supply']) ? $np['supply'] : $np['terjual'];
+                // terjual dalam persen 0 -100
+                $terjual_percentage = ($terjual / $np['supply']) * 100;
+                $terjual_percentage = ($terjual_percentage >= 0) ? ($terjual_percentage > 100 ? 100 : $terjual_percentage) : 0;
+
+                $tersisa_percentage = number_format($tersisa / $np['supply'] * 100, 2, ',', '.');
+                $tersisa_total = number_format($tersisa, 0, ',', '.');
+                $tersisa_total_rp = number_format($tersisa * $np['price'], 0, ',', '.');
+                $terjual_percentage_f = number_format($terjual_percentage, 3, '.', ',');
+                $terjual_percentage = number_format($terjual_percentage, 3, ',', '.');
+                $terjual_total = number_format($terjual, 0, ',', '.');
+                $terjual_total_rp = number_format($terjual * $np['price'], 0, ',', '.');
+                if (($now > $start) && ($now < $finish)) {
+                    if ($np['terjual'] < $np['supply']) {
+                        $format = ($diff_now->days > 0) ? "%a Hari Lagi" : "%h Jam %i Menit Lagi";
+                        $diff = $diff_now->format($format);
+                    }
+                };
+                // use App\Models\emiten_journey;
+                $emj = db::table('emiten_journeys')->select('*')->where('emiten_id',$np['id'])
+                ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
+                where emiten_id = '.$np['id'].')')
+                ->first();
+                ?>
       <?php 
-                                      $picture = explode(',',$np->pictures);
+                                      // $picture = explode(',',$np->pictures);
                                       ?>
-      <div class="modal fade" id="modal_now{{$np->id}}" tabindex="-1" role="dialog" aria-labelledby="detail_now" aria-hidden="true">
+      <div class="modal fade" id="modal_now{{$np['id']}}" tabindex="-1" role="dialog" aria-labelledby="detail_now" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="card" style="margin-bottom: -1px;">
-          <img class="rectangle-2" src="{{ asset('public/storage/pictures') }}/{{$picture[0]}}" />
+          <img class="rectangle-2" src="{{$np['pictures'][0]['picture']}}" />
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"
               style="margin-right: 10px; margin-top: 0px; width: 30px;">
               <span aria-hidden="true">&times;</span>
@@ -217,16 +298,16 @@
                 <div class="header-and-tags">
                   <span class="tx-t inter-medium-sweet-pink-12px"
                     style="background: var(--falu-red);
-    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{ $np->ktg }}</span>
+    border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{ $np['category'] }}</span>
                   <div class="header">
                     <div class="saka-logistics inter-medium-alabaster-20px">
                       <span class="tx-pt inter-medium-alabaster">
-                      {{$np->trademark }}
+                      {{$np['trademark'] }}
                       </span>
                     </div>
                     <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                       <span class="tx-np inter-normal-quill-gray">
-                      {{$np->company_name }}
+                      {{$np['company_name'] }}
                       </span>
                     </div>
                   </div>
@@ -238,20 +319,20 @@
                         class="inter-normal-mercury-12px">&nbsp;</span>
                       <div class="mulai-rp inter-bold-white-14px"><span class="tx-sold span-1 inter-bold-white"
                           style="font-weight: bold">Rp
-                                    {{number_format(round(100 * $np->price,0),0,',','.')}}</span>
+                                    {{number_format(round(100 * $np['price'],0),0,',','.')}}</span>
                       </div>
                     </div>
                   </div>
                   <div class="address">
                     <div class="hr inter-bold-white-14px">
                       <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
-                      <?php 
-                                                      $now = time();
-                                                      $start = strtotime($np->sd);
-                                                      $end = strtotime($np->ed);
-                                                      $datediff = $end - $now;
-                                                      ?>
-                                    {{round($datediff / (60 * 60 * 24))}}
+                        <?php 
+                        $now = time();
+                        $start = strtotime($emj->date);
+                        $end = strtotime($emj->end_date);
+                        $datediff = $end - $now ;
+                        ?>
+      {{round($datediff / (60 * 60 * 24))}}
                                     {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                     {{-- 45 --}}
                         </b></span>
@@ -264,15 +345,11 @@
                   <div class="overlap-group">
                     <div class="percent inter-medium-white-12px">
                     <div class="progress-bar "
-                                    style="width: {{round($np->per,4)*100}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
-                                    role="progressbar" aria-valuenow="{{round($np->per,0)}}" aria-valuemin="0" aria-valuemax="100">
+                                    style="width: {{$terjual_percentage_f}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                    role="progressbar" aria-valuenow="{{$terjual_percentage_f}}" aria-valuemin="0" aria-valuemax="100">
 
                                     {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
-                                    @if (($np->per*100) == 0.0)
-                                        0
-                                    @else
-                                    {{round($np->per,4)*100}}
-                                    @endif  
+                                    {{$terjual_percentage}}
                                       {{-- 0 --}}
                                       %
                                   </div>
@@ -285,18 +362,19 @@
                             <div class="footer-card-1">
                               <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                 <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
-                                  class="inter-medium-alabaster-12px">Rp{{number_format(round($np->avg_capital_needs,0),0,',','.')}}</span>
+                                  class="inter-medium-alabaster-12px">Rp{{number_format($np['supply'] * $np['price'], 0,
+                                  ',', '.')}}</span>
                               </div>
                               <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
                                 <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
-                                  class="inter-medium-alabaster-12px">6 Bulan</span>
+                                  class="inter-medium-alabaster-12px">{{$np['period']}}</span>
                               </div>
                             </div>
                           </div>
             </div>
           </div>
           <div class="modal-footer" style="background-color: var(--shark);">
-            <a class="b-daf btn btn-danger btn-lg btn-block" href="{{url('detail-now-playing')}}/{{$np->id}}">Selengkapnya</a>
+            <a class="b-daf btn btn-danger btn-lg btn-block" href="{{url('detail-now-playing')}}/{{$np['id']}}">Selengkapnya</a>
           </div>
         </div>
       </div>

@@ -383,8 +383,8 @@
         <div class="modal-body">
           {{-- Tidak tersedia pada event ini. {{$emt->id}} --}}
           <label for="minat">Lembar yang anda minat</label>
-          {{-- <input type="number" name="minat" class="form-control"> --}}
-          <div class="input-group mb-3 text-center" style="width:80%">
+          <input type="number" name="minat" class="form-control" value="{{$s['m']}}">
+          {{-- <div class="input-group mb-3 text-center" style="width:80%">
             <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minusx()">--</span>
             <span style="cursor: pointer" class="input-group-text jumlah-range" onclick="minus()">-</span>
             <input type="text" class="form-control text-center number-only-phone" style="background-color: #fff;"
@@ -392,7 +392,7 @@
             <input type="hidden" id="lembar_saham" name="minat">
             <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plus()">+</span>
             <span class="input-group-text jumlah-range" style="cursor: pointer" onclick="plusx()">++</span>
-          </div>
+          </div> --}}
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Send</button>

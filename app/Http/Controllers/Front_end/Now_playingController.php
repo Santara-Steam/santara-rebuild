@@ -22,19 +22,21 @@ class Now_playingController extends Controller
      */
     public function index()
     {
-        $now_playing = emiten::select('emitens.*','emitens.avg_capital_needs as lbr','categories.category as ktg', 'emiten_journeys.date as sd', 'emiten_journeys.end_date as ed', db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0))  as terjual'),db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0)) / emitens.avg_capital_needs  as per'))
-        // ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
-        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-        ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
-        ->leftjoin('book_sahams', 'book_sahams.emiten_id','=','emitens.id')
-        ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
-        ->where('emitens.is_deleted',0) 
-        ->where('emiten_journeys.title','=','Penawaran Saham')
-        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
-        ->groupBy('emitens.id')
-        ->orderby('emitens.id','DESC')
-        ->get()
-        ;
+        $np = emiten(4, 1, null, null, null, null, null, 'saham', 'notfull');
+        // $now_playing = emiten::select('emitens.*','emitens.avg_capital_needs as lbr','categories.category as ktg', 'emiten_journeys.date as sd', 'emiten_journeys.end_date as ed', db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0))  as terjual'),db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0)) / emitens.avg_capital_needs  as per'))
+        // // ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+        // ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        // ->join('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        // ->leftjoin('book_sahams', 'book_sahams.emiten_id','=','emitens.id')
+        // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+        // ->where('emitens.is_deleted',0) 
+        // ->where('emiten_journeys.title','=','Penawaran Saham')
+        // // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+        // ->groupBy('emitens.id')
+        // ->orderby('emitens.id','DESC')
+        // ->get()
+        // ;
+        $now_playing = collect($np);
         return view('front_end/now_playing/index',compact('now_playing'));
     }
 
