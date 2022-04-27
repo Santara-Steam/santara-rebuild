@@ -17,29 +17,26 @@
                 </div>
                 @include('user.is_kyc')
                 <div class="row">
-                    <div class="col-xl-6 col-md-12">
-                        <div class="card overflow-hidden">
+                    <div class="col-xl-4 col-md-12">
+                        <div class="card">
                             <div class="card-content">
                                 <div class="card-body cleartfix">
-                                    
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
                                             <i class="icon-wallet info font-large-2 mr-2"></i>
                                         </div>
                                         <div class="media-body">
-                                            <h4>Total Saham</h4>
-                                            <span>Total Akumulasi Saham Di Pesan</span>
+                                            <h4>Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</h4>
+                                            <span>Saldo Anda</span>
                                         </div>
-                                        <div class="align-self-center">
-                                            <h1>Rp{{number_format($total_saham->ta,0,',','.')}}</h1>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-6 col-md-12">
+                    <div class="col-xl-4 col-md-12">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body cleartfix">
@@ -48,12 +45,36 @@
                                             <i class="icon-docs info font-large-2 mr-2"></i>
                                         </div>
                                         <div class="media-body">
-                                            <h4>Total Lembar Saham</h4>
-                                            <span>Total Lembar Saham Di Pesan</span>
+                                            <h4>@if ($asset)
+                                                Rp. {{number_format($asset->amo,0,',','.')}}
+                                                @else
+                                                Rp. 0
+                                                @endif</h4>
+                                            <span>Total Investasi</span>
                                         </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body cleartfix">
+                                    <div class="media align-items-stretch">
                                         <div class="align-self-center">
-                                            <h1>{{number_format($total_lbr->ls,0,',','.')}}</h1>
+                                            <i class="icon-briefcase info font-large-2 mr-2"></i>
                                         </div>
+                                        <div class="media-body">
+                                            <h4>@if ($asset)
+                                                Rp. {{number_format(Auth::user()->trader->saldo->balance+$asset->amo, 0, ',', '.')}}
+                                                @else
+                                                Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}
+                                                @endif</h4>
+                                            <span>Total Asset</span>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -61,138 +82,58 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-xl-6 col-md-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body cleartfix">
-                                    <div class="media align-items-stretch">
-                                        <div class="align-self-center">
-                                            <h1 class="mr-2">{{$psb}}</h1>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Pesan Saham</h4>
-                                            <span>Pesan Saham Belum Upload Transfer</span>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <i class="icon-basket warning font-large-2"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-md-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body cleartfix">
-                                    <div class="media align-items-stretch">
-                                        <div class="align-self-center">
-                                            <h1 class="mr-2">{{$psbv}}</h1>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Pesan Saham</h4>
-                                            <span>Pesan Saham Terverifikasi</span>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <i class="icon-handbag info font-large-2"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </section>
-            @if ($psb == 0)
-            
-            @else
             <section id="configuration">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Daftar Pesan Saham Anda Yang Belum Upload Transfer</h4>
-                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
+                            <div class="card col-12">
 
-                                    </ul>
+                                <div class="card-content">
+                                    <div class="row mb-1 mt-1" id="totalPortofolio">
+                                        
+                                    </div>
+                                    <div class="row" id="emitenPortofolio">
+                                                                            
+                                        @foreach ($port as $item)
+                                    
+                                <div class="col-xl-6 col-lg-6 col-12" style="margin-bottom: 1em;">
+                                    <div class="item-portofolio">
+                                        <div class="head-item-portofolio">
+                                            <div class="flex-head">
+                                                <p>{{$item->cat}}</p>
+                                                <div class="label-item-portoflio-saham">{{$item->code_emiten}}</div>
+                                            </div>
+                                            <h4>{{$item->trademark}}</h4>
+                                            <p class="company-portofolio">{{$item->company_name}}</p>
+                                        </div>
+                                        <div class="info-fund-portofolio">
+                                            <table style="width: 100%;">
+                                                 <tbody><tr>
+                                                    <td class="title-intable-saham">Tanggal Pembelian</td>
+                                                    <td class="value-intable-saham">{{tgl_indo(date('Y-m-d', strtotime($item->cr)))}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title-intable-saham">
+                                                        <p>Total Saham</p>
+                                                    </td>
+                                                    <td class="value-intable-saham">
+                                                        <p><b>{{number_format($item->lembar,0,',','.')}} Lembar</b></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title-intable-saham">Total Saham Dalam Rupiah</td>
+                                                    <td class="value-intable-saham"><b>Rp&nbsp;{{number_format($item->tot,0,',','.')}}</b></td>
+                                                </tr>
+                                               
+                                               
+                                            </tbody></table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-content collapse show">
-                                <div class="card-body card-dashboard">
-                                    <div class="table-responsive">
-                                        <table class="table" id="tabel">
-                                            <thead>
-                                                <tr>
-                                                    {{-- <th>Owner</th> --}}
-                                                    <th>#</th>
-                                                    <th>Order ID</th>
-                                                    <th>Emiten</th>
-                                                    <th>Lembar Saham</th>
-                                                    <th>Total</th>
-                                                    <th>Status</th>
-                                                    <th width="18%">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $no = 0;?>
-                                                {{-- @foreach ($emiten as $item) --}}
-                                                @foreach ($book as $item)
-                                                <?php $no++; ?>
-                                                <tr>
-                                                    <td>{{$no}}</td>
-                                                    {{-- <td>{{$item->trd->name}}</td> --}}
-                                                    <td>{{$item->order_id}}</td>
-                                                    <td>{{$item->emtn->company_name}}</td>
-                                                    <td>{{ number_format(round($item->lembar_saham,0),0,',','.')}}</td>
-                                                    <td>Rp{{ number_format(round($item->total_amount,0),0,',','.')}}
-                                                    </td>
-                                                    <td>
-                                                        @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer ==
-                                                        null)
-                                                        <div class="badge badge-warning">Bukti Transfer Belum Di Upload
-                                                        </div>
-                                                        @elseif($item->bukti_tranfer != '-' && $item->isValid == 0)
-                                                        <div class="badge badge-primary">Bukti Transfer Dalam Proses
-                                                        </div>
-                                                        @elseif($item->bukti_tranfer != '-' && $item->isValid == 1)
-                                                        <div class="badge badge-success">Bukti Transfer Valid</div>
-                                                        @elseif($item->bukti_tranfer != '-' && $item->isValid == 2)
-                                                        <div class="badge badge-danger">Bukti Transfer Tidak Valid</div>
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        <div class="row">
-                                                            <div class="col-4">
-                                                                <a href="{{url('user/pesan_saham/detail/')}}/{{$item->id}}"
-                                                                    class="btn btn-sm btn-primary ">Detail</a>
-                                                            </div>
-                                                            <div class="col-8">
-                                                                @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer
-                                                                == null)
-                                                                <button data-toggle="modal"
-                                                                    data-target="#uploadbukti{{$item->id}}"
-                                                                    class="btn btn-sm btn-warning">Upload
-                                                                    Bukti</button>
-                                                                @elseif($item->bukti_tranfer != '-' && $item->isValid ==
-                                                                2)
-                                                                <button data-toggle="modal"
-                                                                    data-target="#uploadbukti{{$item->id}}"
-                                                                    class="btn btn-sm  btn-warning">Upload
-                                                                    Ulang</button>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-
-                                            </tbody>
-                                        </table>
+                                @endforeach
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -200,60 +141,11 @@
                     </div>
                 </div>
             </section>
-            @endif
 
         </div>
     </div>
 </div>
-@foreach ($book as $item)
-<div class="modal fade" id="uploadbukti{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="uploadbuktiLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="uploadbuktiLabel">Upload Bukti Transfer Order ID : #{{$item->order_id}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{url('/upload_bukti')}}/{{$item->id}}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
 
-                <div class="modal-body">
-                    <div class="row text-center">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
-                                <div class="card-header" style="background-color: #ffffff;border-radius: 5px;">
-                                    <img src="{{asset('public')}}/bca.png" class="img-fluid" width="100px" alt="">
-                                    </div>
-                                <div class="card-body " style="padding: 20px 0px 10px 0px;">
-                                    <h2 class="c-margin-b-20" style="color: white;font-family: Arial, Helvetica, sans-serif;"> 4567255777</h2>
-                                    <p class="card-text" style="margin: 0;">A.n. PT Santara Daya Inspiratama</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3"></div>
-                        
-
-                    </div>
-                    <div class="col-md-12 text-center" style="margin-top: -20px">
-                        Transfer Sebesar <strong>Rp{{ number_format($item->total_amount,0,',','.') }}</strong> Ke Nomor Rekening Di Atas.
-                    </div>
-                    <div class="form-group">
-                        <label for="bukti">Bukti Transfer</label>
-                        <input type="file" class="form-control" name="bukti_transfer" id="bukti" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-@endforeach
 @endsection
 @section('js')
 <script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
@@ -282,4 +174,282 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
     href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    <style>
+        .card-portofolio {
+      border: 1px solid #eee;
+    }
+    
+    .category-token {
+      color: #292f8d;
+      font-size: 1rem;
+    }
+    
+    .title-token {
+      font-weight: bold;
+      color: black;
+    }
+    
+    .company-token {
+      font-size: 1rem;
+      color: #858585;
+    }
+    
+    .box-kinerja {
+      border: 1px solid #eee;
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+    
+    .title-kinerja {
+      padding: 0.7rem 0;
+      background-color: #bf2d30 !important;
+      color: #fff !important;
+      border-color: #bf2d30;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    
+    .value-kinerja {
+      padding: 1rem 0;
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+    }
+    
+    .empty-report {
+      text-align: center;
+    }
+    
+    .empty-report > img {
+      max-width: 40%;
+      margin-bottom: 3rem;
+      margin-top: 3rem;
+    }
+    
+    .card-home-title {
+      padding: 1rem 4.5rem;
+    }
+    
+    .card-home-title > .title-left > h2 {
+      font-size: 2.3rem;
+      font-weight: 600;
+      color: #000;
+      margin-right: 1em;
+    }
+    
+    .card-home-title > .flex-div {
+      display: flex;
+    }
+    
+    .card-home-title > .flex-div > .button-group > label {
+      border: 1px solid #bf2d30;
+      padding: 6px 12px;
+      cursor: pointer;
+      color: #bf2d30;
+      background-color: #fff;
+      transition: all 0.2s;
+      border-radius: 15px;
+      font-size: 1.1em;
+      margin-right: 0.5em;
+    }
+    
+    .card-home-title > .flex-div > .button-group > input[name="market"] {
+      display: none;
+    }
+    
+    .card-home-title
+      > .flex-div
+      > .button-group
+      > input[name="market"]:checked
+      + label {
+      background-color: #bf2d30;
+      color: #fff;
+    }
+    
+    .item-portofolio-sukuk {
+      border: 1px solid #dadada;
+      border-radius: 5px;
+      padding: 0.8em;
+    }
+    
+    .flex-head {
+      display: flex;
+    }
+    
+    .company-sukuks {
+      width: 70%;
+      margin: 0;
+      font-size: 0.9em;
+    }
+    
+    .label-item-portofolio-sukuk {
+      background: #c7971e;
+      color: #fff;
+      font-weight: 600;
+      width: 30%;
+      text-align: center;
+      height: 21px;
+    }
+    
+    .title-sukuk-card {
+      margin-top: 0.4em;
+      font-weight: 400;
+      font-size: 1.1em;
+      margin-bottom: 0.2em;
+    }
+    
+    .sukuk-id {
+      color: #000;
+      font-weight: 600;
+      margin-bottom: 1.7em;
+    }
+    
+    .sukuk-info > h4 {
+      margin: 1.2em 0;
+    }
+    
+    .title-sukuk-in-table {
+      width: 60%;
+    }
+    
+    .title-sukuk-in-table > p {
+      margin-bottom: 0.4em;
+      color: #000;
+    }
+    
+    .value-sukuk-in-table {
+      width: 40%;
+    }
+    
+    .value-sukuk-in-table > p {
+      margin-bottom: 0.4em;
+      text-align: right;
+      color: #000;
+    }
+    
+    .item-portofolio {
+      border: 1px solid #d4d4d4;
+      border-radius: 5px;
+    }
+    
+    .head-item-portofolio,
+    .info-fund-portofolio {
+      padding: 0.8em;
+      border-bottom: 2px solid #f4f4f4;
+    }
+    
+    .head-item-portofolio > .flex-head > p {
+      margin: 0;
+      color: #292f8d;
+      font-size: 0.9em;
+      width: 70%;
+    }
+    
+    .label-item-portoflio-saham {
+      background: #bf2d30;
+      color: #fff;
+      font-weight: 600;
+      width: 30%;
+      text-align: center;
+      height: 21px;
+    }
+    
+    .head-item-portofolio > h4 {
+      font-size: 1.4em;
+      font-weight: 600;
+    }
+    
+    .head-item-portofolio > p {
+      font-size: 0.9em;
+      color: #858585;
+      margin: 0;
+    }
+    
+    .title-intable-saham {
+      width: 70%;
+      color: #000;
+    }
+    
+    .value-intable-saham {
+      width: 30%;
+      color: #000;
+      font-weight: 600;
+    }
+    
+    .image-item-portofolio {
+      padding: 0.8em;
+    }
+    
+    .image-item-portofolio > img {
+      width: 100%;
+      height: 200px;
+    }
+    
+    .card-content-sukuk {
+      padding: 2em;
+    }
+    
+    .sukuk-company {
+      margin-top: 2em;
+    }
+    
+    .trademark-sukuk {
+      margin: 0;
+      font-size: 1.1em;
+      color: #000;
+      font-weight: 400;
+    }
+    
+    .code-sukuk {
+      margin: 0;
+      color: #000;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+    
+    .info-split-sukuk {
+      margin: 2em 0;
+    }
+    
+    .item-info-sukuk > p {
+      color: #000;
+      margin: 0;
+      font-size: 0.9em;
+    }
+    
+    .item-info-sukuk > h3 {
+      font-weight: 600;
+      font-size: 2.1em;
+    }
+    
+    .sukuk-company > h3 {
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .sukuk-periode-title {
+      margin: 0;
+      color: #000;
+      font-size: 0.8em;
+    }
+    
+    .sukuk-periode-date {
+      font-size: 10px;
+      padding: 7px;
+      border-radius: 4px;
+    }
+    
+    .sukuk-table {
+      margin-top: 2em;
+    }
+    
+    .head-sukuk {
+      background: #ededed;
+      border-radius: 4px;
+      color: #000;
+    }
+    
+    </style>
 @endsection

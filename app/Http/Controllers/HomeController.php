@@ -53,7 +53,27 @@ class HomeController extends Controller
         ->where('bukti_tranfer','-')
         ->get();
 
-        return view('user.index',compact('total_saham','total_lbr','psb','psbv','book'));
+        $asset =  User::join('traders as t', 't.user_id', '=', 'users.id')
+                            ->leftjoin('transactions as tr', 'tr.trader_id', '=', 't.id')
+                            ->where('users.id', Auth::user()->id)
+                            ->where('tr.is_deleted', 0)
+                            ->where('tr.last_status', 'VERIFIED')
+                            ->select(db::raw('SUM(tr.amount) as amo'))
+                            ->groupBy('users.id')
+                            ->first();
+        
+                            $port = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftjoin('categories as c','c.id','=','e.category_id')
+                ->where('users.id', Auth::user()->id)
+                ->where('tr.is_deleted', 0)
+                ->where('tr.last_status', 'VERIFIED')
+                ->select('c.category as cat','e.code_emiten','e.company_name','e.trademark',db::raw('MAX(tr.created_at) as cr'),db::raw('SUM(tr.amount/e.price) as lembar'),db::raw('SUM(tr.amount) as tot'))
+                ->groupBy('e.id')
+                ->get();
+
+        return view('user.index',compact('total_saham','total_lbr','psb','psbv','book','asset','port'));
     }
     public function indexadmin()
     {

@@ -8,6 +8,7 @@ use App\Models\notification;
 use App\Models\Users;
 use App\Models\trader;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PushNotificationController extends Controller
 {
@@ -274,6 +275,41 @@ class PushNotificationController extends Controller
             $notif->save();
         }
         return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast"]);
+    }
+
+    public function schedulerbroadcastNotif()
+    {
+        $s = Carbon::now();
+        $broad = DB::table('broadcasts')->where('send_on',$s->toDateTimeString())->first();
+        if ($broad) {
+            # code...
+            dd('ok');
+        }else{
+            dd('okk');
+        }
+        // $userId = explode(",", $request->userId);
+        // for($i = 0; $i < count($userId); $i++){
+        //     $notif = new notification();
+        //     $notif->uuid = \Str::uuid();
+        //     $notif->action = 'Informasi';
+        //     $notif->user_id = $userId[$i];
+        //     //$notif->user_id = 190382;
+        //     $notif->message = $request->message;
+        //     $notif->title = $request->title;
+        //     $notif->created_at = Carbon::now();
+        //     $notif->updated_at = Carbon::now();
+        //     $notif->is_deleted = 0;
+        //     $notif->created_by = \Auth::user()->id;
+        //     $notif->save();
+        // }
+        // return response()->json(["code" => 200, "message" => "Berhasil melakukan broadcast"]);
+        
+        // dd($broad);
+        // echo $dt->toDateString();	2015-04-21
+        // echo $dt->toFormattedDateString();	Apr 21, 2015
+        // echo $dt->toTimeString();	22:32:05
+        // echo $dt->toDateTimeString();	2015-04-21 22:32:05
+        // echo $dt->toDayDateTimeString();	Tue, Apr 21, 2015 10:32 PM
     }
 
     public function broadcastEmail(Request $request)

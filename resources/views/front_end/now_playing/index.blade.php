@@ -2,85 +2,86 @@
 
 @section('content')
 <div class="header-section" style="margin-top: 96px;">
-          <div class="heading-and-subheading">
-            <div class="now-playing-bisnis inter-bold-alizarin-crimson-16px">
-              <span class="inter-bold-alizarin-crimson-16px">Now Playing Bisnis</span>
-            </div>
-            <div class="text-urun pilih-bisnis-favoritmu inter-bold-alabaster-48px">
-              <span class="text-sb inter-bold-alabaster">Pilih Bisnis Favoritmu</span>
-            </div>
-          </div>
-          <div class="text-mulai inter-normal-alabaster-20px">
-            <span class="text-mulai inter-normal-alabaster">Yuk, mulai investasi bisnis sekarang juga!</span>
-          </div>
-        </div>
-      </div>
-      <div class="fashion_section">
-         <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-               <div class="carousel-item active">
-                  <div class="container">
-                      <fieldset disabled>
-                      <div class="form-row">
-                      <div class="form-group col-md-3">
-                        <div class="label inter-medium-quill-gray-14px">
-                          <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
-                        </div>
-                        <input type="text" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="&#xF002;"/>
-                      </div>
-                      <div class="form-group col-md-2 kati">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <div class="label-1 inter-medium-quill-gray-14px">
-                            <span class="inter-medium-quill-gray-14px">Nilai Pendanaan</span>
-                          </div>
-                        <select id="inputState" class="form-control dropdown-1">
-                          <option value="position">Rp500.000.000 - Rp1.000.000.000</option>
-                          <option value="price" title="Sort by Lowest Price First">Rp1.000.000.000 - Rp3.000.000.000</option>
-                          <option value="date" title="Sort by Newest First">Rp3.000.000.000 - Rp5.000.000.000</option>
-                          <option value="price" title="Sort by Lowest Price First">Rp5.000.000.000 - Rp10.000.000.000</option>
-                          <option value="date" title="Sort by Newest First">Rp10.000.000.000</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-2">
-                        <div class="label-1 inter-medium-quill-gray-14px">
-                                  <span class="inter-medium-quill-gray-14px">Kategori</span>
-                                </div>
-                        <select id="inputState" class="form-control dropdown-1">
-                          <option value="position">Semua Kategori</option>
-                                  <option value="price" >Property</option>
-                                  <option value="position">Food and Beverage</option>
-                                  <option value="price" >Peternakan</option>
-                                  <option value="position">Perkebunan/Argo</option>
-                                  <option value="price" >Teknologi</option>
-                                  <option value="position">Start Up</option>
-                                  <option value="price" >Project Financing</option>
-                                  <option value="price" >Service/Layanan</option>
-                                  <option value="position">Manufaktur/Produksi</option>
-                                  <option value="price" >Retail/Distribusi/Logistik</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-2">
-                        <div class="label-1 inter-medium-quill-gray-14px">
-                                  <span class="inter-medium-quill-gray-14px">Urutkan</span>
-                                </div>
-                        <select id="inputState" class="form-control dropdown-1">
-                          <option value="position">Terlama</option>
-                                  <option value="price" >Terpenuhi</option>
-                                  <option value="position">Belum Terpenuhi</option>
-                        </select>
-                      </div>
-                      </fieldset>
-                     <div class="fashion_section_2">
-                        <div class="row" style="padding-left: 10px; padding-right: 10px;">
-                        {{-- @foreach ($now_playing as $np) --}}
-                        <?php 
+  <div class="heading-and-subheading">
+    <div class="now-playing-bisnis inter-bold-alizarin-crimson-16px">
+      <span class="inter-bold-alizarin-crimson-16px">Now Playing Bisnis</span>
+    </div>
+    <div class="text-urun pilih-bisnis-favoritmu inter-bold-alabaster-48px">
+      <span class="text-sb inter-bold-alabaster">Pilih Bisnis Favoritmu</span>
+    </div>
+  </div>
+  <div class="text-mulai inter-normal-alabaster-20px">
+    <span class="text-mulai inter-normal-alabaster">Yuk, mulai investasi bisnis sekarang juga!</span>
+  </div>
+</div>
+</div>
+<div class="fashion_section">
+  <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container">
+          <fieldset disabled>
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <div class="label inter-medium-quill-gray-14px">
+                  <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
+                </div>
+                <input type="text" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px"
+                  style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="&#xF002;" />
+              </div>
+              <div class="form-group col-md-2 kati">
+              </div>
+              <div class="form-group col-md-3">
+                <div class="label-1 inter-medium-quill-gray-14px">
+                  <span class="inter-medium-quill-gray-14px">Nilai Pendanaan</span>
+                </div>
+                <select id="inputState" class="form-control dropdown-1">
+                  <option value="position">Rp500.000.000 - Rp1.000.000.000</option>
+                  <option value="price" title="Sort by Lowest Price First">Rp1.000.000.000 - Rp3.000.000.000</option>
+                  <option value="date" title="Sort by Newest First">Rp3.000.000.000 - Rp5.000.000.000</option>
+                  <option value="price" title="Sort by Lowest Price First">Rp5.000.000.000 - Rp10.000.000.000</option>
+                  <option value="date" title="Sort by Newest First">Rp10.000.000.000</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <div class="label-1 inter-medium-quill-gray-14px">
+                  <span class="inter-medium-quill-gray-14px">Kategori</span>
+                </div>
+                <select id="inputState" class="form-control dropdown-1">
+                  <option value="position">Semua Kategori</option>
+                  <option value="price">Property</option>
+                  <option value="position">Food and Beverage</option>
+                  <option value="price">Peternakan</option>
+                  <option value="position">Perkebunan/Argo</option>
+                  <option value="price">Teknologi</option>
+                  <option value="position">Start Up</option>
+                  <option value="price">Project Financing</option>
+                  <option value="price">Service/Layanan</option>
+                  <option value="position">Manufaktur/Produksi</option>
+                  <option value="price">Retail/Distribusi/Logistik</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <div class="label-1 inter-medium-quill-gray-14px">
+                  <span class="inter-medium-quill-gray-14px">Urutkan</span>
+                </div>
+                <select id="inputState" class="form-control dropdown-1">
+                  <option value="position">Terlama</option>
+                  <option value="price">Terpenuhi</option>
+                  <option value="position">Belum Terpenuhi</option>
+                </select>
+              </div>
+          </fieldset>
+          <div class="fashion_section_2">
+            <div class="row" style="padding-left: 10px; padding-right: 10px;">
+              {{-- @foreach ($now_playing as $np) --}}
+              <?php 
                 use Illuminate\Support\Facades\DB;
                   
                   ?>
 
-                @foreach($now_playing as $k => $np)
-                <?php
+              @foreach($now_playing as $k => $np)
+              <?php
                 $now      = new DateTime(); // or your date as well
                 $start    = new DateTime($np['begin_period']);
                 $finish   = new DateTime($np['end_period']);
@@ -118,12 +119,12 @@
                 where emiten_id = '.$np['id'].')')
                 ->first();
                 ?>
-                        <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;"> 
-                  <?php 
+              <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;">
+                <?php 
                                       // $picture = explode(',',$np->pictures);
                                       ?>
 
-                  <?php 
+                <?php 
                                 // $mul=number_format(round($np->minimum_invest * $np['price'],0),0,',','.');
                                 // $prog=round((round($np->terjual,0)/round($np->supply))*100,2);
                                 // $pend=number_format(round($np->supply*$np['price'],0),0,',','.');
@@ -133,117 +134,119 @@
                                 // $datediff = $end - $now;
                                 // $har=round($datediff / (60 * 60 * 24));
                                 ?>
-                  {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
+                {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
 
-                  {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
+                {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
 
-                  <a data-toggle="modal" id="detail_now" class="mod_now detail_now moldla"
-                    style="width: 100%;" data-target="#modal_now{{$np['id']}}" data-id="{{$np['id']}}">
-                    <div class="card moldla">
-                      <img class="rectangle-2 moldla" src="{{$np['pictures'][0]['picture']}}" />
-                    </div>
-                  </a>
-                  <a class="molpli" href="{{url('detail-now-playing')}}/{{$np['id']}}">
-                    <div class="card molpli">
-                      <img class="rectangle-2" src="{{$np['pictures'][0]['picture']}}" />
-                      <div class="content">
-                        <div class="header-card-dan-progress">
-                          <div class="header-and-tags">
-                            <span class="tx-t inter-medium-sweet-pink-12px"
-                              style="background: var(--falu-red);
-            border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;"><?php echo \Illuminate\Support\Str::limit(strip_tags( $np['category'] ), 20, $end='...') ?></span>
-                            <div class="header">
-                              <div class="saka-logistics inter-medium-alabaster-20px">
-                                <span class="tx-pt inter-medium-alabaster">
-                                  <?php echo \Illuminate\Support\Str::limit(strip_tags( $np['trademark'] ), 20, $end='...') ?>
-                                </span>
-                              </div>
-                              <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                <span class="tx-np inter-normal-quill-gray">
-                                  <?php echo \Illuminate\Support\Str::limit(strip_tags( $np['company_name'] ), 30, $end='...') ?>
-                                </span>
-                              </div>
+                <a data-toggle="modal" id="detail_now" class="mod_now detail_now moldla" style="width: 100%;"
+                  data-target="#modal_now{{$np['id']}}" data-id="{{$np['id']}}">
+                  <div class="card moldla">
+                    <img class="rectangle-2 moldla" src="{{$np['pictures'][0]['picture']}}" />
+                  </div>
+                </a>
+                <a class="molpli" href="{{url('detail-now-playing')}}/{{$np['id']}}">
+                  <div class="card molpli">
+                    <img class="rectangle-2" src="{{$np['pictures'][0]['picture']}}" />
+                    <div class="content">
+                      <div class="header-card-dan-progress">
+                        <div class="header-and-tags">
+                          <span class="tx-t inter-medium-sweet-pink-12px"
+                            style="background: var(--falu-red); border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
+                            <?php echo \Illuminate\Support\Str::limit(strip_tags( $np['category'] ), 20, $end='...') ?>
+                          </span>
+                          <div class="header">
+                            <div class="saka-logistics inter-medium-alabaster-20px">
+                              <span class="tx-pt inter-medium-alabaster">
+                                <?php echo \Illuminate\Support\Str::limit(strip_tags( $np['trademark'] ), 20, $end='...') ?>
+                              </span>
+                            </div>
+                            <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                              <span class="tx-np inter-normal-quill-gray">
+                                <?php echo \Illuminate\Support\Str::limit(strip_tags( $np['company_name'] ), 30, $end='...') ?>
+                              </span>
                             </div>
                           </div>
-                          <div class="info-dan-progress">
-                            <div class="info-pendanaan">
-                              <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                                <span class="tx-sold span-1 inter-normal-mercury">Mulai &nbsp;<span
-                                    class="tx-sold span-1 inter-bold-white-14px" style="font-weight: bold">Rp
-                                    {{number_format(round(100 * $np['price'],0),0,',','.')}}</span> </span>
-                              </div>
+                        </div>
+                        <div class="info-dan-progress">
+                          <div class="info-pendanaan">
+                            <div class="mulai-rp1000000 inter-normal-mercury-14px">
+                              <span class="tx-sold span-1 inter-normal-mercury">Mulai &nbsp;<span
+                                  class="tx-sold span-1 inter-bold-white-14px" style="font-weight: bold">Rp
+                                  {{number_format(round(100 * $np['price'],0),0,',','.')}}</span> </span>
                             </div>
-                            <div class="address">
-                              <div class="hr inter-bold-white-14px">
-                                <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
+                          </div>
+                          <div class="address">
+                            <div class="hr inter-bold-white-14px">
+                              <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
                                   <?php 
                                                       $now = time();
                                                       $start = strtotime($emj->date);
                                                       $end = strtotime($emj->end_date);
                                                       $datediff = $end - $now ;
                                                       ?>
-                                    {{round($datediff / (60 * 60 * 24))}}
-                                    {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
-                                    
-                                  </b></span>
-                              </div>
-                              {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
-                              <span class="inter-normal-mercury-12px">&nbsp;</span>
-                              <div class="hr-lg inter-normal-mercury-14px">
-                                <span class="tx-sold inter-normal-mercury">hari lagi</span>
-                              </div>
-                            </div>
-                            <div class="overlap-group">
-                              <div class="percent inter-medium-white-12px">
-                                {{-- <div class="progress-bar "
-                                  style="width: {{ round((round($np->terjual,0)/round($np->supply))*100,2) }}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
-                                  role="progressbar"
-                                  aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}"
-                                  aria-valuemin="0" aria-valuemax="100"> --}}
-                                  <div class="progress-bar "
-                                  style="width:{{$terjual_percentage_f}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
-                                  role="progressbar" aria-valuenow="{{$terjual_percentage_f}}" aria-valuemin="0" aria-valuemax="100">
+                                  {{round($datediff / (60 * 60 * 24))}}
+                                  {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
 
-                                    {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
-                                    {{$terjual_percentage}} 
-                                      %
-                                  </div>
+                                </b></span>
+                            </div>
+                            {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
+                            <span class="inter-normal-mercury-12px">&nbsp;</span>
+                            <div class="hr-lg inter-normal-mercury-14px">
+                              <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                            </div>
+                          </div>
+                          <div class="overlap-group">
+                            <div class="percent inter-medium-white-12px">
+                              {{-- <div class="progress-bar "
+                                style="width: {{ round((round($np->terjual,0)/round($np->supply))*100,2) }}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                role="progressbar"
+                                aria-valuenow="{{ round((round($np->terjual,0)/round($np->supply))*100,2) }}"
+                                aria-valuemin="0" aria-valuemax="100"> --}}
+                                <div class="progress-bar "
+                                  style="width:{{$terjual_percentage_f}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                  role="progressbar" aria-valuenow="{{$terjual_percentage_f}}" aria-valuemin="0"
+                                  aria-valuemax="100">
+
+                                  {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
+                                  {{$terjual_percentage}}
+                                  %
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div class="footer-card">
-                            <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                            <div class="footer-card-1">
-                              <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
-                                  class="inter-medium-alabaster-12px">Rp{{number_format($np['supply'] * $np['price'], 0,
-                                  ',', '.')}}</span>
-                              </div>
-                              <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
-                                  class="inter-medium-alabaster-12px">{{$np['period']}} </span>
-                              </div>
+                        </div>
+                        <div class="footer-card">
+                          <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                          <div class="footer-card-1">
+                            <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
+                              <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
+                                class="inter-medium-alabaster-12px">Rp{{number_format($np['supply'] * $np['price'], 0,
+                                ',', '.')}}</span>
+                            </div>
+                            <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
+                              <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
+                                class="inter-medium-alabaster-12px">{{$np['period']}} </span>
                             </div>
                           </div>
                         </div>
                       </div>
-                  </a>
-                </div>
-                @endforeach
-                            </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </a>
+              </div>
+              @endforeach
             </div>
-         </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
+</div>
 
-      {{-- @foreach ($now_playing as $np) --}}
+{{-- @foreach ($now_playing as $np) --}}
 
-                @foreach($now_playing as $k => $np)
-                <?php
+@foreach($now_playing as $k => $np)
+<?php
                 $now      = new DateTime(); // or your date as well
                 $start    = new DateTime($np['begin_period']);
                 $finish   = new DateTime($np['end_period']);
@@ -281,109 +284,111 @@
                 where emiten_id = '.$np['id'].')')
                 ->first();
                 ?>
-      <?php 
+<?php 
                                       // $picture = explode(',',$np->pictures);
                                       ?>
-      <div class="modal fade" id="modal_now{{$np['id']}}" tabindex="-1" role="dialog" aria-labelledby="detail_now" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="card" style="margin-bottom: -1px;">
-          <img class="rectangle-2" src="{{$np['pictures'][0]['picture']}}" />
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-              style="margin-right: 10px; margin-top: 0px; width: 30px;">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="content2">
-              <div class="header-card-dan-progress">
-                <div class="header-and-tags">
-                  <span class="tx-t inter-medium-sweet-pink-12px"
-                    style="background: var(--falu-red);
+<div class="modal fade" id="modal_now{{$np['id']}}" tabindex="-1" role="dialog" aria-labelledby="detail_now"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="card" style="margin-bottom: -1px;">
+        <img class="rectangle-2" src="{{$np['pictures'][0]['picture']}}" />
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          style="margin-right: 10px; margin-top: 0px; width: 30px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="content2">
+          <div class="header-card-dan-progress">
+            <div class="header-and-tags">
+              <span class="tx-t inter-medium-sweet-pink-12px"
+                style="background: var(--falu-red);
     border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{ $np['category'] }}</span>
-                  <div class="header">
-                    <div class="saka-logistics inter-medium-alabaster-20px">
-                      <span class="tx-pt inter-medium-alabaster">
-                      {{$np['trademark'] }}
-                      </span>
-                    </div>
-                    <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                      <span class="tx-np inter-normal-quill-gray">
-                      {{$np['company_name'] }}
-                      </span>
-                    </div>
+              <div class="header">
+                <div class="saka-logistics inter-medium-alabaster-20px">
+                  <span class="tx-pt inter-medium-alabaster">
+                    {{$np['trademark'] }}
+                  </span>
+                </div>
+                <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                  <span class="tx-np inter-normal-quill-gray">
+                    {{$np['company_name'] }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="info-dan-progress">
+              <div class="info-pendanaan">
+                <div class="mulai-rp1000000 inter-normal-mercury-14px">
+                  <span class="tx-sold span-1 inter-normal-mercury">Mulai</span><span
+                    class="inter-normal-mercury-12px">&nbsp;</span>
+                  <div class="mulai-rp inter-bold-white-14px"><span class="tx-sold span-1 inter-bold-white"
+                      style="font-weight: bold">Rp
+                      {{number_format(round(100 * $np['price'],0),0,',','.')}}</span>
                   </div>
                 </div>
-                <div class="info-dan-progress">
-                  <div class="info-pendanaan">
-                    <div class="mulai-rp1000000 inter-normal-mercury-14px">
-                      <span class="tx-sold span-1 inter-normal-mercury">Mulai</span><span
-                        class="inter-normal-mercury-12px">&nbsp;</span>
-                      <div class="mulai-rp inter-bold-white-14px"><span class="tx-sold span-1 inter-bold-white"
-                          style="font-weight: bold">Rp
-                                    {{number_format(round(100 * $np['price'],0),0,',','.')}}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="address">
-                    <div class="hr inter-bold-white-14px">
-                      <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
-                        <?php 
+              </div>
+              <div class="address">
+                <div class="hr inter-bold-white-14px">
+                  <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
+                      <?php 
                         $now = time();
                         $start = strtotime($emj->date);
                         $end = strtotime($emj->end_date);
                         $datediff = $end - $now ;
                         ?>
-      {{round($datediff / (60 * 60 * 24))}}
-                                    {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
-                                    {{-- 45 --}}
-                        </b></span>
-                    </div>
-                    <span class="inter-normal-mercury-12px">&nbsp;</span>
-                    <div class="hr-lg inter-normal-mercury-14px">
-                      <span class="tx-sold inter-normal-mercury">hari lagi</span>
-                    </div>
-                  </div>
-                  <div class="overlap-group">
-                    <div class="percent inter-medium-white-12px">
-                    <div class="progress-bar "
-                                    style="width: {{$terjual_percentage_f}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
-                                    role="progressbar" aria-valuenow="{{$terjual_percentage_f}}" aria-valuemin="0" aria-valuemax="100">
+                      {{round($datediff / (60 * 60 * 24))}}
+                      {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
+                      {{-- 45 --}}
+                    </b></span>
+                </div>
+                <span class="inter-normal-mercury-12px">&nbsp;</span>
+                <div class="hr-lg inter-normal-mercury-14px">
+                  <span class="tx-sold inter-normal-mercury">hari lagi</span>
+                </div>
+              </div>
+              <div class="overlap-group">
+                <div class="percent inter-medium-white-12px">
+                  <div class="progress-bar "
+                    style="width: {{$terjual_percentage_f}}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                    role="progressbar" aria-valuenow="{{$terjual_percentage_f}}" aria-valuemin="0" aria-valuemax="100">
 
-                                    {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
-                                    {{$terjual_percentage}}
-                                      {{-- 0 --}}
-                                      %
-                                  </div>
-                    </div>
+                    {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
+                    {{$terjual_percentage}}
+                    {{-- 0 --}}
+                    %
                   </div>
                 </div>
               </div>
-              <div class="footer-card">
-                            <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                            <div class="footer-card-1">
-                              <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
-                                <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
-                                  class="inter-medium-alabaster-12px">Rp{{number_format($np['supply'] * $np['price'], 0,
-                                  ',', '.')}}</span>
-                              </div>
-                              <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
-                                <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
-                                  class="inter-medium-alabaster-12px">{{$np['period']}}</span>
-                              </div>
-                            </div>
-                          </div>
             </div>
           </div>
-          <div class="modal-footer" style="background-color: var(--shark);">
-            <a class="b-daf btn btn-danger btn-lg btn-block" href="{{url('detail-now-playing')}}/{{$np['id']}}">Selengkapnya</a>
+          <div class="footer-card">
+            <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+            <div class="footer-card-1">
+              <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
+                <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
+                  class="inter-medium-alabaster-12px">Rp{{number_format($np['supply'] * $np['price'], 0,
+                  ',', '.')}}</span>
+              </div>
+              <div class="periode-dividen-6-bulan inter-normal-mercury-10px">
+                <span class="inter-normal-quill-gray-12px">Periode Dividen<br /></span><span
+                  class="inter-medium-alabaster-12px">{{$np['period']}}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="modal-footer" style="background-color: var(--shark);">
+        <a class="b-daf btn btn-danger btn-lg btn-block"
+          href="{{url('detail-now-playing')}}/{{$np['id']}}">Selengkapnya</a>
+      </div>
     </div>
-                  @endforeach
-      <script>
-    $(document).ready(function() {
+  </div>
+</div>
+@endforeach
+<script>
+  $(document).ready(function() {
     $(document).on('click', '.detail_now', function() {
     })
   })
-  </script>
+</script>
 @endsection
