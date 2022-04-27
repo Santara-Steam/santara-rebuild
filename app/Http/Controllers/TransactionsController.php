@@ -122,6 +122,7 @@ class TransactionsController extends Controller
             $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->where('t.name', 'like', '%' .$searchValue . '%')
                 ->where('tr.is_deleted', 0)
                 ->skip($start)
                 ->take($rowperpage)

@@ -11,37 +11,28 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h1 class="card-title-member">Transaksi</h1>
+                                <h1 class="card-title-member">Calon Penerbit</h1>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                   <select class="custom-select" onchange="filterTr()" id="filter">
-                                       <option disabled selected>Filter Status</option>
-                                       @foreach([
-                                            '' => 'Semua',
-                                            'VERIFIED' => 'Lunas',
-                                            'WAITING FOR VERIFICATION' => 'Menunggu Konfirmasi',
-                                            'CREATED' => 'Belum Konfirmasi',
-                                            'EXPIRED' => 'Kadaluarsa'
-                                        ] as $key => $value)
-                                             <option value="{{ $key }}">{{ $value }}</option>
-                                        @endforeach
-                                   </select>
-                                </div>
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table" id="tableTransaction"> 
+                                        <table class="table" id="tablePralisting"> 
                                             <thead>
                                                 <tr>
                                                     <th width="20">No</th>
-                                                    <th>Transaksi</th>
-                                                    <th>Member</th>
-                                                    <th>Created at</th>
-                                                    <th>Total (Rp)</th>
-                                                    <th>Split Fee</th>
+                                                    <th>Nama</th>
+                                                    <th>Perusahaan</th>
+                                                    <th>Brand</th>
+                                                    <th>Phone</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Vote</th>
+                                                    <th>Like</th>
+                                                    <th>Comment</th>
+                                                    <th>Kebutuhan Data</th>
+                                                    <th>Rencana Invest</th>
                                                     <th>Status</th>
-                                                    {{-- <th>Action</th> --}}
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -63,10 +54,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
-    loadData("");
-    function loadData(filter){
-        var tableTransaction = $("#tableTransaction").DataTable({
-            ajax: '{{ url("/admin/get_transactions?filter=") }}'+filter,
+        var tablePralisting = $("#tablePralisting").DataTable({
+            ajax: '{{ url("/admin/pralisting/get-pralisting") }}',
             responsive: true,
             processing: true,
             serverSide: true,
@@ -83,37 +72,45 @@
                     }
                 },
                 {
-                    data: "transaksi"
+                    data: "trader_name"
                 },
                 {
-                    data: "member"
+                    data: "company_name"
+                },
+                {
+                    data: "trademark"
+                },
+                {
+                    data: "phone"
                 },
                 {
                     data: "created_at"
                 },
                 {
-                    data: "amount"
+                    data: "total_votes"
                 },
                 {
-                    data: "split_fee"
+                    data: "total_likes"
+                },
+                {
+                    data: "total_coments"
+                },
+                {
+                    data: "capital_needs"
+                },
+                {
+                    data: "investment"
                 },
                 {
                     data: "status", 
                     className: "text-center"
                 },
-                // {
-                //     data: "link",
-                // },
+                {
+                    data: "aksi",
+                },
             ]
         });
-    }
-
-
-    function filterTr(){
-        const filter = $("#filter").val();
-        $("#tableTransaction").DataTable().clear().destroy();
-        loadData(filter);
-    }
+  
 </script>
 @endsection
 @section('style')

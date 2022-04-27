@@ -209,6 +209,9 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/cms/video/delete/{id}', [App\Http\Controllers\SantaraVideosController::class, 'destroy']);
     Route::get('/admin/cms/video/set-status/{uuid}/{status}', [App\Http\Controllers\SantaraVideosController::class, 'setStatus']);
 
+    Route::get('/admin/pralisting', [App\Http\Controllers\PralistingController::class, 'index']);
+    Route::get('/admin/pralisting/get-pralisting', [App\Http\Controllers\PralistingController::class, 'fetchData']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
