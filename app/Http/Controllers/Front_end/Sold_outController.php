@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Transactions_old;
 use App\Models\emiten_journey_old;
 use App\Models\Devidend_old;
+use App\Models\Category_old;
 
 class Sold_outController extends Controller
 {
@@ -29,7 +30,9 @@ class Sold_outController extends Controller
         ->groupBy('emitens.id')
         ->get();
 
-        return view('front_end/sold_out/index',compact('sold_out'));
+        $cat = Category_old::all();
+
+        return view('front_end/sold_out/index',compact('sold_out','cat'));
     }
 
     public function detail($id)

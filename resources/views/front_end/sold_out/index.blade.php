@@ -20,7 +20,6 @@
                     <div class="carousel-inner">
                       <div class="carousel-item active">
                           <div class="container">
-                            
                           <fieldset disabled>
                           <div class="form-row">
                           <div class="form-group col-md-4">
@@ -37,16 +36,9 @@
                                     </div>
                                 <select id="inputState" class="form-control dropdown-1">
                                   <option value="position">Semua Kategori</option>
-                                          <option value="price" >Property</option>
-                                          <option value="position">Food and Beverage</option>
-                                          <option value="price" >Peternakan</option>
-                                          <option value="position">Perkebunan/Argo</option>
-                                          <option value="price" >Teknologi</option>
-                                          <option value="position">Start Up</option>
-                                          <option value="price" >Project Financing</option>
-                                          <option value="price" >Service/Layanan</option>
-                                          <option value="position">Manufaktur/Produksi</option>
-                                          <option value="price" >Retail/Distribusi/Logistik</option>
+                                        @foreach ($cat as $cate)
+                                          <option value="{{$cate->id}}" >{{$cate->category}}</option>
+                                        @endforeach
                                 </select>
                               </div>
                               <div class="form-group col-md-2">
@@ -54,12 +46,14 @@
                                           <span class="inter-medium-quill-gray-14px">Urutkan</span>
                                         </div>
                                 <select id="inputState" class="form-control dropdown-1">
-                                  <option value="position">Terlama</option>
-                                          <option value="price" >Terpenuhi</option>
+                                <option value="terbaru">Terbaru</option>
+                                  <option value="terlama">Terlama</option>
+                                          <option value="terpenuhi" >Terpenuhi</option>
                                           <option value="position">Belum Terpenuhi</option>
                                 </select>
                               </div>
-                            </div></fieldset>
+                            </div>
+                            <fieldset>
                             <div class="fashion_section_2">
                                 <div class="row" style="padding-left: 10px; padding-right: 10px;">
                                 @foreach ($sold_out as $item)
