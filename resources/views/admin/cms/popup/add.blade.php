@@ -122,7 +122,7 @@
                                                     <div class="form-group">
                                                         <label><strong>Link redirect action button ( Aplikasi
                                                                 )</strong></label>
-                                                        <input class="form-control" name="website_url"
+                                                        <input class="form-control" name="mobile_url"
                                                             placeholder="Contoh: https://santara.co.id/detail/deck/219"
                                                             required />
                                                     </div>

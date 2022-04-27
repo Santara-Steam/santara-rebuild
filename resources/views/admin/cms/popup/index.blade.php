@@ -89,7 +89,7 @@
                 if (result.value) {
                     $("#loader").show();
                     $.ajax({
-                        url: '{{ url("admin/cms/header/delete") }}' + '/' + data_id,
+                        url: '{{ url("admin/cms/popup/delete") }}' + '/' + data_id,
                         type: 'POST',
                         success: function() {
                             $("#loader").hide();
