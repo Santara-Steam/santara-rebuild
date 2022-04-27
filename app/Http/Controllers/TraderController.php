@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
 use App\Models\notification;
 use App\Models\riwayat_user;
 use App\Models\trader;
 use App\Models\User;
+use App\Models\Withdraw;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -192,5 +194,29 @@ class TraderController extends Controller
         }else{
             dd('salah');
         }
+    }
+
+    public function user_wallet(){
+        $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
+            ->join('users as u', 'u.id', '=', 't.user_id')
+            ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+            ->leftJoin('onepay_transaction as ot','ot.deposit_id','=','deposits.id')
+            ->where('deposits.trader_id',Auth::user()->trader->id)
+            ->select('deposits.id','ot.redirect_url', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
+                'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
+                'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
+                'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
+                'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+            ->orderBy('deposits.created_at','DESC')
+            ->get();
+            $wd = Withdraw::where('trader_id',Auth::user()->trader->id)
+            ->orderBy('id','DESC')
+            ->get();
+            $trader_bank = DB::table('trader_banks')
+            ->select('trader_banks.*','bank_withdraws.bank','bank_withdraws.bank_code')
+            ->join('bank_withdraws','bank_withdraws.id','=','trader_banks.bank_wd_id')
+            ->where('trader_id',Auth::user()->trader->id)->first();
+            $bwd = db::table('bank_withdraws')->select('*')->where('is_deleted',0)->get();
+        return view('user.wallet.index',compact('deposit','wd','trader_bank','bwd'));
     }
 }

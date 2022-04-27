@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Deposit;
+use App\Models\Withdraw;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
@@ -26,6 +27,8 @@ class DepositController extends Controller
                 'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
             ->orderBy('deposits.created_at','DESC')
             ->get();
+        
+            
         return view('user.deposit.index',compact('deposit'));
     }
 

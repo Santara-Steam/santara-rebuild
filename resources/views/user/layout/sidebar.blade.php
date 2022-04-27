@@ -51,12 +51,14 @@
                     Mulai Investasi
                 </a>
             </div>
+            <li class=" nav-item {{ 'user/wallet' == request()->path() ? 'active' : '' }}"><a href="{{url('user/wallet')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Wallet</span></a>
+            </li>
             <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>
             </li>
-            <li class=" nav-item {{ 'user/deposit' == request()->path() ? 'active' : '' }}"><a href="{{url('user/deposit')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
-            </li>
-            <li class=" nav-item {{ 'user/penarikan' == request()->path() ? 'active' : '' }}"><a href="{{url('user/penarikan')}}"><i class="la la-arrow-circle-down"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>
-            </li>
+            {{-- <li class=" nav-item {{ 'user/deposit' == request()->path() ? 'active' : '' }}"><a href="{{url('user/deposit')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
+            </li> --}}
+            {{-- <li class=" nav-item {{ 'user/penarikan' == request()->path() ? 'active' : '' }}"><a href="{{url('user/penarikan')}}"><i class="la la-arrow-circle-down"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>
+            </li> --}}
             <hr>
             <li class=" nav-item {{ 'user' == request()->path() ? 'active' : '' }}"><a href="{{url('user')}}"><i class="la la-home"></i><span class="menu-title" data-i18n="eCommerce">Dashboard</span></a>
             </li>
