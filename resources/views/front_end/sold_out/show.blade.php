@@ -201,7 +201,7 @@
                 font-size: var(--font-size-l);
                 font-style: normal;
                 font-weight: 500;">
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Saham Tersisa <br> 
                     @if ($emt->avg_capital_needs < 0)
                     {{number_format(round((($emt->avg_capital_needs-$bok->tot)/$emt->avg_capital_needs)*100,0),0,',','.')}}%
@@ -210,7 +210,7 @@
                     @endif
                     </td>
                   </tr>
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Dalam Lembar <br> 
                     @if ($emt->price < 0)
                     {{number_format(round(($emt->avg_capital_needs-$bok->tot)/$emt->price,0),0,',','.')}} Lembar
@@ -218,7 +218,7 @@
                        0 Lembar
                     @endif</td>
                   </tr>
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Total Rupiah <br> 
                     @if ($emt->avg_capital_needs-$bok->tot > 0)
                     Rp{{number_format(round(($emt->avg_capital_needs-$bok->tot),0),0,',','.')}}
@@ -234,7 +234,7 @@
                 font-size: var(--font-size-l);
                 font-style: normal;
                 font-weight: 500;">
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Saham Terjual <br>
                     @if ($emt->avg_capital_needs < 0)
                     {{number_format(round(($bok->tot/$emt->avg_capital_needs)*100,0),0,',','.')}}%
@@ -242,10 +242,10 @@
                        100%
                     @endif </td>
                   </tr>
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Dalam Lembar <br> {{number_format(round($bok->tot/$emt->price,0),0,',','.')}} Lembar</td>
                   </tr>
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Dalam Rupiah<br> Rp{{number_format(round($bok->tot,0),0,',','.')}}</td>
                   </tr>
                 </table>
@@ -260,13 +260,13 @@
                 font-size: var(--font-size-l);
                 font-style: normal;
                 font-weight: 500;">
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Harga Saham <br> Rp{{number_format(round($emt->price,0),0,',','.')}}</td>
                   </tr>
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Total Saham <br> {{number_format(round($emt->avg_capital_needs / $emt->price,0),0,',','.')}} Lembar</td>
                   </tr>
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Total Saham (Rp) <br> Rp{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</td>
                   </tr>
                 </table>
@@ -277,10 +277,10 @@
                 font-size: var(--font-size-l);
                 font-style: normal;
                 font-weight: 500;">
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Kode Saham <br> {{$emt->code_emiten}}</td>
                   </tr>
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Sisa Waktu <br> 
                     <?php 
                       $now = time();
@@ -297,7 +297,7 @@
 
                     </td>
                   </tr>
-                  <tr>
+                  <tr style="font-size:14px;">
                     <td>Periode Deviden<br> 6 Bulan</td>
                   </tr>
                 </table>
@@ -307,19 +307,19 @@
           <!-- 2nd card -->
           <div class="tab-pane fade" id="pills-des" role="tabpanel" aria-labelledby="pills-des-tab">
             <div class="table-row-1">
-              <span class="inter-medium-delta-16px" style="text-align: justify;">{{$emt->business_description}}</span>
+              <span class="inter-medium-delta-14px" style="text-align: justify;">{{$emt->business_description}}</span>
             </div>
           </div> <!-- 3nd card -->
           <!-- 2nd card -->
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
             <div class="table-row-1">
-              <span class="inter-medium-delta-16px">Instagram : {{$emt->instagram}}</span>
+              <span class="inter-medium-delta-14px">Instagram : {{$emt->instagram}}</span>
             </div>
             <div class="table-row">
-              <span class="inter-medium-delta-16px">Facebook : {{$emt->facebook}}</span>
+              <span class="inter-medium-delta-14px">Facebook : {{$emt->facebook}}</span>
             </div>
             <div class="table-row">
-              <span class="inter-medium-delta-16px">Website : {{$emt->website}}</span>
+              <span class="inter-medium-delta-14px">Website : {{$emt->website}}</span>
             </div>
           </div> <!-- 3nd card -->
         </div>
@@ -334,7 +334,12 @@
                 <div class="table-cell">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
                     <span class="inter-normal-delta-12px">Pembagian Deviden Tahap I - </span
-                    ><span class="inter-normal-delta-12px">08 Jan 2022</span>
+                    ><span class="inter-normal-delta-12px">
+                      @if(is_null($dv))  
+                      
+                      @else
+                      {{date('d M Y', strtotime($dv->devidend_date))}}
+                      @endif</span>
                   </p>
                 </div>
                 <div class="table-cell">
@@ -353,7 +358,13 @@
                 <div class="table-cell-row">
                   <div class="table-cell">
                     <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap II - 08 Aug 2022</span>
+                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap II - 
+                      @if(is_null($dv2))  
+                      
+                      @else
+                      {{date('d M Y', strtotime($dv2->devidend_date))}}
+                      @endif
+                      </span>
                     </p>
                   </div>
                   <div class="table-cell">
@@ -374,9 +385,14 @@
                 <div class="table-cell-row">
                   <div class="table-cell">
                     <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap III</span
-                      ><span class="inter-normal-delta-12px"> - </span
-                      ><span class="inter-medium-delta-12px">08 Jan 2023</span>
+                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap III - 
+                      @if(is_null($dv3))  
+                      
+                      @else
+                      {{date('d M Y', strtotime($dv3->devidend_date))}}
+                      @endif  
+                      </span
+                      >
                     </p>
                   </div>
                   <div class="table-cell">
