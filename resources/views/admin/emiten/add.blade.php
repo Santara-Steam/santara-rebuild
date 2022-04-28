@@ -50,25 +50,11 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="projectinput6">Kategori <span style="color: red">*</span></label>
-                                                    <select required id="projectinput6" name="kategori" class="form-control">
-                                                        <option value="" selected="" disabled="" hidden>-- Pilih Kategori
-                                                            --</option>
-                                                        @foreach ($kategori as $item)
-                                                        <option value="{{$item->id}}">{{$item->category}}</option>
-    
-                                                        @endforeach
-                                                    </select>
+                                                    <select required id="categoriBisnis" style="width: 100%" name="kategori"></select>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput6">Trader Email <span style="color: red">*</span></label>
-                                                    <select required id="projectinput6" name="trader" class="form-control">
-                                                        <option value="" selected="" disabled="" hidden>-- Pilih Email
-                                                            --</option>
-                                                        @foreach ($user as $item)
-                                                        <option value="{{$item->trader->id}}">{{$item->email}}</option>
-    
-                                                        @endforeach
-                                                    </select>
+                                                    <select required id="traderEmail" name="trader" class="form-control"></select>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput8">Deskripsi
@@ -603,7 +589,68 @@
 </div>
 @endsection
 @section('js')
+<script src="{{ asset('public') }}/assets/js/select2.min.js"></script>
 <script>
+
+    $(document).ready(function() {
+        $("#categoriBisnis").select2({
+                placeholder: "Contoh: Transportasi, Pergudangan dan Komunikasi",
+                closeOnSelect: false,
+                allowClear: true,
+                delay: 250, // wait 250 milliseconds before triggering the request
+                ajax: {
+                    url: "{{ url('admin/get-categories') }}",
+                    dataType: "json",
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data) {
+                        var results = [];
+                        $.each(data, function(index, item) {
+                            results.push({
+                                id: item.id,
+                                text: item.category,
+                                value: item.id
+                            })
+                        })
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+
+            $("#traderEmail").select2({
+                placeholder: "Contoh: user@gmail.com",
+                closeOnSelect: false,
+                allowClear: true,
+                delay: 250, // wait 250 milliseconds before triggering the request
+                ajax: {
+                    url: "{{ url('admin/get-users') }}",
+                    dataType: "json",
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data) {
+                        var results = [];
+                        $.each(data, function(index, item) {
+                            results.push({
+                                id: item.id,
+                                text: item.email,
+                                value: item.id
+                            })
+                        })
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+    });
     $(document).ready(function(){
     
         var $modal = $('#modal');
@@ -833,10 +880,6 @@
             });
         });
         
-    
-    
-    
-    
         var $modal4 = $('#modal4');
     
         var image4 = document.getElementById('sample_image4');
@@ -1100,6 +1143,7 @@ $('#crop6').click(function(){
 <script src="https://unpkg.com/cropperjs"></script>
 {{--
 <link rel="stylesheet" href="style.css" /> --}}
+<link href="{{ asset('public') }}/assets/css/select2.min.css" rel="stylesheet" />
 
 <style>
     .image_area {

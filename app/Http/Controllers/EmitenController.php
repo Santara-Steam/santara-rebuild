@@ -27,9 +27,44 @@ class EmitenController extends Controller
     }
 
     public function add(){
-        $user = User::where('role_id',2)->get();
-        $kategori = kategori::all();
-        return view('admin.emiten.add',compact('kategori','user'));
+        return view('admin.emiten.add');
+    }
+
+    public function getCategories(Request $request)
+    {
+        $search = $request->search;
+        if($search != ""){
+            $kategori = kategori::where('is_deleted', 0)
+                ->where('category', 'like', '%'.$search.'%')
+                ->select('id', 'category')
+                ->get();
+        }else{
+            $kategori = kategori::where('is_deleted', 0)
+                ->limit(5)
+                ->select('id', 'category')
+                ->get();
+        }
+        return response()->json($kategori);
+    }
+
+    public function getUser(Request $request)
+    {
+        $search = $request->search;
+        if($search != ""){
+            $users = User::where('role_id', 2)
+                ->where('is_deleted', 0)
+                ->where('email', 'like', '%'.$search.'%')
+                ->limit(5)
+                ->select('id', 'email')
+                ->get();
+        }else{
+            $users = User::where('role_id', 2)
+                ->where('is_deleted', 0)
+                ->limit(5)
+                ->select('id', 'email')
+                ->get();
+        }
+        return response()->json($users);
     }
 
     public function validator(array $data){
@@ -212,10 +247,8 @@ class EmitenController extends Controller
         }else{
             $picture[6];
         }
-        $kategori = kategori::all();
-        $user = User::where('role_id',2)->get();
         // dd($s);
-        return view('admin.emiten.edit',compact('kategori','emiten','picture','user'));
+        return view('admin.emiten.edit',compact('emiten','picture'));
     }
 
     public function edit_bisnis(emiten $emiten,$id){

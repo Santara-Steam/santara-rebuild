@@ -50,29 +50,11 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="projectinput6">Kategori <span style="color: red">*</span></label>
-                                                    <select required id="projectinput6" name="kategori" class="form-control">
-                                                        <option value="0" selected="" disabled="" hidden>-- Pilih
-                                                            Kategori
-                                                            --</option>
-                                                        @foreach ($kategori as $item)
-                                                        <option <?php if ($emiten->category_id == $item->id) {
-                                                            echo 'selected'; } ?>
-                                                            value="{{$item->id}}">{{$item->category}}</option>
-
-                                                        @endforeach
-                                                    </select>
+                                                    <select required id="categoriBisnis"  name="kategori" class="form-control"></select>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput6">Trader Email <span style="color: red">*</span></label>
-                                                    <select required id="projectinput6" name="trader" class="form-control">
-                                                        <option value="" selected="" disabled="" hidden>-- Pilih Email
-                                                            --</option>
-                                                        @foreach ($user as $item)
-                                                        <option <?php if ($emiten->trader_id == $item->trader->id) {
-                                                            echo 'selected'; } ?> value="{{$item->trader->id}}">{{$item->email}}</option>
-    
-                                                        @endforeach
-                                                    </select>
+                                                    <select required id="traderEmail" name="trader" class="form-control"></select>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput8">Deskripsi
@@ -608,6 +590,66 @@
 @endsection
 @section('js')
 <script>
+     $(document).ready(function() {
+        $("#categoriBisnis").select2({
+                placeholder: "Contoh: Transportasi, Pergudangan dan Komunikasi",
+                closeOnSelect: false,
+                allowClear: true,
+                delay: 250, // wait 250 milliseconds before triggering the request
+                ajax: {
+                    url: "{{ url('admin/get-categories') }}",
+                    dataType: "json",
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data) {
+                        var results = [];
+                        $.each(data, function(index, item) {
+                            results.push({
+                                id: item.id,
+                                text: item.category,
+                                value: item.id
+                            })
+                        })
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+
+            $("#traderEmail").select2({
+                placeholder: "Contoh: user@gmail.com",
+                closeOnSelect: false,
+                allowClear: true,
+                delay: 250, // wait 250 milliseconds before triggering the request
+                ajax: {
+                    url: "{{ url('admin/get-users') }}",
+                    dataType: "json",
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data) {
+                        var results = [];
+                        $.each(data, function(index, item) {
+                            results.push({
+                                id: item.id,
+                                text: item.email,
+                                value: item.id
+                            })
+                        })
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+    });
+
     $(document).ready(function(){
     
         var $modal = $('#modal');
