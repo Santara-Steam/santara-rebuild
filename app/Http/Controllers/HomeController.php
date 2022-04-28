@@ -71,9 +71,28 @@ class HomeController extends Controller
                 ->where('tr.last_status', 'VERIFIED')
                 ->select('c.category as cat','e.code_emiten','e.company_name','e.trademark',db::raw('MAX(tr.created_at) as cr'),db::raw('SUM(tr.amount/e.price) as lembar'),db::raw('SUM(tr.amount) as tot'))
                 ->groupBy('e.id')
+                ->limit(4)
                 ->get();
 
-        return view('user.index',compact('total_saham','total_lbr','psb','psbv','book','asset','port'));
+                $rtransactions = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftJoin('onepay_transaction as ot','ot.transaction_id','=','tr.id')
+                ->where('users.id', Auth::user()->id)
+                ->where('tr.is_deleted', 0)
+                ->where('tr.last_status', 'CREATED')
+                ->orwhere('users.id', Auth::user()->id)
+                ->where('tr.is_deleted', 0)
+                ->where('tr.last_status', 'WAITING FOR VERIFICATION')
+                ->select('tr.id','ot.redirect_url','tr.expired_date', 'tr.uuid','e.pictures', 't.name as trader_name', 'users.email as user_email', 
+                    't.id as trader_id','e.trademark','e.company_name', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
+                    'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
+                    'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
+                    'tr.last_status as status')
+                ->orderBy('tr.id','DESC')
+                ->get();
+
+        return view('user.index',compact('total_saham','total_lbr','psb','psbv','book','asset','port','rtransactions'));
     }
     public function indexadmin()
     {

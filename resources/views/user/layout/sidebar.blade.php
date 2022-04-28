@@ -2,8 +2,11 @@
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <hr>
+            <li class=" nav-item {{ 'user' == request()->path() ? 'active' : '' }}"><a href="{{url('user')}}"><i class="la la-home"></i><span class="menu-title" data-i18n="eCommerce">Dashboard</span></a>
+            </li>
             <div class="menu-profile">
-                <div class="profile-greeting">Hallo,</div>
+                {{-- <div class="profile-greeting">Hallo,</div>
                 <div class="profile-name">
                     <b>{{Auth::user()->trader->name}}</b>
                 </div>
@@ -46,8 +49,8 @@
                             </tr>
                         
                     </table>
-                </div>
-                <a href="#" class="btn btn-santara-red btn-block" type="button">
+                </div> --}}
+                <a href="{{url('/')}}" class="btn btn-santara-red btn-block" type="button">
                     Mulai Investasi
                 </a>
             </div>
@@ -59,9 +62,6 @@
             </li> --}}
             {{-- <li class=" nav-item {{ 'user/penarikan' == request()->path() ? 'active' : '' }}"><a href="{{url('user/penarikan')}}"><i class="la la-arrow-circle-down"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>
             </li> --}}
-            <hr>
-            <li class=" nav-item {{ 'user' == request()->path() ? 'active' : '' }}"><a href="{{url('user')}}"><i class="la la-home"></i><span class="menu-title" data-i18n="eCommerce">Dashboard</span></a>
-            </li>
             <li class=" nav-item {{ 'user/transaksi' == request()->path() ? 'active' : '' }}"><a href="{{url('user/transaksi')}}"><i class="la la-money"></i><span class="menu-title" data-i18n="eCommerce">Transaksi</span></a>
             </li>
             {{-- <li class="navigation-header"><span data-i18n="Layouts">Penerbit</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>

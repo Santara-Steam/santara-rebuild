@@ -9,7 +9,7 @@
             <section id="basic-examples">
                 <div class="row">
                     <div class="col-12 mb-1">
-                        <h4>Welcome {{Auth::user()->trader->name}}!</h4>
+                        <h4 style="font-weight: 800;">Welcome {{Auth::user()->trader->name}}!</h4>
                         <p>Platform Equity Crowdfunding pertama yang berizin dan diawasi Otoritas Jasa Keuangan berdasarkan Surat Keputusan Nomor: KEP-59/D.04/2019.</p>
                         {{-- {{Session::get('pwd')}} --}}
                         {{-- {{Session::get('token')}} --}}
@@ -17,18 +17,80 @@
                 </div>
                 @include('user.is_kyc')
                 <div class="row">
-                    <div class="col-xl-4 col-md-12">
-                        <div class="card">
+                    <div class="col-xl-12 col-md-12">
+                        
                             <div class="card-content">
-                                <div class="card-body cleartfix">
+                                <div class="card-body cleartfix" style="    margin-bottom: 20px;">
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
-                                            <i class="icon-wallet info font-large-2 mr-2"></i>
+                                            <i class="icon-wallet success font-large-5 mr-2"></i>
                                         </div>
                                         <div class="media-body">
-                                            <h4>Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</h4>
+                                            {{-- <h4>Saldo Anda : Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</h4>
                                             <span>Saldo Anda</span>
+
+                                            <h4>
+                                              Total Investasi :
+                                              @if ($asset)
+                                              Rp. {{number_format($asset->amo,0,',','.')}}
+                                              @else
+                                              Rp. 0
+                                              @endif</h4>
+                                          <span>Total Investasi</span>
+
+                                            <h4>
+                                              Total Asset : 
+                                              @if ($asset)
+                                              Rp. {{number_format(Auth::user()->trader->saldo->balance+$asset->amo, 0, ',', '.')}}
+                                              @else
+                                              Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}
+                                              @endif</h4>
+                                          <span>Total Asset</span> --}}
+                                          
+                                          <table>
+                                            <tr>
+                                              <td><h4>Saldo Anda</h4></td>
+                                              <td width="10%" style="text-align: center"><h4>:</h4></td>
+                                              <td width="50%"><h4 style="font-weight: 600;">
+                                                Rp. 
+                                                <span style="float: right">
+                                                {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}
+                                                </span>
+                                              </h4></td>
+                                            </tr>
+                                            <tr>
+                                              <td><h4>Total Investasi</h4></td>
+                                              <td style="text-align: center"><h4>:</h4></td>
+                                              <td><h4 style="font-weight: 600;">
+                                                Rp. 
+                                                <span style="float: right">
+                                                @if ($asset)
+                                                {{number_format($asset->amo,0,',','.')}}
+                                                @else
+                                                0
+                                                @endif
+                                              </span>
+                                              </h4></td>
+                                            </tr>
+                                            <tr>
+                                              <td><h4>Total Asset</h4></td>
+                                              <td style="text-align: center"><h4>:</h4></td>
+                                              <td><h4 style="font-weight: 600;">
+                                                Rp. 
+                                                <span style="float: right">
+                                                @if ($asset)
+                                                {{number_format(Auth::user()->trader->saldo->balance+$asset->amo, 0, ',', '.')}}
+                                                @else
+                                                {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}
+                                                @endif
+                                              </span>
+                                              </h4></td>
+                                            </tr>
+                                          </table>
+
                                         </div>
+                                        
+
                                         
                                     </div>
                                 </div>
@@ -36,50 +98,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-md-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body cleartfix">
-                                    <div class="media align-items-stretch">
-                                        <div class="align-self-center">
-                                            <i class="icon-docs info font-large-2 mr-2"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>@if ($asset)
-                                                Rp. {{number_format($asset->amo,0,',','.')}}
-                                                @else
-                                                Rp. 0
-                                                @endif</h4>
-                                            <span>Total Investasi</span>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body cleartfix">
-                                    <div class="media align-items-stretch">
-                                        <div class="align-self-center">
-                                            <i class="icon-briefcase info font-large-2 mr-2"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>@if ($asset)
-                                                Rp. {{number_format(Auth::user()->trader->saldo->balance+$asset->amo, 0, ',', '.')}}
-                                                @else
-                                                Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}
-                                                @endif</h4>
-                                            <span>Total Asset</span>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
 
                 
@@ -88,9 +107,16 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card col-12">
-
+                          <div class="card col-12">
+                                
+                            <div class="card">
+              
+                                    
                                 <div class="card-content">
+                                  <div class="row" style="margin-top: 10px">
+                                    <div class="col-6"><h1>Portfolio</h1></div>
+                                    <div class="col-6"><a style="float: right;    text-decoration: underline;" href="{{url('user/portfolio')}}">Lihat Semua</a></div>
+                                  </div>
                                     <div class="row mb-1 mt-1" id="totalPortofolio">
                                         
                                     </div>
@@ -133,8 +159,116 @@
                                     </div>
                                 </div>
                                 @endforeach
-                                        
-                                    </div>
+                              </div>
+                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="configuration">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                          <div class="card col-12">
+                                
+                            <div class="card">
+              
+                              <h1 style="margin-top: 10px">Order Status</h1>
+                                <div class="card-content">
+                                  <div class="table-responsive">
+                                    <table class="table table-hover" id="tabel">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0">No Transaksi</th>
+                                                <th class="border-top-0">Emiten</th>
+                                                <th class="border-top-0">Amount</th>
+                                                <th class="border-top-0">Status</th>
+                                                <th class="border-top-0" style="    width: 0px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($rtransactions as $item)
+                                            <?php 
+                                                                $picture = explode(',',$item->pictures);
+                                                                ?>
+                                            <tr>
+                                              <td>{{$item->transaction_serial}} 
+                                              <br>
+                                              {{tgl_indo(date('Y-m-d',
+                                                                                    strtotime($item->created_at))).'
+                                                                                    '.formatJam($item->created_at),}}
+                                              </td>
+                                              <td>
+                                                ({{$item->code_emiten}}) {{$item->trademark}}
+                                                <br>
+                                                {{$item->company_name}}
+                                              </td>
+                                              <td>
+                                                <table>
+                                                  <tr>
+                                                    <td>Harga Saham</td>
+                                                    <td>:</td>
+                                                    <td>Rp.
+                                                      {{number_format($item->price,0,',','.')}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Jumlah Saham</td>
+                                                    <td>:</td>
+                                                    <td>{{number_format($item->qty,0,',','.')}}
+                                                      Lembar</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Biaya Admin</td>
+                                                    <td>:</td>
+                                                    <td>Rp.
+                                                      {{number_format($item->fee,0,',','.')}}
+                                                      (
+                                                      {{$item->channel}}
+                                                      )</td>
+                                                  </tr>
+                                                  
+                                                </table>
+                                              </td>
+                                              <td>
+                                                @if ($item->status ==
+                                                                            'CREATED')
+                                                                            <div class="p-1 font-berhasil" style="font-size: 17px;">
+                                                                                <small><b>Menunggu Pembayaran</b></small>
+                                                                            </div>
+                                                                            @elseif ($item->status
+                                                                            == 'WAITING FOR VERIFICATION')
+                                                                            <div class="p-1 font-berhasil">
+                                                                                <small><b>Menunggu Verifikasi</b></small>
+                                                                            </div>
+                                                                            @endif
+                                                                            <button class="btn btn-santara-white"
+                                                                                style="cursor: default;">
+                                                                                <span
+                                                                                    style="color: #BF2D30; font-size:12px"><b>Batas
+                                                                                        : {{tgl_indo(date('Y-m-d',
+                                                                                        strtotime($item->expired_date))).'
+                                                                                        '.formatJam($item->expired_date),}}</b></span>
+                                                                            </button>
+                                              </td>
+                                              <td>
+                                                <a href="{{$item->redirect_url}}" target="_blank"
+                                                  class="btn btn-success"
+                                                  style="width:100px"
+                                                  title="Bayar">Bayar</a>
+                                              <a class="btn btn-santara-red  cancelbtn"
+                                              data-id="{{$item->id}}"
+                                                  style="width:100px"
+                                                  title="Bayar">Batal</a>
+                                              </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                    
+                              
                                 </div>
                             </div>
                         </div>
@@ -157,10 +291,6 @@
     $(document).ready(function() {
         $('#tabel').DataTable({
             responsive: true,
-            "columnDefs": [
-    { "width": "23%", "targets": 6 },
-    { "width": "5%", "targets": 4 },
-  ],
         });
     });
 </script>

@@ -67,7 +67,7 @@
                                                                                 src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
                                                                                 width="150px"></div>
                                                                         <div class="col-md-4">
-                                                                            <div style="font-size:18px"><b>{{$item->trademark}}</b>
+                                                                            <div style="font-size:18px"><b>({{$item->code_emiten}}) {{$item->trademark}}</b>
                                                                             </div>
                                                                             <div style="font-size:15px">{{$item->company_name}}</div>
                                                                             <div
