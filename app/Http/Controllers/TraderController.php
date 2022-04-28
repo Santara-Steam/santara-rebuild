@@ -196,7 +196,7 @@ class TraderController extends Controller
         }
     }
 
-    public function user_wallet(){
+    public function user_wallet(Request $request){
         $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
             ->join('users as u', 'u.id', '=', 't.user_id')
             ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
@@ -218,14 +218,31 @@ class TraderController extends Controller
             ->where('trader_id',Auth::user()->trader->id)->first();
             $bwd = db::table('bank_withdraws')->select('*')->where('is_deleted',0)->get();
 
-            $se = db::select(db::raw("SELECT deposits.created_at,'DEPOSIT',deposits.amount,onepay_transaction.redirect_url,deposits.`status` from deposits 
-            LEFT JOIN onepay_transaction on onepay_transaction.deposit_id = deposits.id
-            where deposits.trader_id = ".Auth::user()->trader->id."
-            UNION ALL
-            SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = 190001
-            ORDER BY created_at DESC"));
+            if (!empty($request->start) && !empty($request->end) ) {
+                # code...
+                $se = db::select(db::raw("SELECT deposits.created_at,'DEPOSIT',deposits.amount,onepay_transaction.redirect_url,deposits.`status` from deposits 
+                LEFT JOIN onepay_transaction on onepay_transaction.deposit_id = deposits.id
+                where deposits.trader_id = ".Auth::user()->trader->id."
+                and DATE(deposits.created_at) BETWEEN '".$request->start."' AND '".$request->end."'
+                and deposits.created_at >= last_day(now()) + interval 1 day - interval 3 month
+                UNION ALL
+                SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = 190001
+                and DATE(created_at) BETWEEN '".$request->start."' AND '".$request->end."'
+                and created_at >= last_day(now()) + interval 1 day - interval 3 month
+                ORDER BY created_at DESC"));
+            }else{
+                $se = db::select(db::raw("SELECT deposits.created_at,'DEPOSIT',deposits.amount,onepay_transaction.redirect_url,deposits.`status` from deposits 
+                LEFT JOIN onepay_transaction on onepay_transaction.deposit_id = deposits.id
+                where deposits.trader_id = ".Auth::user()->trader->id."
+                and deposits.created_at >= last_day(now()) + interval 1 day - interval 3 month
+                UNION ALL
+                SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = 190001
+                and created_at >= last_day(now()) + interval 1 day - interval 3 month
+                ORDER BY created_at DESC"));
+            }
 
-            
+
+            // dd($request->start);
 
             // dd($se);
 
