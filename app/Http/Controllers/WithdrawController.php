@@ -97,8 +97,8 @@ class WithdrawController extends Controller
                 .$row->bank_to.'</div>';
             $date = '<div class="col-12">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
                 .'</div><div class="col-12">'.formatJam($row->created_at).'</div>';
-            $amount = '<div class="row"><div class="col-4">Withdrawal :</div><div class="col-5">'.rupiah($row->amount).'</div></div><div class="row"><div class="col-4">Fee :</div><div class="col-5">'
-                .rupiah($row->fee).'</div></div><div class="row"><div class="col-4">Total :</div><div class="col-5">'.(rupiah($row->amount - $row->fee)).'</div></div>';
+            $amount = '<div class="row"><div class="col-6">Withdrawal :</div><div class="col-6">'.rupiah($row->amount).'</div></div><div class="row"><div class="col-6">Fee :</div><div class="col-6">'
+                .rupiah($row->fee).'</div></div><div class="row"><div class="col-6">Total :</div><div class="col-6">'.(rupiah($row->amount - $row->fee)).'</div></div>';
             $saldoAvailable = "";
             if($row->is_verified == 0 || $row->is_verified == null){
                 $status = '<a href="#" onClick="confirmWithdraw(\''.$row->uuid.'\',

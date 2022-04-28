@@ -129,7 +129,7 @@
                             $("#loader").hide();
                             Swal.fire("Success!", 'Data berhasil dihapus.', "success").then((
                             result) => {
-                                window.location = '/user/pralisting/list';
+                                window.location = '{{ url("admin/pralisting/pralisting") }}';
                             });
                         },
                         error: function(msg) {
