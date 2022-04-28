@@ -27,7 +27,7 @@
                             <div class="label inter-medium-quill-gray-14px">
                               <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
                             </div>
-                            <input type="search" name="cari" class="form-control input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="Cari"/>
+                            <input type="search" value="{{ $car }}" name="cari" class="form-control input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="Cari"/>
                           </div>
                           <div class="form-group col-md-3 kati">
                           </div>
@@ -36,9 +36,11 @@
                                       <span class="inter-medium-quill-gray-14px">Kategori</span>
                                     </div>
                                 <select name="categor" id="inputState" class="form-control dropdown-1" onChange=" document.getElementById('form_id').submit();">
-                                  <option value="">Semua Kategori</option>
+                                        <option value="0">Semua Kategori</option>
                                         @foreach ($cat as $cate)
-                                          <option type="submit" value="{{$cate->id}}" >{{$cate->category}}</option>
+                                          <option <?php if ($cate->id == $fil_cat) {
+                                                            echo 'selected'; } ?>
+                                                            value="{{$cate->id}}">{{$cate->category}}</option>
                                         @endforeach
                                 </select>
                               </div>
@@ -47,14 +49,20 @@
                                           <span class="inter-medium-quill-gray-14px">Urutkan</span>
                                         </div>
                                 <select name="sort" id="inputState" class="form-control dropdown-1" onChange=" document.getElementById('form_id').submit();">
-                                <option value="desc">Terbaru</option>
-                                  <option value="asc">Terlama</option>
+                                <option <?php if ($fil_sort == 'desc') {
+                                                            echo 'selected'; } ?>
+                                                            value="desc">Terbaru</option>
+                                  <option <?php if ($fil_sort == 'asc') {
+                                                            echo 'selected'; } ?>
+                                                            value="asc">Terlama</option>
                                           <option value="terpenuhi" >Terpenuhi</option>
                                           <option value="position">Belum Terpenuhi</option>
                                 </select>
                               </div>
                             </div>
                           </form>
+                          
+                          @if(count($sold_out)> 0)
                             <div class="fashion_section_2">
                                 <div class="row" style="padding-left: 10px; padding-right: 10px;">
                                 @foreach ($sold_out as $item)
@@ -128,10 +136,29 @@
                               @endforeach
                      </div>
                   </div>
+                  <div class="ayo-daftarkan-bisnis-anda inter-medium-white-14px">
+                        
+                    </div>
+                    <div class="actions3 "> 
+                                    <a class="btn btn-danger btn-sm btn-block" href="{{ route('sold-out.index') }}">Tampilkan Semua</a>
+                            </div>
+                    </div>
+
+                  @else
+                    <div class="ayo-daftarkan-bisnis-anda inter-medium-white-14px">
+                        <span class="text-urun inter-normal-alabaster">Data tidak ditemukan!</span>
+                    </div>
+                    <div class="actions3 "> 
+                                    <a class="btn btn-danger btn-sm btn-block" href="{{ route('sold-out.index') }}">Tampilkan Semua</a>
+                            </div>
+                    </div>
+                @endif
+            </div>
                </div>
             </div>
          </div>
       </div>
+            
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
