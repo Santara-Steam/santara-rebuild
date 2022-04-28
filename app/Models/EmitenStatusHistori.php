@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class EmitenStatusHistori extends Model
 {
     use HasFactory;
+    protected $table = 'emiten_status_histories';
 }

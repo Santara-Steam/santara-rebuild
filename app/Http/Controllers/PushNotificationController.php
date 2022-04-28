@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class PushNotificationController extends Controller
 {
 
-    public $limit = 100;
+    public $limit = 1000;
 
     public function index($broadcastId)
     {

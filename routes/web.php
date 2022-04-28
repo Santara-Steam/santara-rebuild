@@ -211,7 +211,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 
     Route::get('/admin/pralisting', [App\Http\Controllers\PralistingController::class, 'index']);
     Route::get('/admin/pralisting/get-pralisting', [App\Http\Controllers\PralistingController::class, 'fetchData']);
-    
+    Route::get('/admin/pralisting/konfirmasi/{uuid}', [App\Http\Controllers\PralistingController::class, 'konfirmasi']);
+    Route::post('/admin/pralisting/accept-pralisting', [App\Http\Controllers\PralistingController::class, 'acceptPralisting']);
+    Route::post('/admin/pralisting/accept-official', [App\Http\Controllers\PralistingController::class, 'acceptpOffice']);
+
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

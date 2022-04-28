@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\emiten;
+use App\Models\Category;
+use App\Models\Regency;
+use App\Models\EmitenStatusHistori;
 
 class PralistingController extends Controller
 {
@@ -87,7 +90,7 @@ class PralistingController extends Controller
 
             $totalComents = \DB::select('(SELECT COALESCE(COUNT(comment), 0) + COALESCE(COUNT(ch.comment_histories), 0) as total_coments from emiten_comments left join (select emiten_comment_id, COUNT(comment) as comment_histories from emiten_comment_histories where is_deleted = 0 group by id) as ch on emiten_comments.id = ch.emiten_comment_id where emiten_comments.emiten_id = '.$row->id.' and emiten_comments.is_deleted = 0)');
 
-            $action = '<a href="' . url('user/pralisting/konfirmasi/' . $row->uuid) . '" class="btn btn-info btn-sm btn-block" title="konfirmasi">Detail</a> ';
+            $action = '<a href="' . url('admin/pralisting/konfirmasi/' . $row->uuid) . '" class="btn btn-info btn-sm btn-block" title="konfirmasi">Detail</a> ';
             $action .= '<a href="#" onClick="deleteBisnis(\'' . $row->uuid . '\',\'' . $row->trademark . '\')"  class="btn btn-danger btn-sm btn-block" title="Hapus">Hapus</a>';
             
             array_push($data, [
@@ -109,5 +112,112 @@ class PralistingController extends Controller
         }
         return response()->json(["data" => $data]);
     }
+
+    public function konfirmasi($uuid)
+    {
+        $emiten = emiten::where('uuid', $uuid)
+            ->first();
+        $category = Category::find($emiten->category_id);
+        $subcategory = \DB::table('sub_categories')->where('id', $emiten->sub_category_id)->first();
+        $regency = Regency::find($emiten->regency_id);
+        $emiten->category = $category != null ? $category->category : "";
+        $emiten->subcategory = $subcategory != null ? $subcategory->sub_category : "";
+        $emiten->regency = $regency != null ? $regency->name : "";
+        $emiten->pictures = explode(',', $emiten->pictures);
+        $type = "konfirmasi";
+        return view('admin.pralisting.konfirmasi', compact('emiten', 'type'));
+    }
+
+    public function acceptPralisting(Request $request)
+    {
+        $uuid = $request->uuid;
+        $status = $request->status;
+        emiten::where('uuid', $uuid)->update([
+            'is_verified' => $status
+        ]);
+
+        if($status == 1){
+            $status = 'verified';
+        }elseif($status == 2){
+            $status = 'rejected';
+        }else{
+            $status = 'waiting for verification';
+        }
+        $emiten = emiten::where('uuid', $uuid)->first();
+        $emitenStatusHistori = new EmitenStatusHistori();
+        $emitenStatusHistori->uuid = \Str::uuid();
+        $emitenStatusHistori->emiten_id = $emiten->id;
+        $emitenStatusHistori->status = $status;
+        $emitenStatusHistori->save();
+
+
+        if ($status == 2) {
+            $input = $request->input;
+            $user = emiten::join('traders as t', 'emitens.trader_id', '=', 't.id')
+                    ->join('users as u', 't.user_id', '=', 'u.id')
+                    ->where('emitens.uuid', $uuid)
+                    ->select('emitens.id', 'emitens.company_name', 
+                        'emitens.trademark', 't.name', 'u.email' )->first();
+            $details = [
+                'name' => $user->name,
+                'trademark' => $user->trademark,
+                'reason' => $input
+            ];
+                        
+            $kirimEmail = \Mail::to($user->email)->send(new \App\Mail\RejectPenerbit($details));
+            if($kirimEmail){
+                echo json_encode(['msg' => 200, "emiten" => $emiten->id]);
+            }else{
+                echo json_encode(['msg' => 404, "det" => "Gagal Kirim Email"]);
+            }
+        }else {
+            echo json_encode(['msg' => 200, "emiten" => $emiten->id]);
+        }
+        
+    }
+
+    public function acceptpOffice(Request $request)
+    {
+        $uuid = $request->uuid;
+        $status = $request->status;
+
+        $bisnis = emiten::where('uuid', $uuid)->update([
+            'is_verified' => 0,
+            'is_pralisting' => 0
+        ]);
+
+        if($bisnis){
+            $this->notification($uuid);
+            echo json_encode(['msg' => '200']);
+        }else{
+            echo json_encode(['msg' => '404']);
+        }
+    }
+
+    public function notification($uuid) {
+        $return = false;
+        $client = new \GuzzleHttp\Client();
+        $headers = [
+            'Authorization' => 'Bearer ' . app('request')->session()->get('token'),        
+            'Accept'        => 'application/json',
+            'Content-type'  => 'application/json'
+        ];  
+        $endpoint = '/emitens/new-emiten-notification/';
+
+        try {        
+            $response = $client->request('GET',  config('global.BASE_API_CLIENT_URL').'/'.config('global.API_CLIENT_VERSION') . $endpoint . $uuid, [
+                'headers' => $headers,
+            ]);
+
+            if ( $response->getStatusCode() == 200 ) {
+                $return = true;
+            }
+
+        } catch (\Exception $exception) {
+            $return = false;
+        }
+
+        return $return;
+	}
 
 }
