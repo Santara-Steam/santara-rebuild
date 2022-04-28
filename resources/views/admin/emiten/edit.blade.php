@@ -54,7 +54,9 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput6">Trader Email <span style="color: red">*</span></label>
-                                                    <select required id="traderEmail" name="trader" class="form-control"></select>
+                                                    <select required id="traderEmail" name="trader" class="form-control">
+                                                        <option value="<?= $emiten->trader_id ?>"><?= $emiten->trader ?></option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput8">Deskripsi
@@ -589,8 +591,10 @@
 </div>
 @endsection
 @section('js')
+<script src="{{ asset('public') }}/assets/js/select2.min.js"></script>
 <script>
      $(document).ready(function() {
+       
         $("#categoriBisnis").select2({
                 placeholder: "Contoh: Transportasi, Pergudangan dan Komunikasi",
                 closeOnSelect: false,
@@ -619,6 +623,8 @@
                     }
                 }
             });
+
+            $("#categoriBisnis").select2().val("{{ $emiten->category_id }}").trigger("change");
 
             $("#traderEmail").select2({
                 placeholder: "Contoh: user@gmail.com",
@@ -1146,6 +1152,7 @@ $('#crop6').click(function(){
 <script src="https://unpkg.com/cropperjs"></script>
 {{--
 <link rel="stylesheet" href="style.css" /> --}}
+<link href="{{ asset('public') }}/assets/css/select2.min.css" rel="stylesheet" />
 
 <style>
     .image_area {

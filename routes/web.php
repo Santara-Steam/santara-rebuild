@@ -214,6 +214,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/pralisting/konfirmasi/{uuid}', [App\Http\Controllers\PralistingController::class, 'konfirmasi']);
     Route::post('/admin/pralisting/accept-pralisting', [App\Http\Controllers\PralistingController::class, 'acceptPralisting']);
     Route::post('/admin/pralisting/accept-official', [App\Http\Controllers\PralistingController::class, 'acceptpOffice']);
+    Route::get('/admin/pralisting/delete/{id}', [App\Http\Controllers\PralistingController::class, 'delete']);
 
     Route::get('/admin/get-users', [App\Http\Controllers\EmitenController::class, 'getUser']);
     Route::get('/admin/get-categories', [App\Http\Controllers\EmitenController::class, 'getCategories']);

@@ -210,7 +210,8 @@ class EmitenController extends Controller
     }
 
     public function edit(emiten $emiten,$id){
-        $emiten = emiten::where('id',$id)->first();
+        $emiten = emiten::where('emitens.id',$id)->join('categories as ct', 'ct.id', '=', 'emitens.category_id')
+            ->select('emitens.*', 'ct.category')->first();
         $picture = explode(',',$emiten->pictures);
         if(empty($picture[0])){
             $picture[0] = '-';

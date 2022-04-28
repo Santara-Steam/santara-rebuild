@@ -220,4 +220,23 @@ class PralistingController extends Controller
         return $return;
 	}
 
+    public function delete($uuid)
+    {
+        $emiten = emiten::where('uuid', $uuid)
+            ->select('trader_id')
+            ->first();
+        if ($emiten->trader_id == null) {
+            echo json_encode(['msg' => '400']);
+            return;
+        }
+        $delete = emiten::where('uuid', $uuid)->update([
+                'is_deleted' => 1
+            ]);
+        if ($delete) {
+            echo json_encode(['msg' => '200']);
+        } else {
+            echo json_encode(['msg' => '400']);
+        }
+    }
+
 }
