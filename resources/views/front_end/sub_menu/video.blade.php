@@ -93,7 +93,7 @@
 
 
 
-    <footer class="footer-static footer-light navbar-shadow">
+    <footer class="footer-static footer-light navbar-shadow" style="margin-top:50px;">
         <!-- <div class="container-fluid p-5 ff-m">
     <div class="row kontak-align">
         <div class="col-md-2 d-flex justify-content-center">
