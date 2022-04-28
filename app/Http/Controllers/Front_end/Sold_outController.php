@@ -46,49 +46,64 @@ class Sold_outController extends Controller
     public function filter(Request $request)
     {
         if (is_null($request->cari)) {
-            $sold_out = emitens_old::where('emitens.is_active',1)
-            ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
-            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-            ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
-            ->where('emitens.is_deleted',0)
-            ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
-            ->where('emitens.category_id', $request->categor)
-            ->orderby('emitens.id',$request->sort)
-            ->groupBy('emitens.id')
-            ->get();
+            if (is_null($request->categor)) {
+                $sold_out = emitens_old::where('emitens.is_active',1)
+                ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
+                ->where('emitens.is_deleted',0)
+                ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+                ->orderby('emitens.id',$request->sort)
+                ->groupBy('emitens.id')
+                ->get();
+            
+            }else{
+                $sold_out = emitens_old::where('emitens.is_active',1)
+                ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
+                ->where('emitens.is_deleted',0)
+                ->where('emitens.category_id', $request->categor)
+                ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+                ->orderby('emitens.id',$request->sort)
+                ->groupBy('emitens.id')
+                ->get();
+            }
     
         }elseif (is_null($request->categor)) {
-            $sold_out = emitens_old::where('emitens.is_active',1)
-            ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
-            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-            ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
-            ->where('emitens.is_deleted',0)
-            ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
-            ->where('emitens.trademark','LIKE','%'.$request->cari."%")
-            ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
-            ->orderby('emitens.id',$request->sort)
-            ->groupBy('emitens.id')
-            ->get();
-
-        }elseif(is_null($request->categor) && is_null($request->cari)){
-            $sold_out = emitens_old::where('emitens.is_active',1)
-            ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
-            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-            ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
-            ->where('emitens.is_deleted',0)
-            ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
-            ->orderby('emitens.id',$request->sort)
-            ->groupBy('emitens.id')
-            ->get();
+            if (is_null($request->cari)) {
+                $sold_out = emitens_old::where('emitens.is_active',1)
+                ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
+                ->where('emitens.is_deleted',0)
+                ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+                ->orderby('emitens.id',$request->sort)
+                ->groupBy('emitens.id')
+                ->get();
+            }else{
+                $sold_out = emitens_old::where('emitens.is_active',1)
+                ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
+                ->where('emitens.is_deleted',0)
+                ->where('emitens.trademark','LIKE','%'.$request->cari."%")
+                ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
+                ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+                ->orderby('emitens.id',$request->sort)
+                ->groupBy('emitens.id')
+                ->get();
+            }
         }else{
             $sold_out = emitens_old::where('emitens.is_active',1)
             ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
             ->leftjoin('categories', 'categories.id','=','emitens.category_id')
             ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
             ->where('emitens.is_deleted',0)
-            ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
             ->where('emitens.company_name','LIKE','%'.$request->cari."%")
+            ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
             ->where('emitens.category_id', $request->categor)
+            ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
             ->orderby('emitens.id',$request->sort)
             ->groupBy('emitens.id')
             ->get();

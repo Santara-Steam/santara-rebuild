@@ -38,52 +38,28 @@
 
 <div class="container">
 	<div class="row cont-step">
-		<div class="row">
+    @foreach ($santaraVideos as $row)
+		<div class="row" style="margin-top:50px;">
 			<div class="col-md-6 step-inves">
 				<div>
-					<span class="fs-24 bold">Lengkapi Profilmu</span>
+					<span class="fs-24 bold">{{ $row->title }}</span>
 				</div><br>
 				<div style="width: 100%;">
-					<span class="fs-16">Beritahu kami tentang diri Anda. Dengan mengisi
-						form KYC, agar kami bisa mengetahui preferensi dan memverifikasi keaslian profil untuk keamanan
-						berinvestasi.</span>
+					<span class="fs-16">{{ $row->description }}</span>
 				</div>
 			</div>
 			<div class="col-md-6 text-right">
-            <iframe class="youtube step-inves" src="https://www.youtube.com/embed/DSO7qWAbqjg" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            @if ($row->link == null)
+
+            @else
+            <!-- Copy & Pasted from YouTube -->
+            <iframe class="youtube step-inves" src="{{$row->link  }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+            @endif
+            
 			</div>
 		</div>
-        <div class="row" style="margin-top:50px;">
-			<div class="col-md-6 step-inves">
-				<div>
-					<span class="fs-24 bold">Lengkapi Profilmu</span>
-				</div><br>
-				<div style="width: 100%;">
-					<span class="fs-16">Beritahu kami tentang diri Anda. Dengan mengisi
-						form KYC, agar kami bisa mengetahui preferensi dan memverifikasi keaslian profil untuk keamanan
-						berinvestasi.</span>
-				</div>
-			</div>
-			<div class="col-md-6 text-right">
-            <iframe class="youtube step-inves" src="https://www.youtube.com/embed/DSO7qWAbqjg" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</div>
-		</div>
-        <div class="row" style="margin-top:50px;">
-			<div class="col-md-6 step-inves">
-				<div>
-					<span class="fs-24 bold">Lengkapi Profilmu</span>
-				</div><br>
-				<div style="width: 100%;">
-					<span class="fs-16">Beritahu kami tentang diri Anda. Dengan mengisi
-						form KYC, agar kami bisa mengetahui preferensi dan memverifikasi keaslian profil untuk keamanan
-						berinvestasi.</span>
-				</div>
-			</div>
-			<div class="col-md-6 text-right">
-            <iframe class="youtube step-inves" src="https://www.youtube.com/embed/DSO7qWAbqjg" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</div>
-		</div>
-		
+	@endforeach
 	</div>
 </div>
 

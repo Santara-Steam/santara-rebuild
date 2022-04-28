@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front_end;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\SantaraVideos;
 
 class SubMenuController extends Controller
 {
@@ -38,6 +39,19 @@ class SubMenuController extends Controller
 
     public function video()
     {
-        return view('front_end/sub_menu/video');
+        $santaraVideos = SantaraVideos::join('santara_video_categories as svc', 'svc.id', '=', 'santara_videos.category')
+            ->leftJoin('santara_video_histories as svh', 'svh.santara_video_id', '=','santara_videos.id')
+            ->where('santara_videos.is_deleted', 0)
+            ->orWhere('svh.is_deleted', 0)
+            ->select('santara_videos.uuid', 'santara_videos.title', 'santara_videos.description', 'santara_videos.link','svc.category', 
+                \DB::raw('coalesce(sum(svh.status = "like"), 0) as likes'),
+                \DB::raw('coalesce(sum(svh.status = "dislike"), 0) as dislikes'),
+                \DB::raw('coalesce(sum(svh.status = "view"), 0) as views'),
+                'santara_videos.is_actived', 'santara_videos.created_at')
+            ->groupBy('santara_videos.uuid')
+            ->orderBy('santara_videos.created_at', 'DESC')
+            ->get();
+            
+        return view('front_end/sub_menu/video', compact('santaraVideos'));
     }
 }
