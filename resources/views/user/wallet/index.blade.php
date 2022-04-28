@@ -514,17 +514,31 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h1 class="card-title-member">Riwayat</h1>
-                                <table border="0" cellspacing="5" cellpadding="5">
-                                    <tbody><tr>
-                                        <td>Minimum date:</td>
-                                        <td><input type="text" id="min" name="min"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Maximum date:</td>
-                                        <td><input type="text" id="max" name="max"></td>
-                                    </tr>
-                                </tbody></table>
+                                <form action="{{url('/user/wallet')}}"
+                                                        method="GET" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h1 class="card-title-member">Riwayat</h1>
+                                    </div>
+                                    <div class="col-md-9 row" style="    padding-top: 13px;">
+                                        <div class="col-md-4">
+                                            <input type="date" name="start" class="form-control" placeholder="Start Date">
+                                        </div>
+                                        <div class="col-md-1" style="    line-height: 40px;
+                                        text-align: center;">To</div>
+                                        <div class="col-md-4">
+                                            
+                                            <input type="date" name="end" class="form-control" placeholder="End Date">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="submit" class="btn btn-info">Filter</button>
+                                            <a href="{{url('/user/wallet')}}" class="btn btn-secondary">Reset</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                                
                             </div>
                             
                             <div class="card-content">
@@ -1312,11 +1326,12 @@ function withdrawProcess(dataWithdraw) {
 </script>
 
 <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js" type="text/javascript"></script>
+
 {{-- <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js" type="text/javascript"></script> --}}
 {{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>  --}}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> 
+{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>  --}}
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> 
+{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>  --}}
 <script>
     $(document).ready(function() {
         $('#tabel').DataTable({
@@ -1327,47 +1342,6 @@ function withdrawProcess(dataWithdraw) {
             ],
             
         });
-        var minDate, maxDate;
-
-        minDate = $('#min').val();
-        maxDate = $('#max').val();
- 
-// Custom filtering function which will search data in column four between two values
-$.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-        var min = minDate.val();
-        var max = maxDate.val();
-        var date = new Date( data[1] );
- 
-        if (
-            ( min === null && max === null ) ||
-            ( min === null && date <= max ) ||
-            ( min <= date   && max === null ) ||
-            ( min <= date   && date <= max )
-        ) {
-            return true;
-        }
-        return false;
-    }
-);
- 
-$(document).ready(function() {
-    // Create date inputs
-    minDate = new DateTime($('#min'), {
-        format: 'MMMM Do YYYY'
-    });
-    maxDate = new DateTime($('#max'), {
-        format: 'MMMM Do YYYY'
-    });
- 
-    // DataTables initialisation
-    var table = $('#example').DataTable();
- 
-    // Refilter the table
-    $('#min, #max').on('change', function () {
-        table.draw();
-    });
-});
     });
     // $.fn.dataTable.ext.search.push(
     // function( settings, data, dataIndex ) {
