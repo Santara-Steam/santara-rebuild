@@ -225,6 +225,8 @@ class TraderController extends Controller
             SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = 190001
             ORDER BY created_at DESC"));
 
+            
+
             // dd($se);
 
         return view('user.wallet.index',compact('deposit','wd','trader_bank','bwd','se'));

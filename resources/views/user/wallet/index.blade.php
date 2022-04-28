@@ -515,23 +515,22 @@
                         <div class="card">
                             <div class="card-header">
                                 <h1 class="card-title-member">Riwayat</h1>
-                                <div class="container">
-                                    <div class="col-md-4 pull-right">
-                                      <div class="input-group input-daterange">
-                                  
-                                        <input type="text" id="min-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="From:">
-                                  
-                                        <div class="input-group-addon">to</div>
-                                  
-                                        <input type="text" id="max-date" class="form-control date-range-filter" data-date-format="yyyy-mm-dd" placeholder="To:">
-                                  
-                                      </div>
-                                    </div>
-                                  </div>
+                                <table border="0" cellspacing="5" cellpadding="5">
+                                    <tbody><tr>
+                                        <td>Minimum date:</td>
+                                        <td><input type="text" id="min" name="min"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maximum date:</td>
+                                        <td><input type="text" id="max" name="max"></td>
+                                    </tr>
+                                </tbody></table>
                             </div>
                             
                             <div class="card-content">
-                                <div class="table-responsive">
+                                <div class="table-responsive" style="padding-right: 20px;
+                                padding-left: 20px;
+                            ">
                                     <table class="table table-hover dataTable-table" id="tabel"
                                         style="width: 100%">
                                         <thead>
@@ -1312,7 +1311,7 @@ function withdrawProcess(dataWithdraw) {
 }
 </script>
 
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js" type="text/javascript"></script> --}}
+<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js" type="text/javascript"></script>
 {{-- <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js" type="text/javascript"></script> --}}
 {{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>  --}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> 
@@ -1322,7 +1321,53 @@ function withdrawProcess(dataWithdraw) {
     $(document).ready(function() {
         $('#tabel').DataTable({
             responsive: true,
+            dom: "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>rtip",
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            
         });
+        var minDate, maxDate;
+
+        minDate = $('#min').val();
+        maxDate = $('#max').val();
+ 
+// Custom filtering function which will search data in column four between two values
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = minDate.val();
+        var max = maxDate.val();
+        var date = new Date( data[1] );
+ 
+        if (
+            ( min === null && max === null ) ||
+            ( min === null && date <= max ) ||
+            ( min <= date   && max === null ) ||
+            ( min <= date   && date <= max )
+        ) {
+            return true;
+        }
+        return false;
+    }
+);
+ 
+$(document).ready(function() {
+    // Create date inputs
+    minDate = new DateTime($('#min'), {
+        format: 'MMMM Do YYYY'
+    });
+    maxDate = new DateTime($('#max'), {
+        format: 'MMMM Do YYYY'
+    });
+ 
+    // DataTables initialisation
+    var table = $('#example').DataTable();
+ 
+    // Refilter the table
+    $('#min, #max').on('change', function () {
+        table.draw();
+    });
+});
     });
     // $.fn.dataTable.ext.search.push(
     // function( settings, data, dataIndex ) {
