@@ -27,7 +27,7 @@
                             <div class="label inter-medium-quill-gray-14px">
                               <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
                             </div>
-                            <input type="search" value="{{ $car }}" id="i" name="cari" class="form-control input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="Cari"/>
+                            <input type="search" value="{{ $car }}" id="i" onclick="categor.value=''" name="cari" class="form-control input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="Cari"/>
                           </div>
                           <div class="form-group col-md-3 kati">
                           </div>
