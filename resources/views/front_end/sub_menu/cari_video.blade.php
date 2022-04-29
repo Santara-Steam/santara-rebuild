@@ -12,50 +12,79 @@
             padding: 0px 0px;
             margin-left: 0px;
         }
-        .card {
-            align-items: center;
-        }
     </style>
     <main>
-        <div style="padding-top: 80px;">
-            <div class="container-fluid mt-5">
-    <div class="d-flex justify-content-evenly mt-5">
-        <div class="container  text-center d-flex justify-content-center" style="border-top: solid #4A585A;">
-            <h1 class="ff-m fs-24 c-gold" style="font-weight:800;text-transform:uppercase; margin-top:-15px; width:350px; background-color:#1A1A1A">SUPPORTED BY</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 d-flex justify-content-evenly mt-5">
-            <h2 class="ff-a text-center fs-34 bold" style="color:#fff;">Equity Crowdfunding Terbesar Pertama Berizin OJK</h2>
-        </div>
-        <div class="col-12 d-flex justify-content-evenly mt-5 mb-5">
-                            <a href="https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/Siaran-Pers-OJK-Keluarkan-Izin-Penyelenggara-Layanan-Urun-Dana-Berbasis-Teknologi-Informasi-(Equity-Crowd-Funding)-.aspx" target="_blank" rel="noreferrer">
-                    <img height="90" hspace="40" class="mini-banner-home logo-oj lazyload" src="https://storage.googleapis.com/asset-santara/santara.co.id/supporter/Group 21594.png" style="height:90px;" alt="Berizin OJK" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image.png'">
-                </a>
-                    </div>
-        <h2 class="ff-n text-center fs-18 mt-4 mb-4" style="color:#fff;">Didukung oleh:</h2>
-        <div class="row d-flex justify-content-center" style="padding:0px 70px;margin:0px; margin-bottom:100px">
-        @foreach($supporters as $row)
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <div class=" d-flex justify-content-center" style="height: 130px;align-items: center;">
-                            <a href="{{$row->link}}" target="_blank" rel="noreferrer">
-                                <img style="max-width: fit-content;max-height:130px " class=" lazyload" alt="kominfo" src="{{ config('global.STORAGE_GOOGLE').'supporter/'.$row->logo }}">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-        @endforeach
-                    </div>
+        <div style="padding-top: 140px;">
+            <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/new-cara-investasi.css?v=5.8.8">
+<link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/style-2.css?v=5.8.8">
 
+                          <div class="container">
+                          <div class="form-row">
+                          <div class="form-group col-md-1 kati">
+                          </div>
+                          <div class="form-group col-md-3" style="margin-bottom: -30px;">
+                            <div class="label-1 inter-medium-quill-gray-14px">
+                                      <span class="inter-medium-quill-gray-14px">Kategori</span>
+                                    </div>
+                            <form role="form" method="get" action="{{ route('video.filter') }}" id="form_id">
+                            @csrf
+                                <select  name="categor" class="form-control dropdown-1" onChange=" document.getElementById('form_id').submit();">
+                                  <option value="">Semua Kategori</option>
+                                        @foreach ($cat as $cate)
+                                        <option <?php if ($cate->id == $fil_cat) {
+                                                            echo 'selected'; } ?>
+                                                            value="{{$cate->id}}">{{$cate->category}}</option>
+                                        @endforeach
+                                </select>
+                            </form>
+                              </div>
+                            </div>
 
+<div class="container">
+	<div class="row cont-step">
+    @foreach ($santaraVideos as $row)
+		<div class="row" style="margin-top:50px;">
+			<div class="col-md-6" style="margin-top:30px;">
+				<div>
+					<span class="fs-24 bold">{{ \Illuminate\Support\Str::limit($row->title, $limit =
+                                                    150, $end = ' ...') }}</span>
+				</div><br>
+				<div style="width: 100%;">
+					<span class="fs-16">{{ \Illuminate\Support\Str::limit($row->description, $limit
+                                                    = 250, $end = ' ...') }}</span>
+				</div>
+			</div>
+			<div class="col-md-6 text-right">
+            @if ($row->link == null)
+
+            @else
+            <?php
+            $kode_yt = str_replace('https://youtu.be/','',$row->link);
+            ?> 
+            <!-- Copy & Pasted from YouTube -->
+            <iframe class="youtube step-inves" src="https://www.youtube.com/embed/{{$kode_yt}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+            @endif
+            
+			</div>
+		</div>
+	@endforeach
+    
+	</div>
+</div>
+<div class="d-flex" style="margin-top:50px;">
+    <div class="mx-auto">
+    {{ $santaraVideos->links('pagination::bootstrap-4') }}
+    
     </div>
-</div>        </div>
+</div>
+  
     </main>
 
 
 
-    <footer class="footer-static footer-light navbar-shadow">
+
+    <footer class="footer-static footer-light navbar-shadow" style="margin-top:50px;">
         <!-- <div class="container-fluid p-5 ff-m">
     <div class="row kontak-align">
         <div class="col-md-2 d-flex justify-content-center">

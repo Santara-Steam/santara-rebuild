@@ -22,7 +22,8 @@
  <div class="container-testimoni">
      <div id="myCarousel" class="carousel slide d-flex justify-content-center" data-ride="carousel">
          <div class="carousel-inner">
-                              <div class="carousel-item active" style="padding-top: 30px;">
+         @foreach($successStories as $key => $row)
+                <div class="carousel-item <?= ($key == 0) ? 'active' : '' ?>" style="padding-top: 30px;">
                      <div class="d-flex justify-content-center">
                          <div class="row-carousel">
                              <div style=" margin-top: 45px;">
@@ -30,10 +31,10 @@
                                      <img class="img-kutip" src="https://santara.co.id/assets/new-santara/img/kutip.svg">
                                      <div style="display: flex; align-items: center; border-radius: 1rem;" class="bg-app">
                                          <div style="padding: 3rem; text-align: center; padding-bottom:30px;">
-                                             <img class="rounded-circle" height="130px" width="130px" src="https://storage.googleapis.com/asset-santara/santara.co.id/success_story/_Surya_Mandala_Sakti.png" width="100%" style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070; height:130px;">
-                                             <p class="title-md" style="margin: 0px;margin-top:0px; color: #fff;">Surya Mandala Sakti </p>
-                                             <p class="text-light-bg" style="color: #96DAF0;"> Penerbit</p>
-                                             <p class="text-light-bg" style="line-height: 1.8; color: #fff;">Terimakasih dan kami ucapkan selamat kepada para pemodal yang saat ini sudah menjadi keluarga besar PT. MLUT.</p>
+                                             <img class="rounded-circle" height="130px" width="130px" src="{{ config('global.STORAGE_GOOGLE').'success_story/'.$row->image }}" width="100%" style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070; height:130px;">
+                                             <p class="title-md" style="margin: 0px;margin-top:0px; color: #fff;">{{ $row->title }}</p>
+                                             <p class="text-light-bg" style="color: #96DAF0;">{{ $row->subtitle }}</p>
+                                             <p class="text-light-bg" style="line-height: 1.8; color: #fff;">{{ $row->description }}</p>
                                          </div>
                                      </div>
                                  </div>
@@ -41,122 +42,7 @@
                          </div>
                      </div>
                  </div>
-                              <div class="carousel-item " style="padding-top: 30px;">
-                     <div class="d-flex justify-content-center">
-                         <div class="row-carousel">
-                             <div style=" margin-top: 45px;">
-                                 <div class="row body-carousel">
-                                     <img class="img-kutip" src="https://santara.co.id/assets/new-santara/img/kutip.svg">
-                                     <div style="display: flex; align-items: center; border-radius: 1rem;" class="bg-app">
-                                         <div style="padding: 3rem; text-align: center; padding-bottom:30px;">
-                                             <img class="rounded-circle" height="130px" width="130px" src="https://storage.googleapis.com/asset-santara/santara.co.id/success_story/Yuli-Aji-Prabowo-Pemodal75.png" width="100%" alt="Yuli Aji Prabowo " onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image.png';" height=100 style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070;height:130px;">
-                                             <p class="title-md" style="margin: 0px;margin-top:0px; color: #fff;">Yuli Aji Prabowo </p>
-                                             <p class="text-light-bg" style="color: #96DAF0;"> Pemodal</p>
-                                             <p class="text-light-bg" style="line-height: 1.8; color: #fff;">Dari yang semula karena penasaran dengan Santara, sekarang dalam setahun dah dapet 2 kali Bagi Hasil Sop Pak Min. Mantap dah Santara dan UKM Indonesia.</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                              <div class="carousel-item " style="padding-top: 30px;">
-                     <div class="d-flex justify-content-center">
-                         <div class="row-carousel">
-                             <div style=" margin-top: 45px;">
-                                 <div class="row body-carousel">
-                                     <img class="img-kutip" src="https://santara.co.id/assets/new-santara/img/kutip.svg">
-                                     <div style="display: flex; align-items: center; border-radius: 1rem;" class="bg-app">
-                                         <div style="padding: 3rem; text-align: center; padding-bottom:30px;">
-                                             <img class="rounded-circle" height="130px" width="130px" src="https://storage.googleapis.com/asset-santara/santara.co.id/success_story/Andriansyah-Pemodal40.png" width="100%" alt="Andriansyah " onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image.png';" height=100 style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070;height:130px;">
-                                             <p class="title-md" style="margin: 0px;margin-top:0px; color: #fff;">Andriansyah </p>
-                                             <p class="text-light-bg" style="color: #96DAF0;"> Pemodal</p>
-                                             <p class="text-light-bg" style="line-height: 1.8; color: #fff;">Santara adalah terobosan yang dibangun untuk kemajuan UKM. Saya telah merasakan profit sharing 2 kali dalam tahun ini.</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                              <div class="carousel-item " style="padding-top: 30px;">
-                     <div class="d-flex justify-content-center">
-                         <div class="row-carousel">
-                             <div style=" margin-top: 45px;">
-                                 <div class="row body-carousel">
-                                     <img class="img-kutip" src="https://santara.co.id/assets/new-santara/img/kutip.svg">
-                                     <div style="display: flex; align-items: center; border-radius: 1rem;" class="bg-app">
-                                         <div style="padding: 3rem; text-align: center; padding-bottom:30px;">
-                                             <img class="rounded-circle" height="130px" width="130px" src="https://storage.googleapis.com/asset-santara/santara.co.id/success_story/Arif-Siswa97.png" width="100%" alt="Arif Siswan" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image.png';" height=100 style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070;height:130px;">
-                                             <p class="title-md" style="margin: 0px;margin-top:0px; color: #fff;">Arif Siswan</p>
-                                             <p class="text-light-bg" style="color: #96DAF0;"></p>
-                                             <p class="text-light-bg" style="line-height: 1.8; color: #fff;">Kini berinvestasi tidak harus melalui Bursa Efek. Ternyata di Santara pun bisa..
-Santara Bisa!!! dari UKM oleh UKM untuk UKM
-</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                              <div class="carousel-item " style="padding-top: 30px;">
-                     <div class="d-flex justify-content-center">
-                         <div class="row-carousel">
-                             <div style=" margin-top: 45px;">
-                                 <div class="row body-carousel">
-                                     <img class="img-kutip" src="https://santara.co.id/assets/new-santara/img/kutip.svg">
-                                     <div style="display: flex; align-items: center; border-radius: 1rem;" class="bg-app">
-                                         <div style="padding: 3rem; text-align: center; padding-bottom:30px;">
-                                             <img class="rounded-circle" height="130px" width="130px" src="https://storage.googleapis.com/asset-santara/santara.co.id/success_story/Anton-Dwi-Nugroho21.png" width="100%" alt="Anton Dwi Nugroho" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image.png';" height=100 style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070;height:130px;">
-                                             <p class="title-md" style="margin: 0px;margin-top:0px; color: #fff;">Anton Dwi Nugroho</p>
-                                             <p class="text-light-bg" style="color: #96DAF0;"></p>
-                                             <p class="text-light-bg" style="line-height: 1.8; color: #fff;">Saya kecewa ikut Santara, kecewa karena invest hanya kecil. Tau gitu dulu invesnya yg gede, biar bagi hasilnya dapet gede.</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                              <div class="carousel-item " style="padding-top: 30px;">
-                     <div class="d-flex justify-content-center">
-                         <div class="row-carousel">
-                             <div style=" margin-top: 45px;">
-                                 <div class="row body-carousel">
-                                     <img class="img-kutip" src="https://santara.co.id/assets/new-santara/img/kutip.svg">
-                                     <div style="display: flex; align-items: center; border-radius: 1rem;" class="bg-app">
-                                         <div style="padding: 3rem; text-align: center; padding-bottom:30px;">
-                                             <img class="rounded-circle" height="130px" width="130px" src="https://storage.googleapis.com/asset-santara/santara.co.id/success_story/Amanda-Govinda26.png" width="100%" alt="Amanda Govinda" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image.png';" height=100 style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070;height:130px;">
-                                             <p class="title-md" style="margin: 0px;margin-top:30px; color: #fff;">Amanda Govinda</p>
-                                             <p class="text-light-bg" style="color: #96DAF0;"></p>
-                                             <p class="text-light-bg" style="line-height: 1.8; color: #fff;">Investasinya mudah dan tidak repot sama sekali. Bisa jadi pemasukan tambahan untuk mahasiswa.</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                              <div class="carousel-item " style="padding-top: 30px;">
-                     <div class="d-flex justify-content-center">
-                         <div class="row-carousel">
-                             <div style=" margin-top: 45px;">
-                                 <div class="row body-carousel">
-                                     <img class="img-kutip" src="https://santara.co.id/assets/new-santara/img/kutip.svg">
-                                     <div style="display: flex; align-items: center; border-radius: 1rem;" class="bg-app">
-                                         <div style="padding: 3rem; text-align: center; padding-bottom:30px;">
-                                             <img class="rounded-circle" height="130px" width="130px" src="https://storage.googleapis.com/asset-santara/santara.co.id/success_story/Arofiq-Pemodal58.png" width="100%" alt="Arofiq " onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image.png';" height=100 style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070;height:130px;">
-                                             <p class="title-md" style="margin: 0px;margin-top:0px; color: #fff;">Arofiq </p>
-                                             <p class="text-light-bg" style="color: #96DAF0;"> Pemodal</p>
-                                             <p class="text-light-bg" style="line-height: 1.8; color: #fff;">adanya urun dana di SANTARA saat ini sangat membantu sekali para pengusaha yang kekurangan modal untuk pengembangan bisnisnya</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
+            @endforeach
                       </div>
          <a class="carousel-control-prev bt-carousel" href="#myCarousel" data-slide="prev">
              <i class="fas fa-chevron-circle-left" style="color:red"></i>

@@ -242,6 +242,7 @@ Route::get('/support-by', [SubMenuController::class, 'support'])->name('support-
 Route::get('/kontak', [SubMenuController::class, 'kontak'])->name('kontak');
 Route::get('/pertanyaan', [SubMenuController::class, 'pertanyaan'])->name('pertanyaan');
 Route::get('/video', [SubMenuController::class, 'video'])->name('video');
+Route::get('/filter-video', [SubMenuController::class, 'filter_video'])->name('video.filter');
 
 Route::get('/error-404', [ErrorPageController::class, 'index'])->name('notfound');
 

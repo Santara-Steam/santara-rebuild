@@ -19,7 +19,8 @@
 <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/style-2.css?v=5.8.8">
 
                           <div class="container">
-                            
+                          <form role="form" method="get" action="{{ route('video.filter') }}" id="form_id">
+                            @csrf
                           <div class="form-row">
                           <div class="form-group col-md-1 kati">
                           </div>
@@ -27,14 +28,15 @@
                             <div class="label-1 inter-medium-quill-gray-14px">
                                       <span class="inter-medium-quill-gray-14px">Kategori</span>
                                     </div>
-                                <select id="inputState" class="form-control dropdown-1">
-                                  <option value="position">Semua Kategori</option>
-                                        
-                                          <option value="1" >Video Tutorial</option>
-                                        
+                                <select name="categor" class="form-control dropdown-1" onChange=" document.getElementById('form_id').submit();">
+                                  <option value="">Semua Kategori</option>
+                                        @foreach ($cat as $cate)
+                                        <option value="{{$cate->id}}" >{{$cate->category}}</option>
+                                        @endforeach
                                 </select>
                               </div>
                             </div>
+                        </form>
 
 <div class="container">
 	<div class="row cont-step">
@@ -42,27 +44,38 @@
 		<div class="row" style="margin-top:50px;">
 			<div class="col-md-6 step-inves">
 				<div>
-					<span class="fs-24 bold">{{ $row->title }}</span>
+					<span class="fs-24 bold">{{ \Illuminate\Support\Str::limit($row->title, $limit =
+                                                    150, $end = ' ...') }}</span>
 				</div><br>
 				<div style="width: 100%;">
-					<span class="fs-16">{{ $row->description }}</span>
+					<span class="fs-16">{{ \Illuminate\Support\Str::limit($row->description, $limit
+                                                    = 250, $end = ' ...') }}</span>
 				</div>
 			</div>
 			<div class="col-md-6 text-right">
             @if ($row->link == null)
 
             @else
+            <?php
+            $kode_yt = str_replace('https://youtu.be/','',$row->link);
+            ?> 
             <!-- Copy & Pasted from YouTube -->
-            <iframe class="youtube step-inves" src="{{$row->link  }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="youtube step-inves" src="https://www.youtube.com/embed/{{$kode_yt}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             
             @endif
             
 			</div>
 		</div>
 	@endforeach
+    
 	</div>
 </div>
-
+<div class="d-flex" style="margin-top:50px;">
+    <div class="mx-auto">
+    {{ $santaraVideos->links('pagination::bootstrap-4') }}
+    
+    </div>
+</div>
   
     </main>
 
