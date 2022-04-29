@@ -272,7 +272,7 @@
 </div>
 </div>
 @else
-@if (Request::get('cari') || Request::get('categor') || Request::get('sort'))
+@if (count($soon) != $s)
 
 <div class="actions3 ">
   <a class="btn btn-danger btn-sm btn-block" href="{{ route('coming-soon.index') }}">Tampilkan Semua</a>
