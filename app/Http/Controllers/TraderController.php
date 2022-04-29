@@ -226,7 +226,7 @@ class TraderController extends Controller
                 and DATE(deposits.created_at) BETWEEN '".$request->start."' AND '".$request->end."'
                 and deposits.created_at >= last_day(now()) + interval 1 day - interval 3 month
                 UNION ALL
-                SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = 190001
+                SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = ".Auth::user()->trader->id."
                 and DATE(created_at) BETWEEN '".$request->start."' AND '".$request->end."'
                 and created_at >= last_day(now()) + interval 1 day - interval 3 month
                 ORDER BY created_at DESC"));
@@ -236,7 +236,7 @@ class TraderController extends Controller
                 where deposits.trader_id = ".Auth::user()->trader->id."
                 and deposits.created_at >= last_day(now()) + interval 1 day - interval 3 month
                 UNION ALL
-                SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = 190001
+                SELECT created_at,'WITHDRAW',amount,'-',is_verified from withdraws where trader_id = ".Auth::user()->trader->id."
                 and created_at >= last_day(now()) + interval 1 day - interval 3 month
                 ORDER BY created_at DESC"));
             }
