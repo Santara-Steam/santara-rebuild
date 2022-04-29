@@ -11,7 +11,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="basic-layout-form">Tambah Penerbit</h4>
+                                <h1 class="card-title-member">Tambah Penerbit</h1>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -371,11 +371,217 @@
                                                         name="ig" class="form-control" placeholder="Instagram">
                                                 </div>
 
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Identitas Calon Penerbit</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Kota Lokasi Usaha</label>
+                                                    <select name="regency_id" id="input_kota" style="width: 100%"></select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Badan Usaha</label>
+                                                    <select name="business_entity" class="form-control">
+                                                        <option disabled>Pilih Salah Satu</option>
+                                                        @foreach($badanUsaha as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Alamat Lengkap Usaha</label>
+                                                    <textarea class="form-control" name="address" rows="5"></textarea>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Lama Usaha (Bulan)</label>
+                                                    <input class="form-control" type="text" name="business_lifespan" />
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Jumlah Cabang</label>
+                                                    <input class="form-control" type="text" name="branch_company" />
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Jumlah Karyawan</label>
+                                                    <input class="form-control" type="text" name="employee" />
+                                                </div>
 
-                                                {{--
-                                                <hr> --}}
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Informasi Finansial</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Besar kebutuhan dana</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input type="text" name="capital_needs"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Rata-rata omset per bulan tahun ini</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="monthly_turnover"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Rata-rata laba per bulan tahun ini</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="monthly_profit"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Rata-rata omset per bulan tahun sebelumnya</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="monthly_turnover_previous_year"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Rata-rata laba per bulan tahun sebelumnya</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="monthly_profit_previous_year"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Total hutang bank / lembaga pembiayaan</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="total_bank_debt"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Nama bank / lembaga pembiayaan</label>
+                                                    <input name="bank_name_financing" class="form-control" />
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Total modal disetor</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="total_paid_capital"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
 
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Informasi Non Finansial</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Sistem Pencatatan Keuangan</label>
+                                                    <select class="form-control" name="financial_recording_system">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($sistemPencatatan as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Reputasi Pinjaman Bank/Lainnya</label>
+                                                    <select class="form-control" name="bank_loan_reputation">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($posisiPasar as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Posisi Pasar atas Produk / Jasa</label>
+                                                    <select class="form-control" name="market_position_for_the_product">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($marketPositition as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Strategi Kedepan</label>
+                                                    <select class="form-control" name="strategy_emiten">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($strategiEmiten as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Status Lokasi / Kantor / Tempat Usaha</label>
+                                                    <select class="form-control" name="office_status">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($statusKantor as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Tingkat Persaingan</label>
+                                                    <select class="form-control" name="level_of_business_competition">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($levelKompetisi as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Kemampuan Manajerial</label>
+                                                    <select class="form-control" name="managerial_ability">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($kemapuanManager as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Kemampuan Teknis</label>
+                                                    <select class="form-control" name="technical_ability">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($kemapuanTeknis as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
 
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Lampiran Dokumen</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Prospektus (PDF)</label>
+                                                    <div class="custom-file">
+                                                        <input class="custom-file-input req" name="prospektus" id="prospektus"
+                                                            accept="application/pdf" type="file" />
+                                                        <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02" aria-describedby="inputGroupFile02">Pilih File</label>
+                                                    </div>
+                                                </div>
+
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Media</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Masukan link video tentang usaha Anda ( Youtube )</label>
+                                                    <input type="text" class="form-control" name="video_url" id="video_url" />
+                                                </div>
                                             </div>
 
                                         </div>
@@ -397,7 +603,7 @@
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 
 
-        <div class="modal-dialog modal-md" role="document">
+        <div class="modal-dialog modal-md" id="modal_crop_logo_perusahaan" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Crop Logo Perusahaan</h5>
@@ -408,13 +614,7 @@
                 <div class="modal-body">
                     <div class="img-container" style="padding: 30px">
                         <div class="row">
-                            {{-- <div class="col-md-8"> --}}
-                                <img src="" id="sample_image" />
-                                {{--
-                            </div>
-                            <div class="col-md-4">
-                                <div class="preview"></div>
-                            </div> --}}
+                            <img src="" id="sample_image" />
                         </div>
                     </div>
                 </div>
@@ -440,13 +640,7 @@
                 <div class="modal-body">
                     <div class="img-container" style="padding: 30px">
                         <div class="row">
-                            {{-- <div class="col-md-8"> --}}
-                                <img src="" id="sample_image2" />
-                                {{--
-                            </div>
-                            <div class="col-md-4">
-                                <div class="preview2"></div>
-                            </div> --}}
+                            <img src="" id="sample_image2" />
                         </div>
                     </div>
                 </div>
@@ -472,13 +666,7 @@
                 <div class="modal-body">
                     <div class="img-container" style="padding: 30px">
                         <div class="row">
-                            {{-- <div class="col-md-8"> --}}
-                                <img src="" id="sample_image4" />
-                                {{--
-                            </div>
-                            <div class="col-md-4">
-                                <div class="preview3"></div>
-                            </div> --}}
+                            <img src="" id="sample_image4" />
                         </div>
                     </div>
                 </div>
@@ -593,7 +781,37 @@
 <script>
 
     $(document).ready(function() {
-        $("#categoriBisnis").select2({
+
+            $("#input_kota").select2({
+                placeholder: "Contoh: Sleman",
+                closeOnSelect: false,
+                allowClear: true,
+                delay: 250, // wait 250 milliseconds before triggering the request
+                ajax: {
+                    url: "{{ url('admin/get-regency') }}",
+                    dataType: "json",
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data) {
+                        var results = [];
+                        $.each(data, function(index, item) {
+                            results.push({
+                                id: item.id,
+                                text: item.name,
+                                value: item.name
+                            })
+                        })
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+
+            $("#categoriBisnis").select2({
                 placeholder: "Contoh: Transportasi, Pergudangan dan Komunikasi",
                 closeOnSelect: false,
                 allowClear: true,
@@ -1111,6 +1329,7 @@ $('#crop6').click(function(){
     });
 </script>
 <script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="https://unpkg.com/cropperjs"></script>
 <script>
     $("#sav").on("click", function () {
 
@@ -1132,17 +1351,9 @@ $('#crop6').click(function(){
 </script>
 @endsection
 @section('style')
-{{--
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
-<link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
 <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
-<script src="https://unpkg.com/dropzone"></script>
 <script src="https://unpkg.com/cropperjs"></script>
-{{--
-<link rel="stylesheet" href="style.css" /> --}}
 <link href="{{ asset('public') }}/assets/css/select2.min.css" rel="stylesheet" />
 
 <style>

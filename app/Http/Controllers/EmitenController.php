@@ -11,6 +11,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Google\Cloud\Storage\StorageClient;
 
 class EmitenController extends Controller
 {
@@ -27,7 +28,72 @@ class EmitenController extends Controller
     }
 
     public function add(){
-        return view('admin.emiten.add');
+        $badanUsaha = (object) [
+            '1' => 'PT',
+            '2' => 'CV',
+            '3' => 'UD',
+            '4' => 'Firma',
+            '5' => 'Koperasi',
+            '6' => 'Yang Lain'
+        ];
+        $sistemPencatatan = (object) [
+            '1' => 'Terkomputerisasi/Software akuntansi',
+            '2' => 'Catatan pembukuan sederhana/POS',
+            '3' => 'Hanya berupa bukti dokumentasi',
+            '4' => 'Tidak ada'
+        ];
+        $posisiPasar = (object) [
+            '1' => 'Tidak memiliki pinjaman',
+            '2' => 'Memiliki pinjaman lancar',
+            '3' => 'Pernah bermasalah namun lunas',
+            '4' => 'Sedang/pernah bermasalah dan belum lunas'
+        ];
+        $marketPositition = (object) [
+            '1' => 'Pemimpin pasar lokal/nasional',
+            '2' => 'Mampu bersaing di pasar lokal/nasional',
+            '3' => 'Berusaha bersaing di pasar lokal/nasional',
+            '4' => 'Tidak mampu bersaing di pasar'
+        ];
+        $strategiEmiten = (object) [
+            '1' => 'Punya milestone jangka panjang owner & infrastruktur siap',
+            '2' => 'Milestone sedang disusun owner & infrastruktur sedang diperkuat',
+            '3' => 'Lebih menekankan strategi jangka pendek agar optimal',
+            '4' => 'Strategi case by case/tentavie agar efektif'
+        ];
+        $statusKantor = (object) [
+            '1' => 'Milik sendiri/sewa > 5 Tahun',
+            '2' => 'Sewa > 2 s.d 5 Tahun',
+            '3' => 'Sewa < 2 Tahun',
+            '4' => 'Sewa Bulanan'
+        ];
+        $levelKompetisi = (object) [
+            '1' => 'Mampu memenangkan persaingan',
+            '2' => 'Mampu bersaing namun bukan pemimpin pasar',
+            '3' => 'Berusaha bersaing namun bukan pemimpin pasar',
+            '4' => 'Sedang/Pernah bermasalah dan belum lunas'
+        ];
+        $kemapuanManager = (object) [
+            '1' => 'Mampu memenangkan persaingan',
+            '2' => 'Mampu bersaing namun bukan pemimpin pasar',
+            '3' => 'Berusaha bersaing namun bukan pemimpin pasar',
+            '4' => 'Tidak mampu bersaing di pasar'
+        ];
+        $kemapuanTeknis = (object) [
+            '1' => 'Owner/Manajemen ahli di bisnis ini',
+            '2' => 'Owner/Manajemen baru dibisnis ini namun memiliki pengalaman bisnis yang sejenis',
+            '3' => 'Owner/Manajemen belum pernah memiliki keahlian/pengalaman di bisnis ini dan sejenisnya namun telah memiliki pengalaman di sektor lain',
+            '4' => 'Owner/Manajemen baru mulai berbisnis/belum ada track record'
+        ];
+        return view('admin.emiten.add', compact('badanUsaha', 
+            'sistemPencatatan', 
+            'posisiPasar', 
+            'marketPositition',
+            'strategiEmiten',
+            'statusKantor',
+            'levelKompetisi',
+            'kemapuanManager',
+            'kemapuanTeknis'
+        ));
     }
 
     public function getCategories(Request $request)
@@ -78,62 +144,123 @@ class EmitenController extends Controller
     {
         // $this->validator($request->all())->validate();
         // $file = $request->file('logo')->store('logo_perusahaan', 'public');
+        $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+        $storage = new StorageClient([
+            'keyFile' => json_decode($googleConfigFile, true)
+        ]);
+        $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+        $bucket = $storage->bucket($storageBucketName);
+        $folderName = 'santara.co.id/token';
+
         if($request->hasFile('thumbnail')){
-            $logoNameWithExt = $request->file('thumbnail')->getClientOriginalName() ;
-            $logoFileName = pathinfo ($logoNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('thumbnail')->getClientoriginalExtension();
+            $fileThumbnail = fopen($request->file('thumbnail')->getPathName(), 'r');
             $logoFileSave = 'thumbnail'.time().'.'.$extension;
-            $path = $request->file('thumbnail')->storeAs('public/pictures',$logoFileSave) ;
+            $pictures = $folderName.'/'.$logoFileSave;
+            $bucket->upload($fileThumbnail, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+            // $logoNameWithExt = $request->file('thumbnail')->getClientOriginalName() ;
+            // $logoFileName = pathinfo ($logoNameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('thumbnail')->getClientoriginalExtension();
+            // $logoFileSave = 'thumbnail'.time().'.'.$extension;
+            // $path = $request->file('thumbnail')->storeAs('public/pictures',$logoFileSave) ;
         }else{
             $logoFileSave = 'noimage.jpg';
         }
 
         if($request->hasFile('banner')){
-            $coverNameWithExt = $request->file('banner')->getClientOriginalName() ;
-            $coverFileName = pathinfo ($coverNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('banner')->getClientoriginalExtension();
+            $fileBanner = fopen($request->file('banner')->getPathName(), 'r');
             $coverFileSave = 'banner'.time().'.'.$extension;
-            $path = $request->file('banner')->storeAs('public/pictures',$coverFileSave) ;
+            $pictures = $folderName.'/'.$coverFileSave;
+            $bucket->upload($fileBanner, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+            // $coverNameWithExt = $request->file('banner')->getClientOriginalName() ;
+            // $coverFileName = pathinfo ($coverNameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('banner')->getClientoriginalExtension();
+            // $coverFileSave = 'banner'.time().'.'.$extension;
+            // $path = $request->file('banner')->storeAs('public/pictures',$coverFileSave) ;
         }else{
             $coverFileSave = 'noimage.jpg';
         }
         
         if($request->hasFile("owner")){
-            $ownerNameWithExt = $request->file('owner')->getClientOriginalName() ;
-            $ownerFileName = pathinfo ($ownerNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('owner')->getClientoriginalExtension();
+            $fileOwner = fopen($request->file('owner')->getPathName(), 'r');
             $ownerFileSave = 'owner'.time().'.'.$extension;
-            $path = $request->file('owner')->storeAs('public/pictures',$ownerFileSave) ;
+            $pictures = $folderName.'/'.$ownerFileSave;
+            $bucket->upload($fileOwner, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+
+            // $ownerNameWithExt = $request->file('owner')->getClientOriginalName() ;
+            // $ownerFileName = pathinfo ($ownerNameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('owner')->getClientoriginalExtension();
+            // $ownerFileSave = 'owner'.time().'.'.$extension;
+            // $path = $request->file('owner')->storeAs('public/pictures',$ownerFileSave) ;
         }else{
             $ownerFileSave = 'noimage.jpg';
         }
         if($request->hasFile("galeri1")){
-            $galeriNameWithExt = $request->file('galeri1')->getClientOriginalName() ;
-            $galeriFileName = pathinfo ($galeriNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('galeri1')->getClientoriginalExtension();
+            $fileGaleri1 = fopen($request->file('galeri1')->getPathName(), 'r');
             $galeriFileSave = 'galeri1'.time().'.'.$extension;
-            $path = $request->file('galeri1')->storeAs('public/pictures',$galeriFileSave) ;
+            $pictures = $folderName.'/'.$galeriFileSave;
+            $bucket->upload($fileGaleri1, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+
+            // $galeriNameWithExt = $request->file('galeri1')->getClientOriginalName() ;
+            // $galeriFileName = pathinfo ($galeriNameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('galeri1')->getClientoriginalExtension();
+            // $galeriFileSave = 'galeri1'.time().'.'.$extension;
+            // $path = $request->file('galeri1')->storeAs('public/pictures',$galeriFileSave) ;
         }else{
             $galeriFileSave = 'noimage.jpg';
         }
         if($request->hasFile("galeri2")){
-            $galeri2NameWithExt = $request->file('galeri2')->getClientOriginalName() ;
-            $galeri2FileName = pathinfo ($galeri2NameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('galeri2')->getClientoriginalExtension();
+            $fileGaleri2 = fopen($request->file('galeri2')->getPathName(), 'r');
             $galeri2FileSave = 'galeri2'.time().'.'.$extension;
-            $path = $request->file('galeri2')->storeAs('public/pictures',$galeri2FileSave) ;
+            $pictures = $folderName.'/'.$galeri2FileSave;
+            $bucket->upload($fileGaleri2, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+
+            // $galeri2NameWithExt = $request->file('galeri2')->getClientOriginalName() ;
+            // $galeri2FileName = pathinfo ($galeri2NameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('galeri2')->getClientoriginalExtension();
+            // $galeri2FileSave = 'galeri2'.time().'.'.$extension;
+            // $path = $request->file('galeri2')->storeAs('public/pictures',$galeri2FileSave) ;
         }else{
             $galeri2FileSave = 'noimage.jpg';
         }
         if($request->hasFile("galeri3")){
-            $galeri3NameWithExt = $request->file('galeri3')->getClientOriginalName() ;
-            $galeri3FileName = pathinfo ($galeri3NameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('galeri3')->getClientoriginalExtension();
+            $fileGaleri3 = fopen($request->file('galeri3')->getPathName(), 'r');
             $galeri3FileSave = 'galeri3'.time().'.'.$extension;
-            $path = $request->file('galeri3')->storeAs('public/pictures',$galeri3FileSave) ;
+            $pictures = $folderName.'/'.$galeri3FileSave;
+            $bucket->upload($fileGaleri3, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+
+            // $galeri3NameWithExt = $request->file('galeri3')->getClientOriginalName() ;
+            // $galeri3FileName = pathinfo ($galeri3NameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('galeri3')->getClientoriginalExtension();
+            // $galeri3FileSave = 'galeri3'.time().'.'.$extension;
+            // $path = $request->file('galeri3')->storeAs('public/pictures',$galeri3FileSave) ;
         }else{
             $galeri3FileSave = 'noimage.jpg';
         }
+        
         // emiten::insert([
         //     'company_name' => $request->get('company_name'),
         //     'pictures' => $logoFileSave,
@@ -171,6 +298,7 @@ class EmitenController extends Controller
 
 
         $em = new emiten();
+        $em->uuid = \Str::uuid();
         $em->company_name = $request->get('company_name');
         $em->owner_name = $request->get('nama_owner');
         $em->category_id = $request->get('kategori');
@@ -192,6 +320,41 @@ class EmitenController extends Controller
         $em->code_emiten = $request->get('code_emiten');
         $em->trademark = $request->get('brand');
         $em->price = str_replace(".", "", $request->get('harga_saham'));
+        $em->regency_id = isset($request->regency_id) ? $request->regency_id : null;
+        $em->business_entity = isset($request->business_entity) ? $request->business_entity : null;
+        $em->address = isset($request->address) ? $request->address : null;
+        $em->business_lifespan = isset($request->business_lifespan) ? $request->business_lifespan : null;
+        $em->branch_company = isset($request->branch_company) ? $request->branch_company : null;
+        $em->employee = isset($request->employee) ? $request->employee : null;
+        $em->capital_needs = isset($request->capital_needs) ? $request->capital_needs : null;
+        $em->monthly_turnover = isset($request->monthly_turnover) ? $request->monthly_turnover : null;
+        $em->monthly_profit = isset($request->monthly_profit) ? $request->monthly_profit : null;
+        $em->monthly_turnover_previous_year = isset($request->monthly_turnover_previous_year) ? $request->monthly_turnover_previous_year : null;
+        $em->monthly_profit_previous_year = isset($request->monthly_profit_previous_year) ? $request->monthly_profit_previous_year : null;
+        $em->total_bank_debt = isset($request->total_bank_debt) ? $request->total_bank_debt : null;
+        $em->bank_name_financing = isset($request->bank_name_financing) ? $request->bank_name_financing : null;
+        $em->total_paid_capital = isset($request->total_paid_capital) ? $request->total_paid_capital : null;
+        $em->financial_recording_system = isset($request->financial_recording_system) ? $request->financial_recording_system : null;
+        $em->bank_loan_reputation = isset($request->bank_loan_reputation) ? $request->bank_loan_reputation : null;
+        $em->market_position_for_the_product = isset($request->market_position_for_the_product) ? $request->market_position_for_the_product : null;
+        $em->strategy_emiten = isset($request->strategy_emiten) ? $request->strategy_emiten : null;
+        $em->office_status = isset($request->office_status) ? $request->office_status : null;
+        $em->level_of_business_competition = isset($request->level_of_business_competition) ? $request->level_of_business_competition : null;
+        $em->managerial_ability = isset($request->managerial_ability) ? $request->managerial_ability : null;
+        $em->technical_ability = isset($request->technical_ability) ? $request->technical_ability : null;
+
+        if($request->hasFile("prospektus")){
+            $fileProspektus = fopen($request->file('prospektus')->getPathName(), 'r');
+            $prospektusFileSave = 'prospektus'.time().'.pdf';
+            $fileProspektus = $folderName.'/'.$prospektusFileSave;
+            $bucket->upload($fileProspektus, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $fileProspektus
+            ]);
+            $em->prospektus = $prospektusFileSave;
+        }
+       
+        $em->video_url = isset($request->video_url) ? $request->video_url : null;
         $em->save();
 
         $emj = new emiten_journey();
