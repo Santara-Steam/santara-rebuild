@@ -68,19 +68,20 @@
                                                         <label for="companyName">Logo Usaha</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image">
-                                                                <img src="{{asset('public/upload')}}/{{$picture[0]}}"
-                                                                    id="uploaded_image" class="img-responsive" />
+                                                                <img id="uploaded_image" class="img-responsive" />
+                                                                    <img src="{{asset('public/upload')}}/{{$picture[0]}}"
+                                                                    id="uploaded_image" class="img-responsive" /> 
                                                                 <div class="overlay">
                                                                     <div class="text">Logo Perusahaan</div>
                                                                 </div>
                                                             </label>
                                                             <input required type="file" name="image" class="image"
-                                                                id="upload_image" style="display: none" />
+                                                                id="upload_image" style="display: none" /> 
                                                             <input required type="text" value="{{$picture[0]}}" hidden
-                                                                name="logo" class="image" id="logo" />
+                                                                name="logo" class="image" id="logo" /> 
                                                         </div>
-                                                    </div>
-                                                    <div class="col-7 text-center">
+                                                    </div> --}}
+                                                    {{-- <div class="col-7 text-center">
                                                         <label for="companyName">Cover Profile</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image2">
@@ -1355,6 +1356,13 @@ $('#crop6').click(function(){
 <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
 <script src="https://unpkg.com/cropperjs"></script>
 <link href="{{ asset('public') }}/assets/css/select2.min.css" rel="stylesheet" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+    <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
+    <script src="https://unpkg.com/dropzone"></script>
+    <script src="https://unpkg.com/cropperjs"></script>
 
 <style>
     .image_area {

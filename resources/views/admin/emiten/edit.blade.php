@@ -11,7 +11,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="basic-layout-form">Edit Penerbit</h4>
+                                <h1 class="card-title-member">Edit Penerbit</h1>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -50,13 +50,26 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="projectinput6">Kategori <span style="color: red">*</span></label>
-                                                    <select required id="categoriBisnis"  name="kategori" class="form-control"></select>
+                                                    <div class="hidden" id="rowCategoriBisnis">
+                                                        <select id="categoriBisnis" style="width: 100%" name="kategori" class="form-control"></select>
+                                                    </div>
+                                                    <div class="input-group" id="categoriEdit">
+                                                        <input type="text" value="{{ $emiten->category }}" 
+                                                            class="form-control" id="categoriBisnis2" readonly />
+                                                        <span class="input-group-text cursor-pointer" id="changeCategoriBisnis">Ganti</span>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput6">Trader Email <span style="color: red">*</span></label>
-                                                    <select required id="traderEmail" name="trader" class="form-control">
-                                                        <option value="<?= $emiten->trader_id ?>"><?= $emiten->trader ?></option>
-                                                    </select>
+                                                    <div class="hidden" id="rowTraderEmail">
+                                                        <select style="width: 100%" id="traderEmail" name="trader" class="form-control">
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-group" id="userEdit">
+                                                        <input type="text" value="{{ $emiten->email }}" 
+                                                            class="form-control"  readonly />
+                                                        <span class="input-group-text cursor-pointer" id="changeUserEdit">Ganti</span>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="projectinput8">Deskripsi
@@ -179,6 +192,7 @@
                                                         <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[0]}}</label>
                                                     </div>
+                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[0] }}" />
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Banner <span style="color: red">*</span></label>
@@ -190,6 +204,7 @@
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[1]}}</label>
                                                     </div>
+                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[1] }}" />
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Foto Owner <span style="color: red">*</span></label>
@@ -201,6 +216,7 @@
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[2]}}</label>
                                                     </div>
+                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[2] }}" />
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
@@ -212,6 +228,7 @@
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[3]}}</label>
                                                     </div>
+                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[3] }}" />
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
@@ -223,6 +240,7 @@
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[4]}}</label>
                                                     </div>
+                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[4] }}" />
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
@@ -234,6 +252,7 @@
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[5]}}</label>
                                                     </div>
+                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[5] }}" />
                                                 </div>
 
                                                 <div class="form-group col-md-4">
@@ -373,9 +392,310 @@
                                                         name="ig" class="form-control" placeholder="Instagram">
                                                 </div>
 
+                                                <div class="form-group col-md-4">
+                                                    <label for="companyName">Perkiraan Saham yang di lepas ke
+                                                        Umum </label>
+                                                    <div class="input-group">
 
-                                                {{--
-                                                <hr> --}}
+                                                        <input type="text"
+                                                            name="saham_dilepas" class="form-control ribuan"
+                                                            placeholder="Perkiraan Saham yang di lepas ke Umum"
+                                                            aria-describedby="basic-addon4" value="{{ $emiten->avg_general_share_amount }}">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon4">%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="companyName">Perkiraan Omzet Setelah Jadi
+                                                        Penerbit </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input type="text"
+                                                            name="omset_penerbit" class="form-control ribuan"
+                                                            placeholder="Perkiraan Omzet Setelah Jadi Penerbit"
+                                                            aria-describedby="basic-addon1"
+                                                            value="{{ $emiten->avg_turnover_after_becoming_a_publisher }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="companyName">Perkiraan Deviden Tahunan</label>
+                                                    <div class="input-group">
+
+                                                        <input  type="text" 
+                                                            name="deviden_tahunan" class="form-control ribuan"
+                                                            placeholder="Perkiraan Deviden Tahunan"
+                                                            aria-describedby="basic-addon4"
+                                                            value="{{ $emiten->avg_annual_dividen }}">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon4">%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="companyName">Alamat Website</label>
+                                                    <input type="text"  id="companyName"
+                                                        name="web" class="form-control" placeholder="Alamat Website"
+                                                        value="{{ $emiten->website }}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="companyName">Facebook</label>
+                                                    <input type="text"  id="companyName"
+                                                        name="fb" class="form-control" placeholder="Facebook"
+                                                        value="{{ $emiten->facebook }}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="companyName">Instagram</label>
+                                                    <input type="text" id="companyName"
+                                                        name="ig" class="form-control" placeholder="Instagram"
+                                                        value="{{ $emiten->instagram }}">
+                                                </div>
+
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Identitas Calon Penerbit</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Kota Lokasi Usaha</label>
+                                                    <div class="hidden" id="rowKota">
+                                                        <select name="regency_id" id="input_kota" style="width: 100%"></select>
+                                                    </div>
+                                                    <div class="input-group" id="kotaEdit">
+                                                        <input type="text" value="{{ $emiten->kota }}" 
+                                                            class="form-control" id="regency_id2" readonly />
+                                                        <span class="input-group-text cursor-pointer" id="changeKota">Ganti</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Badan Usaha</label>
+                                                    <select name="business_entity" class="form-control">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($badanUsaha as $row)
+                                                            <option @if($emiten->business_entity == $row) selected @endif value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Alamat Lengkap Usaha</label>
+                                                    <textarea class="form-control" name="address" rows="5">
+                                                        {{$emiten->address}}
+                                                    </textarea>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Lama Usaha (Bulan)</label>
+                                                    <input class="form-control" type="text" name="business_lifespan"
+                                                        value="{{ $emiten->business_lifespan }}" />
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Jumlah Cabang</label>
+                                                    <input class="form-control" type="text" name="branch_company"
+                                                        value="{{ $emiten->branch_company }}" />
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Jumlah Karyawan</label>
+                                                    <input class="form-control" type="text" name="employee" 
+                                                        value="{{ $emiten->employee }}" />
+                                                </div>
+
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Informasi Finansial</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Besar kebutuhan dana</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input type="text" name="capital_needs"
+                                                            value="{{ $emiten->capital_needs }}"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Rata-rata omset per bulan tahun ini</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="monthly_turnover"
+                                                            value="{{ $emiten->monthly_turnover }}"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Rata-rata laba per bulan tahun ini</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="monthly_profit"
+                                                            value="{{ $emiten->monthly_profit }}"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Rata-rata omset per bulan tahun sebelumnya</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="monthly_turnover_previous_year"
+                                                            value="{{ $emiten->monthly_turnover_previous_year }}"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Rata-rata laba per bulan tahun sebelumnya</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="monthly_profit_previous_year"
+                                                            value="{{ $emiten->monthly_profit_previous_year }}"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Total hutang bank / lembaga pembiayaan</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="total_bank_debt"
+                                                            value="{{ $emiten->total_bank_debt }}"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Nama bank / lembaga pembiayaan</label>
+                                                    <input name="bank_name_financing" class="form-control" 
+                                                        value="{{ $emiten->bank_name_financing }}" />
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Total modal disetor</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
+                                                        </div>
+                                                        <input  type="text" name="total_paid_capital"
+                                                            value="{{ $emiten->total_paid_capital }}"
+                                                            class="form-control ribuan" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Informasi Non Finansial</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Sistem Pencatatan Keuangan</label>
+                                                    <select class="form-control" name="financial_recording_system">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($sistemPencatatan as $row)
+                                                            <option @if($emiten->financial_recording_system == $row) selected @endif value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Reputasi Pinjaman Bank/Lainnya</label>
+                                                    <select class="form-control" name="bank_loan_reputation">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($posisiPasar as $row)
+                                                            <option 
+                                                                @if($emiten->bank_loan_reputation == $row) selected @endif
+                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Posisi Pasar atas Produk / Jasa</label>
+                                                    <select class="form-control" name="market_position_for_the_product">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($marketPositition as $row)
+                                                            <option 
+                                                            @if($emiten->market_position_for_the_product == $row) selected @endif
+                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Strategi Kedepan</label>
+                                                    <select class="form-control" name="strategy_emiten">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($strategiEmiten as $row)
+                                                            <option 
+                                                            @if($emiten->strategy_emiten == $row) selected @endif
+                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Status Lokasi / Kantor / Tempat Usaha</label>
+                                                    <select class="form-control" name="office_status">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($statusKantor as $row)
+                                                            <option value="{{ $row }}" 
+                                                            @if($emiten->office_status == $row) selected @endif>{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Tingkat Persaingan</label>
+                                                    <select class="form-control" name="level_of_business_competition">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($levelKompetisi as $row)
+                                                            <option value="{{ $row }}" 
+                                                            @if($emiten->level_of_business_competition == $row) selected @endif>{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Kemampuan Manajerial</label>
+                                                    <select class="form-control" name="managerial_ability">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($kemapuanManager as $row)
+                                                            <option value="{{ $row }}"
+                                                            @if($emiten->managerial_ability == $row) selected @endif>{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Kemampuan Teknis</label>
+                                                    <select class="form-control" name="technical_ability">
+                                                        <option>Pilih Salah Satu</option>
+                                                        @foreach($kemapuanTeknis as $row)
+                                                            <option value="{{ $row }}"
+                                                            @if($emiten->technical_ability == $row) selected @endif>{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Lampiran Dokumen</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Prospektus (PDF)</label>
+                                                    <div class="custom-file">
+                                                        <input class="custom-file-input req" name="prospektus" id="prospektus"
+                                                            accept="application/pdf" type="file" />
+                                                        <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02" aria-describedby="inputGroupFile02">Pilih File</label>
+                                                    </div>
+                                                    <a target="blank" class="mt-1" href="{{ config('global.STORAGE_GOOGLE').'token/'.$emiten->prospektus }}">Lihat File</a>
+                                                </div>
+
+                                                <hr />
+                                                <div class="form-group col-md-12 mb-0">
+                                                    <h5><strong>Media</strong></h5>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Masukan link video tentang usaha Anda ( Youtube )</label>
+                                                    <input type="text" class="form-control" name="video_url" value="{{ $emiten->video_url }}" id="video_url" />
+                                                </div>
 
 
                                             </div>
@@ -594,8 +914,52 @@
 <script src="{{ asset('public') }}/assets/js/select2.min.js"></script>
 <script>
      $(document).ready(function() {
+
+            $("#changeKota").on('click', function(){
+                $("#kotaEdit").addClass("hidden");
+                $("#rowKota").removeClass("hidden");
+            });
+
+            $("#changeCategoriBisnis").on('click', function(){
+                $("#categoriEdit").addClass("hidden");
+                $("#rowCategoriBisnis").removeClass("hidden");
+            });
+
+            $("#changeUserEdit").on('click', function(){
+                $("#userEdit").addClass("hidden");
+                $("#rowTraderEmail").removeClass("hidden");
+            });
+
+            $("#input_kota").select2({
+                placeholder: "Contoh: Sleman",
+                closeOnSelect: false,
+                allowClear: true,
+                delay: 250, // wait 250 milliseconds before triggering the request
+                ajax: {
+                    url: "{{ url('admin/get-regency') }}",
+                    dataType: "json",
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data) {
+                        var results = [];
+                        $.each(data, function(index, item) {
+                            results.push({
+                                id: item.id,
+                                text: item.name,
+                                value: item.name
+                            })
+                        })
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
        
-        $("#categoriBisnis").select2({
+            $("#categoriBisnis").select2({
                 placeholder: "Contoh: Transportasi, Pergudangan dan Komunikasi",
                 closeOnSelect: false,
                 allowClear: true,
@@ -623,8 +987,6 @@
                     }
                 }
             });
-
-            $("#categoriBisnis").select2().val("{{ $emiten->category_id }}").trigger("change");
 
             $("#traderEmail").select2({
                 placeholder: "Contoh: user@gmail.com",
@@ -1230,6 +1592,10 @@ $('#crop6').click(function(){
     .image_area2:hover .overlay2 {
         height: 50%;
         cursor: pointer;
+    }
+
+    .hidden {
+        display: none;
     }
 
     .text {
