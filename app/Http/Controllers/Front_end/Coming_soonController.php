@@ -363,4 +363,34 @@ class Coming_soonController extends Controller
     {
         //
     }
+
+    public function testajax(Request $request){
+        $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+            SELECT count(id) from emiten_comments
+            where emiten_id = emitens.id
+            ) as cmt'))
+        ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+        ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        ->where('emitens.is_deleted',0)
+        ->where('emitens.is_active',0)
+            ->where('emitens.is_verified',1)
+            ->where('emitens.is_pralisting',1)
+            ->where('emitens.is_coming_soon',1)
+        // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+        // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+        ->groupBy('emitens.id')
+        ->orderby('vot','DESC')
+        ->limit(12)
+        ->get();
+
+        foreach ($soon as $cs) {
+            $data[] = view('front_end/coming_soon/cs_item',compact('cs'))->render();
+        }
+
+        // dd($data);
+        echo json_encode($data);
+        
+    }
 }

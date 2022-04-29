@@ -21,6 +21,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="container">
+          {{-- <a class="btn btn-primary" id="testajax">tes</a> --}}
           <form role="form" method="get" action="{{ route('coming-soon.index') }}" id="form_id">
             @csrf
             <div class="form-row">
@@ -63,7 +64,7 @@
             </div>
           </form>
 
-          <div class="fashion_section_2">
+          <div class="fashion_section_2" id="first">
             <div class="row" style="padding-left: 10px; padding-right: 10px;">
               @foreach ($soon as $cs)
               <?php 
@@ -257,6 +258,9 @@
             </div>
             @endforeach
           </div>
+          {{-- <div class="fashion_section_2" id="second">
+
+          </div> --}}
         </div>
       </div>
     </div>
@@ -606,6 +610,17 @@
   })
   </script>
   @section('js')
+  <script>
+// $("#testajax").click(function (e) {
+//  console.log('tes');
+// // AJAX request
+// $.post("/bisnis/getBisnis")
+//         .done(function (data) {
+//           console.log('tess');
+//         });
+// });
+  </script>
+
   <script type='text/javascript'>
     $(document).ready(function(){
 

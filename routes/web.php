@@ -250,6 +250,7 @@ Route::get('/detail-now-playing/{id}', [Now_playingController::class, 'detail'])
 Route::get('/detail-coming-soon/{id}', [Coming_soonController::class, 'detail'])->name('coming-soon.detail');
 Route::get('/detail-sold-out/{id}', [Sold_outController::class, 'detail'])->name('sold-out.detail');
 Route::get('/filter-sold-out', [Sold_outController::class, 'filter'])->name('sold-out.filter');
+Route::get('/testajaxcs', [Coming_soonController::class, 'testajax']);
 
 Route::group(['middleware' => ['auth', "verified"]], function () {
     Route::get('/daftar-bisnis/create', [Daftar_bisnisController::class, 'create'])->name('daftar-bisnis.create');
