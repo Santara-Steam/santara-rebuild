@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Google\Cloud\Storage\StorageClient;
 
 class Daftar_bisnisController extends Controller
 {
@@ -46,6 +47,13 @@ class Daftar_bisnisController extends Controller
     {
         // $this->validator($request->all())->validate();
         // $file = $request->file('logo')->store('logo_perusahaan', 'public');
+        $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+        $storage = new StorageClient([
+            'keyFile' => json_decode($googleConfigFile, true)
+        ]);
+        $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+        $bucket = $storage->bucket($storageBucketName);
+        $folderName = 'santara.co.id/token';
         
         $namapt = emiten::where('company_name', 'like', '%' .  $request->get('company_name') . '%')->first();
 
@@ -60,33 +68,84 @@ class Daftar_bisnisController extends Controller
             // return response()->json(['status' => 'Mantap']);
             return redirect()->back()->with($notif);
         }else{
-        if($request->hasFile('logo')){
-            $logoNameWithExt = $request->file('logo')->getClientOriginalName() ;
-            $logoFileName = pathinfo ($logoNameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('logo')->getClientoriginalExtension();
-            $logoFileSave = 'logo'.time().'.'.$extension;
-            $path = $request->file('logo')->storeAs('public/pictures',$logoFileSave) ;
+        if($request->hasFile('thumbnail')){
+            $extension = $request->file('thumbnail')->getClientoriginalExtension();
+            $fileThumbnail = fopen($request->file('thumbnail')->getPathName(), 'r');
+            $logoFileSave = 'thumbnail'.time().'.'.$extension;
+            $pictures = $folderName.'/'.$logoFileSave;
+            $bucket->upload($fileThumbnail, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
         }else{
             $logoFileSave = 'noimage.jpg';
         }
 
-        if($request->hasFile('cover')){
-            $coverNameWithExt = $request->file('cover')->getClientOriginalName() ;
-            $coverFileName = pathinfo ($coverNameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('cover')->getClientoriginalExtension();
-            $coverFileSave = 'cover'.time().'.'.$extension;
-            $path = $request->file('cover')->storeAs('public/pictures',$coverFileSave) ;
+        if($request->hasFile('banner')){
+            $extension = $request->file('banner')->getClientoriginalExtension();
+            $fileBanner = fopen($request->file('banner')->getPathName(), 'r');
+            $coverFileSave = 'banner'.time().'.'.$extension;
+            $pictures = $folderName.'/'.$coverFileSave;
+            $bucket->upload($fileBanner, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
         }else{
             $coverFileSave = 'noimage.jpg';
         }
         if($request->hasFile("galeri")){
-            $galeriNameWithExt = $request->file('galeri')->getClientOriginalName() ;
-            $galeriFileName = pathinfo ($galeriNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('galeri')->getClientoriginalExtension();
-            $galeriFileSave = 'galeri'.time().'.'.$extension;
-            $path = $request->file('galeri')->storeAs('public/pictures',$galeriFileSave) ;
+            $fileGaleri1 = fopen($request->file('galeri')->getPathName(), 'r');
+            $galeri1FileSave = 'galeri1'.time().'.'.$extension;
+            $pictures = $folderName.'/'.$galeri1FileSave;
+            $bucket->upload($fileGaleri1, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+
+            // $galeriNameWithExt = $request->file('galeri1')->getClientOriginalName() ;
+            // $galeriFileName = pathinfo ($galeriNameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('galeri1')->getClientoriginalExtension();
+            // $galeriFileSave = 'galeri1'.time().'.'.$extension;
+            // $path = $request->file('galeri1')->storeAs('public/pictures',$galeriFileSave) ;
         }else{
-            $galeriFileSave = 'noimage.jpg';
+            $galeri1FileSave = 'noimage.jpg';
+        }
+        if($request->hasFile("galeri2")){
+            $extension = $request->file('galeri2')->getClientoriginalExtension();
+            $fileGaleri2 = fopen($request->file('galeri2')->getPathName(), 'r');
+            $galeri2FileSave = 'galeri2'.time().'.'.$extension;
+            $pictures = $folderName.'/'.$galeri2FileSave;
+            $bucket->upload($fileGaleri2, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+
+            // $galeri2NameWithExt = $request->file('galeri2')->getClientOriginalName() ;
+            // $galeri2FileName = pathinfo ($galeri2NameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('galeri2')->getClientoriginalExtension();
+            // $galeri2FileSave = 'galeri2'.time().'.'.$extension;
+            // $path = $request->file('galeri2')->storeAs('public/pictures',$galeri2FileSave) ;
+        }else{
+            $galeri2FileSave = 'noimage.jpg';
+        }
+        if($request->hasFile("galeri3")){
+            $extension = $request->file('galeri3')->getClientoriginalExtension();
+            $fileGaleri3 = fopen($request->file('galeri3')->getPathName(), 'r');
+            $galeri3FileSave = 'galeri3'.time().'.'.$extension;
+            $pictures = $folderName.'/'.$galeri3FileSave;
+            $bucket->upload($fileGaleri3, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+
+            // $galeri3NameWithExt = $request->file('galeri3')->getClientOriginalName() ;
+            // $galeri3FileName = pathinfo ($galeri3NameWithExt, PATHINFO_FILENAME);
+            // $extension = $request->file('galeri3')->getClientoriginalExtension();
+            // $galeri3FileSave = 'galeri3'.time().'.'.$extension;
+            // $path = $request->file('galeri3')->storeAs('public/pictures',$galeri3FileSave) ;
+        }else{
+            $galeri3FileSave = 'noimage.jpg';
         }
         // if($request->hasFile("galeri1")){
         //     $galeri1NameWithExt = $request->file('galeri1')->getClientOriginalName() ;
@@ -116,11 +175,14 @@ class Daftar_bisnisController extends Controller
         //     $galeri3FileSave = 'noimage.jpg';
         // }
         if($request->hasFile("owner")){
-            $ownerNameWithExt = $request->file('owner')->getClientOriginalName() ;
-            $ownerFileName = pathinfo ($ownerNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('owner')->getClientoriginalExtension();
+            $fileOwner = fopen($request->file('owner')->getPathName(), 'r');
             $ownerFileSave = 'owner'.time().'.'.$extension;
-            $path = $request->file('owner')->storeAs('public/pictures',$ownerFileSave) ;
+            $pictures = $folderName.'/'.$ownerFileSave;
+            $bucket->upload($fileOwner, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
         }else{
             $ownerFileSave = 'noimage.jpg';
         }
@@ -181,6 +243,11 @@ class Daftar_bisnisController extends Controller
         $em->admin_desc= $request->get('bio_owner');
         $em->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
         // $em->pictures = $logoFileSave.','.$coverFileSave.','.$ownerFileSave.','.$galeri1FileSave.','.$galeri2FileSave.','.$galeri3FileSave;
+        $em->is_deleted = 0;
+        $em->is_active = 0;
+        $em->is_verified = 1;
+        $em->is_pralisting = 1;
+        $em->is_coming_soon = 1;
 
         $em->save();
 
@@ -193,7 +260,9 @@ class Daftar_bisnisController extends Controller
             'alert-type' => 'success'
         );
 
-        $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
+        // dd($logo);
+
+        // $array = $logoFileSave.','.$coverFileSave.','.$galeriFileSave.','.$ownerFileSave;
         // dd($em);
         // return response()->json(['status' => 'Mantap']);
         return redirect('/')->with($notif);

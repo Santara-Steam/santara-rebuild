@@ -973,12 +973,28 @@ class EmitenController extends Controller
     }
     public function logocropImg()
     {
-          $data = $_POST['image'];
+            
+
+            $data = $_POST['image'];
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'public/storage/pictures/logo_' . time() . '.png';
-            file_put_contents($image_name, $data);
+            $image_name = 'thumbnail_' . time() . '.png';
+            // file_put_contents($image_name, $data);
+
+            $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+            $storage = new StorageClient([
+                'keyFile' => json_decode($googleConfigFile, true)
+            ]);
+            $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+            $bucket = $storage->bucket($storageBucketName);
+            $folderName = 'santara.co.id/token';
+            $pictures = $folderName.'/'.$image_name;
+            $bucket->upload($data, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
+            
             echo $image_name;
     }
     public function profilecropImg()
@@ -987,8 +1003,20 @@ class EmitenController extends Controller
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'public/storage/pictures/profile_' . time() . '.png';
-            file_put_contents($image_name, $data);
+            $image_name = 'profile_' . time() . '.png';
+            // file_put_contents($image_name, $data);
+            $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+            $storage = new StorageClient([
+                'keyFile' => json_decode($googleConfigFile, true)
+            ]);
+            $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+            $bucket = $storage->bucket($storageBucketName);
+            $folderName = 'santara.co.id/token';
+            $pictures = $folderName.'/'.$image_name;
+            $bucket->upload($data, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
             echo $image_name;
     }
     public function galericropImg()
@@ -997,8 +1025,20 @@ class EmitenController extends Controller
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'public/storage/pictures/galeri_' . time() . '.png';
-            file_put_contents($image_name, $data);
+            $image_name = 'galeri_' . time() . '.png';
+            // file_put_contents($image_name, $data);
+            $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+            $storage = new StorageClient([
+                'keyFile' => json_decode($googleConfigFile, true)
+            ]);
+            $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+            $bucket = $storage->bucket($storageBucketName);
+            $folderName = 'santara.co.id/token';
+            $pictures = $folderName.'/'.$image_name;
+            $bucket->upload($data, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
             echo $image_name;
     }
     public function covercropImg()
@@ -1007,8 +1047,20 @@ class EmitenController extends Controller
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'public/storage/pictures/cover_' . time() . '.png';
-            file_put_contents($image_name, $data);
+            $image_name = 'banner_' . time() . '.png';
+            // file_put_contents($image_name, $data);
+            $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+            $storage = new StorageClient([
+                'keyFile' => json_decode($googleConfigFile, true)
+            ]);
+            $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+            $bucket = $storage->bucket($storageBucketName);
+            $folderName = 'santara.co.id/token';
+            $pictures = $folderName.'/'.$image_name;
+            $bucket->upload($data, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
             echo $image_name;
     }
     public function ownercropImg()
@@ -1017,8 +1069,20 @@ class EmitenController extends Controller
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $data = base64_decode($image_array_2[1]);
-            $image_name = 'public/storage/pictures/owner_' . time() . '.png';
-            file_put_contents($image_name, $data);
+            $image_name = 'owner_' . time() . '.png';
+            // file_put_contents($image_name, $data);
+            $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+            $storage = new StorageClient([
+                'keyFile' => json_decode($googleConfigFile, true)
+            ]);
+            $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+            $bucket = $storage->bucket($storageBucketName);
+            $folderName = 'santara.co.id/token';
+            $pictures = $folderName.'/'.$image_name;
+            $bucket->upload($data, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $pictures
+            ]);
             echo $image_name;
     }
 

@@ -167,7 +167,7 @@
                                     <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                         alt="Avatar" style="border-radius: 50%;" />
                                     @else
-                                    <img src="{{asset('public/storage/pictures')}}/{{Auth::user()->trader->photo}}"
+                                    <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
                                         alt="Avatar" style="border-radius: 50%;width: " />
                                     @endif
                                 </span>
@@ -191,7 +191,7 @@
                                 <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                     alt="Foto Profile" style="border-radius: 50%;padding:10px" />
                                 @else
-                                <img src="{{asset('public/storage/pictures')}}/{{Auth::user()->trader->photo}}"
+                                <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
                                     alt="Foto Profile" style="border-radius: 50%;padding:10px;width: 200px" />
                                 @endif
                                 <a class="dropdown-item" href="{{url('/edit_profile')}}/{{Auth::user()->id}}"><i

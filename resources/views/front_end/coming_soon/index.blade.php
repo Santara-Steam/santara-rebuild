@@ -120,12 +120,12 @@
                   data-image="<?=$picture[0]?>">
                   <div class="card moldla">
                     <img class="rectangle-2 moldla"
-                      src="https://storage.googleapis.com/santara-bucket-prod/{{$picture[0]}}" />
+                      src="{{env("PATH_WEB")}}{{$picture[0]}}" />
                   </div>
                 </a>
                 <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
                   <div class="card molpli">
-                    <img class="rectangle-2" src="https://storage.googleapis.com/santara-bucket-prod/{{$picture[0]}}" />
+                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[0]}}" />
                     <div class="content">
                       <div class="header-card-dan-progress">
                         <div class="header-and-tags">
@@ -584,7 +584,7 @@
       $('#category').text(category);
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
-      $('#image').prop('src', 'https://storage.googleapis.com/santara-bucket-prod/' + image);
+      $('#image').prop('src', '{{env("PATH_WEB")}}' + image);
       $('#like').text(like);
       $('#minat').text(minat);
       $('#comments').text(comment);
