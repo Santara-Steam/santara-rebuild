@@ -173,7 +173,7 @@
                                                     <br>
                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" id="fil" accept=".png, .jpg" type="file" name="thumbnail" 
+                                                        <input class="custom-file-input req" accept=".png, .jpg" type="file" name="thumbnail" 
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">Pilih File</label>

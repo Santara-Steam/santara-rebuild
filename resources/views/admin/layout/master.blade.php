@@ -41,7 +41,8 @@
         href="{{ asset('public/admin') }}/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('public/admin') }}/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/admin') }}/app-assets/vendors/css/charts/morris.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('public/admin') }}/app-assets/vendors/css/charts/morris.css">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('public/admin') }}/app-assets/fonts/simple-line-icons/style.css">
     <link rel="stylesheet" type="text/css"
@@ -60,8 +61,9 @@
             text-align: center;
         }
 
-        table.tabel-tabel td, table.tabel-tabel th {
-            padding: 0; 
+        table.tabel-tabel td,
+        table.tabel-tabel th {
+            padding: 0;
         }
 
         .img-broadcast {
@@ -115,14 +117,15 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    
+
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{ asset('public/admin') }}/app-assets/vendors/js/charts/chart.min.js"></script>
     <script src="{{ asset('public/admin') }}/app-assets/vendors/js/charts/raphael-min.js"></script>
     <script src="{{ asset('public/admin') }}/app-assets/vendors/js/charts/morris.min.js"></script>
-    <script src="{{ asset('public/admin') }}/app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="{{ asset('public/admin') }}/app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js">
+    </script>
     <script src="{{ asset('public/admin') }}/app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js">
     </script>
     <script src="{{ asset('public/admin') }}/app-assets/data/jvector/visitor-data.js"></script>
