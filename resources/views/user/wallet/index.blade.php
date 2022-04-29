@@ -1034,7 +1034,7 @@ function validateForm() {
   if (requiredAllCompleted) $(".sippp").prop("disabled", false);
 }
 
-
+const amoun = 0;
 
 amountwd.addEventListener("keyup", function (e) {
   this.value = this.value.replace(/^0+/, "");
@@ -1043,6 +1043,7 @@ amountwd.addEventListener("keyup", function (e) {
   $("#amount_limit_alertwd").hide();
   $("#amount_minimum_alertwd").show();
 //   $("#amou").val(this.value);
+// console.log(this.value);
 
   if (this.value != "" && !isNaN(this.value)) {
 
@@ -1070,6 +1071,7 @@ amountwd.addEventListener("keyup", function (e) {
     totalwd.value = 0;
   }
   this.value = formatNumber(parseInt(this.value.replace(/\./g, "")));
+  amoun.value = this.value;
 });
 
 $("#submitWithdrawKYC").click(function () {
@@ -1119,7 +1121,7 @@ $("#withdraw").click(function () {
     footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="/user/security/email">Reset PIN</a></p>',
     focusConfirm: false,
     preConfirm: () => {
-        $("#amou").val(amountwd.value.replace(/\./, ""));
+        $("#amou").val(amountwd.value.replace(/\./g, ""));
         const login = Swal.getPopup().querySelector('#amou').value
         const password = Swal.getPopup().querySelector('#pin').value
         return { login: login, password: password }

@@ -91,6 +91,7 @@ class HomeController extends Controller
                     'tr.last_status as status')
                 ->orderBy('tr.id','DESC')
                 ->get();
+                // dd(count($rtransactions));
 
         return view('user.index',compact('total_saham','total_lbr','psb','psbv','book','asset','port','rtransactions'));
     }

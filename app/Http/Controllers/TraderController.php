@@ -178,9 +178,9 @@ class TraderController extends Controller
                             'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
                         ],
                         'form_params' => [
-                            "bank_wd_id" => $request->bank,
-                            "account_currency_bwd" => "IDR",
-                            "account_number_bwd" => $request->norek
+                            "bank_code" => $request->bank,
+                            "account_number" => $request->norek,
+                            "account_name" =>Auth::user()->trader->name
                         ]
                     ]);
 

@@ -103,6 +103,8 @@
 
                 
             </section>
+            @if (count($port) > 0)
+                
             <section id="configuration">
                 <div class="row">
                     <div class="col-12">
@@ -167,6 +169,11 @@
                     </div>
                 </div>
             </section>
+            @endif
+            
+                
+            @if (count($rtransactions) > 0)
+                
             <section id="configuration">
                 <div class="row">
                     <div class="col-12">
@@ -275,7 +282,8 @@
                     </div>
                 </div>
             </section>
-
+            @endif
+            
         </div>
     </div>
 </div>

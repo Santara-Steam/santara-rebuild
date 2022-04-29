@@ -31,7 +31,12 @@
                                                 ->groupBy('users.id')
                                                 ->first();
                                                 ?>
+
+                                                @if ($assett)
                                                 <h3 style="color: white;">Rp&nbsp;{{number_format($assett->amo,0,',','.')}}</h3>
+                                                @else
+                                                <h3 style="color: white;">Rp&nbsp;0</h3>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -41,7 +46,7 @@
                                         <div class="p-1 ">
                                             <div class="inner">
                                                 <p style="color: white;">TOTAL SUKUK</p>
-                                                <h3 style="color: white;">Rp&nbsp;0,00</h3>
+                                                <h3 style="color: white;">Rp&nbsp;0</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -51,7 +56,11 @@
                                         <div class="p-1 ">
                                             <div class="inner">
                                                 <p style="color: white;">TOTAL INVESTASI</p>
+                                                @if ($assett)
                                                 <h3 style="color: white;">Rp&nbsp;{{number_format($assett->amo,0,',','.')}}</h3>
+                                                @else
+                                                <h3 style="color: white;">Rp&nbsp;0</h3>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
