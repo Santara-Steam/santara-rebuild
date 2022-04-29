@@ -56,8 +56,8 @@
                   {{-- <option value="{{old('sort')}}" hidden>{{old('sort')}}</option> --}}
                   <option value="desc" <?PHP echo (Request::get('sort')=='desc' )? 'selected' : '' ; ?>>Terbaru</option>
                   <option value="asc" <?PHP echo (Request::get('sort')=='asc' )? 'selected' : '' ; ?>>Terlama</option>
-                  <option value="terpenuhi">Terpenuhi</option>
-                  <option value="position">Belum Terpenuhi</option>
+                  {{-- <option value="terpenuhi">Terpenuhi</option> --}}
+                  {{-- <option value="position">Belum Terpenuhi</option> --}}
                 </select>
               </div>
             </div>
