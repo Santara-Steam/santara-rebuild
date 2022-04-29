@@ -49,8 +49,8 @@
                                 <select name="sort" id="inputState" class="form-control dropdown-1" onChange=" document.getElementById('form_id').submit();">
                                 <option value="desc">Terbaru</option>
                                   <option value="asc">Terlama</option>
-                                          <option value="terpenuhi" >Terpenuhi</option>
-                                          <option value="position">Belum Terpenuhi</option>
+                                          <!-- <option value="terpenuhi" >Terpenuhi</option>
+                                          <option value="position">Belum Terpenuhi</option> -->
                                 </select>
                               </div>
                             </div>

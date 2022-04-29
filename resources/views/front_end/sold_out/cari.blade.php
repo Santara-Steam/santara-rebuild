@@ -55,8 +55,8 @@
                                   <option <?php if ($fil_sort == 'asc') {
                                                             echo 'selected'; } ?>
                                                             value="asc">Terlama</option>
-                                          <option value="terpenuhi" >Terpenuhi</option>
-                                          <option value="position">Belum Terpenuhi</option>
+                                          <!-- <option value="terpenuhi" >Terpenuhi</option>
+                                          <option value="position">Belum Terpenuhi</option> -->
                                 </select>
                               </div>
                             </div>
