@@ -375,8 +375,17 @@ class TransactionsController extends Controller
         $request->session()->put('emid', $request->emid);
         $request->session()->put('lembar_saham', $request->lembar_saham);
         $request->session()->put('uuid', $request->uuid);
-
-        return view('user.transactions.checkout',compact('emiten','lembar_saham','uuid'));
+//  dd($request->lembar_saham);
+        if ($request->lembar_saham < 0) {
+            # code...
+            $notif = array(
+                'message' => 'Silahkan Masukan Lembar Saham Yang valid',
+                'alert-type' => 'fail'
+            );
+            return redirect()->back()->with($notif);
+        }else{
+            return view('user.transactions.checkout',compact('emiten','lembar_saham','uuid'));
+        }
     }
     public function buy_token(Request $request){
         // echo $request->uuid.$request->amount.$request->pinx.$request->channelx;

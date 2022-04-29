@@ -2,70 +2,71 @@
 
 @section('content')
 <div class="header-section" style="margin-top: 96px;">
-          <div class="heading-and-subheading">
-            <div class="now-playing-bisnis inter-bold-alizarin-crimson-16px">
-              <span class="inter-bold-alizarin-crimson-16px">Coming Soon Bisnis</span>
-            </div>
-            <div class="text-urun pilih-bisnis-favoritmu inter-bold-alabaster-48px">
-              <span class="text-sb inter-bold-alabaster">Pilih Bisnis Favoritmu</span>
-            </div>
-          </div>
-          <div class="text-mulai inter-normal-alabaster-20px">
-            <span class="text-mulai inter-normal-alabaster">Ayo dukung bisnis favoritmu agar naik menjadi Penerbit!</span>
-          </div>
-        </div>
-      </div>
+  <div class="heading-and-subheading">
+    <div class="now-playing-bisnis inter-bold-alizarin-crimson-16px">
+      <span class="inter-bold-alizarin-crimson-16px">Coming Soon Bisnis</span>
+    </div>
+    <div class="text-urun pilih-bisnis-favoritmu inter-bold-alabaster-48px">
+      <span class="text-sb inter-bold-alabaster">Pilih Bisnis Favoritmu</span>
+    </div>
+  </div>
+  <div class="text-mulai inter-normal-alabaster-20px">
+    <span class="text-mulai inter-normal-alabaster">Ayo dukung bisnis favoritmu agar naik menjadi Penerbit!</span>
+  </div>
+</div>
+</div>
 
-      <div class="fashion_section">
-         <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-               <div class="carousel-item active">
-                  <div class="container">
-                  <fieldset disabled>
-                        <div class="form-row">
-                        <div class="form-group col-md-4">
-                          <div class="label inter-medium-quill-gray-14px">
-                            <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
-                          </div>
-                          <input type="text" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px" style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="&#xF002;"/>
-                        </div>
-                        <div class="form-group col-md-3 kati">
-                        </div>
-                        <div class="form-group col-md-3">
-                          <div class="label-1 inter-medium-quill-gray-14px">
-                                    <span class="inter-medium-quill-gray-14px">Kategori</span>
-                                  </div>
-                          <select id="inputState" class="form-control dropdown-1">
-                            <option value="position">Semua Kategori</option>
-                                    <option value="price" >Property</option>
-                                    <option value="position">Food and Beverage</option>
-                                    <option value="price" >Peternakan</option>
-                                    <option value="position">Perkebunan/Argo</option>
-                                    <option value="price" >Teknologi</option>
-                                    <option value="position">Start Up</option>
-                                    <option value="price" >Project Financing</option>
-                                    <option value="price" >Service/Layanan</option>
-                                    <option value="position">Manufaktur/Produksi</option>
-                                    <option value="price" >Retail/Distribusi/Logistik</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                          <div class="label-1 inter-medium-quill-gray-14px">
-                                    <span class="inter-medium-quill-gray-14px">Urutkan</span>
-                                  </div>
-                          <select id="inputState" class="form-control dropdown-1">
-                            <option value="position">Terlama</option>
-                                    <option value="price" >Terpenuhi</option>
-                                    <option value="position">Belum Terpenuhi</option>
-                          </select>
-                        </div>
-                      </div>
-                      </fieldset>
+<div class="fashion_section">
+  <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container">
+          <form role="form" method="get" action="{{ route('coming-soon.index') }}" id="form_id">
+            @csrf
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <div class="label inter-medium-quill-gray-14px">
+                  <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
+                </div>
+                <input type="search" value="{{Request::get('cari')}}" name="cari"
+                  class="form-control input-1 border-1px-cape-cod inter-normal-delta-16px"
+                  style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="Cari" />
+              </div>
+              <div class="form-group col-md-3 kati">
+              </div>
+              <div class="form-group col-md-3">
+                <div class="label-1 inter-medium-quill-gray-14px">
+                  <span class="inter-medium-quill-gray-14px">Kategori</span>
+                </div>
+                <select name="categor" id="inputState" class="form-control dropdown-1"
+                  onChange=" document.getElementById('form_id').submit();">
+                  <option value="">Semua Kategori</option>
+                  @foreach ($cat as $cate)
+                  <option type="submit" <?PHP echo (Request::get('categor')==$cate->id)? 'selected': ''; ?>
+                    value="{{$cate->id}}" >{{$cate->category}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <div class="label-1 inter-medium-quill-gray-14px">
+                  <span class="inter-medium-quill-gray-14px">Urutkan</span>
+                </div>
+                <select name="sort" id="inputState" class="form-control dropdown-1"
+                  onChange=" document.getElementById('form_id').submit();">
+                  {{-- <option value="{{old('sort')}}" hidden>{{old('sort')}}</option> --}}
+                  <option value="desc" <?PHP echo (Request::get('sort')=='desc' )? 'selected' : '' ; ?>>Terbaru</option>
+                  <option value="asc" <?PHP echo (Request::get('sort')=='asc' )? 'selected' : '' ; ?>>Terlama</option>
+                  <option value="terpenuhi">Terpenuhi</option>
+                  <option value="position">Belum Terpenuhi</option>
+                </select>
+              </div>
+            </div>
+          </form>
 
-                            <div class="fashion_section_2">
-                                <div class="row" style="padding-left: 10px; padding-right: 10px;">
-                                @foreach ($soon as $cs)
-                <?php 
+          <div class="fashion_section_2">
+            <div class="row" style="padding-left: 10px; padding-right: 10px;">
+              @foreach ($soon as $cs)
+              <?php 
                                             $picture = explode(',',$cs->pictures);
                                             if(empty($picture[0])){
                                             $picture[0] = 'default1.png';
@@ -108,167 +109,178 @@
                                                 $cs->trademark;
                                             }
                                             ?>
-                                    
-                                    <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;">
-                                    <a data-toggle="modal" id="detail" class="mod moldla" style="width: 100%;"
-                                      data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
-                                      data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
-                                      data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"
-                                      data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
-                                      data-image="<?=$picture[0]?>">
-                                      <div class="card moldla">
-                                        <img class="rectangle-2 moldla" src="https://storage.googleapis.com/santara-bucket-prod/{{$picture[0]}}" />
-                                      </div>
-                                    </a>
-                                    <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
-                                      <div class="card molpli">
-                                        <img class="rectangle-2" src="https://storage.googleapis.com/santara-bucket-prod/{{$picture[0]}}" />
-                                        <div class="content">
-                                          <div class="header-card-dan-progress">
-                                            <div class="header-and-tags">
-                                              <span class="tx-t inter-medium-sweet-pink-12px"
-                                                style="background: var(--falu-red);
+
+              <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;">
+                <a data-toggle="modal" id="detail" class="mod moldla" style="width: 100%;"
+                  data-target="#exampleModalCenter" data-category="<?=$cs->ctg->category?>"
+                  data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
+                  data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"
+                  data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
+                  data-image="<?=$picture[0]?>">
+                  <div class="card moldla">
+                    <img class="rectangle-2 moldla"
+                      src="https://storage.googleapis.com/santara-bucket-prod/{{$picture[0]}}" />
+                  </div>
+                </a>
+                <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
+                  <div class="card molpli">
+                    <img class="rectangle-2" src="https://storage.googleapis.com/santara-bucket-prod/{{$picture[0]}}" />
+                    <div class="content">
+                      <div class="header-card-dan-progress">
+                        <div class="header-and-tags">
+                          <span class="tx-t inter-medium-sweet-pink-12px"
+                            style="background: var(--falu-red);
                                     border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
-                                  <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->ctg->category ), 20, $end='...') ?>  
-                                  </span>
-                                              <div class="header">
-                                                <div class="saka-logistics inter-medium-alabaster-20px">
-                                                  <span class="tx-pt inter-medium-alabaster">
-                                                    <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 20, $end='...') ?>
-                                                  </span>
-                                                </div>
-                                                <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
-                                                  <span class="tx-np inter-normal-quill-gray">
-                                                    <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->company_name ), 30, $end='...') ?>
-                                                  </span>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="icon-card row" style="display: flex;
+                            <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->ctg->category ), 20, $end='...') ?>
+                          </span>
+                          <div class="header">
+                            <div class="saka-logistics inter-medium-alabaster-20px">
+                              <span class="tx-pt inter-medium-alabaster">
+                                <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 20, $end='...') ?>
+                              </span>
+                            </div>
+                            <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
+                              <span class="tx-np inter-normal-quill-gray">
+                                <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->company_name ), 30, $end='...') ?>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="icon-card row" style="display: flex;
                                   justify-content: center;
                                   align-items: center;">
-                                              @guest
-                                              <a href="{{route('login')}}" style="cursor: pointer">
-                                                <div class="icon-and-supporting-text">
-                                                  <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
-                                                  <div class="address-2 inter-normal-alabaster-10px">
-                                                    <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
-                                                  </div>
-                                                </div>
-                                              </a>
-                                              @else
-                                              @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
+                          @guest
+                          <a href="{{route('login')}}" style="cursor: pointer">
+                            <div class="icon-and-supporting-text">
+                              <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
+                              <div class="address-2 inter-normal-alabaster-10px">
+                                <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
+                              </div>
+                            </div>
+                          </a>
+                          @else
+                          @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
 
-                                              <a onclick="document.getElementById('sublike{{$cs->id}}').submit();"
-                                                style="cursor: pointer">
-                                                @else
-                                                <a onclick="document.getElementById('like{{$cs->id}}').submit();" style="cursor: pointer">
-                                                  @endif
+                          <a onclick="document.getElementById('sublike{{$cs->id}}').submit();" style="cursor: pointer">
+                            @else
+                            <a onclick="document.getElementById('like{{$cs->id}}').submit();" style="cursor: pointer">
+                              @endif
 
-                                                  {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();"
-                                                    style="cursor: pointer"> --}}
-                                                    <div class="icon-and-supporting-text">
-                                                      <i class="icon-com iconheart fas fa-heart"
-                                                        style="color: #fff; font-size: 18px;"></i>
-                                                      <div class="address-2 inter-normal-alabaster-10px">
-                                                        <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
-                                                      </div>
-                                                    </div>
-                                                  </a>
-                                                  <form id="like{{$cs->id}}" action="{{url('addLike')}}/{{$cs->id}}" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    {{ csrf_field() }}
-                                                  </form>
-
-                                                  <form id="sublike{{$cs->id}}" action="{{url('subLike')}}/{{$cs->id}}" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    {{ csrf_field() }}
-                                                  </form>
-                                                  @endguest
-
-
-
-                                                  @guest
-                                                  <a href="{{route('login')}}" style="cursor: pointer">
-                                                    <div class="icon-and-supporting-text-1">
-                                                      <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
-                                                      <div class="address-2 inter-normal-alabaster-10px">
-                                                        <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
-                                                      </div>
-                                                    </div>
-                                                  </a>
-                                                  @else
-                                                  @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
-
-                                                  <a onclick="document.getElementById('subvote{{$cs->id}}').submit();"
-                                                    style="cursor: pointer">
-                                                    @else
-                                                    <a onclick="document.getElementById('vote{{$cs->id}}').submit();"
-                                                      style="cursor: pointer">
-                                                      @endif
-                                                      <div class="icon-and-supporting-text-1">
-                                                        <i class="icon-com iconheart fas fa-user"
-                                                          style="color: #fff; font-size: 18px;"></i>
-                                                        <div class="address-2 inter-normal-alabaster-10px">
-                                                          <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
-                                                        </div>
-                                                      </div>
-                                                    </a>
-                                                    <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
-                                                      enctype="multipart/form-data">
-                                                      {{ csrf_field() }}
-                                                    </form>
-                                                    <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}" method="POST"
-                                                      enctype="multipart/form-data">
-                                                      {{ csrf_field() }}
-                                                    </form>
-
-                                                    @endguest
-                                                    <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
-                                                      data-target="#modal{{$cs->id}}" class="cmt">
-                                                      <div class="icon-and-supporting-text-2">
-                                                        <i class="icon-com iconheart fas fa-comments"
-                                                          style="color: #fff; font-size: 18px;"></i>
-                                                        <div class="address-2 inter-normal-alabaster-10px">
-                                                          <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
-                                                        </div>
-                                                      </div>
-                                                    </a>
-                                                    <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
-                                                      data-target="#modalShareButton{{$cs->id}}">
-                                                      <div class="icon-and-supporting-text-2">
-                                                        <i class="icon-com iconheart fas fa-share"
-                                                          style="color: #fff; font-size: 18px;"></i>
-                                                        <div class="address-2  inter-normal-alabaster-10px">
-                                                          <span class="tx-icon inter-normal-alabaster">Share</span>
-                                                        </div>
-                                                      </div>
-                                                    </a>
-                                            </div>
-                                          </div>
-                                          <div class="footer-card">
-                                            <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
-                                            <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}"
-                                              class="button btn-block btn btn-outline-light inter-medium-white-14px">Dukung Bisnis
-                                              Ini</a>
-                                          </div>
-                                        </div>
-                                    </a>
+                              {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();"
+                                style="cursor: pointer"> --}}
+                                <div class="icon-and-supporting-text">
+                                  <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
+                                  <div class="address-2 inter-normal-alabaster-10px">
+                                    <span class="tx-icon inter-normal-alabaster">{{$cs->likes}} Suka</span>
                                   </div>
                                 </div>
-                                @endforeach
-                            </div>
-                          </div>
+                              </a>
+                              <form id="like{{$cs->id}}" action="{{url('addLike')}}/{{$cs->id}}" method="POST"
+                                enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                              </form>
+
+                              <form id="sublike{{$cs->id}}" action="{{url('subLike')}}/{{$cs->id}}" method="POST"
+                                enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                              </form>
+                              @endguest
+
+
+
+                              @guest
+                              <a href="{{route('login')}}" style="cursor: pointer">
+                                <div class="icon-and-supporting-text-1">
+                                  <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
+                                  <div class="address-2 inter-normal-alabaster-10px">
+                                    <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
+                                  </div>
+                                </div>
+                              </a>
+                              @else
+                              @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
+
+                              <a onclick="document.getElementById('subvote{{$cs->id}}').submit();"
+                                style="cursor: pointer">
+                                @else
+                                <a onclick="document.getElementById('vote{{$cs->id}}').submit();"
+                                  style="cursor: pointer">
+                                  @endif
+                                  <div class="icon-and-supporting-text-1">
+                                    <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
+                                    <div class="address-2 inter-normal-alabaster-10px">
+                                      <span class="tx-icon inter-normal-alabaster">{{$cs->vot}} Minat</span>
+                                    </div>
+                                  </div>
+                                </a>
+                                <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
+                                  enctype="multipart/form-data">
+                                  {{ csrf_field() }}
+                                </form>
+                                <form id="subvote{{$cs->id}}" action="{{url('subVote')}}/{{$cs->id}}" method="POST"
+                                  enctype="multipart/form-data">
+                                  {{ csrf_field() }}
+                                </form>
+
+                                @endguest
+                                <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
+                                  data-target="#modal{{$cs->id}}" class="cmt">
+                                  <div class="icon-and-supporting-text-2">
+                                    <i class="icon-com iconheart fas fa-comments"
+                                      style="color: #fff; font-size: 18px;"></i>
+                                    <div class="address-2 inter-normal-alabaster-10px">
+                                      <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
+                                    </div>
+                                  </div>
+                                </a>
+                                <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
+                                  data-target="#modalShareButton{{$cs->id}}">
+                                  <div class="icon-and-supporting-text-2">
+                                    <i class="icon-com iconheart fas fa-share"
+                                      style="color: #fff; font-size: 18px;"></i>
+                                    <div class="address-2  inter-normal-alabaster-10px">
+                                      <span class="tx-icon inter-normal-alabaster">Share</span>
+                                    </div>
+                                  </div>
+                                </a>
+                        </div>
+                      </div>
+                      <div class="footer-card">
+                        <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                        <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}"
+                          class="button btn-block btn btn-outline-light inter-medium-white-14px">Dukung Bisnis
+                          Ini</a>
                       </div>
                     </div>
-                </div>
+                </a>
               </div>
-            <div class="button-1 cut">
-                            <div class="inter-medium-white-14px">
-                              <span class="inter-medium-white-14px">See More</span>
-                            </div>
-                          </div>
             </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (count($soon) == 0)
+<div class="ayo-daftarkan-bisnis-anda inter-medium-white-14px">
+  <span class="text-urun inter-normal-alabaster">Data tidak ditemukan!</span>
+</div>
+<div class="actions3 ">
+  <a class="btn btn-danger btn-sm btn-block" href="{{ route('coming-soon.index') }}">Tampilkan Semua</a>
+</div>
+</div>
+@else
+@if (Request::get('cari') || Request::get('categor') || Request::get('sort'))
+
+<div class="actions3 ">
+  <a class="btn btn-danger btn-sm btn-block" href="{{ route('coming-soon.index') }}">Tampilkan Semua</a>
+</div>
+</div>
+@endif
+@endif
+</div>
 
 @foreach ($soon as $item)
 
@@ -400,8 +412,7 @@
             <div class="input-group input-group-lg mb-3">
               <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled=""
                 style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-                placeholder="{{url('detail-coming-soon')}}/{{$item->id}}">
+                aria-describedby="basic-addon2" placeholder="{{url('detail-coming-soon')}}/{{$item->id}}">
               <span id="copy-link" class="input-group-text"
                 style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer"
                 onclick="shareButton('{{url('detail-coming-soon')}}/{{$item->id}}')">Copy Link</span>
@@ -413,9 +424,9 @@
     </div>
     @endforeach
 
-@foreach ($soon as $cs)
-    
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    @foreach ($soon as $cs)
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -445,12 +456,12 @@
                 align-items: center;">
                   @guest
                   <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
-                  <div class="icon-and-supporting-text">
-                                <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
-                                <div class="address-2 inter-normal-alabaster-10px">
-                                  <span class="tx-icon inter-normal-alabaster" id="like" style="margin-left:2px;"> Suka</span>
-                                </div>
-                              </div>
+                    <div class="icon-and-supporting-text">
+                      <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
+                      <div class="address-2 inter-normal-alabaster-10px">
+                        <span class="tx-icon inter-normal-alabaster" id="like" style="margin-left:2px;"> Suka</span>
+                      </div>
+                    </div>
                   </a>
                   @else
                   @if (in_array(Auth::user()->trader->id,[$cs->trdlike]))
@@ -463,11 +474,11 @@
                       {{-- <a onclick="document.getElementById('like{{$cs->id}}').submit();" style="cursor: pointer">
                         --}}
                         <div class="icon-and-supporting-text">
-                                <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
-                                <div class="address-2 inter-normal-alabaster-10px">
-                                  <span class="tx-icon inter-normal-alabaster" id="like" style="margin-left:2px;"> Suka</span>
-                                </div>
-                              </div>
+                          <i class="icon-com iconheart fas fa-heart" style="color: #fff; font-size: 18px;"></i>
+                          <div class="address-2 inter-normal-alabaster-10px">
+                            <span class="tx-icon inter-normal-alabaster" id="like" style="margin-left:2px;"> Suka</span>
+                          </div>
+                        </div>
                       </a>
                       <form id="like" action="" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -482,12 +493,12 @@
 
                       @guest
                       <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
-                      <div class="icon-and-supporting-text-1">
-                                    <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
-                                    <div class="address-2 inter-normal-alabaster-10px">
-                                      <span class="tx-icon inter-normal-alabaster" id="minat"> Minat</span>
-                                    </div>
-                                  </div>
+                        <div class="icon-and-supporting-text-1">
+                          <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
+                          <div class="address-2 inter-normal-alabaster-10px">
+                            <span class="tx-icon inter-normal-alabaster" id="minat"> Minat</span>
+                          </div>
+                        </div>
                       </a>
                       @else
                       @if (in_array(Auth::user()->trader->id,[$cs->trdvote]))
@@ -499,11 +510,11 @@
                           style="cursor: pointer">
                           @endif
                           <div class="icon-and-supporting-text-1">
-                                    <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
-                                    <div class="address-2 inter-normal-alabaster-10px">
-                                      <span class="tx-icon inter-normal-alabaster" id="minat"> Minat</span>
-                                    </div>
-                                  </div>
+                            <i class="icon-com iconheart fas fa-user" style="color: #fff; font-size: 18px;"></i>
+                            <div class="address-2 inter-normal-alabaster-10px">
+                              <span class="tx-icon inter-normal-alabaster" id="minat"> Minat</span>
+                            </div>
+                          </div>
                         </a>
                         <form id="vote{{$cs->id}}" action="{{url('addVote')}}/{{$cs->id}}" method="POST"
                           enctype="multipart/form-data">
@@ -518,12 +529,12 @@
                         <a class="col-3" style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal"
                           data-dismiss="modal" data-target="#modal" class="cmt">
                           <div class="icon-and-supporting-text-2">
-                                      <i class="icon-com iconheart fas fa-comments"
-                                        style="color: #fff; font-size: 18px;"></i>
-                                      <div class="address-2 inter-normal-alabaster-10px">
-                                        <span class="tx-icon inter-normal-alabaster" id="comments" style="margin-left:5px;"> Komentar</span>
-                                      </div>
-                                    </div>
+                            <i class="icon-com iconheart fas fa-comments" style="color: #fff; font-size: 18px;"></i>
+                            <div class="address-2 inter-normal-alabaster-10px">
+                              <span class="tx-icon inter-normal-alabaster" id="comments" style="margin-left:5px;">
+                                Komentar</span>
+                            </div>
+                          </div>
                         </a>
                         <a class="col-3" style="cursor: pointer" id="msb" data-id="{{$cs->id}}" data-toggle="modal"
                           data-target="#modalShareButton" data-dismiss="modal">
@@ -553,7 +564,7 @@
   </div>
   @endforeach
 
-<script>
+  <script>
     $(document).ready(function() {
     $(document).on('click', '.mod', function() {
       var category = $(this).data('category');
@@ -569,7 +580,7 @@
       $('#category').text(category);
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
-      $('#image').prop('src', 'public/storage/pictures/' + image);
+      $('#image').prop('src', 'https://storage.googleapis.com/santara-bucket-prod/' + image);
       $('#like').text(like);
       $('#minat').text(minat);
       $('#comments').text(comment);
@@ -594,128 +605,7 @@
     })
   })
   </script>
-@section('js')
-<script type='text/javascript'>
-  $(document).ready(function(){
-
-      $('.cmt').click(function(){
-         
-          var id = $(this).data('id');
-
-          // AJAX request
-          $.ajax({
-              url: '{{url("getmodaldata")}}/'+id,
-              type: 'get',
-              data: {id: id},
-              success: function(cmt){ 
-                  // Add response in Modal body
-                  $('.comm').html(cmt); 
-
-                  // Display Modal
-                  // $('#empModal').modal('show'); 
-                  // console.log(cmt);
-              }
-          });
-      });
-});
-</script>
-<script>
-  function shareButton(url) {
-      navigator.clipboard.writeText(url);
-      // alert("Copied the text: " + url);
-      toastr.success("Url Berhasil Di Copy!!");
-  }
-
-  function share(url, message) {
-
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          // some code..
-          const shareData = {
-              title: message,
-              text: 'Temukan peluang investasi berikut di Santara! ' + message,
-              url: url
-          }
-
-          try {
-              navigator.share(shareData)
-              resultPara.textContent = 'MDN shared successfully'
-          } catch (err) {
-              resultPara.textContent = 'Error: ' + err
-          }
-      } else {
-
-          $('#shareWhatsapp').attr('href', "https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + url);
-          $('#shareTelegram').attr('href', "https://telegram.me/share/url?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
-          $('#shareFacebook').attr('href', "https://www.facebook.com/sharer/sharer.php?u=" + url);
-          $('#shareTwitter').attr('href', "https://twitter.com/intent/tweet?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
-          $('#copy-link').attr('onclick', "shareButton('" + url + "')");
-          $('#inputShareLink').attr('placeholder', url);
-          $('#modalShareButton').modal('show');
-      }
-
-  }
-</script>
-@foreach ($soon as $item)
-
-<script type='text/javascript'>
-  $(document).ready(function(){
-  $("#send{{$item->id}}").click(function(){
-      // event.preventDefault();
-
-      let comment = $("textarea[name=comment{{$item->id}}]").val();
-      let idem = $("input[name=idem{{$item->id}}]").val();
-      let trd = $("input[name=trd{{$item->id}}]").val();
-      let _token   = $('meta[name="csrf-token"]').attr('content');
-
-      $.ajax({
-        url: "{{url('sendData')}}" +"/"+ idem,
-        type:"POST",
-        data:{
-          comment:comment,
-          idem:idem,
-          trd:trd,
-          _token: _token
-        },
-        success:function(response){
-          // console.log(response);
-          if(response) {
-            $('.success').text(response.success);
-            $("#ajaxform{{$item->id}}")[0].reset();
-            $.ajax({
-              url: '{{url("getmodaldata")}}/'+{{$item->id}},
-              type: 'get',
-              data: {id: "{{$item->id}}"},
-              success: function(cmt){ 
-                  // Add response in Modal body
-                  $('.comm').html(cmt); 
-
-                  // Display Modal
-                  // $('#empModal').modal('show'); 
-                  // console.log(cmt);
-              }
-          });
-          }
-        },
-        error: function(error) {
-        console.log(error);
-        }
-       });
-  });
-});
-</script>
-@endforeach
-      <script>
-        $('#iconified').on('keyup', function() {
-          var input = $(this);
-          if(input.val().length === 0) {
-              input.addClass('empty');
-          } else {
-              input.removeClass('empty');
-          }
-      });
-      </script>
-@endsection
-@section('js')
+  @section('js')
   <script type='text/javascript'>
     $(document).ready(function(){
 
@@ -825,5 +715,126 @@
 });
   </script>
   @endforeach
-@endsection
-@endsection
+  <script>
+    $('#iconified').on('keyup', function() {
+          var input = $(this);
+          if(input.val().length === 0) {
+              input.addClass('empty');
+          } else {
+              input.removeClass('empty');
+          }
+      });
+  </script>
+  @endsection
+  @section('js')
+  <script type='text/javascript'>
+    $(document).ready(function(){
+
+      $('.cmt').click(function(){
+         
+          var id = $(this).data('id');
+
+          // AJAX request
+          $.ajax({
+              url: '{{url("getmodaldata")}}/'+id,
+              type: 'get',
+              data: {id: id},
+              success: function(cmt){ 
+                  // Add response in Modal body
+                  $('.comm').html(cmt); 
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+                  // console.log(cmt);
+              }
+          });
+      });
+});
+  </script>
+  <script>
+    function shareButton(url) {
+      navigator.clipboard.writeText(url);
+      // alert("Copied the text: " + url);
+      toastr.success("Url Berhasil Di Copy!!");
+  }
+
+  function share(url, message) {
+
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          // some code..
+          const shareData = {
+              title: message,
+              text: 'Temukan peluang investasi berikut di Santara! ' + message,
+              url: url
+          }
+
+          try {
+              navigator.share(shareData)
+              resultPara.textContent = 'MDN shared successfully'
+          } catch (err) {
+              resultPara.textContent = 'Error: ' + err
+          }
+      } else {
+
+          $('#shareWhatsapp').attr('href', "https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + url);
+          $('#shareTelegram').attr('href', "https://telegram.me/share/url?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
+          $('#shareFacebook').attr('href', "https://www.facebook.com/sharer/sharer.php?u=" + url);
+          $('#shareTwitter').attr('href', "https://twitter.com/intent/tweet?url=" + url + "&text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A " + message);
+          $('#copy-link').attr('onclick', "shareButton('" + url + "')");
+          $('#inputShareLink').attr('placeholder', url);
+          $('#modalShareButton').modal('show');
+      }
+
+  }
+  </script>
+  @foreach ($soon as $item)
+
+  <script type='text/javascript'>
+    $(document).ready(function(){
+  $("#send{{$item->id}}").click(function(){
+      // event.preventDefault();
+
+      let comment = $("textarea[name=comment{{$item->id}}]").val();
+      let idem = $("input[name=idem{{$item->id}}]").val();
+      let trd = $("input[name=trd{{$item->id}}]").val();
+      let _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{url('sendData')}}" +"/"+ idem,
+        type:"POST",
+        data:{
+          comment:comment,
+          idem:idem,
+          trd:trd,
+          _token: _token
+        },
+        success:function(response){
+          // console.log(response);
+          if(response) {
+            $('.success').text(response.success);
+            $("#ajaxform{{$item->id}}")[0].reset();
+            $.ajax({
+              url: '{{url("getmodaldata")}}/'+{{$item->id}},
+              type: 'get',
+              data: {id: "{{$item->id}}"},
+              success: function(cmt){ 
+                  // Add response in Modal body
+                  $('.comm').html(cmt); 
+
+                  // Display Modal
+                  // $('#empModal').modal('show'); 
+                  // console.log(cmt);
+              }
+          });
+          }
+        },
+        error: function(error) {
+        console.log(error);
+        }
+       });
+  });
+});
+  </script>
+  @endforeach
+  @endsection
+  @endsection

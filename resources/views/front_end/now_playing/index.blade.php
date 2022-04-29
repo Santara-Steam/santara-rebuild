@@ -20,13 +20,15 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="container">
-          <fieldset disabled>
+          <fieldset >
+            <form role="form" method="get" action="{{ route('now-playing.index') }}" id="form_id">
+              @csrf
             <div class="form-row">
               <div class="form-group col-md-3">
                 <div class="label inter-medium-quill-gray-14px">
                   <span class="inter-medium-quill-gray-14px">Cari Bisnis</span>
                 </div>
-                <input type="text" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px"
+                <input type="search" value="{{Request::get('cari')}}" name="cari" class="form-control empty input-1 border-1px-cape-cod inter-normal-delta-16px"
                   style="background: #1b1a1a; color: var(--quill-gray);" id="iconified" placeholder="&#xF002;" />
               </div>
               <div class="form-group col-md-2 kati">
@@ -35,42 +37,43 @@
                 <div class="label-1 inter-medium-quill-gray-14px">
                   <span class="inter-medium-quill-gray-14px">Nilai Pendanaan</span>
                 </div>
-                <select id="inputState" class="form-control dropdown-1">
-                  <option value="position">Rp500.000.000 - Rp1.000.000.000</option>
-                  <option value="price" title="Sort by Lowest Price First">Rp1.000.000.000 - Rp3.000.000.000</option>
-                  <option value="date" title="Sort by Newest First">Rp3.000.000.000 - Rp5.000.000.000</option>
-                  <option value="price" title="Sort by Lowest Price First">Rp5.000.000.000 - Rp10.000.000.000</option>
-                  <option value="date" title="Sort by Newest First">Rp10.000.000.000</option>
+                <select name="range" id="inputState" class="form-control dropdown-1"
+                onChange=" document.getElementById('form_id').submit();">
+                  <option value="0" <?PHP echo (Request::get('range')==0)? 'selected': ''; ?>>Semua Nilai Pendanaan</option>
+                  <option value="1" <?PHP echo (Request::get('range')==1)? 'selected': ''; ?>>Rp500.000.000 - Rp1.000.000.000</option>
+                  <option value="2" <?PHP echo (Request::get('range')==2)? 'selected': ''; ?> title="Sort by Lowest Price First">Rp1.000.000.000 - Rp3.000.000.000</option>
+                  <option value="3" <?PHP echo (Request::get('range')==3)? 'selected': ''; ?> title="Sort by Newest First">Rp3.000.000.000 - Rp5.000.000.000</option>
+                  <option value="4" <?PHP echo (Request::get('range')==4)? 'selected': ''; ?> title="Sort by Lowest Price First">Rp5.000.000.000 - Rp10.000.000.000</option>
+                  <option value="5" <?PHP echo (Request::get('range')==5)? 'selected': ''; ?> title="Sort by Newest First">< Rp10.000.000.000</option>
                 </select>
               </div>
               <div class="form-group col-md-2">
                 <div class="label-1 inter-medium-quill-gray-14px">
                   <span class="inter-medium-quill-gray-14px">Kategori</span>
                 </div>
-                <select id="inputState" class="form-control dropdown-1">
-                  <option value="position">Semua Kategori</option>
-                  <option value="price">Property</option>
-                  <option value="position">Food and Beverage</option>
-                  <option value="price">Peternakan</option>
-                  <option value="position">Perkebunan/Argo</option>
-                  <option value="price">Teknologi</option>
-                  <option value="position">Start Up</option>
-                  <option value="price">Project Financing</option>
-                  <option value="price">Service/Layanan</option>
-                  <option value="position">Manufaktur/Produksi</option>
-                  <option value="price">Retail/Distribusi/Logistik</option>
-                </select>
+                <select name="categor" id="inputState" class="form-control dropdown-1"
+                onChange=" document.getElementById('form_id').submit();">
+                <option value="">Semua Kategori</option>
+                @foreach ($cat as $cate)
+                <option type="submit" <?PHP echo (Request::get('categor')==$cate->category)? 'selected': ''; ?>
+                  value="{{$cate->category}}" >{{$cate->category}}</option>
+                @endforeach
+              </select>
               </div>
               <div class="form-group col-md-2">
                 <div class="label-1 inter-medium-quill-gray-14px">
                   <span class="inter-medium-quill-gray-14px">Urutkan</span>
                 </div>
-                <select id="inputState" class="form-control dropdown-1">
-                  <option value="position">Terlama</option>
-                  <option value="price">Terpenuhi</option>
-                  <option value="position">Belum Terpenuhi</option>
-                </select>
+                <select name="sort" id="inputState" class="form-control dropdown-1"
+                onChange=" document.getElementById('form_id').submit();">
+                {{-- <option value="{{old('sort')}}" hidden>{{old('sort')}}</option> --}}
+                <option value="true" <?PHP echo (Request::get('sort')=='true' )? 'selected' : '' ; ?>>Terbaru</option>
+                <option value="false" <?PHP echo (Request::get('sort')=='false' )? 'selected' : '' ; ?>>Terlama</option>
+                        <option value="terpenuhi" <?PHP echo (Request::get('sort')=='terpenuhi' )? 'selected' : '' ; ?>>Terpenuhi</option>
+                        <option value="belum terpenuhi" <?PHP echo (Request::get('sort')=='belum terpenuhi' )? 'selected' : '' ; ?>>Belum Terpenuhi</option>
+              </select>
               </div>
+            </form>
           </fieldset>
           <div class="fashion_section_2">
             <div class="row" style="padding-left: 10px; padding-right: 10px;">
@@ -240,9 +243,26 @@
       </div>
     </div>
   </div>
-</div>
-</div>
+{{-- </div> --}}
 
+@if (count($now_playing) == 0)
+<div class="ayo-daftarkan-bisnis-anda inter-medium-white-14px">
+  <span class="text-urun inter-normal-alabaster">Data tidak ditemukan!</span>
+</div>
+<div class="actions3 ">
+  <a class="btn btn-danger btn-sm btn-block" href="{{ route('now-playing.index') }}">Tampilkan Semua</a>
+</div>
+</div>
+@else
+  @if (count($now_playing) != $c)
+
+  <div class="actions3 ">
+    <a class="btn btn-danger btn-sm btn-block" href="{{ route('now-playing.index') }}">Tampilkan Semua</a>
+  </div>
+  </div>
+  @endif
+@endif
+</div>
 {{-- @foreach ($now_playing as $np) --}}
 
 @foreach($now_playing as $k => $np)
@@ -384,6 +404,7 @@
     </div>
   </div>
 </div>
+{{-- </div> --}}
 @endforeach
 <script>
   $(document).ready(function() {
@@ -391,4 +412,8 @@
     })
   })
 </script>
+@endsection
+
+@section('js')
+    <script></script>
 @endsection

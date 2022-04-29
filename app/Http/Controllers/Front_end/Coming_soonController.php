@@ -8,6 +8,7 @@ use App\Models\emiten;
 use App\Models\emiten_comment;
 use App\Models\emiten_journey;
 use App\Models\emiten_vote;
+use App\Models\kategori;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -18,27 +19,236 @@ class Coming_soonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
-            SELECT count(id) from emiten_comments
-            where emiten_id = emitens.id
-            ) as cmt'))
-        ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
-        ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
-        ->where('emitens.is_deleted',0)
-        ->where('emitens.is_active',0)
-            ->where('emitens.is_verified',1)
-            ->where('emitens.is_pralisting',1)
-            ->where('emitens.is_coming_soon',1)
-        // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
-        // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
-        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
-        ->groupBy('emitens.id')
-        ->orderby('vot','DESC')
+        if(empty($request->cari)){
+            if(empty($request->categor)){
+                if(empty($request->sort)){
+                $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                    SELECT count(id) from emiten_comments
+                    where emiten_id = emitens.id
+                    ) as cmt'))
+                ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+                ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                ->where('emitens.is_deleted',0)
+                ->where('emitens.is_active',0)
+                    ->where('emitens.is_verified',1)
+                    ->where('emitens.is_pralisting',1)
+                    ->where('emitens.is_coming_soon',1)
+                // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+                // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+                // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+                ->groupBy('emitens.id')
+                ->orderby('vot','DESC')
+                ->get();
+                }else{
+                    if($request->sort == 'desc'){
+                        $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                            SELECT count(id) from emiten_comments
+                            where emiten_id = emitens.id
+                            ) as cmt'))
+                        ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+                        ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+                        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                        ->where('emitens.is_deleted',0)
+                        ->where('emitens.is_active',0)
+                            ->where('emitens.is_verified',1)
+                            ->where('emitens.is_pralisting',1)
+                            ->where('emitens.is_coming_soon',1)
+                        // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+                        // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+                        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+                        ->groupBy('emitens.id')
+                        ->orderby('vot','DESC')
+                        ->get();
+                    }elseif($request->sort == 'asc'){
+                        $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                            SELECT count(id) from emiten_comments
+                            where emiten_id = emitens.id
+                            ) as cmt'))
+                        ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+                        ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+                        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                        ->where('emitens.is_deleted',0)
+                        ->where('emitens.is_active',0)
+                            ->where('emitens.is_verified',1)
+                            ->where('emitens.is_pralisting',1)
+                            ->where('emitens.is_coming_soon',1)
+                        // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+                        // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+                        // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+                        ->groupBy('emitens.id')
+                        ->orderby('vot','ASC')
+                        ->get();
+                    }
+                }
+            }else{
+                if($request->sort == 'desc'){
+                $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                    SELECT count(id) from emiten_comments
+                    where emiten_id = emitens.id
+                    ) as cmt'))
+                ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+                ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                ->where('emitens.category_id', $request->categor)
+                ->where('emitens.is_deleted',0)
+                ->where('emitens.is_active',0)
+                    ->where('emitens.is_verified',1)
+                    ->where('emitens.is_pralisting',1)
+                    ->where('emitens.is_coming_soon',1)
+                // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+                // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+                // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+                ->groupBy('emitens.id')
+                ->orderby('vot','DESC')
+                ->get();
+                }else{
+                    $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                        SELECT count(id) from emiten_comments
+                        where emiten_id = emitens.id
+                        ) as cmt'))
+                    ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+                    ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+                    ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                    ->where('emitens.category_id', $request->categor)
+                    ->where('emitens.is_deleted',0)
+                    ->where('emitens.is_active',0)
+                        ->where('emitens.is_verified',1)
+                        ->where('emitens.is_pralisting',1)
+                        ->where('emitens.is_coming_soon',1)
+                    // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+                    // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+                    // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+                    ->groupBy('emitens.id')
+                    ->orderby('vot','ASC')
+                    ->get();
+                }
+            }
+        }else{
+            if(empty($request->categor)){
+                if($request->sort == 'desc'){
+            $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                SELECT count(id) from emiten_comments
+                where emiten_id = emitens.id
+                ) as cmt'))
+            ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+            ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+            ->where('emitens.trademark','LIKE','%'.$request->cari."%")
+            ->where('emitens.is_deleted',0)
+            ->where('emitens.is_active',0)
+                ->where('emitens.is_verified',1)
+                ->where('emitens.is_pralisting',1)
+                ->where('emitens.is_coming_soon',1)
+            ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
+            ->where('emitens.is_deleted',0)
+            ->where('emitens.is_active',0)
+                ->where('emitens.is_verified',1)
+                ->where('emitens.is_pralisting',1)
+                ->where('emitens.is_coming_soon',1)
+            // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+            // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+            // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+            ->groupBy('emitens.id')
+            ->orderby('vot','DESC')
+            ->get();
+                }else{
+                    $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                        SELECT count(id) from emiten_comments
+                        where emiten_id = emitens.id
+                        ) as cmt'))
+                    ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+                    ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+                    ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                    ->where('emitens.trademark','LIKE','%'.$request->cari."%")
+                    ->where('emitens.is_deleted',0)
+                    ->where('emitens.is_active',0)
+                        ->where('emitens.is_verified',1)
+                        ->where('emitens.is_pralisting',1)
+                        ->where('emitens.is_coming_soon',1)
+                    ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
+                    ->where('emitens.is_deleted',0)
+                    ->where('emitens.is_active',0)
+                        ->where('emitens.is_verified',1)
+                        ->where('emitens.is_pralisting',1)
+                        ->where('emitens.is_coming_soon',1)
+                    // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+                    // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+                    // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+                    ->groupBy('emitens.id')
+                    ->orderby('vot','ASC')
+                    ->get();
+                }
+            }else{
+                if($request->sort == 'desc'){
+                $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                    SELECT count(id) from emiten_comments
+                    where emiten_id = emitens.id
+                    ) as cmt'))
+                ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+                ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                ->where('emitens.trademark','LIKE','%'.$request->cari."%")
+                ->where('emitens.category_id', $request->categor)
+                ->where('emitens.is_deleted',0)
+                ->where('emitens.is_active',0)
+                    ->where('emitens.is_verified',1)
+                    ->where('emitens.is_pralisting',1)
+                    ->where('emitens.is_coming_soon',1)
+                ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
+                ->where('emitens.category_id', $request->categor)
+                ->where('emitens.is_deleted',0)
+                ->where('emitens.is_active',0)
+                    ->where('emitens.is_verified',1)
+                    ->where('emitens.is_pralisting',1)
+                    ->where('emitens.is_coming_soon',1)
+                // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+                // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+                // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+                ->groupBy('emitens.id')
+                ->orderby('vot','DESC')
+                ->get();
+                }else{
+                    $soon = emiten::select('emitens.*',db::raw('COALESCE(SUM(ev.likes),0) as likes'),db::raw('COALESCE(SUM(ev.vote),0) as vot'),db::raw("GROUP_CONCAT(IF(ev.likes = 1, ev.trader_id, NULL) SEPARATOR ',') as trdlike"),db::raw("GROUP_CONCAT(IF(ev.vote = 1, ev.trader_id, NULL) SEPARATOR ',') as trdvote"),db::raw('(
+                        SELECT count(id) from emiten_comments
+                        where emiten_id = emitens.id
+                        ) as cmt'))
+                    ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+                    ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+                    ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+                    ->where('emitens.trademark','LIKE','%'.$request->cari."%")
+                    ->where('emitens.category_id', $request->categor)
+                    ->where('emitens.is_deleted',0)
+                    ->where('emitens.is_active',0)
+                        ->where('emitens.is_verified',1)
+                        ->where('emitens.is_pralisting',1)
+                        ->where('emitens.is_coming_soon',1)
+                    ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
+                    ->where('emitens.category_id', $request->categor)
+                    ->where('emitens.is_deleted',0)
+                    ->where('emitens.is_active',0)
+                        ->where('emitens.is_verified',1)
+                        ->where('emitens.is_pralisting',1)
+                        ->where('emitens.is_coming_soon',1)
+                    // ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+                    // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
+                    // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
+                    ->groupBy('emitens.id')
+                    ->orderby('vot','ASC')
+                    ->get();
+                }
+            }
+        }
+        
+    
+
+        $cat = kategori::where('is_deleted', 0)
+        ->select('id', 'category')
         ->get();
 
-        return view('front_end/coming_soon/index',compact('soon'));
+        return view('front_end/coming_soon/index',compact('soon','cat'));
     }
 
     public function detail($id)

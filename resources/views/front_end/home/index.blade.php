@@ -1336,6 +1336,7 @@
   });
 });
   </script>
+    @endforeach
   <script>
     var swiper = new Swiper(".mySwiper", {
       slidesPerView: 3,
@@ -1472,5 +1473,5 @@
       checkValidasi(total)
   }
   </script>
-  @endforeach
+
   @endsection

@@ -100,7 +100,7 @@ class Sold_outController extends Controller
             ->leftjoin('categories', 'categories.id','=','emitens.category_id')
             ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
             ->where('emitens.is_deleted',0)
-            ->where('emitens.company_name','LIKE','%'.$request->cari."%")
+            ->where('emitens.trademark','LIKE','%'.$request->cari."%")
             ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
             ->where('emitens.category_id', $request->categor)
             ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')

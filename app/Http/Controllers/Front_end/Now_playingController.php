@@ -10,6 +10,7 @@ use App\Models\emiten_comment;
 use App\Models\emiten_journey;
 use App\Models\emiten_vote;
 use App\Models\emitens_old;
+use App\Models\kategori;
 use App\Models\Transactions;
 use Illuminate\Support\Facades\DB;
 
@@ -20,9 +21,64 @@ class Now_playingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $np = emiten(4, 1, null, null, null, null, null, 'saham', 'notfull');
+        $search = null; 
+        $minimal = null;
+        $maksimal = null;
+        $category = null;
+        $sort = null;
+
+        if (empty($request->cari)) {
+            # code...
+        }else{
+            $search = $request->cari;
+        }
+
+        if (empty($request->range)) {
+            # code...
+        }else{
+            if ($request->range == 0) {
+                
+            }
+            elseif ($request->range == 1) {
+                $minimal = 500000000;
+                $maksimal = 1000000000;
+            }
+            elseif ($request->range == 2) {
+                $minimal = 1000000000;
+                $maksimal = 3000000000;
+            }
+            elseif ($request->range == 3) {
+                $minimal = 3000000000;
+                $maksimal = 5000000000;
+            }
+            elseif ($request->range == 4) {
+                $minimal = 5000000000;
+                $maksimal = 10000000000;
+            }
+            elseif ($request->range == 5) {
+                $minimal = 10000000000;
+                $maksimal = 100000000000;
+            }
+        }
+
+        if (empty($request->categor)) {
+            # code...
+        }else{
+            $category = $request->categor;
+        }
+
+        if (empty($request->sort)) {
+            # code...
+        }else{
+            $sort === $request->sort;
+        }
+
+
+        $np = emiten(4, 1, $search, $minimal, $maksimal, $category, $sort, 'saham', 'notfull');
+        $nowp = emiten(4, 1, null, null, null, null, null, 'saham', 'notfull');
+
         // $now_playing = emiten::select('emitens.*','emitens.avg_capital_needs as lbr','categories.category as ktg', 'emiten_journeys.date as sd', 'emiten_journeys.end_date as ed', db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0))  as terjual'),db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0)) / emitens.avg_capital_needs  as per'))
         // // ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
         // ->leftjoin('categories', 'categories.id','=','emitens.category_id')
@@ -36,8 +92,14 @@ class Now_playingController extends Controller
         // ->orderby('emitens.id','DESC')
         // ->get()
         // ;
+        $cat = kategori::where('is_deleted', 0)
+        ->select('id', 'category')
+        ->get();
         $now_playing = collect($np);
-        return view('front_end/now_playing/index',compact('now_playing'));
+        $now = collect($nowp);
+$c = count($now);
+        // dd($c);
+        return view('front_end/now_playing/index',compact('now_playing','cat','c'));
     }
 
     public function detail($id)
