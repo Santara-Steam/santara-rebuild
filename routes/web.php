@@ -141,6 +141,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/crm/save-konten', [App\Http\Controllers\CRMController::class, 'saveKonten']);
     Route::post('/admin/crm/save-publish', [App\Http\Controllers\CRMController::class, 'savePublish']);
     Route::get('/admin/crm/get-category', [App\Http\Controllers\CRMController::class, 'getCategories']);
+    Route::get('/admin/crm/detail-broadcasting/{id}', [App\Http\Controllers\CRMController::class, 'detailPreviewBroadcast']);
     
     Route::get('/admin/get-provinsi', [App\Http\Controllers\AddressController::class, 'getProvince']);
     Route::get('/admin/get-regency', [App\Http\Controllers\AddressController::class, 'getRegency']);

@@ -24,6 +24,7 @@ class PushNotificationController extends Controller
         $targets = $detailBroadcast['target'];
         $notif = $detailBroadcast['list'][0];
         $limit = $this->limit;
+       // return response()->json(["data" => $detailBroadcast]);
         return view('admin.crm.push-notif', compact('broadcastId', 'targets', 'kategori', 'notif', 'namaBroadcast', 'limit'));
     }
     
@@ -156,23 +157,14 @@ class PushNotificationController extends Controller
                 ->leftJoin('transactions as tr', 'tr.trader_id', '=', 'traders.id');
             $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo', 'u.email',
                     'j.income', 'tr.trader_id');
+            // $traders->select('traders.user_id');
             $traders->where('traders.is_deleted', 0);
             
             if($skemaKYC == 1){
                 if($statusKYC == 1){
-                    $traders->where('traders.status_kyc1', 'verified');
-                    $traders->where('traders.status_kyc2', 'verified');
-                    $traders->where('traders.status_kyc3', 'verified');
-                    $traders->where('traders.status_kyc4', 'verified');
-                    $traders->where('traders.status_kyc5', 'verified');
-                    $traders->where('traders.status_kyc6', 'verified');
+                    $traders->where('users.is_verified_kyc', 1);
                 }else{
-                    $traders->where('traders.status_kyc1', 'empty');
-                    $traders->where('traders.status_kyc2', 'empty');
-                    $traders->where('traders.status_kyc3', 'empty');
-                    $traders->where('traders.status_kyc4', 'empty');
-                    $traders->where('traders.status_kyc5', 'empty');
-                    $traders->where('traders.status_kyc6', 'empty');
+                    $traders->where('users.is_verified_kyc', 0);
                 }
             }
 
@@ -222,6 +214,7 @@ class PushNotificationController extends Controller
                 if($unlimitedInvest){
                     $traders->where('j.is_unlimited_invest', 1);
                 }else{
+                    $traders->where('j.is_unlimited_invest', 0);
                     if($limitAwalInvest > 500000000){
                         $traders->having(\DB::raw('income * 10 /100'), '>=' ,$limitAwalInvest); 
                         $traders->having(\DB::raw('income * 10 /100'), '<=' ,$limitAkhirInvest); 
@@ -251,11 +244,10 @@ class PushNotificationController extends Controller
                 }
             }
 
-            $count = $traders->count();
-            $traders->groupBy('traders.id');
+            $traders->groupBy('traders.user_id');
             $traders->orderBy('traders.user_id', 'ASC');
             $results = $traders->paginate($this->limit);
-        return response()->json(["results" => $results, "amount" => $count]);
+        return response()->json(["results" => $results]);
     }
 
     public function broadcastNotif(Request $request)

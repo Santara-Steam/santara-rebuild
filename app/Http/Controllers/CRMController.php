@@ -47,6 +47,12 @@ class CRMController extends Controller
         return view('admin.crm.add-broadcasting', compact('type'));
     }
 
+    public function detailPreviewBroadcast($broadcast_id)
+    {
+        $broadcast = $this->getBroadcastingDetail($broadcast_id);
+        return view('admin.crm.detail-broadcast', compact('broadcast'));
+    }
+
     public function getBroadcasting(Request $request)
     {
         $start  = intval($request->start);
@@ -59,7 +65,7 @@ class CRMController extends Controller
 
         if ($broadcasts != null) {
             foreach ($broadcasts as $broadcast) {
-                $action       = '<a href="'.url('admin/crm/target-user-tersedia').'/'. $broadcast['id'] . '" class="btn btn-sm btn-santara-white">Detail</a>';
+                $action       = '<a href="'.url('admin/crm/detail-broadcasting').'/'. $broadcast['id'] . '" class="btn btn-sm btn-santara-white">Detail</a>';
                 if ($broadcast['status'] == 'draft' || $broadcast['status'] == 'scheduled') {
                     $action       = '
                         <a href="'.url("admin/push-notif").'/'.$broadcast['id'].'?page=1' . '" class="btn btn-sm btn-success">Push <i

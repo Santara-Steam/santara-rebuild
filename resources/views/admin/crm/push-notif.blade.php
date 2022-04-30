@@ -98,10 +98,9 @@
                     res.results.data.forEach(row => {
                         emailUser.push(row['email']);
                     });
-                    console.log(dataUserId);
                     $("#userId").val(dataUserId);
                     $("#email").val(emailUser);
-                    $("#totalUser").html(res.amount);
+                    $("#totalUser").html(res.results.total);
                     var stringPaginate = "";
                     res.results.links.forEach(row => {
                         stringPaginate += row['active'] ?

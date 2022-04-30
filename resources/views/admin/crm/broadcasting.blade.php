@@ -11,7 +11,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h1 class="card-title-member">Broadcast Notification {{ env("BASE_API_FILE") }}</h1>
+                                    <h1 class="card-title-member">Broadcast Notification</h1>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
                                             <li><a href="{{ url('admin/crm/broadcasting/add') }}"

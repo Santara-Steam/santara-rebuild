@@ -585,6 +585,11 @@
         input_8_end.value = formatRupiah(this.value, '');
     });
 
+    var input_11_end = document.getElementById('input_11_end');
+    input_11_end.addEventListener('keyup', function(e) {
+        input_11_end.value = formatRupiah(this.value, '');
+    });
+
     var input_12_start = document.getElementById('input_12_start');
     input_12_start.addEventListener('keyup', function(e) {
         input_12_start.value = formatRupiah(this.value, '');
