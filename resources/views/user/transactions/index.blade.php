@@ -65,7 +65,7 @@
                                                                     <div class="d-flex row">
                                                                         <div class="col-6 col-sm-6 col-md-2"><img
                                                                                 src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
-                                                                                width="150px"></div>
+                                                                                class="img-fluid"></div>
                                                                         <div class="col-md-4">
                                                                             <div style="font-size:18px"><b>({{$item->code_emiten}}) {{$item->trademark}}</b>
                                                                             </div>
@@ -237,7 +237,7 @@
                                                                                         <div class="d-flex row">
                                                                                             <div class="col-md-2"><img
                                                                                                     src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
-                                                                                                    width="150px"></div>
+                                                                                                    class="img-fluid"></div>
                                                                                             <div class="col-md-5">
                                                                                                 <div
                                                                                                     style="font-size:18px">
@@ -367,7 +367,7 @@
                                                                     <div class="d-flex row">
                                                                         <div class="col-6 col-sm-6 col-md-2"><img
                                                                                 src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
-                                                                                width="150px"></div>
+                                                                                class="img-fluid"></div>
                                                                         <div class="col-6 col-sm-6 col-md-5">
                                                                             <div
                                                                                 style="font-size:18px">
