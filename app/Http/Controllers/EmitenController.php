@@ -529,8 +529,12 @@ class EmitenController extends Controller
             'kemapuanTeknis'));
     }
 
-    public function edit_bisnis(emiten $emiten,$id){
-        $emiten = emiten::where('id',$id)->first();
+    public function edit_bisnis($id){
+        $emiten = emiten::where('emitens.id',$id)->leftJoin('categories as ct', 'ct.id', '=', 'emitens.category_id')
+        ->join('traders as t', 't.id', '=', 'emitens.trader_id')
+        ->join('users as u', 'u.id', '=', 't.user_id')
+        ->leftJoin('regencies as r', 'r.id', '=', 'emitens.regency_id')
+        ->select('emitens.*', 'ct.category', 'u.email', 'r.name as kota')->first();
         $picture = explode(',',$emiten->pictures);
         if(empty($picture[0])){
             $picture[0] = '-';
@@ -567,10 +571,78 @@ class EmitenController extends Controller
         }else{
             $picture[6];
         }
-        $kategori = kategori::all();
-        $user = User::where('role_id',2)->get();
+        $badanUsaha = (object) [
+            '1' => 'PT',
+            '2' => 'CV',
+            '3' => 'UD',
+            '4' => 'Firma',
+            '5' => 'Koperasi',
+            '6' => 'Yang Lain'
+        ];
+        $sistemPencatatan = (object) [
+            '1' => 'Terkomputerisasi/Software akuntansi',
+            '2' => 'Catatan pembukuan sederhana/POS',
+            '3' => 'Hanya berupa bukti dokumentasi',
+            '4' => 'Tidak ada'
+        ];
+        $posisiPasar = (object) [
+            '1' => 'Tidak memiliki pinjaman',
+            '2' => 'Memiliki pinjaman lancar',
+            '3' => 'Pernah bermasalah namun lunas',
+            '4' => 'Sedang/pernah bermasalah dan belum lunas'
+        ];
+        $marketPositition = (object) [
+            '1' => 'Pemimpin pasar lokal/nasional',
+            '2' => 'Mampu bersaing di pasar lokal/nasional',
+            '3' => 'Berusaha bersaing di pasar lokal/nasional',
+            '4' => 'Tidak mampu bersaing di pasar'
+        ];
+        $strategiEmiten = (object) [
+            '1' => 'Punya milestone jangka panjang owner & infrastruktur siap',
+            '2' => 'Milestone sedang disusun owner & infrastruktur sedang diperkuat',
+            '3' => 'Lebih menekankan strategi jangka pendek agar optimal',
+            '4' => 'Strategi case by case/tentavie agar efektif'
+        ];
+        $statusKantor = (object) [
+            '1' => 'Milik sendiri/sewa > 5 Tahun',
+            '2' => 'Sewa > 2 s.d 5 Tahun',
+            '3' => 'Sewa < 2 Tahun',
+            '4' => 'Sewa Bulanan'
+        ];
+        $levelKompetisi = (object) [
+            '1' => 'Mampu memenangkan persaingan',
+            '2' => 'Mampu bersaing namun bukan pemimpin pasar',
+            '3' => 'Berusaha bersaing namun bukan pemimpin pasar',
+            '4' => 'Sedang/Pernah bermasalah dan belum lunas'
+        ];
+        $kemapuanManager = (object) [
+            '1' => 'Mampu memenangkan persaingan',
+            '2' => 'Mampu bersaing namun bukan pemimpin pasar',
+            '3' => 'Berusaha bersaing namun bukan pemimpin pasar',
+            '4' => 'Tidak mampu bersaing di pasar'
+        ];
+        $kemapuanTeknis = (object) [
+            '1' => 'Owner/Manajemen ahli di bisnis ini',
+            '2' => 'Owner/Manajemen baru dibisnis ini namun memiliki pengalaman bisnis yang sejenis',
+            '3' => 'Owner/Manajemen belum pernah memiliki keahlian/pengalaman di bisnis ini dan sejenisnya namun telah memiliki pengalaman di sektor lain',
+            '4' => 'Owner/Manajemen baru mulai berbisnis/belum ada track record'
+        ];
+        $kategori = kategori::where('is_deleted', 0)
+        ->select('id', 'category')
+        ->get();
+        // $user = User::where('role_id',2)
+        // ->limit(100)
+        // ->get();
         // dd($s);
-        return view('user.emiten.edit',compact('kategori','emiten','picture','user'));
+        return view('user.emiten.edit',compact('kategori','emiten','picture','badanUsaha', 
+        'sistemPencatatan', 
+        'posisiPasar', 
+        'marketPositition',
+        'strategiEmiten',
+        'statusKantor',
+        'levelKompetisi',
+        'kemapuanManager',
+        'kemapuanTeknis'));
     }
 
     public function update(request $request,emiten $emiten,$id){
@@ -959,6 +1031,14 @@ class EmitenController extends Controller
             $owner = str_replace('public/upload/','',$request->owner);
         }
 
+        $googleConfigFile = file_get_contents(config_path('santara-cloud-1261a9724a56.json'));
+        $storage = new StorageClient([
+            'keyFile' => json_decode($googleConfigFile, true)
+        ]);
+        $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+        $bucket = $storage->bucket($storageBucketName);
+        $folderName = 'santara.co.id/token';
+
         $emiten->company_name = $request->get('company_name');
         $emiten->owner_name = $request->get('nama_owner');
         $emiten->category_id = $request->get('kategori');
@@ -975,11 +1055,45 @@ class EmitenController extends Controller
         $emiten->instagram= $request->get('ig');
         $emiten->business_description= $request->get('deskripsi');
         $emiten->admin_desc= $request->get('bio_owner');
-        // $emiten->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
-        $emiten->pictures = $logoFileSave.','.$coverFileSave.','.$ownerFileSave.','.$galeriFileSave.','.$galeri2FileSave.','.$galeri3FileSave;
+        $emiten->pictures = $logo.','.$cover.','.$owner.','.$galeri.','.$galeri2.','.$galeri3;
+        // $emiten->pictures = $logoFileSave.','.$coverFileSave.','.$ownerFileSave.','.$galeriFileSave.','.$galeri2FileSave.','.$galeri3FileSave;
         $emiten->code_emiten = $request->get('code_emiten');
         $emiten->trademark = $request->get('brand');
         $emiten->price = str_replace(".", "", $request->get('harga_saham'));
+        if(isset($request->regency_id)){
+            $emiten->regency_id = $request->get('regency_id');
+        }
+        $emiten->business_entity = $request->business_entity;
+        $emiten->address = $request->address;
+        $emiten->business_lifespan = $request->business_lifespan;
+        $emiten->branch_company = $request->branch_company;
+        $emiten->employee = $request->employee;
+        $emiten->capital_needs = $request->capital_needs;
+        $emiten->monthly_turnover = $request->monthly_turnover;
+        $emiten->monthly_profit = $request->monthly_profit;
+        $emiten->monthly_turnover_previous_year = $request->monthly_turnover_previous_year;
+        $emiten->monthly_profit_previous_year = $request->monthly_profit_previous_year;
+        $emiten->total_bank_debt = $request->total_bank_debt;
+        $emiten->bank_name_financing = $request->bank_name_financing;
+        $emiten->total_paid_capital = $request->total_paid_capital;
+        $emiten->financial_recording_system = $request->financial_recording_system;
+        $emiten->bank_loan_reputation = $request->bank_loan_reputation;
+        $emiten->market_position_for_the_product = $request->market_position_for_the_product;
+        $emiten->strategy_emiten = $request->strategy_emiten;
+        $emiten->office_status = $request->office_status;
+        $emiten->level_of_business_competition = $request->level_of_business_competition;
+        $emiten->managerial_ability = $request->managerial_ability;
+        $emiten->technical_ability = $request->technical_ability;
+        if($request->hasFile("prospektus")){
+            $fileProspektus = fopen($request->file('prospektus')->getPathName(), 'r');
+            $prospektusFileSave = 'prospektus'.time().'.pdf';
+            $fileProspektus = $folderName.'/'.$prospektusFileSave;
+            $bucket->upload($fileProspektus, [
+                'predefinedAcl' => 'publicRead',
+                'name' => $fileProspektus
+            ]);
+            $emiten->prospektus = $prospektusFileSave;
+        }
         $emiten->save();
         $notif = array(
             'message' => 'Bisnis Berhasil Di Edit',
@@ -1147,6 +1261,11 @@ class EmitenController extends Controller
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
         ->where('emitens.trader_id',Auth::user()->trader->id)
+        ->where('emitens.is_deleted',0)
+                ->where('emitens.is_active',0)
+                    ->where('emitens.is_verified',1)
+                    ->where('emitens.is_pralisting',1)
+                    ->where('emitens.is_coming_soon',1)
         ->get();
 //  dd($emiten);
         return view('user.emiten.bisnis',compact('emiten'));

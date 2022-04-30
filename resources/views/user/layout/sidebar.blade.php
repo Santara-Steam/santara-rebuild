@@ -58,6 +58,8 @@
             </li>
             <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>
             </li>
+            <li class=" nav-item {{ 'user/deviden' == request()->path() ? 'active' : '' }}"><a href="{{url('user/deviden')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Deviden</span></a>
+            </li>
             {{-- <li class=" nav-item {{ 'user/deposit' == request()->path() ? 'active' : '' }}"><a href="{{url('user/deposit')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
             </li> --}}
             {{-- <li class=" nav-item {{ 'user/penarikan' == request()->path() ? 'active' : '' }}"><a href="{{url('user/penarikan')}}"><i class="la la-arrow-circle-down"></i><span class="menu-title" data-i18n="eCommerce">Penarikan</span></a>

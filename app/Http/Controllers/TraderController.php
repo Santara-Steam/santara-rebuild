@@ -248,4 +248,8 @@ class TraderController extends Controller
 
         return view('user.wallet.index',compact('deposit','wd','trader_bank','bwd','se'));
     }
+
+    public function user_deviden(){
+        return view('user.deviden.index');
+    }
 }

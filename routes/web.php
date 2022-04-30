@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin']], functi
     Route::post('/update_profile/{id}',[App\Http\Controllers\TraderController::class, 'update_profile']);
     
     Route::get('/user/portfolio',[App\Http\Controllers\TraderController::class, 'portofolio']);
+    Route::get('/user/deviden',[App\Http\Controllers\TraderController::class, 'user_deviden']);
     Route::get('/user/riwayat_aktifitas',[App\Http\Controllers\TraderController::class, 'history']);
     Route::get('/user/video_tutorial',[App\Http\Controllers\TraderController::class, 'video']);
     Route::get('/results', [App\Http\Controllers\TraderController::class, 'results'])->name('results');
@@ -65,6 +66,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin']], functi
     Route::post('/user/penarikan/create', [App\Http\Controllers\PenarikanController::class, 'create']);
     Route::get('/transaksi/pembayaran',[App\Http\Controllers\TransactionsController::class, 'checkout']);
     Route::post('/transaksi/buy',[App\Http\Controllers\TransactionsController::class, 'buy_token']);
+    Route::get('/user/get-regency', [App\Http\Controllers\AddressController::class, 'usergetRegency']);
     
 });
 

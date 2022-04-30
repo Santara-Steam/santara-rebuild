@@ -52,7 +52,7 @@
                     <div class="col-xl-6 col-md-6 col-sm-12">
                         <div class="card">
                             <div class="card-content">
-                                <img class="card-img-top img-fluid" src="https://storage.googleapis.com/santara-bucket-staging/{{$picture[0]}}"
+                                <img class="card-img-top img-fluid" src="{{env('PATH_WEB')}}{{$picture[0]}}"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title" style="margin-bottom: 0px;">{{$item->trademark}}</h4>

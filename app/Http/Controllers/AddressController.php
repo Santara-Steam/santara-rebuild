@@ -27,6 +27,23 @@ class AddressController extends Controller
         }
         return response()->json($regency);
     }
+    public function usergetRegency(Request $request)
+    {
+        $search = $request->search;
+        if($search != ""){
+            $regency = Regency::where('is_deleted', 0)
+                ->where('name', 'like', '%'.$search.'%')
+                ->limit(5)
+                ->select('id', 'name')
+                ->get();
+        }else{
+            $regency = Regency::where('is_deleted', 0)
+                ->limit(5)
+                ->select('id', 'name')
+                ->get();
+        }
+        return response()->json($regency);
+    }
     
     public function getProvince(Request $request)
     {
