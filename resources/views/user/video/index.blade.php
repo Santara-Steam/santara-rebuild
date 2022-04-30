@@ -64,11 +64,11 @@
                                     @foreach($videoLists->items as $key => $item)
                                     <div class="row mb-3">
                                         <a href="{{ route('watch', $item->id->videoId) }}" style="display: contents">
-                                            <div class="col-4">
+                                            <div class="col-md-4 mt-1">
                                                 <img src="{{ $item->snippet->thumbnails->medium->url }}" alt=""
                                                     class="img-fluid">
                                             </div>
-                                            <div class="col-8">
+                                            <div class="col-md-8 mt-1">
                                                 <h5>{{ \Illuminate\Support\Str::limit($item->snippet->title, $limit =
                                                     150, $end = ' ...') }}</h5>
                                                 <p class="text-muted">Published

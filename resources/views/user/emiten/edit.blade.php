@@ -69,15 +69,15 @@
                                                         name="deskripsi"
                                                         placeholder="Deskripsi Usaha">{{$emiten->business_description}}</textarea>
                                                 </div>
-                                                <fieldset class="form-group row">
+                                                <div class="form-group row">
                                                     <div class="col-2 text-center">
-                                                        <label for="companyName">Logo Usaha</label>
+                                                        <label for="companyName">Thumbnail</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image">
                                                                 <img src="{{env('PATH_WEB')}}{{$picture[0]}}"
                                                                     id="uploaded_image" class="img-responsive" />
                                                                 <div class="overlay">
-                                                                    <div class="text">Logo Perusahaan</div>
+                                                                    <div class="text">Thumbnail</div>
                                                                 </div>
                                                             </label>
                                                             <input type="file" name="image" class="image"
@@ -88,13 +88,13 @@
                                                     </div>
                                                     
                                                     <div class="col-7 text-center">
-                                                        <label for="companyName">Cover Profile</label>
+                                                        <label for="companyName">Banner</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image2">
                                                                 <img src="{{env('PATH_WEB')}}{{$picture[1]}}"
                                                                     id="uploaded_image2" class="img-responsive" />
                                                                 <div class="overlay">
-                                                                    <div class="text">Cover Profile</div>
+                                                                    <div class="text">Banner</div>
                                                                 </div>
                                                             </label>
                                                             <input type="file" name="image2" class="image"
@@ -120,7 +120,7 @@
                                                         </div>
 
                                                     </div>
-                                                </fieldset>
+                                                </div>
 
                                                 <div class="form-group row">
 
