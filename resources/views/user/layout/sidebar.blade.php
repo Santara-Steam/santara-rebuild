@@ -5,8 +5,8 @@
             <hr>
             <li class=" nav-item {{ 'user' == request()->path() ? 'active' : '' }}"><a href="{{url('user')}}"><i class="la la-home"></i><span class="menu-title" data-i18n="eCommerce">Dashboard</span></a>
             </li>
-            <div class="menu-profile">
-                {{-- <div class="profile-greeting">Hallo,</div>
+            {{-- <div class="menu-profile">
+                <div class="profile-greeting">Hallo,</div>
                 <div class="profile-name">
                     <b>{{Auth::user()->trader->name}}</b>
                 </div>
@@ -49,11 +49,24 @@
                             </tr>
                         
                     </table>
-                </div> --}}
+                </div>
                 <a href="{{url('/')}}" class="btn btn-santara-red btn-block" type="button">
                     Mulai Investasi
                 </a>
-            </div>
+            </div> --}}
+
+            <li class=" nav-item active"><a  style="
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    margin-bottom: 14px;
+                    margin-top: 10px;
+                    border-radius: 4px;
+                    width: auto;
+                    background-color: #BF2D30 !important;
+    color: #fff !important;
+    border-color: #BF2D30;
+                " href="{{url('/')}}"><i class="la la-cart-arrow-down"></i><span class="menu-title" data-i18n="eCommerce">Mulai Investasi</span></a>
+            </li>
             <li class=" nav-item {{ 'user/wallet' == request()->path() ? 'active' : '' }}"><a href="{{url('user/wallet')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Wallet</span></a>
             </li>
             <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>

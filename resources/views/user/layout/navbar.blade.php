@@ -8,9 +8,12 @@
                             class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item mr-auto">
                     <a class="navbar-brand" href="{{url('/')}}">
-                        <img class="brand-logo" alt="modern admin logo" style="width:100%"
-                            src="{{asset('public')}}/assets/images/logo_header.png">
-                        {{-- <h3 class="brand-text">Modern</h3> --}}
+                        {{-- <img class="brand-logo" alt="modern admin logo" style="width:100%"
+                            src="{{asset('public')}}/assets/images/logo_header.png"> --}}
+                        <img class="brand-logo" alt="modern admin logo" style="width:auto"
+                            src="{{asset('public')}}/assets/images/logo-newsantara-ai-putih-merah-l-1-27@2x.png">
+                        <h3 class="brand-text" style="font-weight: 800;
+                        font-size: 24px;">santara</h3>
                     </a>
                 </li>
                 <li class="nav-item d-none d-lg-block nav-toggle"><a class="nav-link modern-nav-toggle pr-0"
