@@ -275,5 +275,7 @@ Route::post('/logocropImg', [App\Http\Controllers\EmitenController::class, 'logo
 Route::post('/profilecropImg', [App\Http\Controllers\EmitenController::class, 'profilecropImg'])->name('profilecropImg');
 Route::post('/covercropImg', [App\Http\Controllers\EmitenController::class, 'covercropImg'])->name('covercropImg');
 Route::post('/galericropImg', [App\Http\Controllers\EmitenController::class, 'galericropImg'])->name('galericropImg');
+Route::post('/galericropImg2', [App\Http\Controllers\EmitenController::class, 'galericropImg'])->name('galericropImg2');
+Route::post('/galericropImg3', [App\Http\Controllers\EmitenController::class, 'galericropImg'])->name('galericropImg3');
 Route::post('/ownercropImg', [App\Http\Controllers\EmitenController::class, 'ownercropImg'])->name('ownercropImg');
 // Route::post('/cropImg', 'CropImage@cropImg')->name('cropImg');

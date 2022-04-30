@@ -187,72 +187,102 @@
                                                     <br>
                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" id="fil" accept=".png, .jpg" type="file" name="thumbnail" 
-                                                            id="inputGroupFile02">
+                                                        <input class="custom-file-input req" accept=".png, .jpg" type="file" 
+                                                            id="upload_image">
                                                         <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[0]}}</label>
                                                     </div>
-                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[0] }}" />
+                                                    <input type="hidden" name="thumbnail" id="thumbnail" />
+                                                    @if($picture[0] != 'no-image.png')
+                                                        <img class="mt-1" width="200" id="thumbnailUploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[0] }}" />
+                                                    @else
+                                                        <img class="mt-1" width="200" id="thumbnailUploaded" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[0] }}" />
+                                                    @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Banner <span style="color: red">*</span></label>
                                                     <br>
                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[1]}}' accept=".png, .jpg" type="file" name="banner" class="custom-file-input req"
-                                                            id="inputGroupFile02">
-                                                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                                                            aria-describedby="inputGroupFile02">{{$picture[1]}}</label>
+                                                        <input value='{{$picture[1]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
+                                                            id="upload_image2" />
+                                                        <label class="custom-file-label ssa" for="upload_image2"
+                                                            aria-describedby="upload_image2">{{$picture[1]}}</label>
                                                     </div>
-                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[1] }}" />
+                                                    <input type="hidden" name="banner" id="banner" />
+                                                    @if($picture[1] != 'no-image.png')
+                                                        <img class="mt-1" id="bannerUploaded" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[1] }}" />
+                                                    @else
+                                                        <img class="mt-1" id="bannerUploaded" width="200" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[1] }}" />
+                                                    @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Foto Owner <span style="color: red">*</span></label>
                                                     <br>
                                                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[2]}}' accept=".png, .jpg" type="file" name="owner" class="custom-file-input req"
-                                                            id="inputGroupFile02">
-                                                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                                                            aria-describedby="inputGroupFile02">{{$picture[2]}}</label>
+                                                        <input value='{{$picture[2]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
+                                                            id="upload_image4">
+                                                        <label class="custom-file-label ssa" for="upload_image4"
+                                                            aria-describedby="upload_image4">{{$picture[2]}}</label>
                                                     </div>
-                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[2] }}" />
+                                                    <input type="hidden" name="owner" id="owner" />
+                                                    @if($picture[2] != 'no-image.png')
+                                                        <img class="mt-1" id="ownerUploaded"  width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[2] }}" />
+                                                    @else
+                                                        <img class="mt-1" id="ownerUploaded"  width="200" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[2] }}" />
+                                                    @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
                                                     <br>
                                                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[3]}}' accept=".png, .jpg" type="file" name="galeri1" class="custom-file-input req"
-                                                            id="inputGroupFile02">
-                                                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                                                            aria-describedby="inputGroupFile02">{{$picture[3]}}</label>
+                                                        <input value='{{$picture[3]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
+                                                            id="upload_image3">
+                                                        <label class="custom-file-label ssa" for="upload_image3"
+                                                            aria-describedby="upload_image3">{{$picture[3]}}</label>
                                                     </div>
-                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[3] }}" />
+                                                    <input type="hidden" name="galeri1" id="galeri1" />
+                                                    @if($picture[3] != 'no-image.png')
+                                                        <img class="mt-1" width="200" id="galeri1Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[3] }}" />
+                                                    @else
+                                                        <img class="mt-1" width="200" id="galeri1Uploaded" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[3] }}" />
+                                                    @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
                                                     <br>
                                                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[4]}}' accept=".png, .jpg" type="file" name="galeri2" class="custom-file-input req"
-                                                            id="inputGroupFile02">
-                                                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                                                            aria-describedby="inputGroupFile02">{{$picture[4]}}</label>
+                                                        <input value='{{$picture[4]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
+                                                            id="upload_image5">
+                                                        <label class="custom-file-label ssa" for="upload_image5"
+                                                            aria-describedby="upload_image5">{{$picture[4]}}</label>
                                                     </div>
-                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[4] }}" />
+                                                    <input type="hidden" name="galeri2" id="galeri2" />
+                                                    @if($picture[4] != 'no-image.png')
+                                                        <img class="mt-1" width="200" id="galeri2Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[4] }}" />
+                                                    @else
+                                                        <img class="mt-1" width="200" id="galeri2Uploaded" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[4] }}" />
+                                                    @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Galeri <span style="color: red">*</span></label>
                                                     <br>
                                                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[5]}}' accept=".png, .jpg" type="file" name="galeri3" class="custom-file-input req"
-                                                            id="inputGroupFile02">
-                                                        <label class="custom-file-label ssa" for="inputGroupFile02"
-                                                            aria-describedby="inputGroupFile02">{{$picture[5]}}</label>
+                                                        <input value='{{$picture[5]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
+                                                            id="upload_image6">
+                                                        <label class="custom-file-label ssa" for="upload_image6"
+                                                            aria-describedby="upload_image6">{{$picture[5]}}</label>
                                                     </div>
-                                                    <img class="mt-1" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[5] }}" />
+                                                    <input type="hidden" name="galeri3" id="galeri3" />
+                                                    @if($picture[5] != 'no-image.png')
+                                                        <img class="mt-1" width="200" id="galeri3Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[5] }}" />
+                                                    @else
+                                                        <img class="mt-1" width="200" id="galeri3Uploaded" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[5] }}" />
+                                                    @endif
                                                 </div>
 
                                                 <div class="form-group col-md-4">
@@ -480,7 +510,7 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Alamat Lengkap Usaha</label>
-                                                    <textarea class="form-control" name="address" rows="5">
+                                                    <textarea class="form-control" name="address" rows="5" placeholder="Alamat Lengkap Usaha">
                                                         {{$emiten->address}}
                                                     </textarea>
                                                 </div>
@@ -705,6 +735,19 @@
                                             <button type="submit" id="sav" class="btn btn-primary">
                                                 <i class="la la-check-square-o"></i> Save
                                             </button>
+                                            <?php if( $emiten->is_verified == 1 ) : ?>
+                                                <a class="btn btn-danger font-link-white"
+                                                    onclick="acceptPraListing('<?= $emiten->uuid ?>','0', 'Batalkan') ">Batalkan</a>
+                                                <a class="btn btn-info font-link-white"
+                                                    onclick="acceptOfficial('<?= $emiten->uuid ?>','1') ">Jadikan
+                                                    Penerbit Official</a>
+                                            <?php else: ?>
+                                                <a class="btn btn-danger-ghost <?= $emiten->is_verified == 2 || $emiten->is_verified == 1 ? 'disabled' : '' ?>"
+                                                    onclick="rejectPralisting('<?= $emiten->uuid ?>','2') ">Tolak</a>
+                                                <a class="btn btn-info font-link-white"
+                                                    onclick="acceptPraListing('<?= $emiten->uuid ?>','1', 'Verifikasi') ">Konfirmasi
+                                                    Pengajuan</a>
+                                            <?php endif; ?>
                                         </div>
                                     </form>
                                 </div>
@@ -912,7 +955,218 @@
 @endsection
 @section('js')
 <script src="{{ asset('public') }}/assets/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+
+    function acceptPraListing(uuid, status, status_title) {
+            Swal.fire({
+                text: status_title + ' bisnis ini ? ',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.value) {
+                    var data = {
+                        uuid,
+                        status
+                    };
+                    $.ajax({
+                        url: '{{ url('admin/pralisting/accept-pralisting') }}',
+                        type: 'POST',
+                        dataType: "json",
+                        data: data,
+                        timeout: 20000,
+                        beforeSend: function() {
+                            $("#loader").show();
+                        },
+                        success: function(data) {
+                            $("#loader").hide();
+
+                            if (data.msg == 200) {
+                                Swal.fire({
+                                    title: 'Berhasil',
+                                    text: 'Berhasil ' + status_title + ' bisnis',
+                                    type: 'success',
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Ok'
+                                }).then((result) => {
+                                    window.location = '{{ url('admin/emiten') }}';
+                                })
+                            } else {
+                                Swal.fire({
+                                    title: 'Gagal',
+                                    text: 'Gagal ' + status_title + ' bisnis',
+                                    type: 'warning',
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Ok'
+                                }).then((result) => {
+                                    window.location = '{{ url('admin/emiten') }}';
+                                })
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            if (textStatus === "timeout" || textStatus === "error") {
+                                $("#loader").hide();
+                                Swal.fire({
+                                    title: 'Ooops...',
+                                    text: "Mohon periksa koneksi internet anda",
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Muat ulang',
+                                    cancelButtonText: 'Tutup'
+                                }).then((result) => {
+                                    if (result.value) {
+                                        location.reload();
+                                    }
+                                })
+                            }
+                        },
+                        complete: function() {
+                            $("#loader").hide();
+                        }
+                    });
+                }
+            })
+        }
+
+        function acceptOfficial(uuid, status) {
+            Swal.fire({
+                text: 'Jadikan Penerbit Official ? ',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.value) {
+                    var data = {
+                        uuid,
+                        status
+                    };
+                    $.ajax({
+                        url: '{{ url('admin/pralisting/accept-official') }}',
+                        type: 'POST',
+                        dataType: "json",
+                        data: data,
+                        timeout: 20000,
+                        beforeSend: function() {
+                            $("#loader").show();
+                        },
+                        success: function(data) {
+                            $("#loader").hide();
+
+                            if (data.msg == 200) {
+                                Swal.fire({
+                                    title: 'Berhasil',
+                                    text: 'Berhasil verifikasi bisnis',
+                                    type: 'success',
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Ok'
+                                }).then((result) => {
+                                    window.location = '{{ url('admin/emiten') }}';
+                                })
+                            } else {
+                                Swal.fire({
+                                    title: 'Gagal',
+                                    text: 'Gagal verifikasi bisnis',
+                                    type: 'warning',
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Ok'
+                                }).then((result) => {
+                                    window.location = '{{ url('admin/emiten') }}';
+                                })
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            if (textStatus === "timeout" || textStatus === "error") {
+                                $("#loader").hide();
+                                Swal.fire({
+                                    title: 'Ooops...',
+                                    text: "Mohon periksa koneksi internet anda",
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Muat ulang',
+                                    cancelButtonText: 'Tutup'
+                                }).then((result) => {
+                                    if (result.value) {
+                                        location.reload();
+                                    }
+                                })
+                            }
+                        },
+                        complete: function() {
+                            $("#loader").hide();
+                        }
+                    });
+                }
+            })
+        }
+
+        function rejectPralisting(uuid, status) {
+            Swal.fire({
+                title: "Tolak Bisnis",
+                text: 'Masukan alasan penolakan bisnis',
+                input: 'text',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Tolak',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true,
+                preConfirm: (input) => {
+                    if (input === '') {
+                        Swal.showValidationMessage('alasan penolakan tidak boleh kosong')
+                    } else {
+                        var data = {
+                            uuid,
+                            status,
+                            input
+                        };
+
+                        $.ajax({
+                            url: '{{ url('admin/pralisting/accept-pralisting') }}',
+                            type: 'POST',
+                            dataType: "json",
+                            data: data,
+                            timeout: 20000,
+                            success: function(data) {
+                                $("#loader").hide();
+
+                                if (data.msg == 200) {
+                                    Swal.fire({
+                                        title: 'Berhasil',
+                                        text: 'Penolakan bisnis berhasil dilakukan',
+                                        type: 'success',
+                                        showCancelButton: false,
+                                        confirmButtonText: 'Ok'
+                                    }).then((result) => {
+                                        window.location = '{{ url('admin/emiten') }}';
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        title: 'Gagal',
+                                        text: 'Penolakan bisnis gagal dilakukan',
+                                        type: 'warning',
+                                        showCancelButton: false,
+                                        confirmButtonText: 'Ok'
+                                    })
+                                }
+                            },
+                            error: function(data) {
+                                Swal.fire({
+                                    title: 'Gagal',
+                                    text: 'Penolakan bisnis gagal dilakukan',
+                                    type: 'warning',
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Ok'
+                                })
+                            }
+                        });
+                    }
+                }
+
+            });
+        }
+
      $(document).ready(function() {
 
             $("#changeKota").on('click', function(){
@@ -1061,6 +1315,8 @@
                 width:250,
                 height:250
             });
+
+            $('#loader').show();
     
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
@@ -1079,11 +1335,12 @@
                         data:{image:base64data},
                         success:function(data)
                         {
+                            $("#loader").hide();
                             // let text = text.replace("public/upload/", "");
                             $modal.modal('hide');
-                            $('#uploaded_image').attr('src', '{{env("PATH_WEB")}}'+data);
+                            $('#thumbnailUploaded').attr('src', '{{config("global.STORAGE_GOOGLE")."token"}}'+'/'+data);
                             // $('#upload_image').val(data);
-                            $('#logo').val(data);
+                            $('#thumbnail').val(data);
                             // $('#upload_image').attr('src', data);
                             // console.log(base64data);
                             // console.log(base64data);
@@ -1140,6 +1397,8 @@
                 width: 1360,
                 height: 497
             });
+
+            $("#loader").show();
     
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
@@ -1159,10 +1418,12 @@
                         success:function(data)
                         {
                             // let text = text.replace("public/upload/", "");
+                            $("#loader").hide();
                             $modal2.modal('hide');
-                            $('#uploaded_image2').attr('src', '{{env("PATH_WEB")}}'+data);
+                            // let text = text.replace("public/upload/", "");
+                            $('#bannerUploaded').attr('src', '{{config("global.STORAGE_GOOGLE")."token"}}'+'/'+data);
                             // $('#upload_image').val(data);
-                            $('#cover').val(data);
+                            $('#banner').val(data);
                             // $('#upload_image').attr('src', data);
                             // console.log(base64data);
                             // console.log(base64data);
@@ -1214,6 +1475,8 @@
                 width:400,
                 height:300
             });
+
+            $("#loader").show();
     
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
@@ -1234,9 +1497,10 @@
                         {
                             // let text = text.replace("public/upload/", "");
                             $modal3.modal('hide');
-                            $('#uploaded_image3').attr('src', '{{env("PATH_WEB")}}'+data);
+                            $("#loader").hide();
+                            $('#galeri1Uploaded').attr('src', '{{config("global.STORAGE_GOOGLE")."token"}}'+'/'+data);
                             // $('#upload_image').val(data);
-                            $('#galeri').val(data);
+                            $('#galeri1').val(data);
                             // $('#upload_image').attr('src', data);
                             // console.log(base64data);
                             // console.log(base64data);
@@ -1290,6 +1554,8 @@
                 width:400,
                 height:400
             });
+
+            $("#loader").show();
     
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
@@ -1310,7 +1576,8 @@
                         {
                             // let text = text.replace("public/upload/", "");
                             $modal4.modal('hide');
-                            $('#uploaded_image4').attr('src', '{{env("PATH_WEB")}}'+data);
+                            $("#loader").hide();
+                            $('#ownerUploaded').attr('src', '{{config("global.STORAGE_GOOGLE")."token"}}'+'/'+data);
                             // $('#upload_image').val(data);
                             $('#owner').val(data);
                             // $('#upload_image').attr('src', data);
@@ -1365,6 +1632,8 @@ $('#crop5').click(function(){
         height:300
     });
 
+    $("#loader").show();
+
     canvas.toBlob(function(blob){
         url = URL.createObjectURL(blob);
         var reader = new FileReader();
@@ -1384,8 +1653,8 @@ $('#crop5').click(function(){
                 {
                     // let text = text.replace("public/upload/", "");
                     $modal5.modal('hide');
-                    $('#uploaded_image5').attr('src', '{{env("PATH_WEB")}}'+data);
-                    // $('#upload_image').val(data);
+                    $("#loader").hide();
+                    $('#galeri2Uploaded').attr('src', '{{config("global.STORAGE_GOOGLE")."token"}}'+'/'+data);
                     $('#galeri2').val(data);
                     // $('#upload_image').attr('src', data);
                     // console.log(base64data);
@@ -1440,6 +1709,8 @@ $('#crop6').click(function(){
         height:300
     });
 
+    $("#loader").show();
+
     canvas.toBlob(function(blob){
         url = URL.createObjectURL(blob);
         var reader = new FileReader();
@@ -1459,8 +1730,8 @@ $('#crop6').click(function(){
                 {
                     // let text = text.replace("public/upload/", "");
                     $modal6.modal('hide');
-                    $('#uploaded_image6').attr('src', '{{env("PATH_WEB")}}'+data);
-                    // $('#upload_image').val(data);
+                    $("#loader").hide();
+                    $('#galeri3Uploaded').attr('src', '{{config("global.STORAGE_GOOGLE")."token"}}'+'/'+data);
                     $('#galeri3').val(data);
                     // $('#upload_image').attr('src', data);
                     // console.log(base64data);
@@ -1510,6 +1781,9 @@ $('#crop6').click(function(){
 {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
 <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
 <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://unpkg.com/dropzone"></script>
 <script src="https://unpkg.com/cropperjs"></script>
 {{--
