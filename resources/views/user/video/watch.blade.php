@@ -19,7 +19,7 @@
                                         allowfullscreen></iframe> --}}
                                     
                                         <div class="row">
-                                            <div class="col-8">
+                                            <div class="col-md-8">
                                                 <div class="card mb-4" style="width: 100%;border: 1px inset #c8c8cd59;">
                                                     <h1 class="card-title-member">{{ $singleVideo->items[0]->snippet->title }}</h1>
                                                     <div class="embed-responsive embed-responsive-16by9">
@@ -35,7 +35,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-md-4">
                                                 <div class="container">
                                                     <div class="row">
                                                         @foreach($videoLists->items as $key => $item)
