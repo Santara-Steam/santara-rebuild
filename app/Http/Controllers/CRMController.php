@@ -62,7 +62,7 @@ class CRMController extends Controller
                 $action       = '<a href="'.url('admin/crm/target-user-tersedia').'/'. $broadcast['id'] . '" class="btn btn-sm btn-santara-white">Detail</a>';
                 if ($broadcast['status'] == 'draft' || $broadcast['status'] == 'scheduled') {
                     $action       = '
-                        <a href="'.url("admin/push-notif").'/'.$broadcast['id'] . '" class="btn btn-sm btn-success">Push <i
+                        <a href="'.url("admin/push-notif").'/'.$broadcast['id'].'?page=1' . '" class="btn btn-sm btn-success">Push <i
                         class="la la-bell"></i></a>
                         <a href="'.url("admin/crm/broadcasting/edit").'/'. $broadcast['id'] . '" class="btn btn-sm btn-info-ghost">Edit</a>
                         <button type="button" value="' . $broadcast['id'] . '" class="btn btn-sm btn-danger delete-broadcast">Delete</a>

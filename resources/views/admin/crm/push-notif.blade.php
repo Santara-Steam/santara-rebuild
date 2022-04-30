@@ -78,7 +78,7 @@
             window.history.pushState("", "", url);
         });
 
-        loadData(1);
+        loadData('{{ Request::get("page") }}');
         var dataUserId = [];
         var emailUser = [];
 

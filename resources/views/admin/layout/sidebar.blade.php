@@ -106,6 +106,9 @@
                     <li class=" nav-item {{ 'admin/cms/video' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/cms/video') }}"><i class="la la-play"></i><span
                                 class="menu-title" data-i18n="eCommerce"> Video Management</span></a></li>
+                    <li class=" nav-item {{ 'admin/cms/video-category' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/cms/video-category') }}"><i class="la la-list"></i><span
+                                class="menu-title" data-i18n="eCommerce"> Kategori Video</span></a></li>
                 </ul>
             </li>
 
