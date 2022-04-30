@@ -148,7 +148,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/get-push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'pushNotif']);
     Route::get('/admin/push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'index']);
     Route::post('/admin/broadcast-notif', [App\Http\Controllers\PushNotificationController::class, 'broadcastNotif']);
-    Route::get('/scheduler/broadcast-notif', [App\Http\Controllers\PushNotificationController::class, 'schedulerbroadcastNotif']);
+    
     Route::post('/admin/broadcast-email', [App\Http\Controllers\PushNotificationController::class, 'broadcastEmail']);
 
     Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, 'index']);
@@ -286,3 +286,5 @@ Route::post('/galericropImg2', [App\Http\Controllers\EmitenController::class, 'g
 Route::post('/galericropImg3', [App\Http\Controllers\EmitenController::class, 'galericropImg'])->name('galericropImg3');
 Route::post('/ownercropImg', [App\Http\Controllers\EmitenController::class, 'ownercropImg'])->name('ownercropImg');
 // Route::post('/cropImg', 'CropImage@cropImg')->name('cropImg');
+
+Route::get('/scheduler/broadcast-notif', [App\Http\Controllers\PushNotificationController::class, 'schedulerbroadcastNotif']);
