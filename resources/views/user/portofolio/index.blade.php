@@ -397,5 +397,17 @@
   color: #000;
 }
 
+@media screen and (max-width: 600px) {
+      .title-intable-saham{
+        width: 50%;
+        color: #000;
+      }
+      .value-intable-saham {
+          width: 50%;
+          color: #000;
+          font-weight: 600;
+      }
+    }
+
 </style>
 @endsection

@@ -22,7 +22,7 @@
                             <div class="card-content">
                                 <div class="card-body cleartfix" style="    margin-bottom: 20px;">
                                     <div class="media align-items-stretch">
-                                        <div class="align-self-center">
+                                        <div class="align-self-center mbv">
                                             <i class="icon-wallet success font-large-5 mr-2"></i>
                                         </div>
                                         <div class="media-body">
@@ -587,6 +587,30 @@
       background: #ededed;
       border-radius: 4px;
       color: #000;
+    }
+
+    @media screen and (max-width: 600px) {
+      .mbv {
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
+      }
+
+      h4{
+        font-size: 1rem;
+      }
+      .title-intable-saham{
+        width: 50%;
+        color: #000;
+      }
+      .value-intable-saham {
+          width: 50%;
+          color: #000;
+          font-weight: 600;
+      }
     }
     
     </style>
