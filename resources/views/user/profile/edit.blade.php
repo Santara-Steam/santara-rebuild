@@ -37,7 +37,7 @@
                                                             <img src="{{asset('public')}}/default1.png"
                                                                 id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
                                                             @else
-                                                            <img src="{{asset('public/storage/pictures')}}/{{$user->trader->photo}}"
+                                                            <img src="{{env("PATH_WEB")}}{{$user->trader->photo}}"
                                                                 id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
                                                             @endif
                                                             
