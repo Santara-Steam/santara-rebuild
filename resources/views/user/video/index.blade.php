@@ -24,10 +24,7 @@
                                             {{-- <input class="form-control mr-sm-2" type="search" name="search_query"
                                                 placeholder="Search" aria-label="Search"> --}}
                                             <fieldset class="form-group">
-                                                <label for="filter" style="margin-right: 20px;
-                                                margin-left: -20px;
-                                                font-size: 16px;
-                                                font-weight: 600;">Filter</label>
+                                                
                                                 
                                                 <select class="form-control" name="search_query" id="filter"
                                                     onchange="if(this.value != 'kosong') { this.form.submit(); }">
