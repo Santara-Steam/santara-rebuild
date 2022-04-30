@@ -600,7 +600,7 @@
       }
 
       h4{
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
       .title-intable-saham{
         width: 50%;
