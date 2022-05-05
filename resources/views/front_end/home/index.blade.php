@@ -92,11 +92,20 @@
                 ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
                 where emiten_id = '.$np['id'].')')
                 ->first();
+                if($emj){
+
+                }else{
+                  $emj = new \stdClass();
+                  $emj->date = '2019-10-01 14:20:35';
+                  $emj->end_date = '2019-10-01 14:20:35';
+                  // $emj->date = $emj["date"];
+                  // $emj->end_date = $emj["end_date"];
+                }
                 ?>
-                {{-- @foreach ($now_playing as $np) --}}
                 <div class="item">
-
-
+                  
+                  
+                  {{-- @foreach ($now_playing as $np) --}}
                   <?php 
                                 // $mul=number_format(round($np->minimum_invest * $np->price,0),0,',','.');
                                 // $prog=round((round($np->terjual,0)/round($np->supply))*100,2);
@@ -983,7 +992,18 @@
         $emj = db::table('emiten_journeys')->select('*')->where('emiten_id',$np['id'])
                 ->whereRaw('created_at = (SELECT max(created_at) from emiten_journeys
                 where emiten_id = '.$np['id'].')')
-                ->first(); ?>
+                ->first(); 
+                
+                if($emj){
+
+        }else{
+          $emj = new \stdClass();
+          $emj->date = '2019-10-01 14:20:35';
+          $emj->end_date = '2019-10-01 14:20:35';
+          // $emj->date = $emj["date"];
+          // $emj->end_date = $emj["end_date"];
+        }
+        ?>
     <div class="modal fade" id="modal_now{{$np['id']}}" tabindex="-1" role="dialog" aria-labelledby="detail_now"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
