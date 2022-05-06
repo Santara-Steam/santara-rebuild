@@ -1,9 +1,9 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-    <link rel="canonical" href="https://santara.co.id/syarat-ketentuan-penerbit">
-    <link rel="apple-touch-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon.ico">
+    <link rel="canonical" href="https://old.santara.co.id/syarat-ketentuan-penerbit">
+    <link rel="apple-touch-icon" href="https://storage.googleapis.com/asset-santara/old.santara.co.id/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://storage.googleapis.com/asset-santara/old.santara.co.id/images/ico/favicon.ico">
     <link rel="stylesheet" href="https://use.typekit.net/juf5ftz.css">
     
     <main>
@@ -21,10 +21,10 @@
 <div class="container card-content">
 	<div class="card-body">
 		<div class="doc-tnc d-none d-sm-none d-xl-block">
-			<embed src="https://santara.co.id/uploads/document/tnc_penerbit.pdf" width="100%" height="900px" class="doc-tnc-iframe" type="application/pdf">
+			<embed src="https://old.santara.co.id/uploads/document/tnc_penerbit.pdf" width="100%" height="900px" class="doc-tnc-iframe" type="application/pdf">
 		</div>
 
-		<a style="display: block;margin-bottom: 20px; color:#fff; text-decoration:none" class="ff-a bold fs-20 text-center d-xl-none" href="https://santara.co.id/uploads/document/tnc_penerbit.pdf" download="tnc_penerbit">Download</a>
+		<a style="display: block;margin-bottom: 20px; color:#fff; text-decoration:none" class="ff-a bold fs-20 text-center d-xl-none" href="https://old.santara.co.id/uploads/document/tnc_penerbit.pdf" download="tnc_penerbit">Download</a>
 	</div>
 </div>
 <hr>        </div>
@@ -36,21 +36,21 @@
         <!-- <div class="container-fluid p-5 ff-m">
     <div class="row kontak-align">
         <div class="col-md-2 d-flex justify-content-center">
-            <img src="https://santara.co.id/assets/new-santara/img/logo/santara-white.svg" alt="logo santara" />
+            <img src="https://old.santara.co.id/assets/new-santara/img/logo/santara-white.svg" alt="logo santara" />
         </div>
         <div class="col-md-2 ff-m mt-kontak">
             <p class="fs-16 c-red">Cara Kerja</p>
-            <p><a href="https://santara.co.id/cara-investasi" class="fs-12 c-white" style="text-decoration:none">Cara Investasi</a></p>
+            <p><a href="https://old.santara.co.id/cara-investasi" class="fs-12 c-white" style="text-decoration:none">Cara Investasi</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <p class="fs-16 c-red">Tentang Kami</p>
             <p><a href="http://berita.santara.co.id" target="_blank" class="fs-12 c-white" style="text-decoration:none">Berita</a></p>
-            <p><a href="https://santara.co.id/career" target="_blank" class="fs-12 c-white" style="text-decoration:none">Karir</a></p>
+            <p><a href="https://old.santara.co.id/career" target="_blank" class="fs-12 c-white" style="text-decoration:none">Karir</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <p class="fs-16 c-red">Support</p>
-            <p><a href="https://santara.co.id/syarat-ketentuan-pemodal" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Pemodal</a></p>
-            <p><a href="https://santara.co.id/syarat-ketentuan-penerbit" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Penerbit</a></p>
+            <p><a href="https://old.santara.co.id/syarat-ketentuan-pemodal" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Pemodal</a></p>
+            <p><a href="https://old.santara.co.id/syarat-ketentuan-penerbit" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Penerbit</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <div class="col-12">
@@ -75,10 +75,10 @@
         <div class="col-md-2 ff-m">
             <div class="col-12 fs-16 c-red mt-kontak">Download</div>
             <div class="col-12 mt-3">
-                <a href="https://santara.co.id/android"><img src="https://santara.co.id/assets/new-santara/img/android-ios/play-store.svg" alt="playstore" /></a>
+                <a href="https://old.santara.co.id/android"><img src="https://old.santara.co.id/assets/new-santara/img/android-ios/play-store.svg" alt="playstore" /></a>
             </div>
             <div class="col-12 mt-3">
-                <a href="https://santara.co.id/ios"><img src="https://santara.co.id/assets/new-santara/img/android-ios/app-store.svg" alt="appstore" /></a>
+                <a href="https://old.santara.co.id/ios"><img src="https://old.santara.co.id/assets/new-santara/img/android-ios/app-store.svg" alt="appstore" /></a>
             </div>
         </div>
 

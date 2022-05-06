@@ -1,15 +1,15 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-    <link rel="canonical" href="https://santara.co.id/pertanyaan">
-    <link rel="apple-touch-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon.ico">
+    <link rel="canonical" href="https://old.santara.co.id/pertanyaan">
+    <link rel="apple-touch-icon" href="https://storage.googleapis.com/asset-santara/old.santara.co.id/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://storage.googleapis.com/asset-santara/old.santara.co.id/images/ico/favicon.ico">
     <link rel="stylesheet" href="https://use.typekit.net/juf5ftz.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="https://santara.co.id/app-assets/new-santara/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/app-assets/new-santara/bootstrap/css/bootstrap.css">
 
-    <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/new-pertanyaan.css?v=5.8.8">
+    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/new-santara/css/new-pertanyaan.css?v=5.8.8">
     <style>
         .menu-view-body .navbar-nav{
             padding: 0px 0px;
@@ -613,21 +613,21 @@
         <!-- <div class="container-fluid p-5 ff-m">
     <div class="row kontak-align">
         <div class="col-md-2 d-flex justify-content-center">
-            <img src="https://santara.co.id/assets/new-santara/img/logo/santara-white.svg" alt="logo santara" />
+            <img src="https://old.santara.co.id/assets/new-santara/img/logo/santara-white.svg" alt="logo santara" />
         </div>
         <div class="col-md-2 ff-m mt-kontak">
             <p class="fs-16 c-red">Cara Kerja</p>
-            <p><a href="https://santara.co.id/cara-investasi" class="fs-12 c-white" style="text-decoration:none">Cara Investasi</a></p>
+            <p><a href="https://old.santara.co.id/cara-investasi" class="fs-12 c-white" style="text-decoration:none">Cara Investasi</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <p class="fs-16 c-red">Tentang Kami</p>
             <p><a href="http://berita.santara.co.id" target="_blank" class="fs-12 c-white" style="text-decoration:none">Berita</a></p>
-            <p><a href="https://santara.co.id/career" target="_blank" class="fs-12 c-white" style="text-decoration:none">Karir</a></p>
+            <p><a href="https://old.santara.co.id/career" target="_blank" class="fs-12 c-white" style="text-decoration:none">Karir</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <p class="fs-16 c-red">Support</p>
-            <p><a href="https://santara.co.id/syarat-ketentuan-pemodal" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Pemodal</a></p>
-            <p><a href="https://santara.co.id/syarat-ketentuan-penerbit" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Penerbit</a></p>
+            <p><a href="https://old.santara.co.id/syarat-ketentuan-pemodal" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Pemodal</a></p>
+            <p><a href="https://old.santara.co.id/syarat-ketentuan-penerbit" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Penerbit</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <div class="col-12">
@@ -652,10 +652,10 @@
         <div class="col-md-2 ff-m">
             <div class="col-12 fs-16 c-red mt-kontak">Download</div>
             <div class="col-12 mt-3">
-                <a href="https://santara.co.id/android"><img src="https://santara.co.id/assets/new-santara/img/android-ios/play-store.svg" alt="playstore" /></a>
+                <a href="https://old.santara.co.id/android"><img src="https://old.santara.co.id/assets/new-santara/img/android-ios/play-store.svg" alt="playstore" /></a>
             </div>
             <div class="col-12 mt-3">
-                <a href="https://santara.co.id/ios"><img src="https://santara.co.id/assets/new-santara/img/android-ios/app-store.svg" alt="appstore" /></a>
+                <a href="https://old.santara.co.id/ios"><img src="https://old.santara.co.id/assets/new-santara/img/android-ios/app-store.svg" alt="appstore" /></a>
             </div>
         </div>
 

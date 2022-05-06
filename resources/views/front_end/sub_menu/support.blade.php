@@ -1,12 +1,12 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-    <link rel="canonical" href="https://santara.co.id/supported-by">
-    <link rel="apple-touch-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon.ico">
+    <link rel="canonical" href="https://old.santara.co.id/supported-by">
+    <link rel="apple-touch-icon" href="https://storage.googleapis.com/asset-santara/old.santara.co.id/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://storage.googleapis.com/asset-santara/old.santara.co.id/images/ico/favicon.ico">
     <link rel="stylesheet" href="https://use.typekit.net/juf5ftz.css">
     
-    <link rel="stylesheet" type="text/css" href="https://santara.co.id/app-assets/new-santara/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/app-assets/new-santara/bootstrap/css/bootstrap.css">
     <style>
         .menu-view-body .navbar-nav{
             padding: 0px 0px;
@@ -30,7 +30,7 @@
         </div>
         <div class="col-12 d-flex justify-content-evenly mt-5 mb-5">
                             <a href="https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/Siaran-Pers-OJK-Keluarkan-Izin-Penyelenggara-Layanan-Urun-Dana-Berbasis-Teknologi-Informasi-(Equity-Crowd-Funding)-.aspx" target="_blank" rel="noreferrer">
-                    <img height="90" hspace="40" class="mini-banner-home logo-oj lazyload" src="https://storage.googleapis.com/asset-santara/santara.co.id/supporter/Group 21594.png" style="height:90px;" alt="Berizin OJK" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image.png'">
+                    <img height="90" hspace="40" class="mini-banner-home logo-oj lazyload" src="https://storage.googleapis.com/asset-santara/old.santara.co.id/supporter/Group 21594.png" style="height:90px;" alt="Berizin OJK" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/old.santara.co.id/images/error/no-image.png'">
                 </a>
                     </div>
         <h2 class="ff-n text-center fs-18 mt-4 mb-4" style="color:#fff;">Didukung oleh:</h2>
@@ -59,21 +59,21 @@
         <!-- <div class="container-fluid p-5 ff-m">
     <div class="row kontak-align">
         <div class="col-md-2 d-flex justify-content-center">
-            <img src="https://santara.co.id/assets/new-santara/img/logo/santara-white.svg" alt="logo santara" />
+            <img src="https://old.santara.co.id/assets/new-santara/img/logo/santara-white.svg" alt="logo santara" />
         </div>
         <div class="col-md-2 ff-m mt-kontak">
             <p class="fs-16 c-red">Cara Kerja</p>
-            <p><a href="https://santara.co.id/cara-investasi" class="fs-12 c-white" style="text-decoration:none">Cara Investasi</a></p>
+            <p><a href="https://old.santara.co.id/cara-investasi" class="fs-12 c-white" style="text-decoration:none">Cara Investasi</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <p class="fs-16 c-red">Tentang Kami</p>
             <p><a href="http://berita.santara.co.id" target="_blank" class="fs-12 c-white" style="text-decoration:none">Berita</a></p>
-            <p><a href="https://santara.co.id/career" target="_blank" class="fs-12 c-white" style="text-decoration:none">Karir</a></p>
+            <p><a href="https://old.santara.co.id/career" target="_blank" class="fs-12 c-white" style="text-decoration:none">Karir</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <p class="fs-16 c-red">Support</p>
-            <p><a href="https://santara.co.id/syarat-ketentuan-pemodal" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Pemodal</a></p>
-            <p><a href="https://santara.co.id/syarat-ketentuan-penerbit" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Penerbit</a></p>
+            <p><a href="https://old.santara.co.id/syarat-ketentuan-pemodal" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Pemodal</a></p>
+            <p><a href="https://old.santara.co.id/syarat-ketentuan-penerbit" class="fs-12 c-white" style="text-decoration:none">Syarat dan Ketentuan Penerbit</a></p>
         </div>
         <div class="col-md-2 ff-m ">
             <div class="col-12">
@@ -98,10 +98,10 @@
         <div class="col-md-2 ff-m">
             <div class="col-12 fs-16 c-red mt-kontak">Download</div>
             <div class="col-12 mt-3">
-                <a href="https://santara.co.id/android"><img src="https://santara.co.id/assets/new-santara/img/android-ios/play-store.svg" alt="playstore" /></a>
+                <a href="https://old.santara.co.id/android"><img src="https://old.santara.co.id/assets/new-santara/img/android-ios/play-store.svg" alt="playstore" /></a>
             </div>
             <div class="col-12 mt-3">
-                <a href="https://santara.co.id/ios"><img src="https://santara.co.id/assets/new-santara/img/android-ios/app-store.svg" alt="appstore" /></a>
+                <a href="https://old.santara.co.id/ios"><img src="https://old.santara.co.id/assets/new-santara/img/android-ios/app-store.svg" alt="appstore" /></a>
             </div>
         </div>
 
