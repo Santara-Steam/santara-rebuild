@@ -72,37 +72,41 @@
                                             if(empty($picture[0])){
                                             $picture[0] = 'default1.png';
                                             }else{
-                                                $picture[0];
+                                                $picture[0] = str_replace("pralisting/emitens_pictures/", "", $picture[0]);
+                                                
                                             }
                                             if(empty($picture[1])){
                                                 $picture[1] = 'default2.png';
                                             }else{
-                                                $picture[1];
+                                              $picture[1] = str_replace("pralisting/emitens_pictures/", "", $picture[1]);
                                             }
                                             if(empty($picture[2])){
                                                 $picture[2] = 'default.png';
                                             }else{
-                                                $picture[2];
+                                              $picture[2] = str_replace("pralisting/emitens_pictures/", "", $picture[2]);
                                             }
                                             if(empty($picture[3])){
                                                 $picture[3] = 'default.png';
                                             }else{
-                                                $picture[3];
+                                              $picture[3] = str_replace("pralisting/emitens_pictures/", "", $picture[3]);
                                             }
                                             if(empty($picture[4])){
                                                 $picture[4] = 'default.png';
                                             }else{
-                                                $picture[4];
+                                                // $picture[4];
+                                                $picture[4] = str_replace("pralisting/emitens_pictures/", "", $picture[4]);
                                             }
                                             if(empty($picture[5])){
                                                 $picture[5] = 'default.png';
                                             }else{
-                                                $picture[5];
+                                                // $picture[5]
+                                                $picture[5] = str_replace("pralisting/emitens_pictures/", "", $picture[5]);
                                             }
                                             if(empty($picture[6])){
                                                 $picture[6] = 'default1.png';
                                             }else{
-                                                $picture[6];
+                                                // $picture[6];
+                                                $picture[6] = str_replace("pralisting/emitens_pictures/", "", $picture[6]);
                                             }
                                             if(empty($cs->trademark)){
                                                 $cs->trademark = $cs->company_name;
