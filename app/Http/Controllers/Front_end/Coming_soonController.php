@@ -40,7 +40,7 @@ class Coming_soonController extends Controller
                 // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
                 // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
                 ->groupBy('emitens.id')
-                ->orderby('vot','DESC')
+                ->orderby('vot','ASC')
                 ->get();
                 }else{
                     if($request->sort == 'desc'){
