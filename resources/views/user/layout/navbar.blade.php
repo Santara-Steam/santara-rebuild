@@ -172,7 +172,7 @@
                                     @else
                                     <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
                                         alt="Avatar" style="border-radius: 50%;width: " onerror="this.onerror=null;this.src='https://fire.santarax.com:3701{{Auth::user()->trader->photo}}'"/>
-                                        
+
                                     @endif
                                 </span>
                             </a>
@@ -196,7 +196,7 @@
                                     alt="Foto Profile" style="border-radius: 50%;padding:10px" />
                                 @else
                                 <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
-                                    alt="Foto Profile" style="border-radius: 50%;padding:10px;width: 200px" />
+                                    alt="Foto Profile" style="border-radius: 50%;padding:10px;width: 200px" onerror="this.onerror=null;this.src='https://fire.santarax.com:3701{{Auth::user()->trader->photo}}'"/>
                                 @endif
                                 <a class="dropdown-item" href="{{url('/edit_profile')}}/{{Auth::user()->id}}"><i
                                         class="ft-user"></i> Edit Profile</a>
