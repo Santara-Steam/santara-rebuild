@@ -30,7 +30,7 @@
         </div>
         <div class="col-12 d-flex justify-content-evenly mt-5 mb-5">
                             <a href="https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/Siaran-Pers-OJK-Keluarkan-Izin-Penyelenggara-Layanan-Urun-Dana-Berbasis-Teknologi-Informasi-(Equity-Crowd-Funding)-.aspx" target="_blank" rel="noreferrer">
-                    <img height="90" hspace="40" class="mini-banner-home logo-oj lazyload" src="https://storage.googleapis.com/asset-santara/old.santara.co.id/supporter/Group 21594.png" style="height:90px;" alt="Berizin OJK" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/old.santara.co.id/images/error/no-image.png'">
+                    <img height="90" hspace="40" class="mini-banner-home logo-oj lazyload" src="https://storage.googleapis.com/asset-santara/santara.co.id/supporter/Group 21594.png" style="height:90px;" alt="Berizin OJK" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/old.santara.co.id/images/error/no-image.png'">
                 </a>
                     </div>
         <h2 class="ff-n text-center fs-18 mt-4 mb-4" style="color:#fff;">Didukung oleh:</h2>
