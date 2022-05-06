@@ -28,7 +28,7 @@
                          <div class="row-carousel">
                              <div style=" margin-top: 45px;">
                                  <div class="row body-carousel">
-                                     <img class="img-kutip" src="{{asset('public/assets/new-santara/img/kutip.svg')}}">
+                                     <img class="img-kutip" src="https://old.santara.co.id/assets/new-santara/img/kutip.svg">
                                      <div style="display: flex; align-items: center; border-radius: 1rem;" class="bg-app">
                                          <div style="padding: 3rem; text-align: center; padding-bottom:30px;">
                                              <img class="rounded-circle" height="130px" width="130px" src="{{ config('global.STORAGE_GOOGLE').'success_story/'.$row->image }}" width="100%" style="margin-bottom: 1rem;position:absolute;top:0px;margin-left:-4rem;border: solid #707070; height:130px;">
