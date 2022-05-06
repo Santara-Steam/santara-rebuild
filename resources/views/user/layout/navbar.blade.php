@@ -171,7 +171,7 @@
                                         alt="Avatar" style="border-radius: 50%;" />
                                     @else
                                     <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
-                                        alt="Avatar" style="border-radius: 50%;width: " />
+                                        alt="Avatar" style="border-radius: 50%;width: " onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png'"/>
                                     @endif
                                 </span>
                             </a>
