@@ -2,7 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="https://use.typekit.net/juf5ftz.css">
-<link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/form-daftarkan-bisnis.css" />
+<link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/new-santara/css/form-daftarkan-bisnis.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     crossorigin="anonymous">
 
@@ -10,7 +10,7 @@
     style="margin-top: 96px;">
     <div class="row col-12 col-md-9" style="margin-top: 70px;">
         <div class="col-12 align-self-end">
-            <img src="https://santara.co.id/assets/new-santara/img/logo/logo_header.png" class="img-fluid" width="270px"
+            <img src="https://old.santara.co.id/assets/new-santara/img/logo/logo_header.png" class="img-fluid" width="270px"
                 alt="logo santara" />
         </div>
         <div class="col-12 mt-4 desc-header-daftarkan-bisnis">
@@ -822,7 +822,7 @@ $('#crop').click(function(){
                 {
                     // let text = text.replace("public/upload/", "");
                     $modal.modal('hide');
-                    $('#uploaded_image').attr('src', '{{env("PATH_WEB")}}'+data);
+                    $('#uploaded_image').attr('src', '{{env("PATH_WEB_PROD")}}'+data);
                     // $('#upload_image').val(data);
                     $('#logo').val(data);
                     // $('#upload_image').attr('src', data);
@@ -901,7 +901,7 @@ $('#crop2').click(function(){
                 {
                     // let text = text.replace("public/upload/", "");
                     $modal2.modal('hide');
-                    $('#uploaded_image2').attr('src', '{{env("PATH_WEB")}}'+data);
+                    $('#uploaded_image2').attr('src', '{{env("PATH_WEB_PROD")}}'+data);
                     // $('#upload_image').val(data);
                     $('#cover').val(data);
                     // $('#upload_image').attr('src', data);
@@ -975,7 +975,7 @@ $('#crop3').click(function(){
                 {
                     // let text = text.replace("public/upload/", "");
                     $modal3.modal('hide');
-                    $('#uploaded_image3').attr('src', '{{env("PATH_WEB")}}'+data);
+                    $('#uploaded_image3').attr('src', '{{env("PATH_WEB_PROD")}}'+data);
                     // $('#upload_image').val(data);
                     $('#galeri').val(data);
                     // $('#upload_image').attr('src', data);
@@ -1051,7 +1051,7 @@ $('#crop4').click(function(){
                 {
                     // let text = text.replace("public/upload/", "");
                     $modal4.modal('hide');
-                    $('#uploaded_image4').attr('src', '{{env("PATH_WEB")}}'+data);
+                    $('#uploaded_image4').attr('src', '{{env("PATH_WEB_PROD")}}'+data);
                     // $('#upload_image').val(data);
                     $('#owner').val(data);
                     // $('#upload_image').attr('src', data);
@@ -1126,7 +1126,7 @@ $('#crop5').click(function(){
                 {
                     // let text = text.replace("public/upload/", "");
                     $modal5.modal('hide');
-                    $('#uploaded_image5').attr('src', '{{env("PATH_WEB")}}'+data);
+                    $('#uploaded_image5').attr('src', '{{env("PATH_WEB_PROD")}}'+data);
                     // $('#upload_image').val(data);
                     $('#galeri2').val(data);
                     // $('#upload_image').attr('src', data);
@@ -1201,7 +1201,7 @@ $('#crop6').click(function(){
                 {
                     // let text = text.replace("public/upload/", "");
                     $modal6.modal('hide');
-                    $('#uploaded_image6').attr('src', '{{env("PATH_WEB")}}'+data);
+                    $('#uploaded_image6').attr('src', '{{env("PATH_WEB_PROD")}}'+data);
                     // $('#upload_image').val(data);
                     $('#galeri3').val(data);
                     // $('#upload_image').attr('src', data);

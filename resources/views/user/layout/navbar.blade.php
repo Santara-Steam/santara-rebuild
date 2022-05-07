@@ -7,7 +7,7 @@
                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                             class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item mr-auto">
-                    <a class="navbar-brand" href="{{url('/')}}">
+                    <a class="navbar-brand d-flex" href="{{url('/')}}">
                         {{-- <img class="brand-logo" alt="modern admin logo" style="width:100%"
                             src="{{asset('public')}}/assets/images/logo_header.png"> --}}
                         <img class="brand-logo" alt="modern admin logo" style="width:auto"
@@ -171,7 +171,7 @@
                                         alt="Avatar" style="border-radius: 50%;" />
                                     @else
                                     <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
-                                        alt="Avatar" style="border-radius: 50%;width: " onerror="this.onerror=null;this.src='https://fire.santarax.com:3701{{Auth::user()->trader->photo}}'"/>
+                                        alt="Avatar" style="border-radius: 50%;width: " onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{Auth::user()->trader->photo}}'"/>
 
                                     @endif
                                 </span>
@@ -196,7 +196,7 @@
                                     alt="Foto Profile" style="border-radius: 50%;padding:10px" />
                                 @else
                                 <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
-                                    alt="Foto Profile" style="border-radius: 50%;padding:10px;width: 200px" onerror="this.onerror=null;this.src='https://fire.santarax.com:3701{{Auth::user()->trader->photo}}'"/>
+                                    alt="Foto Profile" style="border-radius: 50%;padding:10px;width: 200px" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{Auth::user()->trader->photo}}'"/>
                                 @endif
                                 <a class="dropdown-item" href="{{url('/edit_profile')}}/{{Auth::user()->id}}"><i
                                         class="ft-user"></i> Edit Profile</a>

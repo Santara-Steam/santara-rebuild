@@ -239,6 +239,14 @@
           </span>
         </div>
       </a>
+      <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
+        <div class="address-1 inter-medium-eerie-black-14px">
+          <span class="tx-icon inter-medium-eerie-black">
+            <span class="tx-icon"> {{$ccmt}} <span class="com-u">Komentar</span></span>
+          </span>
+        </div>
+      </a>
       @else
       <a class="button-5 clike" data-id={{$emt->id}} id="clike" style="cursor: pointer;">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
@@ -273,7 +281,6 @@
           </span>
         </div>
       </a> --}}
-      @endguest
       <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
         data-target="#modal{{$emt->id}}">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
@@ -283,6 +290,8 @@
           </span>
         </div>
       </a>
+      @endguest
+
       <a class="button-5" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
         data-target="#modalShareButton{{$emt->id}}">
         <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
@@ -507,13 +516,13 @@
           </div>
           <div class="row mt-3 mb-3 d-flex justify-content-center ">
               <!-- <div class="col-4 col-md-2">
-                      <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
+                      <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
                       <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
                   </div> -->
               <div class="col-4 col-md-2">
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{url('detail-coming-soon')}}/{{$emt->id}}"
                   id="shareFacebook" target="_blank" style="text-decoration: none;">
-                  <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/facebook.png"
+                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/facebook.png"
                     class="lazyload">
                   <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
                 </a>
@@ -521,7 +530,7 @@
               <div class="col-4 col-md-2">
                 <a href="https://twitter.com/intent/tweet?url={{url('detail-coming-soon')}}/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
                   id="shareTwitter" style="text-decoration: none;" target="_blank">
-                  <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/twitter.png"
+                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/twitter.png"
                     class="lazyload">
                   <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
                 </a>
@@ -529,19 +538,19 @@
               <div class="col-4 col-md-2">
                 <a href="https://telegram.me/share/url?url={{url('detail-coming-soon')}}/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
                   id="shareTelegram" target="_blank" style="text-decoration: none;">
-                  <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/telegram.png"
+                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/telegram.png"
                     class="lazyload">
                   <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
                 </a>
               </div>
               <!-- <div class="col-4 col-md-2">
-                      <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
+                      <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
                       <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
                   </div> -->
               <div class="col-4 col-md-2">
                 <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A {{url('detail-coming-soon')}}/{{$emt->id}}"
                   id="shareWhatsapp" target="_blank" style="text-decoration: none;">
-                  <img width="50px" src="https://santara.co.id/assets/new-santara/img/sosmed/whatsapp.png"
+                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/whatsapp.png"
                     class="lazyload">
                   <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
                 </a>
@@ -761,7 +770,30 @@
 
   }
   </script>
+<script type='text/javascript'>
+  $(document).ready(function(){
 
+    $('#cmt').click(function(){
+      //  console.log('tes');
+        var id = $(this).data('id');
+
+        // AJAX request
+        $.ajax({
+            url: '{{url("getmodaldata")}}/'+id,
+            type: 'get',
+            data: {id: id},
+            success: function(cmt){ 
+                // Add response in Modal body
+                $('.comm').html(cmt); 
+
+                // Display Modal
+                // $('#empModal').modal('show'); 
+                // console.log(cmt);
+            }
+        });
+    });
+});
+</script>
 <script type='text/javascript'>
   $(document).ready(function(){
   $("#send{{$emt->id}}").click(function(){

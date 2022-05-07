@@ -431,18 +431,28 @@
                                   </form> --}}
 
                                   @endguest
-
-
-                                  <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
-                                    data-target="#modal{{$cs->id}}" class="cmt">
+                                  @guest
+                                  <a href="{{route('login')}}" style="cursor: pointer">
                                     <div class="icon-and-supporting-text-2">
                                       <i class="icon-com iconheart fas fa-comments"
-                                        style="color: #fff; font-size: 18px;"></i>
+                                      style="color: #fff; font-size: 18px;"></i>
                                       <div class="address-2 inter-normal-alabaster-10px">
                                         <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
                                       </div>
                                     </div>
                                   </a>
+                                  @else
+                                  <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
+                                    data-target="#modal{{$cs->id}}" class="cmt">
+                                    <div class="icon-and-supporting-text-2">
+                                      <i class="icon-com iconheart fas fa-comments"
+                                      style="color: #fff; font-size: 18px;"></i>
+                                      <div class="address-2 inter-normal-alabaster-10px">
+                                        <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                  @endguest
                                   <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
                                     data-target="#modalShareButton{{$cs->id}}">
                                     <div class="icon-and-supporting-text-2">

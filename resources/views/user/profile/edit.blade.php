@@ -37,7 +37,7 @@
                                                             <img src="{{asset('public')}}/default1.png"
                                                                 id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
                                                             @else
-                                                            <img src="{{env("PATH_WEB")}}{{$user->trader->photo}}"
+                                                            <img src="{{env("PATH_WEB_PROD")}}{{$user->trader->photo}}"
                                                                 id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
                                                             @endif
                                                             
@@ -196,7 +196,7 @@
                     {
                         // let text = text.replace("public/upload/", "");
                         $modal.modal('hide');
-                        $('#uploaded_image').attr('src', '{{env("PATH_WEB")}}'+data);
+                        $('#uploaded_image').attr('src', '{{env("PATH_WEB_PROD")}}'+data);
                         // $('#upload_image').val(data);
                         $('#profile').val(data);
                         // $('#upload_image').attr('src', data);
