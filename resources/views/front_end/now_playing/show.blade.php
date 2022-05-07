@@ -305,7 +305,7 @@
         </div>
       </div> --}}
       <div class="col-lg-6 col-sm-6 container">
-        <div class="info-deviden border-1px-cape-cod" style="width: 300px; height: 330px;">
+        <div class="info-deviden border-1px-cape-cod" style="width: 300px; height: 380px;">
           <div class="pembagian-deviden-1 inter-normal-delta-12px">
             <span class="inter-normal-delta-12px">Mulai dari</span>
           </div>
@@ -369,6 +369,7 @@
             @if ($status->title == 'Pra Penawaran Saham')
             @elseif ($status->title == 'Penawaran Saham')
             <a href="{{route('login')}}" class="btn btn-danger btn-block">Beli Saham</a>
+            <a target="blank" class="btn btn-light btn-block" href="{{ config('global.STORAGE_GOOGLE').'token/'.$emt->prospektus }}">Lihat File</a>
             @endif
             @else
             @if ($status->title == 'Pra Penawaran Saham')
@@ -376,6 +377,7 @@
             @elseif ($status->title == 'Penawaran Saham')
             <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal">Beli
               Saham</button>
+              <a target="blank" class="btn btn-light btn-block" href="{{ config('global.STORAGE_GOOGLE').'token/'.$emt->prospektus }}">Lihat File</a>
             @endif
             @endguest
             </div>
