@@ -22,6 +22,13 @@
                             <div class="col-md-12">
                                 <form class="form-login" id="form_login" method="POST" action="{{ route('password.email') }}">
                                     @csrf
+                                    @if (session('status'))
+                                        <div class="form-group mb-3">
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('status') }}
+                                            </div>
+                                        </div>
+                                    @endif
                                     <div class="form-group mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>

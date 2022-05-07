@@ -22,6 +22,7 @@
                             <div class="col-md-12">
                                 <form class="form-login" id="form_login" method="POST" action="{{ route('password.update') }}">
                                     @csrf
+                                    <input type="hidden" name="token" value="{{ $token }}">
                                     <div class="form-group mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
