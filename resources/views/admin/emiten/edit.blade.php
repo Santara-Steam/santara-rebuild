@@ -483,6 +483,12 @@
                                                         name="ig" class="form-control" placeholder="Instagram"
                                                         value="{{ $emiten->instagram }}">
                                                 </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="companyName">Dynamic Link</label>
+                                                    <input type="text" id="companyName"
+                                                        name="dynamic_link" class="form-control" placeholder="Dynamic Link"
+                                                        value="{{ $emiten->dynamic_link }}">
+                                                </div>
 
                                                 <hr />
                                                 <div class="form-group col-md-12 mb-0">

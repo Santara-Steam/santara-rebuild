@@ -386,6 +386,9 @@ class EmitenController extends Controller
         }if(isset($request->technical_ability)){
             $em->technical_ability = $request->technical_ability;
         }
+        if(isset($request->dynamic_link)){
+            $em->dynamic_link = $request->dynamic_link;
+        }
 
         if($request->hasFile("prospektus")){
             $fileProspektus = fopen($request->file('prospektus')->getPathName(), 'r');
@@ -420,8 +423,8 @@ class EmitenController extends Controller
 
     public function edit(emiten $emiten,$id){
         $emiten = emiten::where('emitens.id',$id)->leftJoin('categories as ct', 'ct.id', '=', 'emitens.category_id')
-            ->join('traders as t', 't.id', '=', 'emitens.trader_id')
-            ->join('users as u', 'u.id', '=', 't.user_id')
+            ->leftJoin('traders as t', 't.id', '=', 'emitens.trader_id')
+            ->leftJoin('users as u', 'u.id', '=', 't.user_id')
             ->leftJoin('regencies as r', 'r.id', '=', 'emitens.regency_id')
             ->select('emitens.*', 'ct.category', 'u.email', 'r.name as kota')->first();
         $picture = explode(',',$emiten->pictures);
@@ -882,6 +885,7 @@ class EmitenController extends Controller
         $emiten->office_status = $request->office_status;
         $emiten->level_of_business_competition = $request->level_of_business_competition;
         $emiten->managerial_ability = $request->managerial_ability;
+        $emiten->dynamic_link = $request->dynamic_link;
         $emiten->technical_ability = $request->technical_ability;
         if($request->hasFile("prospektus")){
             $fileProspektus = fopen($request->file('prospektus')->getPathName(), 'r');
