@@ -77,8 +77,8 @@
                 $tersisa_percentage = number_format($tersisa / $np['supply'] * 100, 2, ',', '.');
                 $tersisa_total = number_format($tersisa, 0, ',', '.');
                 $tersisa_total_rp = number_format($tersisa * $np['price'], 0, ',', '.');
-                $terjual_percentage_f = number_format($terjual_percentage, 3, '.', ',');
-                $terjual_percentage = number_format($terjual_percentage, 3, ',', '.');
+                $terjual_percentage_f = number_format($terjual_percentage, 2, '.', ',');
+                $terjual_percentage = number_format($terjual_percentage, 2, ',', '.');
                 $terjual_total = number_format($terjual, 0, ',', '.');
                 $terjual_total_rp = number_format($terjual * $np['price'], 0, ',', '.');
                 if (($now > $start) && ($now < $finish)) {

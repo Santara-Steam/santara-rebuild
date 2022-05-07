@@ -66,8 +66,8 @@
                                                 role="alert">
                                                 <div class="row">
                                                     <div class="col-12 col-md-4 d-flex justify-content-center">
-                                                        <img src="https://storage.googleapis.com/asset-santara-staging/santara.co.id/token/{{$picture[0]}}"
-                                                            onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara-staging/santara.co.id/images/error/no-image.png';"
+                                                        <img src="{{ENV('PATH_WEB')}}{{$picture[0]}}"
+                                                            onerror="this.onerror=null;this.src='{{ENV('PATH_WEB_PROD')}}{{$picture[0]}}';"
                                                             class="payment-box-img" width="80" height="80">
                                                     </div>
                                                     <div class="col-12 col-md-8 text-left ff-m" style="padding: 10px;">
@@ -108,14 +108,17 @@
                                                 <!-- WALLET -->
                                                 <div class="mt-1">
                                                     {{-- <button class="btn btn-primary" disabled>tes</button> --}}
-                                                        <a class="link-checkout-pembayaran"
-                                                            id="cowallet"
-                                                            
-                                                            @if ($lembar_saham*$emiten->price > Auth::user()->trader->saldo->balance)
+                                                    <a class="link-checkout-pembayaran"
+                                                    
+                                                            @if (($lembar_saham*$emiten->price) > Auth::user()->trader->saldo->balance)
                                                             style="pointer-events: none;
                                                             cursor: default;
                                                             text-decoration: none;
                                                             color: black;"
+
+                                                            @else
+                                                            id="cowallet"
+                                                            
                                                             @endif
                                                             >
                                                             <div class="card-body payment-method-box">
@@ -127,7 +130,7 @@
                                                                     </div>
                                                                     <div class="col-md-8 col-9 bank-title my-auto">
                                                                         <div>
-                                                                            <span>Rp 8.293.304 </span>
+                                                                            <span>Rp {{number_format(Auth::user()->trader->saldo->balance,0,',','.')}} </span>
                                                                         </div>
                                                                         <div><b>DOMPET</b></b></div>
                                                                         <input type="hidden" name="wallet" id="wallet"
