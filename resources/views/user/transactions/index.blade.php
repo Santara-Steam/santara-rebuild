@@ -64,7 +64,7 @@
                                                                     style="align-content: center;justify-content: flex-start;">
                                                                     <div class="d-flex row">
                                                                         <div class="col-6 col-sm-6 col-md-2"><img
-                                                                                src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
+                                                                                src="{{env("PATH_WEB_PROD")}}{{$picture[0]}}"
                                                                                 class="img-fluid"></div>
                                                                         <div class="col-md-4">
                                                                             <div style="font-size:18px"><b>({{$item->code_emiten}}) {{$item->trademark}}</b>
@@ -236,7 +236,7 @@
                                                                                         style="align-content: center;justify-content: flex-start;">
                                                                                         <div class="d-flex row">
                                                                                             <div class="col-md-2"><img
-                                                                                                    src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
+                                                                                                    src="{{env("PATH_WEB_PROD")}}{{$picture[0]}}"
                                                                                                     class="img-fluid"></div>
                                                                                             <div class="col-md-5">
                                                                                                 <div
@@ -366,7 +366,7 @@
                                                                     style="align-content: center;justify-content: flex-start;">
                                                                     <div class="d-flex row">
                                                                         <div class="col-6 col-sm-6 col-md-2"><img
-                                                                                src="{{env("STORAGE_GOOGLE")}}token/{{$picture[0]}}"
+                                                                                src="{{env("PATH_WEB_PROD")}}{{$picture[0]}}"
                                                                                 class="img-fluid"></div>
                                                                         <div class="col-6 col-sm-6 col-md-5">
                                                                             <div
