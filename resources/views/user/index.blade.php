@@ -13,6 +13,8 @@
                         <p>Platform Equity Crowdfunding pertama yang berizin dan diawasi Otoritas Jasa Keuangan berdasarkan Surat Keputusan Nomor: KEP-59/D.04/2019.</p>
                         {{-- {{Session::get('pwd')}} --}}
                         {{-- {{Session::get('token')}} --}}
+                        {{-- {{Session::get('refreshToken')}} --}}
+                        {{-- {{Session::get("secondary_market['urlMarket']")}} --}}
                     </div>
                 </div>
                 @include('user.is_kyc')
