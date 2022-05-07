@@ -5,8 +5,8 @@
       <div class="bg-3" style="margin-top: 96px;">
         <div class="banner_section">
             <div class="container" style="margin-top: 60px">
-               <div class="section">
-                  <div class="header-dan-supporting-text">
+               <div class="section row">
+                  <div class="header-dan-supporting-text col-lg-6">
                     <div class="tx-bn inter-bold-alabaster-48px">
                       <span class="text-urun inter-bold-alabaster">Langkah Sederhana Memulai Investasi di Santara</span>
                     </div>
@@ -15,10 +15,14 @@
                         >Investasi tidak perlu rumit, siapapun bisa berinvestasi.</span
                       >
                     </div>
+                    <div class="actions2"> 
+                      <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}">Mulai Investasi</a>
+                </div>
                   </div>
-                  <div class="actions2"> 
-                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}">Mulai Investasi</a>
+                  <div class="col-lg-6 content-cinv-img" style="padding: 2rem; text-align: right;">
+                    <img src="https://old.santara.co.id/assets/new-santara/img/Group 20563.png" class="responsive-img lazyload">
                   </div>
+                  
                 </div>
               </div>
           </div>
