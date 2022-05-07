@@ -134,7 +134,7 @@ class HomeController extends Controller
             // ->where('emiten_journeys.title','=','Pra Penawaran Saham')
             // ->leftjoin('emiten_comments as ec','ec.emiten_id','=','emitens.id')
             ->groupBy('emitens.id')
-            ->orderby('vot','DESC')
+            ->orderby('created_at','DESC')
             ->limit(12)
             ->get()
             ;

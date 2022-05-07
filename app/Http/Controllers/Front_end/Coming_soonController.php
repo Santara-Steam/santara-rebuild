@@ -285,6 +285,8 @@ class Coming_soonController extends Controller
         // where emiten_id = '.$id.')')
         // ->first();
         // dd($emt->id);
+        $emtp = db::table('emitens_pictures')->where('emitens_id',$id)->get();
+
         if(Auth::user()){
 
             $value = db::table('emiten_votes')->where('emiten_id',$emt->id)
@@ -295,7 +297,7 @@ class Coming_soonController extends Controller
             $value = 0;
         }
 
-        return view('front_end/coming_soon/show',compact('emt','clike','cvote','ccmt','value'));
+        return view('front_end/coming_soon/show',compact('emt','clike','cvote','ccmt','value','emtp'));
     }
 
     /**

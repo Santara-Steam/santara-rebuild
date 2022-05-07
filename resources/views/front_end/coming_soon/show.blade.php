@@ -1,21 +1,30 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-<?php 
+                              <?php 
                               $picture = explode(',',$emt->pictures);
                                             if(empty($picture[0])){
-                                            $picture[0] = 'default1.png';
+                                              $picture[0] = 'default1.png';
+                                              // $emtp =
                                             }else{
                                                 $picture[0] = str_replace("pralisting/emitens_pictures/", "", $picture[0]);
                                                 
                                             }
                                             if(empty($picture[1])){
+                                              
                                                 $picture[1] = 'default2.png';
+                                                
                                             }else{
                                               $picture[1] = str_replace("pralisting/emitens_pictures/", "", $picture[1]);
                                             }
                                             if(empty($picture[2])){
-                                                $picture[2] = 'default.png';
+                                                // $picture[2] = 'default.png';
+                                                if (empty($emt->owner_picture)) {
+                                                $picture[2] = 'default2.png';
+                                                # code...
+                                                }else{
+                                                  $picture[2] = str_replace("pralisting/emitens_pictures/", "", $emt->owner_picture);
+                                                }
                                             }else{
                                               $picture[2] = str_replace("pralisting/emitens_pictures/", "", $picture[2]);
                                             }
@@ -43,7 +52,7 @@
                                                 $picture[6] = str_replace("pralisting/emitens_pictures/", "", $picture[6]);
                                             }
 
-                              if(empty($emt->trademark)){
+                                            if(empty($emt->trademark)){
                                                 $emt->trademark = $emt->company_name;
                                             }else{
                                                 $emt->trademark;
@@ -51,7 +60,7 @@
                               ?>
 <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
-<div class="banner_bg_main" style="background-image: url({{env("PATH_WEB")}}{{$picture[0]}}); margin-top: 96px;">
+<div class="banner_bg_main" style="background-image: url('{{env("PATH_WEB")}}{{$picture[0]}}'); margin-top: 96px;">
   <div class="banner_section layout_padding">
     <div class="container" style="margin-top: 15px;">
       <div class="section">
@@ -293,14 +302,21 @@
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     @endif
+    @if ($picture[3] == 'default.png')
+
+    @else
     <div class="gallery">
       <div class="gallery-1 inter-bold-alabaster-24px"><span class="inter-bold-alabaster-24px">Gallery</span></div>
     </div>
+    @endif
   </div>
 </div>
 <!-- fashion section end -->
 <!-- electronic section end -->
 <!-- jewellery  section start -->
+@if ($picture[3] == 'default.png')
+
+@else
 <div class="fashion_section">
   <div class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -344,6 +360,7 @@
 
   </div>
 </div>
+@endif
 
 
 </div>
