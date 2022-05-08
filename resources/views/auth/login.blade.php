@@ -27,15 +27,25 @@
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
                                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                         </div>
-
                                     </div>
+                                    @error('email')
+                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                    @enderror
                                     <div class="form-group mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
                                             <span class="input-group-text" style="background-color: #fff;"><i id="eye" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
-                                            
                                         </div>
+                                    </div>
+                                    @error('password')
+                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-group mb-3">
+                                        <input type="hidden" name="g-recaptcha-response" id="recaptcha">
+                                        @error('g-recaptcha-response')
+                                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="row m-0 mt-4">
                                         <button class="btn btn-danger" type="submit">
@@ -92,7 +102,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('recaptchav3.sitekey') }}"></script>
     <script>
+             grecaptcha.ready(function() {
+                 grecaptcha.execute('{{ config('recaptchav3.sitekey') }}', {action: 'login'}).then(function(token) {
+                    if (token) {
+                      document.getElementById('recaptcha').value = token;
+                    }
+                 });
+             })
         $(document).ready(function () {
             $('#eye').click(function () {
                 $('#password').attr('type', $('#password').is(':password') ? 'text' : 'password');

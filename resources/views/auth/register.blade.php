@@ -57,6 +57,14 @@
                                             <span class="input-group-text" style="background-color: #fff;"><i id="eye2" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
                                         </div>
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <div class="form-group">
+                                            <input type="hidden" name="g-recaptcha-response" id="recaptcha">
+                                        </div>
+                                        @error('g-recaptcha-response')
+                                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                     <div class="row m-0 mt-4">
                                         <button class="btn btn-danger" type="submit">
                                             <span class="btnLabel">Daftar</span>
@@ -115,7 +123,15 @@
     <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/login.css?v=5.8.8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://santara.co.id/app-assets/new-santara/vendors/intlTelInput/js/intlTelInput.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('recaptchav3.sitekey') }}"></script>
     <script>
+             grecaptcha.ready(function() {
+                 grecaptcha.execute('{{ config('recaptchav3.sitekey') }}', {action: 'register'}).then(function(token) {
+                    if (token) {
+                      document.getElementById('recaptcha').value = token;
+                    }
+                 });
+             })
         $(document).ready(function () {
             var iti = window.intlTelInput(phone, {
                 formatOnDisplay: true,

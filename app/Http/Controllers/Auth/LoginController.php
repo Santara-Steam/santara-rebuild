@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -21,6 +22,28 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|max:255|email',
+            'password' => 'required',
+            'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
+        ]);
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // Success
+            if (Auth::user()->role_id == 2) {
+                return redirect('user');
+            } else if (Auth::user()->role_id == 1) {
+                return redirect('admin');
+            } else {
+                return '/';
+            }
+        } else {
+            return redirect()->back();
+        }
+
+    }
 
     /**
      * Where to redirect users after login.
