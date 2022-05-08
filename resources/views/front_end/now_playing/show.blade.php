@@ -1137,4 +1137,7 @@
   @endsection
 
   @section('style')
-  @endsection
+  <style>
+    
+  </style>
+@endsection
