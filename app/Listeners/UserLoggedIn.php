@@ -70,7 +70,7 @@ class UserLoggedIn
                 // $body = json_decode($responseBody, true);
                 // // echo json_encode(count($body));
                 // echo json_encode(['msg' => isset($body['message']) ?  $body['message'] : 'Server error ' . $exception->getResponse()->getStatusCode()]);
-            app('request')->session()->put('token', $exception);
+            app('request')->session()->put('token', 'fail');
 
         }
     }
