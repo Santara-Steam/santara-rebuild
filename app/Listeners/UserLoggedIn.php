@@ -47,7 +47,6 @@ class UserLoggedIn
             if ($response->getStatusCode() == 200) {
                 $result = json_decode($response->getBody()->getContents(), TRUE);
                 app('request')->session()->put('token', $result['token']['token']);
-                app('request')->session()->put('refreshToken', $result['token']['refreshToken']);
 
             }
         } catch (\Exception $exception) {
