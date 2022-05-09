@@ -270,4 +270,17 @@ class TraderController extends Controller
     public function user_deviden(){
         return view('user.deviden.index');
     }
+
+    public function email_verify($uuid){
+        // echo $uuid;
+        $user = user::where('uuid',$uuid)->first();
+        $user->is_verified = 1;
+        $user->save();
+        // dd($user);
+        $notif = array(
+            'message' => 'Verifikasi E-mail Berhasil!! Silahkan Login',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('login')->with($notif);
+    }
 }

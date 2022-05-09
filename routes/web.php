@@ -71,6 +71,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin']], functi
 });
 
 Route::get('pin',[App\Http\Controllers\TraderController::class, 'pinv'])->name('pinv');
+Route::get('/login/verify_email/{uuid}',[App\Http\Controllers\TraderController::class, 'email_verify']);
 Route::post('pin_post',[App\Http\Controllers\TraderController::class, 'pin']);
 
 Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);
