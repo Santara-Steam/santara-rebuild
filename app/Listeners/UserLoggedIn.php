@@ -49,7 +49,7 @@ class UserLoggedIn
                 app('request')->session()->put('token', $result['token']['token']);
                 app('request')->session()->put('refreshToken', $result['token']['refreshToken']);
 
-                $photo_url = config('global.BASE_API_FILE') . $this->session->user->photo;
+                $photo_url = config('global.BASE_API_FILE') . Auth::user()->trader->photo;
                   // market session
                   $market_url = json_encode([
                     'token' => $result['token']['token'],
@@ -70,7 +70,7 @@ class UserLoggedIn
                 // $body = json_decode($responseBody, true);
                 // // echo json_encode(count($body));
                 // echo json_encode(['msg' => isset($body['message']) ?  $body['message'] : 'Server error ' . $exception->getResponse()->getStatusCode()]);
-            app('request')->session()->put('token', 'fail');
+            app('request')->session()->put('token', $exception);
 
         }
     }
