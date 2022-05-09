@@ -83,7 +83,7 @@ class LoginController extends Controller
 
             }
         } catch (\Exception $exception) {
-            app('request')->session()->put('token', $exception);
+            app('request')->session()->put('token', 'fail');
 
         }
     }
