@@ -12,6 +12,7 @@
                         <h4 style="font-weight: 800;">Welcome {{Auth::user()->trader->name}}!</h4>
                         <p>Platform Equity Crowdfunding pertama yang berizin dan diawasi Otoritas Jasa Keuangan berdasarkan Surat Keputusan Nomor: KEP-59/D.04/2019.</p>
                         {{-- {{Session::get('pwd')}} --}}
+                        {{-- {{Session::get('test')}} --}}
                         {{-- {{Session::get('token')}} --}}
                         {{-- {{Session::get('refreshToken')}} --}}
                         {{-- {{Session::get("secondary_market['urlMarket']")}} --}}
@@ -66,11 +67,9 @@
                                               <td><h4 style="font-weight: 600;">
                                                 Rp. 
                                                 <span style="float: right">
-                                                @if ($asset)
-                                                {{number_format($asset->amo,0,',','.')}}
-                                                @else
-                                                0
-                                                @endif
+                                                
+                                                {{number_format($port['total_saham'],0,',','.')}}
+                                                
                                               </span>
                                               </h4></td>
                                             </tr>
@@ -80,11 +79,9 @@
                                               <td><h4 style="font-weight: 600;">
                                                 Rp. 
                                                 <span style="float: right">
-                                                @if ($asset)
-                                                {{number_format(Auth::user()->trader->saldo->balance+$asset->amo, 0, ',', '.')}}
-                                                @else
-                                                {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}
-                                                @endif
+                                                
+                                                {{number_format(Auth::user()->trader->saldo->balance+$port['total_saham'], 0, ',', '.')}}
+                                                
                                               </span>
                                               </h4></td>
                                             </tr>
@@ -126,35 +123,35 @@
                                     </div>
                                     <div class="row" id="emitenPortofolio">
                                                                             
-                                        @foreach ($port as $item)
+                                        @foreach ($port['data'] as $item)
                                     
                                 <div class="col-xl-6 col-lg-6 col-12" style="margin-bottom: 1em;">
                                     <div class="item-portofolio">
                                         <div class="head-item-portofolio">
                                             <div class="flex-head">
-                                                <p>{{$item->cat}}</p>
-                                                <div class="label-item-portoflio-saham">{{$item->code_emiten}}</div>
+                                                <p>{{$item['category']}}</p>
+                                                <div class="label-item-portoflio-saham">{{$item['code']}}</div>
                                             </div>
-                                            <h4>{{$item->trademark}}</h4>
-                                            <p class="company-portofolio">{{$item->company_name}}</p>
+                                            <h4>{{$item['trademark']}}</h4>
+                                            <p class="company-portofolio">{{$item['company_name']}}</p>
                                         </div>
                                         <div class="info-fund-portofolio">
                                             <table style="width: 100%;">
                                                  <tbody><tr>
                                                     <td class="title-intable-saham">Tanggal Pembelian</td>
-                                                    <td class="value-intable-saham">{{tgl_indo(date('Y-m-d', strtotime($item->cr)))}}</td>
+                                                    <td class="value-intable-saham">{{tgl_indo(date('Y-m-d', strtotime($item['trx_date'])))}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="title-intable-saham">
                                                         <p>Total Saham</p>
                                                     </td>
                                                     <td class="value-intable-saham">
-                                                        <p><b>{{number_format($item->lembar,0,',','.')}} Lembar</b></p>
+                                                        <p><b>{{number_format($item['jumlah_saham'],0,',','.')}} Lembar</b></p>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="title-intable-saham">Total Saham Dalam Rupiah</td>
-                                                    <td class="value-intable-saham"><b>Rp&nbsp;{{number_format($item->tot,0,',','.')}}</b></td>
+                                                    <td class="value-intable-saham"><b>Rp&nbsp;{{number_format($item['total_saham'],0,',','.')}}</b></td>
                                                 </tr>
                                                
                                                

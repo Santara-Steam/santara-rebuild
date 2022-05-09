@@ -60,7 +60,7 @@
                               ?>
 <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
-<div class="banner_bg_main" style="background-image: url('{{env("PATH_WEB")}}{{$picture[0]}}'); margin-top: 96px;">
+<div class="banner_bg_main" style="background-image: url('{{env("PATH_WEB")}}{{$picture[0]}}'),url('{{env("PATH_WEB_PROD")}}{{$picture[0]}}'); margin-top: 96px;">
   <div class="banner_section layout_padding">
     <div class="container" style="margin-top: 15px;">
       <div class="section">
@@ -81,7 +81,7 @@
         </div>
         <div class="profil">
           <img style="border-radius: 50%;" class="image-69"
-            src="{{env("PATH_WEB")}}{{$picture[2]}}" />
+            src="{{env("PATH_WEB")}}{{$picture[2]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[2]}}'"/>
           <div class="pemilik-bisnis">
             <div class="m-khemal-nugroho inter-medium-alabaster-18px">
               <span class="text-mulai inter-medium-alabaster">{{$emt->owner_name}}</span>
@@ -341,21 +341,22 @@
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[3]}}" />
+                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[3]}}" 
+                    onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[3]}}'"/>
                   </div>
                   @endif
                   @if ($picture[4] == 'default.png')
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[4]}}" />
+                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[4]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[4]}}'"/>
                   </div>
                   @endif
                   @if ($picture[5] == 'default.png')
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[5]}}" />
+                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[5]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[5]}}'"/>
                   </div>
                   @endif
 
