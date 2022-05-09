@@ -139,7 +139,7 @@
                               <a class=" navbar-nav" href="{{ route('kontak') }}">Kontak Kami</a>
                             </li>
                             <li class="nav-item">
-                              <a class=" navbar-nav" href="{{ route('notfound') }}">Berita</a>
+                              <a class=" navbar-nav" href="http://berita.santara.co.id/">Berita</a>
                             </li>
                             <li class="nav-item">
                               <a class=" navbar-nav" href="{{ route('notfound') }}">Karir</a>

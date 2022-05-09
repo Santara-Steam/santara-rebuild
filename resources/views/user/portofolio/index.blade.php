@@ -18,8 +18,12 @@
                                         <div class="p-1 ">
                                             <div class="inner">
                                                 <p style="color: white;">TOTAL SAHAM</p>
-                                                
+                                                @if (empty($port['total_saham']))
+                                                    
+                                                <h3 style="color: white;">Rp&nbsp;0</h3>
+                                                @else
                                                 <h3 style="color: white;">Rp&nbsp;{{number_format($port['total_saham'],0,',','.')}}</h3>
+                                                @endif
                                                 {{-- @endif --}}
                                             </div>
                                         </div>
@@ -30,7 +34,12 @@
                                         <div class="p-1 ">
                                             <div class="inner">
                                                 <p style="color: white;">TOTAL SUKUK</p>
+                                                @if (empty($port['total_sukuk']))
+                                                    
+                                                <h3 style="color: white;">Rp&nbsp;0</h3>
+                                                @else
                                                 <h3 style="color: white;">Rp&nbsp;{{number_format($port['total_sukuk'],0,',','.')}}</h3>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -40,14 +49,18 @@
                                         <div class="p-1 ">
                                             <div class="inner">
                                                 <p style="color: white;">TOTAL INVESTASI</p>
-                                                
+                                                @if (empty($port['total']))
+                                                    
+                                                <h3 style="color: white;">Rp&nbsp;0</h3>
+                                                @else
                                                 <h3 style="color: white;">Rp&nbsp;{{number_format($port['total'],0,',','.')}}</h3>
-                                                
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @if (count($port['data']) > 0)
                             <div class="row" id="emitenPortofolio">
                                 @foreach ($port['data'] as $item)
                                     
@@ -88,6 +101,7 @@
                                 @endforeach
 
                             </div>
+                            @endif
                         </div>
                     </div>
 

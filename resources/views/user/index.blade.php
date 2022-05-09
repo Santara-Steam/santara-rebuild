@@ -68,7 +68,11 @@
                                                 Rp. 
                                                 <span style="float: right">
                                                 
+                                                @if (empty($port['total_saham']))
+                                                0
+                                                @else
                                                 {{number_format($port['total_saham'],0,',','.')}}
+                                                @endif
                                                 
                                               </span>
                                               </h4></td>
@@ -79,8 +83,13 @@
                                               <td><h4 style="font-weight: 600;">
                                                 Rp. 
                                                 <span style="float: right">
-                                                
-                                                {{number_format(Auth::user()->trader->saldo->balance+$port['total_saham'], 0, ',', '.')}}
+                                                  @if (empty($port['total_saham']))
+                                                  {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}
+                                                  
+                                                  @else
+                                                  {{-- {{number_format($port['total_saham'],0,',','.')}} --}}
+                                                  {{number_format(Auth::user()->trader->saldo->balance+$port['total_saham'], 0, ',', '.')}}
+                                                  @endif
                                                 
                                               </span>
                                               </h4></td>
@@ -102,7 +111,7 @@
 
                 
             </section>
-            @if (count($port) > 0)
+            @if (count($port['data']) > 0)
                 
             <section id="configuration">
                 <div class="row">
