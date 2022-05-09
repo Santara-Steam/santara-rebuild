@@ -181,7 +181,7 @@ class TraderController extends Controller
         }
     }
     public function pin_reset(){
-        return view('user.pin');
+        return view('user.pin_reset');
     }
 
     public function pin_reset_post(request $request){
