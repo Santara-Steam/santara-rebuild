@@ -15,7 +15,7 @@ function emiten($limit, $offset, $search, $minimal, $maksimal, $category, $sort,
 				'Content-type'  => 'application/json'
 			];
 
-			$response = $client->request('GET', env("BASE_API_CLIENT_URL") . $url, [
+			$response = $client->request('GET', config('global.BASE_API_CLIENT_URL') . $url, [
 				'headers' => $headers,
 			]);
 

@@ -352,7 +352,7 @@ class TransactionsController extends Controller
 
     public function canceltrx(Request $request){
         $client = new Client();
-			$response = $client->request('DELETE', env("BASE_API_CLIENT_URL") . '/v3.7.1/transactions/cancel-payment?trx_id=' . $request->uuid, [
+			$response = $client->request('DELETE', config('global.BASE_API_CLIENT_URL') . '/v3.7.1/transactions/cancel-payment?trx_id=' . $request->uuid, [
 				'form_params' => [
 					'token'       =>  app('request')->session()->get('token'),
 				]
@@ -404,7 +404,7 @@ class TransactionsController extends Controller
 			$authKey = hash_hmac('sha256', hash('sha256', $removeSpace), app('request')->session()->get('token'));
 
 			$client = new \GuzzleHttp\Client();
-			$response = $client->request('POST', env('BASE_API_CLIENT_URL') . '/v3.7.1/transactions/buy-token', [
+			$response = $client->request('POST', config('global.BASE_API_CLIENT_URL')  . '/v3.7.1/transactions/buy-token', [
 				'headers' => [
 					'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
 					'accesskeytoken' => app('request')->session()->get('token'),
