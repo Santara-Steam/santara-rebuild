@@ -63,7 +63,7 @@ class TraderController extends Controller
                 'Authorization' => 'Bearer ' .app('request')->session()->get('token'),
             ];
 
-            $responseToken = $client->request('GET', env("BASE_API_ADMIN_URL") . '/v3.7.1/finance-report/list-member-portofolio/?user_id=' . $uid, [
+            $responseToken = $client->request('GET', config('global.BASE_API_ADMIN_URL'). '/v3.7.1/finance-report/list-member-portofolio/?user_id=' . $uid, [
                 'headers' => $headers,
             ]);
 
@@ -191,7 +191,7 @@ class TraderController extends Controller
     public function add_bank(request $request){
         // echo $request->bank;
         $client = new Client();
-                    $res = $client->request('POST', env("BASE_API_CLIENT_URL")  . '/v3.7.1/withdraw/insert-new-bankwd', [
+                    $res = $client->request('POST', config('global.BASE_API_CLIENT_URL')  . '/v3.7.1/withdraw/insert-new-bankwd', [
                         'headers' => [
                             'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
                         ],

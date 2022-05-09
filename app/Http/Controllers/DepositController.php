@@ -252,7 +252,7 @@ class DepositController extends Controller
     public function user_cdepo(Request $request){
         // try {
             $client = new Client();
-            $response = $client->request('POST', env("BASE_API_CLIENT_URL") . '/v3.7.1/deposit/idr', [
+            $response = $client->request('POST', config('global.BASE_API_CLIENT_URL') . '/v3.7.1/deposit/idr', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
                     'Origin'        => config('global.BASE_API_FILE')

@@ -33,7 +33,7 @@ class PenarikanController extends Controller
         $pin = Auth::user()->pin;
         if (Hash::check($request->pin, $pin) == true) {
                                         $client = new Client();
-                                        $response = $client->request('POST', env("BASE_API_CLIENT_URL") . '/v3.7.1/withdraw/', [
+                                        $response = $client->request('POST', config('global.BASE_API_CLIENT_URL') . '/v3.7.1/withdraw/', [
                                             'headers' => [
                                                 'Authorization' => 'Bearer ' .  app('request')->session()->get('token')
                                             ],
