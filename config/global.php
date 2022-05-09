@@ -7,7 +7,7 @@ if (env('CONFIG_ENV') == 'dev') {
         "API_ADMIN_VERSION" => "v3.7.1/",
     "API_CLIENT_VERSION" => "v3.7.1",
     "BASE_API_CLIENT_URL" => "https://tulabi.com:3801",
-    "BASE_API_ADMIN_URL" => "https://tulabi.com:3701",
+    "BASE_API_ADMIN_URL" => "https://tulabi.com:3701/",
     "BASE_FILE_URL" => "https://dev.santara.id",
     "BASE_API_FILE" => "https://tulabi.com:3801",
     "STORAGE_GOOGLE" => "https://storage.googleapis.com/asset-santara-staging/santara.co.id/",
