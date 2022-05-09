@@ -28,8 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd('ok');
-        // return view('home');
+        return view('home');
     }
     public function indexuser()
     {
