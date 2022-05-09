@@ -177,7 +177,31 @@ class TraderController extends Controller
                 'message' => 'Pin Berhasil Di buat',
                 'alert-type' => 'success'
             );
+            return redirect()->to('/user')->with($notif);
+        }
+    }
+    public function pin_reset(){
+        return view('user.pin');
+    }
+
+    public function pin_reset_post(request $request){
+        if ($request->pin != $request->cpin) {
+            # code...
+            $notif = array(
+                'message' => 'Pin Konfirmasi Tidak Sama',
+                'alert-type' => 'fail'
+            );
             return redirect()->back()->with($notif);
+        }else{
+
+            $user = User::where('id',$request->userid)->first();
+            $user->pin = Hash::make($request->pin);
+            $user->save();
+            $notif = array(
+                'message' => 'Pin Berhasil Di buat',
+                'alert-type' => 'success'
+            );
+            return redirect()->to('/user')->with($notif);
         }
     }
 

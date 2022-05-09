@@ -287,7 +287,7 @@
     showConfirmButton: true,
     showLoaderOnConfirm: true,
     confirmButtonText: "Verifikasi",
-    // footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="/user/security/email">Reset PIN</a></p>',
+    footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="{{url('pin_reset')}}">Reset PIN</a></p>',
     focusConfirm: false,
     preConfirm: () => {
         // $("#amou").val(amount.value.replace(/\./, ""));
@@ -326,7 +326,7 @@
     showConfirmButton: true,
     showLoaderOnConfirm: true,
     confirmButtonText: "Verifikasi",
-    // footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="/user/security/email">Reset PIN</a></p>',
+    footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="{{url('pin_reset')}}">Reset PIN</a></p>',
     focusConfirm: false,
     preConfirm: () => {
         // $("#amou").val(amount.value.replace(/\./, ""));
