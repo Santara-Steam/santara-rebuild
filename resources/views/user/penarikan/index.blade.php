@@ -437,7 +437,7 @@ $("#withdraw").click(function () {
     showConfirmButton: true,
     showLoaderOnConfirm: true,
     confirmButtonText: "Verifikasi",
-    footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="/user/security/email">Reset PIN</a></p>',
+    // footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="/user/security/email">Reset PIN</a></p>',
     focusConfirm: false,
     preConfirm: () => {
         $("#amou").val(amount.value.replace(/\./, ""));
@@ -513,7 +513,7 @@ function withdrawProcess(dataWithdraw) {
     showConfirmButton: true,
     showLoaderOnConfirm: true,
     confirmButtonText: "Verifikasi",
-    footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="/user/security/email">Reset PIN</a></p>',
+    // footer: '<p class="swal-popup-footer">Lupa PIN ? <a href="/user/security/email">Reset PIN</a></p>',
     onBeforeOpen: function (element) {
       $(element)
         .find("button.swal2-confirm.swal2-styled")

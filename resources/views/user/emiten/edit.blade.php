@@ -75,7 +75,7 @@
                                                         <div class="image_area text-center">
                                                             <label for="upload_image">
                                                                 <img src="{{env('PATH_WEB')}}{{$picture[0]}}"
-                                                                    id="uploaded_image" class="img-responsive" />
+                                                                    id="uploaded_image" class="img-responsive" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
                                                                 <div class="overlay">
                                                                     <div class="text">Thumbnail</div>
                                                                 </div>
@@ -91,7 +91,7 @@
                                                         <label for="companyName">Banner</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image2">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[1]}}"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[1]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[1]}}'"
                                                                     id="uploaded_image2" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Banner</div>
@@ -107,7 +107,7 @@
                                                         <label for="companyName">Foto Owner</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image4">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[2]}}"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[2]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[2]}}'"
                                                                     id="uploaded_image4" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Foto Owner</div>
@@ -128,7 +128,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image3">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[3]}}"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[3]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[3]}}'"
                                                                     id="uploaded_image3" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha</div>
@@ -145,7 +145,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha 2</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image5">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[4]}}"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[4]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[4]}}'"
                                                                     id="uploaded_image5" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha 2</div>
@@ -161,7 +161,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha 3</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image6">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[5]}}"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[5]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[5]}}'"
                                                                     id="uploaded_image6" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha 3</div>

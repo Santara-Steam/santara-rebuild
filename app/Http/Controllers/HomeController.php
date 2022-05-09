@@ -61,18 +61,25 @@ class HomeController extends Controller
                             ->select(db::raw('SUM(tr.amount) as amo'))
                             ->groupBy('users.id')
                             ->first();
-        
-                            $port = User::join('traders as t', 't.user_id', '=', 'users.id')
-                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
-                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
-                ->leftjoin('categories as c','c.id','=','e.category_id')
-                ->where('users.id', Auth::user()->id)
-                ->where('tr.is_deleted', 0)
-                ->where('tr.last_status', 'VERIFIED')
-                ->select('c.category as cat','e.code_emiten','e.company_name','e.trademark',db::raw('MAX(tr.created_at) as cr'),db::raw('SUM(tr.amount/e.price) as lembar'),db::raw('SUM(tr.amount) as tot'))
-                ->groupBy('e.id')
-                ->limit(4)
-                ->get();
+        $uid = Auth::user()->id;
+        $client = new \GuzzleHttp\Client();
+
+            $headers = [
+                'Authorization' => 'Bearer ' .app('request')->session()->get('token'),
+            ];
+
+            $responseToken = $client->request('GET', config('global.BASE_API_ADMIN_URL') . '/v3.7.1/finance-report/list-member-portofolio/?user_id=' . $uid, [
+                'headers' => $headers,
+            ]);
+
+            if ($responseToken->getStatusCode() == 200) {
+                $tokens = json_decode($responseToken->getBody()->getContents(), TRUE);
+                // echo json_encode($tokens);
+                // return;
+                //  return view('user.portofolio.index',compact('port'));
+                
+            }
+            $port = collect($tokens);
 
                 $rtransactions = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')

@@ -119,10 +119,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://santara.co.id/app-assets/new-santara/vendors/intlTelInput/css/intlTelInput.min.css">
-    <link rel="stylesheet" type="text/css" href="https://santara.co.id/assets/new-santara/css/login.css?v=5.8.8" />
+    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/app-assets/new-santara/vendors/intlTelInput/css/intlTelInput.min.css">
+    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/new-santara/css/login.css?v=5.8.8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://santara.co.id/app-assets/new-santara/vendors/intlTelInput/js/intlTelInput.min.js"></script>
+    <script src="https://old.santara.co.id/app-assets/new-santara/vendors/intlTelInput/js/intlTelInput.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('recaptchav3.sitekey') }}"></script>
     <script>
              grecaptcha.ready(function() {

@@ -351,7 +351,7 @@
                           </div>
                           <div class="icon-card row" style="display: flex;
                 justify-content: center;
-                align-items: center;">
+                align-items: center;    width: auto;">
                             @guest
                             <a href="{{route('login')}}" style="cursor: pointer">
                               <div class="icon-and-supporting-text">
@@ -848,7 +848,7 @@
                 </div>
                 <div class="icon-card row" style="display: flex;
                 justify-content: center;
-                align-items: center;">
+                align-items: center;width:auto;">
                   @guest
                   <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
                     <div class="icon-and-supporting-text">
@@ -1208,6 +1208,9 @@
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
       $('#image').prop('src', '{{env("PATH_WEB")}}' + image);
+      $('#image').on("error", function(){
+        $(this).prop('src', '{{env("PATH_WEB_PROD")}}'+ image);
+      });
       $('#like').text(like);
       $('#minat').text(minat);
       $('#comments').text(comment);

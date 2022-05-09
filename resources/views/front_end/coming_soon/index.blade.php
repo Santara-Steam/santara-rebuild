@@ -124,12 +124,12 @@
                   data-image="<?=$picture[0]?>">
                   <div class="card moldla">
                     <img class="rectangle-2 moldla"
-                      src="{{env("PATH_WEB")}}{{$picture[0]}}" />
+                      src="{{env("PATH_WEB")}}{{$picture[0]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
                   </div>
                 </a>
                 <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
                   <div class="card molpli">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[0]}}" />
+                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[0]}}"  onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
                     <div class="content">
                       <div class="header-card-dan-progress">
                         <div class="header-and-tags">
@@ -153,7 +153,7 @@
                         </div>
                         <div class="icon-card row" style="display: flex;
                                   justify-content: center;
-                                  align-items: center;">
+                                  align-items: center;width:auto;">
                           @guest
                           <a href="{{route('login')}}" style="cursor: pointer">
                             <div class="icon-and-supporting-text">
@@ -228,16 +228,29 @@
                                 </form>
 
                                 @endguest
-                                <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
-                                  data-target="#modal{{$cs->id}}" class="cmt">
+
+                                @guest
+                                <a href="{{route('login')}}" style="cursor: pointer">
                                   <div class="icon-and-supporting-text-2">
                                     <i class="icon-com iconheart fas fa-comments"
-                                      style="color: #fff; font-size: 18px;"></i>
+                                    style="color: #fff; font-size: 18px;"></i>
                                     <div class="address-2 inter-normal-alabaster-10px">
                                       <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
                                     </div>
                                   </div>
                                 </a>
+                                @else
+                                <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
+                                  data-target="#modal{{$cs->id}}" class="cmt">
+                                  <div class="icon-and-supporting-text-2">
+                                    <i class="icon-com iconheart fas fa-comments"
+                                    style="color: #fff; font-size: 18px;"></i>
+                                    <div class="address-2 inter-normal-alabaster-10px">
+                                      <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
+                                    </div>
+                                  </div>
+                                </a>
+                                  @endguest
                                 <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
                                   data-target="#modalShareButton{{$cs->id}}">
                                   <div class="icon-and-supporting-text-2">
@@ -461,7 +474,7 @@
                 </div>
                 <div class="icon-card row" style="display: flex;
                 justify-content: center;
-                align-items: center;">
+                align-items: center;width:auto;">
                   @guest
                   <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
                     <div class="icon-and-supporting-text">
@@ -534,6 +547,18 @@
                         </form>
 
                         @endguest
+
+                        @guest
+                        <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
+                          <div class="icon-and-supporting-text-2">
+                            <i class="icon-com iconheart fas fa-comments" style="color: #fff; font-size: 18px;"></i>
+                            <div class="address-2 inter-normal-alabaster-10px">
+                              <span class="tx-icon inter-normal-alabaster" id="comments" style="margin-left:5px;">
+                                Komentar</span>
+                            </div>
+                          </div>
+                        </a>
+                        @else
                         <a class="col-3" style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal"
                           data-dismiss="modal" data-target="#modal" class="cmt">
                           <div class="icon-and-supporting-text-2">
@@ -544,6 +569,8 @@
                             </div>
                           </div>
                         </a>
+                        @endguest
+
                         <a class="col-3" style="cursor: pointer" id="msb" data-id="{{$cs->id}}" data-toggle="modal"
                           data-target="#modalShareButton" data-dismiss="modal">
                           <div class="icon-and-supporting-text-1">
@@ -589,6 +616,9 @@
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
       $('#image').prop('src', '{{env("PATH_WEB")}}' + image);
+      $('#image').on("error", function(){
+        $(this).prop('src', '{{env("PATH_WEB_PROD")}}'+ image);
+      });
       $('#like').text(like);
       $('#minat').text(minat);
       $('#comments').text(comment);
