@@ -30,6 +30,7 @@ class LoginController extends Controller
             'password' => 'required',
             'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
         ]);
+        app('request')->session()->put('pwd', $request->password);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Success
             if (Auth::user()->role_id == 2) {

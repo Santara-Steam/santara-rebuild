@@ -48,7 +48,7 @@ class UserLoggedIn
                 $result = json_decode($response->getBody()->getContents(), TRUE);
                 app('request')->session()->put('token', $result['token']['token']);
                 app('request')->session()->put('refreshToken', $result['token']['refreshToken']);
-
+                
                 $photo_url = config('global.BASE_API_FILE') . $this->session->user->photo;
                   // market session
                   $market_url = json_encode([
