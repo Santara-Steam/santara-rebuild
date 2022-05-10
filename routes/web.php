@@ -230,6 +230,11 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/cms/video-category/edit/{id}', [App\Http\Controllers\KategoriVideoController::class, 'edit']);
     Route::post('/admin/cms/video-category/store', [App\Http\Controllers\KategoriVideoController::class, 'saveData']);
     Route::post('/admin/cms/video-category/delete/{id}', [App\Http\Controllers\KategoriVideoController::class, 'destroy']);
+
+    Route::get('/admin/setting/account', [App\Http\Controllers\AccountController::class, 'index']);
+    Route::get('/admin/setting/account/get-account', [App\Http\Controllers\AccountController::class, 'fetchData']);
+    Route::get('/admin/setting/account/edit/{id}', [App\Http\Controllers\AccountController::class, 'edit']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
