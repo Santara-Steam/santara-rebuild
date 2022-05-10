@@ -111,7 +111,13 @@
                                 class="menu-title" data-i18n="eCommerce"> Kategori Video</span></a></li>
                 </ul>
             </li>
-
+            <li class="nav-item has-sub">
+                <a href="#"><i class="la la-gear"></i> &nbsp; Setting</a>
+                <ul class="menu-content">
+                    <li class=" nav-item {{ 'admin/setting/account' == request()->path() ? 'active' : '' }}"><a
+                        href="{{ url('admin/setting/account') }}"><i class="la la-user"></i><span
+                            class="menu-title" data-i18n="eCommerce"> Account</span></a></li>
+                </ul>
         </ul>
     </div>
     {{-- <div class="main-menu-content">
