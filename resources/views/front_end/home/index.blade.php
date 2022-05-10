@@ -1077,7 +1077,7 @@
                                                       $now = time();
                                                       $start = strtotime($emj->date);
                                                       $end = strtotime($emj->end_date);
-                                                      $datediff = $end - $start;
+                                                      $datediff = $end - $now;
                                                       ?>
                           {{round($datediff / (60 * 60 * 24))}}
                           {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
