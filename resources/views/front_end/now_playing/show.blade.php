@@ -366,7 +366,7 @@
               <a style="margin-left: -1px; margin-top: -10px;" class="b-mul btn btn-light btn-lg btn-block"
                 href="{{ route('daftar-bisnis.index') }}"><i class="fas fa-list"></i>&nbsp; Prospektus</a> --}}
                 @guest
-            <a href="{{route('login')}}" class="btn btn-danger btn-block"><i style="font-size: 20px; margin-top; color: #a3a3a3; " class="fab fa-shopping-cart"></i>Beli Saham</a>
+            <a href="{{route('login')}}" class="btn btn-danger btn-block"><i style="font-size: 20px; margin-top; color: #a3a3a3; " class="fa fa-shopping-cart"></i>Beli Saham</a>
             <a target="blank" class="btn btn-light btn-block" href="{{ config('global.STORAGE_GOOGLE').'token/'.$emt->prospektus }}"><i class="fa fa-file-text" aria-hidden="true"></i> Prospektus</a>
             @else
             <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#beliSahamModal"><i class="fa fa-shopping-cart"></i> Beli
