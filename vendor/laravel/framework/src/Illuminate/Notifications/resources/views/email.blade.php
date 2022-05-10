@@ -44,7 +44,7 @@
 {{ $salutation }}
 @else
 @lang('Regards'),<br>
-{{ config('app.name') }}
+Santara Team
 @endif
 
 {{-- Subcopy --}}

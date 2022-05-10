@@ -71,10 +71,10 @@
                 $tersisa = ($np['supply'] - $np['terjual'] > 0) ? ($np['supply'] - $np['terjual']) : 0;
                 $terjual = ($np['terjual'] > $np['supply']) ? $np['supply'] : $np['terjual'];
                 // terjual dalam persen 0 -100
-                $terjual_percentage = ($terjual / $np['supply']) * 100;
+                $terjual_percentage = $terjual > 0 ? ($terjual / $np['supply']) * 100 : 0;
                 $terjual_percentage = ($terjual_percentage >= 0) ? ($terjual_percentage > 100 ? 100 : $terjual_percentage) : 0;
 
-                $tersisa_percentage = number_format($tersisa / $np['supply'] * 100, 2, ',', '.');
+                $tersisa_percentage = number_format($tersisa > 0 ? ($tersisa / $np['supply'] * 100) : 0, 2, ',', '.');
                 $tersisa_total = number_format($tersisa, 0, ',', '.');
                 $tersisa_total_rp = number_format($tersisa * $np['price'], 0, ',', '.');
                 $terjual_percentage_f = number_format($terjual_percentage, 2, '.', ',');

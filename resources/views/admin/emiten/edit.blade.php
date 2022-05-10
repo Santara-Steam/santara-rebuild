@@ -466,24 +466,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Alamat Website</label>
-                                                    <input type="text"  id="companyName"
-                                                        name="web" class="form-control" placeholder="Alamat Website"
-                                                        value="{{ $emiten->website }}">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="companyName">Facebook</label>
-                                                    <input type="text"  id="companyName"
-                                                        name="fb" class="form-control" placeholder="Facebook"
-                                                        value="{{ $emiten->facebook }}">
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="companyName">Instagram</label>
-                                                    <input type="text" id="companyName"
-                                                        name="ig" class="form-control" placeholder="Instagram"
-                                                        value="{{ $emiten->instagram }}">
-                                                </div>
-                                                <div class="form-group col-md-4">
                                                     <label for="companyName">Dynamic Link</label>
                                                     <input type="text" id="companyName"
                                                         name="dynamic_link" class="form-control" placeholder="Dynamic Link"
