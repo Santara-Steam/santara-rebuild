@@ -16,15 +16,17 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
-                                    <form>
+                                    <form method="POST" action="{{ url('admin/setting/account/update_user') }}">
+                                        @csrf
+                                        <input type="hidden" value="{{ $user->id }}" name="id" />
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label>Email</label>
-                                                <input class="form-control" type="email" name="email" value="{{ $user->email }}" />
+                                                <input class="form-control" type="email" name="email" value="{{ $user->email }}" required />
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label>Phone</label>
-                                                <input class="form-control" type="phone" name="phone" value="{{ $user->phone }}" />
+                                                <input class="form-control" type="phone" name="phone" value="{{ $user->phone }}" required />
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label>User Verifikasi</label>
@@ -69,10 +71,10 @@
                                                     <option value="3" <?= $user->attempt >= 3 ? 'selected' : '' ?>>Blocked</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <button class="btn btn-primary" type="submit">Simpan</button>
-                                                <a class="btn btn-danger" href="{{ url()->previous() }}">Kembali</a>
-                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Simpan</button>
+                                            <a class="btn btn-danger" href="{{ url()->previous() }}">Kembali</a>
                                         </div>
                                     </form>
                                 </div>

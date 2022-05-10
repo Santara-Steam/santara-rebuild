@@ -234,6 +234,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/setting/account', [App\Http\Controllers\AccountController::class, 'index']);
     Route::get('/admin/setting/account/get-account', [App\Http\Controllers\AccountController::class, 'fetchData']);
     Route::get('/admin/setting/account/edit/{id}', [App\Http\Controllers\AccountController::class, 'edit']);
+    Route::post('/admin/setting/account/update_user', [App\Http\Controllers\AccountController::class, 'update']);
+    Route::get('/admin/setting/account/reset-password/{id}', [App\Http\Controllers\AccountController::class, 'resendEmailReset']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
