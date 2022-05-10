@@ -273,7 +273,7 @@
                                                   class="btn btn-success col-6 col-md-12"
                                                   style="width:100px"
                                                   title="Bayar">Bayar</a>
-                                                  <a class="btn btn-santara-red  cancelbtn col-6 col-md-12"
+                                                  <a href="javascript:cancel();" class="btn btn-santara-red  cancelbtn col-6 col-md-12"
                                                   data-id="{{$item->id}}"
                                                   style="width:100px"
                                                   title="Bayar">Batal</a>
@@ -339,7 +339,7 @@
   //         }
   //     });
   // });
-  
+  function cancel() {
       $(".cancelbtn").click(function(e) {
           id = e.target.dataset.id;
           Swal.fire({
@@ -362,6 +362,7 @@
               }
           });
       });
+    }
 </script>
 @endsection
 @section('style')
