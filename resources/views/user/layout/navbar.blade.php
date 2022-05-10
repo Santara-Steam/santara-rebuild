@@ -1,4 +1,4 @@
-<nav style="background-color: #7f1d1d"
+<nav 
     class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow">
     <div class="navbar-wrapper">
         <div class="navbar-header">
@@ -26,7 +26,7 @@
         <div class="navbar-container content">
             <div class="collapse navbar-collapse" id="navbar-mobile">
                 <ul class="nav navbar-nav mr-auto float-left">
-                    <a class="btn btn-dark float-right" href="{{url('/')}}">Back to Homepage</a>
+                    <a class="btn btn-secondary float-right" href="{{url('/')}}">Back to Homepage</a>
                 </ul>
                 <ul class="nav navbar-nav float-right">
                     <ul class="nav navbar-nav float-right">

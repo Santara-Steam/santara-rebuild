@@ -267,15 +267,17 @@
                                                                                         '.formatJam($item->expired_date),}}</b></span>
                                                                             </button>
                                               </td>
-                                              <td>
+                                              <td><div class="row">
+
                                                 <a href="{{$item->redirect_url}}" target="_blank"
-                                                  class="btn btn-success"
+                                                  class="btn btn-success col-6 col-md-12"
                                                   style="width:100px"
                                                   title="Bayar">Bayar</a>
-                                              <a class="btn btn-santara-red  cancelbtn"
-                                              data-id="{{$item->id}}"
+                                                  <a class="btn btn-santara-red  cancelbtn col-6 col-md-12"
+                                                  data-id="{{$item->id}}"
                                                   style="width:100px"
                                                   title="Bayar">Batal</a>
+                                                </div>
                                               </td>
                                               <form action="{{ url('/user/cancel_transaksi')}}" id="cancel{{$item->id}}" method="POST">
                                                 @csrf
