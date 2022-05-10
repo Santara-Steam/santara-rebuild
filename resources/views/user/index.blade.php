@@ -277,6 +277,10 @@
                                                   style="width:100px"
                                                   title="Bayar">Batal</a>
                                               </td>
+                                              <form action="{{ url('/user/cancel_transaksi')}}" id="cancel{{$item->id}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="uuid" value="{{$item->id}}">
+                                              </form>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -309,6 +313,53 @@
             responsive: true,
         });
     });
+</script>
+
+<script>
+  // $(".deletebtn").click(function(e) {
+  //     id = e.target.dataset.id;
+  //     Swal.fire({
+  //         title: "Apakah anda yakin?",
+  //         text: "Data yang sudah anda hapus tidak akan bisa kembali!",
+  //         icon: "warning",
+  //         showCancelButton: true,
+  //         confirmButtonText: "Ya, Hapus"
+  //     }).then(function(result) {
+  //         if (result.value) {
+  //             Swal.fire(
+  //                 "Terhapus!",
+  //                 "Data telah terhapus.",
+  //                 "success"
+  //             );
+  //             $(`#delete${id}`).submit();
+  //         } else {
+
+  //         }
+  //     });
+  // });
+  
+      $(".cancelbtn").click(function(e) {
+          id = e.target.dataset.id;
+          Swal.fire({
+              title: "Batalkan Transaksi ?",
+              text: "Apakah Anda yakin ingin menghapus dan membatalkan proses transaksi ini ?",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonText: "Ya",
+              cancelButtonText: "Close",
+          }).then(function(result) {
+              if (result.value) {
+                  Swal.fire(
+                      "Berhasil Dibatalkan!",
+                      "Data telah berhasil di batalkan.",
+                      "success"
+                  );
+                  $(`#cancel${id}`).submit();
+              } else {
+
+              }
+          });
+      });
 </script>
 @endsection
 @section('style')
