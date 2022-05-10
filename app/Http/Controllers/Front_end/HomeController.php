@@ -107,7 +107,7 @@ class HomeController extends Controller
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->orderby('emitens.id','DESC')
         ->groupBy('emitens.id')
         ->get();
@@ -145,7 +145,7 @@ class HomeController extends Controller
             ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
             ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
             ->where('emitens.is_deleted',0)
-            ->where('emitens.is_active',0)
+            // ->where('emitens.is_active',0)
             ->where('emitens.is_verified',1)
             ->where('emitens.is_pralisting',1)
             ->where('emitens.is_coming_soon',1)

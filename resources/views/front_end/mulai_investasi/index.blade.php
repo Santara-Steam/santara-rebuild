@@ -16,7 +16,12 @@
                       >
                     </div>
                     <div class="actions2"> 
-                      <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}">Mulai Investasi</a>
+                      @guest
+                      <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('login') }}">Mulai Investasi</a>
+                          
+                      @else
+                      <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('/') }}">Mulai Investasi</a>
+                      @endguest
                 </div>
                   </div>
                   <div class="col-lg-6 content-cinv-img" style="padding: 2rem; text-align: right;">
@@ -117,7 +122,11 @@
             <span class="text-urun inter-normal-alabaster">Ayo Investasi di Santara!</span>
           </div>
           <div class="actions3 "> 
-                        <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}}">Mulai Investasi</a>
+            @guest
+            <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('login') }}}">Mulai Investasi</a>
+                @else
+                <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('/') }}}">Mulai Investasi</a>
+                @endguest
                   </div>
           </div>
         </div>
