@@ -32,7 +32,7 @@
                                                     <th>Nama Brand</th>
                                                     <th>Kode</th>
                                                     <th>Kategori</th>
-                                                    <th>Status KYC</th>
+                                                    {{-- <th>Status KYC</th> --}}
                                                     <th width="200">Status</th>
                                                     <th width="150">Action</th>
                                                 </tr>
@@ -48,9 +48,9 @@
                                                     <td>{{$item->trademark}}</td>
                                                     <td>{{$item->code_emiten}}</td>
                                                     <td>{{$item->ktg}}</td>
-                                                    <td>
+                                                    {{-- <td>
                                                         {{$item->status}}
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-6">

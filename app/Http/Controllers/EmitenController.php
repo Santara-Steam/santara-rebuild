@@ -18,13 +18,17 @@ class EmitenController extends Controller
     //
     public function index(){
         $emiten = emiten::where('emitens.is_deleted',0)
-            ->select('emitens.*','categories.category as ktg', 'eh.status', 'emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
+            ->select('emitens.*','categories.category as ktg', 'emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
             ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-            ->leftjoin('emiten_status_histories as eh', 'eh.emiten_id', '=', 'emitens.id')
-            ->leftJoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
-            ->leftJoin('transactions as t', 't.emiten_id', '=', 'emitens.id')
+            //->leftjoin('emiten_status_histories as eh', 'eh.emiten_id', '=', 'emitens.id')
+            ->leftJoin('emiten_journeys', 'emitens.id','=','emiten_journeys.emiten_id')
+            // ->leftJoin('emiten_journeys', function($query) {
+            //     $query->on('emitens.id','=','emiten_journeys.emiten_id')
+            //         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)');
+            // })
+            //->leftJoin('transactions as t', 't.emiten_id', '=', 'emitens.id')
             ->groupBy('emitens.id')
-            //->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+            ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
             ->get();
         
         return view('admin.emiten.index',compact('emiten'));
