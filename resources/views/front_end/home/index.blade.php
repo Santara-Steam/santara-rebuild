@@ -931,6 +931,17 @@
                         </a>
 
                         @endguest
+                        @guest
+                        <a class="col-3" href="{{route('login')}}" style="cursor: pointer">
+                          <div class="icon-and-supporting-text-2">
+                            <i class="icon-com iconheart fas fa-comments" style="color: #fff; font-size: 18px;"></i>
+                            <div class="address-2 inter-normal-alabaster-10px">
+                              <span class="tx-icon inter-normal-alabaster" id="comments" style="margin-left:5px;">
+                                Komentar</span>
+                            </div>
+                          </div>
+                        </a>
+                        @else
                         <a class="col-3" style="cursor: pointer" data-id="{{$cs->id}}" id="mct" data-toggle="modal"
                           data-dismiss="modal" data-target="#modal" class="cmt">
                           <div class="icon-and-supporting-text-2">
@@ -941,6 +952,7 @@
                             </div>
                           </div>
                         </a>
+                        @endguest
                         <a class="col-3" style="cursor: pointer" id="msb" data-id="{{$cs->id}}" data-toggle="modal"
                           data-target="#modalShareButton" data-dismiss="modal">
                           <div class="icon-and-supporting-text-1">
