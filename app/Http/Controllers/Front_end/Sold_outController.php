@@ -25,7 +25,7 @@ class Sold_outController extends Controller
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->orderby('emitens.id','DESC')
         ->groupBy('emitens.id')
         ->get();
@@ -35,7 +35,7 @@ class Sold_outController extends Controller
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->orderby('emitens.id','desc')
         ->groupBy('categories.id', 'categories.category')
         ->get();
@@ -52,7 +52,7 @@ class Sold_outController extends Controller
                 ->leftjoin('categories', 'categories.id','=','emitens.category_id')
                 ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
                 ->where('emitens.is_deleted',0)
-                ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+                ->whereRaw('emitens.end_period < now()')
                 ->orderby('emitens.id',$request->sort)
                 ->groupBy('emitens.id')
                 ->get();
@@ -64,7 +64,7 @@ class Sold_outController extends Controller
                 ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
                 ->where('emitens.is_deleted',0)
                 ->where('emitens.category_id', $request->categor)
-                ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+                ->whereRaw('emitens.end_period < now()')
                 ->orderby('emitens.id',$request->sort)
                 ->groupBy('emitens.id')
                 ->get();
@@ -77,7 +77,7 @@ class Sold_outController extends Controller
                 ->leftjoin('categories', 'categories.id','=','emitens.category_id')
                 ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
                 ->where('emitens.is_deleted',0)
-                ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+                ->whereRaw('emitens.end_period < now()')
                 ->orderby('emitens.id',$request->sort)
                 ->groupBy('emitens.id')
                 ->get();
@@ -89,7 +89,7 @@ class Sold_outController extends Controller
                 ->where('emitens.is_deleted',0)
                 ->where('emitens.trademark','LIKE','%'.$request->cari."%")
                 ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
-                ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+                ->whereRaw('emitens.end_period < now()')
                 ->orderby('emitens.id',$request->sort)
                 ->groupBy('emitens.id')
                 ->get();
@@ -103,7 +103,7 @@ class Sold_outController extends Controller
             ->where('emitens.trademark','LIKE','%'.$request->cari."%")
             ->orwhere('emitens.company_name','LIKE','%'.$request->cari."%")
             ->where('emitens.category_id', $request->categor)
-            ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+            ->whereRaw('emitens.end_period < now()')
             ->orderby('emitens.id',$request->sort)
             ->groupBy('emitens.id')
             ->get();
@@ -114,7 +114,7 @@ class Sold_outController extends Controller
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->orderby('emitens.id','desc')
         ->groupBy('categories.id', 'categories.category')
         ->get();
@@ -139,7 +139,7 @@ class Sold_outController extends Controller
         ->where('devidend.phase',1)
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->groupBy('emitens.id')
         ->first();
 
@@ -149,7 +149,7 @@ class Sold_outController extends Controller
         ->where('devidend.phase',2)
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->groupBy('emitens.id')
         ->first();
 
@@ -159,7 +159,7 @@ class Sold_outController extends Controller
         ->where('devidend.phase',3)
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->groupBy('emitens.id')
         ->first();
 
@@ -174,7 +174,7 @@ class Sold_outController extends Controller
         ->where('emiten_journeys.title','Pra Penawaran Saham')
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->groupBy('emitens.id')
         ->first();
 
@@ -184,7 +184,7 @@ class Sold_outController extends Controller
         ->where('emiten_journeys.title','Penawaran Saham')
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->groupBy('emitens.id')
         ->first();
 
@@ -194,7 +194,7 @@ class Sold_outController extends Controller
         ->where('emiten_journeys.title','Pendanaan Terpenuhi')
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->groupBy('emitens.id')
         ->first();
 
@@ -204,7 +204,7 @@ class Sold_outController extends Controller
         ->where('emiten_journeys.title','Penyerahan Dana')
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->groupBy('emitens.id')
         ->first();
 
@@ -214,7 +214,7 @@ class Sold_outController extends Controller
         ->where('emiten_journeys.title','Pembagian Dividen')
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
-        ->whereRaw('CURDATE() NOT BETWEEN emitens.begin_period and emitens.end_period')
+        ->whereRaw('emitens.end_period < now()')
         ->groupBy('emitens.id')
         ->first();
 
