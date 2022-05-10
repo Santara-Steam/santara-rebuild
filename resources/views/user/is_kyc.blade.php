@@ -1,4 +1,4 @@
-@if (Auth::user()->is_verified_kyc == 1)
+@if (Auth::user()->trader->is_verified != 1)
 <div class="card">
     <div class="card-body p-0">
         <div class="card-content">

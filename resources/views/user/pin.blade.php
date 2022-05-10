@@ -8,7 +8,7 @@
         <div class="content-body">
             <section id="configuration">
                 <div class="row">
-                    <div class="col-6 text-center card">
+                    <div class="col-md-6 text-center card">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">

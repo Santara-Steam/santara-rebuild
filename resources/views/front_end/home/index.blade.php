@@ -322,12 +322,12 @@
                     data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
                     data-image="<?=$picture[0]?>">
                     <div class="card moldla">
-                      <img class="rectangle-2 moldla" src="{{env("PATH_WEB")}}{{$picture[0]}}" />
+                      <img class="rectangle-2 moldla" src="{{env("PATH_WEB")}}{{$picture[0]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
                     </div>
                   </a>
                   <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
                     <div class="card molpli">
-                      <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[0]}}" />
+                      <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[0]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
                       <div class="content">
                         <div class="header-card-dan-progress">
                           <div class="header-and-tags">
