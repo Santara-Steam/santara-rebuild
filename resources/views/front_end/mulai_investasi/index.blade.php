@@ -20,7 +20,7 @@
                       <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('login') }}">Mulai Investasi</a>
                           
                       @else
-                      <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('/') }}">Mulai Investasi</a>
+                      <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ url('/') }}">Mulai Investasi</a>
                       @endguest
                 </div>
                   </div>
@@ -125,7 +125,7 @@
             @guest
             <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('login') }}}">Mulai Investasi</a>
                 @else
-                <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('/') }}}">Mulai Investasi</a>
+                <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ url('/') }}}">Mulai Investasi</a>
                 @endguest
                   </div>
           </div>
