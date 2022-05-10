@@ -78,7 +78,7 @@ class LoginController extends Controller
                     'refresh_token' => $result['token']['refreshToken'],
                     'photos' => isset($photo_url) ? $photo_url : 'https://storage.googleapis.com/asset-santara-staging/santara.co.id/images/error/no-image-user.png'
                   ]);
-                  // $this->session->secondary_market = ['urlMarket' => $market_url];
+                  app('request')->session()->secondary_market = ['urlMarket' => $market_url];
                   // app('request')->session()->put('secondary_market', ['urlMarket' => $market_url]);
 
             }
