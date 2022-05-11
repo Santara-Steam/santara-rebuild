@@ -145,9 +145,9 @@
         });
     </script>
     <script src="https://old.santara.co.id/assets/js/global.js?v=5.8.8"></script>
-    <?php if (ENVIRONMENT == 'production') : ?>
+
         <script src="https://old.santara.co.id/assets/js/prod.js?v=5.8.8"></script>
-    <?php endif; ?>
+
 </body>
 
 </html>
