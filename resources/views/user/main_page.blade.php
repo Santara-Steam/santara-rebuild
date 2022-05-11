@@ -29,7 +29,7 @@
     <!-- END Page Level CSS-->
 
     <!-- BEGIN Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/admin/style.css?v=<?= WEB_VERSION; ?>">
+    {{-- <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/admin/style.css?v=<?= WEB_VERSION; ?>"> --}}
     <!-- END Custom CSS-->
     <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/app-assets/css/plugins/pickers/datepicker.css">
     <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/app-assets/vendors/css/tables/datatable/datatables.min.css">
@@ -65,7 +65,7 @@
                     </li>
                     <li class="nav-item mr-auto">
                         <a class="navbar-brand" href="/">
-                            <img class="logo-brand" style="width:65%" alt="modern admin logo" src="<?= STORAGE_GOOGLE . 'images/logo/santara-tidur-dark.png' ?>">
+                            <img class="logo-brand" style="width:65%" alt="modern admin logo" >
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-block nav-toggle">
@@ -92,16 +92,7 @@
     @yield('content')
 
     <div style="margin-top: 100px">&nbsp;</div>
-    <footer class="footer footer-on-sidemenu footer-static footer-light navbar-border navbar-shadow">
-        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 pb-2">
-            <span class="float-md-left d-block d-md-inline-block">Santara Website Ver <?= WEB_VERSION; ?> - Business Ver <?= BISNIS_VERSION ?> | Copyright &copy; 2020
-                <img src="<?= STORAGE_GOOGLE ?>images/ico/favicon-16x16.png"> Santara, All rights reserved. </span>
-            <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">
-                Hand-crafted & Made with
-                <i class="ft-heart pink"></i>
-            </span>
-        </p>
-    </footer>
+    
     <script type="text/javascript" src="https://old.santara.co.id/assets/js/scripts/lazysizes.min.js"></script>
     <script type="text/javascript" src="https://old.santara.co.id/app-assets/vendors/js/vendors.min.js"></script>
     <script type="text/javascript" src="https://old.santara.co.id/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
