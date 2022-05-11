@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Google\Cloud\Storage\StorageClient;
+use DB;
 
 class EmitenController extends Controller
 {
@@ -1125,12 +1126,21 @@ class EmitenController extends Controller
     }
 
     public function emiten_status(Request $request,$id){
-        $emj = new emiten_journey();
-        $emj->emiten_id = $id;
-        $emj->title = $request->get('title');
-        $emj->date = $request->get('start_date');
-        $emj->end_date = $request->get('end_date');
-        $emj->save();
+
+        DB::transaction(function() use ($request, $id) {
+            $emj = new emiten_journey();
+            $emj->emiten_id = $id;
+            $emj->title = $request->get('title');
+            $emj->date = $request->get('start_date');
+            $emj->end_date = $request->get('end_date');
+            $emj->save();
+
+            $emiten = emiten::find($id);
+            $emiten->begin_period = $request->get('start_date');
+            $emiten->end_period = $request->get('end_date');
+            $emiten->is_active = 1;
+            $emiten->save();
+        });
 
         $notif = array(
             'message' => 'Update Status Emiten Berhasil!!',
