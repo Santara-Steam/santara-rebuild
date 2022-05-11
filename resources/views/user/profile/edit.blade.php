@@ -41,7 +41,7 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                                                 id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
                                                             @else
                                                             <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}"
-                                                                id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
+                                                                id="uploaded_image" class="img-responsive" style="border-radius: 50%;" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'"/>
                                                             @endif
                                                             
                                                             <div class="overlay">
