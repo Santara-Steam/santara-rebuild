@@ -15,7 +15,7 @@
                         {{-- {{Session::get('test')}} --}}
                         {{-- {{Session::get('token')}} --}}
                         {{-- {{Session::get('refreshToken')}} --}}
-                        {{Session::get("secondary_market")}}
+                        {{-- {{Session::get("secondary_market")}} --}}
                     </div>
                 </div>
                 @include('user.is_kyc')
