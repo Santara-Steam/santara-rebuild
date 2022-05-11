@@ -199,7 +199,7 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                     {
                         // let text = text.replace("public/upload/", "");
                         $modal.modal('hide');
-                        $('#uploaded_image').attr('src', '{{env("PATH_WEB_PROD")}}'+data);
+                        $('#uploaded_image').attr('src', '{{config('global.STORAGE_BUCKET2')}}kyc/'+data);
                         // $('#upload_image').val(data);
                         $('#profile').val(data);
                         // $('#upload_image').attr('src', data);
