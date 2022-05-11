@@ -309,6 +309,10 @@ class TraderController extends Controller
     }
 
     public function secmar(){
-        return view('user.secmar');
+        $secmar = json_decode(app('request')->session()->get('secondary_market'),TRUE);
+        return view('user.secmar',compact('secmar'));
+        // $sec = collect($sec);
+        // echo $secmar;
+        // dd($secmar);
     }
 }

@@ -1,20 +1,32 @@
-<div id="userData" type="hidden" class="hidden-display">{{Session::get("secondary_market")}}</div>
-<input type="hidden" id="marketUrl" name="marketUrl" value="https://market.santara.co.id" />
-<input type="hidden" id="key" name="key" value="{{env('PROJECT_DECRYPT_KEY')}}" />
+{{-- <div id="userData" class="hidden-display">{{$secmar}}</div> --}}
+<input id="tokenn" name="tokenn" value="{{$secmar['token']}}" />
+<input id="refreshToken" name="refreshToken" value="{{$secmar['refresh_token']}}" />
+<input id="exp" name="exp" value="{{$secmar['expired_in']}}" />
+<input id="username" name="username" value="{{$secmar['username']}}" />
+<input id="photos" name="photos" value="{{$secmar['photos']}}" />
+<input id="marketUrl" name="marketUrl" value="https://market.santara.co.id" />
+<input id="key" name="key" value="{{env('PROJECT_DECRYPT_KEY')}}" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" integrity="sha512-nOQuvD9nKirvxDdvQ9OMqe2dgapbPB7vYAMrzJihw5m+aNcf0dX53m6YxM4LgA9u8e9eg9QX+/+mPu8kCNpV2A==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/aes.min.js" integrity="sha512-eqbQu9UN8zs1GXYopZmnTFFtJxpZ03FHaBMoU3dwoKirgGRss9diYqVpecUgtqW2YRFkIVgkycGQV852cD46+w==" crossorigin="anonymous"></script>
 {{-- <script src="<?= base_url() ?>assets/js/member/redirect.js?v=<?= WEB_VERSION; ?>"></script> --}}
 <script>
-const userData = document.getElementById('userData').innerHTML;
+// const userData = document.getElementById('userData').innerHTML;
 const marketUrl = document.getElementById('marketUrl').value;
+const tokenn = document.getElementById('tokenn').value;
+const refreshToken = document.getElementById('refreshToken').value;
+const exp = document.getElementById('exp').value;
+const username = document.getElementById('username').value;
+const photos = document.getElementById('photos').value;
 const key = document.getElementById('key').value;
-const parseData = JSON.parse(userData);
+// const parseData = JSON.parse(userData);
 const cookieName = '__AU2nQs04ys_';
 const cookieRefresh = 'd0AIh0HgMW_';
 const cookiePhoto = '_LOpSM4cK97';
 const hostName = window.location.hostname;
 const hostNameArray = hostName.split('.');
+
+// console.log(parseData);
 
 let cookieCrossDomain = '';
 
@@ -39,17 +51,17 @@ if (hostName === 'dev.santara.id' || hostName === 'https://dev.santara.id') {
 }
 
 const ciphertext = CryptoJS.AES.encrypt(
-    JSON.stringify(parseData.token),
+    JSON.stringify(tokenn),
     key
   );
 
 const ciphertextRefreshToken = CryptoJS.AES.encrypt(
-    JSON.stringify(parseData.refresh_token),
+    JSON.stringify(refreshToken),
     key
   );
 
 const ciphertextPhoto = CryptoJS.AES.encrypt(
-    JSON.stringify(parseData.photos),
+    JSON.stringify(photos),
     key,
   );
 
@@ -62,7 +74,7 @@ fetch(url, {
   method : "POST",
   body : JSON.stringify({
     token: ciphertext.toString(),
-    expired_in: parseData.expired_in
+    expired_in: exp
   })
 }).then(
     response => response.json()
