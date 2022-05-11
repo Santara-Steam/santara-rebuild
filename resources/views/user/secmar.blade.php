@@ -1,4 +1,4 @@
-<div id="userData" class="hidden-display">{{Session::get("secondary_market")}}</div>
+<div id="userData" type="hidden" class="hidden-display">{{Session::get("secondary_market")}}</div>
 <input type="hidden" id="marketUrl" name="marketUrl" value="https://market.santara.co.id" />
 <input type="hidden" id="key" name="key" value="{{env('PROJECT_DECRYPT_KEY')}}" />
 
