@@ -1,12 +1,12 @@
 
 {{-- <div id="userData" class="hidden-display">{{$secmar}}</div> --}}
-<input id="tokenn" name="tokenn" value="{{$secmar['token']}}" />
-<input id="refreshToken" name="refreshToken" value="{{$secmar['refresh_token']}}" />
-<input id="exp" name="exp" value="{{$secmar['expired_in']}}" />
-<input id="username" name="username" value="{{$secmar['username']}}" />
-<input id="photos" name="photos" value="{{$secmar['photos']}}" />
-<input id="marketUrl" name="marketUrl" value="https://market.santara.co.id" />
-<input id="key" name="key" value="{{env('PROJECT_DECRYPT_KEY')}}" />
+<input type="hidden" id="tokenn" name="tokenn" value="{{$secmar['token']}}" />
+<input type="hidden" id="refreshToken" name="refreshToken" value="{{$secmar['refresh_token']}}" />
+<input type="hidden" id="exp" name="exp" value="{{$secmar['expired_in']}}" />
+<input type="hidden" id="username" name="username" value="{{$secmar['username']}}" />
+<input type="hidden" id="photos" name="photos" value="{{$secmar['photos']}}" />
+<input type="hidden" id="marketUrl" name="marketUrl" value="https://market.santara.co.id" />
+<input type="hidden" id="key" name="key" value="{{env('PROJECT_DECRYPT_KEY')}}" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" integrity="sha512-nOQuvD9nKirvxDdvQ9OMqe2dgapbPB7vYAMrzJihw5m+aNcf0dX53m6YxM4LgA9u8e9eg9QX+/+mPu8kCNpV2A==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/aes.min.js" integrity="sha512-eqbQu9UN8zs1GXYopZmnTFFtJxpZ03FHaBMoU3dwoKirgGRss9diYqVpecUgtqW2YRFkIVgkycGQV852cD46+w==" crossorigin="anonymous"></script>
