@@ -76,7 +76,7 @@
                 <input type="hidden" id="marketUrl" name="marketUrl" value="https://market.santara.co.id/" />
                 <input type="hidden" id="key" name="key" value="{{env('PROJECT_DECRYPT_KEY')}}" />
             </form> --}}
-            <li class=" nav-item "><a href="{{url('secondary_market')}}" target="_blank"><i class="la la-file"></i><span class="menu-title" data-i18n="eCommerce">Secondary Market</span></a>
+            <li class=" nav-item "><a href="{{url('secondary_market')}}" target="_blank"><i class="la la-sitemap"></i><span class="menu-title" data-i18n="eCommerce">Pasar Sekunder</span></a>
             </li>
 
 
