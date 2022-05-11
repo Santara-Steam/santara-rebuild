@@ -51,6 +51,7 @@ class AccountController extends Controller
             ->orderBy('users.id', 'DESC')
             ->skip($start)
             ->take($rowperpage)
+            ->where('t.name', 'like', '%' .$searchValue . '%')
             ->select('users.id', 'users.uuid', 't.name', 'users.email', 
                     't.phone', 'users.attempt', 'users.created_at', 'r.name as role_name')
             ->get();
@@ -61,7 +62,7 @@ class AccountController extends Controller
             $btn_action = '
                 <a href="'.url('admin/setting/account/edit/'.$row->id).'" class="btn btn-primary btn-sm">Edit</a>
                 <a href="'.url('admin/setting/account/reset-password/'.$row->id).'" class="btn btn-info btn-sm">Resend Password Reset</a>
-                <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                <button type="button" id="btnDelete" data-id="'.$row->id.'"  class="btn btn-danger btn-sm">Hapus</button>
             ';
 
             array_push($data, [
@@ -127,5 +128,14 @@ class AccountController extends Controller
         );
         return redirect('admin/setting/account')->with($berhasil);
     }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->is_deleted = 1;
+        $user->save();
+        return response()->json(["code" => 200, "msg" => "Berhasil hapus data"]);
+    }
+
 
 }

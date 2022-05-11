@@ -93,6 +93,35 @@
         });
     }
 
+    $('body').on('click', '#btnDelete', function() {
+            var data_id = $(this).data('id');
+            Swal.fire({
+                title: "Apakah anda yakin?",
+                text: "Data yang sudah anda hapus tidak akan bisa kembali!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Ya, Hapus"
+            }).then(function(result) {
+                if (result.value) {
+                    $("#loader").show();
+                    $.ajax({
+                        url: '{{ url("admin/setting/account/delete") }}' + '/' + data_id,
+                        type: 'POST',
+                        success: function() {
+                            $("#loader").hide();
+                            Swal.fire(
+                                "Terhapus!",
+                                "Data telah terhapus.",
+                                "success"
+                            );
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        });
+
+
 </script>
 @endsection
 @section('style')
@@ -102,3 +131,4 @@
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
+
