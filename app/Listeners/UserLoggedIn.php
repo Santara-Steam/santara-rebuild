@@ -56,7 +56,7 @@ class UserLoggedIn
                     'expired_in' => date('Y-m-d'),
                     'username' => $result['user']['trader']['name'],
                     'refresh_token' => $result['token']['refreshToken'],
-                    'photos' => isset($photo_url) ? $photo_url : 'https://storage.googleapis.com/asset-santara-staging/santara.co.id/images/error/no-image-user.png'
+                    'photos' => 'https://storage.googleapis.com/asset-santara-staging/santara.co.id/images/error/no-image-user.png'
                   ]);
                   // $this->session->secondary_market = ['urlMarket' => $market_url];
                   app('request')->session()->put('secondary_market', $market_url);
