@@ -87,7 +87,7 @@ fetch(url, {
         saveCookies(cookiePhoto, ciphertextPhoto.toString());
       }
       setTimeout(() => {
-        window.location.href = `${marketUrl}/redirect/`;
+        // window.location.href = `${marketUrl}/redirect/`;
       }, 1000);
     }
 );
