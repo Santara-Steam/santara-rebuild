@@ -307,4 +307,8 @@ class TraderController extends Controller
         );
         return redirect()->route('login')->with($notif);
     }
+
+    public function secmar(){
+        return view('user.secmar');
+    }
 }

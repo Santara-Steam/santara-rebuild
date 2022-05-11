@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
     Route::get('/transaksi/pembayaran',[App\Http\Controllers\TransactionsController::class, 'checkout']);
     Route::post('/transaksi/buy',[App\Http\Controllers\TransactionsController::class, 'buy_token']);
     Route::get('/user/get-regency', [App\Http\Controllers\AddressController::class, 'usergetRegency']);
+
+    Route::get('/secondary_market', [App\Http\Controllers\TraderController::class, 'secmar']);
     
 });
 

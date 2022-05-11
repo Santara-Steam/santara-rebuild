@@ -71,6 +71,15 @@
             </li>
             <li class=" nav-item {{ 'user/portfolio' == request()->path() ? 'active' : '' }}"><a href="{{url('user/portfolio')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Portfolio</span></a>
             </li>
+            {{-- <form action="https://market.santara.co.id/api/post/session" id="my_form" method="post" target="_blank">
+                <div id="userData" class="hidden-display">{{Session::get("secondary_market")}}</div>
+                <input type="hidden" id="marketUrl" name="marketUrl" value="https://market.santara.co.id/" />
+                <input type="hidden" id="key" name="key" value="{{env('PROJECT_DECRYPT_KEY')}}" />
+            </form> --}}
+            <li class=" nav-item "><a href="{{url('secondary_market')}}" target="_blank"><i class="la la-file"></i><span class="menu-title" data-i18n="eCommerce">Secondary Market</span></a>
+            </li>
+
+
             <li class=" nav-item {{ 'user/deviden' == request()->path() ? 'active' : '' }}"><a href="{{url('user/deviden')}}"><i class="la la-file-text"></i><span class="menu-title" data-i18n="eCommerce">Deviden</span></a>
             </li>
             {{-- <li class=" nav-item {{ 'user/deposit' == request()->path() ? 'active' : '' }}"><a href="{{url('user/deposit')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="eCommerce">Deposit</span></a>
