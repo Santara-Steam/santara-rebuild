@@ -94,7 +94,7 @@ class LaporanKeuanganController extends Controller
 				'Accept'        => 'application/json',
 				'Content-type'  => 'application/json'
 			];
-			$response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'finance-report/'.$url, [
+			$response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'finance-report/'.$url, [
 				'headers' => $headers,
 			]);
 

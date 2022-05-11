@@ -63,7 +63,7 @@ class WalletController extends Controller
         if($type == 'saldo'):
             $saldo = 0;
             try {        
-                $responseSaldo = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'traders/idr', [
+                $responseSaldo = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'traders/idr', [
                     'headers' => $headers,
                 ]);
 

@@ -341,7 +341,7 @@ class PushNotificationController extends Controller
         $result = null;
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION'). 'broadcast/detail/' . $id, [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION'). 'broadcast/detail/' . $id, [
                 'form_params' => [
                     'token'     => app('request')->session()->get('token'),
                 ]

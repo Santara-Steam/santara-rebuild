@@ -306,7 +306,7 @@ class NewKycController extends Controller
         try {
             $client = new \GuzzleHttp\Client();
 
-            $endpoint = $client->request('POST', config("global.BASE_API_ADMIN_URL").config('global.API_ADMIN_VERSION') . 'users/update-status-iskyc/' . $id, [
+            $endpoint = $client->request('POST', config("global.BASE_API_ADMIN_URL").'/'.config('global.API_ADMIN_VERSION') . 'users/update-status-iskyc/' . $id, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
                 ],
@@ -329,7 +329,7 @@ class NewKycController extends Controller
         try {
             $client = new \GuzzleHttp\Client();
             
-            $endpoint = $client->request('POST', config("global.BASE_API_ADMIN_URL").config('global.API_ADMIN_VERSION') . 'users/update-status-iskyc/' . $id, [
+            $endpoint = $client->request('POST', config("global.BASE_API_ADMIN_URL").'/'.config('global.API_ADMIN_VERSION') . 'users/update-status-iskyc/' . $id, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
                 ],

@@ -103,7 +103,7 @@ class CRMController extends Controller
 
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').$url, [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').$url, [
                 'form_params' => [
                     'token' => app('request')->session()->get('token'),
                 ]
@@ -258,7 +258,7 @@ class CRMController extends Controller
         $result = null;
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'broadcast/target/detail/'.$id, [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'broadcast/target/detail/'.$id, [
                 'form_params' => [
                     'token' => app('request')->session()->get('token'),
                 ]
@@ -285,7 +285,7 @@ class CRMController extends Controller
 
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').$url, [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').$url, [
                 'form_params' => [
                     'token' => app('request')->session()->get('token'),
                 ]
@@ -335,7 +335,7 @@ class CRMController extends Controller
 
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'broadcast/target/detail/'.$id, [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'broadcast/target/detail/'.$id, [
                 'form_params' => [
                     'token' => app('request')->session()->get('token'),
                 ]
@@ -357,7 +357,7 @@ class CRMController extends Controller
         $type = $request->type;
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'broadcast/app-version?type=' . $type, [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'broadcast/app-version?type=' . $type, [
                 'form_params' => [
                     'token'  => app('request')->session()->get('token'),
                 ]
@@ -394,7 +394,7 @@ class CRMController extends Controller
 
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('POST',  config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'broadcast/target', [
+            $response = $client->request('POST',  config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'broadcast/target', [
                 'headers' => [
                     'Authorization' => 'Bearer '.app('request')->session()->get('token'),
                     'Origin' => config('global.BASE_FILE_URL')
@@ -431,7 +431,7 @@ class CRMController extends Controller
 
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION'). 'broadcast/target/' . $request->id, [
+            $response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION'). 'broadcast/target/' . $request->id, [
                 'headers' => [
                     'Authorization' => 'Bearer '.app('request')->session()->get('token'),
                     'Origin' => config('global.BASE_FILE_URL')
@@ -456,7 +456,7 @@ class CRMController extends Controller
     {
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('DELETE', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'broadcast/targets/' . $id, [
+            $response = $client->request('DELETE', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'broadcast/targets/' . $id, [
                 'form_params' => [
                     'token' => app('request')->session()->get('token'),
                 ]
@@ -477,10 +477,10 @@ class CRMController extends Controller
     public function saveKonten(Request $request)
     {
         $input = $request->data;
-        $url = config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'broadcast';
+        $url = config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'broadcast';
         $method = 'POST';
         if ($request->type == 'update') :
-            $url = config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'broadcast/' . $request->broadcast_id;
+            $url = config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'broadcast/' . $request->broadcast_id;
             $method = 'PUT';
         endif;
 
@@ -598,7 +598,7 @@ class CRMController extends Controller
 
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION').'broadcast/status/'.$id, [
+            $response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'broadcast/status/'.$id, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . app('request')->session()->get('token')
                 ],
@@ -621,7 +621,7 @@ class CRMController extends Controller
     {
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('DELETE', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION') . 'broadcast/' . $id, [
+            $response = $client->request('DELETE', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION') . 'broadcast/' . $id, [
                 'form_params' => [
                     'token'     => app('request')->session()->get('token'),
                 ]
@@ -645,7 +645,7 @@ class CRMController extends Controller
 
         try {
             $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION') . 'broadcast/detail/' . $id, [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION') . 'broadcast/detail/' . $id, [
                 'form_params' => [
                     'token'  => app('request')->session()->get('token'),
                 ]
@@ -667,7 +667,7 @@ class CRMController extends Controller
         try {
             $client = new \GuzzleHttp\Client();
 
-            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').config('global.API_ADMIN_VERSION') . 'broadcast/categories', [
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION') . 'broadcast/categories', [
                 'form_params' => [
                     'token' => app('request')->session()->get('token'),
                 ]

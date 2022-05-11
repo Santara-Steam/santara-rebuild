@@ -34,7 +34,7 @@ class LoginController extends Controller
         app('request')->session()->put('pwd', $request->password);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Success
-            $this->getTokenUser($request->email, $request->password);
+            //$this->getTokenUser($request->email, $request->password);
             if (Auth::user()->role_id == 2) {
                 return redirect('user');
             } else if (Auth::user()->role_id == 1) {
