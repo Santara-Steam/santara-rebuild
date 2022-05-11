@@ -65,7 +65,7 @@
                     </li>
                     <li class="nav-item mr-auto">
                         <a class="navbar-brand" href="/">
-                            <img class="logo-brand" style="width:65%" alt="modern admin logo" src="<?= STORAGE_GOOGLE . 'images/logo/santara-tidur-dark.png' ?>">
+                            <img class="logo-brand" style="width:65%" alt="modern admin logo" src="https://storage.googleapis.com/asset-santara/santara.co.id/images/logo/santara-tidur-dark.png'">
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-block nav-toggle">
