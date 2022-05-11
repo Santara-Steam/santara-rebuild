@@ -24,6 +24,9 @@
                                 <div class="card-body">
                                     <div class="card-text">
                                     </div>
+                                    <?php 
+$profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
+?>
                                     <form class="form" action="{{url('update_profile')}}/{{Auth::user()->id}}" method="POST"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
@@ -37,7 +40,7 @@
                                                             <img src="{{asset('public')}}/default1.png"
                                                                 id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
                                                             @else
-                                                            <img src="{{env("PATH_WEB_PROD")}}{{$user->trader->photo}}"
+                                                            <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}"
                                                                 id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
                                                             @endif
                                                             

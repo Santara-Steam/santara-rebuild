@@ -1,3 +1,6 @@
+<?php 
+$profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
+?>
 <nav 
     class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow">
     <div class="navbar-wrapper">
@@ -170,8 +173,8 @@
                                     <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                         alt="Avatar" style="border-radius: 50%;" />
                                     @else
-                                    <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
-                                        alt="Avatar" style="border-radius: 50%;width: " onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{Auth::user()->trader->photo}}'"/>
+                                    <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}"
+                                        alt="Avatar" style="border-radius: 50%;width: " onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'"/>
 
                                     @endif
                                 </span>
@@ -195,8 +198,8 @@
                                 <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                     alt="Foto Profile" style="border-radius: 50%;padding:10px" />
                                 @else
-                                <img src="{{env("PATH_WEB")}}{{Auth::user()->trader->photo}}"
-                                    alt="Foto Profile" style="border-radius: 50%;padding:10px;width: 200px" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{Auth::user()->trader->photo}}'"/>
+                                <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}"
+                                    alt="Foto Profile" style="border-radius: 50%;padding:10px;width: 200px" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'"/>
                                 @endif
                                 <a class="dropdown-item" href="{{url('/edit_profile')}}/{{Auth::user()->id}}"><i
                                         class="ft-user"></i> Edit Profile</a>

@@ -1177,9 +1177,9 @@ class EmitenController extends Controller
             $storage = new StorageClient([
                 'keyFile' => json_decode($googleConfigFile, true)
             ]);
-            $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET');
+            $storageBucketName = config('global.STORAGE_GOOGLE_BUCKET2');
             $bucket = $storage->bucket($storageBucketName);
-            $folderName = 'santara.co.id/token';
+            $folderName = 'kyc';
             $pictures = $folderName.'/'.$image_name;
             $bucket->upload($data, [
                 'predefinedAcl' => 'publicRead',
