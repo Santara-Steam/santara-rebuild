@@ -27,7 +27,6 @@ class EmitenController extends Controller
             //     $query->on('emitens.id','=','emiten_journeys.emiten_id')
             //         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)');
             // })
-            //->leftJoin('transactions as t', 't.emiten_id', '=', 'emitens.id')
             ->groupBy('emitens.id')
             ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
             ->get();
