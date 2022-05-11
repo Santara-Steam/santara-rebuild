@@ -9,8 +9,8 @@
     <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
     <title>Santara - Dashboard</title>
-    {{-- <link rel="apple-touch-icon" href="<?= STORAGE_GOOGLE ?>images/ico/apple-icon-120.png"> --}}
-    {{-- <link rel="shortcut icon" type="image/x-icon" href="<?= STORAGE_GOOGLE ?>images/ico/favicon.ico"> --}}
+    <link rel="apple-touch-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/app-assets/css/vendors.min.css">
@@ -29,7 +29,7 @@
     <!-- END Page Level CSS-->
 
     <!-- BEGIN Custom CSS-->
-    {{-- <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/admin/style.css?v=<?= WEB_VERSION; ?>"> --}}
+    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/admin/style.css?v=5.8.8">
     <!-- END Custom CSS-->
     <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/app-assets/css/plugins/pickers/datepicker.css">
     <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/app-assets/vendors/css/tables/datatable/datatables.min.css">
@@ -65,7 +65,7 @@
                     </li>
                     <li class="nav-item mr-auto">
                         <a class="navbar-brand" href="/">
-                            <img class="logo-brand" style="width:65%" alt="modern admin logo" >
+                            <img class="logo-brand" style="width:65%" alt="modern admin logo" src="<?= STORAGE_GOOGLE . 'images/logo/santara-tidur-dark.png' ?>">
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-block nav-toggle">
@@ -82,17 +82,41 @@
             </div>
             <div class="navbar-container content">
                 <div class="collapse navbar-collapse" id="navbar-mobile">
-                    
+                    {{-- <?php $this->load->view('member/navbar_menu'); ?> --}}
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- LEFT MENU -->
     @yield('content')
+    @yield('js')
+    <!-- LEFT MENU -->
+    {{-- <?php $this->load->view('member/left_menu'); ?>
+
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <?php $this->load->view('member/notification_kyc'); ?>
+            <?php $this->load->view('member/notification_new_kyc'); ?>
+            <?php $this->load->view('guest/_main_page/notification_alert');  ?>
+            <div class="content-body">
+                <div id="login_session" style="display:none"><?= (isset($this->session->user)) ? 1 : 0; ?></div>
+                <div id="loader" class="loader" style="display:none"></div>
+                <?php $this->load->view($page); ?>
+            </div>
+        </div>
+    </div> --}}
 
     <div style="margin-top: 100px">&nbsp;</div>
-    
+    <footer class="footer footer-on-sidemenu footer-static footer-light navbar-border navbar-shadow">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 pb-2">
+            <span class="float-md-left d-block d-md-inline-block">Santara Website Ver 5.8.8 - Business Ver 3.6.2 | Copyright &copy; 2020
+                <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon-16x16.png"> Santara, All rights reserved. </span>
+            <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">
+                Hand-crafted & Made with
+                <i class="ft-heart pink"></i>
+            </span>
+        </p>
+    </footer>
     <script type="text/javascript" src="https://old.santara.co.id/assets/js/scripts/lazysizes.min.js"></script>
     <script type="text/javascript" src="https://old.santara.co.id/app-assets/vendors/js/vendors.min.js"></script>
     <script type="text/javascript" src="https://old.santara.co.id/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
@@ -120,11 +144,10 @@
             });
         });
     </script>
-    {{-- <script src="https://old.santara.co.id/assets/js/global.js?v=<?= WEB_VERSION; ?>"></script>
+    <script src="https://old.santara.co.id/assets/js/global.js?v=5.8.8"></script>
     <?php if (ENVIRONMENT == 'production') : ?>
-        <script src="https://old.santara.co.id/assets/js/prod.js?v=<?= WEB_VERSION; ?>"></script>
-    <?php endif; ?> --}}
-    @yield('js')
+        <script src="https://old.santara.co.id/assets/js/prod.js?v=5.8.8"></script>
+    <?php endif; ?>
 </body>
 
 </html>
