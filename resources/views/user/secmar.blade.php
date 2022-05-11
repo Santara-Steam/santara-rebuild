@@ -1,5 +1,4 @@
-@extends('user.main_page')
-@section('content')
+
 {{-- <div id="userData" class="hidden-display">{{$secmar}}</div> --}}
 <input id="tokenn" name="tokenn" value="{{$secmar['token']}}" />
 <input id="refreshToken" name="refreshToken" value="{{$secmar['refresh_token']}}" />
@@ -12,9 +11,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" integrity="sha512-nOQuvD9nKirvxDdvQ9OMqe2dgapbPB7vYAMrzJihw5m+aNcf0dX53m6YxM4LgA9u8e9eg9QX+/+mPu8kCNpV2A==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/aes.min.js" integrity="sha512-eqbQu9UN8zs1GXYopZmnTFFtJxpZ03FHaBMoU3dwoKirgGRss9diYqVpecUgtqW2YRFkIVgkycGQV852cD46+w==" crossorigin="anonymous"></script>
 {{-- <script src="<?= base_url() ?>assets/js/member/redirect.js?v=<?= WEB_VERSION; ?>"></script> --}}
-@endsection
-@section('js')
-
 <script>
 // const userData = document.getElementById('userData').innerHTML;
 const marketUrl = document.getElementById('marketUrl').value;
@@ -97,5 +93,3 @@ fetch(url, {
 );
 
 </script>
-    
-@endsection
