@@ -100,7 +100,7 @@ class HomeController extends Controller
 
 
     public function index(){
-        $np = emiten(4, 1, null, null, null, null, null, 'saham', 'notfull');
+        $np = emiten(99, 1, null, null, null, null, null, 'saham', 'notfull');
         
         $sold_out = emitens_old::where('emitens.is_active',1)
         ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))

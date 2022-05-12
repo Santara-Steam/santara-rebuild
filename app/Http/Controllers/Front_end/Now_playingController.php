@@ -76,8 +76,8 @@ class Now_playingController extends Controller
         }
 
 
-        $np = emiten(4, 1, $search, $minimal, $maksimal, $category, $sort, 'saham', 'notfull');
-        $nowp = emiten(4, 1, null, null, null, null, null, 'saham', 'notfull');
+        $np = emiten(99, 1, $search, $minimal, $maksimal, $category, $sort, 'saham', 'notfull');
+        $nowp = emiten(99, 1, null, null, null, null, null, 'saham', 'notfull');
 
         // $now_playing = emiten::select('emitens.*','emitens.avg_capital_needs as lbr','categories.category as ktg', 'emiten_journeys.date as sd', 'emiten_journeys.end_date as ed', db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0))  as terjual'),db::raw('SUM(IF(book_sahams.isValid = 1, book_sahams.total_amount, 0)) / emitens.avg_capital_needs  as per'))
         // // ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
