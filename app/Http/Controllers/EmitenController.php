@@ -1137,10 +1137,10 @@ class EmitenController extends Controller
             $emiten = emiten::find($id);
             $emiten->begin_period = $request->get('start_date');
             $emiten->end_period = $request->get('end_date');
-            if($request->get('title') == 'Penawaran Saham'){
-                $emiten->is_active = 1;
-            }else{
+            if($request->get('title') == 'Pra Penawaran Saham'){
                 $emiten->is_active = 0;
+            }else{
+                $emiten->is_active = 1;
             }
             $emiten->save();
         });

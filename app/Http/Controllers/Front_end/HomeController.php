@@ -110,7 +110,9 @@ class HomeController extends Controller
         ->whereRaw('emitens.end_period < now()')
         ->orderby('emitens.id','DESC')
         ->groupBy('emitens.id')
-        ->get();
+        ->toSql();
+        echo $sold_out;
+        exit();
 
         
         $now_playing = collect($np);
