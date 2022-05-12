@@ -102,14 +102,24 @@ class HomeController extends Controller
     public function index(){
         $np = emiten(99, 1, null, null, null, null, null, 'saham', 'notfull');
         
-        $sold_out = emitens_old::where('emitens.is_active',1)
-        ->select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+        $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
-        ->where('emitens.is_deleted',0)
-        ->whereRaw('emitens.end_period < now()')
+        ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
+        // ->where('emitens.is_deleted',0)
+        // ->whereRaw('emitens.end_period < now()')
         ->orderby('emitens.id','DESC')
         ->groupBy('emitens.id')
+        ->havingRaw('CONVERT(ROUND(
+            IF(
+              (SUM(
+                IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply > 1, 1,
+                  (SUM(
+                    IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply) * 100, 2), char) = 100.00
+                    and 
+                    emitens.is_deleted = 0
+                    and emitens.is_active = 1
+                    and emitens.begin_period < now()')
         ->get();
         
         $now_playing = collect($np);
@@ -125,7 +135,7 @@ class HomeController extends Controller
             ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
             ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
             ->where('emitens.is_deleted',0)
-            ->where('emitens.is_active',0)
+            // ->where('emitens.is_active',0)
             ->where('emitens.is_verified',1)
             ->where('emitens.is_pralisting',1)
             ->where('emitens.is_coming_soon',1)
