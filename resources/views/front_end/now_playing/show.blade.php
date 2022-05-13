@@ -344,9 +344,9 @@ $datediff = $end - $now;
                             <div class="overlap-group" style=" min-width: 270px;">
                                 <div class="percent inter-medium-white-12px">
                                     <div class="progress-bar "
-                                        style="width: {{ $bok->tot > 0 ? round($bok->tot / $emt->avg_capital_needs, 4) : 0 * 100 }}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
+                                        style="width:  {{ number_format($bok->tot > 0 ? round(($bok->tot / $emt->avg_capital_needs) * 100, 2) : 0, 2, '.', ',') }}%; background-color:#bf2d30; border-radius: 8px; height: 16px;"
                                         role="progressbar"
-                                        aria-valuenow="{{ $bok->tot > 0 ? round($bok->tot / $emt->avg_capital_needs, 0) : 0 }}"
+                                        aria-valuenow=" {{ number_format($bok->tot > 0 ? round(($bok->tot / $emt->avg_capital_needs) * 100, 2) : 0, 2, ',', '.') }}"
                                         aria-valuemin="0" aria-valuemax="100">
 
                                         <span class="tx-np percen inter-medium-white">
@@ -355,7 +355,7 @@ $datediff = $end - $now;
                                             {{-- @if ($bok->tot > 0 ? ($bok->tot / $emt->avg_capital_needs) : 0 * 100 == 0.0)
                                                 0 --}}
                                             {{-- @else --}}
-                                                {{ $bok->tot > 0 ? round($bok->tot / $emt->avg_capital_needs, 4) : 0 * 100 }}
+                                            {{ number_format($bok->tot > 0 ? round(($bok->tot / $emt->avg_capital_needs) * 100, 2) : 0, 2, ',', '.') }}
                                             {{-- @endif --}}
                                             %
                                         </span>
