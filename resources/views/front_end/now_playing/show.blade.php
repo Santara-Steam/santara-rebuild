@@ -352,11 +352,11 @@ $datediff = $end - $now;
                                         <span class="tx-np percen inter-medium-white">
 
                                             {{-- {{ round((round($np->terjual,0)/round($np->avg_capital_needs,0))*100,2) }} --}}
-                                            @if ($bok->tot > 0 ? ($bok->tot / $emt->avg_capital_needs) : 0 * 100 == 0.0)
-                                                0
-                                            @else
+                                            {{-- @if ($bok->tot > 0 ? ($bok->tot / $emt->avg_capital_needs) : 0 * 100 == 0.0)
+                                                0 --}}
+                                            {{-- @else --}}
                                                 {{ $bok->tot > 0 ? round($bok->tot / $emt->avg_capital_needs, 4) : 0 * 100 }}
-                                            @endif
+                                            {{-- @endif --}}
                                             %
                                         </span>
                                     </div>
