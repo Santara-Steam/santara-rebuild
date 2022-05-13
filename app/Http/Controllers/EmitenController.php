@@ -20,7 +20,7 @@ class EmitenController extends Controller
     public function index(){
         $soldout = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
             'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
-            'categories.category as ktg', 'emitens.last_emiten_journey','emitens.begin_period as sd', 'emitens.end_period as ed')
+            'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed')
             ->leftjoin('categories', 'categories.id','=','emitens.category_id')
             ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
             ->where('emitens.is_deleted',0)
@@ -38,7 +38,7 @@ class EmitenController extends Controller
             ->get();
         $commingsoon = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
             'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
-            'categories.category as ktg', 'emitens.last_emiten_journey','emitens.begin_period as sd', 'emitens.end_period as ed')
+            'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed')
             ->leftjoin('categories', 'categories.id','=','emitens.category_id')
             ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
             ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
@@ -71,11 +71,11 @@ class EmitenController extends Controller
         
         $collection = collect($soldout);
         $merged = $collection->merge($commingsoon);
-        $emiten = $merged->all();
+        $mergedData = $merged->all();
 
         foreach($dtNowPlaying as $row){
             if($row->sold_out != '100.00'){
-                array_push($emiten, [
+                array_push($mergedData, [
                     'id' => $row->id,
                     'company_name' => $row->company_name,
                     'trademark' => $row->trademark,
@@ -87,12 +87,39 @@ class EmitenController extends Controller
                     'begin_period' => $row->begin_period,
                     'created_at' => $row->created_at,
                     'ktg' => $row->ktg,
-                    'sd' => $row->sd,
-                    'ed' => $row->sd
                 ]);
             }
         }
+        $emiten = [];
+        foreach($mergedData as $row){
+                $latestJourney = $this->getLatestJourney($row['id']);
+                array_push($emiten, [
+                    'id' => $row['id'],
+                    'company_name' => $row['company_name'],
+                    'trademark' => $row['trademark'],
+                    'code_emiten' => $row['code_emiten'],
+                    'price' => $row['price'],
+                    'supply' => $row['supply'],
+                    'is_deleted' => $row['is_deleted'],
+                    'is_active' => $row['is_active'],
+                    'begin_period' => $row['begin_period'],
+                    'created_at' => $row['created_at'],
+                    'last_emiten_journey' => $latestJourney['title'],
+                    'ktg' => $row['ktg'],
+                    'sd' => $latestJourney['date'],
+                    'ed' => $latestJourney['end_date']
+                ]);
+        }
+        //echo json_encode($emiten);
         return view('admin.emiten.index',compact('emiten'));
+    }
+
+    public function getLatestJourney($emitenId)
+    {
+        $emitenJourney = emiten_journey::where('emiten_id', $emitenId)
+            ->orderBy('created_at', 'DESC')
+            ->first();
+        return $emitenJourney;
     }
 
     public function add(){
@@ -1198,6 +1225,9 @@ class EmitenController extends Controller
             $emiten = emiten::find($id);
             $emiten->begin_period = $request->get('start_date');
             $emiten->end_period = $request->get('end_date');
+            if($request->get('title') == 'Penawaran Saham'){
+                $emiten->is_coming_soon = 0;
+            }
             if($request->get('title') == 'Pra Penawaran Saham'){
                 $emiten->is_active = 0;
             }else{

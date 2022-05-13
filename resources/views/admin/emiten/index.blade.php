@@ -39,25 +39,24 @@
                                             </thead>
                                             <tbody>
                                                 <?php $no = 0;?>
-                                                <?= json_encode($emiten[0]->company_name); exit(); ?>
-                                                @foreach ($emiten as $item)
+                                                @for ($i = 0; $i < count($emiten); $i++)
                                                 <?php $no++; ?>
                                                 <tr>
                                                     {{-- <td>{{$item->trader_id}}</td> --}}
                                                     <td>{{$no}}</td>
-                                                    <td>{{$item->company_name}}</td>
-                                                    <td>{{$item->trademark}}</td>
-                                                    <td>{{$item->code_emiten}}</td>
-                                                    <td>{{$item->ktg}}</td>
+                                                    <td>{{$emiten[$i]['company_name']}}</td>
+                                                    <td>{{$emiten[$i]['trademark']}}</td>
+                                                    <td>{{$emiten[$i]['code_emiten']}}</td>
+                                                    <td>{{$emiten[$i]['ktg']}}</td>
                                                     {{-- <td>
-                                                        {{$item->last_emiten_journey}}
+                                                        {{$emiten[$i]['last_emiten_journey}}
                                                     </td> --}}
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                {{$item->last_emiten_journey}}
+                                                                {{$emiten[$i]['last_emiten_journey']}}
                                                             </div>
-                                                            @if ($item->last_emiten_journey == 'Pembagian Dividen')
+                                                            @if ($emiten[$i]['last_emiten_journey'] == 'Pembagian Dividen')
                                                             <div class="col-2">
                                                                 
                                                             </div>
@@ -65,7 +64,7 @@
                                                             <div class="col-3">
                                                                 <button type="button" class="btn btn-sm btn-success"
                                                                     data-toggle="modal"
-                                                                    data-target="#default{{$item->id}}">
+                                                                    data-target="#default{{$emiten[$i]['id']}}">
                                                                     Update Status
                                                                 </button>
                                                             </div>
@@ -75,22 +74,22 @@
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-5">
-                                                                <a href="{{url('admin/emiten/edit')}}/{{$item->id}}"
+                                                                <a href="{{url('admin/emiten/edit')}}/{{$emiten[$i]['id']}}"
                                                                     class="btn btn-block btn-sm btn-warning">Edit</a>
                                                             </div>
                                                             <div class="col-3 mr-0">
-                                                            <form id="del{{$item->id}}" method="post"
-                                                                action="{{url('/emiten/delete')}}/{{$item->id}}"
+                                                            <form id="del{{$emiten[$i]['id']}}" method="post"
+                                                                action="{{url('/emiten/delete')}}/{{$emiten[$i]['id']}}"
                                                                 enctype="multipart/form-data">
                                                                 {{ csrf_field() }}
                                                             </form>
-                                                                <a data-id="{{$item->id}}" style="color: white" type="submit"
+                                                                <a data-id="{{$emiten[$i]['id']}}" style="color: white" type="submit"
                                                                     class="btn btn-sm btn-danger  deletebtn">Delete</a>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                @endforeach
+                                                @endfor
 
                                             </tbody>
                                         </table>
@@ -105,12 +104,12 @@
     </div>
 </div>
 
-@foreach ($emiten as $item)
-<div class="modal fade text-left" id="default{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+@for ($i = 0; $i < count($emiten); $i++)
+<div class="modal fade text-left" id="default{{$emiten[$i]['id']}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form class="form" action="{{url('/emiten/update_status')}}/{{$item->id}}" method="POST"
+            <form class="form" action="{{url('/emiten/update_status')}}/{{$emiten[$i]['id']}}" method="POST"
                 enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="modal-header">
@@ -123,21 +122,22 @@
                     <div class="form-group">
                         <label for="projectinput6">Status</label>
                         <select id="projectinput6" name="title" class="form-control">
-                            <option value="{{$item->sts}}" selected hidden>{{$item->sts}}</option>
+                            <option value="{{$emiten[$i]['last_emiten_journey']}}" selected hidden>{{$emiten[$i]['last_emiten_journey']}}</option>
 
-                            @if ($item->last_emiten_journey == 'Pra Penawaran Saham')
+                            @if ($emiten[$i]['last_emiten_journey'] == 'Pra Penawaran Saham' || 
+                                $emiten[$i]['last_emiten_journey'] == null)
                             <option value="Penawaran Saham">Penawaran Saham</option>
                             <option value="Pendanaan Terpenuhi">Pendanaan Terpenuhi</option>
                             <option value="Penyerahan Dana">Penyerahan Dana</option>
                             <option value="Pembagian Deviden">Pembagian Deviden</option>
-                            @elseif($item->last_emiten_journey == 'Penawaran Saham')
+                            @elseif($emiten[$i]['last_emiten_journey'] == 'Penawaran Saham')
                             <option value="Pendanaan Terpenuhi">Pendanaan Terpenuhi</option>
                             <option value="Penyerahan Dana">Penyerahan Dana</option>
                             <option value="Pembagian Deviden">Pembagian Deviden</option>
-                            @elseif($item->last_emiten_journey == 'Pendanaan Terpenuhi')
+                            @elseif($emiten[$i]['last_emiten_journey'] == 'Pendanaan Terpenuhi')
                             <option value="Penyerahan Dana">Penyerahan Dana</option>
                             <option value="Pembagian Deviden">Pembagian Deviden</option>
-                            @elseif($item->last_emiten_journey == 'Penyerahan Dana')
+                            @elseif($emiten[$i]['last_emiten_journey'] == 'Penyerahan Dana')
                             <option value="Pembagian Dividen">Pembagian Dividen</option>
                             @endif
 
@@ -145,13 +145,13 @@
                     </div>
                     <div class="form-group">
                         <label for="start_date">Tanggal Mulai</label>
-                        <input type="datetime-local" value="{{strftime('%Y-%m-%dT%H:%M:%S', strtotime($item->sd))}}"
+                        <input type="datetime-local" value="{{strftime('%Y-%m-%dT%H:%M:%S', strtotime($emiten[$i]['sd']))}}"
                             class="form-control" name="start_date" id="start_date">
-                        {{-- {{$item->sd}} --}}
+                        {{-- {{$emiten[$i]['sd}} --}}
                     </div>
                     <div class="form-group">
                         <label for="start_date">Tanggal Selesai</label>
-                        <input type="datetime-local" value="{{strftime('%Y-%m-%dT%H:%M:%S', strtotime($item->ed))}}"
+                        <input type="datetime-local" value="{{strftime('%Y-%m-%dT%H:%M:%S', strtotime($emiten[$i]['ed']))}}"
                             class="form-control" name="end_date" id="end_date">
                     </div>
                 </div>
@@ -163,7 +163,7 @@
         </div>
     </div>
 </div>
-@endforeach
+@endfor
 @endsection
 @section('js')
 <script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
