@@ -34,6 +34,7 @@ Auth::routes(['verify' => true]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
 Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], function () {
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
+    Route::get('/user/forgot-password/reset/{token}', [App\Http\Controllers\TraderController::class, 'mobile_reset']);
     Route::get('/user/emiten', [App\Http\Controllers\EmitenController::class, 'index_user']);
     Route::get('/user/bisnis_anda', [App\Http\Controllers\EmitenController::class, 'user_emiten']);
     Route::get('/user/pesan_saham', [App\Http\Controllers\BookSahamController::class, 'index_user']);

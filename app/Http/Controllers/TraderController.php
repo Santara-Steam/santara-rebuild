@@ -315,4 +315,8 @@ class TraderController extends Controller
         // echo $secmar;
         // dd($secmar);
     }
+
+    public function mobile_reset($token){
+        return view('auth.passwords.reset');
+    }
 }
