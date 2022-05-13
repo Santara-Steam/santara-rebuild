@@ -18,19 +18,80 @@ class EmitenController extends Controller
 {
     //
     public function index(){
-        $emiten = emiten::where('emitens.is_deleted',0)
-            ->select('emitens.*','categories.category as ktg', 'emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
+        $soldout = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
+            'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
+            'categories.category as ktg', 'emitens.last_emiten_journey','emitens.begin_period as sd', 'emitens.end_period as ed')
             ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-            //->leftjoin('emiten_status_histories as eh', 'eh.emiten_id', '=', 'emitens.id')
-            ->leftJoin('emiten_journeys', 'emitens.id','=','emiten_journeys.emiten_id')
-            // ->leftJoin('emiten_journeys', function($query) {
-            //     $query->on('emitens.id','=','emiten_journeys.emiten_id')
-            //         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)');
-            // })
+            ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
+            ->where('emitens.is_deleted',0)
             ->groupBy('emitens.id')
-            ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+            ->havingRaw('CONVERT(ROUND(
+                IF(
+                  (SUM(
+                    IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply > 1, 1,
+                      (SUM(
+                        IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply) * 100, 2), char) = 100.00
+                        and 
+                        emitens.is_deleted = 0
+                        and emitens.is_active = 1
+                        and emitens.begin_period < now()')
             ->get();
+        $commingsoon = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
+            'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
+            'categories.category as ktg', 'emitens.last_emiten_journey','emitens.begin_period as sd', 'emitens.end_period as ed')
+            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+            ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+            ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+            ->where('emitens.is_deleted',0)
+            ->where('emitens.is_verified',1)
+            ->where('emitens.is_pralisting',1)
+            ->where('emitens.is_coming_soon',1)
+            ->groupBy('emitens.id')
+            ->orderby('created_at','DESC')
+            ->get();
+        $dtNowPlaying = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
+        'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
+        'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed',
+        DB::raw('CONVERT(ROUND(
+            IF(
+              (SUM(
+                IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply > 1, 1,
+                  (SUM(
+                    IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply) * 100, 2), char) as sold_out'))
+            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+            ->leftjoin('transactions', function($query){
+                $query->on('transactions.emiten_id','=','emitens.id')
+                    ->where('transactions.channel', '<>', 'MARKET');
+            })
+            ->where('emitens.is_active', 1)
+            ->where('emitens.is_deleted',0)
+            ->groupBy('emitens.id')
+            ->get();
+        $nowPlaying = [];
         
+        $collection = collect($soldout);
+        $merged = $collection->merge($commingsoon);
+        $emiten = $merged->all();
+
+        foreach($dtNowPlaying as $row){
+            if($row->sold_out != '100.00'){
+                array_push($emiten, [
+                    'id' => $row->id,
+                    'company_name' => $row->company_name,
+                    'trademark' => $row->trademark,
+                    'code_emiten' => $row->code_emiten,
+                    'price' => $row->price,
+                    'supply' => $row->supply,
+                    'is_deleted' => $row->is_deleted,
+                    'is_active' => $row->is_active,
+                    'begin_period' => $row->begin_period,
+                    'created_at' => $row->created_at,
+                    'ktg' => $row->ktg,
+                    'sd' => $row->sd,
+                    'ed' => $row->sd
+                ]);
+            }
+        }
         return view('admin.emiten.index',compact('emiten'));
     }
 

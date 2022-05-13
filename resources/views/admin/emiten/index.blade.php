@@ -39,6 +39,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php $no = 0;?>
+                                                <?= json_encode($emiten[0]->company_name); exit(); ?>
                                                 @foreach ($emiten as $item)
                                                 <?php $no++; ?>
                                                 <tr>
@@ -49,14 +50,14 @@
                                                     <td>{{$item->code_emiten}}</td>
                                                     <td>{{$item->ktg}}</td>
                                                     {{-- <td>
-                                                        {{$item->status}}
+                                                        {{$item->last_emiten_journey}}
                                                     </td> --}}
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-6">
-                                                                {{$item->sts}}
+                                                                {{$item->last_emiten_journey}}
                                                             </div>
-                                                            @if ($item->sts == 'Pembagian Dividen')
+                                                            @if ($item->last_emiten_journey == 'Pembagian Dividen')
                                                             <div class="col-2">
                                                                 
                                                             </div>
@@ -124,19 +125,19 @@
                         <select id="projectinput6" name="title" class="form-control">
                             <option value="{{$item->sts}}" selected hidden>{{$item->sts}}</option>
 
-                            @if ($item->sts == 'Pra Penawaran Saham')
+                            @if ($item->last_emiten_journey == 'Pra Penawaran Saham')
                             <option value="Penawaran Saham">Penawaran Saham</option>
                             <option value="Pendanaan Terpenuhi">Pendanaan Terpenuhi</option>
                             <option value="Penyerahan Dana">Penyerahan Dana</option>
                             <option value="Pembagian Deviden">Pembagian Deviden</option>
-                            @elseif($item->sts == 'Penawaran Saham')
+                            @elseif($item->last_emiten_journey == 'Penawaran Saham')
                             <option value="Pendanaan Terpenuhi">Pendanaan Terpenuhi</option>
                             <option value="Penyerahan Dana">Penyerahan Dana</option>
                             <option value="Pembagian Deviden">Pembagian Deviden</option>
-                            @elseif($item->sts == 'Pendanaan Terpenuhi')
+                            @elseif($item->last_emiten_journey == 'Pendanaan Terpenuhi')
                             <option value="Penyerahan Dana">Penyerahan Dana</option>
                             <option value="Pembagian Deviden">Pembagian Deviden</option>
-                            @elseif($item->sts == 'Penyerahan Dana')
+                            @elseif($item->last_emiten_journey == 'Penyerahan Dana')
                             <option value="Pembagian Dividen">Pembagian Dividen</option>
                             @endif
 
