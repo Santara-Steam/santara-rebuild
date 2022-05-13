@@ -99,8 +99,8 @@ class HomeController extends Controller
                 ->orderBy('tr.id','DESC')
                 ->get();
                 // dd(count($rtransactions));
-
-        return view('user.index',compact('total_saham','total_lbr','psb','psbv','book','asset','port','rtransactions'));
+        $secmar = json_decode(app('request')->session()->get('secondary_market'),TRUE);
+        return view('user.index',compact('total_saham','total_lbr','psb','psbv','book','asset','port','rtransactions','secmar'));
     }
     public function indexadmin()
     {
@@ -121,6 +121,7 @@ class HomeController extends Controller
         ->where('isValid',1)->first();
         $book_rp= book_saham::select(db::raw('sum(total_amount) as rp'))
         ->where('isValid',1)->first();
-        return view('admin.index',compact('total_penerbit','total_user','book_verif','book_vverif','book_valid','book_lbr','book_rp'));
+        $secmar = json_decode(app('request')->session()->get('secondary_market'),TRUE);
+        return view('admin.index',compact('total_penerbit','total_user','book_verif','book_vverif','book_valid','book_lbr','book_rp','secmar'));
     }
 }

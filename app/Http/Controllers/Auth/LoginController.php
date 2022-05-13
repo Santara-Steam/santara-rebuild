@@ -32,6 +32,7 @@ class LoginController extends Controller
             'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
         ]);
         app('request')->session()->put('pwd', $request->password);
+        // $secmar = json_decode(app('request')->session()->get('secondary_market'),TRUE);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Success
             //$this->getTokenUser($request->email, $request->password);
@@ -40,6 +41,7 @@ class LoginController extends Controller
             } else if (Auth::user()->role_id == 1) {
                 return redirect('admin');
             } else {
+                
                 return '/';
             }
         } else {
