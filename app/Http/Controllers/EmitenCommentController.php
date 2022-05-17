@@ -39,7 +39,7 @@ class EmitenCommentController extends Controller
         ->leftjoin('traders','emiten_comments.trader_id','=','traders.id')
         ->leftjoin('users','traders.user_id','=','users.id')
         ->count();
-
+        $error = 'https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png';
 
 
         if($cmtt2 > 0){
@@ -49,8 +49,8 @@ class EmitenCommentController extends Controller
             <tbody>
               <tr>
                 <td valign='top' rowspan='2' width='15%' class='text-center'>
-                  <img src='".config('global.STORAGE_BUCKET2')."kyc/".$key->ph."' alt='User'
-                    onerror='this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png';'
+                  <img src='".config('global.STORAGE_BUCKET2')."kyc/".str_replace('/uploads/trader/', "",$key->ph)."' alt='User'
+                    onerror='this.onerror=null;this.src=".$error.";'
                     class='mt-1 rounded-circle' width='35' height='35'>
                 </td>
                 <td width='85%'>
