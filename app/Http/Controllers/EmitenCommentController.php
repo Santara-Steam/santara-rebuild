@@ -47,9 +47,9 @@ class EmitenCommentController extends Controller
         foreach ($cmtt as $key) {
             $trpho = config('global.STORAGE_BUCKET2')."kyc/".str_replace('/uploads/trader/', "",$key->ph);
             if(empty($key->ph) || $key->ph == null || isset($key->ph)){
-              $photo = $trpho;
-            }else{
               $photo = $error;
+            }else{
+              $photo = $trpho;
             }
             $cmt .= "<table width='95%' style='margin-bottom:10px;' class='mx-2 fs-m'>
             <tbody>
