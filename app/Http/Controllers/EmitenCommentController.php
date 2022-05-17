@@ -57,7 +57,7 @@ class EmitenCommentController extends Controller
                 <td valign='top' rowspan='2' width='15%' class='text-center'>
                   <img src='".$photo."' alt='".$key->name."'
                     onerror='this.onerror=null;this.src=".$error.";'
-                    class='mt-1 rounded-circle' width='35' height='35'>
+                    class='mt-1 rounded-circle' style='width: 35px;height: 35px;'>
                 </td>
                 <td width='85%'>
                   <p class='mt-1 mb-0 text-break' style='font-size: 14px'><span style='font-size: 16px;
