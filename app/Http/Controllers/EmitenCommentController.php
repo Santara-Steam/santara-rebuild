@@ -40,16 +40,22 @@ class EmitenCommentController extends Controller
         ->leftjoin('users','traders.user_id','=','users.id')
         ->count();
         $error = 'https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png';
-
+        
 
         if($cmtt2 > 0){
         $cmt = "<div id='list-pralisting-comments' style='height: 350px; scroll-behavior: smooth; overflow: overlay;overflow-x:hidden'>";
         foreach ($cmtt as $key) {
+            $trpho = config('global.STORAGE_BUCKET2')."kyc/".str_replace('/uploads/trader/', "",$key->ph);
+            if(empty($key->photo)){
+              $photo = $trpho;
+            }else{
+              $photo = $error;
+            }
             $cmt .= "<table width='95%' style='margin-bottom:10px;' class='mx-2 fs-m'>
             <tbody>
               <tr>
                 <td valign='top' rowspan='2' width='15%' class='text-center'>
-                  <img src='".config('global.STORAGE_BUCKET2')."kyc/".str_replace('/uploads/trader/', "",$key->ph)."' alt='User'
+                  <img src='".$photo."' alt='".$key->name."'
                     onerror='this.onerror=null;this.src=".$error.";'
                     class='mt-1 rounded-circle' width='35' height='35'>
                 </td>
