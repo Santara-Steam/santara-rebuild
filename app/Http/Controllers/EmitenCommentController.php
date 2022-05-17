@@ -46,7 +46,7 @@ class EmitenCommentController extends Controller
         $cmt = "<div id='list-pralisting-comments' style='height: 350px; scroll-behavior: smooth; overflow: overlay;overflow-x:hidden'>";
         foreach ($cmtt as $key) {
             $trpho = config('global.STORAGE_BUCKET2')."kyc/".str_replace('/uploads/trader/', "",$key->ph);
-            if(empty($key->photo)){
+            if(empty($key->photo) || $key->photo == null || isset($key->photo)){
               $photo = $trpho;
             }else{
               $photo = $error;
