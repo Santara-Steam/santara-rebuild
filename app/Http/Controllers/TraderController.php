@@ -317,7 +317,7 @@ class TraderController extends Controller
     }
 
     public function mobile_reset($token){
-
+        
         return view('auth.passwords.email',compact('token'));
     }
 }

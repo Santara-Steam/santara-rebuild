@@ -30,7 +30,7 @@ class EmitenCommentController extends Controller
     public function getcomment($id){
 
         $cmtt = emiten_comment::where('emiten_comments.emiten_id',$id)
-        ->select('emiten_comments.comment as cm','emiten_comments.created_at as tm','traders.name as name')
+        ->select('emiten_comments.comment as cm','emiten_comments.created_at as tm','traders.name as name','traders.photo as ph')
         ->leftjoin('traders','emiten_comments.trader_id','=','traders.id')
         ->leftjoin('users','traders.user_id','=','users.id')
         ->get();
@@ -49,7 +49,7 @@ class EmitenCommentController extends Controller
             <tbody>
               <tr>
                 <td valign='top' rowspan='2' width='15%' class='text-center'>
-                  <img src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png' alt='User'
+                  <img src='".config('global.STORAGE_BUCKET2')."kyc/".$key->ph."' alt='User'
                     onerror='this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png';'
                     class='mt-1 rounded-circle' width='35' height='35'>
                 </td>

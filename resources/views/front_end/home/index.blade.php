@@ -185,7 +185,12 @@
                                                                                 $end = strtotime($emj->end_date);
                                                                                 $datediff = $end - $now;
                                                                                 ?>
+                                                                                @if (round($datediff / (60 * 60 * 24)) < 0)
+                                                                                0
+                                                                                @else
+                                                                                    
                                                                                 {{ round($datediff / (60 * 60 * 24)) }}
+                                                                                @endif
                                                                                 {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                                                                 {{-- 45 --}}
                                                                                 {{-- <?= $diff ?> --}}
@@ -1166,7 +1171,12 @@
                                                     $end = strtotime($emj->end_date);
                                                     $datediff = $end - $now;
                                                     ?>
+                                                    @if (round($datediff / (60 * 60 * 24)) < 0)
+                                                    0
+                                                    @else
+                                                        
                                                     {{ round($datediff / (60 * 60 * 24)) }}
+                                                    @endif
                                                     {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                                     {{-- 45 --}}
                                                     {{-- {{$diff}} --}}
