@@ -19,6 +19,7 @@
                         <div class="card overflow-hidden">
                             <div class="card-content">
                                 <div class="card-body cleartfix">
+                                    
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
                                             <i class="icon-briefcase info font-large-2 mr-2"></i>
@@ -28,7 +29,7 @@
                                             <span>Total Penerbit Terdaftar</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <h1>{{angkaKoma($total_penerbit)}}</h1>
+                                            <h1>{{$total_penerbit}}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +50,7 @@
                                             <span>Total User Terdaftar</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <h1>{{angkaKoma($total_user)}}</h1>
+                                            <h1>{{$total_user}}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -60,25 +61,26 @@
 
                 <div class="row">
                     <div class="col-xl-6 col-md-12">
-                        <div class="card overflow-hidden">
+                        <div class="card">
                             <div class="card-content">
                                 <div class="card-body cleartfix">
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
-                                            <i class="icon-briefcase info font-large-2 mr-2"></i>
+                                            <h1 class="mr-2">{{$book_verif}}</h1>
                                         </div>
                                         <div class="media-body">
-                                            <h4>Total Pendanaan</h4>
-                                            <span>Total Pendanaan Penerbit Saat Listing</span>
+                                            <h4>Transaksi Pesan Saham</h4>
+                                            <span>Transaksi Pesan Saham Perlu Verifikasi</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <h1>{{rupiahBiasa($totalPendanaan->amount)}}</h1>
+                                            <i class="icon-basket warning font-large-2"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xl-6 col-md-12">
                         <div class="card">
                             <div class="card-content">
@@ -145,7 +147,9 @@
                         </div>
                     </div>
                 </div>
+            @if ($book_verif == 0)
             
+            @else
             <section id="configuration">
                 <div class="row">
                     <div class="col-12">
@@ -217,6 +221,7 @@
                     </div>
                 </div>
             </section>
+            @endif
                 
             </section>
         </div>
