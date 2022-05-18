@@ -78,7 +78,6 @@ return array(
     'App\\Models\\BalanceUtama' => $baseDir . '/app/Models/BalanceUtama.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Category_old' => $baseDir . '/app/Models/Category_old.php',
-    'App\\Models\\Deposit' => $baseDir . '/app/Models/Deposit.php',
     'App\\Models\\Deviden' => $baseDir . '/app/Models/Deviden.php',
     'App\\Models\\Devidend_old' => $baseDir . '/app/Models/Devidend_old.php',
     'App\\Models\\EmitenStatusHistori' => $baseDir . '/app/Models/EmitenStatusHistori.php',
