@@ -1370,19 +1370,43 @@ class EmitenController extends Controller
     }
 
     public function user_emiten(){
-        $emiten = emiten::where('emitens.is_deleted',0)
-        ->select('emitens.*','categories.category as ktg','emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
-        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-        ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
-        ->where('emitens.trader_id',Auth::user()->trader->id)
-        ->where('emitens.is_deleted',0)
-                ->where('emitens.is_active',0)
-                    ->where('emitens.is_verified',1)
-                    ->where('emitens.is_pralisting',1)
-                    ->where('emitens.is_coming_soon',1)
-        ->get();
+        // $emiten = emiten::where('emitens.is_deleted',0)
+        // ->select('emitens.*','emitens.uuid as euuid','categories.category as ktg','emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
+        // ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        // ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        // ->where('emitens.trader_id',Auth::user()->trader->id)
+        // ->where('emitens.is_deleted',0)
+        //         ->where('emitens.is_active',0)
+        //             ->where('emitens.is_verified',1)
+        //             ->where('emitens.is_pralisting',1)
+        //             ->where('emitens.is_coming_soon',1)
+        // ->get();
 //  dd($emiten);
-        return view('user.emiten.bisnis',compact('emiten'));
+        // $data = null;
+
+        try {
+            $client = new \GuzzleHttp\Client();
+
+            $headers = [
+                'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+                'Accept'        => 'application/json',
+                'Content-type'  => 'application/json'
+            ];
+
+            $response = $client->request('GET', config('global.BASE_API_CLIENT_URL'). '/v3.7.1/finance-report/all-business/', [
+                'headers' => $headers,
+            ]);
+
+
+            $data = json_decode($response->getBody()->getContents(), TRUE)['data'];
+            // $data = null;
+            // dd($data);
+        } catch (\Exception $exception) {
+            $data = null;
+        }
+        
+        return view('user.emiten.bisnis',compact('data'));
+        // return $data;
 
     }
 
@@ -1394,5 +1418,98 @@ class EmitenController extends Controller
             ->limit(5)
             ->get();
         return response()->json($emiten);
+    }
+
+    public function detail_bisnis($uuid){
+        $data = $this->getDataPlan($uuid);
+        $last_report = $this->getLastReport($uuid);
+        $emiten = emitenbyuuid($uuid);
+        $tutorial = 0;
+        $tersisa = ($emiten->supply - $emiten->terjual > 0) ? ($emiten->supply - $emiten->terjual) : 0;
+        $terjual = ($emiten->terjual > $emiten->supply) ? $emiten->supply : $emiten->terjual;
+        $terjual_percentage = ($terjual / $emiten->supply) * 100;
+        $terjual_percentage = ($terjual_percentage >= 0) ? ($terjual_percentage > 100 ? 100 : $terjual_percentage) : 0;
+        $progress = number_format($terjual_percentage, 2, '.', '.');
+
+        $info  = (object)[
+            "tersisa_percentage" => number_format($tersisa / $emiten->supply * 100, 2, ',', '.'),
+            "tersisa_total"      => number_format($tersisa, 0, ',', '.'),
+            "tersisa_total_rp"     => number_format($tersisa * $emiten->price, 0, ',', '.'),
+            "terjual_percentage" => number_format($terjual_percentage, 2, ',', '.'),
+            "terjual_total"      => number_format($terjual, 0, ',', '.'),
+            "terjual_total_rp"     => number_format($terjual * $emiten->price, 0, ',', '.')
+        ];
+
+        $now              = new DateTime(); // or your date as well
+        $finish           = new DateTime($emiten->end_period);
+        $diff_now         = $finish->diff($now);
+        $sisa_waktu     = "0 Hari";
+        if ($now < $finish) {
+            $format = ($diff_now->days > 0) ? "%a Hari" : "%h Jam %i Menit";
+            $sisa_waktu     = $diff_now->format($format);
+        }
+        // dd($emiten);
+        return view('user.emiten.detail',compact('emiten','progress','last_report','info','sisa_waktu','uuid','tutorial','data'));
+    }
+
+    private function getDataPlan($uuid)
+    {
+        // if (!$this->session->user) {
+        //     redirect('user/login');
+        // }
+
+        $data = null;
+
+        try {
+            $client = new \GuzzleHttp\Client();
+
+            $headers = [
+                'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+                'Accept'        => 'application/json',
+                'Content-type'  => 'application/json'
+            ];
+
+            $response = $client->request('GET', config('global.BASE_API_CLIENT_URL') . '/v3.7.1/finance-report/fund-plans/' . $uuid, [
+                'headers' => $headers,
+            ]);
+
+
+            $data = json_decode($response->getBody()->getContents(), TRUE)['data'];
+        } catch (\Exception $exception) {
+            $data = null;
+        }
+
+        // echo json_encode(['data' => $data]);
+        return $data;
+    }
+
+    private function getLastReport($uuid)
+    {
+        // if (!$this->session->user) {
+        //     redirect('user/login');
+        // }
+
+        $data = null;
+
+        try {
+            $client = new \GuzzleHttp\Client();
+
+            $headers = [
+                'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+                'Accept'        => 'application/json',
+                'Content-type'  => 'application/json'
+            ];
+
+            $response = $client->request('GET', config('global.BASE_API_CLIENT_URL'). '/v3.7.1/finance-report/last/' . $uuid, [
+                'headers' => $headers,
+            ]);
+
+
+            $data = json_decode($response->getBody()->getContents(), TRUE)['data'];
+        } catch (\Exception $exception) {
+            $data = null;
+        }
+
+        return $data;
     }
 }

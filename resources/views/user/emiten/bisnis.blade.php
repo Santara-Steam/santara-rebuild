@@ -10,83 +10,118 @@
             <section id="configuration">
 
                 <div class="row match-height">
-                    @foreach ($emiten as $item)
-                    <?php 
-                                $picture = explode(',',$item->pictures);
-                                if(empty($picture[0])){
-                                $picture[0] = 'default1.png';
-                                }else{
-                                    $picture[0];
-                                }
-                                if(empty($picture[1])){
-                                    $picture[1] = 'default2.png';
-                                }else{
-                                    $picture[1];
-                                }
-                                if(empty($picture[2])){
-                                    $picture[2] = 'default.png';
-                                }else{
-                                    $picture[2];
-                                }
-                                if(empty($picture[3])){
-                                    $picture[3] = 'default.png';
-                                }else{
-                                    $picture[3];
-                                }
-                                if(empty($picture[4])){
-                                    $picture[4] = 'default.png';
-                                }else{
-                                    $picture[4];
-                                }
-                                if(empty($picture[5])){
-                                    $picture[5] = 'default.png';
-                                }else{
-                                    $picture[5];
-                                }
-                                if(empty($picture[6])){
-                                    $picture[6] = 'default1.png';
-                                }else{
-                                    $picture[6];
-                                }
-                                ?>
-                    <div class="col-xl-6 col-md-6 col-sm-12">
+
+                    {{-- <div class="col-xl-6 col-md-6 col-sm-12"> --}}
+                        {{--
+                        <link rel="stylesheet" type="text/css"
+                            href="<?php echo base_url(); ?>assets/css/member/penerbit.css?v=<?= WEB_VERSION; ?>"> --}}
+
+                        <?php if (isset($data['list']) && ($data['list'])) :
+    foreach ($data['list'] as $key => $value) : ?>
+    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="card">
+                            <a href="{{url('penerbit/bisnisdetail')}}/<?= $value['uuid']; ?>">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="card-content row m-0">
+                                            <div class="col-3 p-0 text-center">
+                                                <img class="penerbit-item-img lazyload img-fluid"
+                                                    src="{{env('STORAGE_GOOGLE')}}token/<?= $value['picture']; ?>"
+                                                    onerror="this.onerror=null;this.src='{{env('STORAGE_GOOGLE')}}images/error/no-image.png';"
+                                                    alt="<?= $value['trademark']; ?>">
+                                            </div>
+                                            <div class="col-9">
+                                                <h3>
+                                                    <?= $value['trademark']; ?>
+                                                </h3>
+                                                <div style="color: #6b6f82;">
+                                                    <?= $value['company_name']; ?>
+                                                    <span><i class="la la-tag ml-2"></i>
+                                                        <?= $value['category']; ?>
+                                                    </span>
+                                                </div>
+                                                <?php if ($value['status'] == "PENAWARAN SAHAM") : ?>
+                                                <div class="my-2">
+                                                    <div class="progress mb-0" style="height: 12px;">
+                                                        <div class="progress-bar bg-gradient-x-success <?= (($value['percent'] * 100) < 100) ? 'progress-bar-animated' : ''; ?>"
+                                                            role="progressbar"
+                                                            style="width: <?= $value['percent'] * 100; ?>%;"
+                                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                                            <b style="color: blue;">
+                                                                <?= $value['percent'] * 100; ?> %
+                                                            </b>
+                                                        </div>
+                                                    </div>
+                                                    <h6 class="penerbit-diff">Sisa waktu
+                                                        <span class="red-santara" ?>
+                                                            <?= $value['day_remaining']; ?> Hari -
+                                                            <?= $value['total_investor']; ?> Investor
+                                                        </span>
+                                                    </h6>
+                                                </div>
+                                                <?php if ($value['last_report']) : ?>
+                                                <div
+                                                    class="alert alert-info-dashboard penerbit-info-report col-md-12 created">
+                                                    <h3><b>Laporan Keuangan Terakhir</b></h3>
+                                                    <div class="d-flex justify-content-between mt-1"
+                                                        style="color: #6b6f82;">
+                                                        <div>Tanggal :
+                                                            <?= month(date('Y-m-d', strtotime($value['last_report']['updated_at']))); ?>
+                                                        </div>
+                                                        <div>Omset Terakhir :
+                                                            <?= 'Rp. ' . number_format($value['last_report']['sales_revenue'], 0, ',', '.') ?>
+                                                        </div>
+                                                        <div>Profit Terakhir :
+                                                            <?= 'Rp. ' . number_format($value['last_report']['net_income'], 0, ',', '.') ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php else : ?>
+                                                <div class="alert alert-info-dashboard penerbit-info-report col-md-12">
+                                                    <h4><b>Anda belum membuat laporan keuangan</b></h4>
+                                                    <p>Segera buat laporan keuangan Anda </p>
+                                                </div>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        </div>
+                        <?php endforeach;
+else : ?>
+<div class="col-xl-6 col-md-6 col-sm-12">
                         <div class="card">
                             <div class="card-content">
-                                <img class="card-img-top img-fluid" src="{{env('PATH_WEB')}}{{$picture[0]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"
-                                    alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title" style="margin-bottom: 0px;">{{$item->trademark}}</h4>
-                                    <span style="font-size: 12px;margin-bottom: 10px;">{{$item->company_name}}</span>
-                                    <br>
-                                    <div class="badge badge-danger">{{$item->ctg->category}}</div>
-                                    <p style="margin-top: 15px;" class="card-text">{{\Illuminate\Support\Str::limit($item->business_description ?? '',220,' ...')}}</p>
-                                    <p>Status : <span
-                                            class="badge border-danger danger badge-border">{{$item->sts}}</span></p>
-                                    @if ($item->sts == 'Pra Penawaran Saham' || $item->sts == 'Penawaran Saham')
-                                    <div class="row">
-                                        @if ($item->sts == 'Pra Penawaran Saham')
-                                        <div class="col-6">
-                                            <a href="{{url('detail-coming-soon')}}/{{$item->id}}" class="btn btn-sm btn-block btn-outline-info">Lihat Detail</a>
-                                        </div>
-                                        @else
-                                        <div class="col-6">
-                                            <a href="{{url('detail-now-playing')}}/{{$item->id}}" href="#" class="btn btn-sm btn-block btn-outline-info">Lihat Detail</a>
-                                        </div>
-                                        @endif
-                                        <div class="col-6">
-                                            <a href="{{url('edit_bisnis/')}}/{{$item->id}}" class="btn btn-sm btn-block btn-outline-warning">Edit Bisnis</a>
-                                        </div>
+                                    <div class="card-content text-center p-3">
+                                        {{-- <img src="<?= base_url() ?>assets/images/content/finance-empty.png"
+                                            class="mb-2"> --}}
+                                        <h3><b>Belum Ada Bisnis Terdaftar</b></h3>
+                                        <p>Anda belum memiliki bisnis untuk didanai</p>
+                                        <a href="https://pralisting.santara.co.id" type="button" class="btn btn-santara-red btn-block>
+                    <span class=" menu-title" data-i18n="">Daftarkan Bisnis Anda</span>
+                                        </a>
+                                        <!-- <div class="center-pralisting">
+
+                    <h3><b>Daftarkan Bisnis Anda Melalui :</b></h3>
+                    <div class="apps-download">
+                        <a href="https://santara.co.id/android">
+                            <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/mobile/playstore.png" alt="santara google play">
+                        </a>
+                        <a href="https://santara.co.id/ios">
+                            <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/mobile/appstore.png" alt="santara app store">
+                        </a>
+                    </div>
+                </div> -->
                                     </div>
-                                    @else
-                                    <div class="col-6">
-                                        <a href="{{url('edit_bisnis/')}}/{{$item->id}}" class="btn btn-sm btn-block btn-outline-warning">Edit Bisnis</a>
-                                    </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                        <?php endif; ?>
                 </div>
 
 

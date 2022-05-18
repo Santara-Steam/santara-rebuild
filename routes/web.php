@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
     Route::get('/user/pesan_saham/detail/{id}', [App\Http\Controllers\BookSahamController::class, 'detail_user']);
 
     Route::post('/upload_bukti/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti']);
+    Route::get('/penerbit/bisnisdetail/{uuid}', [App\Http\Controllers\EmitenController::class, 'detail_bisnis']);
     Route::get('/edit_bisnis/{id}', [App\Http\Controllers\EmitenController::class, 'edit_bisnis']);
     Route::post('/update_bisnis/{id}',[App\Http\Controllers\EmitenController::class, 'update_bisnis']);
 

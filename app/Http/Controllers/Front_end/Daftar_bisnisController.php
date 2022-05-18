@@ -223,6 +223,7 @@ class Daftar_bisnisController extends Controller
 
 
         $em = new emiten();
+        $em->uuid = \Str::uuid();
         $em->company_name = $request->get('company_name');
         $em->trademark = $request->get('nama_brand');
         $em->trader_id = Auth::user()->trader->id;
