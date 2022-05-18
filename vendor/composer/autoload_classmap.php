@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Exports\\PenerbitExport' => $baseDir . '/app/Exports/PenerbitExport.php',
+    'App\\Exports\\UserExport' => $baseDir . '/app/Exports/UserExport.php',
     'App\\Http\\Controllers\\AccountController' => $baseDir . '/app/Http/Controllers/AccountController.php',
     'App\\Http\\Controllers\\AddressController' => $baseDir . '/app/Http/Controllers/AddressController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -76,6 +78,7 @@ return array(
     'App\\Models\\BalanceUtama' => $baseDir . '/app/Models/BalanceUtama.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Category_old' => $baseDir . '/app/Models/Category_old.php',
+    'App\\Models\\Deposit' => $baseDir . '/app/Models/Deposit.php',
     'App\\Models\\Deviden' => $baseDir . '/app/Models/Deviden.php',
     'App\\Models\\Devidend_old' => $baseDir . '/app/Models/Devidend_old.php',
     'App\\Models\\EmitenStatusHistori' => $baseDir . '/app/Models/EmitenStatusHistori.php',

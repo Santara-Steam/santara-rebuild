@@ -36,19 +36,19 @@ class EmitenController extends Controller
                         and emitens.is_active = 1
                         and emitens.begin_period < now()')
             ->get();
-        $commingsoon = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
-            'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
-            'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed')
-            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-            ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
-            ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
-            ->where('emitens.is_deleted',0)
-            ->where('emitens.is_verified',1)
-            ->where('emitens.is_pralisting',1)
-            ->where('emitens.is_coming_soon',1)
-            ->groupBy('emitens.id')
-            ->orderby('created_at','DESC')
-            ->get();
+        // $commingsoon = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
+        //     'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
+        //     'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed')
+        //     ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        //     ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
+        //     ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        //     ->where('emitens.is_deleted',0)
+        //     ->where('emitens.is_verified',1)
+        //     ->where('emitens.is_pralisting',1)
+        //     ->where('emitens.is_coming_soon',1)
+        //     ->groupBy('emitens.id')
+        //     ->orderby('created_at','DESC')
+        //     ->get();
         $dtNowPlaying = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
         'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
         'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed',
@@ -69,9 +69,26 @@ class EmitenController extends Controller
             ->get();
         $nowPlaying = [];
         
-        $collection = collect($soldout);
-        $merged = $collection->merge($commingsoon);
-        $mergedData = $merged->all();
+        // $collection = collect($soldout);
+        // $merged = $collection->merge($commingsoon);
+        // $mergedData = $merged->all();
+
+        $mergedData = [];
+        foreach($soldout as $row){
+            array_push($mergedData, [
+                'id' => $row->id,
+                'company_name' => $row->company_name,
+                'trademark' => $row->trademark,
+                'code_emiten' => $row->code_emiten,
+                'price' => $row->price,
+                'supply' => $row->supply,
+                'is_deleted' => $row->is_deleted,
+                'is_active' => $row->is_active,
+                'begin_period' => $row->begin_period,
+                'created_at' => $row->created_at,
+                'ktg' => $row->ktg,
+            ]);
+        }
 
         foreach($dtNowPlaying as $row){
             if($row->sold_out != '100.00'){

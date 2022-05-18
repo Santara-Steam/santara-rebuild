@@ -17,17 +17,29 @@
                     </li> --}}
                     <li class=" nav-item {{ 'admin/laporan-keuangan' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/laporan-keuangan') }}"><i class="la la-file"></i><span
-                                class="menu-title" data-i18n="eCommerce"> Laporan Keuangan</span></a>
+                                class="menu-title" data-i18n="eCommerce"> Approval Laporan<br/> Keuangan</span></a>
+                    </li>
+                    <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a
+                        href="{{ url('admin/category') }}"><i class="la la-list"></i><span class="menu-title"
+                            data-i18n="eCommerce"> &nbsp; Category</span></a>
+                </ul>
+            </li>
+            <li class="nav-item has-sub">
+                <a href="#"><i class="la la-briefcase"></i> &nbsp; Calon Penerbit</a>
+                <ul class="menu-content">
+                    <li class=" nav-item {{ 'admin/emiten' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/emiten') }}"><i class="la la-briefcase"></i><span class="menu-title"
+                                data-i18n="eCommerce"> Penerbit</span></a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item has-sub">
                 <a href="#"><i class="la la-money"></i> &nbsp; Transaksi</a>
                 <ul class="menu-content">
-                    <li class=" nav-item {{ 'admin/pesan_saham' == request()->path() ? 'active' : '' }}"><a
+                    {{-- <li class=" nav-item {{ 'admin/pesan_saham' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/pesan_saham') }}"><i class="la la-pencil-square"></i><span
                                 class="menu-title" data-i18n="eCommerce"> Pesan Saham</span></a>
-                    </li>
+                    </li> --}}
                     <li class=" nav-item {{ 'admin/transactions' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/transactions') }}"><i class="la la-shopping-cart"></i><span
                                 class="menu-title" data-i18n="eCommerce"> Histori Transaksi</span></a>
@@ -63,9 +75,6 @@
                     </li>
                 </ul>
             </li>
-            <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a
-                    href="{{ url('admin/category') }}"><i class="la la-list"></i><span class="menu-title"
-                        data-i18n="eCommerce"> &nbsp; Category</span></a>
             </li>
             <li class="nav-item has-sub">
                 <a href="#"><i class="la la-user"></i> &nbsp; New KYC</a>
