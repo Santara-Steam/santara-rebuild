@@ -723,19 +723,19 @@
                                             <button type="submit" id="sav" class="btn btn-primary">
                                                 <i class="la la-check-square-o"></i> Save
                                             </button>
-                                            <?php if( $emiten->is_verified == 1 ) : ?>
-                                                <a class="btn btn-danger font-link-white"
+                                            <?php // if( $emiten->is_verified == 1 ) : ?>
+                                                {{-- <a class="btn btn-danger font-link-white"
                                                     onclick="acceptPraListing('<?= $emiten->uuid ?>','0', 'Batalkan') ">Batalkan</a>
                                                 <a class="btn btn-info font-link-white"
                                                     onclick="acceptOfficial('<?= $emiten->uuid ?>','1') ">Jadikan
-                                                    Penerbit Official</a>
-                                            <?php else: ?>
-                                                <a class="btn btn-danger-ghost <?= $emiten->is_verified == 2 || $emiten->is_verified == 1 ? 'disabled' : '' ?>"
+                                                    Penerbit Official</a> --}}
+                                            <?php // else: ?>
+                                                {{-- <a class="btn btn-danger-ghost <?= $emiten->is_verified == 2 || $emiten->is_verified == 1 ? 'disabled' : '' ?>"
                                                     onclick="rejectPralisting('<?= $emiten->uuid ?>','2') ">Tolak</a>
                                                 <a class="btn btn-info font-link-white"
                                                     onclick="acceptPraListing('<?= $emiten->uuid ?>','1', 'Verifikasi') ">Konfirmasi
-                                                    Pengajuan</a>
-                                            <?php endif; ?>
+                                                    Pengajuan</a> --}}
+                                            <?php // endif; ?>
                                         </div>
                                     </form>
                                 </div>

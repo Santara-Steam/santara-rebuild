@@ -242,6 +242,9 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/setting/account/update_user', [App\Http\Controllers\AccountController::class, 'update']);
     Route::get('/admin/setting/account/reset-password/{id}', [App\Http\Controllers\AccountController::class, 'resendEmailReset']);
     Route::post('/admin/setting/account/delete/{id}', [App\Http\Controllers\AccountController::class, 'destroy']);
+
+    Route::get('/admin/export_penerbit', [App\Http\Controllers\HomeController::class, 'exportPenerbit']);
+    Route::get('/admin/export_user', [App\Http\Controllers\HomeController::class, 'exportUser']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

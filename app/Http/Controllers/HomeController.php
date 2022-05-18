@@ -9,6 +9,9 @@ use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PenerbitExport;
+use App\Exports\UserExport;
 
 class HomeController extends Controller
 {
@@ -130,25 +133,38 @@ class HomeController extends Controller
     public function indexadmin()
     {
         $total_penerbit = emiten::where('is_deleted',0)
-            // ->where('is_active', 1)
+            ->where('is_active', 1)
             ->count();
-        $total_user = User::where('is_verified',1)
-            ->where('role_id',2)
+        $total_user = User::join('roles as r', 'r.id', '=', 'users.role_id')
+            ->join('traders as t', 'users.id', '=', 't.user_id')
+            ->where('users.is_deleted', 0)
             ->count();
         $totalPendanaan = Transactions::where('is_verified', 1)
             ->where('is_deleted', 0)
             ->select(\DB::raw('SUM(amount) as amount'))
             ->first();
-        $book_vverif = book_saham::where('isValid',0)
-        ->where('bukti_tranfer','!=','-')
-        ->get();
-        $book_valid = book_saham::where('isValid',1)
-        ->count();
-        $book_lbr = book_saham::select(db::raw('sum(lembar_saham) as lbr'))
-        ->where('isValid',1)->first();
-        $book_rp= book_saham::select(db::raw('sum(total_amount) as rp'))
-        ->where('isValid',1)->first();
+        $totalDompet = DB::select('select sum(hs.total) as total from 
+            (select floor(sum(amount)) total from deposits
+                where status = 1 and is_deleted = 0
+                union
+                select sum(ons.amount)*-1 total from transactions ons
+                where ons.channel = "WALLET" and ons.is_verified = 1 and ons.is_deleted = 0
+                union
+                select sum(amount)*-1 total from withdraws
+                where is_verified = 1 and is_deleted = 0) hs');
+        $playStore = '500 K';
+        $appStore = '100 K';
         $secmar = json_decode(app('request')->session()->get('secondary_market'),TRUE);
-        return view('admin.index',compact('total_penerbit','total_user','totalPendanaan','book_vverif','book_valid','book_lbr','book_rp','secmar'));
+        return view('admin.index',compact('total_penerbit','total_user','totalPendanaan','totalDompet', 'playStore', 'appStore','secmar'));
+    }
+
+    public function exportPenerbit()
+    {
+        return Excel::download(new PenerbitExport(), 'Data Penerbit.xlsx');
+    }
+
+    public function exportUser()
+    {
+        return Excel::download(new UserExport(), 'Data User.xlsx');
     }
 }
