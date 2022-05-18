@@ -16,49 +16,28 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-6 col-md-12">
-                        <div class="card overflow-hidden">
-                            <div class="card-content">
-                                <div class="card-body cleartfix">
-                                    <div class="media align-items-stretch">
-                                        <div class="align-self-center">
-                                            <i class="icon-briefcase info font-large-2 mr-2"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Total Penerbit</h4>
-                                            <span>Total Penerbit Terdaftar</span>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <h1>{{angkaKoma($total_penerbit)}}</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-md-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body cleartfix">
-                                    <div class="media align-items-stretch">
-                                        <div class="align-self-center">
-                                            <i class="icon-user-following info font-large-2 mr-2"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Total User</h4>
-                                            <span>Total User Terdaftar</span>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <h1>{{angkaKoma($total_user)}}</h1>
+                        <a href="{{ url('admin/export_penerbit') }}">
+                            <div class="card overflow-hidden">
+                                <div class="card-content">
+                                    <div class="card-body cleartfix">
+                                        <div class="media align-items-stretch">
+                                            <div class="align-self-center">
+                                                <i class="icon-briefcase info font-large-2 mr-2"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>Total Penerbit</h4>
+                                                <span>Total Penerbit Terdaftar</span>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h1>{{angkaKoma($total_penerbit)}}</h1>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="row">
                     <div class="col-xl-6 col-md-12">
                         <div class="card overflow-hidden">
                             <div class="card-content">
@@ -69,7 +48,7 @@
                                         </div>
                                         <div class="media-body">
                                             <h4>Total Pendanaan</h4>
-                                            <span>Total Pendanaan Penerbit Saat Listing</span>
+                                            <span>Total Pendanaan Penerbit</span>
                                         </div>
                                         <div class="align-self-center">
                                             <h1>{{rupiahBiasa($totalPendanaan->amount)}}</h1>
@@ -79,26 +58,55 @@
                             </div>
                         </div>
                     </div>
+
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-6 col-md-12">
+                        <a href="{{ url('admin/export_user') }}">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body cleartfix">
+                                        <div class="media align-items-stretch">
+                                            <div class="align-self-center">
+                                                <i class="icon-user-following info font-large-2 mr-2"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>Total User</h4>
+                                                <span>Total User Terdaftar</span>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h1>{{angkaKoma($total_user)}}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
                     <div class="col-xl-6 col-md-12">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body cleartfix">
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
-                                            <h1 class="mr-2">{{$book_valid}}</h1>
+                                            <i class="icon-wallet info font-large-2 mr-2"></i>
                                         </div>
                                         <div class="media-body">
-                                            <h4>Transaksi Pesan Saham</h4>
-                                            <span>Transaksi Pesan Saham Tervalidasi</span>
+                                            <h4>Dana Wallet</h4>
+                                            <span>Dana di dompet Santara</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <i class="icon-handbag info font-large-2"></i>
+                                            <h1>{{rupiahBiasa($totalDompet[0]->total)}}</h1>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="row">
@@ -109,14 +117,36 @@
                                     
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
-                                            <i class="icon-docs info font-large-2 mr-2"></i>
+                                            <i class="icon-user info font-large-2 mr-2"></i>
                                         </div>
                                         <div class="media-body">
-                                            <h4>Total Lembar Saham </h4>
-                                            <span>Total Akumulasi Lembar Saham Di Pesan</span>
+                                            <h4>Download Playstore </h4>
+                                            <span>Total Download Playstore</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <h1>{{number_format($book_lbr->lbr,0,',','.')}}</h1>
+                                            <h1>{{ $playStore }}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card overflow-hidden">
+                                <div class="card-content">
+                                    <div class="card-body cleartfix">
+                                        
+                                        <div class="media align-items-stretch">
+                                            <div class="align-self-center">
+                                                <i class="icon-user info font-large-2 mr-2"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>Download Appstore </h4>
+                                                <span>Total Download Appstore</span>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h1>{{ $appStore }}</h1>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -124,99 +154,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-6 col-md-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="card-body cleartfix">
-                                    <div class="media align-items-stretch">
-                                        <div class="align-self-center">
-                                            <i class=" icon-wallet info font-large-2 mr-2"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Total Saham</h4>
-                                            <span>Total Akumulasi Saham Di Pesan</span>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <h1>Rp{{number_format($book_rp->rp,0,',','.')}}</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            
-            <section id="configuration">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Daftar Transaksi Pesan Saham Perlu Verifikasi</h4>
-                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-content collapse show">
-                                <div class="card-body card-dashboard">
-                                    <div class="table-responsive">
-                                        <table class="table" id="tabel">
-                                            <thead>
-                                                <tr>
-                                                    {{-- <th>Owner</th> --}}
-                                                    <th>#</th>
-                                                    <th>Order ID</th>
-                                                    <th>Emiten</th>
-                                                    <th>Lembar Saham</th>
-                                                    <th>Total</th>
-                                                    <th>Status</th>
-                                                    <th width="18%">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $no = 0;?>
-                                                {{-- @foreach ($emiten as $item) --}}
-                                                @foreach ($book_vverif as $item)
-                                                <?php $no++; ?>
-                                                <tr>
-                                                    <td>{{$no}}</td>
-                                                    {{-- <td>{{$item->trd->name}}</td> --}}
-                                                    <td>{{$item->order_id}}</td>
-                                                    <td>{{$item->emtn->company_name}}</td>
-                                                    <td>{{ number_format(round($item->lembar_saham,0),0,',','.')}}</td>
-                                                    <td>Rp{{ number_format(round($item->total_amount,0),0,',','.')}}
-                                                    </td>
-                                                    <td>
-                                                        @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer == null)
-                                                        <div class="badge badge-warning">Bukti Transfer Belum Di Upload</div>
-                                                        @elseif($item->bukti_tranfer != '-' && $item->isValid == 0)
-                                                        <div class="badge badge-primary">Bukti Transfer Sudah Di Upload</div>
-                                                        @elseif($item->bukti_tranfer != '-' && $item->isValid == 3)
-                                                        <div class="badge badge-primary">Bukti Transfer Sudah Di Upload Ulang</div>
-                                                        @elseif($item->bukti_tranfer != '-' && $item->isValid == 1)
-                                                        <div class="badge badge-success">Bukti Transfer Valid</div>
-                                                        @elseif($item->bukti_tranfer != '-' && $item->isValid == 2)
-                                                        <div class="badge badge-danger">Bukti Transfer Tidak Valid</div>
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                                <a href="{{url('admin/pesan_saham/detail')}}/{{$item->id}}"
-                                                                    class="btn btn-sm btn-primary">Lihat Detail</a>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
                 
             </section>
         </div>

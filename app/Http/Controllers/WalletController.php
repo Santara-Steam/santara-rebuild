@@ -12,17 +12,22 @@ class WalletController extends Controller
     
     public function index()
     {
-        $saldoData = BalanceUtama::join('traders as t', 't.id', '=', 'balance_utama.trader_id')
-            ->where('t.is_deleted', 0)
-            ->select(\DB::raw('SUM(balance) as jumlahBalance'))
-            ->first();
+        $saldoData = \DB::select('select sum(hs.total) as total from 
+            (select floor(sum(amount)) total from deposits
+                where status = 1 and is_deleted = 0
+                union
+                select sum(ons.amount)*-1 total from transactions ons
+                where ons.channel = "WALLET" and ons.is_verified = 1 and ons.is_deleted = 0
+                union
+                select sum(amount)*-1 total from withdraws
+                where is_verified = 1 and is_deleted = 0) hs');
         $transaksiData = Transactions::join('traders as t', 't.id', '=', 'transactions.trader_id')
             ->join('emitens as e', 'e.id', '=', 'transactions.emiten_id')
             ->where('transactions.is_verified', 1)
             ->where('transactions.is_deleted', 0)
             ->select(\DB::raw('SUM(transactions.amount) as amo'))
             ->first();
-        $saldo = $saldoData->jumlahBalance;
+        $saldo = $saldoData[0]->total;
         $transaksi = $transaksiData->amo;
         // $token = $this->fetchData('token');
         // $balance = $this->fetchData('emiten') + $this->fetchData('saldo');
