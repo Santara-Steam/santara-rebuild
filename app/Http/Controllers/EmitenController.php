@@ -1467,8 +1467,9 @@ class EmitenController extends Controller
             $format = ($diff_now->days > 0) ? "%a Hari" : "%h Jam %i Menit";
             $sisa_waktu     = $diff_now->format($format);
         }
+        $type          = ($data != null) ? 'update' : 'create';
         // dd($reports);
-        return view('user.emiten.detail',compact('emiten','progress','last_report','info','sisa_waktu','uuid','tutorial','data'));
+        return view('user.emiten.detail',compact('emiten','progress','last_report','info','sisa_waktu','uuid','tutorial','data','type'));
     }
 
     private function getDataPlan($uuid)

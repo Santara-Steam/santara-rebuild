@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
     Route::get('/user/laporan-keuangan/detail/{uuid}/{id}', [App\Http\Controllers\LaporanKeuanganController::class, 'detail']);
     Route::post('/user/laporan-keuangan/detail/{uuid}', [App\Http\Controllers\LaporanKeuanganController::class, 'new_detail']);
     Route::post('/user/laporan-keuangan/delete', [App\Http\Controllers\LaporanKeuanganController::class, 'delete']);
+    Route::post('/user/laporan-keuangan/saveReport', [App\Http\Controllers\LaporanKeuanganController::class, 'saveReport']);
     Route::get('/edit_bisnis/{id}', [App\Http\Controllers\EmitenController::class, 'edit_bisnis']);
     Route::post('/update_bisnis/{id}',[App\Http\Controllers\EmitenController::class, 'update_bisnis']);
 
