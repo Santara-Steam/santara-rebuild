@@ -17,10 +17,10 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
                                         <div class="table-responsive">
-                                            <table class="table" id="tabel">
+                                            <table class="table" id="tablePralisting">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        <th width="20">No</th>
                                                         <th>Nama</th>
                                                         <th>Perusahaan</th>
                                                         <th>Brand</th>
@@ -35,27 +35,7 @@
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <?php $no = 0;?>
-                                                    @for ($i = 0; $i < count($data); $i++)
-                                                    <?php $no++; ?> 
-                                                     <tr>
-                                                        <td>{{ $no }}</td>
-                                                        <td>{{ $data[$i]['trader_name'] }}</td>
-                                                        <td>{{ $data[$i]['company_name'] }}</td>
-                                                        <td>{{ $data[$i]['trademark'] }}</td>
-                                                        <td>{{ $data[$i]['phone'] }}</td>
-                                                        <td>{{ $data[$i]['created_at'] }}</td>
-                                                        <td>{{ $data[$i]['total_votes'] }}</td>
-                                                        <td>{{ $data[$i]['total_likes'] }}</td>
-                                                        <td>{{ $data[$i]['total_coments'] }}</td>
-                                                        <td><?= $data[$i]['capital_needs'] ?></td>
-                                                        <td><?= $data[$i]['investment'] ?></td>
-                                                        <td>{{ $data[$i]['status'] }}</td>
-                                                        <td><?= $data[$i]['aksi'] ?></td>
-                                                    </tr> 
-                                                    @endfor
-                                                </tbody>
+                                                <tbody></tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -73,13 +53,64 @@
     <script src="{{ asset('public/admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function() {
-            $('#tabel').DataTable({
-                responsive: true,
-            });
+        var tablePralisting = $("#tablePralisting").DataTable({
+            ajax: '{{ url('/admin/pralisting/get-pralisting') }}',
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            order: [
+                [0, "asc"]
+            ],
+            oLanguage: {
+                sProcessing: '<div id="tableloading" class="tableloading"></div>',
+                sZeroRecords: 'Data tidak tersedia'
+            },
+            columns: [{
+                    data: "id",
+                    render: function(data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                {
+                    data: "trader_name"
+                },
+                {
+                    data: "company_name"
+                },
+                {
+                    data: "trademark"
+                },
+                {
+                    data: "phone"
+                },
+                {
+                    data: "created_at"
+                },
+                {
+                    data: "total_votes"
+                },
+                {
+                    data: "total_likes"
+                },
+                {
+                    data: "total_coments"
+                },
+                {
+                    data: "capital_needs"
+                },
+                {
+                    data: "investment"
+                },
+                {
+                    data: "status",
+                    className: "text-center"
+                },
+                {
+                    data: "aksi",
+                },
+            ]
         });
-    </script>
-    <script>
+
         function deleteBisnis(uuid, name) {
             Swal.fire({
                 html: '<strong>Yakin menghapus bisnis <b>' + name + '</b> ? </strong>',
