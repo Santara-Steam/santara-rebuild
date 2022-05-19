@@ -16,74 +16,86 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <form id="formSubmitSetting" enctype="multipart/form-data">
-                                            {{-- <input type="hidden" name="id" value="<?= ($data) ? $data->id : '' ?>" /> --}}
-                                            <div>
-                                                <label><input type="radio" name="setting" value="video" checked> Video</label>
-                                                <label><input type="radio" name="setting" value="document"> Document</label>
-                                                <label><input type="radio" name="setting" value="redirect"> Redirect</label>
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <a class="nav-link @if($tutor != null) @if($tutor->group == 'video') active @endif @else active @endif" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                                                    Video
+                                                </a>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <a class="nav-link @if($tutor != null) @if($tutor->group == 'document') active @endif @endif" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                                    Document
+                                                </a>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <a class="nav-link @if($tutor != null) @if($tutor->group == 'redirect') active @endif @endif" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                                    Redirect
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade @if($tutor != null) @if($tutor->group == 'video') show active @endif @else show active @endif" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                                <form action="{{ url('admin/penerbit/store_setting_tutor') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id"  @if($tutor != null) value="{{ $tutor->id }}" @endif />
+                                                    <div class="form-group">
+                                                        <label><strong>Link Video</strong></label>
+                                                        <input type="hidden" class="form-control" name="group" value="video" />
+                                                        <input type="text" class="form-control" name="value"
+                                                            placeholder="Masukkan url video youtube"  @if($tutor != null) @if($tutor->group == "video") value="{{ $tutor->value }}" @endif @endif  />
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </form>
                                             </div>
-                                            <div id="show_video" class="setting">
-                                                <div class="form-row py-2">
-                                                    <div class="form-group col-md-12">
-                                                        <label class="col-md-3 control-label mb-1">Link Video</label>
-                                                        <input type="text" class="form-control" name="video" id="video" placeholder="Masukan Link Video Youtube" />
-                                                        <span id="video_error" class="text-danger"></span>
+                                            <div class="tab-pane fade @if($tutor != null) @if($tutor->group == 'document') show active @endif @endif" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                                <form method="POST" action="{{ url('admin/penerbit/store_setting_tutor') }}" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="hidden" name="id"  @if($tutor != null) value="{{ $tutor->id }}" @endif />
+                                                    <div class="form-group">
+                                                        <label><strong>Dokumen</strong></label>
+                                                        <input type="hidden" class="form-control" name="group" value="document" />
+                                                        <div class="custom-file">
+                                                            <input class="custom-file-input req" name="document" id="document"
+                                                                accept="application/pdf" type="file" onChange="OnFileValidation()" />
+                                                            <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02" aria-describedby="inputGroupFile02">Pilih File</label>
+                                                        </div>
+                                                        <div class="row p-1">
+                                                            <div class="col-12">
+                                                                <i class="la la-info-circle"></i>
+                                                                Pastikan file dalam bentuk PDF
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <i class="la la-info-circle"></i>
+                                                                Ukuran file maksimal 20 Mb
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <i class="la la-info-circle"></i>
+                                                                Pastikan sudah terlampir nomor dokumen resmi
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <a class="btn btn-santara-white btn-block" href="javascript:window.history.go(-1);">Kembali</a>
-                                                    </div>
-                            
-                                                    <div class="form-group col-md-6">
-                                                        <button type="submit" class="btn btn-block btn-santara-red" value="video">Simpan</button>
-                                                    </div>
-                                                </div>                    
+                                                    @if($tutor != null)
+                                                        @if($tutor->group == 'document')
+                                                            <a class="btn btn-success" href="{{ config('global.STORAGE_GOOGLE').'images/content/'.$tutor->value }}">Lihat file</a>
+                                                        @endif
+                                                    @endif
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </form>
                                             </div>
-                                            <div id="show_document" class="setting" style="display:none;">
-                                                <div class="form-row py-2">
-                                                    <div class="form-group col-md-12">
-                                                        <label class="col-md-3 control-label mb-1">Dokumen</label>
-                                                       
-                                                        <input type="file" class="form-control-file" name="document" id="document" accept="application/pdf" />
-                                                        <div id="errorBlockPictures" class="help-block" style="padding:10px; margin: 10px 0"></div>   
-                                                        <br />                                             
-                                                        <p style="font-size: 11px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk PDF</p>                            
-                                                        <p style="font-size: 11px;"><i class="la la-info-circle"></i> Ukuran file maksimal 20 Mb</p>
-                                                        <p style="font-size: 11px;"><i class="la la-info-circle"></i> Pastikan sudah terlampir nomor dokumen resmi</p>                                                                                
-                                                        <span id="document_error" class="text-danger"></span>
+                                            <div class="tab-pane fade @if($tutor != null) @if($tutor->group == 'redirect') show active @endif @endif" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                                <form method="POST" action="{{ url('admin/penerbit/store_setting_tutor') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id"  @if($tutor != null) value="{{ $tutor->id }}" @endif />
+                                                    <div class="form-group">
+                                                        <label><strong>Link Halaman</strong></label>
+                                                        <input type="hidden" class="form-control" name="group" value="redirect" />
+                                                        <input type="text" class="form-control" name="value"
+                                                            placeholder="Masukkan link halaman" @if($tutor != null) @if($tutor->group == "redirect") value="{{ $tutor->value }}" @endif @endif  />
                                                     </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <a class="btn btn-santara-white btn-block" href="javascript:window.history.go(-1);">Kembali</a>
-                                                    </div>
-                            
-                                                    <div class="form-group col-md-6">
-                                                        <button type="submit" class="btn btn-block btn-santara-red" value="document">Simpan</button>
-                                                    </div>
-                                                </div>                    
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </form>
                                             </div>
-                                            <div id="show_redirect" class="setting" style="display:none;">
-                                                <div class="form-row py-2">
-                                                    <div class="form-group col-md-12">
-                                                        <label class="col-md-3 control-label mb-1">Link Halaman</label>
-                                                        <input type="text" class="form-control" name="redirect" id="redirect" placeholder="Masukan Link Halaman"/>
-                                                        <span id="redirect_error" class="text-danger"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <a class="btn btn-santara-white btn-block" href="javascript:window.history.go(-1);">Kembali</a>
-                                                    </div>
-                            
-                                                    <div class="form-group col-md-6">
-                                                        <button type="submit" class="btn btn-block btn-santara-red" value="redirect" >Simpan</button>
-                                                    </div>
-                                                </div>                      
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -96,14 +108,22 @@
 @endsection
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 <script>
-    $(document).ready(function(){
-        $('input[type="radio"]').click(function(){
-            var inputValue = $(this).attr("value");
-            $("div.setting").hide();
-            $("#show_"+inputValue).show();
-        });                          
+    $(document).ready(function () {
+        bsCustomFileInput.init()
     });
+
+    function OnFileValidation() {
+        var dokumen = document.getElementById("dokumen");
+        if (typeof (dokumen.files) != "undefined") {
+            var size = parseFloat(dokumen.files[0].size / (1024 * 1024)).toFixed(2); 
+            if(size > 20) {
+                alert('Harap pilih dokumen kurang dari 20 MB');
+            }
+        } else {
+            alert("This browser does not support HTML5.");
+        }
+    }
 </script>
 @endsection

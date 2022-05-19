@@ -14,21 +14,56 @@ class PralistingController extends Controller
 
     public function index()
     {
-        $pralisting = emiten::select('emitens.id', 'emitens.uuid', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
-                'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
-                'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed', 'emitens.capital_needs', 'emitens.is_verified',
-                't.name', 't.phone')
-                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-                ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
-                ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
-                ->leftjoin('traders as t', 't.id', '=', 'emitens.trader_id')
-                ->where('emitens.is_deleted',0)
-                ->where('emitens.is_verified',1)
-                ->where('emitens.is_pralisting',1)
-                ->where('emitens.is_coming_soon',1)
-                ->groupBy('emitens.id')
-                ->orderby('emitens.created_at','DESC')
-                ->get();
+        return view('admin.pralisting.index');
+    }
+    
+    public function fetchData(Request $request)
+    {
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length");
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $filter = $request->get('filter');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; 
+        $columnName = $columnName_arr[$columnIndex]['data'];
+        $columnSortOrder = $order_arr[0]['dir']; 
+        $searchValue = $search_arr['value'];
+
+        $totalRecords = emiten::join('traders as t', 't.id', '=', 'emitens.trader_id')
+            ->where('emitens.is_deleted', 0)
+            ->where('emitens.is_active', 0)
+            ->select('emitens.id', 'emitens.uuid','emitens.company_name', 'emitens.trademark',
+                'emitens.capital_needs', 'emitens.is_verified', 'emitens.created_at', 't.name',
+                't.phone')
+            ->groupBy('emitens.id')
+            ->count();
+        $totalRecordswithFilter = emiten::join('traders as t', 't.id', '=', 'emitens.trader_id')
+            ->where('emitens.is_deleted', 0)
+            ->where('emitens.is_active', 0)
+            ->where('emitens.company_name', 'like', '%' .$searchValue . '%')
+            ->select('emitens.id', 'emitens.uuid','emitens.company_name', 'emitens.trademark',
+                'emitens.capital_needs', 'emitens.is_verified', 'emitens.created_at', 't.name',
+                't.phone')
+            ->groupBy('emitens.id')
+            ->count();
+          
+        $pralisting = emiten::join('traders as t', 't.id', '=', 'emitens.trader_id')
+            ->where('emitens.is_deleted', 0)
+            ->where('emitens.is_active', 0)
+            ->where('emitens.company_name', 'like', '%' .$searchValue . '%')
+            ->select('emitens.id', 'emitens.uuid','emitens.company_name', 'emitens.trademark',
+                'emitens.capital_needs', 'emitens.is_verified', 'emitens.created_at', 't.name',
+                't.phone')
+            ->skip($start)
+            ->take($rowperpage)
+            ->groupBy('emitens.id')
+            ->orderBy('emitens.created_at', 'DESC')
+            ->get();
 
         $data = [];
         foreach($pralisting as $row){
@@ -75,9 +110,8 @@ class PralistingController extends Controller
                 'aksi' => $action
             ]);
         }
-        return view('admin.pralisting.index', compact('data'));
+        return response()->json(["data" => $data]);
     }
-
 
     public function konfirmasi($uuid)
     {

@@ -19,6 +19,9 @@
                             href="{{ url('admin/laporan-keuangan') }}"><i class="la la-file"></i><span
                                 class="menu-title" data-i18n="eCommerce"> Approval Laporan<br/> Keuangan</span></a>
                     </li>
+                    <li class=" nav-item {{ 'admin/penerbit/setting-tutorial' == request()->path() ? 'active' : '' }}"><a
+                        href="{{ url('admin/penerbit/setting-tutorial') }}"><i class="la la-tags"></i><span class="menu-title"
+                            data-i18n="eCommerce"> &nbsp; Setting Tutorial</span></a>
                     <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/category') }}"><i class="la la-list"></i><span class="menu-title"
                             data-i18n="eCommerce"> &nbsp; Category</span></a>
@@ -27,14 +30,14 @@
             <li class="nav-item has-sub">
                 <a href="#"><i class="la la-briefcase"></i> &nbsp; Calon Penerbit</a>
                 <ul class="menu-content">
-                    <li class=" nav-item {{ 'admin/emiten' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/emiten') }}"><i class="la la-briefcase"></i><span class="menu-title"
+                    <li class=" nav-item {{ 'admin/pralisting' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/pralisting') }}"><i class="la la-briefcase"></i><span class="menu-title"
                                 data-i18n="eCommerce"> Penerbit</span></a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item has-sub">
-                <a href="#"><i class="la la-money"></i> &nbsp; Transaksi</a>
+                <a href="#"><i class="la la-money"></i> &nbsp; Finance</a>
                 <ul class="menu-content">
                     {{-- <li class=" nav-item {{ 'admin/pesan_saham' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/pesan_saham') }}"><i class="la la-pencil-square"></i><span
@@ -63,7 +66,7 @@
                 </ul>
             </li>
             <li class="nav-item has-sub">
-                <a href="#"><i class="la la-bell"></i> &nbsp; CRM</a>
+                <a href="#"><i class="la la-bell"></i> &nbsp; Content Management & Broadcast</a>
                 <ul class="menu-content">
                     <li class=" nav-item {{ 'admin/crm/target-user' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/crm/target-user') }}"><i class="la la-user"></i><span
@@ -73,33 +76,9 @@
                             href="{{ url('admin/crm/broadcasting') }}"><i class="la la-bell"></i><span
                                 class="menu-title" data-i18n="eCommerce">Broadcast Notification</span></a>
                     </li>
-                </ul>
-            </li>
-            </li>
-            <li class="nav-item has-sub">
-                <a href="#"><i class="la la-user"></i> &nbsp; New KYC</a>
-                <ul class="menu-content">
-                    <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/kyc/belum-kyc') }}"><i class="la la-user"></i><span
-                                class="menu-title" data-i18n="eCommerce"> Belum KYC</span></a></li>
-                    <li class=" nav-item {{ 'admin/kyc/sudah-kyc' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/kyc/sudah-kyc') }}"><i class="la la-user"></i><span
-                                class="menu-title" data-i18n="eCommerce"> Sudah KYC</span></a></li>
-                    <li class=" nav-item {{ 'admin/kyc/approve-kyc' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/kyc/approve-kyc') }}"><i class="la la-user"></i><span
-                                class="menu-title" data-i18n="eCommerce"> KYC Disetujui</span></a></li>
-                    <li class=" nav-item {{ 'admin/kyc/reject-kyc' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/kyc/reject-kyc') }}"><i class="la la-user"></i><span
-                                class="menu-title" data-i18n="eCommerce"> KYC Ditolak</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item has-sub">
-                <a href="#"><i class="la la-image"></i> &nbsp; Content Management</a>
-                <ul class="menu-content">
                     <li class=" nav-item {{ 'admin/cms/header' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/cms/header') }}"><i class="la la-image"></i><span
-                                class="menu-title" data-i18n="eCommerce"> Headers</span></a></li>
+                        href="{{ url('admin/cms/header') }}"><i class="la la-image"></i><span
+                            class="menu-title" data-i18n="eCommerce"> Headers</span></a></li>
                     <li class=" nav-item {{ 'admin/cms/testimoni' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/cms/testimoni') }}"><i class="la la-comment"></i><span
                                 class="menu-title" data-i18n="eCommerce"> Testimoni</span></a></li>
@@ -118,6 +97,25 @@
                     <li class=" nav-item {{ 'admin/cms/video-category' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/cms/video-category') }}"><i class="la la-list"></i><span
                                 class="menu-title" data-i18n="eCommerce"> Kategori Video</span></a></li>
+                </ul>
+            </li>
+            </li>
+            <li class="nav-item has-sub">
+                <a href="#"><i class="la la-user"></i> &nbsp; Data Users</a>
+                <ul class="menu-content">
+                    <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/kyc/belum-kyc') }}"><i class="la la-user"></i><span
+                                class="menu-title" data-i18n="eCommerce"> Belum KYC</span></a></li>
+                    <li class=" nav-item {{ 'admin/kyc/sudah-kyc' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/kyc/sudah-kyc') }}"><i class="la la-user"></i><span
+                                class="menu-title" data-i18n="eCommerce"> Sudah KYC</span></a></li>
+                    <li class=" nav-item {{ 'admin/kyc/approve-kyc' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/kyc/approve-kyc') }}"><i class="la la-user"></i><span
+                                class="menu-title" data-i18n="eCommerce"> KYC Disetujui</span></a></li>
+                    <li class=" nav-item {{ 'admin/kyc/reject-kyc' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/kyc/reject-kyc') }}"><i class="la la-user"></i><span
+                                class="menu-title" data-i18n="eCommerce"> KYC Ditolak</span></a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item has-sub">
