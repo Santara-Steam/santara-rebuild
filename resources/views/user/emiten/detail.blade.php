@@ -525,6 +525,207 @@
                                             aria-labelledby="rencana-tab">
                                             {{--
                                             <?php $this->load->view( 'member/penerbit/_detail/rencana' ); ?> --}}
+                                            <input type="hidden" id="trademark" value="<?= $emiten->trademark; ?>"/>
+
+<div class="card-content">
+    <div class="card-body">
+        <?php if($data == null) : ?>
+        <div class="card-content m-0">   
+            <div class="alert alert-info-dashboard penerbit-info-report col-md-12">
+                <h4><b>Anda belum memasukan rencana penggunaan dana.</b></h4>
+                <p>Segera buat rencana penggunaan dana.</p>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="card-content py-2">
+            <div class="content-center">
+                <span class="title-left">
+                    <b>
+                    <div class="card-body total-rencana">
+                        <div><span>Total (Total seluruh rencana)</span></div>
+                        <div class="total-rencana-text"><?= 'Rp. ' . number_format( isset($data['total']) ? $data['total'] : 0 , 0, ',', '.' ) ?></div>
+                    </div>
+                    </b>
+                </span>
+                <a type="button" class="btn btn-sm btn-info title-right" target="_blank" href="<?= $tutorial; ?>">
+                    <span class="menu-title" data-i18n="">Tutorial Pembuatan Laporan</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-content">
+    <div class="card-body">
+        <form id="formSubmitPlan" enctype="multipart/form-data">
+        <input type="hidden" id="emiten_uuid" name="emiten_uuid" value="<?= $uuid; ?>"/>
+
+        <div class="card-content m-0">  
+            <div class="col-md-12">
+
+                <?php if ($data == null) : ?>
+                <input type="hidden" id="tabID" value="1" />
+
+                <!-- Nav tabs -->
+                <div class="row">
+                <ul id="tab-list" class="nav nav-tabs" role="tablist" style="border-radius: unset;">
+                    <li class="nav-item active">
+                        <a class="nav-link tab-penerbit-detail active" 
+                            id="profil-tab" data-toggle="tab" href="#tab1" 
+                            role="tab" aria-controls="tab" aria-selected="true" > 
+                            <div><b>nama rencana <button class="close" type="button" title="Remove this page">×</button> </b></div>
+                            <div style="line-height:1;">
+                                <div><small>Subtotal</small></div>
+                                <div>Rp. 0</div>
+                            </div>
+                        </a>
+                    </li>                
+                </ul>
+                <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="las la-plus-square"></i></button>
+                </div>
+
+                <!-- Tab panes -->
+                <div id="tab-content" class="tab-content">
+                    <div class="tab-pane row fade show active" id="tab1">
+                        <div class="row my-2">
+                            <div class="form-group col-md-4">
+                                <label>Nama Rencana</label>
+                                <input type="text" class="form-control" name="list_fund_plans[1][name]" maxlength="40" 
+                                    placeholder="Masukan nama rencana"/>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="tab_rencana_1">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Nilai</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id='rencana_addr_1_1'></tr>                          
+                                </tbody>
+                                </table>
+                                <div class="justify-content-between row col-12">
+                                    <a class="btn btn-santara-white col-2" onclick="addReportPlan(1,1)">Tambah Baris</a>
+                                    <input type="text" class="form-control col-4" name="list_fund_plans[1][subtotal]" id="subtotal_1" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="form-group col-md-12">
+                            <label>Deskripsi</label>
+                            <textarea class="form-control required-form" rows="7" cols="50" name="list_fund_plans[1][desc]" id="deskripsi" placeholder="Tuliskan biografi singkat pemilik usaha"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php else: ?>
+                    <input type="hidden" id="tabID" value="<?= count($data['list_fund_plans']); ?>" />
+
+                    <!-- Nav tabs -->
+                    <div class="row">
+                    <ul id="tab-list" class="nav nav-tabs" role="tablist" style="border-radius: unset;">
+                    <?php if( $data['list_fund_plans'] ) : ?>
+                    <?php foreach($data['list_fund_plans'] as $key => $value): ?>
+                        <li class="nav-item <?= ($key == 0 ) ? 'active' : ''?> ">
+                        <a class="nav-link tab-penerbit-detail <?= ($key == 0 ) ? 'active' : ''?>" 
+                            id="profil-tab" data-toggle="tab" href="#tab<?= $key ?>" 
+                            role="tab" aria-controls="tab" aria-selected="true" > 
+                            <div><b><?= $value['name'] ?> <button class="close" type="button" title="Remove this page">×</button> </b></div>
+                            <div style="line-height:1;">
+                                <div><small>Subtotal</small></div>
+                                <div><?= 'Rp. ' . number_format(  $value['total'], 0, ',', '.' ) ?></div>
+                            </div>
+                        </a>
+                        </li>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    </ul>
+                    <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="las la-plus-square"></i></button>
+                    </div>
+
+                    <!-- Tab panes -->
+                    <div id="tab-content" class="tab-content">
+                        <?php if( $data['list_fund_plans'] ) : ?>
+
+                        <?php foreach($data['list_fund_plans'] as $key => $value): ?>
+                        <div class="tab-pane row fade <?= ($key == 0 ) ? 'show active' : ''?>" id="tab<?= $key ?>">
+                            <div class="row my-2">
+                                <div class="form-group col-md-4">
+                                    <label>Nama Rencana</label>
+                                    <input type="text" class="form-control" name="list_fund_plans[<?= $key; ?>][name]" maxlength="40" value="<?= $value['name']; ?>"/>
+                                </div>
+                            </div>
+                            <div class="row col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="tab_rencana_<?= $key; ?>">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Keterangan</th>
+                                            <th scope="col">Nilai</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php 
+                                        $no = 0;
+                                        foreach($value['sublist'] as $k => $v) : ?>
+                                        <tr id='rencana_addr_<?= $key; ?>_<?= $k; ?>'>
+                                            <td width="65%">
+                                                <input type="text" name='list_fund_plans[<?= $key; ?>][sublist][<?= $k; ?>][desc]' value="<?= $v['desc']; ?>" class="form-control"/>
+                                            </td>
+                                            <td width="30%">
+                                                <input type="text" name='list_fund_plans[<?= $key; ?>][sublist][<?= $k; ?>][amount]' value="<?= number_format( $v['amount'], 0, ',', '.' ); ?>" class="form-control amount_<?= $key; ?>" onkeyup="subTotal(<?= $key; ?>)"/>
+                                            </td>
+                                            <td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("<?= $key ?>","<?= $k ?>")'><i class='las la-times'></i></a></td>
+                                        </tr>
+                                        
+                                        <?php 
+                                        $no = $k + 1;
+                                        endforeach; ?>
+                                        <tr id='rencana_addr_<?= $key; ?>_<?= $no; ?>'></tr>                          
+                                    </tbody>
+                                    </table>
+                                    <div class="justify-content-between row col-12">
+                                        <a class="btn btn-santara-white col-2" onclick="addReportPlan(<?= $key; ?>,<?= $no; ?>)">Tambah Baris</a>
+                                        <input type="text" class="form-control col-4" value="<?= number_format( $value['total'] , 0, ',', '.' ); ?>" id="subtotal_<?= $key; ?>" name="list_fund_plans[<?= $key; ?>][subtotal]"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="form-group col-md-12">
+                                <label>Deskripsi</label>
+                                    <textarea class="form-control required-form" rows="7" cols="50" name="list_fund_plans[<?= $key; ?>][desc]" id="deskripsi"><?= isset($value['desc']) ? $value['desc'] : ''; ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                        <?php endif; ?>               
+                    </div>     
+                <?php endif; ?>
+
+            </div>            
+        </div>
+        <div class="card-content mt-2">  
+            <div class="row">
+                <div class="text-left col-md-6 mb-1">
+                    <a class="btn btn-santara-white btn-block" href="javascript:window.history.go(-1);">Kembali</a>
+                </div>
+                <div class="text-right col-md-6 mb-1">
+                    <button type="button" class="btn btn-santara-red btn-block"  onClick="submitPlan('<?= $type ?>')">Simpan</button>
+                </div>
+            </div>          
+        </div>
+        </form>
+    </div>
+</div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -724,6 +925,164 @@ function deleteReport(id, uuid){
 }
         
 </script>
+
+<script>
+    var button='<button class="close" type="button" title="Remove this page">×</button>';
+    
+    var tab_obj = {};
+    $(document).ready(function() {    
+        $('#tab-list').on('click', '.close', function() {
+            var tabID = $(this).parents('a').attr('href');
+            var trademark = $('#trademark').val();
+            $(this).parents('li').remove();
+            $(tabID).remove();
+    
+            //display first tab
+            var tabFirst = $('#tab-list a:first');
+            // resetTab(trademark);
+            tabFirst.tab('show');
+        });
+    
+        var list = document.getElementById("tab-list");
+    });   
+    
+    var tabID = document.getElementById("tabID").value;
+    function resetTab(name){
+        var tabs=$("#tab-list li:not(:first)");
+        var len=1
+        $(tabs).each(function(k,v){
+            len++;
+            $(this).find('a').html(`
+            <div>nama cabang <button class="close" type="button" title="Remove this page">×</button> </div>
+            <div style="line-height:1;">
+                <div><small>Total laba bersih</small></div>
+                <div>Rp. 0</div>
+            </div>`);
+        })
+        tabID--;
+    };
+    
+    function addTabPlan() {
+        tabID++;
+        tab_obj[tabID] = 0; 
+    
+        $('#tab-list').append($(`
+        <li class="nav-item">
+            <a class="nav-link tab-penerbit-detail" 
+                id="profil-tab" data-toggle="tab" href="#tab${tabID}" 
+                role="tab" aria-controls="tab" aria-selected="true"> 
+                <div>nama rencana <button class="close" type="button" title="Remove this page">×</button> </div>
+                <div style="line-height:1;">
+                    <div><small>Subtotal</small></div>
+                    <div>Rp. 0</div>
+                </div>
+            </a>
+        </li>`));
+            
+        $('#tab-content').append($(`
+        <div class="tab-pane row fade" id="tab${tabID}">
+            <div class="row my-2">
+                <div class="form-group col-md-4">
+                    <label>Nama Rencana</label>
+                    <input type="text" class="form-control" name="list_fund_plans[${tabID}][name]" maxlength="40" 
+                        placeholder="Masukan nama rencana"/>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tab_rencana_${tabID}">
+                    <thead>
+                        <tr>
+                            <th scope="col">Keterangan</th>
+                            <th scope="col">Nilai</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id='rencana_addr_${tabID}_${tab_obj[tabID]}'></tr>                          
+                    </tbody>
+                    </table>
+                    <div class="justify-content-between row col-12">
+                        <a class="btn btn-santara-white col-4" onclick="addReportPlan(${tabID},${tab_obj[tabID]})">Tambah Baris</a>
+                        <input type="text" class="form-control col-2" style="width:30%" id="subtotal_${tabID}" name="list_fund_plans[${tabID}][subtotal]"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                <label>Deskripsi</label>
+                <textarea class="form-control required-form" rows="7" cols="50" name="list_fund_plans[${tabID}][desc]" id="deskripsi" placeholder="Tuliskan biografi singkat pemilik usaha"></textarea>
+                </div>
+            </div>   
+        </div>`));
+    };
+    
+    function addReportPlan(tab_id,no) {
+        if(!tab_obj.hasOwnProperty(tab_id)){
+            tab_obj[tab_id] = no;
+        }
+        var tab_no = tab_obj[tab_id];
+        
+        $('#rencana_addr_'+ tab_id +'_'+ tab_no).html(
+            "<td width='55%'><input name='list_fund_plans["+ tab_id + "][sublist]["+ tab_no + "][desc]' type='text' class='form-control'/></td>" +
+            "<td width='30%'><input name='list_fund_plans["+ tab_id + "][sublist]["+ tab_no + "][amount]' type='text' class='form-control amount_"+ tab_id +"' onkeyup='subTotal("+ tab_id + ")'/></td>" +
+            "<td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("+ tab_id + "," + tab_no + ")'><i class='las la-times'></i></a></td>");
+    
+        $('#tab_rencana_'+ tab_id).append('<tr id="rencana_addr_' + tab_id + '_' + (tab_no + 1) + '"></tr>');
+        tab_obj[tab_id]++;
+    };
+    
+    
+    function removeReportPlan(tab_id,tab_no) {
+        if (tab_no > 0) {
+            $("#rencana_addr_" + tab_id + "_"  + tab_no).html('');
+            subTotal(tab_id);
+        }
+    };
+    
+    function submitPlan(type) {
+        var form = '#formSubmitPlan';
+        var data = $(form).serializeArray();
+        $("#loader").show();
+        $.ajax({
+            url: '/penerbit/savePlan/' + type,
+            type: 'POST',
+            cache: false,
+            data: data,
+            success: function(data) {
+                $("#loader").hide();
+                data = JSON.parse(data);
+                if (data.msg == 200) {
+                    Swal.fire(
+                        'Berhasil',
+                        'Data penerbit berhasil disimpan',
+                        'success'
+                    ).then((result) => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire("Error!", data.msg, "error");
+                }
+            },
+            error: function(data) {
+                $("#loader").hide();
+                Swal.fire("Error!", data.msg, "error");
+            }
+        });
+    };
+    
+    function subTotal(tab_id) {
+        var subtotal = 0;
+        var valueArray = $('.amount_'+tab_id).map(function() {
+            this.value = this.value.replace(/\./g, '');
+            subtotal += Number(this.value);
+            if( !isNaN(this.value )){
+                this.value = formatNumber(Number(this.value));
+            }
+        }).get();
+        document.getElementById("subtotal_"+tab_id).value = ( isNaN(subtotal) ) ? 0 : formatNumber(Number(subtotal) );
+    };
+    </script>
 @endsection
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"

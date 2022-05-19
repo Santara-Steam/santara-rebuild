@@ -11,7 +11,7 @@
 
                 <div class="row match-height">
 
-                    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/member/laporan-keuangan.css?v=5.8.8">
+                   
                     <script>
                         const uuid_emitenLP = '<?= $uuid; ?>';
                     </script>
@@ -57,6 +57,7 @@
                                             <div class="tab-content" id="pills-tabContent">
                                                 <div class="tab-pane fade show active" id="realisasi" role="tabpanel">
                                                     {{-- <?php $this->load->view("member/laporan_keuangan/_detail/realisasi_penggunaan_data"); ?> --}}
+                                                    @include('user.emiten.realisasi_penggunaan_data')
                                                 </div>
                     
                                                 <div class="tab-pane fade" id="laporan" role="tabpanel">
@@ -176,4 +177,5 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
     href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
-@endsection
+    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/member/laporan-keuangan.css?v=5.8.8">
+    @endsection
