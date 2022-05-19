@@ -252,6 +252,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/export_user', [App\Http\Controllers\HomeController::class, 'exportUser']);
 
     Route::get('/admin/penerbit/setting-tutorial', [App\Http\Controllers\SettingLaporanKeuanganController::class, 'index']);
+    Route::post('/admin/penerbit/store_setting_tutor', [App\Http\Controllers\SettingLaporanKeuanganController::class, 'store']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

@@ -19,6 +19,9 @@
                             href="{{ url('admin/laporan-keuangan') }}"><i class="la la-file"></i><span
                                 class="menu-title" data-i18n="eCommerce"> Approval Laporan<br/> Keuangan</span></a>
                     </li>
+                    <li class=" nav-item {{ 'admin/penerbit/setting-tutorial' == request()->path() ? 'active' : '' }}"><a
+                        href="{{ url('admin/penerbit/setting-tutorial') }}"><i class="la la-tags"></i><span class="menu-title"
+                            data-i18n="eCommerce"> &nbsp; Setting Tutorial</span></a>
                     <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/category') }}"><i class="la la-list"></i><span class="menu-title"
                             data-i18n="eCommerce"> &nbsp; Category</span></a>
