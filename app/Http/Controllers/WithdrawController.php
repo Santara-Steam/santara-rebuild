@@ -100,15 +100,16 @@ class WithdrawController extends Controller
             $amount = '<div class="row"><div class="col-6">Withdrawal :</div><div class="col-6">'.rupiah($row->amount).'</div></div><div class="row"><div class="col-6">Fee :</div><div class="col-6">'
                 .rupiah($row->fee).'</div></div><div class="row"><div class="col-6">Total :</div><div class="col-6">'.(rupiah($row->amount - $row->fee)).'</div></div>';
             $saldoAvailable = "";
-            if($row->is_verified == 0 || $row->is_verified == null){
-                $status = '<a href="#" onClick="confirmWithdraw(\''.$row->uuid.'\',
-                            \''.$row->account_name.'\',
-                            \''.$row->account_number.'\',
-                            \''.$row->bank_to.'\',                                                                    
-                            \''.$totalWithdraw.'\',
-                            \''.$saldoAvailable.'\')"  class="btn btn-info" title="Verifikasi" >Verifikasi</a> 
-                    <a href="#" onClick="rejectWithdraw(\'' . $row->uuid . '\')" class="btn btn-danger" title="Tolak" >Tolak</a>';
-            }elseif($row->is_verified == 2){
+            // if($row->is_verified == 0 || $row->is_verified == null){
+            //     $status = '<a href="#" onClick="confirmWithdraw(\''.$row->uuid.'\',
+            //                 \''.$row->account_name.'\',
+            //                 \''.$row->account_number.'\',
+            //                 \''.$row->bank_to.'\',                                                                    
+            //                 \''.$totalWithdraw.'\',
+            //                 \''.$saldoAvailable.'\')"  class="btn btn-info" title="Verifikasi" >Verifikasi</a> 
+            //         <a href="#" onClick="rejectWithdraw(\'' . $row->uuid . '\')" class="btn btn-danger" title="Tolak" >Tolak</a>';
+            // }else
+            if($row->is_verified == 2){
                 $status = '<div class="status badge badge-danger badge-pill">Ditolak</div>';
             }elseif($row->is_verified == 1) {
                 $status = '<div class="status badge badge-success badge-pill">Sudah Verifikasi</div>';

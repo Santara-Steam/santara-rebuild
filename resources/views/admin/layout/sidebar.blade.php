@@ -66,7 +66,7 @@
                 </ul>
             </li>
             <li class="nav-item has-sub">
-                <a href="#"><i class="la la-bell"></i> &nbsp; Content Management & Broadcast</a>
+                <a href="#"><i class="la la-bell"></i> &nbsp; CMS & Broadcast</a>
                 <ul class="menu-content">
                     <li class=" nav-item {{ 'admin/crm/target-user' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/crm/target-user') }}"><i class="la la-user"></i><span
