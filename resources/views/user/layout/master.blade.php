@@ -11,6 +11,7 @@
     <meta name="keywords"
         content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Santara | Dashboard</title>
     {{--
     <link rel="apple-touch-icon" href="{{asset('public/admin')}}/app-assets/images/ico/apple-icon-120.png"> --}}
@@ -51,9 +52,10 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
+    {{-- <script src="{{asset('public')}}/app-assets/js/core/jquery/jquery.min.js"></script> --}}
     <!-- END: Custom CSS-->
     @yield('style')
+    <script src="{{ asset('public/admin') }}/app-assets/vendors/js/vendors.min.js"></script>
 </head>
 <!-- END: Head-->
 
@@ -100,7 +102,8 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="{{asset('public/admin')}}/app-assets/vendors/js/vendors.min.js"></script>
+    
+    {{-- <script src="{{asset('public/admin')}}/app-assets/vendors/js/vendors.min.js"></script> --}}
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
@@ -166,6 +169,13 @@
     }
     </script>
     @endif
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
     @yield('js')
 
 </body>

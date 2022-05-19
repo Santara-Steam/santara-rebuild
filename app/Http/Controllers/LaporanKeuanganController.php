@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class LaporanKeuanganController extends Controller
 {
@@ -145,7 +146,153 @@ class LaporanKeuanganController extends Controller
 			return;
 		}
 	}
+	public function getLastReport($uuid){
+		// if (!$this->session->user) {
+		// 	redirect('user/login');
+		// }
 
+		$url =  config('global.BASE_API_CLIENT_URL') . '/v3.7.1/finance-report/copy-last-report/' . $uuid . '/';
 
+		try {
+			$client = new \GuzzleHttp\Client();
 
+			$headers = [
+				'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+				'Accept'        => 'application/json',
+				'Content-type'  => 'application/json'
+			];
+
+			$response = $client->request('GET', $url, [
+				'headers' => $headers,
+			]);
+
+			$return_report = json_decode($response->getBody()->getContents());
+			echo json_encode(['msg' => $response->getStatusCode(), 'id' => $return_report->data->id]);
+			return;
+		} catch (\Exception $exception) {
+			$response = $exception->getResponse();
+			$responseBody = $response->getBody()->getContents();
+			$body = json_decode($responseBody, true);
+			echo json_encode(['msg' => $body['message']]);
+			return;
+		}
+	}
+
+	public function detail($uuid = null, $id = null)
+	{
+		// if (!$this->session->user  || !ispermitted('READ_PENERBIT_BISNIS')) {
+		// 	redirect('user/login');
+		// }
+
+		$report = ($id == null) ? 'created' : 'updated';
+		if (($uuid == null) or ($uuid == '')) {
+			redirect('/penerbit/bisnis');
+		}
+		// $status = $this->getStatus($uuid);
+		// if (!$status) {
+		// 	redirect('/penerbit/bisnis');
+		// }
+
+		$tab = [
+			'1' => 'Realisasi Penggunaan Dana',
+			'2' => 'Laporan Laba Rugi',
+			'3' => 'Perkembangan Perusahaan',
+			'4' => 'Informasi Lain',
+			'5' => 'Laporan Manual & Bukti Operasional',
+			'6' => 'Publikasi'
+		];
+
+		$data = [
+			'profit_loss' 				=> ($report == 'created') ? null : $this->getData($uuid, 'profit-loss', null, $id),
+			'fund_realization_plans' 	=> ($report == 'created') ? null : $this->getData($uuid, 'fund-realization-plans', null, $id),
+			'strategy' 					=> ($report == 'created') ? null : $this->getData($uuid, 'strategy', null, $id),
+			'other'                     => ($report == 'created') ? null : $this->getData($uuid, 'other', null, $id),
+			'manual'					=> ($report == 'created') ? null : $this->getData($uuid, 'manual', null, $id),
+			'publication'				=> ($report == 'created') ? null : $this->getData($uuid, 'publication', 'document', $id)
+		];
+
+		if ($report == 'created') :
+			$fund_plans = $this->getData($uuid, 'fund-plans', null, $id);
+			$data['fund_realization_plans']['data']['list_fund_plans'] = $fund_plans['data']['list_fund_plans'];
+		endif;
+
+		if ($data['publication'] != null) :
+			$data['publication_id']      = $data['profit_loss']['data']['id'];
+		endif;
+		unset($report);
+
+		// dd($uuid."/".$id);
+		// $this->load->view('member/main_page', [
+		// 	'page'   => 'member/laporan_keuangan/detail',
+		// 	'active' => 'laporan-keuangan',
+		// 	'tab'    => $tab,
+		// 	'data'	 => $data,
+		// 	'uuid'   => $uuid,
+		// 	'id'     => $id
+		// ]);
+		return view('user.emiten.detail_lapkeu',compact('uuid'));
+	}
+
+	public function new_detail($uuid = null){
+		return view('user.emiten.new_detail_lapkeu',compact('uuid'));
+	}
+
+	private function getData($uuid, $tab, $type = null, $id = null)
+	{
+		// if (!$this->session->user) {
+		// 	redirect('user/login');
+		// }
+
+		$url = config('global.BASE_API_CLIENT_URL') . '/v3.7.1/finance-report/' . $tab . '/' . $uuid . '/' .  $id;
+
+		try {
+			$client = new \GuzzleHttp\Client();
+
+			$headers = [
+				'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+				'Accept'        => 'application/json',
+				'Content-type'  => 'application/json'
+			];
+
+			$response = $client->request('GET', $url, [
+				'headers' => $headers,
+			]);
+			if ($type == 'document') :
+				$data = $url . '?token=' . app('request')->session()->get('token');
+			else :
+				$data = json_decode($response->getBody()->getContents(), TRUE);
+			endif;
+		} catch (\Exception $exception) {
+			$data = null;
+		}
+
+		// echo json_encode(['data' => $data]);
+		return $data;
+	}
+	
+	public function delete(Request $request){
+		// if (!$this->session->user) {
+		// 	redirect('user');
+		// 	return;
+		// }
+
+		$data = array('id' => $request->id,'uuid' => $request->uuid);;
+
+		try {
+			$client = new \GuzzleHttp\Client();
+			$response = $client->request('DELETE', config('global.BASE_API_CLIENT_URL') . '/v3.7.1/finance-report/delete/' . $data['uuid'] . '/' . $data['id'], [
+				'form_params' => [
+					'token'     => app('request')->session()->get('token'),
+				]
+			]);
+
+			echo json_encode(['msg' => $response->getStatusCode()]);
+		} catch (\Exception $exception) {
+			$response = $exception->getResponse();
+			$responseBody = $response->getBody()->getContents();
+			$body = json_decode($responseBody, true);
+			echo json_encode(['msg' => $body['message']]);
+			return;
+		}
+	}
 }

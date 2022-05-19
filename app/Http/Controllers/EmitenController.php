@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
 use App\Models\emiten;
 use App\Models\emiten_journey;
 use App\Models\kategori;
@@ -1438,6 +1439,7 @@ class EmitenController extends Controller
     }
 
     public function detail_bisnis($uuid){
+        $reports = $this->getDataReport($uuid, 0, 12);
         $data = $this->getDataPlan($uuid);
         $last_report = $this->getLastReport($uuid);
         $emiten = emitenbyuuid($uuid);
@@ -1465,7 +1467,7 @@ class EmitenController extends Controller
             $format = ($diff_now->days > 0) ? "%a Hari" : "%h Jam %i Menit";
             $sisa_waktu     = $diff_now->format($format);
         }
-        // dd($emiten);
+        // dd($reports);
         return view('user.emiten.detail',compact('emiten','progress','last_report','info','sisa_waktu','uuid','tutorial','data'));
     }
 
@@ -1528,5 +1530,109 @@ class EmitenController extends Controller
         }
 
         return $data;
+    }
+
+    private function getDataReport($uuid, $limit, $offset)
+    {
+        // if (!$this->session->user) {
+        //     redirect('user/login');
+        // }
+
+        $data = null;
+        $limit = $limit + 1;
+
+        try {
+            $client = new \GuzzleHttp\Client();
+
+            $headers = [
+                'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+                'Accept'        => 'application/json',
+                'Content-type'  => 'application/json'
+            ];
+
+            $response = $client->request('GET', config('global.BASE_API_CLIENT_URL') . '/v3.7.1/finance-report/list/' . $uuid . '?limit=' . $limit . '&offset=' . $offset . '', [
+                'headers' => $headers,
+            ]);
+
+            $data = json_decode($response->getBody()->getContents(), TRUE)['data'];
+        } catch (\Exception $exception) {
+            $data = null;
+        }
+
+        return $data;
+    }
+
+    public function get_riwayat_laporan_keuangan(Request $request,$uuid)
+    {
+        // if (!$this->session->user) {
+        //     redirect('user/login');
+        // }
+
+        $trademark = $request->get("trademark");
+        // $this->load->helper('month');
+
+        $draw   = intval($request->get("draw"));
+        $start  = intval($request->get("start"));
+        $length = intval($request->get("length"));
+
+        // $this->load->model('Deposit_model');
+        $filter = $request->get("filter");
+        $reports = $this->getDataReport($uuid, $start, $length);
+
+        $data = [];
+        $no   = 1;
+        foreach ($reports['data'] as $report) {
+
+            $action = '';
+
+            if ((($report['status'] != 'update data')  || (($report['status'] == 'update data') && ($report['last_status'] == 'rejected')))) {
+                $action .=  '<a href="' . $report['finance_report'] . ' " class="btn btn-santara-red btn-sm btn-block" title="Lihat" >Lihat</a>';
+            }
+
+            if ($report['editable'] == 1 && $report['status'] != 'verifying') :
+                $action .=
+                    '<a href="'.url("user/laporan-keuangan/detail"). '/' . $uuid . '/' . $report['id'] . '" type="button" class="btn btn-sm btn-santara-white btn-block">
+                    <span class="menu-title" data-i18n="">Edit</span>
+                </a>
+                <button type="button" onclick="return deleteReport(\'' . $report['id'] . '\', \'' . $uuid . '\')" class="btn btn-sm btn-santara-white btn-block">
+                    <span class="menu-title" data-i18n="">Hapus</span>
+                </button>';
+            endif;
+
+            if ($report['status'] == 'rejected') {
+                $status = '<a href="#" title="deskripsi" onclick="showDesc(\'' . $report['last_status_desc'] . '\')">Ditolak</a>';
+            } elseif ($report['status'] == 'verifying') {
+                $status = 'Menunggu Verifikasi';
+            } elseif ($report['status'] == 'verified') {
+                $status = 'Terverifikasi';
+            } elseif ($report['status'] == 'update data') {
+                if ($report['last_status'] == 'rejected') {
+                    $status = '<a href="#" title="deskripsi" onclick="showDesc(\'' . $report['last_status_desc'] . '\')">Ditolak</a>';
+                } else {
+                    $status = 'Perbaharui Data';
+                }
+            } else {
+                $status = '-';
+            }
+
+            array_push($data, [
+                $no++,
+                $report['id'],
+                $report['version'],
+                $report['periode'],
+                $status,
+                $action
+            ]);
+        }
+
+        $output = [
+            "draw"            => $draw,
+            "recordsTotal"    => Deposit::count(),
+            "recordsFiltered" => count($data),
+            "data"            => $data
+        ];
+        echo json_encode($output);
+        exit();
+        // echo $trademark;
     }
 }
