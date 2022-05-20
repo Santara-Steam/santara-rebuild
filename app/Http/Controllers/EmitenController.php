@@ -1259,7 +1259,7 @@ class EmitenController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect('/admin/emiten')->with($notif);
+        return redirect()->back()->with($notif);
     }
     public function logocropImg()
     {

@@ -34,6 +34,14 @@
                             href="{{ url('admin/pralisting') }}"><i class="la la-briefcase"></i><span class="menu-title"
                                 data-i18n="eCommerce"> Penerbit</span></a>
                     </li>
+                    <li class=" nav-item {{ 'admin/pralisting/kyc-bisnis' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/pralisting/kyc-bisnis') }}"><i class="la la-briefcase"></i><span class="menu-title"
+                                data-i18n="eCommerce"> KYC Bisnis</span></a>
+                    </li>
+                    <li class=" nav-item {{ 'admin/pralisting/flag-now-playing' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/pralisting/flag-now-playing') }}"><i class="la la-briefcase"></i><span class="menu-title"
+                                data-i18n="eCommerce"> Flag Now Playing</span></a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item has-sub">

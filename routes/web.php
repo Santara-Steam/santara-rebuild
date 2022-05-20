@@ -254,6 +254,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 
     Route::get('/admin/penerbit/setting-tutorial', [App\Http\Controllers\SettingLaporanKeuanganController::class, 'index']);
     Route::post('/admin/penerbit/store_setting_tutor', [App\Http\Controllers\SettingLaporanKeuanganController::class, 'store']);
+    Route::get('/admin/pralisting/kyc-bisnis', [App\Http\Controllers\PralistingController::class, 'indexKycBisnis']);
+    Route::post('/admin/pralisting/verified-bisnis', [App\Http\Controllers\PralistingController::class, 'verifiedEmitenBisnis']);
+    Route::get('/admin/pralisting/flag-now-playing', [App\Http\Controllers\PralistingController::class, 'flagNowPlaying']);
+    Route::get('/admin/pralisting/export-calon-penerbit', [App\Http\Controllers\PralistingController::class, 'exportCalonPenerbit']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
