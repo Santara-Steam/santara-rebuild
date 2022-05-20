@@ -192,7 +192,7 @@
                                                         <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[0]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="thumbnail" id="thumbnail" />
+                                                    <input type="hidden" name="thumbnail" id="thumbnail" value="{{ $picture[0] }}"  />
                                                     @if($picture[0] != 'no-image.png')
                                                         <img class="mt-1" width="200" id="thumbnailUploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[0] }}" />
                                                     @else
@@ -209,7 +209,7 @@
                                                         <label class="custom-file-label ssa" for="upload_image2"
                                                             aria-describedby="upload_image2">{{$picture[1]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="banner" id="banner" />
+                                                    <input type="hidden" name="banner" id="banner" value="{{ $picture[1] }}" />
                                                     @if($picture[1] != 'no-image.png')
                                                         <img class="mt-1" id="bannerUploaded" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[1] }}" />
                                                     @else
@@ -226,7 +226,7 @@
                                                         <label class="custom-file-label ssa" for="upload_image4"
                                                             aria-describedby="upload_image4">{{$picture[2]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="owner" id="owner" />
+                                                    <input type="hidden" name="owner" id="owner" value="{{ $picture[2] }}" />
                                                     @if($picture[2] != 'no-image.png')
                                                         <img class="mt-1" id="ownerUploaded"  width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[2] }}" />
                                                     @else
@@ -243,7 +243,7 @@
                                                         <label class="custom-file-label ssa" for="upload_image3"
                                                             aria-describedby="upload_image3">{{$picture[3]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="galeri1" id="galeri1" />
+                                                    <input type="hidden" name="galeri1" id="galeri1" value="{{ $picture[3] }}" />
                                                     @if($picture[3] != 'no-image.png')
                                                         <img class="mt-1" width="200" id="galeri1Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[3] }}" />
                                                     @else
@@ -260,7 +260,7 @@
                                                         <label class="custom-file-label ssa" for="upload_image5"
                                                             aria-describedby="upload_image5">{{$picture[4]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="galeri2" id="galeri2" />
+                                                    <input type="hidden" name="galeri2" id="galeri2" value="{{ $picture[4] }}" />
                                                     @if($picture[4] != 'no-image.png')
                                                         <img class="mt-1" width="200" id="galeri2Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[4] }}" />
                                                     @else
@@ -277,7 +277,7 @@
                                                         <label class="custom-file-label ssa" for="upload_image6"
                                                             aria-describedby="upload_image6">{{$picture[5]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="galeri3" id="galeri3" />
+                                                    <input type="hidden" name="galeri3" id="galeri3" value="{{ $picture[5] }}" />
                                                     @if($picture[5] != 'no-image.png')
                                                         <img class="mt-1" width="200" id="galeri3Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[5] }}" />
                                                     @else
@@ -402,8 +402,9 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Video Profile Perusahaan</label>
-                                                    <input pattern="https?://youtu.be.+" title="Include http://youtu.be/..." type="text" value="{{$emiten->youtube}}" id="companyName"
-                                                        name="video_profile" class="form-control"
+                                                    <input pattern="https?://youtu.be.+" title="Include http://youtu.be/..." type="text" 
+                                                        @if($emiten->youtube != null) value="{{str_replace("www.youtube.com/embed/", "youtu.be/", $emiten->youtube)}}" @endif
+                                                        id="companyName" name="video_profile" class="form-control"
                                                         placeholder="Video Profile Perusahaan">
                                                 </div>
                                                 <div class="form-group col-md-4">
