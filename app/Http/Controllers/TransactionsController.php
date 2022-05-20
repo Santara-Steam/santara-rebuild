@@ -79,6 +79,7 @@ class TransactionsController extends Controller
             $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
                 ->where('tr.last_status', $request->filter)
                 ->where('tr.is_deleted', 0)
                 ->select('count(*) as allcount')
@@ -86,6 +87,7 @@ class TransactionsController extends Controller
             $totalRecordswithFilter = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
                 ->where('tr.last_status', $request->filter)
                 ->where('tr.is_deleted', 0)
                 ->where('t.name', 'like', '%' .$searchValue . '%')
@@ -94,6 +96,7 @@ class TransactionsController extends Controller
             $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
                 ->where('tr.is_deleted', 0)
                 ->where('tr.last_status', $request->filter)
                 ->skip($start)
@@ -102,19 +105,21 @@ class TransactionsController extends Controller
                     't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
-                    'tr.last_status as status', 't.phone')
+                    'tr.last_status as status', 't.phone', 'onepay.transaction_no')
                 ->orderBy('tr.created_at', 'DESC')
                 ->get();
         }else{
             $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
                 ->where('tr.is_deleted', 0)
                 ->select('count(*) as allcount')
                 ->count();
             $totalRecordswithFilter = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
                 ->where('tr.is_deleted', 0)
                 ->where('t.name', 'like', '%' .$searchValue . '%')
                 ->count();
@@ -122,6 +127,7 @@ class TransactionsController extends Controller
             $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
                 ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
                 ->where('t.name', 'like', '%' .$searchValue . '%')
                 ->where('tr.is_deleted', 0)
                 ->skip($start)
@@ -130,7 +136,7 @@ class TransactionsController extends Controller
                     't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
                     'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
                     'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
-                    'tr.last_status as status', 't.phone')
+                    'tr.last_status as status', 't.phone', 'onepay.transaction_no')
                 ->orderBy('tr.created_at', 'DESC')
                 ->get();
         }
@@ -163,9 +169,9 @@ class TransactionsController extends Controller
             //$member = '<div class="row"></div>'
             $channel = $row->channel == "VA" ? "Virtual Account" : $row->channel == "BANKTRANSFER" ? "Transfer Bank" : 
                 $row->channel == "WALLET" ? "Saldo Dompet" : $row->channel == "DANA" ? "DATA" : 
-                $row->channel == "MARKET" ? "MARKET " : " - ".$row->description;
+                $row->channel == "MARKET" ? "MARKET (" . strtoupper($row->description) . ")" : " - ".$row->description;
 
-            $transaction = '<div class="row"><div class="col-5">ID:</div><div class="col-7">'.$row->transaction_serial.'</div></div><div class="row"><div class="col-5">Token:</div><div class="col-7">'.$row->code_emiten.'</div></div><div class="row">
+            $transaction = '<div class="row"><div class="col-5">ID:</div><div class="col-7">'.$row->transaction_no.'</div></div><div class="row"><div class="col-5">Token:</div><div class="col-7">'.$row->code_emiten.'</div></div><div class="row">
                 <div class="col-5">Payment:</div><div class="col-7">'.$channel.'</div></div>';
 
             $member = '<div class="col-12">'.$row->trader_name.'</div>'
