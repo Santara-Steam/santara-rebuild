@@ -336,7 +336,8 @@ class LaporanKeuanganController extends Controller
 
 	public function saveReport(Request $request){
 		// $data = $this->input->post();
-		$data = array($request->all());
+		$data = array_merge($request->all(), ['index' => 'value']);
+		// $data = array('uuid','month','year','version_desc','tab','show_fund_plan','show_fund_realization','fund_realization_desc','fund_realization_desc','fund_realization_total','list_fund_realization','show_profit_loss','profit_loss','show_strategy','show_growth','image_strategy_delete','image_growth_delete','file_strategy_name');
 		$data_arr = [];
 		$tab = null;
 

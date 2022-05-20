@@ -1164,8 +1164,8 @@ class EmitenController extends Controller
         $emiten->avg_general_share_amount = str_replace(".", "", $request->get('saham_dilepas'));
         $emiten->avg_turnover_after_becoming_a_publisher= str_replace(".", "", $request->get('omset_penerbit'));
         $emiten->avg_annual_dividen= str_replace(".", "", $request->get('deviden_tahunan'));
-        $emiten->youtube= $request->get('video_profile');
-        //$emiten->youtube= str_replace("youtu.be/", "www.youtube.com/embed/", $request->get('video_profile'));
+        // $emiten->youtube= $request->get('video_profile');
+        $emiten->youtube= str_replace("youtu.be/", "www.youtube.com/embed/", $request->get('video_profile'));
         $emiten->facebook= $request->get('fb');
         $emiten->website= $request->get('web');
         $emiten->instagram= $request->get('ig');
@@ -1635,5 +1635,56 @@ class EmitenController extends Controller
         echo json_encode($output);
         exit();
         // echo $trademark;
+    }
+
+    public function savePlan(Request $request,$type)
+    {
+        // if (!$this->session->user) {
+        //     redirect('user/login');
+        // }
+
+        // $data = array('emiten_uuid' => $request->emiten_uuid,'list_fund_plans' => $request->list_fund_plans);
+        $data = array_merge($request->all(), ['index' => 'value']);
+        // $data = array('0');
+
+        $data['emiten_uuid'] = strip_tags($data['emiten_uuid']);
+        $list_fund_plans = array_values((array)json_decode(json_encode($data['list_fund_plans'])));
+        foreach ($list_fund_plans as $key => $value) {
+            $value->name        = strip_tags($value->name);
+            $value->subtotal    = str_replace(".", "", strip_tags($value->subtotal));
+            $value->desc        = (isset($value->desc)) ? strip_tags($value->desc) : '';
+            $value->sublist     = array_values((array)$value->sublist);
+            foreach ($value->sublist as $v) {
+                $v->amount = str_replace(".", "", strip_tags($v->amount));
+            }
+        }
+
+        $data['list_fund_plans'] = $list_fund_plans;
+
+        $method = 'POST';
+        $url = '/v3.7.1/finance-report/fund-plans/';
+        if ($type == 'update') {
+            $method = 'PUT';
+            $url = '/v3.7.1/finance-report/fund-plans/' . $data['emiten_uuid'];
+        }
+
+        try {
+            $client = new \GuzzleHttp\Client();
+            $response = $client->request($method, config('global.BASE_API_CLIENT_URL') . $url, [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . app('request')->session()->get('token')
+                ],
+                'json' => $data
+            ]);
+
+            echo json_encode(['msg' => $response->getStatusCode()]);
+            return;
+        } catch (\Exception $exception) {
+            $response = $exception->getResponse();
+            $responseBody = $response->getBody()->getContents();
+            $body = json_decode($responseBody, true);
+            echo json_encode(['msg' => $body['message']]);
+            return;
+        }
     }
 }

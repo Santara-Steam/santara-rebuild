@@ -43,9 +43,10 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
     Route::post('/upload_bukti/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti']);
     Route::get('/penerbit/bisnisdetail/{uuid}', [App\Http\Controllers\EmitenController::class, 'detail_bisnis']);
     Route::post('/user/penerbit/get_riwayat_laporan_keuangan/{uuid}', [App\Http\Controllers\EmitenController::class, 'get_riwayat_laporan_keuangan']);
+    Route::post('/penerbit/savePlan/{type}', [App\Http\Controllers\EmitenController::class, 'savePlan']);
     Route::get('/user/laporan-keuangan/getLastReport/{uuid}', [App\Http\Controllers\LaporanKeuanganController::class, 'getLastReport']);
     Route::get('/user/laporan-keuangan/detail/{uuid}/{id}', [App\Http\Controllers\LaporanKeuanganController::class, 'detail']);
-    Route::post('/user/laporan-keuangan/detail/{uuid}', [App\Http\Controllers\LaporanKeuanganController::class, 'new_detail']);
+    Route::get('/user/laporan-keuangan/detail/{uuid}', [App\Http\Controllers\LaporanKeuanganController::class, 'new_detail']);
     Route::post('/user/laporan-keuangan/delete', [App\Http\Controllers\LaporanKeuanganController::class, 'delete']);
     Route::post('/user/laporan-keuangan/saveReport', [App\Http\Controllers\LaporanKeuanganController::class, 'saveReport']);
     Route::get('/edit_bisnis/{id}', [App\Http\Controllers\EmitenController::class, 'edit_bisnis']);
