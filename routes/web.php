@@ -259,6 +259,11 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/pralisting/flag-now-playing', [App\Http\Controllers\PralistingController::class, 'flagNowPlaying']);
     Route::get('/admin/pralisting/export-calon-penerbit', [App\Http\Controllers\PralistingController::class, 'exportCalonPenerbit']);
     
+    Route::get('/admin/member-trader', [App\Http\Controllers\MemberController::class, 'index']);
+    Route::get('/admin/member-trader/fetch-data', [App\Http\Controllers\MemberController::class, 'fetchData']);
+    Route::get('/admin/member-trader/fetch-portofolio/{userId}', [App\Http\Controllers\MemberController::class, 'portofolio']);
+    Route::get('/admin/member-trader/export-investor', [App\Http\Controllers\MemberController::class, 'exportInvestor']);
+
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

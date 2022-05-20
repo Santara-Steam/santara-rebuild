@@ -22,6 +22,7 @@ class PenerbitExport implements FromView, WithTitle, ShouldAutoSize
             ->select('emitens.id', 'emitens.code_emiten', 'emitens.company_name', 'emitens.trademark', 
                 'emitens.begin_period', \DB::raw('sum(tr.amount) as total'))
             ->where('tr.is_deleted', 0)
+            ->where('tr.is_verified', 1)
             ->where('emitens.is_active', 1)
             ->where('emitens.is_deleted', 0)
             ->groupBy('tr.emiten_id')

@@ -111,6 +111,9 @@
             <li class="nav-item has-sub">
                 <a href="#"><i class="la la-user"></i> &nbsp; Data Users</a>
                 <ul class="menu-content">
+                    <li class=" nav-item {{ 'admin/member-trader' == request()->path() ? 'active' : '' }}"><a
+                        href="{{ url('admin/member-trader') }}"><i class="la la-user"></i><span
+                            class="menu-title" data-i18n="eCommerce"> Member Trader</span></a></li>
                     <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/kyc/belum-kyc') }}"><i class="la la-user"></i><span
                                 class="menu-title" data-i18n="eCommerce"> Belum KYC</span></a></li>
