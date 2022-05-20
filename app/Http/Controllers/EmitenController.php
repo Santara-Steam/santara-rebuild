@@ -423,7 +423,7 @@ class EmitenController extends Controller
         $em->avg_general_share_amount = str_replace(".", "", $request->get('saham_dilepas'));
         $em->avg_turnover_after_becoming_a_publisher= str_replace(".", "", $request->get('omset_penerbit'));
         $em->avg_annual_dividen= str_replace(".", "", $request->get('deviden_tahunan'));
-        $em->youtube= $request->get('video_profile');
+        $em->youtube= str_replace("youtu.be/", "www.youtube.com/embed/", $request->get('video_profile'));
         $em->facebook= $request->get('fb');
         $em->website= $request->get('web');
         $em->instagram= $request->get('ig');
@@ -962,8 +962,8 @@ class EmitenController extends Controller
         $emiten->avg_general_share_amount = str_replace(".", "", $request->get('saham_dilepas'));
         $emiten->avg_turnover_after_becoming_a_publisher= str_replace(".", "", $request->get('omset_penerbit'));
         $emiten->avg_annual_dividen= str_replace(".", "", $request->get('deviden_tahunan'));
-        $emiten->youtube= $request->get('video_profile');
-        // $emiten->youtube= str_replace("youtu.be/", "www.youtube.com/embed/", $request->get('video_profile'));
+        // $emiten->youtube= $request->get('video_profile');
+        $emiten->youtube= str_replace("youtu.be/", "www.youtube.com/embed/", $request->get('video_profile'));
         $emiten->facebook= $request->get('fb');
         $emiten->website= $request->get('web');
         $emiten->instagram= $request->get('ig');
@@ -1259,7 +1259,7 @@ class EmitenController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect('/admin/emiten')->with($notif);
+        return redirect()->back()->with($notif);
     }
     public function logocropImg()
     {

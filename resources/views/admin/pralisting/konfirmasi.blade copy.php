@@ -52,15 +52,27 @@
                                                     href="{{ url()->previous() }}">Kembali</a>
                                             </div>
 
+                                            <?php if( $emiten->is_verified == 1 ) : ?>
                                             <div class="col-md-4 col-12">
                                                 <a class="btn btn-block btn-danger font-link-white"
-                                                    onclick="action('<?= $emiten->uuid ?>','2', 'Reject') ">Reject</a>
+                                                    onclick="acceptPraListing('<?= $emiten->uuid ?>','0', 'Batalkan') ">Batalkan</a>
                                             </div>
-
                                             <div class="col-md-4 col-12">
                                                 <a class="btn btn-block btn-info font-link-white"
-                                                    onclick="action('<?= $emiten->uuid ?>','1', 'Approve') ">Approve</a>
+                                                    onclick="acceptOfficial('<?= $emiten->uuid ?>','1') ">Jadikan
+                                                    Penerbit Official</a>
                                             </div>
+                                            <?php else: ?>
+                                            <div class="col-md-4 col-12">
+                                                <a class="btn btn-block btn-danger-ghost <?= $emiten->is_verified == 2 || $emiten->is_verified == 1 ? 'disabled' : '' ?>"
+                                                    onclick="rejectPralisting('<?= $emiten->uuid ?>','2') ">Tolak</a>
+                                            </div>
+                                            <div class="col-md-4 col-12">
+                                                <a class="btn btn-block btn-info font-link-white"
+                                                    onclick="acceptPraListing('<?= $emiten->uuid ?>','1', 'Verifikasi') ">Konfirmasi
+                                                    Pengajuan</a>
+                                            </div>
+                                            <?php endif; ?>
 
                                         </div>
                                     </form>
@@ -94,7 +106,7 @@
             titleTemplate: '<span class="step">#index#</span> #title#'
         });
 
-        function action(uuid, status, status_title) {
+        function acceptPraListing(uuid, status, status_title) {
             Swal.fire({
                 text: status_title + ' bisnis ini ? ',
                 type: 'info',
@@ -108,7 +120,7 @@
                         status
                     };
                     $.ajax({
-                        url: '{{ url('admin/pralisting/verified-bisnis') }}',
+                        url: '{{ url('admin/pralisting/accept-pralisting') }}',
                         type: 'POST',
                         dataType: "json",
                         data: data,
@@ -127,7 +139,7 @@
                                     showCancelButton: false,
                                     confirmButtonText: 'Ok'
                                 }).then((result) => {
-                                    window.location = '{{ url('admin/pralisting/kyc-bisnis') }}';
+                                    window.location = '{{ url('admin/pralisting') }}';
                                 })
                             } else {
                                 Swal.fire({
@@ -137,7 +149,7 @@
                                     showCancelButton: false,
                                     confirmButtonText: 'Ok'
                                 }).then((result) => {
-                                    window.location = '{{ url('admin/pralisting/kyc-bisnis') }}';
+                                    window.location = '{{ url('admin/pralisting') }}';
                                 })
                             }
                         },
@@ -166,6 +178,141 @@
             })
         }
 
+        function acceptOfficial(uuid, status) {
+            Swal.fire({
+                text: 'Jadikan Penerbit Official ? ',
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.value) {
+                    var data = {
+                        uuid,
+                        status
+                    };
+                    $.ajax({
+                        url: '{{ url('admin/pralisting/accept-official') }}',
+                        type: 'POST',
+                        dataType: "json",
+                        data: data,
+                        timeout: 20000,
+                        beforeSend: function() {
+                            $("#loader").show();
+                        },
+                        success: function(data) {
+                            $("#loader").hide();
+
+                            if (data.msg == 200) {
+                                Swal.fire({
+                                    title: 'Berhasil',
+                                    text: 'Berhasil verifikasi bisnis',
+                                    type: 'success',
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Ok'
+                                }).then((result) => {
+                                    window.location = '{{ url('admin/pralisting') }}';
+                                })
+                            } else {
+                                Swal.fire({
+                                    title: 'Gagal',
+                                    text: 'Gagal verifikasi bisnis',
+                                    type: 'warning',
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Ok'
+                                }).then((result) => {
+                                    window.location = '{{ url('admin/pralisting') }}';
+                                })
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            if (textStatus === "timeout" || textStatus === "error") {
+                                $("#loader").hide();
+                                Swal.fire({
+                                    title: 'Ooops...',
+                                    text: "Mohon periksa koneksi internet anda",
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Muat ulang',
+                                    cancelButtonText: 'Tutup'
+                                }).then((result) => {
+                                    if (result.value) {
+                                        location.reload();
+                                    }
+                                })
+                            }
+                        },
+                        complete: function() {
+                            $("#loader").hide();
+                        }
+                    });
+                }
+            })
+        }
+
+        function rejectPralisting(uuid, status) {
+            Swal.fire({
+                title: "Tolak Bisnis",
+                text: 'Masukan alasan penolakan bisnis',
+                input: 'text',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Tolak',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true,
+                preConfirm: (input) => {
+                    if (input === '') {
+                        Swal.showValidationMessage('alasan penolakan tidak boleh kosong')
+                    } else {
+                        var data = {
+                            uuid,
+                            status,
+                            input
+                        };
+
+                        $.ajax({
+                            url: '{{ url('admin/pralisting/accept-pralisting') }}',
+                            type: 'POST',
+                            dataType: "json",
+                            data: data,
+                            timeout: 20000,
+                            success: function(data) {
+                                $("#loader").hide();
+
+                                if (data.msg == 200) {
+                                    Swal.fire({
+                                        title: 'Berhasil',
+                                        text: 'Penolakan bisnis berhasil dilakukan',
+                                        type: 'success',
+                                        showCancelButton: false,
+                                        confirmButtonText: 'Ok'
+                                    }).then((result) => {
+                                        window.location = '{{ url('admin/pralisting') }}';
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        title: 'Gagal',
+                                        text: 'Penolakan bisnis gagal dilakukan',
+                                        type: 'warning',
+                                        showCancelButton: false,
+                                        confirmButtonText: 'Ok'
+                                    })
+                                }
+                            },
+                            error: function(data) {
+                                Swal.fire({
+                                    title: 'Gagal',
+                                    text: 'Penolakan bisnis gagal dilakukan',
+                                    type: 'warning',
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Ok'
+                                })
+                            }
+                        });
+                    }
+                }
+
+            });
+        }
     </script>
 @endsection
 
