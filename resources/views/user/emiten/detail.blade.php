@@ -443,7 +443,7 @@
                                                 <div class="card-body">
                                                     <div class="card-content m-0 row">
                                                         <div class="col-md-3">
-                                                            <form method="post"
+                                                            {{-- <form method="post"
                                                                 action="{{url('user/laporan-keuangan/detail')}}/<?= $uuid ?>">
                                                                 {{ csrf_field() }}
                                                                 <input type="hidden" name="report" value="created" />
@@ -452,7 +452,12 @@
                                                                     <span class="menu-title" data-i18n="">Buat Laporan
                                                                         Keuangan</span>
                                                                 </button>
-                                                            </form>
+                                                            </form> --}}
+                                                            <a href="{{url('user/laporan-keuangan/detail')}}/<?= $uuid ?>" type="submit"
+                                                                    class="btn btn-santara-red btn-block">
+                                                                    <span class="menu-title" data-i18n="">Buat Laporan
+                                                                        Keuangan</span>
+                                                                </a>
 
                                                         </div>
 
@@ -581,7 +586,7 @@
                         </a>
                     </li>                
                 </ul>
-                <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="las la-plus-square"></i></button>
+                <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="la la-plus-square"></i></button>
                 </div>
 
                 <!-- Tab panes -->
@@ -645,7 +650,7 @@
                     <?php endif; ?>
 
                     </ul>
-                    <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="las la-plus-square"></i></button>
+                    <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="la la-plus-square"></i></button>
                     </div>
 
                     <!-- Tab panes -->
@@ -682,7 +687,7 @@
                                             <td width="30%">
                                                 <input type="text" name='list_fund_plans[<?= $key; ?>][sublist][<?= $k; ?>][amount]' value="<?= number_format( $v['amount'], 0, ',', '.' ); ?>" class="form-control amount_<?= $key; ?>" onkeyup="subTotal(<?= $key; ?>)"/>
                                             </td>
-                                            <td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("<?= $key ?>","<?= $k ?>")'><i class='las la-times'></i></a></td>
+                                            <td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("<?= $key ?>","<?= $k ?>")'><i class='la la-times'></i></a></td>
                                         </tr>
                                         
                                         <?php 
@@ -1026,7 +1031,7 @@ function deleteReport(id, uuid){
         $('#rencana_addr_'+ tab_id +'_'+ tab_no).html(
             "<td width='55%'><input name='list_fund_plans["+ tab_id + "][sublist]["+ tab_no + "][desc]' type='text' class='form-control'/></td>" +
             "<td width='30%'><input name='list_fund_plans["+ tab_id + "][sublist]["+ tab_no + "][amount]' type='text' class='form-control amount_"+ tab_id +"' onkeyup='subTotal("+ tab_id + ")'/></td>" +
-            "<td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("+ tab_id + "," + tab_no + ")'><i class='las la-times'></i></a></td>");
+            "<td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("+ tab_id + "," + tab_no + ")'><i class='la la-times'></i></a></td>");
     
         $('#tab_rencana_'+ tab_id).append('<tr id="rencana_addr_' + tab_id + '_' + (tab_no + 1) + '"></tr>');
         tab_obj[tab_id]++;
@@ -1045,7 +1050,7 @@ function deleteReport(id, uuid){
         var data = $(form).serializeArray();
         $("#loader").show();
         $.ajax({
-            url: '/penerbit/savePlan/' + type,
+            url: '{{url("penerbit/savePlan")}}/' + type,
             type: 'POST',
             cache: false,
             data: data,
@@ -1061,12 +1066,12 @@ function deleteReport(id, uuid){
                         location.reload();
                     });
                 } else {
-                    Swal.fire("Error!", data.msg, "error");
+                    Swal.fire("Error!1"+data.msg, data.msg, "error");
                 }
             },
             error: function(data) {
                 $("#loader").hide();
-                Swal.fire("Error!", data.msg, "error");
+                Swal.fire("Error!2"+data.msg, data.msg, "error");
             }
         });
     };
@@ -1083,6 +1088,8 @@ function deleteReport(id, uuid){
         document.getElementById("subtotal_"+tab_id).value = ( isNaN(subtotal) ) ? 0 : formatNumber(Number(subtotal) );
     };
     </script>
+
+    <script></script>
 @endsection
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"

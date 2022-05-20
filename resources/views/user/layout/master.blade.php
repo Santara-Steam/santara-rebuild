@@ -176,6 +176,7 @@
             }
         });
     </script>
+        <script src="https://old.santara.co.id/assets/js/global.js?v=5.8.8" defer></script>
     @yield('js')
 
 </body>

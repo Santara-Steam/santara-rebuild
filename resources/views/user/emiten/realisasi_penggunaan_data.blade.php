@@ -73,7 +73,7 @@
                                             <?php endforeach; ?>
                                         <?php endif; ?>
 
-                                        <a href="/user/penerbit/bisnisdetail/<?= $uuid; ?>#rencana" class="btn btn-santara-white pull-left">Edit Rencana Penggunaan Dana</a>
+                                        <a href="{{url("penerbit/bisnisdetail")}}/<?= $uuid; ?>#rencana" class="btn btn-santara-white pull-left">Edit Rencana Penggunaan Dana</a>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                                                 <td width="15%">
                                                                     <input type="text" name='list_fund_realization[<?= $key ?>][amount]' class="form-control realisasi_amount" value="<?= number_format($value['amount'], 0, ',', '.'); ?>" onkeyup='total()' />
                                                                 </td>
-                                                                <td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeRow(<?= $key ?>)'><i class='las la-times'></i></a></td>
+                                                                <td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeRow(<?= $key ?>)'><i class='la la-times'></i></a></td>
                                                             </tr>
                                                         <?php
                                                             $no = $key + 1;
@@ -159,7 +159,7 @@
                     <div class="mt-5">
                         <div class="row">
                             <div class="text-left col-md-6 mb-1">
-                                <a href="/user/penerbit/bisnisdetail/<?= $uuid; ?>" class="btn btn-santara-white btn-block">Kembali</a>
+                                <a href="{{url("penerbit/bisnisdetail")}}/<?= $uuid; ?>" class="btn btn-santara-white btn-block">Kembali</a>
                             </div>
                             <div class="text-right col-md-6 mb-1">
                                 <button type="button" class="btn btn-santara-red btn-block" onClick="submitReport('formFundRealizationPlans', null, '<?= $uuid; ?>')">Simpan</button>
