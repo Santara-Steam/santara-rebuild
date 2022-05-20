@@ -11,13 +11,8 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h1 class="card-title-member">Calon Penerbit</h1>
-                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i>
-                                    </a>
-                                    <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a href="{{url('admin/pralisting/export-calon-penerbit')}}" class="btn btn-primary">Export Data</a></li>
-                                    </ul>
+                                    <h1 class="card-title-member">KYC Bisnis</h1>
+                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
@@ -37,6 +32,7 @@
                                                         <th>Kebutuhan Data</th>
                                                         <th>Rencana Invest</th>
                                                         <th>Status</th>
+                                                        <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -56,6 +52,7 @@
                                                         <td><?= $data[$i]['capital_needs'] ?></td>
                                                         <td><?= $data[$i]['investment'] ?></td>
                                                         <td>{{ $data[$i]['status'] }}</td>
+                                                        <td><?= $data[$i]['aksi'] ?></td>
                                                     </tr> 
                                                     @endfor
                                                 </tbody>
