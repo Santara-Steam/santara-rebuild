@@ -58,7 +58,7 @@ class WithdrawController extends Controller
                     'withdraws.is_verified', 'withdraws.account_name','withdraws.account_number', 
                     'withdraws.bank_to', 'withdraws.amount', 'withdraws.fee', 'withdraws.created_at', 
                     'withdraws.updated_at', 't.id as trader_id', 't.name as trader_name', 't.phone', 'u.email', 
-                    'withdraws.split_fee')
+                    'withdraws.split_fee', 'withdraws.external_id')
                 ->get();
         }else{
             $totalRecords = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
@@ -83,7 +83,7 @@ class WithdrawController extends Controller
                     'withdraws.is_verified', 'withdraws.account_name','withdraws.account_number', 
                     'withdraws.bank_to', 'withdraws.amount', 'withdraws.fee', 'withdraws.created_at', 
                     'withdraws.updated_at', 't.id as trader_id', 't.name as trader_name', 't.phone', 'u.email', 
-                    'withdraws.split_fee')
+                    'withdraws.split_fee', 'withdraws.external_id')
                 ->get();
         }
 
@@ -92,7 +92,7 @@ class WithdrawController extends Controller
             $totalWithdraw = rupiah(($row->amount - $row->fee));
             // saldo Available didapat dari proses fetch api, itu menyusul
             // $saldoAvailable = rupiah($this->get_saldo($withdraw->trader_uuid), 2, ',', '.');
-            $member = '<div class="col-12">'.$row->trader_name
+            $member = '<div class="col-12">ID : '.$row->external_id.' </div><div class="col-12">'.$row->trader_name
                 .'</div><div class="col-12">'.$row->email.'</div><div class="col-12">'.$row->phone.'</div><div class="col-12">'
                 .$row->bank_to.'</div>';
             $date = '<div class="col-12">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))

@@ -99,7 +99,7 @@ class DevidenController extends Controller
                     ->where('bagihasils.is_deleted', 0)
                     ->where('bagihasils.status', $request->filter)
                     ->whereNull('bagihasils.deposit_id')
-                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
                     ->select('count(*) as allcount')
                     ->count();
@@ -110,7 +110,7 @@ class DevidenController extends Controller
                     ->where('bagihasils.status', $request->filter)
                     ->whereNull('bagihasils.deposit_id')
                     ->where('t.name', 'like', '%' .$searchValue . '%')
-                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
                     ->count();
                 $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
@@ -128,7 +128,7 @@ class DevidenController extends Controller
                         'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
                         'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
                         'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
-                        'bagihasils.channel')
+                        'bagihasils.channel', 'bagihasils.external_id')
                     ->orderBy('bagihasils.created_at', 'DESC')
                     ->get();
             }else{
@@ -137,7 +137,7 @@ class DevidenController extends Controller
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                     ->where('bagihasils.is_deleted', 0)
                     ->where('bagihasils.status', $request->filter)
-                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
                     ->select('count(*) as allcount')
                     ->count();
@@ -147,7 +147,7 @@ class DevidenController extends Controller
                     ->where('bagihasils.is_deleted', 0)
                     ->where('bagihasils.status', $request->filter)
                     ->where('t.name', 'like', '%' .$searchValue . '%')
-                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
                     ->count();
                 $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
@@ -164,7 +164,7 @@ class DevidenController extends Controller
                         'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
                         'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
                         'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
-                        'bagihasils.channel')
+                        'bagihasils.channel', 'bagihasils.external_id')
                     ->orderBy('bagihasils.created_at', 'DESC')
                     ->get();
             }
@@ -173,7 +173,7 @@ class DevidenController extends Controller
                 ->join('users as u', 'u.id', '=', 't.user_id')
                 ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                 ->where('bagihasils.is_deleted', 0)
-                ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                 ->orderBy('bagihasils.updated_at', 'DESC')
                 ->select('count(*) as allcount')
                 ->count();
@@ -182,7 +182,7 @@ class DevidenController extends Controller
                 ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                 ->where('bagihasils.is_deleted', 0)
                 ->where('t.name', 'like', '%' .$searchValue . '%')
-                ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                 ->orderBy('bagihasils.updated_at', 'DESC')
                 ->count();
             $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
@@ -198,7 +198,7 @@ class DevidenController extends Controller
                     'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
                     'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
                     'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
-                    'bagihasils.channel')
+                    'bagihasils.channel', 'bagihasils.external_id')
                 ->orderBy('bagihasils.created_at', 'DESC')
                 ->get();
         }
@@ -211,6 +211,20 @@ class DevidenController extends Controller
             $feeIdr = rupiah($row->fee);
             $totalIdr = rupiah(($row->devidend - $row->fee));
             $account_name = str_replace("'", "", $row->account_name);
+
+            $bankName = "";
+            $rekening = "";
+            if($row->bank != null){
+                $bankName = $row->bank;
+            }else{
+                $bankName = "-";
+            }
+
+            if($row->account_number != null){
+                $rekening = $row->account_number;
+            }else{
+                $rekening = "-";
+            }
 
             $confirm = '
                     <a href="#" onClick="confirmDividend(\''.$row->id . '\',
@@ -260,9 +274,11 @@ class DevidenController extends Controller
                 $pencairan = '-';
             }
 
-            $member = '<div class="col-12">'.$row->name.'</div>'
+            $member = '<div class="col-12">ID :'.$row->external_id.'</div><div class="col-12">'.$row->name.'</div>'
                 .'<div class="col-12">'.$row->email.'</div>'
-                .'<div class="col-12">'.$row->phone.'</div>';
+                .'<div class="col-12">'.$row->phone.'</div>'
+                .'<div class="col-12">Bank : '.$bankName.'</div>'
+                .'<div class="col-12">Rekening : '.$rekening.'</div>';
             $updated_at = '<div class="col-12">'.tgl_indo(date('Y-m-d', strtotime($row->updated_at)))
                 .'</div><div class="col-12">'.formatJam($row->updated_at).'</div>';              
 

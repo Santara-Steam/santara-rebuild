@@ -80,6 +80,17 @@ class MemberController extends Controller
 
     public function portofolio($userId)
     {
+        $balance = User::join('traders as t', 't.user_id', '=', 'users.id')
+            ->join('balance_utama as bu', 'bu.trader_id', '=', 't.id')
+            ->where('users.id', $userId)
+            ->where('users.is_deleted', 0)
+            ->where('t.is_deleted', 0)
+            ->select('bu.balance')
+            ->first();
+        $saldo = 0;
+        if($balance != null){
+            $saldo = $balance->balance;
+        }
         try {
             $client = new \GuzzleHttp\Client();
 
@@ -93,7 +104,7 @@ class MemberController extends Controller
 
             if ($responseToken->getStatusCode() == 200) {
                 $tokens = json_decode($responseToken->getBody()->getContents(), TRUE);
-                echo json_encode($tokens);
+                echo json_encode(["token" => $tokens, "saldo" => rupiahBiasa($saldo)]);
                 return;
             }
         } catch (\Exception $exception) {

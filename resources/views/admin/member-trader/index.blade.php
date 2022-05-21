@@ -57,6 +57,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="card-content">
+                        <div class="row justify-content-end">
+                            <h3 class="mr-1"><i class="icon-wallet success"></i> <span id="totalSaldo"></span> </h3>
+                         </div>
                         <div class="row mb-1" id="totalPortofolio">
                         </div>
                         <div class="row" id="emitenPortofolio">
@@ -164,8 +167,10 @@
                 beforeSend: function() {
                     $("#namaHeader").html(`Portofolio <b>${name}</b>`);
                 },
-                success: function(data) {
+                success: function(result) {
+                    const data = result.token;
                     console.log(data);
+                    $("#totalSaldo").html(result.saldo);
                     let total = "";
                     let emiten = "";
 

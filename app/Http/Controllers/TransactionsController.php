@@ -146,6 +146,9 @@ class TransactionsController extends Controller
             $class_action = "btn btn-outline-info btn-sm";
 			$text_action  = "Detail";
 
+            $stock = 0;
+            $stock_price = 0;
+
             if($row->status == 'CREATED'){
                 $status = '<div class="status badge badge-secondary">Belum Konfirmasi</div>';
 				$status_transaction = 1;
@@ -171,8 +174,23 @@ class TransactionsController extends Controller
                 $row->channel == "WALLET" ? "Saldo Dompet" : $row->channel == "DANA" ? "DATA" : 
                 $row->channel == "MARKET" ? "MARKET (" . strtoupper($row->description) . ")" : " - ".$row->description;
 
-            $transaction = '<div class="row"><div class="col-5">ID:</div><div class="col-7">'.$row->transaction_no.'</div></div><div class="row"><div class="col-5">Token:</div><div class="col-7">'.$row->code_emiten.'</div></div><div class="row">
-                <div class="col-5">Payment:</div><div class="col-7">'.$channel.'</div></div>';
+            if($row->channel == "MARKET"){
+                $market = Markets::where('transaction_id', $row->id)
+                    ->select('stock', 'stock_price')
+                    ->first();
+                $stock = $market->stock;
+                $stock_price = $market->stock_price;
+            }
+
+            $idTransaksi = "";
+            if($row->transaction_no != null){
+                $idTransaksi = $row->transaction_no;
+            }else{
+                $idTransaksi = $row->transaction_serial;
+            }
+                
+            $transaction = '<div class="row"><div class="col-4">ID:</div><div class="col-8">'.$idTransaksi.'</div></div><div class="row"><div class="col-4">Token:</div><div class="col-8">'.$row->code_emiten.'</div></div><div class="row">
+                <div class="col-4">Price:</div><div class="col-8">'.rupiah2($stock_price).'</div></div><div class="row"> <div class="col-4">Qty:</div><div class="col-8">'.$stock.'</div></div>';
 
             $member = '<div class="col-12">'.$row->trader_name.'</div>'
                 .'<div class="col-12">'.$row->user_email.'</div>'

@@ -59,6 +59,7 @@ class DepositController extends Controller
                 $totalRecords = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                     ->where('deposits.status', $request->filter)
                     ->whereNull('deposits.confirmation_photo')  
 			        ->whereNull('deposits.bank_to')
@@ -67,6 +68,7 @@ class DepositController extends Controller
                 $totalRecordswithFilter = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                     ->where('deposits.status', $request->filter)
                     ->whereNull('deposits.confirmation_photo')  
 			        ->whereNull('deposits.bank_to')
@@ -75,6 +77,7 @@ class DepositController extends Controller
                 $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                     ->where('deposits.status', $request->filter)
                     ->whereNull('deposits.confirmation_photo')  
 			        ->whereNull('deposits.bank_to')
@@ -84,25 +87,29 @@ class DepositController extends Controller
                         'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
                         'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                         'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
-                        'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank')
+                        'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank',
+                        'onepay.transaction_no')
                     ->orderBy('deposits.created_at', 'DESC')
                     ->get();
             }else{
                 $totalRecords = $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                     ->where('deposits.status', $request->filter)
                     ->select('count(*) as allcount')
                     ->count();
                 $totalRecordswithFilter = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                     ->where('deposits.status', $request->filter)
                     ->where('t.name', 'like', '%' .$searchValue . '%')
                     ->count();
                 $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                     ->where('deposits.status', $request->filter)
                     ->skip($start)
                     ->take($rowperpage)
@@ -110,7 +117,8 @@ class DepositController extends Controller
                         'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
                         'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                         'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
-                        'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank', 't.phone')
+                        'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank', 't.phone',
+                        'onepay.transaction_no')
                     ->orderBy('deposits.created_at', 'DESC')
                     ->get();
             }
@@ -118,23 +126,27 @@ class DepositController extends Controller
             $totalRecords = $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                 ->join('users as u', 'u.id', '=', 't.user_id')
                 ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                 ->select('count(*) as allcount')
                 ->count();
             $totalRecordswithFilter = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                 ->join('users as u', 'u.id', '=', 't.user_id')
                 ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                 ->where('t.name', 'like', '%' .$searchValue . '%')
                 ->count();
             $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                 ->join('users as u', 'u.id', '=', 't.user_id')
                 ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
+                ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                 ->skip($start)
                 ->take($rowperpage)
                 ->select('deposits.id', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
                     'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
                     'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 
                     'deposits.status', 'deposits.created_at', 'deposits.updated_at', 't.name as trader_name', 
-                    'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank', 't.phone')
+                    'deposits.created_by', 'va.account_number as va_account_number', 'va.bank as va_bank', 't.phone',
+                    'onepay.transaction_no')
                 ->orderBy('deposits.created_at', 'DESC')
                 ->get();
         }
@@ -219,7 +231,7 @@ class DepositController extends Controller
                 $channel = $row->created_by;
             }
 
-            $member = '<div class="col-12">'.$row->trader_name.'</div>'.
+            $member = '<div class="col-12">ID : '.$row->transaction_no.'</div><div class="col-12">'.$row->trader_name.'</div>'.
                 '<div class="col-12">'.$row->email.'</div>'.
                 '<div class="col-12">'.$row->phone.'</div>';
             $payment = '<div class="row"><div class="col-6">Method:</div><div class="col-6">'.$channel.'</div></div>'.

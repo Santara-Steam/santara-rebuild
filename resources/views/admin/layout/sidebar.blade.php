@@ -5,6 +5,27 @@
                         class="la la-home"></i><span class="menu-title" data-i18n="eCommerce">Dashboard</span></a>
             </li>
             <li class="nav-item has-sub">
+                <a href="#"><i class="la la-user"></i> &nbsp; Data Users</a>
+                <ul class="menu-content">
+                    <li class=" nav-item {{ 'admin/member-trader' == request()->path() ? 'active' : '' }}"><a
+                        href="{{ url('admin/member-trader') }}"><i class="la la-user"></i><span
+                            class="menu-title" data-i18n="eCommerce"> Member Trader</span></a></li>
+                    <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/kyc/belum-kyc') }}"><i class="la la-user"></i><span
+                                class="menu-title" data-i18n="eCommerce"> Belum KYC</span></a></li>
+                    <li class=" nav-item {{ 'admin/kyc/sudah-kyc' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/kyc/sudah-kyc') }}"><i class="la la-user"></i><span
+                                class="menu-title" data-i18n="eCommerce"> Sudah KYC</span></a></li>
+                    <li class=" nav-item {{ 'admin/kyc/approve-kyc' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/kyc/approve-kyc') }}"><i class="la la-user"></i><span
+                                class="menu-title" data-i18n="eCommerce"> KYC Disetujui</span></a></li>
+                    <li class=" nav-item {{ 'admin/kyc/reject-kyc' == request()->path() ? 'active' : '' }}"><a
+                            href="{{ url('admin/kyc/reject-kyc') }}"><i class="la la-user"></i><span
+                                class="menu-title" data-i18n="eCommerce"> KYC Ditolak</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item has-sub">
                 <a href="#"><i class="la la-briefcase"></i> &nbsp; Penerbit</a>
                 <ul class="menu-content">
                     <li class=" nav-item {{ 'admin/emiten' == request()->path() ? 'active' : '' }}"><a
@@ -107,27 +128,6 @@
                                 class="menu-title" data-i18n="eCommerce"> Kategori Video</span></a></li>
                 </ul>
             </li>
-            </li>
-            <li class="nav-item has-sub">
-                <a href="#"><i class="la la-user"></i> &nbsp; Data Users</a>
-                <ul class="menu-content">
-                    <li class=" nav-item {{ 'admin/member-trader' == request()->path() ? 'active' : '' }}"><a
-                        href="{{ url('admin/member-trader') }}"><i class="la la-user"></i><span
-                            class="menu-title" data-i18n="eCommerce"> Member Trader</span></a></li>
-                    <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/kyc/belum-kyc') }}"><i class="la la-user"></i><span
-                                class="menu-title" data-i18n="eCommerce"> Belum KYC</span></a></li>
-                    <li class=" nav-item {{ 'admin/kyc/sudah-kyc' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/kyc/sudah-kyc') }}"><i class="la la-user"></i><span
-                                class="menu-title" data-i18n="eCommerce"> Sudah KYC</span></a></li>
-                    <li class=" nav-item {{ 'admin/kyc/approve-kyc' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/kyc/approve-kyc') }}"><i class="la la-user"></i><span
-                                class="menu-title" data-i18n="eCommerce"> KYC Disetujui</span></a></li>
-                    <li class=" nav-item {{ 'admin/kyc/reject-kyc' == request()->path() ? 'active' : '' }}"><a
-                            href="{{ url('admin/kyc/reject-kyc') }}"><i class="la la-user"></i><span
-                                class="menu-title" data-i18n="eCommerce"> KYC Ditolak</span></a>
-                    </li>
-                </ul>
             </li>
             <li class="nav-item has-sub">
                 <a href="#"><i class="la la-gear"></i> &nbsp; Setting</a>
