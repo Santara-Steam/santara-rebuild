@@ -23,6 +23,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[0]) ? $data->submission[0]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Status Pernikahan tidak sesuai dengan Kartu Identitas',
+                'Belum melampirkan foto kartu KTP'
+            ]
         ])
     </div>
 
@@ -37,6 +41,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[1]) ? $data->submission[1]['error'] : '',
             'optional' => !empty($data->marital_status) && $data->marital_status == 2 ? 0 : 1,
+            'optionDitolak' => [
+                'Nama bisa dikosongkan (jika status single)',
+                'Tidak sesuai dengan Kartu Identitas'
+            ]
         ])
     </div>
 
@@ -51,6 +59,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[2]) ? $data->submission[2]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Penulisan nama belum lengkap'
+            ]
         ])
     </div>
 
@@ -65,6 +76,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[3]) ? $data->submission[3]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -79,6 +91,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[4]) ? $data->submission[4]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => [
+                'Hubungan dengan ahli waris tidak sesuai'
+            ]
         ])
     </div>
 
@@ -93,6 +108,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[5]) ? $data->submission[5]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => []
         ])
     </div>
 </div>

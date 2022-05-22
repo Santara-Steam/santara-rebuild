@@ -23,6 +23,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[0]) ? $data->submission[0]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Nominal pendapatan belum diakumulasi 12 bulan',
+                'Nominal pendapatan tidak boleh dikosongkan'
+            ]
         ])
     </div>
 
@@ -37,6 +41,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[1]) ? $data->submission[1]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Tidak	sesuai.	WNI	Individual-Domestic (1010)'
+            ]
         ])
     </div>
 
@@ -51,6 +58,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[2]) ? $data->submission[2]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => [
+                'Nomor NPWP belum lengkap'
+            ]
         ])
     </div>
 
@@ -67,6 +77,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[3]) ? $data->submission[3]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => [
+                'Nomor SID tidak sesuai dengan yang tercantum pada Kartu KSEI',
+                'Nomor SID tidak sesuai'
+            ]
         ])
     </div>
 
@@ -90,6 +104,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[7]) ? $data->submission[7]['error'] : '',
             'optional' => !empty($data->have_securities_account) && $data->have_securities_account ? 0 : 1,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -106,6 +121,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[5]) ? $data->submission[5]['error'] : '',
             'optional' => !empty($data->have_securities_account) && $data->have_securities_account ? 0 : 1,
+            'optionDitolak' => [
+                'Tanggal Registrasi tidak sesuai',
+                'Tanggal registrasi tidak boleh kosong'
+            ]
         ])
     </div>
 
@@ -121,6 +140,14 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'document',
             'error' => isset($data->submission[6]) ? $data->submission[6]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => [
+                'Lampiran tidak sesuai kriteria',
+                'Dokumen tidak bisa dibuka',
+                'Lampiran tidak mencantumkan nama pengguna dan Nomor SID',
+                'Lampiran bukan bukti kepemilikan rekening efek pemilik akun',
+                'Unggah lampiran dengan format .jpeg .jpg atau .png',
+                'Tidak melampirkan dokumen rekening efek'
+            ]
         ])
     </div>
     <?php endif; ?>

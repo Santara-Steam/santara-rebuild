@@ -1,6 +1,6 @@
-<div class="col-md-6">
+<div class="col-md-6 mb-3">
     <div class="form-group">
-        <label><small><b><?= $title ?> {{ $optional }} :</b></small></label>
+        <label><small><b><?= $title ?> <?= ($optional == 1) ? '( Optional )' : '' ?> :</b></small></label>
         <?php if ($type == 'text') : ?>
         <input type="text" 
                class="<?= $class ?> <?= ($data == '' && $optional == 0) ? 'invalid' : '' ?>" 
@@ -106,19 +106,33 @@
     </div>
 </div>
 <?php if ($action == 'konfirmasi') : ?>
-<div class="col-md-6 content-center">
-    <div class="radio-member col-md-5">
-        <input type="radio" id="<?= $column ?>_yes" name="<?= $column ?>" value="1" <?= ($error) ? 'checked="checked"' : ( ($data == '' && $optional == 0) ? '' : 'checked="checked"' ); ?>>
-        <label>Diterima </label>
-        <input class="ml-1" type="radio" id="<?= $column ?>_no" name="<?= $column ?>" value="0" <?= ($error) ? 'checked="checked"' : ( ($data == '' && $optional == 0) ? 'checked="checked"' : '' ); ?> >
-        <label>Ditolak</label>    
-    </div>
-    <div class="col-md-7">
-        <textarea class="form-control <?= ($data == '' && $optional == 0) ? 'required-form-kyc' : ''; ?>" 
-                  rows="2" 
-                  name="error_<?= $column ?>" 
-                  id="error_<?= $column ?>"
-                  <?= ($data == '' && $optional == 0) ? '' : 'disabled'; ?>><?= ($error) ? $error : ( ($data == '' && $optional == 0) ? 'Data '. $title . ' tidak boleh kosong' : ''); ?></textarea>
+<div class="col-md-6 content-center mb-3">
+    <div class="row">
+        <div class="radio-member col-md-12">
+            <input class="radioUtama" type="radio" id="<?= $column ?>_yes" name="<?= $column ?>" value="1" <?= ($error) ? 'checked="checked"' : ( ($data == '' && $optional == 0) ? '' : 'checked="checked"' ); ?>>
+            <label>Diterima </label>
+            <input class="ml-1 radioUtama" type="radio" id="<?= $column ?>_no" name="<?= $column ?>" value="0" <?= ($error) ? 'checked="checked"' : ( ($data == '' && $optional == 0) ? 'checked="checked"' : '' ); ?> >
+            <label>Ditolak</label>    
+        </div>
+        <div class="col-md-12">
+            <div id="<?= $column ?>_option_ditolak" class="hidden">      
+                @if(count($optionDitolak) > 0) 
+                    <strong class="ml-2">Daftar Pilihan Ditolak</strong>
+                    @for($i = 0; $i < count($optionDitolak); $i++)
+                    <div class="radio-member">
+                        <input type="radio" class="radio-tolak" id="<?= $column ?>-<?= $i ?>-option_tolak" 
+                            name="error_<?= $column ?>" value="{{ $optionDitolak[$i] }}" />
+                        <label>{{ $optionDitolak[$i] }}</label>    
+                    </div>
+                    @endfor
+                @endif
+            </div>
+            <textarea class="form-control <?= ($data == '' && $optional == 0) ? 'required-form-kyc' : ''; ?>" 
+                      rows="2" 
+                      name="error_<?= $column ?>" 
+                      id="error_<?= $column ?>"
+                      <?= ($data == '' && $optional == 0) ? '' : 'disabled'; ?>><?= ($error) ? $error : ( ($data == '' && $optional == 0) ? 'Data '. $title . ' tidak boleh kosong' : ''); ?></textarea>
+        </div>
     </div>
 </div>
 <?php endif; ?>

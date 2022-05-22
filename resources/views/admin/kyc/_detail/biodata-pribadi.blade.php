@@ -24,6 +24,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'photo',
             'error' => isset($data->submission[0]) ? $data->submission[0]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -38,6 +39,11 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[1]) ? $data->submission[1]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Penulisan nama tidak sesuai dengan Kartu Identitas',
+                'Penulisan nama tidak sesuai dengan Kartu Identitas (Beserta Gelar)',
+                'Belum melampirkan foto kartu KTP'
+            ]
         ])
     </div>
 
@@ -52,6 +58,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[2]) ? $data->submission[2]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Tempat lahir tidak sesuai dengan Kartu Identitas',
+                'Belum melampirkan foto kartu KTP'
+            ]
         ])
     </div>
 
@@ -66,6 +76,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[3]) ? $data->submission[3]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Tanggal lahir tidak sesuai dengan Kartu Identitas',
+                'Belum melampirkan foto kartu KTP'
+            ]
         ])
     </div>
 
@@ -80,6 +94,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[4]) ? $data->submission[4]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Jenis Kelamin tidak sesuai dengan Kartu Identitas',
+            ]
         ])
     </div>
 
@@ -94,6 +111,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[5]) ? $data->submission[5]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Pendidikan terakhir tidak sesuai dengan Kartu Identitas'
+            ]
         ])
     </div>
 
@@ -108,6 +128,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[6]) ? $data->submission[6]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Kewarganegaraan tidak sesuai dengan Kartu Identitas'
+            ]
         ])
     </div>
 
@@ -122,6 +145,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[7]) ? $data->submission[7]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -136,6 +160,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[8]) ? $data->submission[8]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => [
+                'Penulisan email terdapat kesalahan'
+            ]
         ])
     </div>
 
@@ -159,6 +186,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[9]) ? $data->submission[9]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Penulisan nomor belum benar'
+            ]
         ])
     </div>
 
@@ -173,6 +203,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[10]) ? $data->submission[10]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -196,6 +227,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[15]) ? $data->submission[15]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => [
+                'Nomor Passport tidak sesuai dengan Kartu Identitas'
+            ]
         ])
     </div>
 
@@ -212,6 +246,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[16]) ? $data->submission[16]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => [
+                'Tanggal kadaluarsa bisa dipilih seumur hidup'
+            ]
         ])
     </div>
 
@@ -226,6 +263,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[11]) ? $data->submission[11]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Penulisan NIK tidak sesuai dengan Kartu Identitas',
+                'Belum melampirkan foto kartu KTP'
+            ]
         ])
     </div>
 
@@ -240,6 +281,11 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[12]) ? $data->submission[12]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Tanggal registrasi tidak sesuai dengan yang tercantum pada kartu identitas (diatas tanda tangan)',
+                'Tanggal registrasi di KTP buram/tidak jelas',
+                'Belum melampirkan foto kartu KTP'
+            ]
         ])
     </div>
 
@@ -259,6 +305,9 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[14]) ? $data->submission[14]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'EKTP bisa pilih Seumur Hidup'
+            ]
         ])
     </div>
     <?php endif; ?>
@@ -274,6 +323,12 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'image',
             'error' => isset($data->submission[17]) ? $data->submission[17]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Foto kartu KTP buram/tidak jelas',
+                'Lampiran bukan foto kartu KTP',
+                'Kartu identitas tidak sesuai kriteria. EKTP dapat diganti dengan surat keterangan pengganti KTP',
+                'Kartu identitas tidak sesuai kriteria. EKTP dapat diganti dengan surat keterangan pengganti KTP atau KTP Copy dan kartu identitas lain asli'
+            ]
         ])
     </div>
 
@@ -288,6 +343,12 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'image',
             'error' => isset($data->submission[18]) ? $data->submission[18]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Swafoto memegang Kartu Identitas buram/tidak jelas',
+                'Swafoto memegang Kartu Identitas buram/tidak jelas (Kartu Identitas terlalu jauh)',
+                'Swafoto tidak memegang kartu KTP',
+                'Swafoto memegang Kartu Identitas tidak sesuai dengan kriteria (menutup wajah)'
+            ]
         ])
     </div>
 </div>

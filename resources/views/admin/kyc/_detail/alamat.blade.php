@@ -42,6 +42,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[0]) ? $data->submission[0]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -56,6 +57,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[1]) ? $data->submission[1]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -70,6 +72,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[2]) ? $data->submission[2]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -84,6 +87,10 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'textarea',
             'error' => isset($data->submission[3]) ? $data->submission[3]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => [
+                'Penulisan alamat tidak sesuai dengan Kartu Identitas',
+                'Belum melampirkan foto kartu KTP'
+            ]
         ])
     </div>
 
@@ -98,6 +105,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[4]) ? $data->submission[4]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -125,6 +133,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[5]) ? $data->submission[5]['error'] : '',
             'optional' => $data->address_same_with_idcard ? 1 : 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -139,6 +148,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[6]) ? $data->submission[6]['error'] : '',
             'optional' => $data->address_same_with_idcard ? 1 : 0,
+            'optionDitolak' => []
         ]);
     </div>
 
@@ -153,6 +163,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[7]) ? $data->submission[7]['error'] : '',
             'optional' => $data->address_same_with_idcard ? 1 : 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -167,6 +178,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'textarea',
             'error' => isset($data->submission[8]) ? $data->submission[8]['error'] : '',
             'optional' => $data->address_same_with_idcard ? 1 : 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -181,6 +193,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[9]) ? $data->submission[9]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => []
         ])
     </div>
     <?php endif; ?>

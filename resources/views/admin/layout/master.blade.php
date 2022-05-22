@@ -70,6 +70,10 @@
             width: 100px;
         }
 
+        .hidden {
+            display: none;
+        }
+
     </style>
 
     <!-- END: Custom CSS-->

@@ -120,7 +120,7 @@
             titleTemplate: '<span class="step">#index#</span> #title#'
         });
 
-        $('input:radio').change(function() {
+        $('.radioUtama').change(function() {
             let value = $(this).attr('value');
             let name = $(this).attr('name');
             document.getElementById("error_" + name).disabled = false;
@@ -129,7 +129,20 @@
                 document.getElementById("error_" + name).value = '';
                 document.getElementById("error_" + name).disabled = true;
                 document.getElementById("error_" + name).classList.remove("required-form-kyc");
+                document.getElementById(name+"_option_ditolak").classList.add("hidden");
             }
+            if(value == 0){
+                document.getElementById(name+"_option_ditolak").classList.remove("hidden");
+            }
+            validateComfirm();
+        });
+
+        $('.radio-tolak').change(function() {
+            let value = $(this).attr('value');
+            let id = $(this).attr('id');
+            let radioTolakID = id.split("-");
+            console.log(radioTolakID);
+            document.getElementById("error_" + radioTolakID[0]).value = value;
             validateComfirm();
         });
 

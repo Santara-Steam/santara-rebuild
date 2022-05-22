@@ -23,6 +23,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[0]) ? $data->submission[0]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -37,6 +38,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[1]) ? $data->submission[1]['error'] : '',
             'optional' => !empty($data->name) && $data->name == 'Wiraswasta / Pengusaha' ? 0 : 1,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -62,6 +64,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[2]) ? $data->submission[2]['error'] : '',
             'optional' => 1,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -76,6 +79,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'list',
             'error' => isset($data->submission[3]) ? $data->submission[3]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => []
         ])
     </div>
 
@@ -90,6 +94,7 @@ $readonly = $action == 'edit' ? '' : 'readonly';
             'type' => 'text',
             'error' => isset($data->submission[4]) ? $data->submission[4]['error'] : '',
             'optional' => 0,
+            'optionDitolak' => []
         ])
     </div>
 </div>
