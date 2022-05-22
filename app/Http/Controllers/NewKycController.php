@@ -55,7 +55,8 @@ class NewKycController extends Controller
         $data = [];
         foreach($kyc as $row){
             $updated_at = tgl_indo(date('Y-m-d', strtotime($row->updated_at)));
-            $button = '<button class="btn btn-info btn-sm" onclick="tabelHistory(' . $row->id . ',\'' . $row->name . '\')">History</button>&nbsp;';
+            $button = '<button class="btn btn-info btn-sm" onclick="tabelHistory(' . $row->id . ',\'' . $row->name . '\')">History</button>&nbsp;
+                <a class="btn btn-primary btn-sm" href="'.url('admin/kyc/konfirmasi/'.$row->trader_uuid).'">Detail</a>';
 
             array_push($data, [
                 "name" => $row->name,
@@ -102,7 +103,8 @@ class NewKycController extends Controller
             $button = ' <button class="btn btn-primary btn-sm" style="margin-bottom:5px" onclick="foto(\'' . $row->verified_kyc_image .  '\',\'' . $row->verification_photo .  '\',\'' . $row->name . '\')"><i class="fa fa-camera"></i>Foto</button>&nbsp;
                 <button class="btn btn-info btn-sm" style="margin-bottom:5px" onclick="tabelHistory(' . $row->id .  ',\'' . $row->name . '\')">History</button>&nbsp;
                 <button class="btn btn-success btn-sm" style="margin-bottom:5px" onclick="approve(' . $row->id .  ',\'' . $row->name . '\')">Approve</button>&nbsp;
-                <button class="btn btn-danger btn-sm" style="margin-bottom:5px" onclick="reject(' . $row->id .  ',\'' . $row->name . '\')">Reject</button>&nbsp;';
+                <button class="btn btn-danger btn-sm" style="margin-bottom:5px" onclick="reject(' . $row->id .  ',\'' . $row->name . '\')">Reject</button>&nbsp;
+                <a class="btn btn-primary btn-sm" href="'.url('admin/kyc/konfirmasi/'.$row->trader_uuid).'">Detail</a>';
 
             array_push($data, [
                 "name" => $row->name,
@@ -148,7 +150,8 @@ class NewKycController extends Controller
             $updated_at = tgl_indo(date('Y-m-d', strtotime($row->updated_at)));
             $button = ' <button class="btn btn-primary btn-sm" style="margin-bottom:5px" onclick="foto(\'' . $row->verified_kyc_image .  '\',\'' . $row->verification_photo .  '\',\'' . $row->name . '\')"><i class="fa fa-camera"></i>Foto</button>&nbsp;
                 <button class="btn btn-info btn-sm" style="margin-bottom:5px" onclick="tabelHistory(' . $row->id .  ',\'' . $row->name . '\')">History</button>&nbsp;
-                <button class="btn btn-danger btn-sm" style="margin-bottom:5px" onclick="reject(' . $row->id .  ',\'' . $row->name . '\')">Reject</button>&nbsp;';
+                <button class="btn btn-danger btn-sm" style="margin-bottom:5px" onclick="reject(' . $row->id .  ',\'' . $row->name . '\')">Reject</button>&nbsp;
+                <a class="btn btn-primary btn-sm" href="'.url('admin/kyc/konfirmasi/'.$row->trader_uuid).'">Detail</a>';
 
             $dataAdmin = $this->getAdmin($row->trader_id, 'disetujui');
             if ($dataAdmin != 'null') {
@@ -202,7 +205,8 @@ class NewKycController extends Controller
             $updated_at = tgl_indo(date('Y-m-d', strtotime($row->updated_at)));
             $button = ' <button class="btn btn-primary btn-sm" style="margin-bottom:5px" onclick="foto(\'' . $row->verified_kyc_image .  '\',\'' . $row->verification_photo .  '\',\'' . $row->name . '\')"><i class="fa fa-camera"></i>Foto</button>&nbsp;
                 <button class="btn btn-info btn-sm" style="margin-bottom:5px" onclick="tabelHistory(' . $row->id .  ',\'' . $row->name . '\')">History</button>&nbsp;
-                <button class="btn btn-success btn-sm" style="margin-bottom:5px" onclick="approve(' . $row->id .  ',\'' . $row->name . '\')">Approve</button>&nbsp;';
+                <button class="btn btn-success btn-sm" style="margin-bottom:5px" onclick="approve(' . $row->id .  ',\'' . $row->name . '\')">Approve</button>&nbsp;
+                <a class="btn btn-primary btn-sm" href="'.url('admin/kyc/konfirmasi/'.$row->trader_uuid).'">Detail</a>';
             
             $dataAdmin = $this->getAdmin($row->trader_id, 'ditolak');
             if ($dataAdmin != 'null') {
@@ -282,7 +286,7 @@ class NewKycController extends Controller
             ->where('t.name', 'like', '%' .$searchValue . '%')
             ->where('users.is_verified_kyc', $status)
             ->select('users.id', 't.name', 't.id as trader_id', 'users.email', 't.phone', 'users.verified_kyc_image', 
-                't.verification_photo', 'users.updated_at', 'users.ket_penolakan')
+                't.verification_photo', 'users.updated_at', 'users.ket_penolakan', 't.uuid as trader_uuid')
             ->orderBy('users.updated_at', 'ASC')
             ->skip($start)
             ->take($rowperpage)
@@ -298,7 +302,7 @@ class NewKycController extends Controller
             ->orderBy('log.id', 'DESC')
             ->select('traders.name')
             ->first();
-        return $trader->name;
+        return $trader != null ? $trader->name : "";
     }
 
     public function putApprove($id)

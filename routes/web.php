@@ -265,6 +265,9 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/member-trader/fetch-portofolio/{userId}', [App\Http\Controllers\MemberController::class, 'portofolio']);
     Route::get('/admin/member-trader/export-investor', [App\Http\Controllers\MemberController::class, 'exportInvestor']);
 
+    Route::get('/admin/kyc/konfirmasi/{uuid}', [App\Http\Controllers\KycController::class, 'konfirmasi']);
+    Route::post('/admin/kyc/confirm_url', [App\Http\Controllers\KycController::class, 'confirm']);
+    Route::post('/admin/kyc/update_url', [App\Http\Controllers\KycController::class, 'update']);
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
