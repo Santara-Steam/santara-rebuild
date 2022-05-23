@@ -14,6 +14,7 @@ use DB;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class TransactionsController extends Controller
 {
@@ -75,6 +76,9 @@ class TransactionsController extends Controller
         $columnSortOrder = $order_arr[0]['dir']; 
         $searchValue = $search_arr['value'];
 
+        $startDate = $request->startDate;
+        $endDate = $request->endDate;
+
         if($request->filter != ""){
             $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
                 ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
@@ -109,36 +113,77 @@ class TransactionsController extends Controller
                 ->orderBy('tr.created_at', 'DESC')
                 ->get();
         }else{
-            $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
-                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
-                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
-                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
-                ->where('tr.is_deleted', 0)
-                ->select('count(*) as allcount')
-                ->count();
-            $totalRecordswithFilter = User::join('traders as t', 't.user_id', '=', 'users.id')
-                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
-                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
-                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
-                ->where('tr.is_deleted', 0)
-                ->where('t.name', 'like', '%' .$searchValue . '%')
-                ->count();
-    
-            $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
-                ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
-                ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
-                ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
-                ->where('t.name', 'like', '%' .$searchValue . '%')
-                ->where('tr.is_deleted', 0)
-                ->skip($start)
-                ->take($rowperpage)
-                ->select('tr.id', 'tr.uuid', 't.name as trader_name', 'users.email as user_email', 
-                    't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
-                    'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
-                    'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
-                    'tr.last_status as status', 't.phone', 'onepay.transaction_no')
-                ->orderBy('tr.created_at', 'DESC')
-                ->get();
+            if($startDate != "" && $endDate != ""){
+                $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
+                    ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                    ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
+                    ->whereBetween('tr.created_at', [$startDate, $endDate])
+                    ->where('tr.is_deleted', 0)
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = User::join('traders as t', 't.user_id', '=', 'users.id')
+                    ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                    ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
+                    ->whereBetween('tr.created_at', [$startDate, $endDate])
+                    ->where('tr.is_deleted', 0)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->count();
+        
+                $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
+                    ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                    ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
+                    ->whereBetween('tr.created_at', [$startDate, $endDate])
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->where('tr.is_deleted', 0)
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->select('tr.id', 'tr.uuid', 't.name as trader_name', 'users.email as user_email', 
+                        't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
+                        'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
+                        'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
+                        'tr.last_status as status', 't.phone', 'onepay.transaction_no')
+                    ->orderBy('tr.created_at', 'DESC')
+                    ->get();
+            }else{
+                $totalRecords = User::join('traders as t', 't.user_id', '=', 'users.id')
+                    ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                    ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
+                    ->whereMonth('tr.created_at', Carbon::now()->format('M'))
+                    ->where('tr.is_deleted', 0)
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = User::join('traders as t', 't.user_id', '=', 'users.id')
+                    ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                    ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
+                    ->whereMonth('tr.created_at', Carbon::now()->format('M'))
+                    ->where('tr.is_deleted', 0)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->count();
+        
+                $transactions = User::join('traders as t', 't.user_id', '=', 'users.id')
+                    ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
+                    ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
+                    ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
+                    ->whereMonth('tr.created_at', Carbon::now()->format('M'))
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->where('tr.is_deleted', 0)
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->select('tr.id', 'tr.uuid', 't.name as trader_name', 'users.email as user_email', 
+                        't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
+                        'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
+                        'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
+                        'tr.last_status as status', 't.phone', 'onepay.transaction_no')
+                    ->orderBy('tr.created_at', 'DESC')
+                    ->get();
+            }
+            //$query->getQuery()->from(\DB::raw('`onepay_transaction` USE INDEX (transaction_no)'));
+            //$transactions = $query->get();
         }
        
         $data = [];
@@ -178,8 +223,10 @@ class TransactionsController extends Controller
                 $market = Markets::where('transaction_id', $row->id)
                     ->select('stock', 'stock_price')
                     ->first();
-                $stock = $market->stock;
-                $stock_price = $market->stock_price;
+                if($market != null){
+                    $stock = $market->stock;
+                    $stock_price = $market->stock_price;
+                }
             }
 
             $idTransaksi = "";
