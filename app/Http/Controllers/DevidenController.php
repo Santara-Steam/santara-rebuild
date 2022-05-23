@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Deviden;
 use App\Models\HistoriDividen;
 use App\Models\emiten;
+use App\Exports\DividenExport;
+use Maatwebsite\Excel\Facades\Excel;
 use DB;
 
 class DevidenController extends Controller
@@ -91,6 +93,9 @@ class DevidenController extends Controller
         $columnSortOrder = $order_arr[0]['dir']; 
         $searchValue = $search_arr['value'];
 
+        $startDate = $request->startDate;
+        $endDate = $request->endDate;
+
         if($request->filter != ""){
             if($request->filter == 'wallet' || $request->filter == 'rekening'){
                 $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
@@ -154,6 +159,7 @@ class DevidenController extends Controller
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                     ->where('bagihasils.is_deleted', 0)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
                     ->where('bagihasils.status', $request->filter)
                     ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
@@ -169,38 +175,78 @@ class DevidenController extends Controller
                     ->get();
             }
         }else{
-            $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
-                ->join('users as u', 'u.id', '=', 't.user_id')
-                ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
-                ->where('bagihasils.is_deleted', 0)
-                // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
-                ->orderBy('bagihasils.updated_at', 'DESC')
-                ->select('count(*) as allcount')
-                ->count();
-            $totalRecordswithFilter = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
-                ->join('users as u', 'u.id', '=', 't.user_id')
-                ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
-                ->where('bagihasils.is_deleted', 0)
-                ->where('t.name', 'like', '%' .$searchValue . '%')
-                // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
-                ->orderBy('bagihasils.updated_at', 'DESC')
-                ->count();
-            $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
-                ->join('users as u', 'u.id', '=', 't.user_id')
-                ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
-                ->where('bagihasils.is_deleted', 0)
-                ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
-                ->orderBy('bagihasils.updated_at', 'DESC')
-                ->skip($start)
-                ->take($rowperpage)
-                ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 't.phone', 'e.company_name', 
-                    'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
-                    'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
-                    'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
-                    'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
-                    'bagihasils.channel', 'bagihasils.external_id')
-                ->orderBy('bagihasils.created_at', 'DESC')
-                ->get();
+            if($startDate != "" && $endDate != ""){
+                $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->whereBetween('bagihasils.created_at', [$startDate, $endDate])
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->whereBetween('bagihasils.created_at', [$startDate, $endDate])
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->count();
+                $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->whereBetween('bagihasils.created_at', [$startDate, $endDate])
+                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 't.phone', 'e.company_name', 
+                        'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
+                        'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
+                        'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
+                        'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
+                        'bagihasils.channel', 'bagihasils.external_id')
+                    ->orderBy('bagihasils.created_at', 'DESC')
+                    ->get();
+            }else{
+                $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->count();
+                $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 't.phone', 'e.company_name', 
+                        'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
+                        'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
+                        'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
+                        'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
+                        'bagihasils.channel', 'bagihasils.external_id')
+                    ->orderBy('bagihasils.created_at', 'DESC')
+                    ->get();
+            }
         }
         
         $data = [];
@@ -513,6 +559,11 @@ class DevidenController extends Controller
     
         echo json_encode($response);
         exit;
+    }
+
+    public function exportExcel(Request $request)
+    {
+        return Excel::download(new DividenExport($request->start_date, $request->end_date), 'Data Dividen.xlsx');
     }
 
 }

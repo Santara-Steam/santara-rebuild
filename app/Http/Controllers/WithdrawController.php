@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Withdraw;
+use App\Exports\Penarikan;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WithdrawController extends Controller
 {
@@ -30,6 +32,9 @@ class WithdrawController extends Controller
         $columnName = $columnName_arr[$columnIndex]['data'];
         $columnSortOrder = $order_arr[0]['dir']; 
         $searchValue = $search_arr['value'];
+
+        $startDate = $request->startDate;
+        $endDate = $request->endDate;
 
         if($request->filter != ""){
             $totalRecords = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
@@ -61,30 +66,60 @@ class WithdrawController extends Controller
                     'withdraws.split_fee', 'withdraws.external_id')
                 ->get();
         }else{
-            $totalRecords = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
-                ->join('users as u', 'u.id', '=', 't.user_id')
-                ->where('withdraws.is_deleted', 0)
-                ->orderBy('withdraws.id', 'DESC')
-                ->select('count(*) as allcount')
-                ->count();
-            $totalRecordswithFilter = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
-                ->join('users as u', 'u.id', '=', 't.user_id')
-                ->where('withdraws.is_deleted', 0)
-                ->where('withdraws.account_name', 'like', '%' .$searchValue . '%')
-                ->orderBy('withdraws.id', 'DESC')
-                ->count();
-            $withdraws = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
-                ->join('users as u', 'u.id', '=', 't.user_id')
-                ->where('withdraws.is_deleted', 0)
-                ->skip($start)
-                ->take($rowperpage)
-                ->orderBy('withdraws.id', 'DESC')
-                ->select('withdraws.uuid', 't.uuid as trader_uuid', 'withdraws.id', 
-                    'withdraws.is_verified', 'withdraws.account_name','withdraws.account_number', 
-                    'withdraws.bank_to', 'withdraws.amount', 'withdraws.fee', 'withdraws.created_at', 
-                    'withdraws.updated_at', 't.id as trader_id', 't.name as trader_name', 't.phone', 'u.email', 
-                    'withdraws.split_fee', 'withdraws.external_id')
-                ->get();
+            if($startDate != "" && $endDate != ""){
+                $totalRecords = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->where('withdraws.is_deleted', 0)
+                    ->whereBetween('withdraws.created_at', [$startDate, $endDate])
+                    ->orderBy('withdraws.id', 'DESC')
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->where('withdraws.is_deleted', 0)
+                    ->where('withdraws.account_name', 'like', '%' .$searchValue . '%')
+                    ->whereBetween('withdraws.created_at', [$startDate, $endDate])
+                    ->orderBy('withdraws.id', 'DESC')
+                    ->count();
+                $withdraws = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->where('withdraws.is_deleted', 0)
+                    ->whereBetween('withdraws.created_at', [$startDate, $endDate])
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->orderBy('withdraws.id', 'DESC')
+                    ->select('withdraws.uuid', 't.uuid as trader_uuid', 'withdraws.id', 
+                        'withdraws.is_verified', 'withdraws.account_name','withdraws.account_number', 
+                        'withdraws.bank_to', 'withdraws.amount', 'withdraws.fee', 'withdraws.created_at', 
+                        'withdraws.updated_at', 't.id as trader_id', 't.name as trader_name', 't.phone', 'u.email', 
+                        'withdraws.split_fee', 'withdraws.external_id')
+                    ->get();
+            }else{
+                $totalRecords = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->where('withdraws.is_deleted', 0)
+                    ->orderBy('withdraws.id', 'DESC')
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->where('withdraws.is_deleted', 0)
+                    ->where('withdraws.account_name', 'like', '%' .$searchValue . '%')
+                    ->orderBy('withdraws.id', 'DESC')
+                    ->count();
+                $withdraws = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->where('withdraws.is_deleted', 0)
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->orderBy('withdraws.id', 'DESC')
+                    ->select('withdraws.uuid', 't.uuid as trader_uuid', 'withdraws.id', 
+                        'withdraws.is_verified', 'withdraws.account_name','withdraws.account_number', 
+                        'withdraws.bank_to', 'withdraws.amount', 'withdraws.fee', 'withdraws.created_at', 
+                        'withdraws.updated_at', 't.id as trader_id', 't.name as trader_name', 't.phone', 'u.email', 
+                        'withdraws.split_fee', 'withdraws.external_id')
+                    ->get();
+            }
         }
 
         $data = [];
@@ -136,6 +171,11 @@ class WithdrawController extends Controller
     
         echo json_encode($response);
         exit;
+    }
+
+    public function exportExcel(Request $request)
+    {
+        return Excel::download(new Penarikan($request->start_date, $request->end_date), 'Data Penarikan.xlsx');
     }
 
     

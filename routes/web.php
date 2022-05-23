@@ -268,6 +268,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/kyc/konfirmasi/{uuid}', [App\Http\Controllers\KycController::class, 'konfirmasi']);
     Route::post('/admin/kyc/confirm_url', [App\Http\Controllers\KycController::class, 'confirm']);
     Route::post('/admin/kyc/update_url', [App\Http\Controllers\KycController::class, 'update']);
+
+    Route::get('/admin/withdraw/export-excel', [App\Http\Controllers\WithdrawController::class,'exportExcel']);
+    Route::get('/admin/dividen/export-excel', [App\Http\Controllers\DevidenController::class,'exportExcel']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
