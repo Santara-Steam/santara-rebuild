@@ -63,7 +63,7 @@ class TraderController extends Controller
                 'Authorization' => 'Bearer ' .app('request')->session()->get('token'),
             ];
 
-            $responseToken = $client->request('GET', config('global.BASE_API_ADMIN_URL'). '/v3.7.1/portofolio/?category=', [
+            $responseToken = $client->request('GET', config('global.BASE_API_CLIENT_URL'). '/v3.7.1/portofolio/?category=', [
                 'headers' => $headers,
             ]);
 
