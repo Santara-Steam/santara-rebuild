@@ -31,12 +31,15 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <div class="form-inline mb-2">
-                                            <input type="text" class="form-control" name="daterange" />
-                                            <button id="btn-filter" class="btn btn-primary ml-2"
-                                                type="button">Filter</button>
-                                            <button id="btn-export" class="btn btn-info ml-1" type="button">Export
-                                                Data</button>
+                                        <div class="row justify-content-between ml-2 mr-2">
+                                            <h4>Data Deposit Pada Bulan Ini</h4>
+                                            <div class="form-inline mb-2">
+                                                <input type="text" class="form-control" name="daterange" />
+                                                <button id="btn-filter" class="btn btn-primary ml-2"
+                                                    type="button">Filter</button>
+                                                <button id="btn-export" class="btn btn-info ml-1" type="button">Export
+                                                    Data</button>
+                                            </div>
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table" id="tableDeposit" style="width: 100%">
@@ -142,14 +145,13 @@
         });
 
         $("#btn-export").on("click", function() {
-            alert('Masih pengembangan');
-            // if (tglAwal != "" && tglAkhir != "") {
-            //     var url = "{{ url('admin/withdraw/export-excel') }}" + '?start_date=' + tglAwal + '&end_date=' +
-            //         tglAkhir;
-            //     window.open(url, "_blank");
-            // } else {
-            //     alert("Rentang tanggal belum dipilih")
-            // }
+            if (tglAwal != "" && tglAkhir != "") {
+                var url = "{{ url('admin/deposit/export-excel') }}" + '?start_date=' + tglAwal + '&end_date=' +
+                    tglAkhir;
+                window.open(url, "_blank");
+            } else {
+                alert("Rentang tanggal belum dipilih")
+            }
         });
 
 

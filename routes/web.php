@@ -271,6 +271,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 
     Route::get('/admin/withdraw/export-excel', [App\Http\Controllers\WithdrawController::class,'exportExcel']);
     Route::get('/admin/dividen/export-excel', [App\Http\Controllers\DevidenController::class,'exportExcel']);
+    Route::get('/admin/transaction/export-excel', [App\Http\Controllers\TransactionsController::class,'exportExcel']);
+    Route::get('/admin/deposit/export-excel', [App\Http\Controllers\DepositController::class,'exportExcel']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

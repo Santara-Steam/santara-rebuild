@@ -1,12 +1,10 @@
 <table>
-    <tr>
-        <th colspan="6">
-            Data Penarikan Rentang Waktu {{ tgl_indo(date('Y-m-d', strtotime($tglAwal))) }} Sampai {{ tgl_indo(date('Y-m-d', strtotime($tglAkhir))) }}
-        </th>
-    </tr>
-</table>
-<table>
     <thead>
+        <tr>
+            <th colspan="6">
+                Data Penarikan Rentang Waktu {{ tgl_indo(date('Y-m-d', strtotime($tglAwal))) }} Sampai {{ tgl_indo(date('Y-m-d', strtotime($tglAkhir))) }}
+            </th>
+        </tr>
         <tr>
             <th>No</th>
             <th>Member</th>

@@ -15,6 +15,8 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use App\Exports\TransaksiExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransactionsController extends Controller
 {
@@ -536,6 +538,11 @@ class TransactionsController extends Controller
                                         return redirect()->back()->with($notif);
                                         // dd('w');
                                     }
+    }
+
+    public function exportExcel(Request $request)
+    {
+        return Excel::download(new TransaksiExport($request->start_date, $request->end_date), 'Data Transaksi.xlsx');
     }
     
 

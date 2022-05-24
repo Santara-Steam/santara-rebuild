@@ -9,6 +9,9 @@ use App\Models\Withdraw;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
+use App\Exports\DepositExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DepositController extends Controller
 {
@@ -162,17 +165,20 @@ class DepositController extends Controller
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
                     ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                     ->select('count(*) as allcount')
+                    ->whereMonth('deposits.created_at', Carbon::now()->format('M'))
                     ->count();
                 $totalRecordswithFilter = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
                     ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
                     ->where('t.name', 'like', '%' .$searchValue . '%')
+                    ->whereMonth('deposits.created_at', Carbon::now()->format('M'))
                     ->count();
                 $deposit = Deposit::join('traders as t', 't.id', '=', 'deposits.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
                     ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
+                    ->whereMonth('deposits.created_at', Carbon::now()->format('M'))
                     ->skip($start)
                     ->take($rowperpage)
                     ->select('deposits.id', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
@@ -271,7 +277,7 @@ class DepositController extends Controller
                 '<div class="col-12">'.$row->phone.'</div>';
             $payment = '<div class="row"><div class="col-6">Method:</div><div class="col-6">'.$channel.'</div></div>'.
                 '<div class="row"><div class="col-6">Sender:</div><div class="col-6">'.$bank_from.'</div></div>'.
-                '<div class="row"><div class="col-6">Receiver:</div><div class="col-6">'.$bank_from.'</div></div>'.
+                '<div class="row"><div class="col-6">Receiver:</div><div class="col-6">'.$bank_to.'</div></div>'.
                 '<div class="row"><div class="col-6">Account:</div><div class="col-6">'.$account_number.'</div></div>';
             $created_at = '<div class="col-12">'.tgl_indo(date('Y-m-d', strtotime($row->created_at)))
                 .'</div><div class="col-12">'.formatJam($row->created_at).'</div>';              
@@ -333,5 +339,10 @@ class DepositController extends Controller
         //     echo json_encode(errorcatch($exception, 'deposit'));
         //     return;
         // }
+    }
+
+    public function exportExcel(Request $request)
+    {
+        return Excel::download(new DepositExport($request->start_date, $request->end_date), 'Data Deposit.xlsx');
     }
 }
