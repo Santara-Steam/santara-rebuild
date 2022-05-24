@@ -34,12 +34,14 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
+                                            <span class="input-group-text" style="background-color: #fff;"><i id="eye" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Password Confirmation" required autocomplete="new-password">
+                                            <span class="input-group-text" style="background-color: #fff;"><i id="eye2" class="fas fa-eye-slash" onclick="showHidePwd();"></i></span>
                                         </div>
                                     </div>
                                     <div class="row m-0 mt-4">
@@ -87,4 +89,24 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
+    <script>
+         $(document).ready(function () {
+            $('#eye').click(function () {
+                $('#password').attr('type', $('#password').is(':password') ? 'text' : 'password');
+                if ($('#password').attr('type') === 'password') {
+                    $('#eye').removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    $('#eye').removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+            $('#eye2').click(function () {
+                $('#password-confirm').attr('type', $('#password-confirm').is(':password') ? 'text' : 'password');
+                if ($('#password-confirm').attr('type') === 'password') {
+                    $('#eye2').removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    $('#eye2').removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+        });
+    </script>
 @endsection

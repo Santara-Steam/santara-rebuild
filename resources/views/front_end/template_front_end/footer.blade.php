@@ -285,6 +285,46 @@
       }
       </script>
       @endif
+      @if(Session::has('status'))
+      <script>
+      toastr.options = {
+          "closeButton": false,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": false,
+          "positionClass": "toast-bottom-right",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+      };
+  
+      var type = "{{Session::get('alert-type','success')}}"
+      switch (type) {
+          case 'success':
+          toastr.success("{{Session::get('status')}}");
+          // Swal.fire("Berhasil","{{Session::get('status')}}","success");
+          // Swal.fire("Good job!", "You clicked the button!", "success");
+          break;
+          case 'fail':
+          toastr.error("{{Session::get('status')}}");
+          // Swal.fire("Berhasil","{{Session::get('status')}}","success");
+          // Swal.fire("Good job!", "You clicked the button!", "success");
+          break;
+          case 'warn':
+          toastr.warning("{{Session::get('status')}}");
+          // Swal.fire("Berhasil","{{Session::get('message')}}","success");
+          // Swal.fire("Good job!", "You clicked the button!", "success");
+          break;
+      }
+      </script>
+      @endif
       @yield('js')
    </body>
 </html>
