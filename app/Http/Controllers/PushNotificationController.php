@@ -156,7 +156,7 @@ class PushNotificationController extends Controller
                 ->leftJoin('deposits as depo', 'depo.trader_id', '=', 'traders.id')
                 ->leftJoin('transactions as tr', 'tr.trader_id', '=', 'traders.id');
             $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo', 'u.email',
-                    'j.income', 'tr.trader_id');
+                    'j.income', 'tr.trader_id', 'tr.is_deleted', 'tr.last_status', \DB::raw('SUM(tr.amount) as total'));
             // $traders->select('traders.user_id');
             $traders->where('traders.is_deleted', 0);
             
@@ -201,13 +201,16 @@ class PushNotificationController extends Controller
             if($skemaJumlahSahamRP == 8){
                 $traders->having(\DB::raw('SUM(amo)'), '>=' ,$totalSahamMinimal);       
                 $traders->having(\DB::raw('SUM(amo)'), '<=' ,$totalSahamMaksimal);
+                $traders->where('tr.is_deleted', 0);
+                $traders->where('tr.last_status', 'VERIFIED');
                 $traders->groupBy('tr.trader_id');
             }
 
             if($skemaJumlahSahamCount == 9){
                 $traders->having(\DB::raw('COUNT(amo)'), '>=' ,$jumlahSahamMinimal);       
                 $traders->having(\DB::raw('COUNT(amo)'), '<=' ,$jumlahSahamMaksimal);
-                $traders->groupBy('tr.trader_id');
+                $traders->where('tr.is_deleted', 0);
+                $traders->where('tr.last_status', 'VERIFIED');
             }
 
             if($skemaSisaLimitInvestasi == 10){
