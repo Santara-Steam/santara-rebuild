@@ -273,7 +273,23 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/dividen/export-excel', [App\Http\Controllers\DevidenController::class,'exportExcel']);
     Route::get('/admin/transaction/export-excel', [App\Http\Controllers\TransactionsController::class,'exportExcel']);
     Route::get('/admin/deposit/export-excel', [App\Http\Controllers\DepositController::class,'exportExcel']);
+
+    Route::get('/admin/penerbit/perhitungan-dividen', [App\Http\Controllers\PerhitunganDividenController::class, 'index']);
+    Route::get('/admin/penerbit/perhitungan-detail', [App\Http\Controllers\PerhitunganDividenController::class, 'detailData']);
     
+    Route::get('/admin/kyc/individu/summary-kyc', [App\Http\Controllers\KycController::class, 'summaryKYC']);
+    Route::get('/admin/kyc/individu/belum-kyc', [App\Http\Controllers\KycController::class, 'belumKYC']);
+    Route::get('/admin/kyc/fetch-belum-kyc', [App\Http\Controllers\KycController::class, 'fetchDataBelumKYC']);
+    Route::get('/admin/kyc/individu/pembaruan-kyc', [App\Http\Controllers\KycController::class, 'pembaruanKYC']);
+    Route::get('/admin/kyc/fetch-pembaruan-kyc', [App\Http\Controllers\KycController::class, 'fetchDataPembaruanDataKYC']);
+    Route::get('/admin/kyc/individu/menunggu-verifikasi-kyc', [App\Http\Controllers\KycController::class, 'menungguVerifikasiKYC']);
+    Route::get('/admin/kyc/fetch-menunggu-verifikasi-kyc', [App\Http\Controllers\KycController::class, 'fetchDataMenungguVerifikasiKYC']);
+    Route::get('/admin/kyc/individu/ditolak-kyc', [App\Http\Controllers\KycController::class, 'ditolakKYC']);
+    Route::get('/admin/kyc/fetch-data-ditolak-kyc', [App\Http\Controllers\KycController::class, 'fetchDataTolakKYC']);
+    Route::get('/admin/kyc/individu/terverifikasi-kyc', [App\Http\Controllers\KycController::class, 'terverifikasiKYC']);
+    Route::get('/admin/kyc/fetch-data-terverifikasi-kyc', [App\Http\Controllers\KycController::class, 'fetchDataTerverifikasiKYC']);
+    
+    Route::get('/admin/member-trader/{userid}', [App\Http\Controllers\MemberController::class, 'detailTrader']);
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

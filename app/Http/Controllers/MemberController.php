@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Investor;
+use App\Models\trader;
 
 class MemberController extends Controller
 {
@@ -58,7 +59,8 @@ class MemberController extends Controller
         
         $data = [];
         foreach($users as $row){
-            $btnAction = '<button type="button" onclick="portofolio('.$row->id.',\''.$row->name.'\')" class="btn btn-sm btn-primary">Portofolio</button>';
+            $btnAction = '<button type="button" onclick="portofolio('.$row->id.',\''.$row->name.'\')" class="btn btn-sm btn-primary">Portofolio</button>
+            <button type="button" onclick="detTrader('.$row->id.',\''.$row->name.'\')" class="btn btn-sm btn-info">Detail</button>';
 
             array_push($data, [
                 'id' => $row->id,
@@ -111,6 +113,20 @@ class MemberController extends Controller
             echo json_encode($exception);
             return;
         }
+    }
+
+    public function detailTrader($userId)
+    {
+        $trader = trader::leftJoin('trader_banks as bank', 'bank.trader_id', '=', 'traders.id')
+            ->leftJoin('bank_investors as bank_invest', 'bank_invest.id', '=', 'bank.bank_investor1')
+            ->where('traders.is_deleted', 0)
+            ->where('bank.is_deleted', 0)
+            ->where('bank_invest.is_deleted', 0)
+            ->select('traders.job', 'traders.birth_place', 'traders.birth_date', 'traders.gender', 'bank.account_number1',
+                'bank_invest.bank')
+            ->where('traders.user_id', $userId)
+            ->first();
+        return response(["code" => 200, "data" => $trader]);
     }
 
     public function exportInvestor()

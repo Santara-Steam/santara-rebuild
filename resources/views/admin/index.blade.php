@@ -29,7 +29,7 @@
                                                 <span>Total Penerbit Terdaftar</span>
                                             </div>
                                             <div class="align-self-center">
-                                                <h1>{{angkaKoma($total_penerbit)}}</h1>
+                                                <h3><strong>{{angkaKoma($total_penerbit)}}</strong></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -44,14 +44,14 @@
                                 <div class="card-body cleartfix">
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
-                                            <i class="icon-briefcase info font-large-2 mr-2"></i>
+                                            <i class="la la-money info font-large-2 mr-2"></i>
                                         </div>
                                         <div class="media-body">
                                             <h4>Total Pendanaan</h4>
                                             <span>Total Pendanaan Penerbit</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <h1>{{rupiahBiasa($totalPendanaan->amount)}}</h1>
+                                            <h3><strong>{{rupiahBiasa($totalPendanaan->amount)}}</strong></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                                 <span>Total User Terdaftar</span>
                                             </div>
                                             <div class="align-self-center">
-                                                <h1>{{angkaKoma($total_user)}}</h1>
+                                                <h3><strong>{{angkaKoma($total_user)}}</strong></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@
                                             <span>Dana di dompet Santara</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <h1>{{rupiahBiasa($totalDompet[0]->total)}}</h1>
+                                            <h3><strong>{{rupiahBiasa($totalDompet[0]->total)}}</strong></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                             <span>Total Download Playstore</span>
                                         </div>
                                         <div class="align-self-center">
-                                            <h1>{{ $playStore }}</h1>
+                                            <h3><strong>{{ $playStore }}</strong></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                                                 <span>Total Download Appstore</span>
                                             </div>
                                             <div class="align-self-center">
-                                                <h1>{{ $appStore }}</h1>
+                                                <h3><strong>{{ $appStore }}</strong></h3>
                                             </div>
                                         </div>
                                     </div>

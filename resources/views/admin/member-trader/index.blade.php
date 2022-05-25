@@ -15,7 +15,8 @@
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
-                                            <li><a href="{{url('admin/member-trader/export-investor')}}" class="btn btn-primary">Export Data</a></li>
+                                            <li><a href="{{ url('admin/member-trader/export-investor') }}"
+                                                    class="btn btn-primary">Export Data</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -58,14 +59,57 @@
                 <div class="modal-body">
                     <div class="card-content">
                         <div class="row justify-content-end">
-                            <h3 class="mr-1"><i class="icon-wallet success"></i> <span id="totalSaldo"></span> </h3>
-                         </div>
+                            <h3 class="mr-1"><i class="icon-wallet success"></i> <span id="totalSaldo"></span>
+                            </h3>
+                        </div>
                         <div class="row mb-1" id="totalPortofolio">
                         </div>
                         <div class="row" id="emitenPortofolio">
 
 
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="detTrader" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id='titleDetHeader'></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-content">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Tempat, Tanggal Lahir</td>
+                                    <td class="ttl"></td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td class="gender"></td>
+                                </tr>
+                                <tr>
+                                    <td>Pekerjaan</td>
+                                    <td class="pekerjaan"></td>
+                                </tr>
+                                <tr>
+                                    <td>Bank</td>
+                                    <td class="bank"></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Number</td>
+                                    <td class="accountNumber"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -157,6 +201,50 @@
                 "Desember",
             ];
             return tanggal + " " + listBulan[bulan] + " " + tahun;
+        }
+
+        function detTrader(userid, name) {
+            $.ajax({
+                url: '{{ url('admin/member-trader') }}' + "/" + userid,
+                type: "GET",
+                beforeSend: function() {
+                    $("#titleDetHeader").html(`Detail <b>${name}</b>`);
+                },
+                success: function(result) {
+                    console.log(result);
+                    if (result.data.birth_place != null && result.data.birth_date) {
+                        $(".ttl").html(result.data.birth_place + ", " + tanggalIndo(result.data.birth_date));
+                    } else {
+                        $(".ttl").html("-");
+                    }
+
+                    if (result.data.gender != null) {
+                        $(".gender").html(result.data.gender == "m" ? "Laki-Laki" : result.data.gender == "f" ?
+                            "Perempuan" : "Tidak Diketahui");
+                    } else {
+                        $(".gender").html("-");
+                    }
+
+                    if (result.data.job != null) {
+                        $(".pekerjaan").html(result.data.job);
+                    } else {
+                        $(".pekerjaan").html("-");
+                    }
+
+                    if (result.data.bank != null) {
+                        $(".bank").html(result.data.bank);
+                    } else {
+                        $(".bank").html("-");
+                    }
+
+                    if (result.data.account_number1 != null) {
+                        $(".accountNumber").html(result.data.account_number1);
+                    } else {
+                        $(".accountNumber").html("-");
+                    }
+                    $("#detTrader").modal("show");
+                }
+            })
         }
 
         function portofolio(userid, name) {
@@ -348,6 +436,7 @@
                 },
             });
         }
+        
     </script>
 @endsection
 @section('style')
