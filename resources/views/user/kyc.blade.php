@@ -7,6 +7,7 @@
         </div>
         <div class="content-body">
             <section id="basic-examples">
+              {{-- {{Session::get('pwd')}} --}}
                 @include('user.is_kyc')
                 
             </section>
