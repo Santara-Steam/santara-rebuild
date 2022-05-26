@@ -101,7 +101,7 @@ else : ?>
                                             class="mb-2"> --}}
                                         <h3><b>Belum Ada Bisnis Terdaftar</b></h3>
                                         <p>Anda belum memiliki bisnis untuk didanai</p>
-                                        <a href="https://pralisting.santara.co.id" type="button" class="btn btn-santara-red btn-block>
+                                        <a href="{{url('daftar-bisnis/create')}}" type="button" class="btn btn-santara-red btn-block>
                     <span class=" menu-title" data-i18n="">Daftarkan Bisnis Anda</span>
                                         </a>
                                         <!-- <div class="center-pralisting">

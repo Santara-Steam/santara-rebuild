@@ -98,7 +98,7 @@
             </li> --}}
             {{-- <li class="navigation-header"><span data-i18n="Layouts">Bisnis</span><i class="la la-ellipsis-h" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li> --}}
-            <li class=" nav-item"><a href="{{url('daftar-bisnis/create')}}"><i class="la la-plus-circle"></i><span class="menu-title" data-i18n="eCommerce">Daftarkan Bisnis</span></a>
+            {{-- <li class=" nav-item"><a href="{{url('daftar-bisnis/create')}}"><i class="la la-plus-circle"></i><span class="menu-title" data-i18n="eCommerce">Daftarkan Bisnis</span></a> --}}
             </li>
             <li class=" nav-item {{ 'user/bisnis_anda' == request()->path() ? 'active' : '' }}"><a href="{{url('user/bisnis_anda')}}"><i class="la la-briefcase"></i><span class="menu-title" data-i18n="eCommerce">Bisnis Anda</span></a>
             </li>
