@@ -249,6 +249,7 @@ class Daftar_bisnisController extends Controller
         $em->is_verified = 1;
         $em->is_pralisting = 1;
         $em->is_coming_soon = 1;
+        $em->is_verified_by_ceo = 0;
 
         $em->save();
 
