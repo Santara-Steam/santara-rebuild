@@ -290,6 +290,12 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/kyc/fetch-data-terverifikasi-kyc', [App\Http\Controllers\KycController::class, 'fetchDataTerverifikasiKYC']);
     
     Route::get('/admin/member-trader/{userid}', [App\Http\Controllers\MemberController::class, 'detailTrader']);
+
+    Route::get('/admin/emiten/pemberitahuan-dividen', [App\Http\Controllers\NotifDividenController::class, 'index']);
+    Route::get('/admin/emiten/pemberitahuan-dividen/{id}', [App\Http\Controllers\NotifDividenController::class, 'sendNotif']);
+    
+    Route::get('/admin/crm/fetch-user-email', [App\Http\Controllers\MemberController::class, 'fetchEmailUser']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

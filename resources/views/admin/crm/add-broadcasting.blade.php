@@ -199,6 +199,35 @@
                 }
             });
 
+            $("#input_select_16").select2({
+                placeholder: "Contoh: user@gmail.com",
+                closeOnSelect: false,
+                allowClear: true,
+                delay: 250, // wait 250 milliseconds before triggering the request
+                ajax: {
+                    url: "{{ url('admin/crm/fetch-user-email') }}",
+                    dataType: "json",
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data) {
+                        var results = [];
+                        $.each(data, function(index, item) {
+                            results.push({
+                                id: item.email,
+                                text: item.email,
+                                value: item.email
+                            })
+                        })
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+
             $("#btnSubmitTarget").click(function(event) {
                 //stop submit the form, we will post it manually.
                 event.preventDefault();

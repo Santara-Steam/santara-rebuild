@@ -134,4 +134,26 @@ class MemberController extends Controller
         return Excel::download(new Investor(), 'Data Investor.xlsx');
     }
 
+    public function fetchEmailUser(Request $request)
+    {
+        $search = $request->search;
+        if($search != ""){
+            $users = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->where('users.email', 'like', '%'.$search.'%')
+                ->where('users.is_deleted', 0)
+                ->limit(5)
+                ->select('users.id', 'users.email')
+                ->groupBy('users.id')
+                ->get();
+        }else{
+            $users = User::join('traders as t', 't.user_id', '=', 'users.id')
+                ->where('users.is_deleted', 0)
+                ->limit(5)
+                ->select('users.id', 'users.email')
+                ->groupBy('users.id')
+                ->get();
+        }
+        return response()->json($users);
+    }
+
 }

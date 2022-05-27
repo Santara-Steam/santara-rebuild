@@ -384,7 +384,9 @@ class CRMController extends Controller
                 if (($k == 10) && ($v == 'Unlimited')) {
                     $v = '999999999999';
                 }
-                $v = str_replace(".", "", $v);
+                if($k != 16){
+                    $v = str_replace(".", "", $v);
+                }
                 $target_user = new \stdClass();
                 $target_user->id = $k;
                 $target_user->params = strip_tags($v);

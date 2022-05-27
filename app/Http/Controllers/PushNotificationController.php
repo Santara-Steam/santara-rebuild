@@ -24,7 +24,7 @@ class PushNotificationController extends Controller
         $targets = $detailBroadcast['target'];
         $notif = $detailBroadcast['list'][0];
         $limit = $this->limit;
-       // return response()->json(["data" => $detailBroadcast]);
+        //return response()->json(["data" => $detailBroadcast]);
         return view('admin.crm.push-notif', compact('broadcastId', 'targets', 'kategori', 'notif', 'namaBroadcast', 'limit'));
     }
     
@@ -68,6 +68,8 @@ class PushNotificationController extends Controller
         $skemaSID = '';
         $skemaIOS = '';
         $skemaAndroid = '';
+        $skemaEmail = '';
+        $listEmail = [];
 
         foreach($detailBroadcast['target'] as $target){
             if($target['name'] == 'Status KYC'){
@@ -145,6 +147,10 @@ class PushNotificationController extends Controller
             }
             if($target['name'] == 'Versi Aplikasi (Android)'){
                 $skemaAndroid .= 15; 
+            }
+            if($target['name'] == 'Email'){
+                $skemaEmail .= 16;
+                $listEmail = explode(",", $target['params']);
             }
         }
         
@@ -244,6 +250,14 @@ class PushNotificationController extends Controller
                     $traders->whereNotNull('tb.sid_number');
                 }else{
                     $traders->whereNull('tb.sid_number');
+                }
+            }
+
+            if($skemaEmail == 16){
+                $traders->where('u.email', $listEmail[0]);
+                $ulangEmail = count($listEmail) - 1;
+                for($i = 1; $i <= $ulangEmail; $i++){
+                    $traders->orWhere('u.email', $listEmail[$i]);
                 }
             }
 

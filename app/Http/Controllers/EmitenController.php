@@ -1243,6 +1243,7 @@ class EmitenController extends Controller
             $emiten = emiten::find($id);
             $emiten->begin_period = $request->get('start_date');
             $emiten->end_period = $request->get('end_date');
+            $emiten->last_emiten_journey = $request->get('title');
             if($request->get('title') == 'Penawaran Saham'){
                 $emiten->is_coming_soon = 0;
             }

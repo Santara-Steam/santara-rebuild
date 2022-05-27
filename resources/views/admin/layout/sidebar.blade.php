@@ -51,7 +51,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-sub">
+                    {{-- <li class="nav-item has-sub">
                         <a href="#"><i class="la la-user"></i> &nbsp; New KYC</a>
                         <ul class="menu-content">
                             <li class=" nav-item {{ 'admin/kyc/belum-kyc' == request()->path() ? 'active' : '' }}"><a
@@ -69,7 +69,7 @@
                                         class="menu-title" data-i18n="eCommerce"> KYC Ditolak</span></a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
             </li>
         </ul>
         </li>

@@ -48,6 +48,7 @@
                                                         <option value="13">SID</option>
                                                         <option value="14">Versi Android</option>
                                                         <option value="15">Versi IOS</option>
+                                                        <option value="16">Email</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -673,6 +674,39 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="col-12 <?= isset($target['list'][16]) ? '' : 'hidden' ?>"
+                                                        id="kondisi_16">
+                                                        <div class="card border border-light rounded">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Email</h4>
+                                                                <div class="my-1 hidden" id="input_16">
+                                                                    <div class="my-1 col-6">
+                                                                        <select multiple id="input_select_16"
+                                                                            style="width: 100%"></select>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            onClick="removeKondisi(16)">Hapus</button>
+                                                                        <button type="button" class="btn btn-primary"
+                                                                            onClick="submitKondisi(16, 'select')">Terapkan</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="<?= isset($target['list'][16]) ? '' : 'hidden' ?>"
+                                                                    id="result_16">
+                                                                    <input type="hidden" id="target_16" name="target[16]"
+                                                                        value="<?= isset($target['list'][16]) ? $target['list'][16] : '' ?>" />
+                                                                    <p><b
+                                                                            id="el_16"><?= isset($target['list'][16]) ? $target['list'][16] : '' ?></b>
+                                                                    </p>
+                                                                    <a href="#" class="card-link"
+                                                                        onClick="editKondisi(16)">Edit</a>
+                                                                    <a href="#" class="card-link"
+                                                                        onClick="removeKondisi(16)">Hapus</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -832,6 +866,35 @@
                                 id: item.code,
                                 text: item.code,
                                 value: item.code
+                            })
+                        })
+                        return {
+                            results: results
+                        };
+                    }
+                }
+            });
+
+            $("#input_select_16").select2({
+                placeholder: "Contoh: user@gmail.com",
+                closeOnSelect: false,
+                allowClear: true,
+                delay: 250, // wait 250 milliseconds before triggering the request
+                ajax: {
+                    url: "{{ url('admin/crm/fetch-user-email') }}",
+                    dataType: "json",
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data) {
+                        var results = [];
+                        $.each(data, function(index, item) {
+                            results.push({
+                                id: item.email,
+                                text: item.email,
+                                value: item.email
                             })
                         })
                         return {
