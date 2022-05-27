@@ -90,19 +90,20 @@
                                                 </div>
                                                 <?php endif; ?>
 
-                                                <?php if ($value['sts'] == "Penawaran Saham") : ?>
+                                                <?php if ($value['sts'] == "Pra Penawaran Saham") : ?>
+                                                <div class="row">
+                                                    
+                                                    <div class="col-md-12">
+                                                        <a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>" class="btn btn-warning btn-block btn-sm">Edit</a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>">
+                                                    </div>
+                                                </div>
+                                                <?php else : ?>
+                                                
                                                 <div class="row">
                                                     <div class="col-md-8">
                                                         <a href="{{url('penerbit/bisnisdetail')}}/<?= $value['uuid']; ?>" class="btn btn-primary btn-block btn-sm">Laporan Keuangan</a>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>" class="btn btn-warning btn-block btn-sm">Edit</a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>">
-                                                    </div>
-                                                </div>
-                                                <?php else : ?>
-                                                <div class="row">
-                                                    
-                                                    <div class="col-md-12">
                                                         <a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>" class="btn btn-warning btn-block btn-sm">Edit</a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>">
                                                     </div>
                                                 </div>
