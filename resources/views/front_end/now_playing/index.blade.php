@@ -162,6 +162,7 @@
                               <span class="tx-pt inter-medium-alabaster">
                                 <?php echo \Illuminate\Support\Str::limit(strip_tags( $np['trademark'] ), 20, $end='...') ?>
                               </span>
+                              <i class="fa fa-check-circle" style="color: #2a8ede"></i>
                             </div>
                             <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                               <span class="tx-np inter-normal-quill-gray">

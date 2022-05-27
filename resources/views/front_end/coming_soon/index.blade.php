@@ -121,7 +121,7 @@
                   data-trademark="<?=$cs->trademark?>" data-company_name="<?=$cs->company_name?>"
                   data-like="<?=$cs->likes?>" data-minat="<?=$cs->vot?>" data-comment="<?=$cs->cmt?>"
                   data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
-                  data-image="<?=$picture[0]?>">
+                  data-image="<?=$picture[0]?>" data-verified-bisnis="<?= $cs->is_verified_bisnis ?>">
                   <div class="card moldla">
                     <img class="rectangle-2 moldla"
                       src="{{env("PATH_WEB")}}{{$picture[0]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
@@ -143,6 +143,9 @@
                               <span class="tx-pt inter-medium-alabaster">
                                 <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 20, $end='...') ?>
                               </span>
+                              @if ($cs->is_verified_bisnis == 1)
+                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
+                                                                        @endif
                             </div>
                             <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                               <span class="tx-np inter-normal-quill-gray">
@@ -466,6 +469,7 @@
                   <div class="header">
                     <div class="saka-logistics inter-medium-alabaster-20px">
                       <span class="tx-pt inter-medium-alabaster" id="trademark"></span>
+                      <i id="verif" class="fa fa-check-circle"  style="color: #2a8ede;"></i>
                     </div>
                     <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                       <span class="tx-np inter-normal-quill-gray" id="company_name"></span>
@@ -612,6 +616,7 @@
       var id = $(this).data('id');
       var trdlike = $(this).data('trdlike');
       var trdvote = $(this).data('trdvote');
+      var verified = $(this).data('verified-bisnis');
       $('#category').text(category);
       $('#trademark').text(trademark);
       $('#company_name').text(company_name);
@@ -640,6 +645,11 @@
       // var l = function() { document.getElementById('like'+id).submit() };
       // $("#sl").onclick = 's';
       // $("#ll").onclick = 'l';
+      if(verified == 1){
+                    $('#verif').attr("hidden",false);
+                }else{
+                    $('#verif').attr("hidden",true);
+                };
     })
   })
   </script>

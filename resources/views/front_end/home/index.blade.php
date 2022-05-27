@@ -153,6 +153,7 @@
                                                                         <span class="tx-pt inter-medium-alabaster">
                                                                             <?php echo \Illuminate\Support\Str::limit(strip_tags($np['trademark']), 20, $end = '...'); ?>
                                                                         </span>
+                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
                                                                     </div>
                                                                     <div
                                                                         class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
@@ -352,7 +353,9 @@
                                                 data-company_name="<?= $cs->company_name ?>" data-like="<?= $cs->likes ?>"
                                                 data-minat="<?= $cs->vot ?>" data-comment="<?= $cs->cmt ?>"
                                                 data-id="<?= $cs->id ?>" data-trdlike="<?= $cs->trdlike ?>"
-                                                data-trdvot="<?= $cs->trdvot ?>" data-image="<?= $picture[0] ?>">
+                                                data-trdvot="<?= $cs->trdvot ?>" data-image="<?= $picture[0] ?>"
+                                                data-verified-bisnis="<?= $cs->is_verified_bisnis ?>"
+                                                >
                                                 <div class="card moldla">
                                                     <img class="rectangle-2 moldla"
                                                         src="{{ env('PATH_WEB') }}{{ $picture[0] }}"
@@ -378,6 +381,9 @@
                                                                         <span class="tx-pt inter-medium-alabaster">
                                                                             <?php echo \Illuminate\Support\Str::limit(strip_tags($cs->trademark), 20, $end = '...'); ?>
                                                                         </span>
+                                                                        @if ($cs->is_verified_bisnis == 1)
+                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
+                                                                        @endif
                                                                     </div>
                                                                     <div
                                                                         class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
@@ -602,6 +608,7 @@
                                                                         <span class="tx-pt inter-medium-alabaster">
                                                                             <?php echo \Illuminate\Support\Str::limit(strip_tags($item->trademark), 20, $end = '...'); ?>
                                                                         </span>
+                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
                                                                     </div>
                                                                     <div
                                                                         class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
@@ -914,6 +921,8 @@
                                     <div class="header">
                                         <div class="saka-logistics inter-medium-alabaster-20px">
                                             <span class="tx-pt inter-medium-alabaster" id="trademark"></span>
+
+                                                                        <i id="verif" class="fa fa-check-circle"  style="color: #2a8ede;"></i>
                                         </div>
                                         <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                                             <span class="tx-np inter-normal-quill-gray" id="company_name"></span>
@@ -1143,6 +1152,7 @@
                                             <span class="tx-pt inter-medium-alabaster">
                                                 {{ $np['trademark'] }}
                                             </span>
+                                            <i class="fa fa-check-circle" style="color: #2a8ede"></i>
                                         </div>
                                         <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                                             <span class="tx-np inter-normal-quill-gray">
@@ -1260,6 +1270,7 @@
                                         <div class="saka-logistics inter-medium-alabaster-20px">
                                             <span class="tx-pt inter-medium-alabaster"> {{ $item->trademark }}
                                             </span>
+                                            <i class="fa fa-check-circle" style="color: #2a8ede"></i>
                                         </div>
                                         <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                                             <span class="tx-np inter-normal-quill-gray"> {{ $item->company_name }}
@@ -1315,6 +1326,7 @@
                 var id = $(this).data('id');
                 var trdlike = $(this).data('trdlike');
                 var trdvote = $(this).data('trdvote');
+                var verified = $(this).data('verified-bisnis');
                 $('#category').text(category);
                 $('#trademark').text(trademark);
                 $('#company_name').text(company_name);
@@ -1339,12 +1351,19 @@
                 // console.log($("#msb").dataset.target);
                 $("#sl").attr('onclick', "document.getElementById('sublike" + id + "').submit()");
                 $("#ll").attr('onclick', "document.getElementById('sublike" + id + "').submit()");
+
+                if(verified == 1){
+                    $('#verif').attr("hidden",false);
+                }else{
+                    $('#verif').attr("hidden",true);
+                };
                 // $("#sl").setAttribute('onclick',"d");
                 // $("#ll").setAttribute('onclick',"ds");
                 // var s = function() { document.getElementById('sublike'+id).submit() };
                 // var l = function() { document.getElementById('like'+id).submit() };
                 // $("#sl").onclick = 's';
                 // $("#ll").onclick = 'l';
+
             })
         })
     </script>

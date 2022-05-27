@@ -68,6 +68,9 @@
           <div class="hheader-dan-supporting-text">
             <div class="fruters-indonesia inter-bold-alabaster-48px">
               <span class="text-urun inter-bold-alabaster">{{$emt->trademark}}</span>
+              @if ($emt->is_verified_bisnis == 1)
+                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
+                                                                        @endif
             </div>
             <div class="pt-fruters-indonesia-perkasa inter-medium-alabaster-18px">
               <span class="tx-pt inter-medium-alabaster">{{$emt->company_name}}</span>
