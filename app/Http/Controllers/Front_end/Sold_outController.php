@@ -20,7 +20,7 @@ class Sold_outController extends Controller
      */
     public function index()
     {
-        $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+        $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
         ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
         ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
