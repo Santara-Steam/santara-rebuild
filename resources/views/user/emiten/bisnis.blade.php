@@ -83,14 +83,13 @@
                                                     <p>Segera buat laporan keuangan Anda </p>
                                                 </div>
                                                 <?php endif; ?>
-                                                <?php else : ?>
+                                                <?php endif; ?>
+
+                                                <?php if ($value['sts'] == "Pra Penawaran Saham") : ?>
                                                 <div class="alert alert-info-dashboard penerbit-info-report col-md-12">
                                                     <h4><b>Bisnis Anda Masuk Ke Coming Soon</b></h4>
                                                     <p>Segera lengkapi data untuk dapat listing di Santara.co.id </p>
                                                 </div>
-                                                <?php endif; ?>
-
-                                                <?php if ($value['sts'] == "Pra Penawaran Saham") : ?>
                                                 <div class="row">
                                                     
                                                     <div class="col-md-12">
