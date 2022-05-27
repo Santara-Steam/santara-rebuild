@@ -11,21 +11,14 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h1 class="card-title-member">Penerbit</h1>
+                                    <h1 class="card-title-member">Perhitungan Dividen</h1>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                    <div class="heading-elements">
-                                        <ul class="list-inline mb-0">
-                                            <li><a href="{{ url('admin/emiten/add') }}" class="btn btn-primary">Tambah
-                                                    Penerbit</a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <div class="row justify-content-end">
-                                            <div class="col"></div>
-                                            <label>Tahun</label>
-                                            <input type="text" id="yearpicker" class="form-control" />
+                                        <div>
+                                            <input type="text" placeholder="Pilih Tahun..." id="yearpicker"
+                                                class="form-control col-4 mb-2" />
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table" id="tabel">
@@ -169,6 +162,34 @@
                                 <th>Rp</th>
                                 <th id="totalNetProfit"></th>
                             </tr>
+                            <tr>
+                                <th colspan="2">Presentase Dividen</th>
+                                <th><span id="presentaseDividen"></span> % </th>
+                                <th id="habisPersen"></th>
+                            </tr>
+                            <tr>
+                                <th colspan="4"></th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Dividen untuk masyarakat</th>
+                                <th>Rp</th>
+                                <th id="dividenMasyarakat"></th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Nilai Penawaran</th>
+                                <th>Rp</th>
+                                <th id="nilaiPenawaran"></th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Pesan Saham Dilepas</th>
+                                <th> % </th>
+                                <th id="sahamDilepas"></th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Yield Dividen</th>
+                                <th> % </th>
+                                <th id="yielDividen"></th>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -198,16 +219,16 @@
         var totalNetProfit = 0;
         $('body').on('click', '#btnDetail', function() {
             var data_id = $(this).data('id');
-            $("#detailData").modal('show');
-            for (i = 1; i <= 12; i++) {
-                getDetail(data_id, i, tahun);
+            console.log(tahun);
+            if(tahun == null){
+                alert("Tahun harap dipilih");
+            }else{
+                $("#detailData").modal('show');
+                for (var i = 1; i <= 12; i++) {
+                    getDetail(data_id, i, tahun);
+                }
+                sumDataNet(tahun, data_id);
             }
-            for (i = 1; i <= 12; i++) {
-                var total = $("#netProfit" + i).html();
-                totalNetProfit = totalNetProfit + parseInt(total);
-            }
-
-            $("#totalNetProfit").html(totalNetProfit);
         });
 
         function getDetail(emiten_id, bulan, tahun) {
@@ -221,7 +242,50 @@
                 },
                 success: function(res) {
                     $("#tahun" + bulan).html(tahun);
-                    $("#netProfit" + bulan).html(formatRupiah(res.data.net_profit));
+                    let net_profit = "-";
+                    if (res.data != null) {
+                        net_profit = res.data.net_profit;
+                        totalNetProfit = totalNetProfit + parseInt(res.data.net_profit);
+                        $("#netProfit" + bulan).html(formatRupiah(net_profit));
+                    } else {
+                        $("#netProfit" + bulan).html("-");
+                    }
+                }
+            });
+        }
+
+        function sumDataNet(tahun, emiten_id) {
+            $.ajax({
+                url: "{{ url('admin/penerbit/sum-net-profit') }}",
+                type: 'GET',
+                data: {
+                    tahun: tahun,
+                    emiten_id: emiten_id
+                },
+                success: function(res) {
+                    let dividen = 0;
+                    let penawaranSaham = 0;
+                    let yielDividen = 0;
+                    if(res.data.avg_general_share_amount != null){
+                        dividen = parseInt(res.data.avg_general_share_amount);
+                    }
+                    if(res.data.avg_capital_needs != null){
+                        penawaranSaham = parseInt(res.data.avg_capital_needs);
+                    }
+                    $("#totalNetProfit").html(formatRupiah(res.data.total));
+                    
+                    var totalPersen = dividen * parseInt(res.data.total) / 100;
+                    $("#presentaseDividen").html(dividen.toFixed(2));
+                    $("#habisPersen").html(formatRupiah(totalPersen));
+                    $("#dividenMasyarakat").html(formatRupiah(totalPersen));
+                    $("#nilaiPenawaran").html(formatRupiah(penawaranSaham));
+                    $("#sahamDilepas").html(dividen.toFixed(2));
+                    if(penawaranSaham == 0){
+                        yielDividen = 0;
+                    }else{
+                        yielDividen = totalPersen / penawaranSaham * 100;
+                    }
+                    $("#yielDividen").html(yielDividen.toFixed(2));
                 }
             });
         }
@@ -234,21 +298,9 @@
             }
         });
 
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, '').toString(),
-                split = number_string.split(','),
-                sisa = split[0].length % 3,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-            // tambahkan titik jika yang di input sudah menjadi angka ribuan
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-
-            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        function formatRupiah(angka) {
+            const format = angka.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
+            return format;
         }
     </script>
 @endsection

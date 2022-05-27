@@ -88,6 +88,10 @@
                         href="{{ url('admin/laporan-keuangan') }}"><i class="la la-file"></i><span
                             class="menu-title" data-i18n="eCommerce"> Laporan Keuangan</span></a>
                 </li>
+                <li class=" nav-item {{ 'admin/penerbit/perhitungan-dividen' == request()->path() ? 'active' : '' }}"><a
+                        href="{{ url('admin/penerbit/perhitungan-dividen') }}"><i class="la la-calculator"></i><span
+                            class="menu-title" data-i18n="eCommerce"> Perhitungan Dividen</span></a>
+                </li>
                 <li class=" nav-item {{ 'admin/penerbit/setting-tutorial' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/penerbit/setting-tutorial') }}"><i class="la la-tags"></i><span
                             class="menu-title" data-i18n="eCommerce"> &nbsp; Setting Tutorial</span></a></li>
@@ -178,8 +182,8 @@
             <a href="#"><i class="la la-gear"></i> &nbsp; Setting</a>
             <ul class="menu-content">
                 <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a
-                    href="{{ url('admin/category') }}"><i class="la la-list"></i><span class="menu-title"
-                        data-i18n="eCommerce"> &nbsp; Kategori Bisnis</span></a></li>
+                        href="{{ url('admin/category') }}"><i class="la la-list"></i><span
+                            class="menu-title" data-i18n="eCommerce"> &nbsp; Kategori Bisnis</span></a></li>
                 <li class=" nav-item {{ 'admin/setting/account' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/setting/account') }}"><i class="la la-user"></i><span
                             class="menu-title" data-i18n="eCommerce"> Account</span></a></li>

@@ -295,6 +295,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/emiten/pemberitahuan-dividen/{id}', [App\Http\Controllers\NotifDividenController::class, 'sendNotif']);
     
     Route::get('/admin/crm/fetch-user-email', [App\Http\Controllers\MemberController::class, 'fetchEmailUser']);
+    Route::get('/admin/penerbit/sum-net-profit', [App\Http\Controllers\PerhitunganDividenController::class, 'sumNetProfitData']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

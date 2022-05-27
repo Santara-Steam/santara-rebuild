@@ -133,4 +133,19 @@ class PerhitunganDividenController extends Controller
         return response()->json(["data" => $financialReports]);
     }
 
+    public function sumNetProfitData(Request $request)
+    {
+        $tahun = $request->tahun;
+        $emitenId = $request->emiten_id;
+        $total = FinancialReport::join('emitens as e', 'e.id', '=', 'financial_reports.emitens_id')
+            ->where('financial_reports.year', $tahun)
+            ->where('financial_reports.is_deleted', 0)
+            ->where('financial_reports.status', 'verified')
+            ->where('financial_reports.emitens_id', $emitenId)
+            ->groupBy('financial_reports.year')
+            ->select(\DB::raw('SUM(financial_reports.net_profit) as total'), 'e.avg_capital_needs', 'e.avg_general_share_amount')
+            ->first();
+        return response()->json(["data" => $total]);
+    }
+
 }
