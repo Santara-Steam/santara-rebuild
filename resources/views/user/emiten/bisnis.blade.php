@@ -20,19 +20,20 @@
     foreach ($data['list'] as $key => $value) : ?>
     <div class="col-xl-6 col-md-6 col-sm-12">
                         <div class="card">
-                            <a href="{{url('penerbit/bisnisdetail')}}/<?= $value['uuid']; ?>">
+                            
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="card-content row m-0">
                                             <div class="col-3 p-0 text-center">
+                                                <?php $picture = explode(',', $value['pictures']); ?>
                                                 <img class="penerbit-item-img lazyload img-fluid"
-                                                    src="{{env('STORAGE_GOOGLE')}}token/<?= $value['picture']; ?>"
-                                                    onerror="this.onerror=null;this.src='{{env('STORAGE_GOOGLE')}}images/error/no-image.png';"
-                                                    alt="<?= $value['trademark']; ?>">
+                                                    src="{{env('STORAGE_GOOGLE')}}token/<?= $picture[0]; ?>" onerror="this.onerror=null;this.src='{{env('STORAGE_GOOGLE')}}images/error/no-image.png';"
+                                                    >
                                             </div>
                                             <div class="col-9">
                                                 <h3>
                                                     <?= $value['trademark']; ?>
+                                                    {{-- <?= $value['sts']; ?> --}}
                                                 </h3>
                                                 <div style="color: #6b6f82;">
                                                     <?= $value['company_name']; ?>
@@ -40,7 +41,7 @@
                                                         <?= $value['category']; ?>
                                                     </span>
                                                 </div>
-                                                <?php if ($value['status'] == "PENAWARAN SAHAM") : ?>
+                                                <?php if ($value['sts'] == "Penawaran Saham") : ?>
                                                 <div class="my-2">
                                                     <div class="progress mb-0" style="height: 12px;">
                                                         <div class="progress-bar bg-gradient-x-success <?= (($value['percent'] * 100) < 100) ? 'progress-bar-animated' : ''; ?>"
@@ -82,12 +83,35 @@
                                                     <p>Segera buat laporan keuangan Anda </p>
                                                 </div>
                                                 <?php endif; ?>
+                                                <?php else : ?>
+                                                <div class="alert alert-info-dashboard penerbit-info-report col-md-12">
+                                                    <h4><b>Bisnis Anda Masuk Ke Coming Soon</b></h4>
+                                                    <p>Segera lengkapi data untuk dapat listing di Santara.co.id </p>
+                                                </div>
+                                                <?php endif; ?>
+
+                                                <?php if ($value['sts'] == "Penawaran Saham") : ?>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <a href="{{url('penerbit/bisnisdetail')}}/<?= $value['uuid']; ?>" class="btn btn-primary btn-block btn-sm">Laporan Keuangan</a>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>" class="btn btn-warning btn-block btn-sm">Edit</a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>">
+                                                    </div>
+                                                </div>
+                                                <?php else : ?>
+                                                <div class="row">
+                                                    
+                                                    <div class="col-md-12">
+                                                        <a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>" class="btn btn-warning btn-block btn-sm">Edit</a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>">
+                                                    </div>
+                                                </div>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            
                         </div>
                         </div>
                         <?php endforeach;

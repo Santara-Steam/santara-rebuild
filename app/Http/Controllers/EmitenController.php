@@ -1388,43 +1388,61 @@ class EmitenController extends Controller
     }
 
     public function user_emiten(){
-        // $emiten = emiten::where('emitens.is_deleted',0)
-        // ->select('emitens.*','emitens.uuid as euuid','categories.category as ktg','emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
-        // ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-        // ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
-        // ->where('emitens.trader_id',Auth::user()->trader->id)
-        // ->where('emitens.is_deleted',0)
-        //         ->where('emitens.is_active',0)
-        //             ->where('emitens.is_verified',1)
-        //             ->where('emitens.is_pralisting',1)
-        //             ->where('emitens.is_coming_soon',1)
-        // ->get();
+        $emiten = emiten::where('emitens.is_deleted',0)
+        ->select('emitens.*','emitens.uuid as euuid','categories.category as category','emiten_journeys.title as sts','emiten_journeys.date as sd', 'emiten_journeys.end_date as ed')
+        ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
+        ->where('emitens.trader_id',Auth::user()->trader->id)
+        ->where('emitens.is_deleted',0)
+                // ->where('emitens.is_active',0)
+                    ->where('emitens.is_verified',1)
+                    ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
+        ->groupBy('emitens.id')
+        ->get();
 //  dd($emiten);
         // $data = null;
+        $data['list'] = $emiten;
+        // try {
+        //     $client = new \GuzzleHttp\Client();
 
-        try {
-            $client = new \GuzzleHttp\Client();
+        //     $headers = [
+        //         'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+        //         'Accept'        => 'application/json',
+        //         'Content-type'  => 'application/json'
+        //     ];
 
-            $headers = [
-                'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
-                'Accept'        => 'application/json',
-                'Content-type'  => 'application/json'
-            ];
-
-            $response = $client->request('GET', config('global.BASE_API_CLIENT_URL'). '/v3.7.1/finance-report/all-business/', [
-                'headers' => $headers,
-            ]);
+        //     $response = $client->request('GET', config('global.BASE_API_CLIENT_URL'). '/v3.7.1/finance-report/all-business/', [
+        //         'headers' => $headers,
+        //     ]);
 
 
-            $data = json_decode($response->getBody()->getContents(), TRUE)['data'];
-            // $data = null;
-            // dd($data);
-        } catch (\Exception $exception) {
-            $data = null;
-        }
+        //     $data = json_decode($response->getBody()->getContents(), TRUE)['data'];
+        //     // $data = null;
+        //     // dd($data);
+        // } catch (\Exception $exception) {
+        //     $data = null;
+        // }
+        // $data = [];
+        // foreach($emiten as $row){
+        //     array_push($data, [
+        //         'id' => $row->id,
+        //         'company_name' => $row->company_name,
+        //         'trademark' => $row->trademark,
+        //         'code_emiten' => $row->code_emiten,
+        //         'price' => $row->price,
+        //         'supply' => $row->supply,
+        //         'is_deleted' => $row->is_deleted,
+        //         'is_active' => $row->is_active,
+        //         'begin_period' => $row->begin_period,
+        //         'created_at' => $row->created_at,
+        //         'ktg' => $row->ktg,
+        //     ]);
+        // }
+
         
         return view('user.emiten.bisnis',compact('data'));
         // return $data;
+        // dd($data['list']);
 
     }
 
@@ -1443,6 +1461,10 @@ class EmitenController extends Controller
         $data = $this->getDataPlan($uuid);
         $last_report = $this->getLastReport($uuid);
         $emiten = emitenbyuuid($uuid);
+        // if($emiten->supply == null || empty($emiten->supply)){
+        //     $emiten->avg_general_share_amount = $emiten->supply;
+        // }
+        // $emiten->supply = 200;
         $tutorial = 0;
         $tersisa = ($emiten->supply - $emiten->terjual > 0) ? ($emiten->supply - $emiten->terjual) : 0;
         $terjual = ($emiten->terjual > $emiten->supply) ? $emiten->supply : $emiten->terjual;

@@ -498,7 +498,7 @@
                                                     </div>
                                                     <?php else: ?>
                                                     <div class="card-content text-center p-3">
-                                                        <img src="{{env('STORAGE_GOOGLE')}}assets/images/content/finance-empty.png"
+                                                        <img src="https://old.santara.co.id/assets/images/content/finance-empty.png"
                                                             class="mb-2">
                                                         <h3><b>Belum Ada Laporan Keuangan</b></h3>
                                                         <p>Anda belum memiliki laporan keuangan</p>
