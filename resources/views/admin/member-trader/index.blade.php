@@ -15,8 +15,8 @@
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
-                                            <li><a href="{{ url('admin/member-trader/export-investor') }}"
-                                                    class="btn btn-primary">Export Data</a></li>
+                                            <li><button type="button" id="btn-export-trader" class="btn btn-primary">Export
+                                                    Data</button></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -74,6 +74,31 @@
         </div>
     </div>
 
+    {{-- Model Download Trader --}}
+    <div class="modal fade" id="modalDownloadTrader" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Export Data Trader</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Rentang Tanggal Pendaftaran</label>
+                        <input type="text" class="form-control" name="daterange" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="exportTrader()">Export</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade bd-example-modal-lg" tabindex="-1" id="detTrader" role="dialog"
         aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -120,7 +145,45 @@
     <script src="{{ asset('public/admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
     <script src="{{ asset('public/admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script>
+        var tglAwal = "";
+        var tglAkhir = "";
+
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'right',
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf(
+                    'month')]
+            }
+        }, function(start, end, label) {
+            tglAwal = start.format('YYYY-MM-DD');
+            tglAkhir = end.format('YYYY-MM-DD');
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
+                .format('YYYY-MM-DD'));
+        });
+
+        $("#btn-export-trader").on("click", function() {
+            $("#modalDownloadTrader").modal('show');
+        });
+
+        function exportTrader() {
+            console.log("hai");
+            if (tglAwal != "" && tglAkhir != "") {
+                var url = "{{ url('admin/member-trader/export-investor') }}" + '?start_date=' + tglAwal + '&end_date=' +
+                    tglAkhir;
+                window.open(url, "_blank");
+            } else {
+                alert("Rentang tanggal belum dipilih")
+            }
+        };
+
         loadData();
 
         function loadData() {
@@ -212,34 +275,49 @@
                 },
                 success: function(result) {
                     console.log(result);
-                    if (result.data.birth_place != null && result.data.birth_date) {
-                        $(".ttl").html(result.data.birth_place + ", " + tanggalIndo(result.data.birth_date));
+                    if (result.data != null) {
+                        if (result.data.birth_place != null && result.data.birth_date) {
+                            if (result.data.tempat_lahir == null) {
+                                $(".ttl").html(result.data.birth_place + ", " + tanggalIndo(result.data
+                                    .birth_date));
+                            } else {
+                                $(".ttl").html(result.data.tempat_lahir + ", " + tanggalIndo(result.data
+                                    .birth_date));
+                            }
+                        } else {
+                            $(".ttl").html("-");
+                        }
+
+                        if (result.data.gender != null) {
+                            $(".gender").html(result.data.gender == "m" ? "Laki-Laki" : result.data.gender ==
+                                "f" ?
+                                "Perempuan" : "Tidak Diketahui");
+                        } else {
+                            $(".gender").html("-");
+                        }
+
+                        if (result.data.job != null) {
+                            $(".pekerjaan").html(result.data.job);
+                        } else {
+                            $(".pekerjaan").html("-");
+                        }
+
+                        if (result.data.bank != null) {
+                            $(".bank").html(result.data.bank);
+                        } else {
+                            $(".bank").html("-");
+                        }
+
+                        if (result.data.account_number1 != null) {
+                            $(".accountNumber").html(result.data.account_number1);
+                        } else {
+                            $(".accountNumber").html("-");
+                        }
                     } else {
                         $(".ttl").html("-");
-                    }
-
-                    if (result.data.gender != null) {
-                        $(".gender").html(result.data.gender == "m" ? "Laki-Laki" : result.data.gender == "f" ?
-                            "Perempuan" : "Tidak Diketahui");
-                    } else {
                         $(".gender").html("-");
-                    }
-
-                    if (result.data.job != null) {
-                        $(".pekerjaan").html(result.data.job);
-                    } else {
                         $(".pekerjaan").html("-");
-                    }
-
-                    if (result.data.bank != null) {
-                        $(".bank").html(result.data.bank);
-                    } else {
                         $(".bank").html("-");
-                    }
-
-                    if (result.data.account_number1 != null) {
-                        $(".accountNumber").html(result.data.account_number1);
-                    } else {
                         $(".accountNumber").html("-");
                     }
                     $("#detTrader").modal("show");
@@ -436,7 +514,6 @@
                 },
             });
         }
-        
     </script>
 @endsection
 @section('style')
@@ -448,7 +525,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
         integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <style>
         .card-portofolio {
             border: 1px solid #eee;

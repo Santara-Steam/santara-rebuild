@@ -1,6 +1,11 @@
 <table>
     <thead>
         <tr>
+            <th colspan="6">
+                Data User Rentang Waktu Pendaftaran {{ tgl_indo(date('Y-m-d', strtotime($tglAwal))) }} Sampai {{ tgl_indo(date('Y-m-d', strtotime($tglAkhir))) }}
+            </th>
+        </tr>
+        <tr>
             <th>No</th>
             <th>Nama</th>
             <th>Email</th>

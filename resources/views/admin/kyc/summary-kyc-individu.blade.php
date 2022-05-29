@@ -21,22 +21,22 @@
                                             <div class="count-status-container">
                                                 <div>
                                                     <div class="count" style="color: #000000">
-                                                        <?= $status->countBelumKyc ?></div>
+                                                        <?= angkaKoma($status->countBelumKyc) ?></div>
                                                     <div class="status">Belum KYC</div>
                                                 </div>
                                                 <div>
                                                     <div class="count" style="color: #666EE8">
-                                                        <?= $status->countPembaruanData ?></div>
+                                                        <?= angkaKoma($status->countPembaruanData) ?></div>
                                                     <div class="status">Pembaruan Data</div>
                                                 </div>
                                                 <div>
                                                     <div class="count" style="color: #EEAA5B">
-                                                        <?= $status->countMenungguVerifikasi ?></div>
+                                                        <?= angkaKoma($status->countMenungguVerifikasi) ?></div>
                                                     <div class="status">Menunggu Verifikasi</div>
                                                 </div>
                                                 <div>
                                                     <div class="count" style="color: #BF2D30">
-                                                        <?= $status->countDitolak ?></div>
+                                                        <?= angkaKoma($status->countDitolak) ?></div>
                                                     <div class="status">Ditolak</div>
                                                 </div>
                                                 {{-- <div>
@@ -51,7 +51,7 @@
                                                 </div> --}}
                                                 <div>
                                                     <div class="count" style="color: #0E7E4A">
-                                                        <?= $status->countTerverifikasi ?></div>
+                                                        <?= angkaKoma($status->countTerverifikasi) ?></div>
                                                     <div class="status">Terverifikasi</div>
                                                 </div>
                                             </div>

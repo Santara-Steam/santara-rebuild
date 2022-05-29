@@ -117,21 +117,23 @@ class MemberController extends Controller
 
     public function detailTrader($userId)
     {
-        $trader = trader::leftJoin('trader_banks as bank', 'bank.trader_id', '=', 'traders.id')
+        $trader = trader::join('users as u', 'u.id', '=', 'traders.user_id')
+            ->leftJoin('trader_banks as bank', 'bank.trader_id', '=', 'traders.id')
             ->leftJoin('bank_investors as bank_invest', 'bank_invest.id', '=', 'bank.bank_investor1')
+            ->leftJoin('regencies as reg', 'reg.id', '=', 'traders.birth_place')
             ->where('traders.is_deleted', 0)
             ->where('bank.is_deleted', 0)
             ->where('bank_invest.is_deleted', 0)
             ->select('traders.job', 'traders.birth_place', 'traders.birth_date', 'traders.gender', 'bank.account_number1',
-                'bank_invest.bank')
+                'bank_invest.bank', 'reg.name as tempat_lahir')
             ->where('traders.user_id', $userId)
             ->first();
         return response(["code" => 200, "data" => $trader]);
     }
 
-    public function exportInvestor()
+    public function exportInvestor(Request $request)
     {
-        return Excel::download(new Investor(), 'Data Investor.xlsx');
+        return Excel::download(new Investor($request->start_date, $request->end_date), 'Data Investor.xlsx');
     }
 
     public function fetchEmailUser(Request $request)

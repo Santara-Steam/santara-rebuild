@@ -163,8 +163,8 @@ class HomeController extends Controller
         return Excel::download(new PenerbitExport(), 'Data Penerbit.xlsx');
     }
 
-    public function exportUser()
+    public function exportUser(Request $request)
     {
-        return Excel::download(new UserExport(), 'Data User.xlsx');
+        return Excel::download(new UserExport($request->start_date, $request->end_date), 'Data User.xlsx');
     }
 }

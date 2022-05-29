@@ -74,6 +74,10 @@
             display: none;
         }
 
+        .enable-click {
+            cursor: pointer;
+        }
+
     </style>
 
     <!-- END: Custom CSS-->
