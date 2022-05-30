@@ -14,7 +14,8 @@ if (env('CONFIG_ENV') == 'dev') {
     "STORAGE_GOOGLE_BUCKET" => "asset-santara-staging",
     "STORAGE_GOOGLE_BUCKET2" => "santara-bucket-staging",
     "STORAGE_BUCKET" => "https://storage.googleapis.com/asset-bucket-staging/",
-    "STORAGE_BUCKET2" => "https://storage.googleapis.com/santara-bucket-staging/"
+    "STORAGE_BUCKET2" => "https://storage.googleapis.com/santara-bucket-staging/",
+    "CONFIG_ENV_GLOBAL" => "DEV"
 ];
 }else{
 
@@ -31,6 +32,7 @@ return [
     "STORAGE_GOOGLE_BUCKET" => "asset-santara",
     "STORAGE_GOOGLE_BUCKET2" => "santara-bucket-prod",
     "STORAGE_BUCKET" => "https://storage.googleapis.com/asset-bucket-prod/",
-    "STORAGE_BUCKET2" => "https://storage.googleapis.com/santara-bucket-prod/"
+    "STORAGE_BUCKET2" => "https://storage.googleapis.com/santara-bucket-prod/",
+    "CONFIG_ENV_GLOBAL" => "PRODUCTION"
 ];
 }

@@ -24,7 +24,8 @@ class DividenExport implements FromView, WithTitle, ShouldAutoSize, WithEvents
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                     ->where('bagihasils.is_deleted', 0)
-                    ->whereBetween('bagihasils.created_at', [$this->tglAwal, $this->tglAkhir])
+                    ->whereDate('bagihasils.updated_at', '>=', $this->tglAwal)
+                    ->whereDate('bagihasils.updated_at', '<=', $this->tglAkhir)
                     ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
                     ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 't.phone', 'e.company_name', 

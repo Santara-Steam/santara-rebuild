@@ -25,7 +25,8 @@ class TransaksiExport implements FromView, WithTitle, ShouldAutoSize, WithEvents
             ->join('transactions as tr', 'tr.trader_id', '=', 't.id')
             ->join('emitens as e', 'e.id', '=', 'tr.emiten_id')
             ->leftJoin('onepay_transaction as onepay', 'onepay.transaction_id', '=', 'tr.id')
-            ->whereBetween('tr.created_at', [$this->tglAwal, $this->tglAkhir])
+            ->whereDate('tr.created_at', '>=', $this->tglAwal)
+            ->whereDate('tr.created_at', '<=', $this->tglAkhir)
             ->where('tr.is_deleted', 0)
             ->select('tr.id', 'tr.uuid', 't.name as trader_name', 'users.email as user_email', 
                 't.id as trader_id', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 

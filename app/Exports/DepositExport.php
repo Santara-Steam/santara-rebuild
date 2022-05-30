@@ -25,7 +25,8 @@ class DepositExport implements FromView, WithTitle, ShouldAutoSize, WithEvents
             ->join('users as u', 'u.id', '=', 't.user_id')
             ->leftJoin('virtual_accounts as va', 'va.deposit_id', '=', 'deposits.id')
             ->leftJoin('onepay_transaction as onepay', 'onepay.deposit_id', '=', 'deposits.id')
-            ->whereBetween('deposits.created_at', [$this->tglAwal, $this->tglAkhir])
+            ->whereDate('deposits.created_at', '>=', $this->tglAwal)
+            ->whereDate('deposits.created_at', '<=', $this->tglAkhir)
             ->select('deposits.id', 'deposits.uuid', 'deposits.amount', 'deposits.fee', 
                 'u.email', 'deposits.confirmation_photo', 'deposits.split_fee',
                 'deposits.bank_to', 'deposits.bank_from', 'deposits.channel', 'deposits.account_number', 

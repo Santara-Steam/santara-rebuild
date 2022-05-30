@@ -24,7 +24,8 @@ class Penarikan implements FromView, WithTitle, ShouldAutoSize, WithEvents
         $withdraws = Withdraw::join('traders as t', 't.id', '=', 'withdraws.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->where('withdraws.is_deleted', 0)
-                    ->whereBetween('withdraws.created_at', [$this->tglAwal, $this->tglAkhir])
+                    ->whereDate('withdraws.created_at', '>=', $this->tglAwal)
+                    ->whereDate('withdraws.created_at', '<=', $this->tglAkhir)
                     ->orderBy('withdraws.id', 'DESC')
                     ->select('withdraws.uuid', 't.uuid as trader_uuid', 'withdraws.id', 
                         'withdraws.is_verified', 'withdraws.account_name','withdraws.account_number', 

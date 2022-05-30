@@ -5,7 +5,7 @@
                         class="la la-home"></i><span class="menu-title" data-i18n="eCommerce">Dashboard</span></a>
             </li>
             <li class="nav-item has-sub">
-                <a href="#"><i class="la la-user"></i> &nbsp; Data Users</a>
+                <a href="#"><i class="la la-user"></i> &nbsp; Data Pengguna</a>
                 <ul class="menu-content">
                     <li class=" nav-item {{ 'admin/member-trader' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/member-trader') }}"><i class="la la-user"></i><span
@@ -17,7 +17,7 @@
                                 class=" nav-item {{ 'admin/kyc/individu/summary-kyc' == request()->path() ? 'active' : '' }}">
                                 <a href="{{ url('admin/kyc/individu/summary-kyc') }}"><i
                                         class="la la-info"></i><span class="menu-title" data-i18n="eCommerce">
-                                        Summary KYC</span></a>
+                                        Ringkasan KYC</span></a>
                             </li>
                             <li
                                 class=" nav-item {{ 'admin/kyc/individu/belum-kyc' == request()->path() ? 'active' : '' }}">
@@ -94,7 +94,7 @@
                 </li>
                 <li class=" nav-item {{ 'admin/penerbit/setting-tutorial' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/penerbit/setting-tutorial') }}"><i class="la la-tags"></i><span
-                            class="menu-title" data-i18n="eCommerce"> &nbsp; Setting Tutorial</span></a></li>
+                            class="menu-title" data-i18n="eCommerce"> &nbsp; Pengaturan Tutorial</span></a></li>
             </ul>
         </li>
         <li class="nav-item has-sub">
@@ -110,12 +110,12 @@
                 </li>
                 <li class=" nav-item {{ 'admin/pralisting/flag-now-playing' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('admin/pralisting/flag-now-playing') }}"><i class="la la-briefcase"></i><span
-                            class="menu-title" data-i18n="eCommerce"> Flag Now Playing</span></a>
+                            class="menu-title" data-i18n="eCommerce"> Ubah ke Now Playing</span></a>
                 </li>
             </ul>
         </li>
         <li class="nav-item has-sub">
-            <a href="#"><i class="la la-money"></i> &nbsp; Finance</a>
+            <a href="#"><i class="la la-money"></i> &nbsp; Keuangan</a>
             <ul class="menu-content">
                 {{-- <li class=" nav-item {{ 'admin/pesan_saham' == request()->path() ? 'active' : '' }}"><a
                             href="{{ url('admin/pesan_saham') }}"><i class="la la-pencil-square"></i><span
@@ -139,7 +139,7 @@
                 </li>
                 <li class=" nav-item {{ 'admin/wallet' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/wallet') }}"><i class="la la-tablet"></i><span class="menu-title"
-                            data-i18n="eCommerce"> Wallet</span></a>
+                            data-i18n="eCommerce"> Dompet</span></a>
                 </li>
             </ul>
         </li>
@@ -152,7 +152,7 @@
                 </li>
                 <li class=" nav-item {{ 'admin/crm/broadcasting' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/crm/broadcasting') }}"><i class="la la-bell"></i><span
-                            class="menu-title" data-i18n="eCommerce">Broadcast Notification</span></a>
+                            class="menu-title" data-i18n="eCommerce">Broadcast Pemberitahuan</span></a>
                 </li>
                 <li class=" nav-item {{ 'admin/cms/header' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/cms/header') }}"><i class="la la-image"></i><span
@@ -162,16 +162,16 @@
                             class="menu-title" data-i18n="eCommerce"> Testimoni</span></a></li>
                 <li class=" nav-item {{ 'admin/cms/supporter' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/cms/supporter') }}"><i class="la la-life-ring "></i><span
-                            class="menu-title" data-i18n="eCommerce"> Supporters</span></a></li>
+                            class="menu-title" data-i18n="eCommerce"> Pendukung</span></a></li>
                 <li class=" nav-item {{ 'admin/cms/shortened' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/cms/shortened') }}"><i class="la la-link"></i><span
                             class="menu-title" data-i18n="eCommerce"> Shorteneds</span></a></li>
                 <li class=" nav-item {{ 'admin/cms/popup' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/cms/popup') }}"><i class="la la-image"></i><span
-                            class="menu-title" data-i18n="eCommerce"> Popup Management</span></a></li>
+                            class="menu-title" data-i18n="eCommerce"> Kelola Popup</span></a></li>
                 <li class=" nav-item {{ 'admin/cms/video' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/cms/video') }}"><i class="la la-play"></i><span
-                            class="menu-title" data-i18n="eCommerce"> Video Management</span></a></li>
+                            class="menu-title" data-i18n="eCommerce"> Kelola Video</span></a></li>
                 <li class=" nav-item {{ 'admin/cms/video-category' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/cms/video-category') }}"><i class="la la-list"></i><span
                             class="menu-title" data-i18n="eCommerce"> Kategori Video</span></a></li>
@@ -179,14 +179,14 @@
         </li>
         </li>
         <li class="nav-item has-sub">
-            <a href="#"><i class="la la-gear"></i> &nbsp; Setting</a>
+            <a href="#"><i class="la la-gear"></i> &nbsp; Pengaturan</a>
             <ul class="menu-content">
                 <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/category') }}"><i class="la la-list"></i><span
                             class="menu-title" data-i18n="eCommerce"> &nbsp; Kategori Bisnis</span></a></li>
                 <li class=" nav-item {{ 'admin/setting/account' == request()->path() ? 'active' : '' }}"><a
                         href="{{ url('admin/setting/account') }}"><i class="la la-user"></i><span
-                            class="menu-title" data-i18n="eCommerce"> Account</span></a></li>
+                            class="menu-title" data-i18n="eCommerce"> Akun</span></a></li>
             </ul>
     </div>
     {{-- <div class="main-menu-content">

@@ -424,49 +424,6 @@
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Perkiraan Saham yang di lepas ke
-                                                        Umum </label>
-                                                    <div class="input-group">
-
-                                                        <input type="text"
-                                                            name="saham_dilepas" class="form-control ribuan"
-                                                            placeholder="Perkiraan Saham yang di lepas ke Umum"
-                                                            aria-describedby="basic-addon4" value="{{ $emiten->avg_general_share_amount }}">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text" id="basic-addon4">%</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-md-4">
-                                                    <label for="companyName">Perkiraan Omzet Setelah Jadi
-                                                        Penerbit </label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">Rp</span>
-                                                        </div>
-                                                        <input type="text"
-                                                            name="omset_penerbit" class="form-control ribuan"
-                                                            placeholder="Perkiraan Omzet Setelah Jadi Penerbit"
-                                                            aria-describedby="basic-addon1"
-                                                            value="{{ $emiten->avg_turnover_after_becoming_a_publisher }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="companyName">Perkiraan Deviden Tahunan</label>
-                                                    <div class="input-group">
-
-                                                        <input  type="text" 
-                                                            name="deviden_tahunan" class="form-control ribuan"
-                                                            placeholder="Perkiraan Deviden Tahunan"
-                                                            aria-describedby="basic-addon4"
-                                                            value="{{ $emiten->avg_annual_dividen }}">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text" id="basic-addon4">%</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-4">
                                                     <label for="companyName">Dynamic Link</label>
                                                     <input type="text" id="companyName"
                                                         name="dynamic_link" class="form-control" placeholder="Dynamic Link"
