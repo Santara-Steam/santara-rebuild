@@ -1,5 +1,13 @@
 @extends('front_end/template_front_end/app')
 
+@section('style')
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
+    <style>
+        .toast-success{
+            background-color: #51A351;
+        }
+    </style>
+@endsection
 @section('content')
 
     <div class="container" style="margin-top: 180px;">
@@ -80,5 +88,5 @@
       </div>
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
+    
 @endsection
