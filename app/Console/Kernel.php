@@ -16,11 +16,17 @@ class Kernel extends ConsoleKernel
 
     protected $commands = [
         Commands\EmailNotifDividen::class,
+        Commands\NotifNotSubmitLapkeu::class,
     ];
 
     protected function schedule(Schedule $schedule)
     {
         //$schedule->command('notifdividen:cron')->hourly();
+        if (env('CONFIG_ENV') == 'dev') {
+            $schedule->command('command:notsubmitlapkeu')->hourly();
+        }else{
+            $schedule->command('command:notsubmitlapkeu')->dailyAt('13:00');
+        }
     }
 
     /**

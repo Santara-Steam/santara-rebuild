@@ -297,6 +297,12 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/crm/fetch-user-email', [App\Http\Controllers\MemberController::class, 'fetchEmailUser']);
     Route::get('/admin/penerbit/sum-net-profit', [App\Http\Controllers\PerhitunganDividenController::class, 'sumNetProfitData']);
     
+    Route::get('/admin/withdraw/update/{uuid}/{status}', [App\Http\Controllers\WithdrawController::class, 'update']);
+    Route::get('/admin/withdraw/reject/{uuid}/{status}/{ket}', [App\Http\Controllers\WithdrawController::class, 'reject']);
+    
+    Route::post('/admin/dividen/verifikasi', [App\Http\Controllers\DevidenController::class, 'verifikasi']);
+    Route::post('/admin/dividen/reject', [App\Http\Controllers\DevidenController::class, 'reject']);
+    
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);

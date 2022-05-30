@@ -11,6 +11,7 @@ use App\Models\emiten;
 use App\Exports\DividenExport;
 use Maatwebsite\Excel\Facades\Excel;
 use DB;
+use Carbon\Carbon;
 
 class DevidenController extends Controller
 {
@@ -97,12 +98,51 @@ class DevidenController extends Controller
         $endDate = $request->endDate;
 
         if($request->filter != ""){
-            if($request->filter == 'wallet' || $request->filter == 'rekening'){
+            if($request->filter == 'wallet'){
                 $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                     ->where('bagihasils.is_deleted', 0)
-                    ->where('bagihasils.status', $request->filter)
+                    ->where('bagihasils.status', 2)
+                    ->whereNotNull('bagihasils.deposit_id')
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->select('count(*) as allcount')
+                    ->count();
+                $totalRecordswithFilter = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('bagihasils.status', 2)
+                    ->whereNotNull('bagihasils.deposit_id')
+                    ->where('t.name', 'like', '%' .$searchValue . '%')
+                    // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->count();
+                $devidens = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('bagihasils.status', 2)
+                    ->whereNotNull('bagihasils.deposit_id')
+                    ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
+                    ->orderBy('bagihasils.updated_at', 'DESC')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->select('bagihasils.id', 'u.email', 't.uuid as uuid', 't.name', 'e.company_name', 
+                        'bagihasils.trader_id', DB::raw('sum(bagihasils.devidend) as devidend'), 'bagihasils.fee', 
+                        'bagihasils.bank', 'bagihasils.account_number', 'bagihasils.status', 'bagihasils.created_at', 
+                        'bagihasils.updated_at', 'bagihasils.bank', 'bagihasils.account_number', 
+                        'bagihasils.account_name', 'bagihasils.bank_kota', 'bagihasils.bank_cabang', 'bagihasils.deposit_id', 
+                        'bagihasils.channel', 'bagihasils.external_id')
+                    ->orderBy('bagihasils.created_at', 'DESC')
+                    ->get();
+            }else if($request->filter == 'rekening'){
+                $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
+                    ->join('users as u', 'u.id', '=', 't.user_id')
+                    ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
+                    ->where('bagihasils.is_deleted', 0)
+                    ->where('bagihasils.status', 2)
                     ->whereNull('bagihasils.deposit_id')
                     // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
@@ -112,7 +152,7 @@ class DevidenController extends Controller
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                     ->where('bagihasils.is_deleted', 0)
-                    ->where('bagihasils.status', $request->filter)
+                    ->where('bagihasils.status', 2)
                     ->whereNull('bagihasils.deposit_id')
                     ->where('t.name', 'like', '%' .$searchValue . '%')
                     // ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
@@ -122,7 +162,7 @@ class DevidenController extends Controller
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
                     ->where('bagihasils.is_deleted', 0)
-                    ->where('bagihasils.status', $request->filter)
+                    ->where('bagihasils.status', 2)
                     ->whereNull('bagihasils.deposit_id')
                     ->groupBy('bagihasils.trader_id', 'bagihasils.status','bagihasils.updated_at')
                     ->orderBy('bagihasils.updated_at', 'DESC')
@@ -136,7 +176,8 @@ class DevidenController extends Controller
                         'bagihasils.channel', 'bagihasils.external_id')
                     ->orderBy('bagihasils.created_at', 'DESC')
                     ->get();
-            }else{
+            }
+            else{
                 $totalRecords = Deviden::join('traders as t', 't.id', '=', 'bagihasils.trader_id')
                     ->join('users as u', 'u.id', '=', 't.user_id')
                     ->join('emitens as e', 'e.id', '=', 'bagihasils.emiten_id')
@@ -253,9 +294,9 @@ class DevidenController extends Controller
         foreach($devidens as $row){
 
             $updated_at = tgl_indo(date('Y-m-d', strtotime($row->updated_at))).' '.formatJam($row->updated_at);
-            $dividendIdr = rupiah($row->devidend);
-            $feeIdr = rupiah($row->fee);
-            $totalIdr = rupiah(($row->devidend - $row->fee));
+            $dividendIdr = rupiahBiasa($row->devidend);
+            $feeIdr = rupiahBiasa($row->fee);
+            $totalIdr = rupiahBiasa(($row->devidend - $row->fee));
             $account_name = str_replace("'", "", $row->account_name);
 
             $bankName = "";
@@ -559,6 +600,104 @@ class DevidenController extends Controller
     
         echo json_encode($response);
         exit;
+    }
+
+    public function verifikasi(Request $request)
+    {
+        $userInfo = Deviden::join('traders as t', 'bagihasils.trader_id', '=', 't.id')
+            ->join('users as u', 't.user_id', '=', 'u.id')
+            ->where('bagihasils.is_deleted', 0)
+            ->where('bagihasils.id', $request->id)
+            ->select('bagihasils.id', 'bagihasils.status', 'bagihasils.trader_id', 
+                'bagihasils.external_id', 't.uuid', 't.name', 'u.email')
+            ->first();
+        if (($userInfo->status == 1) && ($userInfo->uuid == $request->uuid)) {
+            try {
+                $client = new \GuzzleHttp\Client();
+                $headers = [
+                    'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+                    'Accept'        => 'application/json',
+                    'Content-type'  => 'application/json'
+                ];
+
+                $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION') . 'dividend/verify/' . $userInfo->external_id, [
+                    'headers' => $headers,
+                ]);
+
+                if ($response->getStatusCode() == 200) {
+                    echo json_encode(['msg' => true, 'error' => false]);
+                }
+            } catch (\Exception $exception) {
+                $response = $exception->getResponse();
+                $responseBody = $response->getBody()->getContents();
+                $body = json_decode($responseBody, true);
+                if (isset($body['message'])) {
+                    $msg = $body['message'];
+                } else if (isset($body['error'])) {
+                    if (isset($body['error']['errors'][0][0])) {
+                        $msg
+                            = $body['error']['message'] . ", " . $body['error']['errors'][0][0]['message'];
+                    } else if (isset($body['error']['reason'][0])) {
+                        if (isset($body['error']['reason'][0][0])) {
+                            $msg
+                                = $body['error']['message'] . ", " . $body['error']['reason'][0][0]['message'];
+                        } else {
+                            if (isset($body['error']['reason'][0]['message'])) {
+                                $msg
+                                    = $body['error']['message'] . ", " . $body['error']['reason'][0]['message'];
+                            } else {
+                                $msg
+                                    = $body['error']['message'] . ", " . $body['error']['reason'][0]['reason'];
+                            }
+                        }
+                    }
+                } else {
+                    if (env('CONFIG_ENV') == "dev")  {
+                        $msg = $exception->getMessage();
+                    } else {
+                        $msg = 'Server Error ' . $exception->getCode();
+                    }
+                }
+                echo json_encode(['msg' => $msg, 'error' => true]);
+            }
+        } else {
+            echo json_encode(['msg' => false, 'error' => true]);
+        }
+    }
+
+    public function reject(Request $request)
+    {
+        $userInfo = Deviden::join('traders as t', 'bagihasils.trader_id', '=', 't.id')
+            ->join('users as u', 't.user_id', '=', 'u.id')
+            ->where('bagihasils.is_deleted', 0)
+            ->where('bagihasils.id', $request->id)
+            ->select('bagihasils.id', 'bagihasils.status', 'bagihasils.trader_id', 
+                'bagihasils.external_id', 't.uuid', 't.name', 'u.email')
+            ->first();
+
+        if (($userInfo->status == 1) && ($userInfo->uuid == $request->uuid)) {
+            $keterangan = urldecode($request->keterangan);
+            try {
+                $client = new \GuzzleHttp\Client();
+                $response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION') . 'dividend/reject', [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . app('request')->session()->get('token')
+                    ],
+                    'form_params' => [
+                        'external_id' => $userInfo->external_id,
+                        'reason' => $keterangan
+                    ]
+                ]);
+
+                if ($response->getStatusCode() == 200) {
+                    echo json_encode(['msg' => true]);
+                }
+            } catch (\Exception $exception) {
+                echo json_encode(['msg' => false]);
+            }
+        } else {
+            echo json_encode(['msg' => false]);
+        }
     }
 
     public function exportExcel(Request $request)

@@ -124,9 +124,8 @@ class WithdrawController extends Controller
 
         $data = [];
         foreach($withdraws as $row){
-            $totalWithdraw = rupiah(($row->amount - $row->fee));
-            // saldo Available didapat dari proses fetch api, itu menyusul
-            // $saldoAvailable = rupiah($this->get_saldo($withdraw->trader_uuid), 2, ',', '.');
+            $totalWithdraw = rupiahBiasa(($row->amount - $row->fee));
+            $saldoAvailable = rupiahBiasa($this->get_saldo($row->trader_uuid));
             $member = '<div class="col-12">ID : '.$row->external_id.' </div><div class="col-12">'.$row->trader_name
                 .'</div><div class="col-12">'.$row->email.'</div><div class="col-12">'.$row->phone.'</div><div class="col-12">'
                 .$row->bank_to.'</div>';
@@ -134,17 +133,17 @@ class WithdrawController extends Controller
                 .'</div><div class="col-12">'.formatJam($row->created_at).'</div>';
             $amount = '<div class="row"><div class="col-6">Withdrawal :</div><div class="col-6">'.rupiah($row->amount).'</div></div><div class="row"><div class="col-6">Fee :</div><div class="col-6">'
                 .rupiah($row->fee).'</div></div><div class="row"><div class="col-6">Total :</div><div class="col-6">'.(rupiah($row->amount - $row->fee)).'</div></div>';
-            $saldoAvailable = "";
-            // if($row->is_verified == 0 || $row->is_verified == null){
-            //     $status = '<a href="#" onClick="confirmWithdraw(\''.$row->uuid.'\',
-            //                 \''.$row->account_name.'\',
-            //                 \''.$row->account_number.'\',
-            //                 \''.$row->bank_to.'\',                                                                    
-            //                 \''.$totalWithdraw.'\',
-            //                 \''.$saldoAvailable.'\')"  class="btn btn-info" title="Verifikasi" >Verifikasi</a> 
-            //         <a href="#" onClick="rejectWithdraw(\'' . $row->uuid . '\')" class="btn btn-danger" title="Tolak" >Tolak</a>';
-            // }else
-            if($row->is_verified == 2){
+            
+            if($row->is_verified == 0 || $row->is_verified == null){
+                $status = '<a href="#" class="btn btn-info btn-sm btn-block" title="Verifikasi" onClick="confirmWithdraw(\'' . $row->uuid . '\',
+                    \'' . $row->account_name . '\',
+                    \'' . $row->account_number . '\',
+                    \'' . $row->bank_to . '\',                                                                    
+                    \'' . $totalWithdraw . '\',
+                    \'' . $saldoAvailable . '\')" 
+                        >Verifikasi</a> 
+                    <a href="#" onClick="rejectWithdraw(\'' . $row->uuid . '\')" class="btn btn-danger btn-sm btn-block" title="Tolak" >Tolak</a>';
+            }else if($row->is_verified == 2){
                 $status = '<div class="status badge badge-danger badge-pill">Ditolak</div>';
             }elseif($row->is_verified == 1) {
                 $status = '<div class="status badge badge-success badge-pill">Sudah Verifikasi</div>';
@@ -172,6 +171,143 @@ class WithdrawController extends Controller
         echo json_encode($response);
         exit;
     }
+
+    private function get_saldo($uuid)
+    {
+        $saldo = 0;
+
+        try {
+            $client = new \GuzzleHttp\Client();
+
+            $headers = [
+                'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
+                'Accept'        => 'application/json',
+                'Content-type'  => 'application/json'
+            ];
+
+            $response = $client->request('GET', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION') . 'traders/idr/' . $uuid, [
+                'headers' => $headers,
+            ]);
+
+            if ($response->getStatusCode() == 200) {
+                $data = json_decode($response->getBody()->getContents(), TRUE);
+                $saldo = $data['idr'];
+            }
+        } catch (\Exception $exception) {
+            $saldo = null;
+        }
+
+        return $saldo;
+    }
+
+    public function update($uuid, $status, $keterangan = null)
+    {
+            $keterangan = ($keterangan != null) ? urldecode($keterangan) : $keterangan;
+            try {
+                $client = new \GuzzleHttp\Client();
+                $response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION') . "withdraw/" . $uuid, [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . app('request')->session()->get('token')
+                    ],
+                    'form_params' => [
+                        'status' => $status,
+                        'keterangan' => $keterangan
+                    ]
+                ]);
+
+                if ($response->getStatusCode() == 200) {
+                    echo json_encode(['msg' => $response->getStatusCode()]);
+                }
+            } catch (\Exception $exception) {
+                $response = $exception->getResponse();
+                $responseBody = $response->getBody()->getContents();
+                $body = json_decode($responseBody, true);
+                if (isset($body['message'])) {
+                    $msg = $body['message'];
+                } else if (isset($body['error'])) {
+                    if (isset($body['error']['errors'][0][0])) {
+                        $msg
+                            = $body['error']['message'] . ", " . $body['error']['errors'][0][0]['message'];
+                    } else if (isset($body['error']['reason'][0])) {
+                        if (isset($body['error']['reason'][0][0])) {
+                            $msg
+                                = $body['error']['message'] . ", " . $body['error']['reason'][0][0]['message'];
+                        } else {
+                            if (isset($body['error']['reason'][0]['message'])) {
+                                $msg
+                                    = $body['error']['message'] . ", " . $body['error']['reason'][0]['message'];
+                            } else {
+                                $msg
+                                    = $body['error']['message'] . ", " . $body['error']['reason'][0]['reason'];
+                            }
+                        }
+                    }
+                } else {
+                    if (env('CONFIG_ENV') == "dev") {
+                        $msg = $exception->getMessage();
+                    } else {
+                        $msg = 'Server Error ' . $exception->getCode();
+                    }
+                }
+                echo json_encode(['msg' => $msg]);
+                return;
+            }
+    }
+
+    public function reject($uuid, $status, $keterangan = null)
+    {
+            $keterangan = ($keterangan != null) ? urldecode($keterangan) : $keterangan;
+            try {
+                $client = new \GuzzleHttp\Client();
+                $response = $client->request('PUT', config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION') . "withdraw/" . $uuid, [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . app('request')->session()->get('token')
+                    ],
+                    'form_params' => [
+                        'status' => $status,
+                        'keterangan' => $keterangan
+                    ]
+                ]);
+
+                if ($response->getStatusCode() == 200) {
+                    echo json_encode(['msg' => $response->getStatusCode()]);
+                }
+            } catch (\Exception $exception) {
+                $response = $exception->getResponse();
+                $responseBody = $response->getBody()->getContents();
+                $body = json_decode($responseBody, true);
+                if (isset($body['message'])) {
+                    $msg = $body['message'];
+                } else if (isset($body['error'])) {
+                    if (isset($body['error']['errors'][0][0])) {
+                        $msg
+                            = $body['error']['message'] . ", " . $body['error']['errors'][0][0]['message'];
+                    } else if (isset($body['error']['reason'][0])) {
+                        if (isset($body['error']['reason'][0][0])) {
+                            $msg
+                                = $body['error']['message'] . ", " . $body['error']['reason'][0][0]['message'];
+                        } else {
+                            if (isset($body['error']['reason'][0]['message'])) {
+                                $msg
+                                    = $body['error']['message'] . ", " . $body['error']['reason'][0]['message'];
+                            } else {
+                                $msg
+                                    = $body['error']['message'] . ", " . $body['error']['reason'][0]['reason'];
+                            }
+                        }
+                    }
+                } else {
+                    if (env('CONFIG_ENV') == "dev") {
+                        $msg = $exception->getMessage();
+                    } else {
+                        $msg = 'Server Error ' . $exception->getCode();
+                    }
+                }
+                echo json_encode(['msg' => $msg]);
+                return;
+            }
+    }
+
 
     public function exportExcel(Request $request)
     {
