@@ -220,12 +220,12 @@ and emitens.begin_period < now()')
         $dv = Devidend_old::select('devidend.*','emitens.*')
         ->leftjoin('emitens', 'emitens.id','=','devidend.emiten_id')
         ->where('devidend.emiten_id',$id)
-        ->where('devidend.phase',1)
+        // ->where('devidend.phase',1)
         ->where('emitens.is_active',1)
         ->where('emitens.is_deleted',0)
         ->whereRaw('emitens.end_period < now()')
-        ->groupBy('emitens.id')
-        ->first();
+        // ->groupBy('emitens.id')
+        ->get();
 
         $dv2 = Devidend_old::select('devidend.*','emitens.*')
         ->leftjoin('emitens', 'emitens.id','=','devidend.emiten_id')
@@ -303,6 +303,7 @@ and emitens.begin_period < now()')
         ->first();
 
         return view('front_end/sold_out/show',compact('emt','bok','status','dv','tm','tmpra','tmpen','tmpd','tmpyd','dv2','dv3'));
+        // dd($dv);
         
     }
 

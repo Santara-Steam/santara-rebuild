@@ -384,30 +384,35 @@
               <span class="inter-medium-alabaster-18px">Pembagian Deviden</span>
             </div>
             <div class="table-2 border-1px-cape-cod" style="width: 90%; height: 100%;">
+              <?php $no = 0;?>
+              @foreach ($dv as $item)
+              <?php $no++;?>
               <div class="table-cell-row-1">
                 <div class="table-cell" style="margin-left: 10px;">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                    <span class="inter-normal-delta-12px">Pembagian Deviden Tahap I - </span
+                    <span class="inter-normal-delta-12px">Pembagian Deviden Tahap {{$no}} - </span
                     ><span class="inter-normal-delta-12px">
-                      @if(is_null($dv))  
+                      @if(is_null($item))  
                       
                       @else
-                      {{date('d M Y', strtotime($dv->devidend_date))}}
+                      {{date('d M Y', strtotime($item->devidend_date))}}
                       @endif</span>
                   </p>
                 </div>
                 <div class="table-cell">
                   <div class=" inter-medium-white-14px">
                     <span class="inter-medium-white-14px">
-                  @if(is_null($dv))  
+                  @if(is_null($item))  
                   Rp0
                   @else
-                  Rp{{number_format(round($dv->devidend),0,',','.')}}
+                  Rp{{number_format(round($item->devidend),0,',','.')}}
                   @endif</span>
                   </div>
                 </div>
               </div>
-              <div class="overlap-group-3">
+              @endforeach
+              
+              {{-- <div class="overlap-group-3">
                 <img class="divider" src="img/divider-114@2x.png" />
                 <div class="table-cell-row">
                   <div class="table-cell" style="margin-left: 10px;">
@@ -433,8 +438,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="overlap-group-3">
+              </div> --}}
+              {{-- <div class="overlap-group-3">
                 <img class="divider" src="img/divider-114@2x.png" />
                 <div class="table-cell-row">
                   <div class="table-cell" style="margin-left: 10px;">
@@ -461,7 +466,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
                          
