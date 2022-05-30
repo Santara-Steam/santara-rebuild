@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
     {
         //$schedule->command('notifdividen:cron')->hourly();
         if (config('global.CONFIG_ENV_GLOBAL') == "DEV") {
-            $schedule->command('command:notsubmitlapkeu')->everyMinute();
+            $schedule->command('command:notsubmitlapkeu')->dailyAt('13:00');
         }else{
             $schedule->command('command:notsubmitlapkeu')->dailyAt('13:00');
         }
