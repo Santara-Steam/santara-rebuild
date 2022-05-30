@@ -150,8 +150,8 @@
                                                                 </span>
                                                                 <div class="header">
                                                                     <div class="saka-logistics inter-medium-alabaster-20px">
-                                                                        <span class="tx-pt inter-medium-alabaster">
-                                                                            <?php echo \Illuminate\Support\Str::limit(strip_tags($np['trademark']), 20, $end = '...'); ?>
+                                                                        <span class="tx-pt inter-medium-alabaster" style="text-transform: capitalize; ">
+                                                                            <?php echo \Illuminate\Support\Str::limit(strip_tags(strtolower($np['trademark'])), 18, $end = '...'); ?>
                                                                         </span>
                                                                         <i class="fa fa-check-circle" style="color: #2a8ede"></i>
                                                                     </div>

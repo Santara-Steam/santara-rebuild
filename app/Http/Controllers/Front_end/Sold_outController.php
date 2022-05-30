@@ -67,7 +67,7 @@ and emitens.begin_period < now()')
     {
         if (is_null($request->cari)) {
             if (is_null($request->categor)) {
-                $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+                $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
                 ->leftjoin('categories', 'categories.id','=','emitens.category_id')
                 ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
                 ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
@@ -88,7 +88,7 @@ and emitens.begin_period < now()')
                 ->get();
             
             }else{
-                $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+                $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
                 ->leftjoin('categories', 'categories.id','=','emitens.category_id')
                 ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
                 ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
@@ -112,7 +112,7 @@ and emitens.begin_period < now()')
     
         }elseif (is_null($request->categor)) {
             if (is_null($request->cari)) {
-                $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+                $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
                 ->leftjoin('categories', 'categories.id','=','emitens.category_id')
                 ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
                 ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
@@ -132,7 +132,7 @@ and emitens.is_active = 1
 and emitens.begin_period < now()')
                 ->get();
             }else{
-                $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+                $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
                 ->leftjoin('categories', 'categories.id','=','emitens.category_id')
                 ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
                 ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
@@ -155,7 +155,7 @@ and emitens.begin_period < now()')
                 ->get();
             }
         }else{
-            $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(devidend.devidend) as dvd"),  DB::raw("COUNT(devidend.devidend) as dvc"))
+            $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
             ->leftjoin('categories', 'categories.id','=','emitens.category_id')
             ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
             ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
@@ -211,7 +211,11 @@ and emitens.begin_period < now()')
         ->first();
         
         $bok = Transactions_old::select(db::raw('SUM(IF(transactions.is_verified = 1 AND transactions.is_deleted = 0, transactions.amount, 0))  as tot'))
-        ->where('emiten_id',$id)->first();
+        ->where('emiten_id',$id)
+        ->where('transactions.channel', '<>', 'MARKET')
+        ->first();
+
+
 
         $dv = Devidend_old::select('devidend.*','emitens.*')
         ->leftjoin('emitens', 'emitens.id','=','devidend.emiten_id')
