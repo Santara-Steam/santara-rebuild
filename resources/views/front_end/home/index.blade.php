@@ -96,7 +96,7 @@
                                             ->where('emiten_id', $np['id'])
                                             ->whereRaw(
                                                 'created_at = (SELECT max(created_at) from emiten_journeys
-                                                                                                                                        where emiten_id = ' .
+                                                                                                                                                                                                                        where emiten_id = ' .
                                                     $np['id'] .
                                                     ')',
                                             )
@@ -145,15 +145,17 @@
                                                             <div class="header-and-tags">
                                                                 <span class="tx-t inter-medium-sweet-pink-12px"
                                                                     style="background: var(--falu-red);
-                        border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
+                                border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
                                                                     <?php echo \Illuminate\Support\Str::limit(strip_tags($np['category']), 20, $end = '...'); ?>
                                                                 </span>
                                                                 <div class="header">
                                                                     <div class="saka-logistics inter-medium-alabaster-20px">
-                                                                        <span class="tx-pt inter-medium-alabaster" style="text-transform: capitalize; ">
+                                                                        <span class="tx-pt inter-medium-alabaster"
+                                                                            style="text-transform: capitalize; ">
                                                                             <?php echo \Illuminate\Support\Str::limit(strip_tags(strtolower($np['trademark'])), 18, $end = '...'); ?>
                                                                         </span>
-                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
+                                                                        <i class="fa fa-check-circle"
+                                                                            style="color: #2a8ede"></i>
                                                                     </div>
                                                                     <div
                                                                         class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
@@ -187,10 +189,9 @@
                                                                                 $datediff = $end - $now;
                                                                                 ?>
                                                                                 @if (round($datediff / (60 * 60 * 24)) < 0)
-                                                                                0
+                                                                                    0
                                                                                 @else
-                                                                                    
-                                                                                {{ round($datediff / (60 * 60 * 24)) }}
+                                                                                    {{ round($datediff / (60 * 60 * 24)) }}
                                                                                 @endif
                                                                                 {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                                                                 {{-- 45 --}}
@@ -354,8 +355,7 @@
                                                 data-minat="<?= $cs->vot ?>" data-comment="<?= $cs->cmt ?>"
                                                 data-id="<?= $cs->id ?>" data-trdlike="<?= $cs->trdlike ?>"
                                                 data-trdvot="<?= $cs->trdvot ?>" data-image="<?= $picture[0] ?>"
-                                                data-verified-bisnis="<?= $cs->is_verified_bisnis ?>"
-                                                >
+                                                data-verified-bisnis="<?= $cs->is_verified_bisnis ?>">
                                                 <div class="card moldla">
                                                     <img class="rectangle-2 moldla"
                                                         src="{{ env('PATH_WEB') }}{{ $picture[0] }}"
@@ -373,7 +373,7 @@
                                                             <div class="header-and-tags">
                                                                 <span class="tx-t inter-medium-sweet-pink-12px"
                                                                     style="background: var(--falu-red);
-                              border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
+                                      border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
                                                                     <?php echo \Illuminate\Support\Str::limit(strip_tags($cs->ctg->category), 20, $end = '...'); ?>
                                                                 </span>
                                                                 <div class="header">
@@ -382,7 +382,8 @@
                                                                             <?php echo \Illuminate\Support\Str::limit(strip_tags($cs->trademark), 20, $end = '...'); ?>
                                                                         </span>
                                                                         @if ($cs->is_verified_bisnis == 1)
-                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
+                                                                            <i class="fa fa-check-circle"
+                                                                                style="color: #2a8ede"></i>
                                                                         @endif
                                                                     </div>
                                                                     <div
@@ -394,8 +395,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="icon-card row" style="display: flex;
-                            justify-content: center;
-                            align-items: center;    width: auto;">
+                                    justify-content: center;
+                                    align-items: center;    width: auto;">
                                                                 @guest
                                                                     <a href="{{ route('login') }}" style="cursor: pointer">
                                                                         <div class="icon-and-supporting-text">
@@ -599,7 +600,7 @@
                                                             <div class="header-and-tags">
                                                                 <span class="tx-t inter-medium-sweet-pink-12px"
                                                                     style="background: var(--falu-red);
-                        border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
+                                border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
                                                                     <?php echo \Illuminate\Support\Str::limit(strip_tags($item->ktg), 20, $end = '...'); ?>
                                                                 </span>
                                                                 <div class="header">
@@ -608,7 +609,8 @@
                                                                         <span class="tx-pt inter-medium-alabaster">
                                                                             <?php echo \Illuminate\Support\Str::limit(strip_tags($item->trademark), 20, $end = '...'); ?>
                                                                         </span>
-                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
+                                                                        <i class="fa fa-check-circle"
+                                                                            style="color: #2a8ede"></i>
                                                                     </div>
                                                                     <div
                                                                         class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
@@ -842,9 +844,9 @@
                         </div>
                         <div class="row mt-3 mb-3 d-flex justify-content-center ">
                             <!-- <div class="col-4 col-md-2">
-                                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
-                                  <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
-                              </div> -->
+                                          <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
+                                          <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
+                                      </div> -->
                             <div class="col-4 col-md-2">
                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('detail-coming-soon') }}/{{ $item->id }}"
                                     id="shareFacebook" target="_blank" style="text-decoration: none;">
@@ -873,9 +875,9 @@
                                 </a>
                             </div>
                             <!-- <div class="col-4 col-md-2">
-                                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
-                                  <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
-                              </div> -->
+                                          <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
+                                          <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
+                                      </div> -->
                             <div class="col-4 col-md-2">
                                 <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A {{ url('detail-coming-soon') }}/{{ $item->id }}"
                                     id="shareWhatsapp" target="_blank" style="text-decoration: none;">
@@ -917,12 +919,13 @@
                                 <div class="header-and-tags">
                                     <span class="tx-t inter-medium-sweet-pink-12px"
                                         style="background: var(--falu-red);
-                border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;" id="category"></span>
+                        border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;"
+                                        id="category"></span>
                                     <div class="header">
                                         <div class="saka-logistics inter-medium-alabaster-20px">
                                             <span class="tx-pt inter-medium-alabaster" id="trademark"></span>
 
-                                                                        <i id="verif" class="fa fa-check-circle"  style="color: #2a8ede;"></i>
+                                            <i id="verif" class="fa fa-check-circle" style="color: #2a8ede;"></i>
                                         </div>
                                         <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                                             <span class="tx-np inter-normal-quill-gray" id="company_name"></span>
@@ -930,8 +933,8 @@
                                     </div>
                                 </div>
                                 <div class="icon-card row" style="display: flex;
-                            justify-content: center;
-                            align-items: center;width:auto;">
+                                    justify-content: center;
+                                    align-items: center;width:auto;">
                                     @guest
                                         <a class="col-3" href="{{ route('login') }}" style="cursor: pointer">
                                             <div class="icon-and-supporting-text">
@@ -1116,7 +1119,7 @@
             ->where('emiten_id', $np['id'])
             ->whereRaw(
                 'created_at = (SELECT max(created_at) from emiten_journeys
-                                        where emiten_id = ' .
+                                                        where emiten_id = ' .
                     $np['id'] .
                     ')',
             )
@@ -1146,7 +1149,7 @@
                                 <div class="header-and-tags">
                                     <span class="tx-t inter-medium-sweet-pink-12px"
                                         style="background: var(--falu-red);
-                border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{ $np['category'] }}</span>
+                        border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{ $np['category'] }}</span>
                                     <div class="header">
                                         <div class="saka-logistics inter-medium-alabaster-20px">
                                             <span class="tx-pt inter-medium-alabaster">
@@ -1182,10 +1185,9 @@
                                                     $datediff = $end - $now;
                                                     ?>
                                                     @if (round($datediff / (60 * 60 * 24)) < 0)
-                                                    0
+                                                        0
                                                     @else
-                                                        
-                                                    {{ round($datediff / (60 * 60 * 24)) }}
+                                                        {{ round($datediff / (60 * 60 * 24)) }}
                                                     @endif
                                                     {{-- {{abs(strtotime($np->begin_period) - strtotime($np->end_period))}} --}}
                                                     {{-- 45 --}}
@@ -1265,7 +1267,7 @@
                                 <div class="header-and-tags">
                                     <span class="tx-t inter-medium-sweet-pink-12px"
                                         style="background: var(--falu-red);
-                border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{ $item->ktg }}</span>
+                        border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{ $item->ktg }}</span>
                                     <div class="header">
                                         <div class="saka-logistics inter-medium-alabaster-20px">
                                             <span class="tx-pt inter-medium-alabaster"> {{ $item->trademark }}
@@ -1352,10 +1354,10 @@
                 $("#sl").attr('onclick', "document.getElementById('sublike" + id + "').submit()");
                 $("#ll").attr('onclick', "document.getElementById('sublike" + id + "').submit()");
 
-                if(verified == 1){
-                    $('#verif').attr("hidden",false);
-                }else{
-                    $('#verif').attr("hidden",true);
+                if (verified == 1) {
+                    $('#verif').attr("hidden", false);
+                } else {
+                    $('#verif').attr("hidden", true);
                 };
                 // $("#sl").setAttribute('onclick',"d");
                 // $("#ll").setAttribute('onclick',"ds");
@@ -1395,7 +1397,55 @@
     {{-- @endforeach --}}
 @endsection
 @section('js')
+    <script type="text/javascript" src="{{ asset('public') }}/app-assets/js/core/alert/sweetalert.min.js"></script>
     <script type='text/javascript'>
+        loadPopup();
+        function loadPopup() {
+            var popup = null;
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                url: '{{ url("home/popup") }}',
+                dataType: "json",
+                success: function(result) {
+                    popup = result.popup;
+                    popup_image = popup.website_pict;
+
+                    Swal.fire({
+                        imageUrl: popup_image,
+                        imageAlt: 'Welcome Screen',
+                        animation: true,
+                        customClass: 'swal-welcome',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                        onBeforeOpen: function(element) {
+                            $(element).find('button.swal2-confirm.swal2-styled').toggleClass(
+                                'swal2-confirm swal2-styled swal2-confirm btn btn-welcome')
+                        }
+                    }).then((result) => {
+                        // localStorage.setItem('popState', 'shown');
+                    });
+                    if (popup.website_url != null) {
+                        $(Swal.getImage()).on('click', function(ev) {
+                            // localStorage.setItem('popState', 'shown');
+
+                            // open new tab
+                            var a = document.createElement('a')
+                            a.href = popup.website_url
+                            a.target = '_blank'
+                            document.body.appendChild(a)
+                            a.click()
+                            document.body.removeChild(a)
+                            Swal.close()
+
+                            // window.open(popup.website_url,'_blank');
+                            // window.location = popup.website_url;
+                        });
+                    }
+                }
+            });
+        }
+
         $(document).ready(function() {
 
             $('.cmt').click(function() {

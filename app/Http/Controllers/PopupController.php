@@ -215,6 +215,19 @@ class PopupController extends Controller
             ]);
             
             echo json_encode(['msg' => $response->getStatusCode()]);
+            $code = $response->getStatusCode();
+            if($code == 200){
+                $notif = array(
+                    'message' => 'Berhasil mengubah popup',
+                    'alert-type' => 'success'
+                );
+            }else{
+                $notif = array(
+                    'message' => 'Gagal mengubah popup',
+                    'alert-type' => 'alert'
+                );
+            }
+            return redirect('admin/cms/popup')->with($notif);
 
         } catch (\Exception $exception) {
             $statusCode = $exception->getResponse()->getStatusCode();

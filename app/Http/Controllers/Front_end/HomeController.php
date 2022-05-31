@@ -172,6 +172,32 @@ class HomeController extends Controller
         // dd($this->getPeekPralisting());
     }
 
+    public function popup()
+    {
+        try {
+            $client = new \GuzzleHttp\Client();
+
+            $headers = [
+                'Accept' => 'application/json',
+                'Content-type' => 'application/json'
+            ];
+
+            $response = $client->request('GET', config('global.BASE_API_CLIENT_URL') . '/v3.7.1/information/pop-up', [
+                'headers' => $headers,
+            ]);
+
+            if ($response->getStatusCode() == 200) {
+                $popup = json_decode($response->getBody()->getContents());
+                $popup[0]->website_pict = $popup[0]->website_pict;
+                $popup = $popup[0];
+                echo json_encode(['popup' => $popup]);
+            }
+        } catch (\Exception $exception) {
+            echo json_encode($exception->getMessage());
+            return;
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
