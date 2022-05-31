@@ -417,8 +417,8 @@ class DevidenController extends Controller
          ]);
 
          $date = $request->date.'-'.$request->month.'-'.$request->year;
-         $dividend_date = date('Y-m-d', strtotime($date));
-         $dividend_date_time = tgl_indo(date('Y-m-d', strtotime($date))).' '.formatJamLengkap($date);
+         $dividend_date = tgl_indo(date('Y-m-d', strtotime($date)));
+         $dividend_date_time = date('Y-m-d H:i:s', strtotime($date));
          $dividend_detail = [
             'emiten_uuid' => $request->emiten_uuid,
             'code_emiten' => $request->code_emiten,
@@ -432,8 +432,7 @@ class DevidenController extends Controller
 
         $dividends = null;
         $amount = (int)str_replace(".", "", $request->amount);
-
-        // Belum selesai
+        
         try {
             $client = new \GuzzleHttp\Client();
             $response = $client->get(config('global.BASE_API_ADMIN_URL').'/'.config('global.API_ADMIN_VERSION').'dividend/generate', [

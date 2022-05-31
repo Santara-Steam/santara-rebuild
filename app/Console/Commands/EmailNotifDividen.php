@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\emiten;
+use App\Models\Devidend_old;
 
 class EmailNotifDividen extends Command
 {
@@ -38,6 +39,8 @@ class EmailNotifDividen extends Command
      */
     public function handle()
     {
+        // $emiten = Devidend_old::leftjoin('emitens', 'emitens.id','=','devidend.emiten_id')
+        //     ->
         $emiten = emiten::join('traders as t', 't.id', '=', 'emitens.trader_id')
             ->join('users as u', 'u.id', '=', 't.user_id')
             ->where('emitens.id', 16)

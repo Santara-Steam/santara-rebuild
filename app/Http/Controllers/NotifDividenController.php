@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\emiten;
+use App\Models\Devidend_old;
 use Carbon\Carbon;
 
 class NotifDividenController extends Controller
@@ -22,6 +23,22 @@ class NotifDividenController extends Controller
         //     ->whereMonth('emitens.begin_period', Carbon::now()->addMonth()->format('m'))
         //     ->groupBy('emitens.id')
         //     ->get();
+       
+        $currentDateTime = Carbon::now();
+        $monthLater = Carbon::now()->addMonth()->format('m');
+
+        $emiten = Devidend_old::join('emitens', 'emitens.id','=','devidend.emiten_id')
+            ->join('traders as t', 't.id', '=', 'emitens.trader_id')
+            ->join('users as u', 'u.id', '=', 't.user_id')
+            ->where('emitens.is_active',1)
+            ->where('emitens.is_deleted',0)
+            ->where('devidend.is_deleted', 0)
+            ->whereMonth('devidend.devidend_date', $monthLater)
+            ->whereYear('devidend.devidend_date', Carbon::now()->format('Y'))
+            ->select('u.email', 'emitens.company_name')
+            ->get();
+        echo json_encode(["data" => $emiten]);
+        exit();
 
         $sold_out = emiten::select('emitens.id', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
             'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
