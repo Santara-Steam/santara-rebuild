@@ -530,7 +530,7 @@ class CRMController extends Controller
                 try {
                     $client = new \GuzzleHttp\Client();
 
-                    $response = $client->request($method_upload, config('global.BASE_API_ADMIN_URL').'upload', [
+                    $response = $client->request($method_upload, config('global.BASE_API_ADMIN_URL').'/upload', [
                         'headers' => [
                             'Authorization' => 'Bearer ' . app('request')->session()->get('token'),
                         ],
