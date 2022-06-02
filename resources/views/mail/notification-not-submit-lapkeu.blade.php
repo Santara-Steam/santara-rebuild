@@ -267,7 +267,7 @@
                                                     <p
                                                         style="font-size: 16px; line-height: 1.2; text-align: center; word-break: break-word; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; mso-line-height-alt: 19px; margin: 0;">
                                                         <strong><span
-                                                                style="font-size: 30px; color: #2b303a;">Pemberitahun
+                                                                style="font-size: 30px; color: #2b303a;">Pemberitahuan
                                                                 Unggah Laporan Keuangan</span></strong>
                                                     </p>
                                                 </div>
