@@ -302,6 +302,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     
     Route::post('/admin/dividen/verifikasi', [App\Http\Controllers\DevidenController::class, 'verifikasi']);
     Route::post('/admin/dividen/reject', [App\Http\Controllers\DevidenController::class, 'reject']);
+
+    Route::get('/admin/add_date_45', [App\Http\Controllers\EmitenController::class, 'addDate45']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

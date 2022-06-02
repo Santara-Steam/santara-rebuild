@@ -256,6 +256,14 @@ class EmitenController extends Controller
             
         ]);
     }
+
+    public function addDate45(Request $request)
+    {
+        $startDate = Carbon::parse($request->start_date);
+        $newDate = $startDate->addDays(45);
+        return response()->json(["data" => $newDate]);
+    }
+
     public function store(Request $request)
     {
         // $this->validator($request->all())->validate();

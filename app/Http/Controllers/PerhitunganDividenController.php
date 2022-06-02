@@ -100,10 +100,7 @@ class PerhitunganDividenController extends Controller
                     'is_active' => $row['is_active'],
                     'begin_period' => $row['begin_period'],
                     'created_at' => $row['created_at'],
-                    'last_emiten_journey' => $latestJourney['title'],
                     'ktg' => $row['ktg'],
-                    'sd' => $latestJourney['date'],
-                    'ed' => $latestJourney['end_date']
                 ]);
         }
         return view('admin.emiten.perhitungan-deviden', compact('emiten'));

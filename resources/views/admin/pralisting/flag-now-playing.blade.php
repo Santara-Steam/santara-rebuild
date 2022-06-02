@@ -90,11 +90,12 @@
                     </div>
                     <div class="form-group">
                         <label for="start_date">Tanggal Mulai</label>
-                        <input type="datetime-local" class="form-control" name="start_date" id="start_date">
+                        <input type="datetime-local" class="form-control" name="start_date" onchange="getDate45('{{ $emiten[$i]['id'] }}')" 
+                            id="start_date_{{ $emiten[$i]['id'] }}">
                     </div>
                     <div class="form-group">
                         <label for="start_date">Tanggal Selesai</label>
-                        <input type="datetime-local" class="form-control" name="end_date" id="end_date">
+                        <input type="datetime-local" class="form-control" name="end_date" id="end_date_{{ $emiten[$i]['id'] }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -143,6 +144,20 @@
         }
     });
 });
+
+function getDate45(id){
+    var tgl = $("#start_date_"+id).val();
+    $.ajax({
+        url: '{{ url("admin/add_date_45") }}',
+        type: 'GET',
+        data: {start_date: tgl},
+        success: function(res){
+            var newDate = res.data.replace(".000000Z", "");
+            $("#end_date_"+id).val(newDate);
+        }
+    })
+}
+
 </script>
 @endsection
 @section('style')
