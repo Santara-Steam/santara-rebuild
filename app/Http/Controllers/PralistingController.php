@@ -102,6 +102,7 @@ class PralistingController extends Controller
 
             $action = '<a href="' . url('admin/pralisting/konfirmasi/' . $row->uuid) . '" class="btn btn-info btn-sm btn-block" title="konfirmasi">Detail</a> ';
             $action .= '<a href="#" onClick="deleteBisnis(\'' . $row->uuid . '\',\'' . $row->trademark . '\')"  class="btn btn-danger btn-sm btn-block" title="Hapus">Hapus</a>';
+            $action .= '<a class="btn btn-info-ghost btn-sm btn-block" href="'.url('admin/kyc/konfirmasi/'.$row->trader_uuid).'">Konfirmasi</a>';
             
             array_push($data, [
                 "id" => $row->id,
@@ -152,14 +153,14 @@ class PralistingController extends Controller
 
     public function getDataPralisting()
     {
-        $pralisting = emiten::select('emitens.id', 'emitens.uuid', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
-                'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
-                'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed', 'emitens.capital_needs', 'emitens.is_verified',
-                't.name', 't.phone', 'emitens.is_verified_bisnis')
-                ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        $pralisting = emiten::leftjoin('categories', 'categories.id','=','emitens.category_id')
                 ->leftjoin('emiten_votes as ev','ev.emiten_id','=','emitens.id')
                 ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
                 ->leftjoin('traders as t', 't.id', '=', 'emitens.trader_id')
+                ->select('emitens.id', 'emitens.uuid', 'emitens.company_name', 'emitens.trademark', 'emitens.code_emiten', 'emitens.price',
+                    'emitens.supply', 'emitens.is_deleted', 'emitens.is_active', 'emitens.begin_period', 'emitens.created_at',
+                    'categories.category as ktg','emitens.begin_period as sd', 'emitens.end_period as ed', 'emitens.capital_needs', 'emitens.is_verified',
+                    't.name', 't.phone', 'emitens.is_verified_bisnis', 't.uuid as trader_uuid', 't.name as nama_trader')
                 ->where('emitens.is_deleted',0)
                 ->where('emitens.is_verified',1)
                 ->where('emitens.is_pralisting',1)
