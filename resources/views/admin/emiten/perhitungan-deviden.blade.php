@@ -76,6 +76,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tahap</label>
+                        <select class="custom-select" id="tahap_dividen"></select>
+                    </div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -219,7 +223,7 @@
         var totalNetProfit = 0;
         $('body').on('click', '#btnDetail', function() {
             var data_id = $(this).data('id');
-            console.log(tahun);
+            getTahapDividen(data_id);
             if(tahun == null){
                 alert("Tahun harap dipilih");
             }else{
@@ -230,6 +234,22 @@
                 sumDataNet(tahun, data_id);
             }
         });
+
+        function getTahapDividen(emiten_id){
+            $.ajax({
+                url: "{{ url('admin/perhitungan-dividen/list-tahap') }}"+'/'+emiten_id,
+                type: 'GET',
+                success: function(res) {
+                    var tahaps = "";
+                    var no = 0;
+                    res.data.forEach(e => {
+                        no++;
+                        tahaps += '<option value="'+e.devidend_date+'">Tahap '+no+' '+ (e.devidend_date == '' ? 'on going' : '' )+'</option>';
+                    });
+                    $("#tahap_dividen").html(tahaps);
+                }
+            });
+        }
 
         function getDetail(emiten_id, bulan, tahun) {
             $.ajax({

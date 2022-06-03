@@ -101,8 +101,8 @@ class PralistingController extends Controller
             $totalComents = \DB::select('(SELECT COALESCE(COUNT(comment), 0) + COALESCE(COUNT(ch.comment_histories), 0) as total_coments from emiten_comments left join (select emiten_comment_id, COUNT(comment) as comment_histories from emiten_comment_histories where is_deleted = 0 group by id) as ch on emiten_comments.id = ch.emiten_comment_id where emiten_comments.emiten_id = '.$row->id.' and emiten_comments.is_deleted = 0)');
 
             $action = '<a href="' . url('admin/pralisting/konfirmasi/' . $row->uuid) . '" class="btn btn-info btn-sm btn-block" title="konfirmasi">Detail</a> ';
+            $action .= '<a class="btn btn-info-ghost btn-sm btn-block" href="'.url('admin/kyc-bisnis/konfirmasi/'.$row->trader_uuid).'">Konfirmasi</a>';
             $action .= '<a href="#" onClick="deleteBisnis(\'' . $row->uuid . '\',\'' . $row->trademark . '\')"  class="btn btn-danger btn-sm btn-block" title="Hapus">Hapus</a>';
-            $action .= '<a class="btn btn-info-ghost btn-sm btn-block" href="'.url('admin/kyc/konfirmasi/'.$row->trader_uuid).'">Konfirmasi</a>';
             
             array_push($data, [
                 "id" => $row->id,

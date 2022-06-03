@@ -57,12 +57,12 @@
                                                 <form
                                                     id="<?= $action == 'edit' ? 'formKycUpdate' . $key : 'formKycConfirm' . $key ?>">
 
-                                                    @include('admin/kyc_binis/_detail/'.$value->page, [
+                                                    @include('admin/kyc_bisnis/_detail/'.$value->page, [
                                                         'data' => $value->data,
                                                         'address' => $action == 'edit' ? $kyc['address'] : null,
                                                     ])
 
-                                                    @include('admin/kyc_binis/footer_confirm', [
+                                                    @include('admin/kyc_bisnis/footer_confirm', [
                                                         'is_empty' => $value->data ? false : true,
                                                         'data' => $value->data,
                                                         'key' => $key,

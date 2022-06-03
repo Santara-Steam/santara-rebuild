@@ -306,7 +306,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/add_date_45', [App\Http\Controllers\EmitenController::class, 'addDate45']);
 
     Route::get('/admin/kyc-bisnis/konfirmasi/{uuid}', [App\Http\Controllers\KycBisnisController::class, 'konfirmasi']);
+    Route::post('/admin/kyc-bisnis/confirm_url', [App\Http\Controllers\KycBisnisController::class, 'confirm']);
 
+    Route::get('/admin/perhitungan-dividen/list-tahap/{emitenId}', [App\Http\Controllers\PerhitunganDividenController::class, 'getTahapDividen']);
+    
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\emiten;
 use App\Models\emiten_journey;
 use App\Models\FinancialReport;
+use App\Models\Dividen;
 use DB;
 
 class PerhitunganDividenController extends Controller
@@ -112,6 +113,45 @@ class PerhitunganDividenController extends Controller
             ->orderBy('created_at', 'DESC')
             ->first();
         return $emitenJourney;
+    }
+
+    public function getTahapDividen($emitenId){
+        $dv = Dividen::select('devidend.devidend_date')
+            ->leftjoin('emitens', 'emitens.id','=','devidend.emiten_id')
+            ->where('devidend.emiten_id',$emitenId)
+            ->where('emitens.is_active',1)
+            ->where('emitens.is_deleted',0)
+            ->where('devidend.is_deleted', 0)
+            ->get();
+        $tmpyd = emiten_journey::select('emiten_journeys.date', 'emiten_journeys.end_date')
+            ->leftjoin('emitens', 'emitens.id','=','emiten_journeys.emiten_id')
+            ->where('emiten_journeys.emiten_id',$emitenId)
+            ->where('emiten_journeys.title','Penyerahan Dana')
+            ->where('emitens.is_active',1)
+            ->where('emitens.is_deleted',0)
+            ->groupBy('emitens.id')
+            ->first();
+        $data = [];
+        $tglAwal = "";
+        if($tmpyd != null){
+            $tglAwal = $tmpyd->date;
+        }
+        array_push($data, [
+            'devidend_date' => $tmpyd != null ?  $tglAwal : ""
+        ]);
+        foreach($dv as $row){
+            array_push($data, [
+                'devidend_date' => $row->devidend_date
+            ]);
+        }
+      
+        return response()->json(["code" => 200, "data" => $data]);
+    }
+
+    public function hitungBulan(Request $request)
+    {
+        
+        
     }
 
     public function detailData(Request $request)
