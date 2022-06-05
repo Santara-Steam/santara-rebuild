@@ -309,6 +309,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/kyc-bisnis/confirm_url', [App\Http\Controllers\KycBisnisController::class, 'confirm']);
 
     Route::get('/admin/perhitungan-dividen/list-tahap/{emitenId}', [App\Http\Controllers\PerhitunganDividenController::class, 'getTahapDividen']);
+    Route::get('/admin/perhitungan-dividen/interval-periode', [App\Http\Controllers\PerhitunganDividenController::class, 'addIntervalPeriode']);
     
     
 });

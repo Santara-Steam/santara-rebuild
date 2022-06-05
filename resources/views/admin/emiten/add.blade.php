@@ -322,6 +322,19 @@
                                                 </div> --}}
 
                                                 <div class="form-group col-md-4">
+                                                    <label for="companyName">Periode Bagi Hasil </label>
+                                                    <div class="input-group">
+                                                        <input type="text"
+                                                            name="period" class="form-control"
+                                                            placeholder="contoh : 6"
+                                                            aria-describedby="basic-addon4">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon4">bulan</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
                                                     <label for="companyName">Perkiraan Saham yang di lepas ke
                                                         Umum </label>
                                                     <div class="input-group">

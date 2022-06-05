@@ -9,6 +9,8 @@ use App\Models\emiten_journey;
 use App\Models\FinancialReport;
 use App\Models\Dividen;
 use DB;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 class PerhitunganDividenController extends Controller
 {
@@ -148,10 +150,25 @@ class PerhitunganDividenController extends Controller
         return response()->json(["code" => 200, "data" => $data]);
     }
 
-    public function hitungBulan(Request $request)
+    public function addIntervalPeriode(Request $request)
     {
-        
-        
+        $emiten = emiten::where('id', $request->emiten_id)
+            ->where('is_deleted', 0)
+            ->first();
+        $bulan = 0;
+        if($request->devidend_date == 1){
+            $bulan = 12;
+        }else{
+            $bulan = intval(str_replace(" bulan", '', $emiten->period));
+        }
+        $finishDate = Carbon::parse($request->devidend_date)
+            ->addMonths($bulan);
+        $period = CarbonPeriod::create($request->devidend_date, '1 month', $finishDate);
+        $listPeriode = [];
+        foreach ($period as $dt) {
+            array_push($listPeriode, $dt->format("Y-m"));
+        }
+        return response()->json(["data" => $listPeriode, "finishDate" => $finishDate, "bulan" => $bulan]);
     }
 
     public function detailData(Request $request)
@@ -172,17 +189,43 @@ class PerhitunganDividenController extends Controller
 
     public function sumNetProfitData(Request $request)
     {
-        $tahun = $request->tahun;
-        $emitenId = $request->emiten_id;
-        $total = FinancialReport::join('emitens as e', 'e.id', '=', 'financial_reports.emitens_id')
-            ->where('financial_reports.year', $tahun)
-            ->where('financial_reports.is_deleted', 0)
-            ->where('financial_reports.status', 'verified')
-            ->where('financial_reports.emitens_id', $emitenId)
-            ->groupBy('financial_reports.year')
-            ->select(\DB::raw('SUM(financial_reports.net_profit) as total'), 'e.avg_capital_needs', 'e.avg_general_share_amount')
+        $emiten = emiten::where('id', $request->emiten_id)
+            ->where('is_deleted', 0)
+            ->select('avg_capital_needs', 'avg_general_share_amount', 'period')
             ->first();
-        return response()->json(["data" => $total]);
+        $bulan = 0;
+        if($request->devidend_date == 1){
+            $bulan = 12;
+        }else{
+            $bulan = intval(str_replace(" bulan", '', $emiten->period));
+        }
+        $finishDate = Carbon::parse($request->devidend_date)
+            ->addMonths($bulan);
+
+        $emitenId = $request->emiten_id;
+        $period = CarbonPeriod::create($request->devidend_date, '1 month', $finishDate);
+        $totalNetProfit = 0;
+        foreach ($period as $dt) {
+            $tahun = $dt->format("Y");
+            $bulan = intval($dt->format("m"));
+            if($bulan != 10){
+                $bulan = intval(str_replace("0", '', $bulan));
+            }
+            $total = FinancialReport::where('financial_reports.year', $tahun)
+                ->where('financial_reports.month', $bulan)
+                ->where('financial_reports.is_deleted', 0)
+                ->where('financial_reports.status', 'verified')
+                ->where('financial_reports.emitens_id', $emitenId)
+                ->groupBy('financial_reports.emitens_id')
+                ->select('financial_reports.net_profit as total')
+                ->first();
+            $totalNetProfit = $totalNetProfit + $total->total;
+        }
+       
+        return response()->json(["totalNetProfit" => $totalNetProfit, 
+            "avg_capital_needs" => $emiten->avg_capital_needs,
+            "avg_general_share_amount" => $emiten->avg_general_share_amount
+        ]);
     }
 
 }

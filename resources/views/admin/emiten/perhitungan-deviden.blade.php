@@ -78,7 +78,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tahap</label>
-                        <select class="custom-select" id="tahap_dividen"></select>
+                        <select class="custom-select" onchange="pilihTahap()" id="tahap_dividen"></select>
                     </div>
                     <table class="table">
                         <thead>
@@ -88,83 +88,19 @@
                                 <th>Laba/Rugi Setelah Pajak</th>
                             </tr>
                         </thead>
+                        <tbody id="loadDataDividen"></tbody>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Januari</td>
-                                <td id="tahun1"></td>
-                                <td id="netProfit1"></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Februari</td>
-                                <td id="tahun2"></td>
-                                <td id="netProfit2"></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Maret</td>
-                                <td id="tahun3"></td>
-                                <td id="netProfit3"></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>April</td>
-                                <td id="tahun4"></td>
-                                <td id="netProfit4"></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Mei</td>
-                                <td id="tahun5"></td>
-                                <td id="netProfit5"></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Juni</td>
-                                <td id="tahun6"></td>
-                                <td id="netProfit6"></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Juli</td>
-                                <td id="tahun7"></td>
-                                <td id="netProfit7"></td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Agustus</td>
-                                <td id="tahun8"></td>
-                                <td id="netProfit8"></td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>September</td>
-                                <td id="tahun9"></td>
-                                <td id="netProfit9"></td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Oktober</td>
-                                <td id="tahun10"></td>
-                                <td id="netProfit10"></td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>November</td>
-                                <td id="tahun11"></td>
-                                <td id="netProfit11"></td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>Desember</td>
-                                <td id="tahun12"></td>
-                                <td id="netProfit12"></td>
-                            </tr>
                             <tr>
                                 <th colspan="2">Total Laba / Rugi</th>
                                 <th>Rp</th>
                                 <th id="totalNetProfit"></th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Laba Ditahan</th>
+                                <th></th>
+                                <th>
+                                    <input type="text" id="laba_ditahan" class="form-control" value="0" />
+                                </th>
                             </tr>
                             <tr>
                                 <th colspan="2">Presentase Dividen</th>
@@ -221,19 +157,20 @@
     <script>
         var tahun = '';
         var totalNetProfit = 0;
+        var emiten_id = '';
+        let yielDividen = 0;
         $('body').on('click', '#btnDetail', function() {
             var data_id = $(this).data('id');
+            emiten_id = $(this).data('id');
             getTahapDividen(data_id);
-            if(tahun == null){
-                alert("Tahun harap dipilih");
-            }else{
-                $("#detailData").modal('show');
-                for (var i = 1; i <= 12; i++) {
-                    getDetail(data_id, i, tahun);
-                }
-                sumDataNet(tahun, data_id);
-            }
+            $("#detailData").modal('show');
         });
+
+        function pilihTahap() {
+            var tahap_dividen = $("#tahap_dividen").val();
+            getPeriode(emiten_id, tahap_dividen);
+            sumDataNet(tahap_dividen, emiten_id);
+        }
 
         function getTahapDividen(emiten_id){
             $.ajax({
@@ -251,7 +188,35 @@
             });
         }
 
-        function getDetail(emiten_id, bulan, tahun) {
+        function getPeriode(emiten_id, tgl){
+            $.ajax({
+                url: "{{ url('admin/perhitungan-dividen/interval-periode') }}",
+                data: {
+                    devidend_date: tgl,
+                    emiten_id: emiten_id,
+                },
+                type: 'GET',
+                success: function(result) {
+                    let listData = "";
+                    let no = 0;
+                    result.data.forEach(e => {
+                        var tahun = e.split("-");
+                        bulanBaru = tahun[1];
+                        if(tahun[1] != "10"){
+                            bulanBaru = tahun[1].replace("0", "");
+                        }
+                        no++;
+                        listData += '<tr><td>'+no+'</td>'+
+                            '<td>'+getBulanName(e)+'</td>'+
+                            '<td id="tahun'+bulanBaru+''+tahun[0]+'">'+tahun[0]+'</td>'+
+                            '<td id="netProfit'+bulanBaru+''+tahun[0]+'">'+getDetail(emiten_id, bulanBaru, tahun[0], bulanBaru+''+tahun[0])+'</td></tr>';
+                    });
+                    $("#loadDataDividen").html(listData);
+                }
+            })
+        }
+
+        function getDetail(emiten_id, bulan, tahun, idLabel) {
             $.ajax({
                 url: "{{ url('admin/penerbit/perhitungan-detail') }}",
                 type: 'GET',
@@ -261,51 +226,39 @@
                     emiten_id: emiten_id
                 },
                 success: function(res) {
-                    $("#tahun" + bulan).html(tahun);
                     let net_profit = "-";
                     if (res.data != null) {
                         net_profit = res.data.net_profit;
                         totalNetProfit = totalNetProfit + parseInt(res.data.net_profit);
-                        $("#netProfit" + bulan).html(formatRupiah(net_profit));
+                        $("#netProfit" + idLabel).html(formatRupiah(net_profit));
                     } else {
-                        $("#netProfit" + bulan).html("-");
+                        $("#netProfit" + idLabel).html("-");
                     }
                 }
             });
         }
 
-        function sumDataNet(tahun, emiten_id) {
+        function sumDataNet(devidend_date, emiten_id) {
             $.ajax({
                 url: "{{ url('admin/penerbit/sum-net-profit') }}",
                 type: 'GET',
                 data: {
-                    tahun: tahun,
+                    devidend_date: devidend_date,
                     emiten_id: emiten_id
                 },
                 success: function(res) {
                     let dividen = 0;
                     let penawaranSaham = 0;
-                    let yielDividen = 0;
-                    if(res.data.avg_general_share_amount != null){
-                        dividen = parseInt(res.data.avg_general_share_amount);
+                    yielDividen = 0;
+                    if(res.avg_general_share_amount != null){
+                        dividen = parseInt(res.avg_general_share_amount);
                     }
-                    if(res.data.avg_capital_needs != null){
-                        penawaranSaham = parseInt(res.data.avg_capital_needs);
+                    if(res.avg_capital_needs != null){
+                        penawaranSaham = parseInt(res.avg_capital_needs);
                     }
-                    $("#totalNetProfit").html(formatRupiah(res.data.total));
+                    $("#totalNetProfit").html(formatRupiah(res.totalNetProfit));
                     
-                    var totalPersen = dividen * parseInt(res.data.total) / 100;
-                    $("#presentaseDividen").html(dividen.toFixed(2));
-                    $("#habisPersen").html(formatRupiah(totalPersen));
-                    $("#dividenMasyarakat").html(formatRupiah(totalPersen));
-                    $("#nilaiPenawaran").html(formatRupiah(penawaranSaham));
-                    $("#sahamDilepas").html(dividen.toFixed(2));
-                    if(penawaranSaham == 0){
-                        yielDividen = 0;
-                    }else{
-                        yielDividen = totalPersen / penawaranSaham * 100;
-                    }
-                    $("#yielDividen").html(yielDividen.toFixed(2));
+                    hitungData(0, dividen, parseInt(res.totalNetProfit), penawaranSaham, yielDividen);
                 }
             });
         }
@@ -321,6 +274,87 @@
         function formatRupiah(angka) {
             const format = angka.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
             return format;
+        }
+
+        $("#laba_ditahan").keyup(function(){
+            var labaDitahan = parseInt(this.value);
+            var dividen = parseInt($("#presentaseDividen").html());
+            var totalNetProfit = parseInt($("#totalNetProfit").html());
+            var penawaranSaham = parseInt($("#nilaiPenawaran").html());
+            hitungData(labaDitahan, dividen, totalNetProfit, penawaranSaham, yielDividen);
+        });
+
+        function hitungData(labaDitahan, dividen, totalNetProfit, penawaranSaham, yielDividen) {
+            var totalAfterLaba = totalNetProfit - labaDitahan;
+            var totalPersen = dividen * totalAfterLaba / 100;
+            $("#presentaseDividen").html(dividen.toFixed(2));
+            $("#habisPersen").html(formatRupiah(totalPersen));
+            $("#dividenMasyarakat").html(formatRupiah(totalPersen));
+            $("#nilaiPenawaran").html(formatRupiah(penawaranSaham));
+            $("#sahamDilepas").html(dividen.toFixed(2));
+            if(penawaranSaham == 0){
+                yielDividen = 0;
+            }else{
+                yielDividen = totalPersen / penawaranSaham * 100;
+            }
+            $("#yielDividen").html(yielDividen.toFixed(2));
+        } 
+
+        function getBulanName(bulanTanggal) {
+            let listBulan = [
+                "Januari",
+                "Februari",
+                "Maret",
+                "April",
+                "Mei",
+                "Juni",
+                "Juli",
+                "Agustus",
+                "September",
+                "Oktober",
+                "November",
+                "Desember",
+            ];
+            let bt = bulanTanggal.split("-");
+
+            let bulan = "";
+            if(bt[1] == "01"){
+                bulan = listBulan[0];
+            }
+            if(bt[1] == "02"){
+                bulan = listBulan[1];
+            }
+            if(bt[1] == "03"){
+                bulan = listBulan[2];
+            }
+            if(bt[1] == "04"){
+                bulan = listBulan[3];
+            }
+            if(bt[1] == "05"){
+                bulan = listBulan[4];
+            }
+            if(bt[1] == "06"){
+                bulan = listBulan[5];
+            }
+            if(bt[1] == "07"){
+                bulan = listBulan[6];
+            }
+            if(bt[1] == "08"){
+                bulan = listBulan[7];
+            }
+            if(bt[1] == "09"){
+                bulan = listBulan[8];
+            }
+            if(bt[1] == "10"){
+                bulan = listBulan[9];
+            }
+            if(bt[1] == "11"){
+                bulan = listBulan[10];
+            }
+            if(bt[1] == "12"){
+                bulan = listBulan[11];
+            }
+            return bulan;
         }
     </script>
 @endsection
