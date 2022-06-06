@@ -16,10 +16,6 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
-                                        <div>
-                                            <input type="text" placeholder="Pilih Tahun..." id="yearpicker"
-                                                class="form-control col-4 mb-2" />
-                                        </div>
                                         <div class="table-responsive">
                                             <table class="table" id="tabel">
                                                 <thead>
@@ -76,9 +72,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label>Tahap</label>
-                        <select class="custom-select" onchange="pilihTahap()" id="tahap_dividen"></select>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label><strong>Tahap</strong></label>
+                            <select class="custom-select" onchange="pilihTahap()" id="tahap_dividen"></select>
+                        </div>
                     </div>
                     <table class="table">
                         <thead>
@@ -99,7 +97,7 @@
                                 <th colspan="2">Laba Ditahan</th>
                                 <th></th>
                                 <th>
-                                    <input type="text" id="laba_ditahan" class="form-control" value="0" />
+                                    <input type="text" id="laba_ditahan" class="form-control ribuan" value="0" />
                                 </th>
                             </tr>
                             <tr>
@@ -134,6 +132,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="sendEmail()">Kirim Email</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -143,7 +142,6 @@
 @section('js')
     <script src="{{ asset('public/admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
     <script src="{{ asset('public/admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
-    <script src="{{ asset('public') }}/app-assets/yearpicker/yearpicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
         integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -154,11 +152,23 @@
             });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
+    <script>
+        document.querySelectorAll('.ribuan2').forEach(inp => new Cleave(inp, {
+            numeral: true,
+            numeralDecimalMark: ',',
+            delimiter: '.'
+        }));
+    </script>
     <script>
         var tahun = '';
         var totalNetProfit = 0;
         var emiten_id = '';
         let yielDividen = 0;
+        var totalAfterLaba = 0;
+        var totalPersen = 0;
+        var penawaranSaham = 0;
+        var dividen = 0;
         $('body').on('click', '#btnDetail', function() {
             var data_id = $(this).data('id');
             emiten_id = $(this).data('id');
@@ -168,6 +178,7 @@
 
         function pilihTahap() {
             var tahap_dividen = $("#tahap_dividen").val();
+            $("#laba_ditahan").val(0);
             getPeriode(emiten_id, tahap_dividen);
             sumDataNet(tahap_dividen, emiten_id);
         }
@@ -176,7 +187,11 @@
             $.ajax({
                 url: "{{ url('admin/perhitungan-dividen/list-tahap') }}"+'/'+emiten_id,
                 type: 'GET',
+                beforeSend: function() {
+                    $("#loader").show();
+                },
                 success: function(res) {
+                    $("#loader").hide();
                     var tahaps = "";
                     var no = 0;
                     res.data.forEach(e => {
@@ -196,20 +211,26 @@
                     emiten_id: emiten_id,
                 },
                 type: 'GET',
+                beforeSend: function() {
+                    $("#loader").show();
+                },
                 success: function(result) {
+                    $("#loader").hide();
                     let listData = "";
                     let no = 0;
-                    result.data.forEach(e => {
-                        var tahun = e.split("-");
-                        bulanBaru = tahun[1];
-                        if(tahun[1] != "10"){
-                            bulanBaru = tahun[1].replace("0", "");
+                    result.data.forEach((e, index)  => {
+                        if(index != 0){
+                            var tahun = e.split("-");
+                            bulanBaru = tahun[1];
+                            if(tahun[1] != "10"){
+                                bulanBaru = tahun[1].replace("0", "");
+                            }
+                            no++;
+                            listData += '<tr><td>'+no+'</td>'+
+                                '<td>'+getBulanName(e)+'</td>'+
+                                '<td id="tahun'+bulanBaru+''+tahun[0]+'">'+tahun[0]+'</td>'+
+                                '<td id="netProfit'+bulanBaru+''+tahun[0]+'">'+getDetail(emiten_id, bulanBaru, tahun[0], bulanBaru+''+tahun[0])+'</td></tr>';
                         }
-                        no++;
-                        listData += '<tr><td>'+no+'</td>'+
-                            '<td>'+getBulanName(e)+'</td>'+
-                            '<td id="tahun'+bulanBaru+''+tahun[0]+'">'+tahun[0]+'</td>'+
-                            '<td id="netProfit'+bulanBaru+''+tahun[0]+'">'+getDetail(emiten_id, bulanBaru, tahun[0], bulanBaru+''+tahun[0])+'</td></tr>';
                     });
                     $("#loadDataDividen").html(listData);
                 }
@@ -229,7 +250,6 @@
                     let net_profit = "-";
                     if (res.data != null) {
                         net_profit = res.data.net_profit;
-                        totalNetProfit = totalNetProfit + parseInt(res.data.net_profit);
                         $("#netProfit" + idLabel).html(formatRupiah(net_profit));
                     } else {
                         $("#netProfit" + idLabel).html("-");
@@ -247,29 +267,20 @@
                     emiten_id: emiten_id
                 },
                 success: function(res) {
-                    let dividen = 0;
-                    let penawaranSaham = 0;
-                    yielDividen = 0;
                     if(res.avg_general_share_amount != null){
                         dividen = parseInt(res.avg_general_share_amount);
                     }
                     if(res.avg_capital_needs != null){
                         penawaranSaham = parseInt(res.avg_capital_needs);
                     }
+
+                    totalNetProfit = parseInt(res.totalNetProfit)
                     $("#totalNetProfit").html(formatRupiah(res.totalNetProfit));
                     
-                    hitungData(0, dividen, parseInt(res.totalNetProfit), penawaranSaham, yielDividen);
+                    hitungData(0, dividen, totalNetProfit, penawaranSaham, yielDividen);
                 }
             });
         }
-
-        $('#yearpicker').yearpicker({
-            onShow: null,
-            onHide: null,
-            onChange: function(value) {
-                tahun = value;
-            }
-        });
 
         function formatRupiah(angka) {
             const format = angka.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
@@ -277,16 +288,20 @@
         }
 
         $("#laba_ditahan").keyup(function(){
-            var labaDitahan = parseInt(this.value);
-            var dividen = parseInt($("#presentaseDividen").html());
-            var totalNetProfit = parseInt($("#totalNetProfit").html());
-            var penawaranSaham = parseInt($("#nilaiPenawaran").html());
+            var getLaba = this.value;
+            // getLaba.replaceAll('.', '');
+            // console.log(getLaba);
+            var labaDitahan = parseInt(getLaba);
             hitungData(labaDitahan, dividen, totalNetProfit, penawaranSaham, yielDividen);
         });
 
         function hitungData(labaDitahan, dividen, totalNetProfit, penawaranSaham, yielDividen) {
-            var totalAfterLaba = totalNetProfit - labaDitahan;
-            var totalPersen = dividen * totalAfterLaba / 100;
+            totalAfterLaba = totalNetProfit - labaDitahan;
+            totalPersen = dividen * totalAfterLaba / 100;
+            console.log("laba "+labaDitahan);
+            console.log("net "+totalNetProfit);
+            console.log("persen "+dividen)
+            console.log("dividen "+totalPersen);
             $("#presentaseDividen").html(dividen.toFixed(2));
             $("#habisPersen").html(formatRupiah(totalPersen));
             $("#dividenMasyarakat").html(formatRupiah(totalPersen));
@@ -356,6 +371,39 @@
             }
             return bulan;
         }
+
+        function sendEmail() {
+            Swal.fire({
+                title: "Konfirmasi ?",
+                text: "Pastikan perhitungan dividend telah sesuai dan benar !",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Ya Sudah Benar"
+            }).then(function(result) {
+                if (result.value) {
+                    $.ajax({
+                        url: '{{ url("admin/perhitungan-dividen/send-email") }}',
+                        type: 'POST',
+                        data: {
+                            emiten_id: emiten_id,
+                            dividend: totalPersen
+                        },
+                        beforeSend: function() {
+                            $("#loader").show();
+                        },
+                        success: function(result) {
+                            $("#loader").hide();
+                            Swal.fire(
+                                'Berhasil!',
+                                result.message,
+                                'success'
+                            );
+                        }
+                    });
+                }
+            });
+        }
+
     </script>
 @endsection
 @section('style')

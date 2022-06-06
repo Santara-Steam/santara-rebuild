@@ -310,7 +310,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 
     Route::get('/admin/perhitungan-dividen/list-tahap/{emitenId}', [App\Http\Controllers\PerhitunganDividenController::class, 'getTahapDividen']);
     Route::get('/admin/perhitungan-dividen/interval-periode', [App\Http\Controllers\PerhitunganDividenController::class, 'addIntervalPeriode']);
-    
+    Route::post('/admin/perhitungan-dividen/send-email', [App\Http\Controllers\PerhitunganDividenController::class, 'sendEmailNotif']);
     
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);

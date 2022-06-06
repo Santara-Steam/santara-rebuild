@@ -228,4 +228,19 @@ class PerhitunganDividenController extends Controller
         ]);
     }
 
+    public function sendEmailNotif(Request $request)
+    {
+        $emiten = emiten::join('traders as t', 't.id', '=', 'emitens.trader_id')
+            ->join('users as u', 'u.id', '=', 't.user_id')
+            ->where('emitens.id', $request->emiten_id)
+            ->select('u.email')
+            ->first();
+        $details = [
+            'subject' => 'Jumlah Dividen',
+            'dividend' => rupiahBiasa($request->dividend),
+        ];
+        \Mail::to($emiten->email)->send(new \App\Mail\NilaiDividen($details));
+        return response()->json(["code" => 200, "message" => "Berhasil mengirim pemberitahuan total dividend ke pemilik bisnis"]);
+    }
+
 }
