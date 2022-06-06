@@ -1399,6 +1399,8 @@
 @section('js')
     <script type="text/javascript" src="{{ asset('public') }}/app-assets/js/core/alert/sweetalert.min.js"></script>
     <script type='text/javascript'>
+
+       
         loadPopup();
         function loadPopup() {
             var popup = null;
@@ -1409,38 +1411,57 @@
                 success: function(result) {
                     popup = result.popup;
                     popup_image = popup.website_pict;
-
-                    Swal.fire({
-                        imageUrl: popup_image,
-                        imageAlt: 'Welcome Screen',
-                        animation: true,
-                        customClass: 'swal-welcome',
-                        showCancelButton: false,
-                        showConfirmButton: false,
-                        showCloseButton: true,
-                        onBeforeOpen: function(element) {
-                            $(element).find('button.swal2-confirm.swal2-styled').toggleClass(
-                                'swal2-confirm swal2-styled swal2-confirm btn btn-welcome')
-                        }
-                    }).then((result) => {
-                        // localStorage.setItem('popState', 'shown');
-                    });
-                    if (popup.website_url != null) {
-                        $(Swal.getImage()).on('click', function(ev) {
+                    var dateNow = new Date();
+                    var startDate = new Date(popup.start_date);
+                    var finishDate = new Date(popup.finish_date);
+                    var showConfirmButton = false;
+                    if(popup.action_text != ""){
+                        showConfirmButton = true;
+                    }
+                    if(dateNow.getTime() >= startDate.getTime() && dateNow.getTime() <= finishDate.getTime()){
+                        Swal.fire({
+                            imageUrl: popup_image,
+                            imageAlt: 'Welcome Screen',
+                            animation: true,
+                            customClass: 'swal-welcome',
+                            showCancelButton: false,
+                            showConfirmButton: showConfirmButton,
+                            confirmButtonText: popup.action_text,
+                            confirmButtonColor: '#FFFFFF',
+                            showCloseButton: true,
+                            onBeforeOpen: function(element) {
+                                $(element).find('button.swal2-confirm.swal2-styled').toggleClass(
+                                    'swal2-confirm swal2-styled swal2-confirm btn btn-welcome')
+                            }
+                        }).then((result) => {
                             // localStorage.setItem('popState', 'shown');
-
-                            // open new tab
-                            var a = document.createElement('a')
-                            a.href = popup.website_url
-                            a.target = '_blank'
-                            document.body.appendChild(a)
-                            a.click()
-                            document.body.removeChild(a)
-                            Swal.close()
-
-                            // window.open(popup.website_url,'_blank');
-                            // window.location = popup.website_url;
+                            if (result.isConfirmed) {
+                                var a = document.createElement('a')
+                                a.href = popup.website_url
+                                a.target = '_blank'
+                                document.body.appendChild(a)
+                                a.click()
+                                document.body.removeChild(a)
+                                Swal.close()
+                            }
                         });
+                        if (popup.website_url != null) {
+                            $(Swal.getImage()).on('click', function(ev) {
+                                // localStorage.setItem('popState', 'shown');
+    
+                                // open new tab
+                                var a = document.createElement('a')
+                                a.href = popup.website_url
+                                a.target = '_blank'
+                                document.body.appendChild(a)
+                                a.click()
+                                document.body.removeChild(a)
+                                Swal.close()
+    
+                                // window.open(popup.website_url,'_blank');
+                                // window.location = popup.website_url;
+                            });
+                        }
                     }
                 }
             });

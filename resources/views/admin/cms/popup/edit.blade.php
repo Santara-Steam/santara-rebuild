@@ -90,6 +90,11 @@
                                                             <label class="custom-file-label" for="customFile">Pilih
                                                                 Gambar</label>
                                                         </div>
+                                                        <div class="form-group pt-2">
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>    
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 1280 X 720 ( atau berlaku kelipatanya )</p>                            
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>                                                        
+                                                        </div>
                                                         <div class="preview">
                                                             <img id="file-ip-1-preview" src="{{ config('global.BASE_API_FILE').'/uploads/popup/'.$popup->website_pict }}">
                                                         </div>
@@ -104,6 +109,11 @@
                                                                 onchange="showPreview2(event);">
                                                             <label class="custom-file-label" for="customFile2">Pilih
                                                                 Gambar</label>
+                                                        </div>
+                                                        <div class="form-group pt-2">
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>    
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 300 x 400 ( atau berlaku kelipatanya )</p>                            
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>                                                                                    
                                                         </div>
                                                         <div class="preview">
                                                             <img id="file-ip-2-preview" src="{{ config('global.BASE_API_FILE').'/uploads/popup/'.$popup->mobile_pict }}" />

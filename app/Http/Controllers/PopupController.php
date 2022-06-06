@@ -214,7 +214,6 @@ class PopupController extends Controller
                 'multipart' => $data_array
             ]);
             
-            echo json_encode(['msg' => $response->getStatusCode()]);
             $code = $response->getStatusCode();
             if($code == 200){
                 $notif = array(
@@ -224,7 +223,7 @@ class PopupController extends Controller
             }else{
                 $notif = array(
                     'message' => 'Gagal mengubah popup',
-                    'alert-type' => 'alert'
+                    'alert-type' => 'danger'
                 );
             }
             return redirect('admin/cms/popup')->with($notif);
