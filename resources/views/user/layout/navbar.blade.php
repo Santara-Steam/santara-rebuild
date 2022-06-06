@@ -99,19 +99,37 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                     </a> --}}
                                     @foreach ($notif as $item)
                                     {{-- <a href="{{$item->action}}"> --}}
-                                        <div class="media">
-                                            <div class="media-left align-self-center"><i
-                                                    class="ft-mail icon-bg-circle bg-cyan bg-darken-1 mr-0"></i>
+                                        @if (strpos($item->action, ".com") !== false || strpos($item->action, "https:"))
+                                            <a href="{{ $item->action }}" target="_blank">
+                                                <div class="media">
+                                                    <div class="media-left align-self-center"><i
+                                                            class="ft-mail icon-bg-circle bg-cyan bg-darken-1 mr-0"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="media-heading darken-1 
+                                                        <?php echo ($item->is_deleted == 0? 'blue': '') ?>
+                                                        ">{{$item->title}}</h6>
+                                                        <p class="notification-text font-small-3 text-muted">{{$item->message}}</p><small>
+                                                            <time class="media-meta text-muted"
+                                                                datetime="2015-06-11T18:29:20+08:00">{{$item->created_at->diffForHumans()}}</time></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @else 
+                                            <div class="media">
+                                                <div class="media-left align-self-center"><i
+                                                        class="ft-mail icon-bg-circle bg-cyan bg-darken-1 mr-0"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="media-heading darken-1 
+                                                    <?php echo ($item->is_deleted == 0? 'blue': '') ?>
+                                                    ">{{$item->title}}</h6>
+                                                    <p class="notification-text font-small-3 text-muted">{{$item->message}}</p><small>
+                                                        <time class="media-meta text-muted"
+                                                            datetime="2015-06-11T18:29:20+08:00">{{$item->created_at->diffForHumans()}}</time></small>
+                                                </div>
                                             </div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading darken-1 
-                                                <?php echo ($item->is_deleted == 0? 'blue': '') ?>
-                                                ">{{$item->title}}</h6>
-                                                <p class="notification-text font-small-3 text-muted">{{$item->message}}</p><small>
-                                                    <time class="media-meta text-muted"
-                                                        datetime="2015-06-11T18:29:20+08:00">{{$item->created_at->diffForHumans()}}</time></small>
-                                            </div>
-                                        </div>
+                                        @endif
                                     {{-- </a> --}}
                                     @endforeach
 

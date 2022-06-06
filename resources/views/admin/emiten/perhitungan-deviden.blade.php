@@ -74,7 +74,7 @@
                 <div class="modal-body">
                     <div class="col-4">
                         <div class="form-group">
-                            <label><strong>Tahap</strong></label>
+                            <label><strong>Periode</strong></label>
                             <select class="custom-select" onchange="pilihTahap()" id="tahap_dividen"></select>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                     var no = 0;
                     res.data.forEach(e => {
                         no++;
-                        tahaps += '<option value="'+e.devidend_date+'">Tahap '+no+' '+ (e.devidend_date == '' ? 'on going' : '' )+'</option>';
+                        tahaps += '<option value="'+e.devidend_date+'">Periode '+no+' '+ (e.devidend_date == '' ? 'on going' : '' )+'</option>';
                     });
                     $("#tahap_dividen").html(tahaps);
                 }

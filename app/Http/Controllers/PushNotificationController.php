@@ -273,7 +273,7 @@ class PushNotificationController extends Controller
         for($i = 0; $i < count($userId); $i++){
             $notif = new notification();
             $notif->uuid = \Str::uuid();
-            $notif->action = $request->broadcastCategoryName;
+            $notif->action = $request->redirection;
             $notif->user_id = $userId[$i];
             //$notif->user_id = 190382;
             $notif->message = $request->message;
