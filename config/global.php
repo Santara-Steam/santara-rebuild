@@ -15,11 +15,13 @@ if (env('CONFIG_ENV') == 'dev') {
     "STORAGE_GOOGLE_BUCKET2" => "santara-bucket-staging",
     "STORAGE_BUCKET" => "https://storage.googleapis.com/asset-bucket-staging/",
     "STORAGE_BUCKET2" => "https://storage.googleapis.com/santara-bucket-staging/",
-    "CONFIG_ENV_GLOBAL" => "DEV"
+    "CONFIG_ENV_GLOBAL" => "DEV",
+    "SANTARA_CHAT_API_BASE_URL"=> env('SANTARA_CHAT_API_BASE_URL', 'https://santara-chatgroup-fdmrjqphea-et.a.run.app')
+
 ];
 }else{
 
-    
+
     // Production
 return [
     "API_ADMIN_VERSION" => "v3.7.1/",
@@ -33,6 +35,8 @@ return [
     "STORAGE_GOOGLE_BUCKET2" => "santara-bucket-prod",
     "STORAGE_BUCKET" => "https://storage.googleapis.com/asset-bucket-prod/",
     "STORAGE_BUCKET2" => "https://storage.googleapis.com/santara-bucket-prod/",
-    "CONFIG_ENV_GLOBAL" => "PRODUCTION"
+    "CONFIG_ENV_GLOBAL" => "PRODUCTION",
+    "SANTARA_CHAT_API_BASE_URL"=> env('SANTARA_CHAT_API_BASE_URL', 'https://santara-chatgroup-fdmrjqphea-et.a.run.app')
+
 ];
 }
