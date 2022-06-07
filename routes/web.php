@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\SsoController;
+use App\Http\Controllers\SsoController;
 use App\Http\Controllers\ChatGroupController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
