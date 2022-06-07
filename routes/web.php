@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\SsoController;
+use App\Http\Controllers\ChatGroupController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,31 +27,20 @@ use App\Http\Controllers\Front_end\ErrorPageController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+ Route::get('/sss', function () {
+     dd(session()->all());
+     return view('welcome');
+ });
 
 // Auth::routes();
 Auth::routes(['verify' => true]);
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
 Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], function () {
 
-    Route::get('/user/sso' , function (){
-
-        $session = request()->session()->all();
-
-        $query = base64_encode(json_encode($session));
-
-        $response = json_decode(Http::get(config('global.SANTARA_CHAT_API_BASE_URL') . '/api/sso', $query)->body(), true);
-
-        if (isset($response['success']) && $response['success']) {
-            return redirect()->away(config('global.SANTARA_CHAT_API_BASE_URL') . '/api/sso');
-        } else {
-            return redirect()->back();
-        }
-    });
+    Route::get('/user/sso' ,[SsoController::class, 'sso']);
 
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
 
@@ -71,7 +64,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
     Route::get('/edit_profile/{id}',[App\Http\Controllers\TraderController::class, 'edit_profile']);
     Route::post('/update_profile/{id}',[App\Http\Controllers\TraderController::class, 'update_profile']);
 
-    Route::get('/user/portfolio',[App\Http\Controllers\TraderController::class, 'portofolio']);
+    Route::get('/user/portfolio',[App\Http\Controllers\TraderController::class, 'portofolio'])->name('user.portofolio');
     Route::get('/user/deviden',[App\Http\Controllers\TraderController::class, 'user_deviden']);
     Route::get('/user/riwayat_aktifitas',[App\Http\Controllers\TraderController::class, 'history']);
     Route::get('/user/video_tutorial',[App\Http\Controllers\TraderController::class, 'video']);
@@ -95,6 +88,11 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
 
     Route::get('/secondary_market', [App\Http\Controllers\TraderController::class, 'secmar']);
 
+    Route::group(['middleware' => 'haveEmiten'], function (){
+        Route::get('/user/group-chat', [ChatGroupController::class, 'getChatsByEmiten'])
+            ->name('getChatsGroup');
+    });
+
 });
 
 Route::get('pin',[App\Http\Controllers\TraderController::class, 'pinv'])->name('pinv');
@@ -103,6 +101,7 @@ Route::get('pin_reset',[App\Http\Controllers\TraderController::class, 'pin_reset
 Route::post('pin_reset_post',[App\Http\Controllers\TraderController::class, 'pin_reset_post']);
 Route::get('/login/verify_email/{uuid}',[App\Http\Controllers\TraderController::class, 'email_verify']);
 Route::get('/user/forgot-password/reset/{token}', [App\Http\Controllers\TraderController::class, 'mobile_reset']);
+
 
 Route::get('/upload_transfer/{id}',[App\Http\Controllers\BookSahamController::class, 'pay']);
 Route::post('/upload_bukti_user/{id}', [App\Http\Controllers\BookSahamController::class, 'upload_bukti_user']);
@@ -313,28 +312,12 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/crm/fetch-user-email', [App\Http\Controllers\MemberController::class, 'fetchEmailUser']);
     Route::get('/admin/penerbit/sum-net-profit', [App\Http\Controllers\PerhitunganDividenController::class, 'sumNetProfitData']);
 
-    Route::get('/admin/withdraw/update/{uuid}/{status}', [App\Http\Controllers\WithdrawController::class, 'update']);
-    Route::get('/admin/withdraw/reject/{uuid}/{status}/{ket}', [App\Http\Controllers\WithdrawController::class, 'reject']);
-
-    Route::post('/admin/dividen/verifikasi', [App\Http\Controllers\DevidenController::class, 'verifikasi']);
-    Route::post('/admin/dividen/reject', [App\Http\Controllers\DevidenController::class, 'reject']);
-
-    Route::get('/admin/add_date_45', [App\Http\Controllers\EmitenController::class, 'addDate45']);
-
-    Route::get('/admin/kyc-bisnis/konfirmasi/{uuid}', [App\Http\Controllers\KycBisnisController::class, 'konfirmasi']);
-    Route::post('/admin/kyc-bisnis/confirm_url', [App\Http\Controllers\KycBisnisController::class, 'confirm']);
-
-    Route::get('/admin/perhitungan-dividen/list-tahap/{emitenId}', [App\Http\Controllers\PerhitunganDividenController::class, 'getTahapDividen']);
-    Route::get('/admin/perhitungan-dividen/interval-periode', [App\Http\Controllers\PerhitunganDividenController::class, 'addIntervalPeriode']);
-    Route::post('/admin/perhitungan-dividen/send-email', [App\Http\Controllers\PerhitunganDividenController::class, 'sendEmailNotif']);
-
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/pesan_saham/store_user',[App\Http\Controllers\BookSahamController::class, 'store_user']);
 
-Route::get('/home/popup', [HomeController::class, 'popup']);
 
 
 
