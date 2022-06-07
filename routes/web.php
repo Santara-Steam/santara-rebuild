@@ -33,8 +33,24 @@ Auth::routes(['verify' => true]);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
 Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], function () {
+
+    Route::get('/user/sso' , function (){
+
+        $session = request()->session()->all();
+
+        $query = base64_encode(json_encode($session));
+
+        $response = json_decode(Http::get(config('global.SANTARA_CHAT_API_BASE_URL') . '/api/sso', $query)->body(), true);
+
+        if (isset($response['success']) && $response['success']) {
+            return redirect()->away(config('global.SANTARA_CHAT_API_BASE_URL') . '/api/sso');
+        } else {
+            return redirect()->back();
+        }
+    });
+
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
-    
+
     Route::get('/user/emiten', [App\Http\Controllers\EmitenController::class, 'index_user']);
     Route::get('/user/bisnis_anda', [App\Http\Controllers\EmitenController::class, 'user_emiten']);
     Route::get('/user/pesan_saham', [App\Http\Controllers\BookSahamController::class, 'index_user']);
@@ -54,14 +70,14 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
 
     Route::get('/edit_profile/{id}',[App\Http\Controllers\TraderController::class, 'edit_profile']);
     Route::post('/update_profile/{id}',[App\Http\Controllers\TraderController::class, 'update_profile']);
-    
+
     Route::get('/user/portfolio',[App\Http\Controllers\TraderController::class, 'portofolio']);
     Route::get('/user/deviden',[App\Http\Controllers\TraderController::class, 'user_deviden']);
     Route::get('/user/riwayat_aktifitas',[App\Http\Controllers\TraderController::class, 'history']);
     Route::get('/user/video_tutorial',[App\Http\Controllers\TraderController::class, 'video']);
     Route::get('/results', [App\Http\Controllers\TraderController::class, 'results'])->name('results');
     Route::get('/watch/{id}', [App\Http\Controllers\TraderController::class, 'watch'])->name('watch');
-    
+
     Route::post('/user/read',[App\Http\Controllers\TraderController::class, 'read_message']);
     Route::post('/user/add_bank',[App\Http\Controllers\TraderController::class, 'add_bank']);
     Route::post('/pin_check',[App\Http\Controllers\TraderController::class, 'pin_check']);
@@ -78,7 +94,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
     Route::get('/user/get-regency', [App\Http\Controllers\AddressController::class, 'usergetRegency']);
 
     Route::get('/secondary_market', [App\Http\Controllers\TraderController::class, 'secmar']);
-    
+
 });
 
 Route::get('pin',[App\Http\Controllers\TraderController::class, 'pinv'])->name('pinv');
@@ -100,27 +116,27 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/emiten/delete/{id}',[App\Http\Controllers\EmitenController::class, 'delete']);
     Route::post('/emiten/update_status/{id}',[App\Http\Controllers\EmitenController::class, 'emiten_status']);
     Route::get('/emiten/fetch-emiten',[App\Http\Controllers\EmitenController::class, 'fetchEmiten']);
-    
+
     Route::get('/admin/pesan_saham', [App\Http\Controllers\BookSahamController::class, 'index']);
     Route::get('/admin/pesan_saham/add', [App\Http\Controllers\BookSahamController::class, 'create']);
     Route::post('/pesan_saham/store',[App\Http\Controllers\BookSahamController::class, 'store']);
     Route::get('/admin/pesan_saham/detail/{id}', [App\Http\Controllers\BookSahamController::class, 'detail']);
     Route::post('/admin/pesan_saham/approve/{id}', [App\Http\Controllers\BookSahamController::class, 'approve']);
     Route::post('/admin/pesan_saham/reject/{id}', [App\Http\Controllers\BookSahamController::class, 'reject']);
-    
+
     Route::get('/admin/transactions', [App\Http\Controllers\TransactionsController::class, 'index']);
     Route::get('/admin/get_transactions', [App\Http\Controllers\TransactionsController::class, 'fetchData']);
     Route::get('/admin/transaction/detail/{uuid}/{status}', [App\Http\Controllers\TransactionsController::class, 'detail']);
     Route::get('/admin/transaction/confirm/{uuid}', [App\Http\Controllers\TransactionsController::class, 'confirm']);
     Route::get('/admin/transaction/cancel_confirm/{uuid}', [App\Http\Controllers\TransactionsController::class, 'cancelConfirm']);
     Route::post('/admin/transaction/delete_transaction', [App\Http\Controllers\TransactionsController::class, 'deleteTransaction']);
-    
+
     Route::get('/admin/withdraw', [App\Http\Controllers\WithdrawController::class, 'index']);
     Route::get('/admin/get_withdraw', [App\Http\Controllers\WithdrawController::class, 'fetchData']);
 
     Route::get('/admin/deposit', [App\Http\Controllers\DepositController::class, 'admin_deposit']);
     Route::get('/admin/get_deposit', [App\Http\Controllers\DepositController::class, 'fetchDataAdminDeposit']);
-    
+
     Route::get('/admin/dividen', [App\Http\Controllers\DevidenController::class, 'index']);
     Route::get('/admin/get_dividen', [App\Http\Controllers\DevidenController::class, 'fetchData']);
     Route::get('/admin/detail_dividen', [App\Http\Controllers\DevidenController::class, 'detail']);
@@ -136,7 +152,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'index']);
     Route::post('/admin/get-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'getLaporanKeuangan']);
     Route::post('/admin/konfirmasi-laporan-keuangan', [App\Http\Controllers\LaporanKeuanganController::class, 'confirmLaporan']);
-    
+
     Route::get('/admin/crm/target-user', [App\Http\Controllers\CRMController::class, 'viewTargetUser']);
     Route::post('/admin/crm/get-target-user', [App\Http\Controllers\CRMController::class, 'getListUserTarget']);
     Route::get('/admin/crm/add-broadcasting/{id}', [App\Http\Controllers\CRMController::class, 'addBroadcasting']);
@@ -157,14 +173,14 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/crm/save-publish', [App\Http\Controllers\CRMController::class, 'savePublish']);
     Route::get('/admin/crm/get-category', [App\Http\Controllers\CRMController::class, 'getCategories']);
     Route::get('/admin/crm/detail-broadcasting/{id}', [App\Http\Controllers\CRMController::class, 'detailPreviewBroadcast']);
-    
+
     Route::get('/admin/get-provinsi', [App\Http\Controllers\AddressController::class, 'getProvince']);
     Route::get('/admin/get-regency', [App\Http\Controllers\AddressController::class, 'getRegency']);
 
     Route::get('/admin/get-push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'pushNotif']);
     Route::get('/admin/push-notif/{id}', [App\Http\Controllers\PushNotificationController::class, 'index']);
     Route::post('/admin/broadcast-notif', [App\Http\Controllers\PushNotificationController::class, 'broadcastNotif']);
-    
+
     Route::post('/admin/broadcast-email', [App\Http\Controllers\PushNotificationController::class, 'broadcastEmail']);
 
     Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, 'index']);
@@ -198,7 +214,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/cms/testimoni/edit/{id}', [App\Http\Controllers\SuccessStoriesController::class, 'edit']);
     Route::post('/admin/cms/testimoni/update/{id}', [App\Http\Controllers\SuccessStoriesController::class, 'update']);
     Route::post('/admin/cms/testimoni/delete/{id}', [App\Http\Controllers\SuccessStoriesController::class, 'destroy']);
-    
+
     Route::get('/admin/cms/supporter', [App\Http\Controllers\SupportersController::class, 'index']);
     Route::get('/admin/cms/supporter/create', [App\Http\Controllers\SupportersController::class, 'create']);
     Route::post('/admin/cms/supporter/store', [App\Http\Controllers\SupportersController::class, 'store']);
@@ -259,7 +275,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::post('/admin/pralisting/verified-bisnis', [App\Http\Controllers\PralistingController::class, 'verifiedEmitenBisnis']);
     Route::get('/admin/pralisting/flag-now-playing', [App\Http\Controllers\PralistingController::class, 'flagNowPlaying']);
     Route::get('/admin/pralisting/export-calon-penerbit', [App\Http\Controllers\PralistingController::class, 'exportCalonPenerbit']);
-    
+
     Route::get('/admin/member-trader', [App\Http\Controllers\MemberController::class, 'index']);
     Route::get('/admin/member-trader/fetch-data', [App\Http\Controllers\MemberController::class, 'fetchData']);
     Route::get('/admin/member-trader/fetch-portofolio/{userId}', [App\Http\Controllers\MemberController::class, 'portofolio']);
@@ -276,7 +292,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
 
     Route::get('/admin/penerbit/perhitungan-dividen', [App\Http\Controllers\PerhitunganDividenController::class, 'index']);
     Route::get('/admin/penerbit/perhitungan-detail', [App\Http\Controllers\PerhitunganDividenController::class, 'detailData']);
-    
+
     Route::get('/admin/kyc/individu/summary-kyc', [App\Http\Controllers\KycController::class, 'summaryKYC']);
     Route::get('/admin/kyc/individu/belum-kyc', [App\Http\Controllers\KycController::class, 'belumKYC']);
     Route::get('/admin/kyc/fetch-belum-kyc', [App\Http\Controllers\KycController::class, 'fetchDataBelumKYC']);
@@ -288,18 +304,18 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/kyc/fetch-data-ditolak-kyc', [App\Http\Controllers\KycController::class, 'fetchDataTolakKYC']);
     Route::get('/admin/kyc/individu/terverifikasi-kyc', [App\Http\Controllers\KycController::class, 'terverifikasiKYC']);
     Route::get('/admin/kyc/fetch-data-terverifikasi-kyc', [App\Http\Controllers\KycController::class, 'fetchDataTerverifikasiKYC']);
-    
+
     Route::get('/admin/member-trader/{userid}', [App\Http\Controllers\MemberController::class, 'detailTrader']);
 
     Route::get('/admin/emiten/pemberitahuan-dividen', [App\Http\Controllers\NotifDividenController::class, 'index']);
     Route::get('/admin/emiten/pemberitahuan-dividen/{id}', [App\Http\Controllers\NotifDividenController::class, 'sendNotif']);
-    
+
     Route::get('/admin/crm/fetch-user-email', [App\Http\Controllers\MemberController::class, 'fetchEmailUser']);
     Route::get('/admin/penerbit/sum-net-profit', [App\Http\Controllers\PerhitunganDividenController::class, 'sumNetProfitData']);
-    
+
     Route::get('/admin/withdraw/update/{uuid}/{status}', [App\Http\Controllers\WithdrawController::class, 'update']);
     Route::get('/admin/withdraw/reject/{uuid}/{status}/{ket}', [App\Http\Controllers\WithdrawController::class, 'reject']);
-    
+
     Route::post('/admin/dividen/verifikasi', [App\Http\Controllers\DevidenController::class, 'verifikasi']);
     Route::post('/admin/dividen/reject', [App\Http\Controllers\DevidenController::class, 'reject']);
 
@@ -311,7 +327,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1', "verified"]], function () 
     Route::get('/admin/perhitungan-dividen/list-tahap/{emitenId}', [App\Http\Controllers\PerhitunganDividenController::class, 'getTahapDividen']);
     Route::get('/admin/perhitungan-dividen/interval-periode', [App\Http\Controllers\PerhitunganDividenController::class, 'addIntervalPeriode']);
     Route::post('/admin/perhitungan-dividen/send-email', [App\Http\Controllers\PerhitunganDividenController::class, 'sendEmailNotif']);
-    
+
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 Route::get('/home', [HomeController::class, 'index']);
