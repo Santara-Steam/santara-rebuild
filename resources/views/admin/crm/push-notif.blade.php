@@ -43,6 +43,7 @@
                                         <input class="form-control" name="userId" id="userId" type="hidden" />
                                         <input class="form-control" name="namaBroadcast" id="namaBroadcast" type="hidden" value="{{ $namaBroadcast }}" />
                                         <input class="form-control" name="email" id="email" type="hidden" />
+                                        <input class="form-control" name="namaTrader" id="namaTrader" type="hidden" />
                                         <button class="btn btn-primary" id="btnPushNotif" type="submit">Kirim <i
                                                 class="la la-bell"></i></button>
                                         <button class="btn btn-warning" id="btnPushNotifEmail" type="submit">Kirim Broadcast Email <i
@@ -81,6 +82,7 @@
         loadData('{{ Request::get("page") }}');
         var dataUserId = [];
         var emailUser = [];
+        var namaUsers = [];
 
         function loadData(page) {
             $.ajax({
@@ -98,8 +100,12 @@
                     res.results.data.forEach(row => {
                         emailUser.push(row['email']);
                     });
+                    res.results.data.forEach(row => {
+                        namaUsers.push(row['name']);
+                    });
                     $("#userId").val(dataUserId);
                     $("#email").val(emailUser);
+                    $("#namaTrader").val(namaUsers);
                     $("#totalUser").html(res.results.total);
                     var stringPaginate = "";
                     res.results.links.forEach(row => {

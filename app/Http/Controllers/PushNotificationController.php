@@ -157,11 +157,12 @@ class PushNotificationController extends Controller
             $traders = trader::query();
 
             $traders->join('users as u', 'u.id', '=', 'traders.user_id')
-                ->join('jobs as j', 'j.trader_id', '=', 'traders.id')
+                ->leftJoin('jobs as j', 'j.trader_id', '=', 'traders.id')
                 ->leftJoin('trader_banks as tb', 'tb.trader_id', 'traders.id')
                 ->leftJoin('deposits as depo', 'depo.trader_id', '=', 'traders.id')
                 ->leftJoin('transactions as tr', 'tr.trader_id', '=', 'traders.id');
             $traders->select('traders.user_id', 'traders.birth_date', 'depo.amount', 'tr.amount as amo', 'u.email',
+                    'traders.name',
                     'j.income', 'tr.trader_id', 'tr.is_deleted', 'tr.last_status', \DB::raw('SUM(tr.amount) as total'));
             // $traders->select('traders.user_id');
             $traders->where('traders.is_deleted', 0);
@@ -264,19 +265,27 @@ class PushNotificationController extends Controller
             $traders->groupBy('traders.user_id');
             $traders->orderBy('traders.user_id', 'ASC');
             $results = $traders->paginate($this->limit);
-        return response()->json(["results" => $results]);
+        return response()->json(["results" => $results, "email" => $listEmail[0]]);
     }
 
     public function broadcastNotif(Request $request)
     {
         $userId = explode(",", $request->userId);
+        $traderNames = explode(",", $request->namaTrader);
         for($i = 0; $i < count($userId); $i++){
+            $message = "";
+            if(strpos($request->message, "@call @user") !== false){
+                $message = str_replace("@call @user",  $traderNames[$i], $request->message);
+            } else{
+                $message = $request->message;
+            }
+
             $notif = new notification();
             $notif->uuid = \Str::uuid();
             $notif->action = $request->redirection;
             $notif->user_id = $userId[$i];
             //$notif->user_id = 190382;
-            $notif->message = $request->message;
+            $notif->message = $message;
             $notif->title = $request->title;
             $notif->created_at = Carbon::now();
             $notif->updated_at = Carbon::now();
@@ -339,10 +348,17 @@ class PushNotificationController extends Controller
     public function broadcastEmail(Request $request)
     {
         $email = explode(",", $request->email);
+        $traderNames = explode(",", $request->namaTrader);
         for($i = 0; $i < count($email); $i++){
+            $message = "";
+            if(strpos($request->message, "@call @user") !== false){
+                $message = str_replace("@call @user",  $traderNames[$i], $request->message);
+            } else{
+                $message = $request->message;
+            }
             $details = [
                 'title' => $request->title,
-                'body' => $request->message,
+                'body' => $message,
                 'image' => $request->image,
                 'redirection' => $request->redirection,
                 'subject' => $request->namaBroadcast
