@@ -751,9 +751,9 @@
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> --}}
 {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
-<link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('new-santara/css/style.css?v=5.8.8') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('new-santara/css/login.css?v=5.8.8') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('new-santara/bootstrap/css/bootstrap.css') }}">
 
 @endsection
 @section('js')
@@ -808,7 +808,7 @@ $('#crop').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -887,7 +887,7 @@ $('#crop2').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -961,7 +961,7 @@ $('#crop3').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -1037,7 +1037,7 @@ $('#crop4').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -1112,7 +1112,7 @@ $('#crop5').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -1187,7 +1187,7 @@ $('#crop6').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -1224,7 +1224,7 @@ $('#crop6').click(function(){
 });
 
 </script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
 <script>
     $("#asd").on("click", function () {
 

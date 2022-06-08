@@ -15,7 +15,7 @@
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -82,8 +82,8 @@
 </div>
 @endsection
 @section('js')
-<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script>
     $(document).ready(function() {
         $('#tabel').DataTable({
@@ -93,6 +93,6 @@
 </script>
 @endsection
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 
 @endsection

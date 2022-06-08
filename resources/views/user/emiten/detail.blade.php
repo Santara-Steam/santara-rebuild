@@ -10,7 +10,7 @@
             <section id="configuration">
 
                 <div class="match-height">
-                    
+
                     <link rel="stylesheet" type="text/css"
                         href="https://old.santara.co.id/assets/css/member/penerbit.css?v=5.8.8">
 
@@ -18,7 +18,7 @@
                         <div class="card-content">
                             <div class="card-body">
                                 <div class="card-content row m-0">
-                                    
+
                                     <div class="col-md-2 p-0">
                                         <img class="penerbit-detail-item-img lazyload img-fluid"
                                             src="<?= $emiten->pictures[0]->picture; ?>"
@@ -62,7 +62,7 @@
                                                 </b></h3>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -535,7 +535,7 @@
 <div class="card-content">
     <div class="card-body">
         <?php if($data == null) : ?>
-        <div class="card-content m-0">   
+        <div class="card-content m-0">
             <div class="alert alert-info-dashboard penerbit-info-report col-md-12">
                 <h4><b>Anda belum memasukan rencana penggunaan dana.</b></h4>
                 <p>Segera buat rencana penggunaan dana.</p>
@@ -565,7 +565,7 @@
         <form id="formSubmitPlan" enctype="multipart/form-data">
         <input type="hidden" id="emiten_uuid" name="emiten_uuid" value="<?= $uuid; ?>"/>
 
-        <div class="card-content m-0">  
+        <div class="card-content m-0">
             <div class="col-md-12">
 
                 <?php if ($data == null) : ?>
@@ -575,16 +575,16 @@
                 <div class="row">
                 <ul id="tab-list" class="nav nav-tabs" role="tablist" style="border-radius: unset;">
                     <li class="nav-item active">
-                        <a class="nav-link tab-penerbit-detail active" 
-                            id="profil-tab" data-toggle="tab" href="#tab1" 
-                            role="tab" aria-controls="tab" aria-selected="true" > 
+                        <a class="nav-link tab-penerbit-detail active"
+                            id="profil-tab" data-toggle="tab" href="#tab1"
+                            role="tab" aria-controls="tab" aria-selected="true" >
                             <div><b>nama rencana <button class="close" type="button" title="Remove this page">×</button> </b></div>
                             <div style="line-height:1;">
                                 <div><small>Subtotal</small></div>
                                 <div>Rp. 0</div>
                             </div>
                         </a>
-                    </li>                
+                    </li>
                 </ul>
                 <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="la la-plus-square"></i></button>
                 </div>
@@ -595,7 +595,7 @@
                         <div class="row my-2">
                             <div class="form-group col-md-4">
                                 <label>Nama Rencana</label>
-                                <input type="text" class="form-control" name="list_fund_plans[1][name]" maxlength="40" 
+                                <input type="text" class="form-control" name="list_fund_plans[1][name]" maxlength="40"
                                     placeholder="Masukan nama rencana"/>
                             </div>
                         </div>
@@ -610,7 +610,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr id='rencana_addr_1_1'></tr>                          
+                                    <tr id='rencana_addr_1_1'></tr>
                                 </tbody>
                                 </table>
                                 <div class="justify-content-between row col-12">
@@ -636,9 +636,9 @@
                     <?php if( $data['list_fund_plans'] ) : ?>
                     <?php foreach($data['list_fund_plans'] as $key => $value): ?>
                         <li class="nav-item <?= ($key == 0 ) ? 'active' : ''?> ">
-                        <a class="nav-link tab-penerbit-detail <?= ($key == 0 ) ? 'active' : ''?>" 
-                            id="profil-tab" data-toggle="tab" href="#tab<?= $key ?>" 
-                            role="tab" aria-controls="tab" aria-selected="true" > 
+                        <a class="nav-link tab-penerbit-detail <?= ($key == 0 ) ? 'active' : ''?>"
+                            id="profil-tab" data-toggle="tab" href="#tab<?= $key ?>"
+                            role="tab" aria-controls="tab" aria-selected="true" >
                             <div><b><?= $value['name'] ?> <button class="close" type="button" title="Remove this page">×</button> </b></div>
                             <div style="line-height:1;">
                                 <div><small>Subtotal</small></div>
@@ -677,7 +677,7 @@
                                     </thead>
                                     <tbody>
 
-                                        <?php 
+                                        <?php
                                         $no = 0;
                                         foreach($value['sublist'] as $k => $v) : ?>
                                         <tr id='rencana_addr_<?= $key; ?>_<?= $k; ?>'>
@@ -689,11 +689,11 @@
                                             </td>
                                             <td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("<?= $key ?>","<?= $k ?>")'><i class='la la-times'></i></a></td>
                                         </tr>
-                                        
-                                        <?php 
+
+                                        <?php
                                         $no = $k + 1;
                                         endforeach; ?>
-                                        <tr id='rencana_addr_<?= $key; ?>_<?= $no; ?>'></tr>                          
+                                        <tr id='rencana_addr_<?= $key; ?>_<?= $no; ?>'></tr>
                                     </tbody>
                                     </table>
                                     <div class="justify-content-between row col-12">
@@ -710,13 +710,13 @@
                             </div>
                         </div>
                         <?php endforeach; ?>
-                        <?php endif; ?>               
-                    </div>     
+                        <?php endif; ?>
+                    </div>
                 <?php endif; ?>
 
-            </div>            
+            </div>
         </div>
-        <div class="card-content mt-2">  
+        <div class="card-content mt-2">
             <div class="row">
                 <div class="text-left col-md-6 mb-1">
                     <a class="btn btn-santara-white btn-block" href="javascript:window.history.go(-1);">Kembali</a>
@@ -724,7 +724,7 @@
                 <div class="text-right col-md-6 mb-1">
                     <button type="button" class="btn btn-santara-red btn-block"  onClick="submitPlan('<?= $type ?>')">Simpan</button>
                 </div>
-            </div>          
+            </div>
         </div>
         </form>
     </div>
@@ -741,7 +741,7 @@
                     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
                     <script src="https://old.santara.co.id/assets/js/member/penerbit.js?v=5.8.8"></script>
-                   
+
                 </div>
             </section>
         </div>
@@ -750,8 +750,8 @@
 
 @endsection
 @section('js')
-<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
     integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -762,11 +762,11 @@
             document.getElementById("status_desc").innerHTML = val;
             $("#modalDesc").modal("show");
         };
-        
+
         $(document).ready(function(){
             var uuid = document.getElementById('uuid').value;
-        
-        
+
+
             $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
                 return {
                     "iStart": oSettings._iDisplayStart,
@@ -778,7 +778,7 @@
                     "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
                 };
             };
-        
+
             var table = $("#datatable").DataTable({
                 buttons: [
                     'print', 'csv'
@@ -795,7 +795,7 @@
                 },
                 search: {
                     "caseInsensitive": false
-                },                            
+                },
                 scrollX: true,
                 oLanguage: {
                     sProcessing: '<div id="tableloading" class="tableloading"></div>',
@@ -822,17 +822,17 @@
                     var index = page * length + (iDisplayIndex + 1);
                     $('td:eq(0)', row).html(index);
                 }
-            });    
-            
+            });
+
             $('#filter').change(function(){
                 table.draw();
-            });        
-        
+            });
+
             $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
                 table.columns.adjust().oScroller.fnMeasure();
-            });                   
+            });
         });
-        
+
         function getlastReport(uuid) {
     $.ajax({
         url: "{{url('user/laporan-keuangan/getLastReport/')}}/"+uuid,
@@ -907,15 +907,15 @@ function deleteReport(id, uuid){
                 data: data,
                 success: function(data) {
                     $("#loader").hide();
-                    const anchor = window.location.hash;                        
+                    const anchor = window.location.hash;
 
                     data = JSON.parse(data);
                     if (data.msg == 200) {
                         Swal.fire("Success!", 'Data berhasil dihapus.', "success").then((result) => {
-                            location.reload();                    
+                            location.reload();
                         });
                     }else{
-                        Swal.fire("Error!", "Data gagal dihapus!", "error");    
+                        Swal.fire("Error!", "Data gagal dihapus!", "error");
                     }
                 },
                 error: function(msg) {
@@ -924,33 +924,33 @@ function deleteReport(id, uuid){
                 }
             });
         }
-    })    
+    })
 
     return true;
 }
-        
+
 </script>
 
 <script>
     var button='<button class="close" type="button" title="Remove this page">×</button>';
-    
+
     var tab_obj = {};
-    $(document).ready(function() {    
+    $(document).ready(function() {
         $('#tab-list').on('click', '.close', function() {
             var tabID = $(this).parents('a').attr('href');
             var trademark = $('#trademark').val();
             $(this).parents('li').remove();
             $(tabID).remove();
-    
+
             //display first tab
             var tabFirst = $('#tab-list a:first');
             // resetTab(trademark);
             tabFirst.tab('show');
         });
-    
+
         var list = document.getElementById("tab-list");
-    });   
-    
+    });
+
     var tabID = document.getElementById("tabID").value;
     function resetTab(name){
         var tabs=$("#tab-list li:not(:first)");
@@ -966,16 +966,16 @@ function deleteReport(id, uuid){
         })
         tabID--;
     };
-    
+
     function addTabPlan() {
         tabID++;
-        tab_obj[tabID] = 0; 
-    
+        tab_obj[tabID] = 0;
+
         $('#tab-list').append($(`
         <li class="nav-item">
-            <a class="nav-link tab-penerbit-detail" 
-                id="profil-tab" data-toggle="tab" href="#tab${tabID}" 
-                role="tab" aria-controls="tab" aria-selected="true"> 
+            <a class="nav-link tab-penerbit-detail"
+                id="profil-tab" data-toggle="tab" href="#tab${tabID}"
+                role="tab" aria-controls="tab" aria-selected="true">
                 <div>nama rencana <button class="close" type="button" title="Remove this page">×</button> </div>
                 <div style="line-height:1;">
                     <div><small>Subtotal</small></div>
@@ -983,13 +983,13 @@ function deleteReport(id, uuid){
                 </div>
             </a>
         </li>`));
-            
+
         $('#tab-content').append($(`
         <div class="tab-pane row fade" id="tab${tabID}">
             <div class="row my-2">
                 <div class="form-group col-md-4">
                     <label>Nama Rencana</label>
-                    <input type="text" class="form-control" name="list_fund_plans[${tabID}][name]" maxlength="40" 
+                    <input type="text" class="form-control" name="list_fund_plans[${tabID}][name]" maxlength="40"
                         placeholder="Masukan nama rencana"/>
                 </div>
             </div>
@@ -1004,7 +1004,7 @@ function deleteReport(id, uuid){
                         </tr>
                     </thead>
                     <tbody>
-                        <tr id='rencana_addr_${tabID}_${tab_obj[tabID]}'></tr>                          
+                        <tr id='rencana_addr_${tabID}_${tab_obj[tabID]}'></tr>
                     </tbody>
                     </table>
                     <div class="justify-content-between row col-12">
@@ -1018,33 +1018,33 @@ function deleteReport(id, uuid){
                 <label>Deskripsi</label>
                 <textarea class="form-control required-form" rows="7" cols="50" name="list_fund_plans[${tabID}][desc]" id="deskripsi" placeholder="Tuliskan biografi singkat pemilik usaha"></textarea>
                 </div>
-            </div>   
+            </div>
         </div>`));
     };
-    
+
     function addReportPlan(tab_id,no) {
         if(!tab_obj.hasOwnProperty(tab_id)){
             tab_obj[tab_id] = no;
         }
         var tab_no = tab_obj[tab_id];
-        
+
         $('#rencana_addr_'+ tab_id +'_'+ tab_no).html(
             "<td width='55%'><input name='list_fund_plans["+ tab_id + "][sublist]["+ tab_no + "][desc]' type='text' class='form-control'/></td>" +
             "<td width='30%'><input name='list_fund_plans["+ tab_id + "][sublist]["+ tab_no + "][amount]' type='text' class='form-control amount_"+ tab_id +"' onkeyup='subTotal("+ tab_id + ")'/></td>" +
             "<td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("+ tab_id + "," + tab_no + ")'><i class='la la-times'></i></a></td>");
-    
+
         $('#tab_rencana_'+ tab_id).append('<tr id="rencana_addr_' + tab_id + '_' + (tab_no + 1) + '"></tr>');
         tab_obj[tab_id]++;
     };
-    
-    
+
+
     function removeReportPlan(tab_id,tab_no) {
         if (tab_no > 0) {
             $("#rencana_addr_" + tab_id + "_"  + tab_no).html('');
             subTotal(tab_id);
         }
     };
-    
+
     function submitPlan(type) {
         var form = '#formSubmitPlan';
         var data = $(form).serializeArray();
@@ -1075,7 +1075,7 @@ function deleteReport(id, uuid){
             }
         });
     };
-    
+
     function subTotal(tab_id) {
         var subtotal = 0;
         var valueArray = $('.amount_'+tab_id).map(function() {
@@ -1099,5 +1099,5 @@ function deleteReport(id, uuid){
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
-    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 @endsection

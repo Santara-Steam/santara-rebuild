@@ -132,7 +132,7 @@
                                                             <span id="bank_error" class="text-danger"></span>
                                                         </div>
                                                         <button type="submit"
-                                                            class="btn btn-santara-red btn-block 
+                                                            class="btn btn-santara-red btn-block
                                                             <?= (Auth::user()->is_verified == 1) ? 'submit-form-deposit' : 'disabled' ?>"
                                                             <?=(Auth::user()->is_verified == 1) ?
                                                             'id="sdp"' : '' ?> type="button">
@@ -528,7 +528,7 @@
                                         <div class="col-md-1" style="    line-height: 40px;
                                         text-align: center;">To</div>
                                         <div class="col-md-4">
-                                            
+
                                             <input type="date" name="end" class="form-control" placeholder="End Date">
                                         </div>
                                         <div class="col-md-3">
@@ -538,9 +538,9 @@
                                     </div>
                                 </div>
                             </form>
-                                
+
                             </div>
-                            
+
                             <div class="card-content">
                                 <div class="table-responsive" style="padding-right: 20px;
                                 padding-left: 20px;
@@ -575,8 +575,8 @@
                                                 <td>Rp. {{number_format($item->amount,0,',','.')}}</td>
                                                 <td>
                                                     @if ($item->DEPOSIT == 'DEPOSIT')
-                                                        
-                                                    
+
+
                                                     @if ($item->status == 0)
                                                                 <div class="font-menunggu-verifikasi"><b>Menunggu
                                                                         Verifikasi</b></div>
@@ -591,7 +591,7 @@
                                                                 <div class="font-menunggu-verifikasi"><b>Menunggu
                                                                         Verifikasi</b></div>
                                                                 @endif
-                                                    
+
                                                     @else
                                                     @if ($item->status == 0)
                                                     <div class="font-menunggu-verifikasi"><b>Menunggu Verifikasi</b></div>
@@ -603,7 +603,7 @@
                                                     @endif
                                                 </td>
                                             </tr>
-                                           
+
                                             @endforeach
 
                                         </tbody>
@@ -620,8 +620,8 @@
 @endsection
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js" integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/alert/sweetalert.min.js"></script>
 <script src="{{asset('public')}}/assets2/js/global.js?v=5.8.8"></script>
 <script>
@@ -804,7 +804,7 @@ $("#submitDeposit").click(function () {
 function depositProcess(dataDeposit) {
   Swal.fire({
     html: ` <div><img src="/assets/images/content/account/password.png" width="35%" alt="security token"></div>
-                <div class="mt-1"><b class="swal-popup-title">Masukan PIN Anda</b></div> 
+                <div class="mt-1"><b class="swal-popup-title">Masukan PIN Anda</b></div>
                 <div><p style="font-size: .9rem;">Masukan kode 6 angka security pin akun anda</p></div>
                 <p><span id="pin_error" class="text-danger" style="font-size:12px"></span></p>
                 <input type="password" class="form-control form-control-no-radius swal-popup-input" id="pin" onkeypress="return isNumberKey(event)" maxlength="6">`,
@@ -1098,10 +1098,10 @@ $("#submitWithdrawKYC").click(function () {
 
 $("#withdraw").click(function () {
 //   console.log('ok');
-    
+
     Swal.fire({
     html: `<div><img src="{{asset('public')}}/assets2/images/content/account/password.png" width="35%" alt="security token"></div>
-                <div class="mt-1"><b class="swal-popup-title">Masukan PIN Anda</b></div> 
+                <div class="mt-1"><b class="swal-popup-title">Masukan PIN Anda</b></div>
                 <div><p style="font-size: .9rem;">Masukan kode 6 angka security pin akun anda</p></div>
                 <p><span id="pin_error" class="text-danger" style="font-size:12px"></span></p>
                 <form class="form" id="penarikanc" action="{{url('/user/penarikan/create')}}"
@@ -1159,12 +1159,12 @@ $("#submitWithdraw").click(function () {
                 <td>Biaya Penarikan</td>
                 <td>:</td>
                 <td>${formatNumber(dataWithdraw.fee)}</td>
-              </tr>             
+              </tr>
               <tr>
                 <td>Terima Bersih</td>
                 <td>:</td>
                 <td>${formatNumber(dataWithdraw.total)}</td>
-              </tr>             
+              </tr>
             </tbody>
           </table>`,
     showCancelButton: true,
@@ -1180,7 +1180,7 @@ $("#submitWithdraw").click(function () {
 function withdrawProcess(dataWithdraw) {
   Swal.fire({
     html: ` <div><img src="/assets/images/content/account/password.png" width="35%" alt="security token"></div>
-                <div class="mt-1"><b class="swal-popup-title">Masukan PIN Anda</b></div> 
+                <div class="mt-1"><b class="swal-popup-title">Masukan PIN Anda</b></div>
                 <div><p style="font-size: .9rem;">Masukan kode 6 angka security pin akun anda</p></div>
                  <p><span id="pin_error" class="text-danger" style="font-size:12px"></span></p>
                 <input type="password" class="form-control form-control-no-radius swal-popup-input" id="pin" onkeypress="return isNumberKey(event)" maxlength="6">
@@ -1342,7 +1342,7 @@ function withdrawProcess(dataWithdraw) {
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ],
-            
+
         });
     });
     // $.fn.dataTable.ext.search.push(
@@ -1361,7 +1361,7 @@ function withdrawProcess(dataWithdraw) {
 @endsection
 @section('style')
 <link rel="stylesheet" type="text/css"
-    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 <link rel="stylesheet" type="text/css" href="{{asset('public')}}/app-assets/css/select2.min.css">
 <style>
     .bank-user {

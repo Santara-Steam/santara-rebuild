@@ -20,7 +20,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table" id="tabel"> 
+                                        <table class="table" id="tabel">
                                             <thead>
                                                 <tr>
                                                     {{-- <th>Owner</th> --}}
@@ -90,7 +90,7 @@
                     </div>
                     <div class="form-group">
                         <label for="start_date">Tanggal Mulai</label>
-                        <input type="datetime-local" class="form-control" name="start_date" onchange="getDate45('{{ $emiten[$i]['id'] }}')" 
+                        <input type="datetime-local" class="form-control" name="start_date" onchange="getDate45('{{ $emiten[$i]['id'] }}')"
                             id="start_date_{{ $emiten[$i]['id'] }}">
                     </div>
                     <div class="form-group">
@@ -109,8 +109,8 @@
 @endfor
 @endsection
 @section('js')
-<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $(document).ready(function() {
@@ -163,5 +163,5 @@ function getDate45(id){
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 @endsection

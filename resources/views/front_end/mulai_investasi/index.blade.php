@@ -15,10 +15,10 @@
                         >Investasi tidak perlu rumit, siapapun bisa berinvestasi.</span
                       >
                     </div>
-                    <div class="actions2"> 
+                    <div class="actions2">
                       @guest
                       <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('login') }}">Mulai Investasi</a>
-                          
+
                       @else
                       <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ url('/') }}">Mulai Investasi</a>
                       @endguest
@@ -27,7 +27,7 @@
                   <div class="col-lg-6 content-cinv-img" style="padding: 2rem; text-align: right;">
                     <img src="https://old.santara.co.id/assets/new-santara/img/Group 20563.png" class="responsive-img lazyload">
                   </div>
-                  
+
                 </div>
               </div>
           </div>
@@ -44,7 +44,7 @@
           </div>
           <div class="panduan-1">
             <div class="panduan-2">
-              <img class="image" src="{{ asset('public/assets/images/image-2@2x.png') }}" />
+              <img class="image" src="{{ asset('assets/images/image-2@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">1. Daftar ke Santara</span>
@@ -57,7 +57,7 @@
               </div>
             </div>
             <div class="panduan">
-              <img class="image" src="{{ asset('public/assets/images/image-3@2x.png') }}" />
+              <img class="image" src="{{ asset('assets/images/image-3@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">2. Lengkapi Profilmu</span>
@@ -71,7 +71,7 @@
               </div>
             </div>
             <div class="panduan">
-              <img class="image" src="{{ asset('public/assets/images/image-4@2x.png') }}" />
+              <img class="image" src="{{ asset('assets/images/image-4@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">3. Tunggu Verifikasi</span>
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="panduan">
-              <img class="image" src="{{ asset('public/assets/images/image-5@2x.png') }}" />
+              <img class="image" src="{{ asset('assets/images/image-5@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">4. Pilih Bisnis</span>
@@ -98,7 +98,7 @@
               </div>
             </div>
             <div class="panduan">
-              <img class="image" src="{{ asset('public/assets/images/image-6@2x.png') }}" />
+              <img class="image" src="{{ asset('assets/images/image-6@2x.png') }}" />
               <div class="content-4">
                 <div class="x3-tunggu-verifikasi inter-normal-alabaster-18px">
                   <span class="inter-normal-alabaster-24px">5. Masukan Nilai Investasi</span>
@@ -113,7 +113,7 @@
             </div>
           </div>
         </div>
-        </div>      
+        </div>
             </div>
         </div>
         <div class="cta-section">
@@ -121,7 +121,7 @@
           <div class="ayo-daftarkan-bisnis-anda inter-normal-alabaster-40px">
             <span class="text-urun inter-normal-alabaster">Ayo Investasi di Santara!</span>
           </div>
-          <div class="actions3 "> 
+          <div class="actions3 ">
             @guest
             <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('login') }}}">Mulai Investasi</a>
                 @else
@@ -130,8 +130,8 @@
                   </div>
           </div>
         </div>
-            
-           
+
+
             </div>
              </div>
           </div>

@@ -39,7 +39,7 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Nama Brand <span style="color: red">*</span></label>
-                                                    <input required type="text" id="companyName" 
+                                                    <input required type="text" id="companyName"
                                                         name="brand" class="form-control" placeholder="Nama Brand">
                                                 </div>
                                                 <div class="form-group col-md-4">
@@ -69,23 +69,23 @@
                                                         <div class="image_area text-center">
                                                             <label for="upload_image">
                                                                 <img id="uploaded_image" class="img-responsive" />
-                                                                    <img src="{{asset('public/upload')}}/{{$picture[0]}}"
-                                                                    id="uploaded_image" class="img-responsive" /> 
+                                                                    <img src="{{asset('upload')}}/{{$picture[0]}}"
+                                                                    id="uploaded_image" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Logo Perusahaan</div>
                                                                 </div>
                                                             </label>
                                                             <input required type="file" name="image" class="image"
-                                                                id="upload_image" style="display: none" /> 
+                                                                id="upload_image" style="display: none" />
                                                             <input required type="text" value="{{$picture[0]}}" hidden
-                                                                name="logo" class="image" id="logo" /> 
+                                                                name="logo" class="image" id="logo" />
                                                         </div>
                                                     </div> --}}
                                                     {{-- <div class="col-7 text-center">
                                                         <label for="companyName">Cover Profile</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image2">
-                                                                <img src="{{asset('public/upload')}}/{{$picture[1]}}"
+                                                                <img src="{{asset('upload')}}/{{$picture[1]}}"
                                                                     id="uploaded_image2" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Cover Profile</div>
@@ -101,7 +101,7 @@
                                                         <label for="companyName">Foto Owner</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image4">
-                                                                <img src="{{asset('public/upload')}}/{{$picture[2]}}"
+                                                                <img src="{{asset('upload')}}/{{$picture[2]}}"
                                                                     id="uploaded_image4" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Foto Owner</div>
@@ -122,7 +122,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image3">
-                                                                <img src="{{asset('public/upload')}}/{{$picture[3]}}"
+                                                                <img src="{{asset('upload')}}/{{$picture[3]}}"
                                                                     id="uploaded_image3" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha</div>
@@ -139,7 +139,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha 2</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image5">
-                                                                <img src="{{asset('public/upload')}}/{{$picture[4]}}"
+                                                                <img src="{{asset('upload')}}/{{$picture[4]}}"
                                                                     id="uploaded_image5" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha 2</div>
@@ -155,7 +155,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha 3</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image6">
-                                                                <img src="{{asset('public/upload')}}/{{$picture[5]}}"
+                                                                <img src="{{asset('upload')}}/{{$picture[5]}}"
                                                                     id="uploaded_image6" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha 3</div>
@@ -173,21 +173,21 @@
                                                     <br>
                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" accept=".png, .jpg" type="file" 
+                                                        <input class="custom-file-input req" accept=".png, .jpg" type="file"
                                                             id="upload_image">
                                                         <label class="custom-file-label ssa" id="ssa" for="upload_image"
                                                             aria-describedby="upload_image">Pilih File</label>
                                                     </div>
                                                     <input type="hidden" name="thumbnail" id="thumbnail" />
                                                     <img class="mt-1" width="200" id="thumbnailUploaded" />
-                                                    
+
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Banner <span style="color: red">*</span></label>
                                                     <br>
                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input accept=".png, .jpg" type="file" class="custom-file-input req" 
+                                                        <input accept=".png, .jpg" type="file" class="custom-file-input req"
                                                             id="upload_image2">
                                                         <label class="custom-file-label ssa" for="upload_image2"
                                                             aria-describedby="upload_image2">Pilih File</label>
@@ -200,7 +200,7 @@
                                                     <br>
                                                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input accept=".png, .jpg" type="file" class="custom-file-input req" 
+                                                        <input accept=".png, .jpg" type="file" class="custom-file-input req"
                                                             id="upload_image4">
                                                         <label class="custom-file-label ssa" for="upload_image4"
                                                             aria-describedby="upload_image4">Pilih File</label>
@@ -213,7 +213,7 @@
                                                     <br>
                                                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input accept=".png, .jpg" type="file" class="custom-file-input req" 
+                                                        <input accept=".png, .jpg" type="file" class="custom-file-input req"
                                                             id="upload_image3">
                                                         <label class="custom-file-label ssa" for="upload_image3"
                                                             aria-describedby="upload_image3">Pilih File</label>
@@ -282,7 +282,7 @@
 
                                                 </div> --}}
                                                 {{-- <div class="form-group col-md-4">
-                                                   
+
                                                 </div> --}}
 
 
@@ -296,7 +296,7 @@
                                                                         id="basic-addon1">Rp</span>
                                                                 </div>
                                                                 <input required type="text"
-                                                
+
                                                                     name="omset1" class="form-control ribuan"
                                                                     placeholder="Omset 2021"
                                                                     aria-describedby="basic-addon1">
@@ -310,7 +310,7 @@
                                                                         id="basic-addon1">Rp</span>
                                                                 </div>
                                                                 <input required type="text"
-                                                        
+
                                                                     name="omset2" class="form-control ribuan"
                                                                     placeholder="Omset 2022"
                                                                     aria-describedby="basic-addon1">
@@ -357,7 +357,7 @@
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
                                                         <input type="text"
-                                                            
+
                                                             name="omset_penerbit" class="form-control ribuan"
                                                             placeholder="Perkiraan Omzet Setelah Jadi Penerbit"
                                                             aria-describedby="basic-addon1">
@@ -367,7 +367,7 @@
                                                     <label for="companyName">Perkiraan Deviden Tahunan</label>
                                                     <div class="input-group">
 
-                                                        <input  type="text" 
+                                                        <input  type="text"
                                                             name="deviden_tahunan" class="form-control ribuan"
                                                             placeholder="Perkiraan Deviden Tahunan"
                                                             aria-describedby="basic-addon4">
@@ -902,21 +902,21 @@
             });
     });
     $(document).ready(function(){
-    
+
         var $modal = $('#modal');
-    
+
         var image = document.getElementById('sample_image');
-    
+
         var cropper;
-    
+
         $('#upload_image').change(function(event){
             var files = event.target.files;
-    
+
             var done = function(url){
                 image.src = url;
                 $modal.modal('show');
             };
-    
+
             if(files && files.length > 0)
             {
                 reader = new FileReader();
@@ -927,7 +927,7 @@
                 reader.readAsDataURL(files[0]);
             }
         });
-    
+
         $modal.on('shown.bs.modal', function() {
             cropper = new Cropper(image, {
                 aspectRatio: 4/4,
@@ -938,20 +938,20 @@
             cropper.destroy();
                cropper = null;
         });
-    
+
         $('#crop').click(function(){
             canvas = cropper.getCroppedCanvas({
                 width:250,
                 height:250
             });
-    
+
             $("#loader").show();
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function(){
-                  
+
                     var base64data = reader.result;
                     // var fileSelect = $(this).val();
                     $.ajax({
@@ -978,26 +978,26 @@
                 };
             });
         });
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
         var $modal2 = $('#modal2');
-    
+
         var image2 = document.getElementById('sample_image2');
-    
+
         $('#upload_image2').change(function(event){
             var files = event.target.files;
-    
+
             var done = function(url){
                 image2.src = url;
                 $modal2.modal('show');
             };
-    
+
             if(files && files.length > 0)
             {
                 reader = new FileReader();
@@ -1008,7 +1008,7 @@
                 reader.readAsDataURL(files[0]);
             }
         });
-    
+
         $modal2.on('shown.bs.modal', function() {
             cropper = new Cropper(image2, {
                 aspectRatio: 1360/497,
@@ -1019,7 +1019,7 @@
             cropper.destroy();
                cropper = null;
         });
-    
+
         $('#crop2').click(function(){
             canvas = cropper.getCroppedCanvas({
                 width: 1360,
@@ -1027,13 +1027,13 @@
             });
 
             $("#loader").show();
-    
+
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function(){
-                  
+
                     var base64data = reader.result;
                     // var fileSelect = $(this).val();
                     $.ajax({
@@ -1060,21 +1060,21 @@
                 };
             });
         });
-        
-    
-    
+
+
+
         var $modal3 = $('#modal3');
-    
+
         var image3 = document.getElementById('sample_image3');
-    
+
         $('#upload_image3').change(function(event){
             var files = event.target.files;
-    
+
             var done = function(url){
                 image3.src = url;
                 $modal3.modal('show');
             };
-    
+
             if(files && files.length > 0)
             {
                 reader = new FileReader();
@@ -1085,7 +1085,7 @@
                 reader.readAsDataURL(files[0]);
             }
         });
-    
+
         $modal3.on('shown.bs.modal', function() {
             cropper = new Cropper(image3, {
                 aspectRatio: 4/3,
@@ -1096,7 +1096,7 @@
             cropper.destroy();
                cropper = null;
         });
-    
+
         $('#crop3').click(function(){
             canvas = cropper.getCroppedCanvas({
                 width:400,
@@ -1104,13 +1104,13 @@
             });
 
             $("#loader").show();
-    
+
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function(){
-                  
+
                     var base64data = reader.result;
                     // var fileSelect = $(this).val();
                     $.ajax({
@@ -1137,19 +1137,19 @@
                 };
             });
         });
-        
+
         var $modal4 = $('#modal4');
-    
+
         var image4 = document.getElementById('sample_image4');
-    
+
         $('#upload_image4').change(function(event){
             var files = event.target.files;
-    
+
             var done = function(url){
                 image4.src = url;
                 $modal4.modal('show');
             };
-    
+
             if(files && files.length > 0)
             {
                 reader = new FileReader();
@@ -1160,7 +1160,7 @@
                 reader.readAsDataURL(files[0]);
             }
         });
-    
+
         $modal4.on('shown.bs.modal', function() {
             cropper = new Cropper(image4, {
                 aspectRatio: 4/4,
@@ -1171,20 +1171,20 @@
             cropper.destroy();
                cropper = null;
         });
-    
+
         $('#crop4').click(function(){
             canvas = cropper.getCroppedCanvas({
                 width:400,
                 height:400
             });
-    
+
             $("#loader").show();
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function(){
-                  
+
                     var base64data = reader.result;
                     // var fileSelect = $(this).val();
                     $.ajax({
@@ -1211,9 +1211,9 @@
                 };
             });
         });
-        
-    
-    
+
+
+
         var $modal5 = $('#modal5');
 
 var image5 = document.getElementById('sample_image5');
@@ -1260,7 +1260,7 @@ $('#crop5').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -1337,7 +1337,7 @@ $('#crop6').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -1364,16 +1364,16 @@ $('#crop6').click(function(){
     });
 });
 
-    
-    
-    
-    
-    
-        
-        
+
+
+
+
+
+
+
     });
 </script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
 <script src="https://unpkg.com/cropperjs"></script>
 <script>
     $("#sav").on("click", function () {
@@ -1497,6 +1497,6 @@ $('#crop6').click(function(){
         transform: translate(-50%, -50%);
         text-align: center;
     }
-    
+
 </style>
 @endsection

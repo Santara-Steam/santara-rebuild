@@ -12,17 +12,20 @@ class SsoController extends Controller
 {
     public function sso(Request $request): RedirectResponse
     {
+        $chatUrl = config('global.SANTARA_CHAT_API_BASE_URL');
+
         $payload = [
             "session" => $request->session()->all(),
+            "userId" => Auth::user()->getAuthIdentifier(),
             "email" => Auth::user()->email,
             "name" => Auth::user()->trader->name,
-            "password" => Auth::user()->password,
+            "password" => $request->session()->get('pwd')
         ];
 
-        $response = json_decode(Http::post(config('global.SANTARA_CHAT_API_BASE_URL') . '/api/sso', $payload)->body(), true);
+        $response = json_decode(Http::post( $chatUrl . '/api/sso', $payload)->body(), true);
 
         if (isset($response['success']) && $response['success']) {
-            return redirect()->away('http://localhost:8083');
+            return redirect()->away($chatUrl . "/sso");
         } else {
             return redirect()->back();
         }

@@ -86,7 +86,7 @@
                                                                 name="logo" class="image" id="logo" />
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="col-7 text-center">
                                                         <label for="companyName">Banner</label>
                                                         <div class="image_area text-center">
@@ -179,7 +179,7 @@
                                                     <br>
                     <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" id="fil" accept=".png, .jpg" type="file" name="thumbnail" 
+                                                        <input class="custom-file-input req" id="fil" accept=".png, .jpg" type="file" name="thumbnail"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[0]}}</label>
@@ -275,7 +275,7 @@
 
                                                 </div> --}}
                                                 {{-- <div class="form-group col-md-4">
-                                                   
+
                                                 </div> --}}
 
 
@@ -388,7 +388,7 @@
                                                         <select name="regency_id" id="input_kota" style="width: 100%"></select>
                                                     </div>
                                                     <div class="input-group" id="kotaEdit">
-                                                        <input type="text" value="{{ $emiten->kota }}" 
+                                                        <input type="text" value="{{ $emiten->kota }}"
                                                             class="form-control" id="regency_id2" readonly />
                                                         <span class="input-group-text cursor-pointer" id="changeKota">Ganti</span>
                                                     </div>
@@ -420,7 +420,7 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Jumlah Karyawan</label>
-                                                    <input class="form-control" type="text" name="employee" 
+                                                    <input class="form-control" type="text" name="employee"
                                                         value="{{ $emiten->employee }}" />
                                                 </div>
 
@@ -496,7 +496,7 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Nama bank / lembaga pembiayaan</label>
-                                                    <input name="bank_name_financing" class="form-control" 
+                                                    <input name="bank_name_financing" class="form-control"
                                                         value="{{ $emiten->bank_name_financing }}" />
                                                 </div>
                                                 <div class="form-group col-md-4">
@@ -529,7 +529,7 @@
                                                     <select class="form-control" name="bank_loan_reputation">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($posisiPasar as $row)
-                                                            <option 
+                                                            <option
                                                                 @if($emiten->bank_loan_reputation == $row) selected @endif
                                                                 value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
@@ -540,7 +540,7 @@
                                                     <select class="form-control" name="market_position_for_the_product">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($marketPositition as $row)
-                                                            <option 
+                                                            <option
                                                             @if($emiten->market_position_for_the_product == $row) selected @endif
                                                                 value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
@@ -551,7 +551,7 @@
                                                     <select class="form-control" name="strategy_emiten">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($strategiEmiten as $row)
-                                                            <option 
+                                                            <option
                                                             @if($emiten->strategy_emiten == $row) selected @endif
                                                                 value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
@@ -562,7 +562,7 @@
                                                     <select class="form-control" name="office_status">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($statusKantor as $row)
-                                                            <option value="{{ $row }}" 
+                                                            <option value="{{ $row }}"
                                                             @if($emiten->office_status == $row) selected @endif>{{ $row }}</option>
                                                         @endforeach
                                                     </select>
@@ -572,7 +572,7 @@
                                                     <select class="form-control" name="level_of_business_competition">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($levelKompetisi as $row)
-                                                            <option value="{{ $row }}" 
+                                                            <option value="{{ $row }}"
                                                             @if($emiten->level_of_business_competition == $row) selected @endif>{{ $row }}</option>
                                                         @endforeach
                                                     </select>
@@ -948,21 +948,21 @@ $("#traderEmail").select2({
 </script>
 <script>
     $(document).ready(function(){
-    
+
         var $modal = $('#modal');
-    
+
         var image = document.getElementById('sample_image');
-    
+
         var cropper;
-    
+
         $('#upload_image').change(function(event){
             var files = event.target.files;
-    
+
             var done = function(url){
                 image.src = url;
                 $modal.modal('show');
             };
-    
+
             if(files && files.length > 0)
             {
                 reader = new FileReader();
@@ -973,7 +973,7 @@ $("#traderEmail").select2({
                 reader.readAsDataURL(files[0]);
             }
         });
-    
+
         $modal.on('shown.bs.modal', function() {
             cropper = new Cropper(image, {
                 aspectRatio: 4/4,
@@ -984,19 +984,19 @@ $("#traderEmail").select2({
             cropper.destroy();
                cropper = null;
         });
-    
+
         $('#crop').click(function(){
             canvas = cropper.getCroppedCanvas({
                 width:250,
                 height:250
             });
-    
+
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function(){
-                  
+
                     var base64data = reader.result;
                     // var fileSelect = $(this).val();
                     $.ajax({
@@ -1022,26 +1022,26 @@ $("#traderEmail").select2({
                 };
             });
         });
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
         var $modal2 = $('#modal2');
-    
+
         var image2 = document.getElementById('sample_image2');
-    
+
         $('#upload_image2').change(function(event){
             var files = event.target.files;
-    
+
             var done = function(url){
                 image2.src = url;
                 $modal2.modal('show');
             };
-    
+
             if(files && files.length > 0)
             {
                 reader = new FileReader();
@@ -1052,7 +1052,7 @@ $("#traderEmail").select2({
                 reader.readAsDataURL(files[0]);
             }
         });
-    
+
         $modal2.on('shown.bs.modal', function() {
             cropper = new Cropper(image2, {
                 aspectRatio: 1360/497,
@@ -1063,19 +1063,19 @@ $("#traderEmail").select2({
             cropper.destroy();
                cropper = null;
         });
-    
+
         $('#crop2').click(function(){
             canvas = cropper.getCroppedCanvas({
                 width: 1360,
                 height: 497
             });
-    
+
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function(){
-                  
+
                     var base64data = reader.result;
                     // var fileSelect = $(this).val();
                     $.ajax({
@@ -1101,21 +1101,21 @@ $("#traderEmail").select2({
                 };
             });
         });
-        
-    
-    
+
+
+
         var $modal3 = $('#modal3');
-    
+
         var image3 = document.getElementById('sample_image3');
-    
+
         $('#upload_image3').change(function(event){
             var files = event.target.files;
-    
+
             var done = function(url){
                 image3.src = url;
                 $modal3.modal('show');
             };
-    
+
             if(files && files.length > 0)
             {
                 reader = new FileReader();
@@ -1126,7 +1126,7 @@ $("#traderEmail").select2({
                 reader.readAsDataURL(files[0]);
             }
         });
-    
+
         $modal3.on('shown.bs.modal', function() {
             cropper = new Cropper(image3, {
                 aspectRatio: 4/3,
@@ -1137,19 +1137,19 @@ $("#traderEmail").select2({
             cropper.destroy();
                cropper = null;
         });
-    
+
         $('#crop3').click(function(){
             canvas = cropper.getCroppedCanvas({
                 width:400,
                 height:300
             });
-    
+
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function(){
-                  
+
                     var base64data = reader.result;
                     // var fileSelect = $(this).val();
                     $.ajax({
@@ -1175,23 +1175,23 @@ $("#traderEmail").select2({
                 };
             });
         });
-        
-    
-    
-    
-    
+
+
+
+
+
         var $modal4 = $('#modal4');
-    
+
         var image4 = document.getElementById('sample_image4');
-    
+
         $('#upload_image4').change(function(event){
             var files = event.target.files;
-    
+
             var done = function(url){
                 image4.src = url;
                 $modal4.modal('show');
             };
-    
+
             if(files && files.length > 0)
             {
                 reader = new FileReader();
@@ -1202,7 +1202,7 @@ $("#traderEmail").select2({
                 reader.readAsDataURL(files[0]);
             }
         });
-    
+
         $modal4.on('shown.bs.modal', function() {
             cropper = new Cropper(image4, {
                 aspectRatio: 4/4,
@@ -1213,19 +1213,19 @@ $("#traderEmail").select2({
             cropper.destroy();
                cropper = null;
         });
-    
+
         $('#crop4').click(function(){
             canvas = cropper.getCroppedCanvas({
                 width:400,
                 height:400
             });
-    
+
             canvas.toBlob(function(blob){
                 url = URL.createObjectURL(blob);
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function(){
-                  
+
                     var base64data = reader.result;
                     // var fileSelect = $(this).val();
                     $.ajax({
@@ -1251,9 +1251,9 @@ $("#traderEmail").select2({
                 };
             });
         });
-        
-    
-    
+
+
+
         var $modal5 = $('#modal5');
 
 var image5 = document.getElementById('sample_image5');
@@ -1299,7 +1299,7 @@ $('#crop5').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -1374,7 +1374,7 @@ $('#crop6').click(function(){
         var reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function(){
-          
+
             var base64data = reader.result;
             // var fileSelect = $(this).val();
             $.ajax({
@@ -1401,16 +1401,16 @@ $('#crop6').click(function(){
     });
 });
 
-    
-    
-    
-    
-    
-        
-        
+
+
+
+
+
+
+
     });
 </script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
 <script>
     $("#sav").on("click", function () {
 // console.log($('.ssa').html())
@@ -1533,6 +1533,6 @@ $('#crop6').click(function(){
         transform: translate(-50%, -50%);
         text-align: center;
     }
-    
+
 </style>
 @endsection

@@ -42,7 +42,7 @@
                                                 <tbody>
                                                     <?php $no = 0;?>
                                                     @for ($i = 0; $i < count($data); $i++)
-                                                    <?php $no++; ?> 
+                                                    <?php $no++; ?>
                                                      <tr>
                                                         <td>{{ $no }}</td>
                                                         <td>{{ $data[$i]['trader_name'] }}</td>
@@ -56,7 +56,7 @@
                                                         <td><?= $data[$i]['capital_needs'] ?></td>
                                                         <td><?= $data[$i]['investment'] ?></td>
                                                         <td>{{ $data[$i]['status'] }}</td>
-                                                    </tr> 
+                                                    </tr>
                                                     @endfor
                                                 </tbody>
                                             </table>
@@ -72,8 +72,8 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('public/admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-    <script src="{{ asset('public/admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+    <script src="{{ asset('admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+    <script src="{{ asset('admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
@@ -119,7 +119,7 @@
         integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+        href="{{ asset('admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
         integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />

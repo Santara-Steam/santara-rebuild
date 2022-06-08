@@ -1,4 +1,4 @@
-<?php 
+<?php
                                             $picture = explode(',',$cs->pictures);
                                             if(empty($picture[0])){
                                             $picture[0] = 'default1.png';
@@ -178,7 +178,7 @@
                         </div>
                       </div>
                       <div class="footer-card">
-                        <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                        <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
                         <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}"
                           class="button btn-block btn btn-outline-light inter-medium-white-14px">Dukung Bisnis
                           Ini</a>

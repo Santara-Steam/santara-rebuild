@@ -22,9 +22,9 @@
         rel="stylesheet">
 
     <!-- fevicon -->
-    <link rel="icon" href="{{ asset('public/assets/images/fevicon.png') }}" type="image/gif" />
+    <link rel="icon" href="{{ asset('assets/images/fevicon.png') }}" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('public/assets/css/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.mCustomScrollbar.min.css') }}">
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- fonts -->
@@ -33,22 +33,22 @@
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--  -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/styleguide.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/globals.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styleguide.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/globals.css') }}" />
     <!-- owl stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('public/assets/OwlCarousel2/dist/assets/owl.carousel.min.css') }}">
-    <link rel="stylesoeet" href="{{ asset('public/assets/OwlCarousel2/dist/assets/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/OwlCarousel2/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesoeet" href="{{ asset('assets/OwlCarousel2/dist/assets/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
         media="screen">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/fontawesome/css/all.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome/css/all.css') }}">
     <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <!-- Responsive-->
-    <link rel="stylesheet" href="{{ asset('public/assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -103,7 +103,7 @@
                         <a href="{{ url('/') }}" style="margin-left: -30px;">
                             <div class="menu-header">
                                 <img class="logo-header" style="width: 65%;
-              height: 65%; margin-bottom: 50px;" src="{{ asset('public/assets/images/logo_header.png') }}" />
+              height: 65%; margin-bottom: 50px;" src="{{ asset('assets/images/logo_header.png') }}" />
 
                             </div>
                         </a>
@@ -223,7 +223,7 @@
                                                         style="margin-top: 10px;" href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();"">Logout</a>
-                                  
+
                                     <form id=" logout-form" action="{{ route('logout') }}" method="POST"
                                                         class="d-none">
                                                         @csrf
@@ -238,16 +238,16 @@
                         </div>
                     </div>
                     <div href="javascript:void(0)" class="close" onclick="closeNav()"><img
-                            class="x" src="{{ asset('public/assets/images/x@2x.png') }}" /></div>
+                            class="x" src="{{ asset('assets/images/x@2x.png') }}" /></div>
                 </div>
                 <div class="main">
                     <span class="toggle_icon" onclick="openNav()"><img
-                            src="{{ asset('public/assets/images/toggle-icon.png') }}"></span>
+                            src="{{ asset('assets/images/toggle-icon.png') }}"></span>
                 </div>
             </div>
             <div class="menu">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="logo" src="{{ asset('public/assets/images/logo_header.png') }}" />
+                    <img class="logo" src="{{ asset('assets/images/logo_header.png') }}" />
                 </a>
             </div>
             <div id="navbar" class="nav navbar-nav navbar-right">
@@ -281,7 +281,7 @@
                             <a class="button-cta-2 btn btn-danger btn-au inter-medium-white-14px"
                                 href="{{ route('logout') }}" onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();"">Logout</a>
-          
+
             <form id=" logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                                 </form>

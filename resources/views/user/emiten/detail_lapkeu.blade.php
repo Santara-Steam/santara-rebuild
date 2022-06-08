@@ -11,7 +11,7 @@
 
                 <div class="row match-height">
 
-                   
+
                     <script>
                         const uuid_emitenLP = '<?= $uuid; ?>';
                     </script>
@@ -53,33 +53,33 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                    
+
                                             <div class="tab-content" id="pills-tabContent">
                                                 <div class="tab-pane fade show active" id="realisasi" role="tabpanel">
                                                     {{-- <?php $this->load->view("member/laporan_keuangan/_detail/realisasi_penggunaan_data"); ?> --}}
                                                     @include('user.emiten.realisasi_penggunaan_data')
                                                 </div>
-                                                
+
                                                 <div class="tab-pane fade" id="laporan" role="tabpanel">
                                                     {{-- <?php $this->load->view("member/laporan_keuangan/_detail/laporan_laba_rugi"); ?> --}}
                                                     @include('user.emiten.laporan_laba_rugi')
                                                 </div>
-                                                
+
                                                 <div class="tab-pane fade" id="perkembangan" role="tabpanel">
                                                     {{-- <?php $this->load->view("member/laporan_keuangan/_detail/perkembangan_perusahaan"); ?> --}}
                                                     @include('user.emiten.perkembangan_perusahaan')
                                                 </div>
-                                                
+
                                                 <div class="tab-pane fade" id="informasi" role="tabpanel">
                                                     {{-- <?php $this->load->view("member/laporan_keuangan/_detail/informasi_lain"); ?> --}}
                                                     @include('user.emiten.informasi_lain')
                                                 </div>
-                                                
+
                                                 <div class="tab-pane fade" id="bukti" role="tabpanel">
                                                     {{-- <?php $this->load->view("member/laporan_keuangan/_detail/laporan_bukti"); ?> --}}
                                                     @include('user.emiten.laporan_bukti')
                                                 </div>
-                                                
+
                                                 <div class="tab-pane fade" id="publikasi" role="tabpanel">
                                                     {{-- <?php $this->load->view("member/laporan_keuangan/_detail/publikasi"); ?> --}}
                                                     @include('user.emiten.publikasi')
@@ -91,9 +91,9 @@
                             </div>
                         </div>
                     </section>
-                    
-                    
-                    
+
+
+
                 </div>
 
 
@@ -104,8 +104,8 @@
 
 @endsection
 @section('js')
-<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
     integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -113,14 +113,14 @@
     $(document).ready(function() {
         $('#tabel').DataTable({
             responsive: true,
-            
+
         });
     });
 </script>
 
 <script src="https://old.santara.co.id/app-assets/vendors/js/extensions/jquery.steps.min.js"></script>
                     <script src="https://old.santara.co.id/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-                    
+
                     {{-- <script src="https://old.santara.co.id/assets/js/member/laporan-keuangan.js?v=5.8.8"></script> --}}
                     <script>
                         $(document).ready(function() {
@@ -134,7 +134,7 @@
         $('#tab_realisasi').append('<tr id="realisasi_addr_' + (Number(x) + Number(1) ) + '"></tr>');
         x++;
     });
-    
+
 
     $(".file-image").fileinput({
         'allowedFileExtensions': ["jpg", "jpeg", "gif", "png"],
@@ -589,7 +589,7 @@ function deleteDocument(id,file_name){
     })
 }
                     </script>
-                    
+
                     <script>
                         function submitReport(form_report, type = null, uuid) {
                             $("#loader").show();
@@ -648,6 +648,6 @@ function deleteDocument(id,file_name){
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
-    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/member/laporan-keuangan.css?v=5.8.8">
     @endsection

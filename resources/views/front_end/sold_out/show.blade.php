@@ -1,9 +1,9 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
- <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
- <link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/now-playing-detail.css') }}" />
- <?php 
+ <link rel="stylesheet" href="{{ asset('assets/css/tabs.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ asset('new-santara/css/now-playing-detail.css') }}" />
+ <?php
                               $picture = explode(',',$emt->pictures);
                               if(empty($picture[0])){
                               $picture[0] = 'default1.png';
@@ -203,7 +203,7 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr style="font-size:14px; ">
-                    <td>Saham Tersisa  
+                    <td>Saham Tersisa
                     <br>
                       <span style="font-weight:bold; line-height:3;">
                       @if ($emt->avg_capital_needs < 0)
@@ -212,11 +212,11 @@
                         0,00%
                       @endif
                       </span>
-                    </td> 
+                    </td>
                   </tr>
                   <tr style="font-size:14px;">
                     <td>Dalam Lembar <br>
-                    <span style="font-weight:bold; line-height:3;"> 
+                    <span style="font-weight:bold; line-height:3;">
                     @if ($emt->price < 0)
                     {{number_format(round(($emt->avg_capital_needs-$bok->tot)/$emt->price,0),0,',','.')}} Lembar
                     @else
@@ -227,7 +227,7 @@
                   </tr>
                   <tr style="font-size:14px;">
                     <td>Total Rupiah <br>
-                    <span style="font-weight:bold; line-height:3;"> 
+                    <span style="font-weight:bold; line-height:3;">
                     @if ($emt->avg_capital_needs-$bok->tot > 0)
                     Rp{{number_format(round(($emt->avg_capital_needs-$bok->tot),0),0,',','.')}}
                     @else
@@ -251,19 +251,19 @@
                     {{number_format(round(($bok->tot/$emt->avg_capital_needs)*100,0),0,',','.')}}%
                     @else
                        100%
-                    @endif 
+                    @endif
                   </span>
                   </td>
                   </tr>
                   <tr style="font-size:14px;">
-                    <td>Dalam Lembar <br> 
+                    <td>Dalam Lembar <br>
                     <span style="font-weight:bold; line-height:3;">
                     {{number_format(round($bok->tot/$emt->price,0),0,',','.')}} Lembar
                     </span>
                     </td>
                   </tr>
                   <tr style="font-size:14px;">
-                    <td>Dalam Rupiah<br> 
+                    <td>Dalam Rupiah<br>
                     <span style="font-weight:bold; line-height:3;">
                     Rp{{number_format(round($bok->tot,0),0,',','.')}}
                     </span>
@@ -282,21 +282,21 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr style="font-size:14px;">
-                    <td>Harga Saham <br> 
+                    <td>Harga Saham <br>
                     <span style="font-weight:bold; line-height:3;">
                     Rp{{number_format(round($emt->price,0),0,',','.')}}
                     </span>
                   </td>
                   </tr>
                   <tr style="font-size:14px;">
-                    <td>Total Saham <br> 
+                    <td>Total Saham <br>
                     <span style="font-weight:bold; line-height:3;">
                     {{number_format(round($emt->avg_capital_needs / $emt->price,0),0,',','.')}} Lembar
                     </span>
                   </td>
                   </tr>
                   <tr style="font-size:14px;">
-                    <td>Total Saham (Rp) <br> 
+                    <td>Total Saham (Rp) <br>
                     <span style="font-weight:bold; line-height:3;">
                     Rp{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}
                       </span>
@@ -311,16 +311,16 @@
                 font-style: normal;
                 font-weight: 500;">
                   <tr style="font-size:14px;">
-                    <td>Kode Saham <br> 
+                    <td>Kode Saham <br>
                     <span style="font-weight:bold; line-height:3;">
                     {{$emt->code_emiten}}
                       </span>
                     </td>
                   </tr>
                   <tr style="font-size:14px;">
-                    <td>Sisa Waktu <br> 
+                    <td>Sisa Waktu <br>
                     <span style="font-weight:bold; line-height:3;">
-                    <?php 
+                    <?php
                       $now = time();
                       $start = strtotime($status->date);
                       $end = strtotime($status->end_date);
@@ -331,12 +331,12 @@
                     0 Hari
                     @else
                     {{round($datediff / (60 * 60 * 24))}} Hari
-                    @endif 
+                    @endif
                     </span>
                     </td>
                   </tr>
                   <tr style="font-size:14px;">
-                    <td>Periode Deviden<br> 
+                    <td>Periode Deviden<br>
                     <span style="font-weight:bold; line-height:3;">
                     6 Bulan
                     </span>
@@ -392,8 +392,8 @@
                   <p class="pembagian-deviden-ta inter-normal-delta-12px">
                     <span class="inter-normal-delta-12px">Pembagian Deviden Tahap {{$no}} - </span
                     ><span class="inter-normal-delta-12px">
-                      @if(is_null($item))  
-                      
+                      @if(is_null($item))
+
                       @else
                       {{date('d M Y', strtotime($item->devidend_date))}}
                       @endif</span>
@@ -402,7 +402,7 @@
                 <div class="table-cell">
                   <div class=" inter-medium-white-14px">
                     <span class="inter-medium-white-14px">
-                  @if(is_null($item))  
+                  @if(is_null($item))
                   Rp0
                   @else
                   Rp{{number_format(round($item->devidend),0,',','.')}}
@@ -411,15 +411,15 @@
                 </div>
               </div>
               @endforeach
-              
+
               {{-- <div class="overlap-group-3">
                 <img class="divider" src="img/divider-114@2x.png" />
                 <div class="table-cell-row">
                   <div class="table-cell" style="margin-left: 10px;">
                     <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap II - 
-                      @if(is_null($dv2))  
-                      
+                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap II -
+                      @if(is_null($dv2))
+
                       @else
                       {{date('d M Y', strtotime($dv2->devidend_date))}}
                       @endif
@@ -429,7 +429,7 @@
                   <div class="table-cell">
                     <div class=" inter-medium-white-14px">
                       <span class="inter-medium-white-14px">
-                      @if(is_null($dv2))  
+                      @if(is_null($dv2))
                       Rp0
                       @else
                       Rp{{number_format(round($dv2->devidend),0,',','.')}}
@@ -444,12 +444,12 @@
                 <div class="table-cell-row">
                   <div class="table-cell" style="margin-left: 10px;">
                     <p class="pembagian-deviden-ta inter-normal-delta-12px">
-                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap III - 
-                      @if(is_null($dv3))  
-                      
+                      <span class="inter-normal-delta-12px">Pembagian Deviden Tahap III -
+                      @if(is_null($dv3))
+
                       @else
                       {{date('d M Y', strtotime($dv3->devidend_date))}}
-                      @endif  
+                      @endif
                       </span
                       >
                     </p>
@@ -457,7 +457,7 @@
                   <div class="table-cell">
                     <div class=" inter-medium-white-14px">
                       <span class="inter-medium-white-14px">
-                      @if(is_null($dv3))  
+                      @if(is_null($dv3))
                       Rp0
                       @else
                       Rp{{number_format(round($dv3->devidend),0,',','.')}}
@@ -469,11 +469,11 @@
               </div> --}}
             </div>
           </div>
-                         
+
             </div>
         </div>
-            
-           
+
+
         @if ($emt->video_url == null)
 
         @else
@@ -531,7 +531,7 @@
                </div>
              </div>
             </div>
-            
+
          </div>
       </div>
 @endsection

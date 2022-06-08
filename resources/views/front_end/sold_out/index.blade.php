@@ -58,7 +58,7 @@
                             <div class="fashion_section_2">
                                 <div class="row" style="padding-left: 10px; padding-right: 10px;">
                                 @foreach ($sold_out as $item)
-                                <?php 
+                                <?php
                                                       $picture = explode(',',$item->pictures);
                                                       $tot=number_format(round($item->supply * $item->price),0,',','.');
                                                       ?>
@@ -83,7 +83,7 @@
                                             <span class="tx-t inter-medium-sweet-pink-12px"
                                               style="background: var(--falu-red);
                             border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">
-                            <?php echo \Illuminate\Support\Str::limit(strip_tags( $item->ktg ), 20, $end='...') ?>  
+                            <?php echo \Illuminate\Support\Str::limit(strip_tags( $item->ktg ), 20, $end='...') ?>
                           </span>
                                             <div class="header">
                                               <div class="saka-logistics inter-medium-alabaster-20px">
@@ -110,7 +110,7 @@
                                           </div>
                                         </div>
                                         <div class="footer-card">
-                                        <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                        <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
                                         <div class="footer-card-1">
                                           <div class="deviden-dibagikan-rp inter-normal-mercury-12px">
                                             <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span><span
@@ -155,7 +155,7 @@
 </div>
 
 @foreach ($sold_out as $item)
-    <?php 
+    <?php
         $picture = explode(',',$item->pictures);
         $tot=number_format(round($item->supply * $item->price),0,',','.');
     ?>
@@ -198,7 +198,7 @@
                 </div>
               </div>
               <div class="footer-card">
-                <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
                 <div class="footer-card-1">
                   <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                     <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span><span
@@ -218,7 +218,7 @@
         </div>
       </div>
     </div>
-    
+
     @endforeach
 
     <script>

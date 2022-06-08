@@ -20,7 +20,7 @@
     foreach ($data['list'] as $key => $value) : ?>
     <div class="col-xl-6 col-md-6 col-sm-12">
                         <div class="card">
-                            
+
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="card-content row m-0">
@@ -91,13 +91,13 @@
                                                     <p>Segera lengkapi data untuk dapat listing di Santara.co.id </p>
                                                 </div>
                                                 <div class="row">
-                                                    
+
                                                     <div class="col-md-12">
                                                         <a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>" class="btn btn-warning btn-block btn-sm">Edit</a href="{{url('/edit_bisnis')}}/<?= $value['id']; ?>">
                                                     </div>
                                                 </div>
                                                 <?php else : ?>
-                                                
+
                                                 <div class="row">
                                                     <div class="col-md-8">
                                                         <a href="{{url('penerbit/bisnisdetail')}}/<?= $value['uuid']; ?>" class="btn btn-primary btn-block btn-sm">Laporan Keuangan</a>
@@ -111,7 +111,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                         </div>
                         </div>
                         <?php endforeach;
@@ -156,8 +156,8 @@ else : ?>
 
 @endsection
 @section('js')
-<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
     integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -165,7 +165,7 @@ else : ?>
     $(document).ready(function() {
         $('#tabel').DataTable({
             responsive: true,
-            
+
         });
     });
 </script>
@@ -178,5 +178,5 @@ else : ?>
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
-    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 @endsection

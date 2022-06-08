@@ -64,7 +64,7 @@
                                                 <label><strong>Action Button</strong></label>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" name="action_button" id="customRadio3"
-                                                        class="custom-control-input" value="0" 
+                                                        class="custom-control-input" value="0"
                                                         @if($popup->action_text == "") checked @endif>
                                                     <label class="custom-control-label" for="customRadio3">Tanpa Action
                                                         button</label>
@@ -91,9 +91,9 @@
                                                                 Gambar</label>
                                                         </div>
                                                         <div class="form-group pt-2">
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>    
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 1280 X 720 ( atau berlaku kelipatanya )</p>                            
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>                                                        
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 1280 X 720 ( atau berlaku kelipatanya )</p>
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>
                                                         </div>
                                                         <div class="preview">
                                                             <img id="file-ip-1-preview" src="{{ config('global.BASE_API_FILE').'/uploads/popup/'.$popup->website_pict }}">
@@ -111,9 +111,9 @@
                                                                 Gambar</label>
                                                         </div>
                                                         <div class="form-group pt-2">
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>    
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 300 x 400 ( atau berlaku kelipatanya )</p>                            
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>                                                                                    
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 300 x 400 ( atau berlaku kelipatanya )</p>
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>
                                                         </div>
                                                         <div class="preview">
                                                             <img id="file-ip-2-preview" src="{{ config('global.BASE_API_FILE').'/uploads/popup/'.$popup->mobile_pict }}" />
@@ -146,7 +146,7 @@
                                             <div class="form-group">
                                                 <label><strong>Status</strong></label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" name="is_active" value="1" 
+                                                    <input type="radio" name="is_active" value="1"
                                                         id="customRadio5" class="custom-control-input"
                                                         @if($popup->is_active == 1) checked @endif>
                                                     <label class="custom-control-label" for="customRadio5">Aktif (Popup akan
@@ -210,7 +210,7 @@
         integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+        href="{{ asset('admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
         integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />

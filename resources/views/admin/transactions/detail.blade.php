@@ -142,7 +142,7 @@
 @endsection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{asset('public/admin')}}/app-assets/file-input/bootstrap.file-input.js"></script>
+<script src="{{asset('admin')}}/app-assets/file-input/bootstrap.file-input.js"></script>
 <script>
 $(document).ready(function() {
     $("input[type='file']").fileinput({
@@ -284,5 +284,5 @@ $("#formSubmitPhoto").on('submit', function(e) {
 </script>
 @endsection
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/file-input/fileinput.css" />
+<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/file-input/fileinput.css" />
 @endsection

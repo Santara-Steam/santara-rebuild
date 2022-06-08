@@ -140,8 +140,8 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('public/admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-    <script src="{{ asset('public/admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+    <script src="{{ asset('admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+    <script src="{{ asset('admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
         integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -276,7 +276,7 @@
 
                     totalNetProfit = parseInt(res.totalNetProfit)
                     $("#totalNetProfit").html(formatRupiah(res.totalNetProfit));
-                    
+
                     hitungData(0, dividen, totalNetProfit, penawaranSaham, yielDividen);
                 }
             });
@@ -313,7 +313,7 @@
                 yielDividen = totalPersen / penawaranSaham * 100;
             }
             $("#yielDividen").html(yielDividen.toFixed(2));
-        } 
+        }
 
         function getBulanName(bulanTanggal) {
             let listBulan = [
@@ -414,6 +414,6 @@
         integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+        href="{{ asset('admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('public') }}/app-assets/yearpicker/yearpicker.css" />
 @endsection

@@ -67,13 +67,13 @@
           <div class="fashion_section_2" id="first">
             <div class="row" style="padding-left: 10px; padding-right: 10px;">
               @foreach ($soon as $cs)
-              <?php 
+              <?php
                                             $picture = explode(',',$cs->pictures);
                                             if(empty($picture[0])){
                                             $picture[0] = 'default1.png';
                                             }else{
                                                 $picture[0] = str_replace("pralisting/emitens_pictures/", "", $picture[0]);
-                                                
+
                                             }
                                             if(empty($picture[1])){
                                                 $picture[1] = 'default2.png';
@@ -267,7 +267,7 @@
                         </div>
                       </div>
                       <div class="footer-card">
-                        <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                        <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
                         <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}"
                           class="button btn-block btn btn-outline-light inter-medium-white-14px">Dukung Bisnis
                           Ini</a>
@@ -589,7 +589,7 @@
 
 
               <div class="footer-card3">
-                <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
                 <a id="dbi" class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</a>
               </div>
             </div>
@@ -669,7 +669,7 @@
     $(document).ready(function(){
 
       $('.cmt').click(function(){
-         
+
           var id = $(this).data('id');
 
           // AJAX request
@@ -677,12 +677,12 @@
               url: '{{url("getmodaldata")}}/'+id,
               type: 'get',
               data: {id: id},
-              success: function(cmt){ 
+              success: function(cmt){
                   // Add response in Modal body
-                  $('.comm').html(cmt); 
+                  $('.comm').html(cmt);
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
                   // console.log(cmt);
               }
           });
@@ -755,12 +755,12 @@
               url: '{{url("getmodaldata")}}/'+{{$item->id}},
               type: 'get',
               data: {id: "{{$item->id}}"},
-              success: function(cmt){ 
+              success: function(cmt){
                   // Add response in Modal body
-                  $('.comm').html(cmt); 
+                  $('.comm').html(cmt);
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
                   // console.log(cmt);
               }
           });
@@ -790,7 +790,7 @@
     $(document).ready(function(){
 
       $('.cmt').click(function(){
-         
+
           var id = $(this).data('id');
 
           // AJAX request
@@ -798,12 +798,12 @@
               url: '{{url("getmodaldata")}}/'+id,
               type: 'get',
               data: {id: id},
-              success: function(cmt){ 
+              success: function(cmt){
                   // Add response in Modal body
-                  $('.comm').html(cmt); 
+                  $('.comm').html(cmt);
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
                   // console.log(cmt);
               }
           });
@@ -876,12 +876,12 @@
               url: '{{url("getmodaldata")}}/'+{{$item->id}},
               type: 'get',
               data: {id: "{{$item->id}}"},
-              success: function(cmt){ 
+              success: function(cmt){
                   // Add response in Modal body
-                  $('.comm').html(cmt); 
+                  $('.comm').html(cmt);
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
                   // console.log(cmt);
               }
           });

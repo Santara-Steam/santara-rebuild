@@ -88,9 +88,9 @@
                                                                 Gambar</label>
                                                         </div>
                                                         <div class="form-group pt-2">
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>    
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 1280 X 720 ( atau berlaku kelipatanya )</p>                            
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>                                                        
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 1280 X 720 ( atau berlaku kelipatanya )</p>
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>
                                                         </div>
                                                         <div class="preview">
                                                             <img id="file-ip-1-preview">
@@ -108,9 +108,9 @@
                                                                 Gambar</label>
                                                         </div>
                                                         <div class="form-group pt-2">
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>    
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 300 x 400 ( atau berlaku kelipatanya )</p>                            
-                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>                                                                                    
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Pastikan file dalam bentuk JPG/JPEG</p>
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Resolusi yang disarankan 300 x 400 ( atau berlaku kelipatanya )</p>
+                                                            <p style="font-size: 12px;"><i class="la la-info-circle"></i> Ukuran file maksimal 5 MB</p>
                                                         </div>
                                                         <div class="preview">
                                                             <img id="file-ip-2-preview">
@@ -203,7 +203,7 @@
         integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+        href="{{ asset('admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
         integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />

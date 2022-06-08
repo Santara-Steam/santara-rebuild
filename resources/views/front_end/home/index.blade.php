@@ -54,7 +54,7 @@
                                     style="padding-left: 15px; padding-right: 15px;">
                                     <?php
                                     use Illuminate\Support\Facades\DB;
-                                    
+
                                     ?>
 
                                     @foreach ($now_playing as $k => $np)
@@ -67,7 +67,7 @@
                                         $supply = $np['supply'] * $np['price'];
                                         $start_offer = $start->format('Y-m-d');
                                         $str_time = strtotime($start_offer);
-                                        
+
                                         $diff_now = $finish->diff($now);
                                         $diff = '0 Hari';
                                         // var_dump($np->created_at);
@@ -76,7 +76,7 @@
                                         // terjual dalam persen 0 -100
                                         $terjual_percentage = $terjual > 0 ? ($terjual / $np['supply']) * 100 : 0;
                                         $terjual_percentage = $terjual_percentage >= 0 ? ($terjual_percentage > 100 ? 100 : $terjual_percentage) : 0;
-                                        
+
                                         $tersisa_percentage = number_format($tersisa > 0 ? ($tersisa / $np['supply']) * 100 : 0, 2, ',', '.');
                                         $tersisa_total = number_format($tersisa, 0, ',', '.');
                                         $tersisa_total_rp = number_format($tersisa * $np['price'], 0, ',', '.');
@@ -235,7 +235,7 @@
                                                         </div>
                                                         <div class="footer-card">
                                                             <img class="divider"
-                                                                src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                                                src="{{ asset('assets/images/divider-108@2x.png') }}" />
                                                             <div class="footer-card-1">
                                                                 <div
                                                                     class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
@@ -338,13 +338,13 @@
                                             // $picture[6];
                                             $picture[6] = str_replace('pralisting/emitens_pictures/', '', $picture[6]);
                                         }
-                                        
+
                                         if (empty($cs->trademark)) {
                                             $cs->trademark = $cs->company_name;
                                         } else {
                                             $cs->trademark;
                                         }
-                                        
+
                                         ?>
 
                                         <div class="item">
@@ -524,7 +524,7 @@
                                 </div>
                                 <div class="footer-card">
                                     <img class="divider"
-                                        src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                        src="{{ asset('assets/images/divider-108@2x.png') }}" />
                                     <a href="{{ url('detail-coming-soon') }}/{{ $cs->id }}"
                                         class="button btn-block btn btn-outline-light inter-medium-white-14px">Dukung
                                         Bisnis
@@ -634,7 +634,7 @@
                                                         </div>
                                                         <div class="footer-card">
                                                             <img class="divider"
-                                                                src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                                                src="{{ asset('assets/images/divider-108@2x.png') }}" />
                                                             <div class="footer-card-1">
                                                                 <div
                                                                     class="deviden-dibagikan-rp inter-normal-mercury-12px">
@@ -718,7 +718,7 @@
                             ->where('trader_id', Auth::user()->trader->id)
                             ->select(db::raw('COALESCE(minat,0) as m'))
                             ->first();
-                        
+
                         // print_r($value)
                         $s = json_decode(json_encode($value), true);
                         // print_r($s['m']);
@@ -1065,7 +1065,7 @@
 
                             <div class="footer-card3">
                                 <img class="divider"
-                                    src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                    src="{{ asset('assets/images/divider-108@2x.png') }}" />
                                 <a id="dbi" class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung
                                     Bisnis Ini</a>
                             </div>
@@ -1090,7 +1090,7 @@
         $supply = $np['supply'] * $np['price'];
         $start_offer = $start->format('Y-m-d');
         $str_time = strtotime($start_offer);
-        
+
         $diff_now = $finish->diff($now);
         $diff = '0 Hari';
         // var_dump($np->created_at);
@@ -1099,7 +1099,7 @@
         // terjual dalam persen 0 -100
         $terjual_percentage = $terjual > 0 ? ($terjual / $np['supply']) * 100 : 0;
         $terjual_percentage = $terjual_percentage >= 0 ? ($terjual_percentage > 100 ? 100 : $terjual_percentage) : 0;
-        
+
         $tersisa_percentage = number_format($tersisa > 0 ? ($tersisa / $np['supply']) * 100 : 0, 2, ',', '.');
         $tersisa_total = number_format($tersisa, 0, ',', '.');
         $tersisa_total_rp = number_format($tersisa * $np['price'], 0, ',', '.');
@@ -1124,7 +1124,7 @@
                     ')',
             )
             ->first();
-        
+
         if ($emj) {
         } else {
             $emj = new \stdClass();
@@ -1222,7 +1222,7 @@
                             </div>
                             <div class="footer-card">
                                 <img class="divider"
-                                    src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                    src="{{ asset('assets/images/divider-108@2x.png') }}" />
                                 <div class="footer-card-1">
                                     <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
@@ -1292,7 +1292,7 @@
                             </div>
                             <div class="footer-card">
                                 <img class="divider"
-                                    src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                    src="{{ asset('assets/images/divider-108@2x.png') }}" />
                                 <div class="footer-card-1">
                                     <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                                         <span class="inter-normal-quill-gray-12px">Deviden Dibagikan<br /></span><span
@@ -1400,7 +1400,7 @@
     <script type="text/javascript" src="{{ asset('public') }}/app-assets/js/core/alert/sweetalert.min.js"></script>
     <script type='text/javascript'>
 
-       
+
         loadPopup();
         function loadPopup() {
             var popup = null;
@@ -1448,7 +1448,7 @@
                         if (popup.website_url != null) {
                             $(Swal.getImage()).on('click', function(ev) {
                                 // localStorage.setItem('popState', 'shown');
-    
+
                                 // open new tab
                                 var a = document.createElement('a')
                                 a.href = popup.website_url
@@ -1457,7 +1457,7 @@
                                 a.click()
                                 document.body.removeChild(a)
                                 Swal.close()
-    
+
                                 // window.open(popup.website_url,'_blank');
                                 // window.location = popup.website_url;
                             });
@@ -1485,7 +1485,7 @@
                         $('.comm').html(cmt);
 
                         // Display Modal
-                        // $('#empModal').modal('show'); 
+                        // $('#empModal').modal('show');
                         // console.log(cmt);
                     }
                 });
@@ -1569,7 +1569,7 @@
                                         $('.comm').html(cmt);
 
                                         // Display Modal
-                                        // $('#empModal').modal('show'); 
+                                        // $('#empModal').modal('show');
                                         // console.log(cmt);
                                     }
                                 });

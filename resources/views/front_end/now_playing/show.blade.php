@@ -46,15 +46,15 @@
     // if ($emt->avg_capital_needs == null) {
     $emt->avg_capital_needs = $emt->supply * $emt->price;
     // }
-    
+
     if (empty($emt->trademark)) {
         $emt->trademark = $emt->company_name;
     } else {
         $emt->trademark;
     }
-    
+
     ?>
-    <link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tabs.css') }}">
 
     <div class="banner_bg_main"
         style="background-image: url('{{ env('PATH_WEB_PROD') }}{{ $picture[1] }}'),url('{{ env('PATH_WEB_PROD') }}{{ $picture[1] }}');"
@@ -375,7 +375,7 @@ $datediff = $end - $now;
                                     {{ round($datediff / (60 * 60 * 24)) }}
                                     Hari</span>
                                 <img class="divider" style="min-width: 270px; margin-top: 30px;"
-                                    src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                    src="{{ asset('assets/images/divider-108@2x.png') }}" />
 
                                 <br><br><span class="inter-medium-delta-12px">Bagikan: &nbsp;&nbsp;</span>
                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('detail-now-playing') }}/{{ $emt->id }}"
@@ -389,7 +389,7 @@ $datediff = $end - $now;
                                 </a>
                                 <br><br>
                                 <img class="divider" style="min-width: 270px;"
-                                    src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                                    src="{{ asset('assets/images/divider-108@2x.png') }}" />
                             <div style="min-width: 270px; margin-top: 10px;">
                                 {{-- <a class="b-daf btn btn-danger btn-lg btn-block" href=""><i class="fas fa-shopping-cart"></i>&nbsp; Beli
                 Saham</a><br>
@@ -424,7 +424,7 @@ $datediff = $end - $now;
             <!-- <div class="actions-com">
             @guest
                     <a class="button-5" href="{{ route('login') }}" style="cursor: pointer;">
-                      <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+                      <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
                       <div class="address-1 inter-medium-eerie-black-14px">
                         <span class="tx-icon inter-medium-eerie-black">
                           <span id="addcountLike" class="tx-icon">{{ $clike->l }} <span class="com-u">Likes</span></span>
@@ -432,7 +432,7 @@ $datediff = $end - $now;
                       </div>
                     </a>
                     <a class="button-5" href="{{ route('login') }}" style="cursor: pointer;">
-                      <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+                      <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
                       <div class="address-1 inter-medium-eerie-black-14px">
                         <span class="tx-icon inter-medium-eerie-black">
                           <span id="addcountVote" class="tx-icon">{{ $cvote->v }} <span class="com-u">Minat</span></span>
@@ -441,7 +441,7 @@ $datediff = $end - $now;
                     </a>
     @else
         <a class="button-5 clike" data-id={{ $emt->id }} id="clike" style="cursor: pointer;">
-                      <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+                      <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
                       <div class="address-1 inter-medium-eerie-black-14px">
                         <span class="tx-icon inter-medium-eerie-black ">
                           <span id="addcountLike" class="tx-icon">{{ $clike->l }} <span class="com-u">Likes</span></span>
@@ -449,7 +449,7 @@ $datediff = $end - $now;
                       </div>
                     </a>
                     <a class="button-5 slike" data-id={{ $emt->id }} id="slike" style="cursor: pointer;display:none;">
-                      <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+                      <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
                       <div class="address-1 inter-medium-eerie-black-14px">
                         <span class="tx-icon inter-medium-eerie-black ">
                           <span id="subcountLike" class="tx-icon">{{ $clike->l }} <span class="com-u">Likes</span></span>
@@ -457,7 +457,7 @@ $datediff = $end - $now;
                       </div>
                     </a>
                     <a class="button-5" data-id={{ $emt->id }} id="cvote" style="cursor: pointer;">
-                      <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+                      <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
                       <div class="address-1 inter-medium-eerie-black-14px">
                         <span class="tx-icon inter-medium-eerie-black">
                           <span id="addcountVote" class="tx-icon">{{ $cvote->v }} <span class="com-u">Minat</span></span>
@@ -465,7 +465,7 @@ $datediff = $end - $now;
                       </div>
                     </a>
                     <a class="button-5" data-id={{ $emt->id }} id="svote" style="cursor: pointer;display:none;">
-                      <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+                      <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
                       <div class="address-1 inter-medium-eerie-black-14px">
                         <span class="tx-icon inter-medium-eerie-black">
                           <span id="subcountVote" class="tx-icon">{{ $cvote->v }} <span class="com-u">Minat</span></span>
@@ -475,7 +475,7 @@ $datediff = $end - $now;
             @endguest
             <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{ $emt->id }}" data-toggle="modal"
               data-target="#modal{{ $emt->id }}">
-              <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
+              <img class="icon-com" src="{{ asset('assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
               <div class="address-1 inter-medium-eerie-black-14px">
                 <span class="tx-icon inter-medium-eerie-black">
                   <span class="tx-icon"> {{ $ccmt }} <span class="com-u">Komentar</span></span>
@@ -484,7 +484,7 @@ $datediff = $end - $now;
             </a>
             <a class="button-5" style="cursor: pointer;" data-id="{{ $emt->id }}" data-toggle="modal"
               data-target="#modalShareButton{{ $emt->id }}">
-              <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
+              <img class="icon-com" src="{{ asset('assets/images/icon-share-2-47@2x.png') }}" />&ensp;
               <div class="address-1 inter-medium-eerie-black-14px">
                 <span class="tx-icon inter-medium-eerie-black">
                   <p class="com-u">&ensp;Share</p>
@@ -808,7 +808,7 @@ $datediff = $end - $now;
                         });
 
                         // Display Modal
-                        // $('#empModal').modal('show'); 
+                        // $('#empModal').modal('show');
                     }
                 });
 
@@ -854,7 +854,7 @@ $datediff = $end - $now;
                         });
 
                         // Display Modal
-                        // $('#empModal').modal('show'); 
+                        // $('#empModal').modal('show');
                     }
                 });
             });
@@ -899,7 +899,7 @@ $datediff = $end - $now;
                         });
 
                         // Display Modal
-                        // $('#empModal').modal('show'); 
+                        // $('#empModal').modal('show');
                     }
                 });
 
@@ -944,7 +944,7 @@ $datediff = $end - $now;
                         });
 
                         // Display Modal
-                        // $('#empModal').modal('show'); 
+                        // $('#empModal').modal('show');
                     }
                 });
 
@@ -1012,7 +1012,7 @@ $datediff = $end - $now;
                         $('.comm').html(cmt);
 
                         // Display Modal
-                        // $('#empModal').modal('show'); 
+                        // $('#empModal').modal('show');
                         // console.log(cmt);
                     }
                 });
@@ -1056,7 +1056,7 @@ $datediff = $end - $now;
                                     $('.comm').html(cmt);
 
                                     // Display Modal
-                                    // $('#empModal').modal('show'); 
+                                    // $('#empModal').modal('show');
                                     // console.log(cmt);
                                 }
                             });

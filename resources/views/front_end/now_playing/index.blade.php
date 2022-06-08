@@ -78,9 +78,9 @@
           <div class="fashion_section_2">
             <div class="row" style="padding-left: 10px; padding-right: 10px;">
               {{-- @foreach ($now_playing as $np) --}}
-              <?php 
+              <?php
                 use Illuminate\Support\Facades\DB;
-                  
+
                   ?>
 
               @foreach($now_playing as $k => $np)
@@ -123,11 +123,11 @@
                 ->first();
                 ?>
               <div class="col-lg-3 col-sm-6 col-6" style="padding: 5px;">
-                <?php 
+                <?php
                                       // $picture = explode(',',$np->pictures);
                                       ?>
 
-                <?php 
+                <?php
                                 // $mul=number_format(round($np->minimum_invest * $np['price'],0),0,',','.');
                                 // $prog=round((round($np->terjual,0)/round($np->supply))*100,2);
                                 // $pend=number_format(round($np->supply*$np['price'],0),0,',','.');
@@ -182,7 +182,7 @@
                           <div class="address">
                             <div class="hr inter-bold-white-14px">
                               <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
-                                  <?php 
+                                  <?php
                                                       $now = time();
                                                       $start = strtotime($emj->date);
                                                       $end = strtotime($emj->end_date);
@@ -220,7 +220,7 @@
                           </div>
                         </div>
                         <div class="footer-card">
-                          <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+                          <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
                           <div class="footer-card-1">
                             <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                               <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span
@@ -305,7 +305,7 @@
                 where emiten_id = '.$np['id'].')')
                 ->first();
                 ?>
-<?php 
+<?php
                                       // $picture = explode(',',$np->pictures);
                                       ?>
 <div class="modal fade" id="modal_now{{$np['id']}}" tabindex="-1" role="dialog" aria-labelledby="detail_now"
@@ -351,7 +351,7 @@
               <div class="address">
                 <div class="hr inter-bold-white-14px">
                   <span class="tx-sold inter-medium-white"><b style="font-weight: bold">
-                      <?php 
+                      <?php
                         $now = time();
                         $start = strtotime($emj->date);
                         $end = strtotime($emj->end_date);
@@ -383,7 +383,7 @@
             </div>
           </div>
           <div class="footer-card">
-            <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
+            <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
             <div class="footer-card-1">
               <div class="total-pendanaan-rp3000000000 inter-normal-mercury-12px">
                 <span class="inter-normal-quill-gray-12px">Total Pendanaan<br /></span><span

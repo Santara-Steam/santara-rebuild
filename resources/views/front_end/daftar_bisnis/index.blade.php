@@ -10,7 +10,7 @@
                       <span class="text-urun inter-bold-alabaster">Daftarkan Bisnis Anda Dapatkan Modal Bisnis Dari Pemodal Setia Kami</span>
                     </div>
                   </div>
-                  <div class="actions2"> 
+                  <div class="actions2">
                         <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}">Daftarkan Bisnis</a>
                   </div>
                 </div>
@@ -69,22 +69,22 @@
                 </p>
               </div>
             </div>
-            <img class="image" src="{{ asset('public/assets/images/image-7@2x.png') }}" />
+            <img class="image" src="{{ asset('assets/images/image-7@2x.png') }}" />
           </div>
-        </div>      
+        </div>
             </div>
         </div>
         <div class="cta-section">
           <div class="ayo-daftarkan-bisnis-anda inter-normal-alabaster-40px">
             <span class="text-urun inter-normal-alabaster">Ayo Daftarkan Bisnis Anda!</span>
           </div>
-          <div class="actions3 "> 
+          <div class="actions3 ">
                         <a class="b-daf btn btn-danger btn-lg btn-block" href="{{ route('daftar-bisnis.create') }}">Daftarkan Bisnis</a>
                   </div>
           </div>
         </div>
-            
-           
+
+
             </div>
              </div>
           </div>

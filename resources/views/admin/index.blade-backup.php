@@ -11,7 +11,7 @@
                     <div class="col-12 mb-1">
                         <h4><strong>Welcome {{Auth::user()->trader->name}}!</strong></h4>
                         <p>Platform Equity Crowdfunding pertama yang berizin dan diawasi Otoritas Jasa Keuangan berdasarkan Surat Keputusan Nomor: KEP-59/D.04/2019.</p>
-                        
+
                     </div>
                 </div>
                 <div class="row">
@@ -19,7 +19,7 @@
                         <div class="card overflow-hidden">
                             <div class="card-content">
                                 <div class="card-body cleartfix">
-                                    
+
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
                                             <i class="icon-briefcase info font-large-2 mr-2"></i>
@@ -108,7 +108,7 @@
                         <div class="card overflow-hidden">
                             <div class="card-content">
                                 <div class="card-body cleartfix">
-                                    
+
                                     <div class="media align-items-stretch">
                                         <div class="align-self-center">
                                             <i class="icon-docs info font-large-2 mr-2"></i>
@@ -148,7 +148,7 @@
                     </div>
                 </div>
             @if ($book_verif == 0)
-            
+
             @else
             <section id="configuration">
                 <div class="row">
@@ -222,7 +222,7 @@
                 </div>
             </section>
             @endif
-                
+
             </section>
         </div>
     </div>
@@ -236,8 +236,8 @@
 <input type="hidden" id="key" name="key" value="{{env('PROJECT_DECRYPT_KEY')}}" />
 @endsection
 @section('js')
-<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
     integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -346,7 +346,7 @@ fetch(url, {
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
-    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />

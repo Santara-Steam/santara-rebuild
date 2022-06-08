@@ -1,19 +1,19 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-                              <?php 
+                              <?php
                               $picture = explode(',',$emt->pictures);
                                             if(empty($picture[0])){
                                               $picture[0] = 'default1.png';
                                               // $emtp =
                                             }else{
                                                 $picture[0] = str_replace("pralisting/emitens_pictures/", "", $picture[0]);
-                                                
+
                                             }
                                             if(empty($picture[1])){
-                                              
+
                                                 $picture[1] = 'default2.png';
-                                                
+
                                             }else{
                                               $picture[1] = str_replace("pralisting/emitens_pictures/", "", $picture[1]);
                                             }
@@ -58,7 +58,7 @@
                                                 $emt->trademark;
                                             }
                               ?>
-<link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/tabs.css') }}">
 
 <div class="banner_bg_main" style="background-image: url('{{env("PATH_WEB")}}{{$picture[1]}}'),url('{{env("PATH_WEB_PROD")}}{{$picture[1]}}'); margin-top: 96px;">
   <div class="banner_section layout_padding">
@@ -214,8 +214,8 @@
             </div>
           </div>
           <div class="container" style="margin-bottom: -20px;margin-top: 10px;">
-            
-            
+
+
           </div>
         </div>
       </div>
@@ -227,7 +227,7 @@
     <div class="actions-com">
       @guest
       <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
@@ -235,7 +235,7 @@
         </div>
       </a>
       <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
-        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+        <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
@@ -243,7 +243,7 @@
         </div>
       </a>
       <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span class="tx-icon"> {{$ccmt}} <span class="com-u">Komentar</span></span>
@@ -252,7 +252,7 @@
       </a>
       @else
       <a class="button-5 clike" data-id={{$emt->id}} id="clike" style="cursor: pointer;">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black ">
             <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
@@ -260,7 +260,7 @@
         </div>
       </a>
       <a class="button-5 slike" data-id={{$emt->id}} id="slike" style="cursor: pointer;display:none;">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black ">
             <span id="subcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
@@ -269,7 +269,7 @@
       </a>
       <a class="button-5" data-id={{$emt->id}} data-toggle="modal"
         data-target="#mdlvot{{$emt->id}}" style="cursor: pointer;">
-        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+        <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
@@ -277,7 +277,7 @@
         </div>
       </a>
       {{-- <a class="button-5" data-id={{$emt->id}} id="svote" style="cursor: pointer;display:none;">
-        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
+        <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="subcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
@@ -286,7 +286,7 @@
       </a> --}}
       <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
         data-target="#modal{{$emt->id}}">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span class="tx-icon"> {{$ccmt}} <span class="com-u">Komentar</span></span>
@@ -297,7 +297,7 @@
 
       <a class="button-5" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
         data-target="#modalShareButton{{$emt->id}}">
-        <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('assets/images/icon-share-2-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <p class="com-u">&ensp;Share</p>
@@ -344,7 +344,7 @@
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[3]}}" 
+                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[3]}}"
                     onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[3]}}'"/>
                   </div>
                   @endif
@@ -392,13 +392,13 @@
         </button>
       </div>
       @guest
-      <?php 
+      <?php
       $s['m'] = 0;
       ?>
       @else
-      <?php 
-      
-      
+      <?php
+
+
       // print_r($value)
       $s = json_decode(json_encode($value), true);
       // print_r($s['m']);
@@ -409,7 +409,7 @@
       }
       ?>
       @endguest
-      
+
 
       <form action="{{url('addVot')}}/{{$emt->id}}" method="POST"
         enctype="multipart/form-data">
@@ -580,7 +580,7 @@
 <script>
   $(document).ready(function(){
       $('#clike').click(function(){
-         
+
           var id = $(this).data('id');
           let _token   = $('meta[name="csrf-token"]').attr('content');
           console.log(id);
@@ -591,32 +591,32 @@
               data: {id: id,
                 _token: _token
               },
-              success: function(count){ 
+              success: function(count){
                   // Add response in Modal body
                   toastr.info("Suka");
                   $.ajax({
                   url: '{{url("getlike")}}/'+id,
                   type: 'get',
                   data: {id: id},
-                  success: function(count){ 
+                  success: function(count){
                       console.log(count);
                       var li = document.getElementById('subcountLike');
-                      li.innerHTML = count; 
+                      li.innerHTML = count;
                       document.getElementById("slike").style.display = "inherit";
                       document.getElementById("clike").style.display = "none";
                     }
                   });
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
               }
           });
-          
-          
+
+
       })
-      
-      
-      
+
+
+
 });
 </script>
 <script type='text/javascript'>
@@ -632,36 +632,36 @@
               data: {id: id,
                 _token: _token
               },
-              success: function(count){ 
+              success: function(count){
                   // Add response in Modal body
                   toastr.error("Batal Suka");
                   $.ajax({
                   url: '{{url("getlike")}}/'+id,
                   type: 'get',
                   data: {id: id},
-                  success: function(count){ 
+                  success: function(count){
                       console.log(count);
                       var li = document.getElementById('addcountLike');
-                      li.innerHTML = count; 
+                      li.innerHTML = count;
                       document.getElementById("slike").style.display = "none";
                       document.getElementById("clike").style.display = "inherit";
                     }
                   });
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
               }
           });
      });
-      
-      
+
+
 });
 </script>
 
 <script type='text/javascript'>
   $(document).ready(function(){
       $('#cvote').click(function(){
-         
+
           var id = $(this).data('id');
           let _token   = $('meta[name="csrf-token"]').attr('content');
           console.log(id);
@@ -672,36 +672,36 @@
               data: {id: id,
                 _token: _token
               },
-              success: function(count){ 
+              success: function(count){
                   // Add response in Modal body
                   toastr.info("Minat");
                   $.ajax({
                   url: '{{url("getvote")}}/'+id,
                   type: 'get',
                   data: {id: id},
-                  success: function(count){ 
+                  success: function(count){
                       console.log(count);
                       var lis = document.getElementById('subcountVote');
-                      lis.innerHTML = count; 
+                      lis.innerHTML = count;
                       document.getElementById("svote").style.display = "inherit";
                       document.getElementById("cvote").style.display = "none";
                     }
                   });
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
               }
           });
-          
-          
+
+
       })
-      
+
 });
 </script>
 <script type='text/javascript'>
   $(document).ready(function(){
       $('#svote').click(function(){
-         
+
           var id = $(this).data('id');
           let _token   = $('meta[name="csrf-token"]').attr('content');
           console.log(id);
@@ -712,30 +712,30 @@
               data: {id: id,
                 _token: _token
               },
-              success: function(count){ 
+              success: function(count){
                   // Add response in Modal body
                   toastr.error("Batal Minat");
                   $.ajax({
                   url: '{{url("getvote")}}/'+id,
                   type: 'get',
                   data: {id: id},
-                  success: function(count){ 
+                  success: function(count){
                       console.log(count);
                       var lit = document.getElementById('addcountVote');
-                      lit.innerHTML = count; 
+                      lit.innerHTML = count;
                       document.getElementById("cvote").style.display = "inherit";
                       document.getElementById("svote").style.display = "none";
                     }
                   });
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
               }
           });
-          
-          
+
+
       })
-      
+
 });
 </script>
 <script>
@@ -786,12 +786,12 @@
             url: '{{url("getmodaldata")}}/'+id,
             type: 'get',
             data: {id: id},
-            success: function(cmt){ 
+            success: function(cmt){
                 // Add response in Modal body
-                $('.comm').html(cmt); 
+                $('.comm').html(cmt);
 
                 // Display Modal
-                // $('#empModal').modal('show'); 
+                // $('#empModal').modal('show');
                 // console.log(cmt);
             }
         });
@@ -826,12 +826,12 @@
               url: '{{url("getmodaldata")}}/'+{{$emt->id}},
               type: 'get',
               data: {id: "{{$emt->id}}"},
-              success: function(cmt){ 
+              success: function(cmt){
                   // Add response in Modal body
-                  $('.comm').html(cmt); 
+                  $('.comm').html(cmt);
 
                   // Display Modal
-                  // $('#empModal').modal('show'); 
+                  // $('#empModal').modal('show');
                   // console.log(cmt);
               }
           });
