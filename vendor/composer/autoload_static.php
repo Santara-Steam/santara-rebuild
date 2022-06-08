@@ -12,9 +12,9 @@ class ComposerStaticInit2d20e38beef7e76daf104100bec3cf49
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
@@ -22,20 +22,20 @@ class ComposerStaticInit2d20e38beef7e76daf104100bec3cf49
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+        '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
+        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
-        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     );
 
@@ -51,8 +51,6 @@ class ComposerStaticInit2d20e38beef7e76daf104100bec3cf49
         'Z' => 
         array (
             'ZipStream\\' => 10,
-            'Zefy\\SimpleSSO\\' => 15,
-            'Zefy\\LaravelSSO\\' => 16,
         ),
         'W' => 
         array (
@@ -212,14 +210,6 @@ class ComposerStaticInit2d20e38beef7e76daf104100bec3cf49
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
-        ),
-        'Zefy\\SimpleSSO\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/zefy/php-simple-sso/src',
-        ),
-        'Zefy\\LaravelSSO\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src',
         ),
         'Whoops\\' => 
         array (
@@ -619,6 +609,7 @@ class ComposerStaticInit2d20e38beef7e76daf104100bec3cf49
         'App\\Exports\\PenerbitExport' => __DIR__ . '/../..' . '/app/Exports/PenerbitExport.php',
         'App\\Exports\\TransaksiExport' => __DIR__ . '/../..' . '/app/Exports/TransaksiExport.php',
         'App\\Exports\\UserExport' => __DIR__ . '/../..' . '/app/Exports/UserExport.php',
+        'App\\Helpers\\Portofolio' => __DIR__ . '/../..' . '/app/Helpers/Portofolio.php',
         'App\\Http\\Controllers\\AccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccountController.php',
         'App\\Http\\Controllers\\AddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/AddressController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -678,6 +669,7 @@ class ComposerStaticInit2d20e38beef7e76daf104100bec3cf49
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckRole' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckRole.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
+        'App\\Http\\Middleware\\HaveEmiten' => __DIR__ . '/../..' . '/app/Http/Middleware/HaveEmiten.php',
         'App\\Http\\Middleware\\KYC' => __DIR__ . '/../..' . '/app/Http/Middleware/KYC.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -6677,23 +6669,6 @@ class ComposerStaticInit2d20e38beef7e76daf104100bec3cf49
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
-        'Zefy\\LaravelSSO\\Commands\\CreateBroker' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Commands/CreateBroker.php',
-        'Zefy\\LaravelSSO\\Commands\\DeleteBroker' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Commands/DeleteBroker.php',
-        'Zefy\\LaravelSSO\\Commands\\ListBrokers' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Commands/ListBrokers.php',
-        'Zefy\\LaravelSSO\\Controllers\\ServerController' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Controllers/ServerController.php',
-        'Zefy\\LaravelSSO\\Exceptions\\MissingConfigurationException' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Exceptions/MissingConfigurationException.php',
-        'Zefy\\LaravelSSO\\LaravelSSOBroker' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/LaravelSSOBroker.php',
-        'Zefy\\LaravelSSO\\LaravelSSOServer' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/LaravelSSOServer.php',
-        'Zefy\\LaravelSSO\\Middleware\\SSOAutoLogin' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Middleware/SSOAutoLogin.php',
-        'Zefy\\LaravelSSO\\Models\\Broker' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Models/Broker.php',
-        'Zefy\\LaravelSSO\\Models\\BrokerUser' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Models/BrokerUser.php',
-        'Zefy\\LaravelSSO\\Resources\\UserResource' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/Resources/UserResource.php',
-        'Zefy\\LaravelSSO\\SSOServiceProvider' => __DIR__ . '/..' . '/mi-lopez/laravel-sso/src/SSOServiceProvider.php',
-        'Zefy\\SimpleSSO\\Exceptions\\SSOServerException' => __DIR__ . '/..' . '/zefy/php-simple-sso/src/Exceptions/SSOServerException.php',
-        'Zefy\\SimpleSSO\\Interfaces\\SSOBrokerInterface' => __DIR__ . '/..' . '/zefy/php-simple-sso/src/Interfaces/SSOBrokerInterface.php',
-        'Zefy\\SimpleSSO\\Interfaces\\SSOServerInterface' => __DIR__ . '/..' . '/zefy/php-simple-sso/src/Interfaces/SSOServerInterface.php',
-        'Zefy\\SimpleSSO\\SSOBroker' => __DIR__ . '/..' . '/zefy/php-simple-sso/src/SSOBroker.php',
-        'Zefy\\SimpleSSO\\SSOServer' => __DIR__ . '/..' . '/zefy/php-simple-sso/src/SSOServer.php',
         'ZipStream\\Bigint' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Bigint.php',
         'ZipStream\\DeflateStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/DeflateStream.php',
         'ZipStream\\Exception' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception.php',
