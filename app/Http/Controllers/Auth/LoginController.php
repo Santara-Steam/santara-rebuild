@@ -29,7 +29,7 @@ class LoginController extends Controller
         $this->validate($request, [
             'email' => 'required|max:255|email',
             'password' => 'required',
-            'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
+//            'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
         ]);
         app('request')->session()->put('pwd', $request->password);
         // $secmar = json_decode(app('request')->session()->get('secondary_market'),TRUE);
@@ -41,7 +41,7 @@ class LoginController extends Controller
             } else if (Auth::user()->role_id == 1) {
                 return redirect('admin');
             } else {
-                
+
                 return redirect()->back();
             }
         } else {
@@ -54,7 +54,7 @@ class LoginController extends Controller
     {
         try {
             $client = new Client();
-  
+
             $response = $client->request('POST', config('global.BASE_API_CLIENT_URL').'/v3.7.1/auth/login/', [
               'headers' => [
                 'Origin' => config('global.BASE_API_FILE')
@@ -64,7 +64,7 @@ class LoginController extends Controller
                 'password' => $password
               ],
             ]);
-            
+
             // app('request')->session()->put('test', $response->getStatusCode());
             if ($response->getStatusCode() == 200) {
                 $result = json_decode($response->getBody()->getContents(), TRUE);

@@ -8,18 +8,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasApiTokens;
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
 
-    protected $guarded = ['id']; 
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,7 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(trader::class,'user_id');
     }
-    
+
 
     protected $connection = 'mysql';
     protected $table = 'users';

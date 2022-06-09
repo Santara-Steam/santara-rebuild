@@ -2,7 +2,7 @@ APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=base64:1Toep9lqjfRZKqcQnI7WqbrYtFtocy263LS3zcwRh64=
 APP_DEBUG=true
-APP_URL=http://santara.test
+APP_URL=http://127.0.0.1:8000
 
 LOG_CHANNEL=stack
 LOG_DEPRECATIONS_CHANNEL=null
