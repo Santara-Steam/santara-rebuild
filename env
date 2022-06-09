@@ -22,8 +22,7 @@ DB_DATABASE2=santarax_db
 DB_USERNAME2=rian_santara
 DB_PASSWORD2=S4ntar4userDB
 
-SANTARA_CHAT_API_BASE_URL=https://santara-chatgroup-fdmrjqphea-et.a.run.app
-
+SANTARA_CHAT_API_BASE_URL=http://localhost:8888
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
 FILESYSTEM_DRIVER=local

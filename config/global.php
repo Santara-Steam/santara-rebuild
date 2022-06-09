@@ -16,8 +16,8 @@ if (env('CONFIG_ENV') == 'dev') {
     "STORAGE_BUCKET" => "https://storage.googleapis.com/asset-bucket-staging/",
     "STORAGE_BUCKET2" => "https://storage.googleapis.com/santara-bucket-staging/",
     "CONFIG_ENV_GLOBAL" => "DEV",
-    "SANTARA_CHAT_API_BASE_URL"=> env('SANTARA_CHAT_API_BASE_URL', 'https://santara-chatgroup-fdmrjqphea-et.a.run.app')
-
+//    "SANTARA_CHAT_API_BASE_URL"=> env('SANTARA_CHAT_API_BASE_URL', 'https://santara-chatgroup-fdmrjqphea-et.a.run.app')
+    "SANTARA_CHAT_API_BASE_URL"=> env('SANTARA_CHAT_API_BASE_URL', 'http://127.0.0.1:8888')
 ];
 }else{
 
@@ -36,7 +36,8 @@ return [
     "STORAGE_BUCKET" => "https://storage.googleapis.com/asset-bucket-prod/",
     "STORAGE_BUCKET2" => "https://storage.googleapis.com/santara-bucket-prod/",
     "CONFIG_ENV_GLOBAL" => "PRODUCTION",
-    "SANTARA_CHAT_API_BASE_URL"=> env('SANTARA_CHAT_API_BASE_URL', 'https://santara-chatgroup-fdmrjqphea-et.a.run.app')
+//    "SANTARA_CHAT_API_BASE_URL"=> env('SANTARA_CHAT_API_BASE_URL', 'https://santara-chatgroup-fdmrjqphea-et.a.run.app')
+    "SANTARA_CHAT_API_BASE_URL"=> env('SANTARA_CHAT_API_BASE_URL', 'http://127.0.0.1:8888')
 
 ];
 }

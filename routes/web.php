@@ -27,20 +27,21 @@ use App\Http\Controllers\Front_end\ErrorPageController;
 |
 */
 
- Route::get('/sss', function () {
-     dd(session()->all());
-     return view('welcome');
- });
-
 // Auth::routes();
 Auth::routes(['verify' => true]);
 
+Route::get('/user/grant-access', function (){
+    return view('user.grant_access');
+})->middleware('auth');
 
+Route::get('/check-user', function (){
+    dd(\request());
+});
+
+Route::get('/user/sso' ,[SsoController::class, 'sso'])->middleware('auth')->name('sso');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
 Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], function () {
-
-    Route::get('/user/sso' ,[SsoController::class, 'sso']);
 
     Route::get('/user', [App\Http\Controllers\HomeController::class, 'indexuser']);
 

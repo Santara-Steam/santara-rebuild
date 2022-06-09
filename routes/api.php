@@ -23,3 +23,4 @@ Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'stor
 Route::get('/ownPortofolio', function () {
    return Portofolio::OwnPortofolio();
 });
+
