@@ -18,7 +18,7 @@
                         </tr>
                                                         <tr style="border-bottom: 1rem solid transparent;">
                             <td>Nilai Investasi</td>
-                            <?php 
+                            <?php
                             use App\Models\User;
                             use Illuminate\Support\Facades\DB;
                             $uid = Auth::user()->id;
@@ -47,7 +47,7 @@
                                 <td>Rp. {{number_format(Auth::user()->trader->saldo->balance, 0, ',', '.')}}</td>
                                 @endif
                             </tr>
-                        
+
                     </table>
                 </div>
                 <a href="{{url('/')}}" class="btn btn-santara-red btn-block" type="button">
@@ -104,7 +104,7 @@
             </li>
             <li class=" nav-item {{ 'user/video_tutorial' == request()->path() ? 'active' : '' }}"><a href="{{url('user/video_tutorial')}}"><i class="la la-play-circle"></i><span class="menu-title" data-i18n="eCommerce">Video Tutorial</span></a>
             </li>
-            
+
             {{-- <li class="nav-item "><a href=""><i class="la la-external-link-square"></i><span class="menu-title" data-i18n="eCommerce">Direct Dashboard</span></a>
             </li>
              --}}
@@ -112,6 +112,9 @@
              </li> --}}
              <li class=" nav-item {{ 'user/riwayat_aktifitas' == request()->path() ? 'active' : '' }}"><a href="{{url('/user/riwayat_aktifitas')}}"><i class="la la-history"></i><span class="menu-title" data-i18n="eCommerce">Riwayat Pengguna</span></a>
              </li>
+
+            <li class=" nav-item {{ 'user/sso' == request()->path() ? 'active' : '' }}"><a href="{{url('/user/sso')}}"><i class="la la-comments"></i><span class="menu-title" data-i18n="eCommerce">Group chat</span></a>
+            </li>
         </ul>
     </div>
 </div>
