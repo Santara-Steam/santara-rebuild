@@ -9,7 +9,7 @@ class emiten extends Model
 {
     use HasFactory;
     protected $hidden = ['uuid'];
-    protected $guarded = ['id','uuid']; 
+    protected $guarded = ['id','uuid'];
     protected $connection = 'mysql';
     public function ctg()
     {
@@ -18,5 +18,15 @@ class emiten extends Model
     public function tr()
     {
         return $this->belongsTo(trader::class,'trader_id')->withDefault();
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function countTransactions()
+    {
+        return $this->hasMany(Transaction::class)->count();
     }
 }

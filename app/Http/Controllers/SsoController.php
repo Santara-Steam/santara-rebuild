@@ -21,6 +21,7 @@ class SsoController extends Controller
             "email" => Auth::user()->email,
             "name" => Auth::user()->trader->name,
             "auth" => $request->session()->get('pwd'),
+            "isAdmin" => (bool) Auth::user()->role->name == "Admin"
         ]);
 
         return redirect($chatUrl . "/authorize?" . $query);

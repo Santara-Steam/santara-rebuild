@@ -16,6 +16,7 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next,$roles)
     {
+
         // return $next($request);
         if($request->user()->role_id == $roles){
             return $next($request);

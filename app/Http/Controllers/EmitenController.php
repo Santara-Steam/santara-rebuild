@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AuthHelper;
+use App\Helpers\Misc;
 use App\Models\Deposit;
 use App\Models\emiten;
 use App\Models\emiten_journey;
@@ -11,6 +13,8 @@ use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Google\Cloud\Storage\StorageClient;
 use Carbon\Carbon;
@@ -33,7 +37,7 @@ class EmitenController extends Controller
                     IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply > 1, 1,
                       (SUM(
                         IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply) * 100, 2), char) = 100.00
-                        and 
+                        and
                         emitens.is_deleted = 0
                         and emitens.is_active = 1
                         and emitens.begin_period < now()')
@@ -70,7 +74,7 @@ class EmitenController extends Controller
             ->groupBy('emitens.id')
             ->get();
         $nowPlaying = [];
-        
+
         // $collection = collect($soldout);
         // $merged = $collection->merge($commingsoon);
         // $mergedData = $merged->all();
@@ -198,9 +202,9 @@ class EmitenController extends Controller
             '3' => 'Owner/Manajemen belum pernah memiliki keahlian/pengalaman di bisnis ini dan sejenisnya namun telah memiliki pengalaman di sektor lain',
             '4' => 'Owner/Manajemen baru mulai berbisnis/belum ada track record'
         ];
-        return view('admin.emiten.add', compact('badanUsaha', 
-            'sistemPencatatan', 
-            'posisiPasar', 
+        return view('admin.emiten.add', compact('badanUsaha',
+            'sistemPencatatan',
+            'posisiPasar',
             'marketPositition',
             'strategiEmiten',
             'statusKantor',
@@ -253,7 +257,7 @@ class EmitenController extends Controller
         return Validator::make($data,[
             'company_name' => ['required'],
             'logo' => ['required'],
-            
+
         ]);
     }
 
@@ -528,9 +532,9 @@ class EmitenController extends Controller
             '4' => 'Owner/Manajemen baru mulai berbisnis/belum ada track record'
         ];
         return view('admin.emiten.edit',compact(
-            'emiten','picture','badanUsaha', 
-            'sistemPencatatan', 
-            'posisiPasar', 
+            'emiten','picture','badanUsaha',
+            'sistemPencatatan',
+            'posisiPasar',
             'marketPositition',
             'strategiEmiten',
             'statusKantor',
@@ -644,9 +648,9 @@ class EmitenController extends Controller
         // ->limit(100)
         // ->get();
         // dd($s);
-        return view('user.emiten.edit',compact('kategori','emiten','picture','badanUsaha', 
-        'sistemPencatatan', 
-        'posisiPasar', 
+        return view('user.emiten.edit',compact('kategori','emiten','picture','badanUsaha',
+        'sistemPencatatan',
+        'posisiPasar',
         'marketPositition',
         'strategiEmiten',
         'statusKantor',
@@ -865,7 +869,7 @@ class EmitenController extends Controller
         }else{
             $coverFileSave = $picture[1];
         }
-        
+
         if($request->hasFile("owner")){
             $ownerNameWithExt = $request->file('owner')->getClientOriginalName() ;
             $ownerFileName = pathinfo ($ownerNameWithExt, PATHINFO_FILENAME);
@@ -1040,6 +1044,36 @@ class EmitenController extends Controller
                 $emiten->is_active = 1;
             }
             $emiten->save();
+
+            $transactions = $emiten->transactions->where('is_verified', '=', 1)
+                ->where('is_deleted', '=', 0)
+                ->groupBy('trader_id');
+
+            if ($request->get('title') == 'Pendanaan Terpenuhi') {
+                $users = AuthHelper::getUserIdentitiesByGroup($transactions);
+
+                $response = Http::withHeaders([
+                    "Content-Type" => "application/json",
+                    "Accept" => "application/json",
+                    "email" => AuthHelper::getEmail(),
+                    "password" => AuthHelper::getPassword(),
+                ])->post(env('SANTARA_CHAT_BASE_URL') . '/api/groups', [
+                    "name" => $emiten->company_name,
+                    "description" => $emiten->business_desc,
+                    "group_type" => 2, //closed group
+                    "privacy" => 2, //private group
+                    "photo_url" => $emiten->pictures,
+                    "users" => $users,
+                    "emiten_id" => $emiten->id
+                ])->json();
+
+                if (!$response['success']) {
+                    return redirect()->back()->with([
+                       'message' => 'Error when creating group chat',
+                       'alert-type' => 'danger'
+                    ]);
+                }
+            }
         });
 
         $notif = array(
@@ -1051,7 +1085,7 @@ class EmitenController extends Controller
     }
     public function logocropImg()
     {
-            
+
 
             $data = $_POST['image'];
             $image_array_1 = explode(";", $data);
@@ -1072,7 +1106,7 @@ class EmitenController extends Controller
                 'predefinedAcl' => 'publicRead',
                 'name' => $pictures
             ]);
-            
+
             echo $image_name;
     }
     public function profilecropImg()
@@ -1171,7 +1205,7 @@ class EmitenController extends Controller
         ->leftjoin('emiten_journeys','emiten_journeys.emiten_id','=','emitens.id')
         ->whereRaw('emiten_journeys.created_at in (SELECT max(created_at) from emiten_journeys GROUP BY emiten_journeys.emiten_id)')
         ->get();
-        
+
         return view('user.emiten.index',compact('emiten'));
     }
 
@@ -1227,7 +1261,7 @@ class EmitenController extends Controller
         //     ]);
         // }
 
-        
+
         return view('user.emiten.bisnis',compact('data'));
         // return $data;
         // dd($data['list']);

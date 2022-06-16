@@ -13,6 +13,39 @@ class Portofolio
      */
     public static function OwnPortofolio()
     {
+        $user = self::checkUser();
+
+        $query = self::getQuery($user);
+
+        if ($query->get()) {
+            return response()->json([
+                "data" => $query
+            ]);
+        }
+    }
+
+    public static function getFundedPortofolio()
+    {
+        $user = self::checkUser();
+
+        $query = self::getQuery($user);
+
+        return $query->andWhere('emitens.last_emiten_journey', '=', 'PENDANAAN TERPENUHI');
+    }
+
+    private static function getQuery($user)
+    {
+        return emiten::join('transactions as tr', 'tr.emiten_id', '=', 'emitens.id')
+            ->join('traders as t', 't.id', '=', 'tr.trader_id')
+            ->where('t.user_id', $user->id)
+            ->where('tr.is_deleted', 0)
+            ->where('tr.is_verified', 1)
+            ->select('emitens.*')
+            ->groupBy('emitens.id');
+    }
+
+    private static function checkUser()
+    {
         $userId = request()->get('userId');
         $user = User::find($userId);
 
@@ -22,19 +55,7 @@ class Portofolio
                 "message" => "User not found"
             ], 404);
         }
-        $query = emiten::join('transactions as tr', 'tr.emiten_id', '=', 'emitens.id')
-            ->join('traders as t', 't.id', '=', 'tr.trader_id')
-            ->where('t.user_id', $user->id)
-            ->where('tr.is_deleted', 0)
-            ->where('tr.is_verified', 1)
-            ->select('emitens.*')
-            ->groupBy('emitens.id')
-            ->get();
 
-        if ($query) {
-            return response()->json([
-                "data" => $query
-            ]);
-        }
+        return $user;
     }
 }
