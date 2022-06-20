@@ -15,11 +15,15 @@ class Portofolio
     {
         $user = self::checkUser();
 
-        $query = self::getQuery($user);
+        $query = self::getQuery($user)->get();
 
-        if ($query->get()) {
+        if ($query) {
             return response()->json([
-                "data" => $query
+                "emitenIds" => $query->map(function ($value){
+                    return $value->id;
+                }) ,
+                "data" => $query,
+
             ]);
         }
     }
@@ -40,6 +44,7 @@ class Portofolio
             ->where('t.user_id', $user->id)
             ->where('tr.is_deleted', 0)
             ->where('tr.is_verified', 1)
+            ->where('emitens.is_active', 1)
             ->select('emitens.*')
             ->groupBy('emitens.id');
     }
