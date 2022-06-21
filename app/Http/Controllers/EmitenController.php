@@ -1063,7 +1063,7 @@ class EmitenController extends Controller
                     "group_type" => 2, //closed group
                     "privacy" => 2, //private group
                     "photo_url" => $emiten->pictures,
-                    "users" => [$users[0], $users[1], $users[2] ],
+                    "users" => [1],
                     "emiten_id" => $emiten->id
                 ])->json();
 
