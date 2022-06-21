@@ -1061,7 +1061,7 @@ class EmitenController extends Controller
                     "name" => $emiten->company_name,
                     "description" => $emiten->business_desc,
                     "group_type" => 2, //closed group
-                    "privacy" => 2, //private group
+                    "privacy" => 1, //private group
                     "photo_url" => $emiten->pictures,
                     "users" => [1],
                     "emiten_id" => $emiten->id
