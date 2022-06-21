@@ -66,6 +66,7 @@ class HomeController extends Controller
                             ->groupBy('users.id')
                             ->first();
         $uid = Auth::user()->id;
+
         $client = new \GuzzleHttp\Client();
 
             $headers = [
@@ -81,7 +82,7 @@ class HomeController extends Controller
                 // echo json_encode($tokens);
                 // return;
                 //  return view('user.portofolio.index',compact('port'));
-                
+
             }
             $port = collect($tokens);
 
@@ -95,10 +96,10 @@ class HomeController extends Controller
                 ->orwhere('users.id', Auth::user()->id)
                 ->where('tr.is_deleted', 0)
                 ->where('tr.last_status', 'WAITING FOR VERIFICATION')
-                ->select('tr.id','ot.redirect_url','tr.expired_date', 'tr.uuid','e.pictures', 't.name as trader_name', 'users.email as user_email', 
-                    't.id as trader_id','e.trademark','e.company_name', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'), 
-                    'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at', 
-                    'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'), 
+                ->select('tr.id','ot.redirect_url','tr.expired_date', 'tr.uuid','e.pictures', 't.name as trader_name', 'users.email as user_email',
+                    't.id as trader_id','e.trademark','e.company_name', 'e.code_emiten', DB::raw('CONCAT("SAN","-", tr.id, "-", e.code_emiten) as transaction_serial'),
+                    'tr.channel', 'tr.description', 'tr.is_verified', 'tr.split_fee', 'tr.created_at as created_at',
+                    'tr.amount', 'tr.fee', 'e.price', DB::raw('(tr.amount/e.price) as qty'),
                     'tr.last_status as status')
                 ->orderBy('tr.id','DESC')
                 ->get();
@@ -143,7 +144,7 @@ class HomeController extends Controller
             ->where('is_deleted', 0)
             ->select(\DB::raw('SUM(amount) as amount'))
             ->first();
-        $totalDompet = DB::select('select sum(hs.total) as total from 
+        $totalDompet = DB::select('select sum(hs.total) as total from
             (select floor(sum(amount)) total from deposits
                 where status = 1 and is_deleted = 0
                 union

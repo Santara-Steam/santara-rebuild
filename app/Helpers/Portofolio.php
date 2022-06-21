@@ -4,7 +4,9 @@ namespace App\Helpers;
 
 use App\Models\emiten;
 use App\Models\User;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Collection;
 
 class Portofolio
 {
@@ -62,5 +64,30 @@ class Portofolio
         }
 
         return $user;
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    public static function getApiPortofolio(): ?Collection
+    {
+        $client = new Client();
+
+        $headers = [
+            'Authorization' => 'Bearer ' .app('request')->session()->get('token'),
+        ];
+
+        $responseToken = $client->request('GET', config('global.BASE_API_CLIENT_URL') . '/v3.7.1/portofolio/?category=' , [
+            'headers' => $headers,
+        ]);
+
+        if ($responseToken->getStatusCode() == 200) {
+            $tokens = json_decode($responseToken->getBody()->getContents(), TRUE);
+
+            return collect($tokens);
+
+        }
+
+        return null;
     }
 }

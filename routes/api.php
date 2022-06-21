@@ -21,6 +21,6 @@ Route::middleware('auth:passport')->get('/user', function (Request $request) {
 Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
 
 Route::get('/ownPortofolio', function () {
-   return Portofolio::OwnPortofolio();
+   return Portofolio::getApiPortofolio();
 });
 
