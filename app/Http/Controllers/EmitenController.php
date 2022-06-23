@@ -1060,8 +1060,8 @@ class EmitenController extends Controller
                 ])->post(env('SANTARA_CHAT_BASE_URL') . '/api/groups', [
                     "name" => $emiten->company_name,
                     "description" => $emiten->business_desc,
-                    "group_type" => 2, //closed group
-                    "privacy" => 1, //private group
+                    "group_type" => 1, //closed group
+                    "privacy" => 2, //private group
                     "photo_url" => $emiten->pictures,
                     "users" => [1],
                     "emiten_id" => $emiten->id
