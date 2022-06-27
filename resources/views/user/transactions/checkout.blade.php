@@ -44,148 +44,146 @@
 <!-- fashion section start -->
 <div class="fashion_section" style="margin-top: 146px;">
 
-                <link rel="stylesheet" type="text/css"
-                    href="https://dev.santara.id/assets/new-santara/css/checkout.css?v=5.8.8">
+    <link rel="stylesheet" type="text/css" href="https://dev.santara.id/assets/new-santara/css/checkout.css?v=5.8.8">
 
-                <div class="container justify-content-center">
-                    <div class="row" style="color: black;">
-                        <div class="col-md-12">
-                            <h2 class="fs-27 ff-p c-gold" style="text-transform:uppercase; text-align: center">
-                                <b style="font-family: 'Poppins';">Pembayaran</b></h2>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="card-content">
-                                <div class="card-body card-body-payment">
-                                    <div class="col-md-6 offset-md-3 p-0">
+    <div class="container justify-content-center">
+        <div class="row" style="color: black;">
+            <div class="col-md-12">
+                <h2 class="fs-27 ff-p c-gold" style="text-transform:uppercase; text-align: center">
+                    <b style="font-family: 'Poppins';">Pembayaran</b>
+                </h2>
+            </div>
+            <div class="col-md-12">
+                <div class="card-content">
+                    <div class="card-body card-body-payment">
+                        <div class="col-md-6 offset-md-3 p-0">
 
 
 
-                                        <!-- ITEM -->
-                                        <div class="">
-                                            <div class="alert container-checkout-item alert-dismissible fade show"
-                                                role="alert">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-4 d-flex justify-content-center">
-                                                        <img src="{{ENV('PATH_WEB')}}{{$picture[0]}}"
-                                                            onerror="this.onerror=null;this.src='{{ENV('PATH_WEB_PROD')}}{{$picture[0]}}';"
-                                                            class="payment-box-img" width="80" height="80">
-                                                    </div>
-                                                    <div class="col-12 col-md-8 text-left ff-m" style="padding: 10px;">
-                                                        <strong style="font-size: 0.9rem;">{{$emiten->company_name}}</strong><br />
-                                                        <span class="fs-12">Harga Saham
-                                                            <span class="payment-detail-font" style="color :black;">
-                                                                Rp {{number_format($emiten->price,0,',','.')}} </span><br />
-                                                        </span>
+                            <!-- ITEM -->
+                            <div class="">
+                                <div class="alert container-checkout-item alert-dismissible fade show" role="alert">
+                                    <div class="row">
+                                        <div class="col-12 col-md-4 d-flex justify-content-center">
+                                            <img src="{{ENV('PATH_WEB')}}{{$picture[0]}}"
+                                                onerror="this.onerror=null;this.src='{{ENV('PATH_WEB_PROD')}}{{$picture[0]}}';"
+                                                class="payment-box-img" width="80" height="80">
+                                        </div>
+                                        <div class="col-12 col-md-8 text-left ff-m" style="padding: 10px;">
+                                            <strong style="font-size: 0.9rem;">{{$emiten->company_name}}</strong><br />
+                                            <span class="fs-12">Harga Saham
+                                                <span class="payment-detail-font" style="color :black;">
+                                                    Rp {{number_format($emiten->price,0,',','.')}} </span><br />
+                                            </span>
 
-                                                        <span class="fs-12">Jumlah Investasi
-                                                            <span class="payment-detail-font" style="color :black;">
-                                                                {{number_format($lembar_saham,0,',','.')}} Lembar
-                                                            </span><br />
-                                                        </span>
+                                            <span class="fs-12">Jumlah Investasi
+                                                <span class="payment-detail-font" style="color :black;">
+                                                    {{number_format($lembar_saham,0,',','.')}} Lembar
+                                                </span><br />
+                                            </span>
 
-                                                        <hr style="margin-bottom: 0.25rem;margin-top: 0.25rem" />
-                                                        <span class="fs-12"><b>Total</b>
-                                                            <strong id="total" class="payment-detail-font"
-                                                                style="color :black;">
-                                                                Rp {{number_format($lembar_saham*$emiten->price,0,',','.')}} </strong>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <button type="button" style="color: #fff;" class="btn-close"
-                                                    onClick="deleteTransaction('6ac584a7-69a6-41bd-b2b7-4046614638f3')"></button>
-                                            </div>
-
+                                            <hr style="margin-bottom: 0.25rem;margin-top: 0.25rem" />
+                                            <span class="fs-12"><b>Total</b>
+                                                <strong id="total" class="payment-detail-font" style="color :black;">
+                                                    Rp {{number_format($lembar_saham*$emiten->price,0,',','.')}}
+                                                </strong>
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-8 offset-md-2 p-0 mt-5">
-                                        <div class="mb-0">
-                                            <div class="text-center">
-                                                <strong style="color: #fff;">Pilih Metode Pembayaran</strong>
-                                            </div>
-                                            <hr class="mb-0" />
-                                            <div class="accordion" id="accordionPayment">
-
-                                                <!-- WALLET -->
-                                                <div class="mt-1">
-                                                    {{-- <button class="btn btn-primary" disabled>tes</button> --}}
-                                                    <a class="link-checkout-pembayaran"
-                                                    
-                                                            @if (($lembar_saham*$emiten->price) > Auth::user()->trader->saldo->balance)
-                                                            style="pointer-events: none;
-                                                            cursor: default;
-                                                            text-decoration: none;
-                                                            color: black;"
-
-                                                            @else
-                                                            id="cowallet"
-                                                            
-                                                            @endif
-                                                            >
-                                                            <div class="card-body payment-method-box">
-                                                                <h2 class="mb-0 row">
-                                                                    <div class="col-md-3 col-2">
-                                                                        <i class="fas fa-wallet"
-                                                                            style="font-size: 3.5rem;padding-right:10px"></i>
-
-                                                                    </div>
-                                                                    <div class="col-md-8 col-9 bank-title my-auto">
-                                                                        <div>
-                                                                            <span>Rp {{number_format(Auth::user()->trader->saldo->balance,0,',','.')}} </span>
-                                                                        </div>
-                                                                        <div><b>DOMPET</b></b></div>
-                                                                        <input type="hidden" name="wallet" id="wallet"
-                                                                            value="8293304" />
-                                                                    </div>
-                                                                    <div
-                                                                        class="col-1 payment-icon-right my-auto text-center">
-                                                                        <i class="la la-angle-right"></i>
-                                                                    </div>
-                                                                </h2>
-                                                            </div>
-                                                        </a>
-                                                </div>
-                                                <!-- ONEPAY -->
-                                                <div class="mt-1">
-                                                    <a id="copayment" class="link-checkout-pembayaran"
-                                                        >
-                                                        <div class="card-body payment-method-box">
-                                                            <h2 class="mb-0 row">
-                                                                <div class="col-md-3 col-2">
-                                                                    <!-- <img src="/assets/images/onepay/onepay.png" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara-staging/santara.co.id/images/error/no-image.png';" class="payment-logo"> -->
-                                                                    <i class="fas fa-wallet"
-                                                                        style="font-size: 3.5rem;padding-right:10px"></i>
-                                                                    <!-- <div><b>ONEPAY</b></div> -->
-                                                                </div>
-                                                                <div class="col-md-8 col-9 bank-title">
-                                                                    <div><span>Biaya admin Rp 4.000,-</span></div>
-                                                                    <div><b>OTHER PAYMENT</b></div>
-                                                                </div>
-                                                                <div class="col-1 payment-icon-right">
-                                                                    <i class="la la-angle-right"
-                                                                        style="vertical-align: bottom;"></i>
-                                                                </div>
-                                                            </h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <button type="button" style="color: #fff;" class="btn-close"
+                                        onClick="deleteTransaction('6ac584a7-69a6-41bd-b2b7-4046614638f3')"></button>
                                 </div>
 
                             </div>
                         </div>
+                        <div class="col-md-8 offset-md-2 p-0 mt-5">
+                            <div class="mb-0">
+                                <div class="text-center">
+                                    <strong style="color: #fff;">Pilih Metode Pembayaran</strong>
+                                </div>
+                                <hr class="mb-0" />
+                                <div class="accordion" id="accordionPayment">
 
+                                    <!-- WALLET -->
+                                    <div class="mt-1">
+                                        {{-- <button class="btn btn-primary" disabled>tes</button> --}}
+                                        <a class="link-checkout-pembayaran" @if (($lembar_saham*$emiten->price) >
+                                            Auth::user()->trader->saldo->balance)
+                                            style="pointer-events: none;
+                                            cursor: default;
+                                            text-decoration: none;
+                                            color: black;"
+
+                                            @else
+                                            id="cowallet"
+
+                                            @endif
+                                            >
+                                            <div class="card-body payment-method-box">
+                                                <h2 class="mb-0 row">
+                                                    <div class="col-md-3 col-2">
+                                                        <i class="fas fa-wallet"
+                                                            style="font-size: 3.5rem;padding-right:10px"></i>
+
+                                                    </div>
+                                                    <div class="col-md-8 col-9 bank-title my-auto">
+                                                        <div>
+                                                            <span>Rp
+                                                                {{number_format(Auth::user()->trader->saldo->balance,0,',','.')}}
+                                                            </span>
+                                                        </div>
+                                                        <div><b>DOMPET</b></b></div>
+                                                        <input type="hidden" name="wallet" id="wallet"
+                                                            value="8293304" />
+                                                    </div>
+                                                    <div class="col-1 payment-icon-right my-auto text-center">
+                                                        <i class="la la-angle-right"></i>
+                                                    </div>
+                                                </h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- ONEPAY -->
+                                    <div class="mt-1">
+                                        <a id="copayment" class="link-checkout-pembayaran">
+                                            <div class="card-body payment-method-box">
+                                                <h2 class="mb-0 row">
+                                                    <div class="col-md-3 col-2">
+                                                        <!-- <img src="/assets/images/onepay/onepay.png" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara-staging/santara.co.id/images/error/no-image.png';" class="payment-logo"> -->
+                                                        <i class="fas fa-wallet"
+                                                            style="font-size: 3.5rem;padding-right:10px"></i>
+                                                        <!-- <div><b>ONEPAY</b></div> -->
+                                                    </div>
+                                                    <div class="col-md-8 col-9 bank-title">
+                                                        <div><span>Biaya admin Rp 4.000,-</span></div>
+                                                        <div><b>OTHER PAYMENT</b></div>
+                                                    </div>
+                                                    <div class="col-1 payment-icon-right">
+                                                        <i class="la la-angle-right"
+                                                            style="vertical-align: bottom;"></i>
+                                                    </div>
+                                                </h2>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-                <span id="emitten_id" style="display:none">3381</span>
-                <input type="hidden" class="form-control" name="invest" id="invest" value="100000" readonly>
+            </div>
 
-                <hr>
-                <script src="https://dev.santara.id/assets/new-santara/js/guest/checkout.js?v=5.8.8"></script>
+        </div>
+    </div>
+    <span id="emitten_id" style="display:none">3381</span>
+    <input type="hidden" class="form-control" name="invest" id="invest" value="100000" readonly>
+
+    <hr>
+    <script src="https://dev.santara.id/assets/new-santara/js/guest/checkout.js?v=5.8.8"></script>
 </div>
 
 </div>
@@ -195,12 +193,12 @@
 </div>
 </div>
 
-<form action="{{url('transaksi/buy')}}" id="chout" method="POST" enctype="multipart/form-data" >
+<form action="{{url('transaksi/buy')}}" id="chout" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
-    <input hidden  name="uuid" value="{{$emiten->uuid}}">
-    <input hidden  name="amount" value="{{$lembar_saham*$emiten->price}}">
-    <input hidden  name="pinx" id="pinx">
-    <input hidden  name="channelx" id="channelx">
+    <input hidden name="uuid" value="{{$emiten->uuid}}">
+    <input hidden name="amount" value="{{$lembar_saham*$emiten->price}}">
+    <input hidden name="pinx" id="pinx">
+    <input hidden name="channelx" id="channelx">
 
 </form>
 
@@ -253,22 +251,22 @@
 @endsection
 
 @section('style')
-    <style>
-        h2{
-            color:white;
-            font-weight: 700;
-        }
+<style>
+    h2 {
+        color: white;
+        font-weight: 700;
+    }
 
-        h2:hover{
-            color:#dfb857;
-        }
-    </style>
+    h2:hover {
+        color: #dfb857;
+    }
+</style>
 @endsection
 @section('js')
 <script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/alert/sweetalert.min.js"></script>
 <script src="{{asset('public')}}/assets2/js/global.js?v=5.8.8"></script>
-    <script>
-        $("#cowallet").click(function () {
+<script>
+    $("#cowallet").click(function () {
 //   console.log('ok');
     
     Swal.fire({
@@ -304,9 +302,9 @@
             // console.log(result.value.password);
             });
         });
-    </script>
-    <script>
-        $("#copayment").click(function () {
+</script>
+<script>
+    $("#copayment").click(function () {
 //   console.log('ok');
     
     Swal.fire({
@@ -344,5 +342,5 @@
             }
     });
 });
-    </script>
+</script>
 @endsection

@@ -1,167 +1,166 @@
 @extends('admin.layout.master')
 @section('content')
-    <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <section id="configuration">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1 class="card-title-member">Perhitungan Dividen</h1>
-                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                </div>
-                                <div class="card-content collapse show">
-                                    <div class="card-body card-dashboard">
-                                        <div class="table-responsive">
-                                            <table class="table" id="tabel">
-                                                <thead>
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <section id="configuration">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title-member">Perhitungan Dividen</h1>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <div class="table-responsive">
+                                        <table class="table" id="tabel">
+                                            <thead>
+                                                <tr>
+                                                    {{-- <th>Owner</th> --}}
+                                                    <th>#</th>
+                                                    <th>Nama Perusahaan</th>
+                                                    <th>Nama Brand</th>
+                                                    <th>Kode</th>
+                                                    <th>Kategori</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $no = 0; ?>
+                                                @for ($i = 0; $i < count($emiten); $i++) <?php $no++; ?>
                                                     <tr>
-                                                        {{-- <th>Owner</th> --}}
-                                                        <th>#</th>
-                                                        <th>Nama Perusahaan</th>
-                                                        <th>Nama Brand</th>
-                                                        <th>Kode</th>
-                                                        <th>Kategori</th>
-                                                        <th>Action</th>
+                                                        {{-- <td>{{$item->trader_id}}</td> --}}
+                                                        <td>{{ $no }}</td>
+                                                        <td>{{ $emiten[$i]['company_name'] }}</td>
+                                                        <td>{{ $emiten[$i]['trademark'] }}</td>
+                                                        <td>{{ $emiten[$i]['code_emiten'] }}</td>
+                                                        <td>{{ $emiten[$i]['ktg'] }}</td>
+                                                        <td>
+                                                            <button type="button" id="btnDetail"
+                                                                data-id="{{ $emiten[$i]['id'] }}"
+                                                                class="btn btn-primary">
+                                                                Detail
+                                                            </button>
+                                                        </td>
                                                     </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php $no = 0; ?>
-                                                    @for ($i = 0; $i < count($emiten); $i++)
-                                                        <?php $no++; ?>
-                                                        <tr>
-                                                            {{-- <td>{{$item->trader_id}}</td> --}}
-                                                            <td>{{ $no }}</td>
-                                                            <td>{{ $emiten[$i]['company_name'] }}</td>
-                                                            <td>{{ $emiten[$i]['trademark'] }}</td>
-                                                            <td>{{ $emiten[$i]['code_emiten'] }}</td>
-                                                            <td>{{ $emiten[$i]['ktg'] }}</td>
-                                                            <td>
-                                                                <button type="button" id="btnDetail"
-                                                                    data-id="{{ $emiten[$i]['id'] }}"
-                                                                    class="btn btn-primary">
-                                                                    Detail
-                                                                </button>
-                                                            </td>
-                                                        </tr>
                                                     @endfor
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="detailData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Perhitungan Dividen</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label><strong>Periode</strong></label>
-                            <select class="custom-select" onchange="pilihTahap()" id="tahap_dividen"></select>
-                        </div>
+<div class="modal fade" id="detailData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Perhitungan Dividen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label><strong>Periode</strong></label>
+                        <select class="custom-select" onchange="pilihTahap()" id="tahap_dividen"></select>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th colspan="2">Periode</th>
-                                <th>Laba/Rugi Setelah Pajak</th>
-                            </tr>
-                        </thead>
-                        <tbody id="loadDataDividen"></tbody>
-                        <tbody>
-                            <tr>
-                                <th colspan="2">Total Laba / Rugi</th>
-                                <th>Rp</th>
-                                <th id="totalNetProfit"></th>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Laba Ditahan</th>
-                                <th></th>
-                                <th>
-                                    <input type="text" id="laba_ditahan" class="form-control ribuan" value="0" />
-                                </th>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Presentase Dividen</th>
-                                <th><span id="presentaseDividen"></span> % </th>
-                                <th id="habisPersen"></th>
-                            </tr>
-                            <tr>
-                                <th colspan="4"></th>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Dividen untuk masyarakat</th>
-                                <th>Rp</th>
-                                <th id="dividenMasyarakat"></th>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Nilai Penawaran</th>
-                                <th>Rp</th>
-                                <th id="nilaiPenawaran"></th>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Pesan Saham Dilepas</th>
-                                <th> % </th>
-                                <th id="sahamDilepas"></th>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Yield Dividen</th>
-                                <th> % </th>
-                                <th id="yielDividen"></th>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="sendEmail()">Kirim Email</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th colspan="2">Periode</th>
+                            <th>Laba/Rugi Setelah Pajak</th>
+                        </tr>
+                    </thead>
+                    <tbody id="loadDataDividen"></tbody>
+                    <tbody>
+                        <tr>
+                            <th colspan="2">Total Laba / Rugi</th>
+                            <th>Rp</th>
+                            <th id="totalNetProfit"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Laba Ditahan</th>
+                            <th></th>
+                            <th>
+                                <input type="text" id="laba_ditahan" class="form-control ribuan" value="0" />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Presentase Dividen</th>
+                            <th><span id="presentaseDividen"></span> % </th>
+                            <th id="habisPersen"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="4"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Dividen untuk masyarakat</th>
+                            <th>Rp</th>
+                            <th id="dividenMasyarakat"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Nilai Penawaran</th>
+                            <th>Rp</th>
+                            <th id="nilaiPenawaran"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Pesan Saham Dilepas</th>
+                            <th> % </th>
+                            <th id="sahamDilepas"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Yield Dividen</th>
+                            <th> % </th>
+                            <th id="yielDividen"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="sendEmail()">Kirim Email</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 @endsection
 @section('js')
-    <script src="{{ asset('admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-    <script src="{{ asset('admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
-        integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        $(document).ready(function() {
+<script src="{{ asset('public/admin') }}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{ asset('public/admin') }}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
+    integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function() {
             $('#tabel').DataTable({
                 responsive: true,
             });
         });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
-    <script>
-        document.querySelectorAll('.ribuan2').forEach(inp => new Cleave(inp, {
+</script>
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.5.3/dist/cleave.min.js"></script>
+<script>
+    document.querySelectorAll('.ribuan2').forEach(inp => new Cleave(inp, {
             numeral: true,
             numeralDecimalMark: ',',
             delimiter: '.'
         }));
-    </script>
-    <script>
-        var tahun = '';
+</script>
+<script>
+    var tahun = '';
         var totalNetProfit = 0;
         var emiten_id = '';
         let yielDividen = 0;
@@ -404,16 +403,16 @@
             });
         }
 
-    </script>
+</script>
 @endsection
 @section('style')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-        integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
-        integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public') }}/app-assets/yearpicker/yearpicker.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+    integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css"
+    href="{{ asset('public/admin') }}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('public') }}/app-assets/yearpicker/yearpicker.css" />
 @endsection

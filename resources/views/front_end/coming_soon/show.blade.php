@@ -1,7 +1,7 @@
 @extends('front_end/template_front_end/app')
 
 @section('content')
-                              <?php
+<?php
                               $picture = explode(',',$emt->pictures);
                                             if(empty($picture[0])){
                                               $picture[0] = 'default1.png';
@@ -58,9 +58,10 @@
                                                 $emt->trademark;
                                             }
                               ?>
-<link rel="stylesheet" href="{{ asset('assets/css/tabs.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/css/tabs.css') }}">
 
-<div class="banner_bg_main" style="background-image: url('{{env("PATH_WEB")}}{{$picture[1]}}'),url('{{env("PATH_WEB_PROD")}}{{$picture[1]}}'); margin-top: 96px;">
+<div class="banner_bg_main" style="background-image: url('{{env("
+  PATH_WEB")}}{{$picture[1]}}'),url('{{env("PATH_WEB_PROD")}}{{$picture[1]}}'); margin-top: 96px;">
   <div class="banner_section layout_padding">
     <div class="container" style="margin-top: 15px;">
       <div class="section">
@@ -69,8 +70,8 @@
             <div class="fruters-indonesia inter-bold-alabaster-48px">
               <span class="text-urun inter-bold-alabaster">{{$emt->trademark}}</span>
               @if ($emt->is_verified_bisnis == 1)
-                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
-                                                                        @endif
+              <i class="fa fa-check-circle" style="color: #2a8ede"></i>
+              @endif
             </div>
             <div class="pt-fruters-indonesia-perkasa inter-medium-alabaster-18px">
               <span class="tx-pt inter-medium-alabaster">{{$emt->company_name}}</span>
@@ -78,13 +79,14 @@
           </div>
           {{-- <div class="tags-d"> --}}
             <span class="tx-t inter-medium-sweet-pink-14px"
-                                  style="font-size:16px;background: var(--falu-red);
+              style="font-size:16px;background: var(--falu-red);
     border-radius: 10px; box-shadow: 10px 0 0 var(--falu-red), 0px 0 0 var(--falu-red); line-height : 20px; padding-left:10px;">{{$emt->ctg->category}}</span>
-          {{-- </div> --}}
+            {{--
+          </div> --}}
         </div>
         <div class="profil">
-          <img style="border-radius: 50%;" class="image-69"
-            src="{{env("PATH_WEB")}}{{$picture[2]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[2]}}'"/>
+          <img style="border-radius: 50%;" class="image-69" src="{{env(" PATH_WEB")}}{{$picture[2]}}"
+            onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[2]}}'" />
           <div class="pemilik-bisnis">
             <div class="m-khemal-nugroho inter-medium-alabaster-18px">
               <span class="text-mulai inter-medium-alabaster">{{$emt->owner_name}}</span>
@@ -106,9 +108,11 @@
         <!-- nav options -->
         <ul class="nav nav-pills mb-3 shadow-sm" id="pills-tab" role="tablist">
           <li class="nav-item sp-tab"> <a class="nav-link active inter-medium-delta" id="pills-home-tab"
-              data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Deskripsi Bisnis</a> </li>
+              data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Deskripsi
+              Bisnis</a> </li>
           <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-profile-tab" data-toggle="pill"
-              href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detail Pemilik Bisnis</a>
+              href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detail Pemilik
+              Bisnis</a>
           </li>
           <li class="nav-item sp-tab"> <a class="nav-link inter-medium-delta" id="pills-contact-tab" data-toggle="pill"
               href="#pills-des" role="tab" aria-controls="pills-des" aria-selected="false">Kontak</a> </li>
@@ -162,8 +166,7 @@
             <div class="table-cell-row-1">
               <div class="table-cell">
                 <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table ">
-                  <span class="inter-normal-delta">Saham yang dilepas</span><br><span
-                    class="inter-normal-delta"
+                  <span class="inter-normal-delta">Saham yang dilepas</span><br><span class="inter-normal-delta"
                     style="font-weight: bold; color: #fff">{{round($emt->avg_general_share_amount,0)}}%</span>
                 </p>
               </div>
@@ -179,15 +182,13 @@
               <div class="table-cell-row">
                 <div class="table-cell">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table">
-                    <span class="inter-normal-delta">Perkiraan Dividen</span><br><span
-                      class="inter-normal-delta"
+                    <span class="inter-normal-delta">Perkiraan Dividen</span><br><span class="inter-normal-delta"
                       style="font-weight: bold; color: #fff">{{round($emt->avg_annual_dividen,0)}}%</span>
                   </p>
                 </div>
                 <div class="table-cell">
                   <p class="pembagian-deviden-ta inter-normal-delta-12px tx-table">
-                    <span class="inter-normal-delta">Dana yang dibutuhkan</span><br><span
-                      class="inter-normal-delta"
+                    <span class="inter-normal-delta">Dana yang dibutuhkan</span><br><span class="inter-normal-delta"
                       style="font-weight: bold; color: #fff">{{number_format(round($emt->avg_capital_needs,0),0,',','.')}}</span>
                   </p>
                 </div>
@@ -227,7 +228,7 @@
     <div class="actions-com">
       @guest
       <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
-        <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
@@ -235,7 +236,7 @@
         </div>
       </a>
       <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
-        <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
+        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
@@ -243,7 +244,7 @@
         </div>
       </a>
       <a class="button-5" href="{{route('login')}}" style="cursor: pointer;">
-        <img class="icon-com" src="{{ asset('assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span class="tx-icon"> {{$ccmt}} <span class="com-u">Komentar</span></span>
@@ -252,7 +253,7 @@
       </a>
       @else
       <a class="button-5 clike" data-id={{$emt->id}} id="clike" style="cursor: pointer;">
-        <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black ">
             <span id="addcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
@@ -260,7 +261,7 @@
         </div>
       </a>
       <a class="button-5 slike" data-id={{$emt->id}} id="slike" style="cursor: pointer;display:none;">
-        <img class="icon-com" src="{{ asset('assets/images/icon-heart-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-heart-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black ">
             <span id="subcountLike" class="tx-icon">{{$clike->l}} <span class="com-u">Likes</span></span>
@@ -269,7 +270,7 @@
       </a>
       <a class="button-5" data-id={{$emt->id}} data-toggle="modal"
         data-target="#mdlvot{{$emt->id}}" style="cursor: pointer;">
-        <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
+        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="addcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
@@ -277,7 +278,7 @@
         </div>
       </a>
       {{-- <a class="button-5" data-id={{$emt->id}} id="svote" style="cursor: pointer;display:none;">
-        <img class="ico-comn" src="{{ asset('assets/images/icon-user-47@2x.png') }}" />&ensp;
+        <img class="ico-comn" src="{{ asset('public/assets/images/icon-user-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span id="subcountVote" class="tx-icon">{{$cvote->v}} <span class="com-u">Minat</span></span>
@@ -286,7 +287,7 @@
       </a> --}}
       <a class="button-5" class="cmt" id="cmt" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
         data-target="#modal{{$emt->id}}">
-        <img class="icon-com" src="{{ asset('assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-message-circle-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <span class="tx-icon"> {{$ccmt}} <span class="com-u">Komentar</span></span>
@@ -297,7 +298,7 @@
 
       <a class="button-5" style="cursor: pointer;" data-id="{{$emt->id}}" data-toggle="modal"
         data-target="#modalShareButton{{$emt->id}}">
-        <img class="icon-com" src="{{ asset('assets/images/icon-share-2-47@2x.png') }}" />&ensp;
+        <img class="icon-com" src="{{ asset('public/assets/images/icon-share-2-47@2x.png') }}" />&ensp;
         <div class="address-1 inter-medium-eerie-black-14px">
           <span class="tx-icon inter-medium-eerie-black">
             <p class="com-u">&ensp;Share</p>
@@ -344,22 +345,24 @@
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[3]}}"
-                    onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[3]}}'"/>
+                    <img class="rectangle-2" src="{{env(" PATH_WEB")}}{{$picture[3]}}"
+                      onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[3]}}'" />
                   </div>
                   @endif
                   @if ($picture[4] == 'default.png')
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[4]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[4]}}'"/>
+                    <img class="rectangle-2" src="{{env(" PATH_WEB")}}{{$picture[4]}}"
+                      onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[4]}}'" />
                   </div>
                   @endif
                   @if ($picture[5] == 'default.png')
 
                   @else
                   <div class="item">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[5]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[5]}}'"/>
+                    <img class="rectangle-2" src="{{env(" PATH_WEB")}}{{$picture[5]}}"
+                      onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[5]}}'" />
                   </div>
                   @endif
 
@@ -411,8 +414,7 @@
       @endguest
 
 
-      <form action="{{url('addVot')}}/{{$emt->id}}" method="POST"
-        enctype="multipart/form-data">
+      <form action="{{url('addVot')}}/{{$emt->id}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-body">
           {{-- Tidak tersedia pada event ini. {{$emt->id}} --}}
@@ -519,66 +521,65 @@
             </div>
           </div>
           <div class="row mt-3 mb-3 d-flex justify-content-center ">
-              <!-- <div class="col-4 col-md-2">
+            <!-- <div class="col-4 col-md-2">
                       <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/instagram.png" />
                       <p class="ff-n fs-12 mt-2" style="color: #708088;">Instagram</p>
                   </div> -->
-              <div class="col-4 col-md-2">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{url('detail-coming-soon')}}/{{$emt->id}}"
-                  id="shareFacebook" target="_blank" style="text-decoration: none;">
-                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/facebook.png"
-                    class="lazyload">
-                  <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
-                </a>
-              </div>
-              <div class="col-4 col-md-2">
-                <a href="https://twitter.com/intent/tweet?url={{url('detail-coming-soon')}}/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
-                  id="shareTwitter" style="text-decoration: none;" target="_blank">
-                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/twitter.png"
-                    class="lazyload">
-                  <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
-                </a>
-              </div>
-              <div class="col-4 col-md-2">
-                <a href="https://telegram.me/share/url?url={{url('detail-coming-soon')}}/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
-                  id="shareTelegram" target="_blank" style="text-decoration: none;">
-                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/telegram.png"
-                    class="lazyload">
-                  <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
-                </a>
-              </div>
-              <!-- <div class="col-4 col-md-2">
+            <div class="col-4 col-md-2">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{url('detail-coming-soon')}}/{{$emt->id}}"
+                id="shareFacebook" target="_blank" style="text-decoration: none;">
+                <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/facebook.png"
+                  class="lazyload">
+                <p class="ff-n fs-12 mt-2" style="color: #708088;">Facebook</p>
+              </a>
+            </div>
+            <div class="col-4 col-md-2">
+              <a href="https://twitter.com/intent/tweet?url={{url('detail-coming-soon')}}/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
+                id="shareTwitter" style="text-decoration: none;" target="_blank">
+                <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/twitter.png"
+                  class="lazyload">
+                <p class="ff-n fs-12 mt-2" style="color: #708088;">Twitter</p>
+              </a>
+            </div>
+            <div class="col-4 col-md-2">
+              <a href="https://telegram.me/share/url?url={{url('detail-coming-soon')}}/{{$emt->id}}&amp;text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A PT. Lembu Sora Lampung"
+                id="shareTelegram" target="_blank" style="text-decoration: none;">
+                <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/telegram.png"
+                  class="lazyload">
+                <p class="ff-n fs-12 mt-2" style="color: #708088;">Telegram</p>
+              </a>
+            </div>
+            <!-- <div class="col-4 col-md-2">
                       <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/tiktok.png" />
                       <p class="ff-n fs-12 mt-2" style="color: #708088;">TikTok</p>
                   </div> -->
-              <div class="col-4 col-md-2">
-                <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A {{url('detail-coming-soon')}}/{{$emt->id}}"
-                  id="shareWhatsapp" target="_blank" style="text-decoration: none;">
-                  <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/whatsapp.png"
-                    class="lazyload">
-                  <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
-                </a>
-              </div>
+            <div class="col-4 col-md-2">
+              <a href="https://web.whatsapp.com/send?text=Temukan%20peluang%20investasi%20berikut%20di%20Santara!%0A {{url('detail-coming-soon')}}/{{$emt->id}}"
+                id="shareWhatsapp" target="_blank" style="text-decoration: none;">
+                <img width="50px" src="https://old.santara.co.id/assets/new-santara/img/sosmed/whatsapp.png"
+                  class="lazyload">
+                <p class="ff-n fs-12 mt-2" style="color: #708088;">WhatsApp</p>
+              </a>
             </div>
-            <div class="input-group input-group-lg mb-3">
-              <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled=""
-                style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-                placeholder="{{url('detail-coming-soon')}}/{{$emt->id}}">
-              <span id="copy-link" class="input-group-text"
-                style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer"
-                onclick="shareButton('{{url('detail-coming-soon')}}/{{$emt->id}}')">Copy Link</span>
-            </div>
+          </div>
+          <div class="input-group input-group-lg mb-3">
+            <input type="text" id="inputShareLink" class="form-control fs-16 bold ff-n" disabled=""
+              style="border-radius: 25px;padding-right:150px" aria-label="Recipient's username"
+              aria-describedby="basic-addon2" placeholder="{{url('detail-coming-soon')}}/{{$emt->id}}">
+            <span id="copy-link" class="input-group-text"
+              style="position: inherit;height: 33px;justify-content: center;align-items: center;margin: 10px 17px 10px -134px;border-radius: 20px;color: #BF2D30;border-color: #BF2D30; cursor:pointer"
+              onclick="shareButton('{{url('detail-coming-soon')}}/{{$emt->id}}')">Copy Link</span>
+          </div>
         </div>
 
       </div>
     </div>
-    </div>
+  </div>
 
-@endsection
-@section('js')
-<script>
-  $(document).ready(function(){
+  @endsection
+  @section('js')
+  <script>
+    $(document).ready(function(){
       $('#clike').click(function(){
 
           var id = $(this).data('id');
@@ -618,9 +619,9 @@
 
 
 });
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+  </script>
+  <script type='text/javascript'>
+    $(document).ready(function(){
     $('#slike').click(function(){
       var id = $(this).data('id');
           let _token   = $('meta[name="csrf-token"]').attr('content');
@@ -656,10 +657,10 @@
 
 
 });
-</script>
+  </script>
 
-<script type='text/javascript'>
-  $(document).ready(function(){
+  <script type='text/javascript'>
+    $(document).ready(function(){
       $('#cvote').click(function(){
 
           var id = $(this).data('id');
@@ -697,9 +698,9 @@
       })
 
 });
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+  </script>
+  <script type='text/javascript'>
+    $(document).ready(function(){
       $('#svote').click(function(){
 
           var id = $(this).data('id');
@@ -737,8 +738,8 @@
       })
 
 });
-</script>
-<script>
+  </script>
+  <script>
     function shareButton(url) {
       navigator.clipboard.writeText(url);
       // alert("Copied the text: " + url);
@@ -774,8 +775,8 @@
 
   }
   </script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+  <script type='text/javascript'>
+    $(document).ready(function(){
 
     $('#cmt').click(function(){
       //  console.log('tes');
@@ -797,9 +798,9 @@
         });
     });
 });
-</script>
-<script type='text/javascript'>
-  $(document).ready(function(){
+  </script>
+  <script type='text/javascript'>
+    $(document).ready(function(){
   $("#send{{$emt->id}}").click(function(){
       // event.preventDefault();
 
@@ -843,9 +844,9 @@
        });
   });
 });
-</script>
-<script>
-  var swiper = new Swiper(".mySwiper", {
+  </script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
     slidesPerView: 3,
     spaceBetween: 30,
     pagination: {
@@ -979,8 +980,8 @@ function plusx() {
     $('#lembar_saham').val(total);
     checkValidasi(total)
 }
-</script>
-@endsection
+  </script>
+  @endsection
 
-@section('style')
-@endsection
+  @section('style')
+  @endsection

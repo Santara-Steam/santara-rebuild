@@ -27,8 +27,8 @@
                                     <?php 
 $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
 ?>
-                                    <form class="form" action="{{url('update_profile')}}/{{Auth::user()->id}}" method="POST"
-                                        enctype="multipart/form-data">
+                                    <form class="form" action="{{url('update_profile')}}/{{Auth::user()->id}}"
+                                        method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <div class="form-body">
                                             <div class="form-group">
@@ -38,18 +38,21 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                                         <label for="upload_image">
                                                             @if (empty($user->trader->photo))
                                                             <img src="{{asset('public')}}/default1.png"
-                                                                id="uploaded_image" class="img-responsive" style="border-radius: 50%;"/>
+                                                                id="uploaded_image" class="img-responsive"
+                                                                style="border-radius: 50%;" />
                                                             @else
                                                             <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}"
-                                                                id="uploaded_image" class="img-responsive" style="border-radius: 50%;" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'"/>
+                                                                id="uploaded_image" class="img-responsive"
+                                                                style="border-radius: 50%;"
+                                                                onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'" />
                                                             @endif
-                                                            
+
                                                             <div class="overlay">
                                                                 <div class="text">Foto Profile</div>
                                                             </div>
                                                         </label>
-                                                        <input type="file" name="image" class="image"
-                                                            id="upload_image" style="display: none" />
+                                                        <input type="file" name="image" class="image" id="upload_image"
+                                                            style="display: none" />
                                                         <input type="text" value="{{$user->trader->photo}}" hidden
                                                             name="profile" class="image" id="profile" />
                                                     </div>
@@ -57,30 +60,32 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                             </div>
                                             <div class="form-group">
                                                 <label for="projectinput6">Nama</label>
-                                                <input required type="text" id="companyName" value="{{$user->trader->name}}"
-                                                name="name" class="form-control" placeholder="Nama">
+                                                <input required type="text" id="companyName"
+                                                    value="{{$user->trader->name}}" name="name" class="form-control"
+                                                    placeholder="Nama">
                                             </div>
                                             <div class="form-group">
                                                 <label for="projectinput6">Email</label>
                                                 <input required type="text" id="companyName" value="{{$user->email}}"
-                                                name="email" class="form-control" placeholder="Email" readonly>
+                                                    name="email" class="form-control" placeholder="Email" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="projectinput6">Nomor Telepon</label>
-                                                <input required type="text" id="companyName" value="{{$user->trader->phone}}"
-                                                name="phone" class="form-control" placeholder="Nomor Telepon" readonly>
+                                                <input required type="text" id="companyName"
+                                                    value="{{$user->trader->phone}}" name="phone" class="form-control"
+                                                    placeholder="Nomor Telepon" readonly>
                                             </div>
                                             {{-- <div class="form-group">
                                                 <label for="projectinput6">Password</label>
-                                                <input required type="text" id="companyName" value=""
-                                                name="brand" class="form-control" placeholder="Password">
+                                                <input required type="text" id="companyName" value="" name="brand"
+                                                    class="form-control" placeholder="Password">
                                             </div>
                                             <div class="form-group">
                                                 <label for="projectinput6">Password Konfirmasi</label>
-                                                <input required type="text" id="companyName" value=""
-                                                name="brand" class="form-control" placeholder="Password Konfirmasi">
+                                                <input required type="text" id="companyName" value="" name="brand"
+                                                    class="form-control" placeholder="Password Konfirmasi">
                                             </div> --}}
-                                            
+
 
                                         </div>
                                         <div class="form-actions">
@@ -98,7 +103,7 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
             </section>
         </div>
     </div>
-    
+
 
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 
@@ -316,6 +321,5 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
         transform: translate(-50%, -50%);
         text-align: center;
     }
-    
 </style>
 @endsection

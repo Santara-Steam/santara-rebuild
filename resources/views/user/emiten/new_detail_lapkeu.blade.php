@@ -23,32 +23,44 @@
                                         <div class="card-body">
                                             <ul class="nav nav-justified mb-3" id="pills-tab" role="tablist">
                                                 <li class="nav-item member-nav">
-                                                    <a class="nav-link member-nav-link active" id="pills-tab" data-toggle="tab" href="#realisasi" role="tab" aria-controls="pills-" aria-selected="true">
+                                                    <a class="nav-link member-nav-link active" id="pills-tab"
+                                                        data-toggle="tab" href="#realisasi" role="tab"
+                                                        aria-controls="pills-" aria-selected="true">
                                                         <span>Realisasi Pengguna Dana</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item member-nav">
-                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab" href="#laporan" role="tab" aria-controls="pills-" aria-selected="true">
+                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab"
+                                                        href="#laporan" role="tab" aria-controls="pills-"
+                                                        aria-selected="true">
                                                         <span>Laporan Laba Rugi</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item member-nav">
-                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab" href="#perkembangan" role="tab" aria-controls="pills-" aria-selected="true">
+                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab"
+                                                        href="#perkembangan" role="tab" aria-controls="pills-"
+                                                        aria-selected="true">
                                                         <span>Perkembangan Perusahaan</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item member-nav">
-                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab" href="#informasi" role="tab" aria-controls="pills-" aria-selected="true">
+                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab"
+                                                        href="#informasi" role="tab" aria-controls="pills-"
+                                                        aria-selected="true">
                                                         <span>Informasi Lain</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item member-nav">
-                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab" href="#bukti" role="tab" aria-controls="pills-" aria-selected="true">
+                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab"
+                                                        href="#bukti" role="tab" aria-controls="pills-"
+                                                        aria-selected="true">
                                                         <span>Laporan Manual & Bukti Operasional</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item member-nav">
-                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab" href="#publikasi" role="tab" aria-controls="pills-" aria-selected="true">
+                                                    <a class="nav-link member-nav-link" id="pills-tab" data-toggle="tab"
+                                                        href="#publikasi" role="tab" aria-controls="pills-"
+                                                        aria-selected="true">
                                                         <span>Publikasi</span>
                                                     </a>
                                                 </li>
@@ -56,32 +68,44 @@
 
                                             <div class="tab-content" id="pills-tabContent">
                                                 <div class="tab-pane fade show active" id="realisasi" role="tabpanel">
-                                                    {{-- <?php $this->load->view("member/laporan_keuangan/_detail/realisasi_penggunaan_data"); ?> --}}
+                                                    {{--
+                                                    <?php $this->load->view("member/laporan_keuangan/_detail/realisasi_penggunaan_data"); ?>
+                                                    --}}
                                                     @include('user.emiten.realisasi_penggunaan_data')
                                                 </div>
 
                                                 <div class="tab-pane fade" id="laporan" role="tabpanel">
-                                                    {{-- <?php $this->load->view("member/laporan_keuangan/_detail/laporan_laba_rugi"); ?> --}}
+                                                    {{--
+                                                    <?php $this->load->view("member/laporan_keuangan/_detail/laporan_laba_rugi"); ?>
+                                                    --}}
                                                     @include('user.emiten.laporan_laba_rugi')
                                                 </div>
 
                                                 <div class="tab-pane fade" id="perkembangan" role="tabpanel">
-                                                    {{-- <?php $this->load->view("member/laporan_keuangan/_detail/perkembangan_perusahaan"); ?> --}}
+                                                    {{--
+                                                    <?php $this->load->view("member/laporan_keuangan/_detail/perkembangan_perusahaan"); ?>
+                                                    --}}
                                                     @include('user.emiten.perkembangan_perusahaan')
                                                 </div>
 
                                                 <div class="tab-pane fade" id="informasi" role="tabpanel">
-                                                    {{-- <?php $this->load->view("member/laporan_keuangan/_detail/informasi_lain"); ?> --}}
+                                                    {{--
+                                                    <?php $this->load->view("member/laporan_keuangan/_detail/informasi_lain"); ?>
+                                                    --}}
                                                     @include('user.emiten.informasi_lain')
                                                 </div>
 
                                                 <div class="tab-pane fade" id="bukti" role="tabpanel">
-                                                    {{-- <?php $this->load->view("member/laporan_keuangan/_detail/laporan_bukti"); ?> --}}
+                                                    {{--
+                                                    <?php $this->load->view("member/laporan_keuangan/_detail/laporan_bukti"); ?>
+                                                    --}}
                                                     @include('user.emiten.laporan_bukti')
                                                 </div>
 
                                                 <div class="tab-pane fade" id="publikasi" role="tabpanel">
-                                                    {{-- <?php $this->load->view("member/laporan_keuangan/_detail/publikasi"); ?> --}}
+                                                    {{--
+                                                    <?php $this->load->view("member/laporan_keuangan/_detail/publikasi"); ?>
+                                                    --}}
                                                     @include('user.emiten.publikasi')
                                                 </div>
                                             </div>
@@ -104,8 +128,8 @@
 
 @endsection
 @section('js')
-<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
     integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -119,11 +143,11 @@
 </script>
 
 <script src="https://old.santara.co.id/app-assets/vendors/js/extensions/jquery.steps.min.js"></script>
-                    <script src="https://old.santara.co.id/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+<script src="https://old.santara.co.id/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
 
-                    {{-- <script src="https://old.santara.co.id/assets/js/member/laporan-keuangan.js?v=5.8.8"></script> --}}
-                    <script>
-                        $(document).ready(function() {
+{{-- <script src="https://old.santara.co.id/assets/js/member/laporan-keuangan.js?v=5.8.8"></script> --}}
+<script>
+    $(document).ready(function() {
     var x = document.getElementById("row_count").value;;
     $("#realisasi_add_row").click(function() {
         $('#realisasi_addr_' + x).html(
@@ -595,10 +619,10 @@ function deleteDocument(id,file_name){
         }
     })
 }
-                    </script>
+</script>
 
-                    <script>
-                        function submitReport(form_report, type = null, uuid) {
+<script>
+    function submitReport(form_report, type = null, uuid) {
                             $("#loader").show();
                             var form = $('#' + form_report)[0];
                             var formdata = new FormData(form);
@@ -645,7 +669,7 @@ function deleteDocument(id,file_name){
                                 }
                             });
                         };
-                    </script>
+</script>
 @endsection
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -655,6 +679,6 @@ function deleteDocument(id,file_name){
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
-    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/member/laporan-keuangan.css?v=5.8.8">
-    @endsection
+    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+<link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/css/member/laporan-keuangan.css?v=5.8.8">
+@endsection

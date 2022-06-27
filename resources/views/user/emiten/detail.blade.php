@@ -42,7 +42,8 @@
                                                 </p>
                                             </div>
                                             <div>
-                                                <a href="{{url('/edit_bisnis')}}/<?= $emiten->id; ?>" class="btn btn-warning btn-block">Edit Bisnis</a>
+                                                <a href="{{url('/edit_bisnis')}}/<?= $emiten->id; ?>"
+                                                    class="btn btn-warning btn-block">Edit Bisnis</a>
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +112,9 @@
                                                                     <div class="col-2">
                                                                         <img class="rounded-circle lazyload"
                                                                             style="width: 5rem;height: 5rem;object-fit: cover;"
-                                                                            src="{{config('global.STORAGE_BUCKET2')."kyc/".str_replace('/uploads/trader/', "",Auth::user()->trader->photo)}}"
+                                                                            src="{{config('global.STORAGE_BUCKET2')."
+                                                                            kyc/".str_replace('/uploads/trader/', ""
+                                                                            ,Auth::user()->trader->photo)}}"
                                                                         onerror="this.onerror=null;this.src='{{env('STORAGE_GOOGLE')}}images/error/no-image.png';"
                                                                         alt="nama bisnis">
                                                                     </div>
@@ -316,7 +319,8 @@
                                                                             <div class="col-2 p-0 text-center">
                                                                                 <img class="penerbit-detail-item-img rounded-circle lazyload"
                                                                                     style="width: 10rem;height: 10rem;object-fit: cover;"
-                                                                                    src="{{config('global.STORAGE_BUCKET2')."kyc/".str_replace('/uploads/trader/', ""
+                                                                                    src="{{config('global.STORAGE_BUCKET2')."
+                                                                                    kyc/".str_replace('/uploads/trader/', ""
                                                                                     ,Auth::user()->trader->photo)}}"
                                                                                 onerror="this.onerror=null;this.src='{{env('STORAGE_GOOGLE')}}images/error/no-image.png';"
                                                                                 alt="nama bisnis">
@@ -453,11 +457,11 @@
                                                                         Keuangan</span>
                                                                 </button>
                                                             </form> --}}
-                                                            <a href="{{url('user/laporan-keuangan/detail')}}/<?= $uuid ?>" type="submit"
-                                                                    class="btn btn-santara-red btn-block">
-                                                                    <span class="menu-title" data-i18n="">Buat Laporan
-                                                                        Keuangan</span>
-                                                                </a>
+                                                            <a href="{{url('user/laporan-keuangan/detail')}}/<?= $uuid ?>"
+                                                                type="submit" class="btn btn-santara-red btn-block">
+                                                                <span class="menu-title" data-i18n="">Buat Laporan
+                                                                    Keuangan</span>
+                                                            </a>
 
                                                         </div>
 
@@ -530,205 +534,288 @@
                                             aria-labelledby="rencana-tab">
                                             {{--
                                             <?php $this->load->view( 'member/penerbit/_detail/rencana' ); ?> --}}
-                                            <input type="hidden" id="trademark" value="<?= $emiten->trademark; ?>"/>
+                                            <input type="hidden" id="trademark" value="<?= $emiten->trademark; ?>" />
 
-<div class="card-content">
-    <div class="card-body">
-        <?php if($data == null) : ?>
-        <div class="card-content m-0">
-            <div class="alert alert-info-dashboard penerbit-info-report col-md-12">
-                <h4><b>Anda belum memasukan rencana penggunaan dana.</b></h4>
-                <p>Segera buat rencana penggunaan dana.</p>
-            </div>
-        </div>
-        <?php endif; ?>
-        <div class="card-content py-2">
-            <div class="content-center">
-                <span class="title-left">
-                    <b>
-                    <div class="card-body total-rencana">
-                        <div><span>Total (Total seluruh rencana)</span></div>
-                        <div class="total-rencana-text"><?= 'Rp. ' . number_format( isset($data['total']) ? $data['total'] : 0 , 0, ',', '.' ) ?></div>
-                    </div>
-                    </b>
-                </span>
-                <a type="button" class="btn btn-sm btn-info title-right" target="_blank" href="<?= $tutorial; ?>">
-                    <span class="menu-title" data-i18n="">Tutorial Pembuatan Laporan</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+                                            <div class="card-content">
+                                                <div class="card-body">
+                                                    <?php if($data == null) : ?>
+                                                    <div class="card-content m-0">
+                                                        <div
+                                                            class="alert alert-info-dashboard penerbit-info-report col-md-12">
+                                                            <h4><b>Anda belum memasukan rencana penggunaan dana.</b>
+                                                            </h4>
+                                                            <p>Segera buat rencana penggunaan dana.</p>
+                                                        </div>
+                                                    </div>
+                                                    <?php endif; ?>
+                                                    <div class="card-content py-2">
+                                                        <div class="content-center">
+                                                            <span class="title-left">
+                                                                <b>
+                                                                    <div class="card-body total-rencana">
+                                                                        <div><span>Total (Total seluruh rencana)</span>
+                                                                        </div>
+                                                                        <div class="total-rencana-text">
+                                                                            <?= 'Rp. ' . number_format( isset($data['total']) ? $data['total'] : 0 , 0, ',', '.' ) ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </b>
+                                                            </span>
+                                                            <a type="button" class="btn btn-sm btn-info title-right"
+                                                                target="_blank" href="<?= $tutorial; ?>">
+                                                                <span class="menu-title" data-i18n="">Tutorial Pembuatan
+                                                                    Laporan</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-<div class="card-content">
-    <div class="card-body">
-        <form id="formSubmitPlan" enctype="multipart/form-data">
-        <input type="hidden" id="emiten_uuid" name="emiten_uuid" value="<?= $uuid; ?>"/>
+                                            <div class="card-content">
+                                                <div class="card-body">
+                                                    <form id="formSubmitPlan" enctype="multipart/form-data">
+                                                        <input type="hidden" id="emiten_uuid" name="emiten_uuid"
+                                                            value="<?= $uuid; ?>" />
 
-        <div class="card-content m-0">
-            <div class="col-md-12">
+                                                        <div class="card-content m-0">
+                                                            <div class="col-md-12">
 
-                <?php if ($data == null) : ?>
-                <input type="hidden" id="tabID" value="1" />
+                                                                <?php if ($data == null) : ?>
+                                                                <input type="hidden" id="tabID" value="1" />
 
-                <!-- Nav tabs -->
-                <div class="row">
-                <ul id="tab-list" class="nav nav-tabs" role="tablist" style="border-radius: unset;">
-                    <li class="nav-item active">
-                        <a class="nav-link tab-penerbit-detail active"
-                            id="profil-tab" data-toggle="tab" href="#tab1"
-                            role="tab" aria-controls="tab" aria-selected="true" >
-                            <div><b>nama rencana <button class="close" type="button" title="Remove this page">×</button> </b></div>
-                            <div style="line-height:1;">
-                                <div><small>Subtotal</small></div>
-                                <div>Rp. 0</div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="la la-plus-square"></i></button>
-                </div>
+                                                                <!-- Nav tabs -->
+                                                                <div class="row">
+                                                                    <ul id="tab-list" class="nav nav-tabs"
+                                                                        role="tablist" style="border-radius: unset;">
+                                                                        <li class="nav-item active">
+                                                                            <a class="nav-link tab-penerbit-detail active"
+                                                                                id="profil-tab" data-toggle="tab"
+                                                                                href="#tab1" role="tab"
+                                                                                aria-controls="tab"
+                                                                                aria-selected="true">
+                                                                                <div><b>nama rencana <button
+                                                                                            class="close" type="button"
+                                                                                            title="Remove this page">×</button>
+                                                                                    </b></div>
+                                                                                <div style="line-height:1;">
+                                                                                    <div><small>Subtotal</small></div>
+                                                                                    <div>Rp. 0</div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <button id="btn-add-tab" type="button"
+                                                                        class="btn btn-santara-white pull-right ml-1"
+                                                                        style="font-size: 3rem;padding: 0;border: none;"
+                                                                        onClick="addTabPlan()"><i
+                                                                            class="la la-plus-square"></i></button>
+                                                                </div>
 
-                <!-- Tab panes -->
-                <div id="tab-content" class="tab-content">
-                    <div class="tab-pane row fade show active" id="tab1">
-                        <div class="row my-2">
-                            <div class="form-group col-md-4">
-                                <label>Nama Rencana</label>
-                                <input type="text" class="form-control" name="list_fund_plans[1][name]" maxlength="40"
-                                    placeholder="Masukan nama rencana"/>
-                            </div>
-                        </div>
-                        <div class="row col-md-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="tab_rencana_1">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Keterangan</th>
-                                        <th scope="col">Nilai</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr id='rencana_addr_1_1'></tr>
-                                </tbody>
-                                </table>
-                                <div class="justify-content-between row col-12">
-                                    <a class="btn btn-santara-white col-2" onclick="addReportPlan(1,1)">Tambah Baris</a>
-                                    <input type="text" class="form-control col-4" name="list_fund_plans[1][subtotal]" id="subtotal_1" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="form-group col-md-12">
-                            <label>Deskripsi</label>
-                            <textarea class="form-control required-form" rows="7" cols="50" name="list_fund_plans[1][desc]" id="deskripsi" placeholder="Tuliskan biografi singkat pemilik usaha"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php else: ?>
-                    <input type="hidden" id="tabID" value="<?= count($data['list_fund_plans']); ?>" />
+                                                                <!-- Tab panes -->
+                                                                <div id="tab-content" class="tab-content">
+                                                                    <div class="tab-pane row fade show active"
+                                                                        id="tab1">
+                                                                        <div class="row my-2">
+                                                                            <div class="form-group col-md-4">
+                                                                                <label>Nama Rencana</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    name="list_fund_plans[1][name]"
+                                                                                    maxlength="40"
+                                                                                    placeholder="Masukan nama rencana" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row col-md-12">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-bordered"
+                                                                                    id="tab_rencana_1">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th scope="col">Keterangan
+                                                                                            </th>
+                                                                                            <th scope="col">Nilai</th>
+                                                                                            <th scope="col"></th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr id='rencana_addr_1_1'></tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                                <div
+                                                                                    class="justify-content-between row col-12">
+                                                                                    <a class="btn btn-santara-white col-2"
+                                                                                        onclick="addReportPlan(1,1)">Tambah
+                                                                                        Baris</a>
+                                                                                    <input type="text"
+                                                                                        class="form-control col-4"
+                                                                                        name="list_fund_plans[1][subtotal]"
+                                                                                        id="subtotal_1" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-2">
+                                                                            <div class="form-group col-md-12">
+                                                                                <label>Deskripsi</label>
+                                                                                <textarea
+                                                                                    class="form-control required-form"
+                                                                                    rows="7" cols="50"
+                                                                                    name="list_fund_plans[1][desc]"
+                                                                                    id="deskripsi"
+                                                                                    placeholder="Tuliskan biografi singkat pemilik usaha"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <?php else: ?>
+                                                                <input type="hidden" id="tabID"
+                                                                    value="<?= count($data['list_fund_plans']); ?>" />
 
-                    <!-- Nav tabs -->
-                    <div class="row">
-                    <ul id="tab-list" class="nav nav-tabs" role="tablist" style="border-radius: unset;">
-                    <?php if( $data['list_fund_plans'] ) : ?>
-                    <?php foreach($data['list_fund_plans'] as $key => $value): ?>
-                        <li class="nav-item <?= ($key == 0 ) ? 'active' : ''?> ">
-                        <a class="nav-link tab-penerbit-detail <?= ($key == 0 ) ? 'active' : ''?>"
-                            id="profil-tab" data-toggle="tab" href="#tab<?= $key ?>"
-                            role="tab" aria-controls="tab" aria-selected="true" >
-                            <div><b><?= $value['name'] ?> <button class="close" type="button" title="Remove this page">×</button> </b></div>
-                            <div style="line-height:1;">
-                                <div><small>Subtotal</small></div>
-                                <div><?= 'Rp. ' . number_format(  $value['total'], 0, ',', '.' ) ?></div>
-                            </div>
-                        </a>
-                        </li>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
+                                                                <!-- Nav tabs -->
+                                                                <div class="row">
+                                                                    <ul id="tab-list" class="nav nav-tabs"
+                                                                        role="tablist" style="border-radius: unset;">
+                                                                        <?php if( $data['list_fund_plans'] ) : ?>
+                                                                        <?php foreach($data['list_fund_plans'] as $key => $value): ?>
+                                                                        <li
+                                                                            class="nav-item <?= ($key == 0 ) ? 'active' : ''?> ">
+                                                                            <a class="nav-link tab-penerbit-detail <?= ($key == 0 ) ? 'active' : ''?>"
+                                                                                id="profil-tab" data-toggle="tab"
+                                                                                href="#tab<?= $key ?>" role="tab"
+                                                                                aria-controls="tab"
+                                                                                aria-selected="true">
+                                                                                <div><b>
+                                                                                        <?= $value['name'] ?> <button
+                                                                                            class="close" type="button"
+                                                                                            title="Remove this page">×</button>
+                                                                                    </b></div>
+                                                                                <div style="line-height:1;">
+                                                                                    <div><small>Subtotal</small></div>
+                                                                                    <div>
+                                                                                        <?= 'Rp. ' . number_format(  $value['total'], 0, ',', '.' ) ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <?php endforeach; ?>
+                                                                        <?php endif; ?>
 
-                    </ul>
-                    <button id="btn-add-tab" type="button" class="btn btn-santara-white pull-right ml-1" style="font-size: 3rem;padding: 0;border: none;" onClick="addTabPlan()"><i class="la la-plus-square"></i></button>
-                    </div>
+                                                                    </ul>
+                                                                    <button id="btn-add-tab" type="button"
+                                                                        class="btn btn-santara-white pull-right ml-1"
+                                                                        style="font-size: 3rem;padding: 0;border: none;"
+                                                                        onClick="addTabPlan()"><i
+                                                                            class="la la-plus-square"></i></button>
+                                                                </div>
 
-                    <!-- Tab panes -->
-                    <div id="tab-content" class="tab-content">
-                        <?php if( $data['list_fund_plans'] ) : ?>
+                                                                <!-- Tab panes -->
+                                                                <div id="tab-content" class="tab-content">
+                                                                    <?php if( $data['list_fund_plans'] ) : ?>
 
-                        <?php foreach($data['list_fund_plans'] as $key => $value): ?>
-                        <div class="tab-pane row fade <?= ($key == 0 ) ? 'show active' : ''?>" id="tab<?= $key ?>">
-                            <div class="row my-2">
-                                <div class="form-group col-md-4">
-                                    <label>Nama Rencana</label>
-                                    <input type="text" class="form-control" name="list_fund_plans[<?= $key; ?>][name]" maxlength="40" value="<?= $value['name']; ?>"/>
-                                </div>
-                            </div>
-                            <div class="row col-md-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="tab_rencana_<?= $key; ?>">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Keterangan</th>
-                                            <th scope="col">Nilai</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                                                    <?php foreach($data['list_fund_plans'] as $key => $value): ?>
+                                                                    <div class="tab-pane row fade <?= ($key == 0 ) ? 'show active' : ''?>"
+                                                                        id="tab<?= $key ?>">
+                                                                        <div class="row my-2">
+                                                                            <div class="form-group col-md-4">
+                                                                                <label>Nama Rencana</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    name="list_fund_plans[<?= $key; ?>][name]"
+                                                                                    maxlength="40"
+                                                                                    value="<?= $value['name']; ?>" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row col-md-12">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-bordered"
+                                                                                    id="tab_rencana_<?= $key; ?>">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th scope="col">Keterangan
+                                                                                            </th>
+                                                                                            <th scope="col">Nilai</th>
+                                                                                            <th scope="col"></th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
 
-                                        <?php
+                                                                                        <?php
                                         $no = 0;
                                         foreach($value['sublist'] as $k => $v) : ?>
-                                        <tr id='rencana_addr_<?= $key; ?>_<?= $k; ?>'>
-                                            <td width="65%">
-                                                <input type="text" name='list_fund_plans[<?= $key; ?>][sublist][<?= $k; ?>][desc]' value="<?= $v['desc']; ?>" class="form-control"/>
-                                            </td>
-                                            <td width="30%">
-                                                <input type="text" name='list_fund_plans[<?= $key; ?>][sublist][<?= $k; ?>][amount]' value="<?= number_format( $v['amount'], 0, ',', '.' ); ?>" class="form-control amount_<?= $key; ?>" onkeyup="subTotal(<?= $key; ?>)"/>
-                                            </td>
-                                            <td width='5%'><a class='pull-right btn btn-santara-white' onclick='removeReportPlan("<?= $key ?>","<?= $k ?>")'><i class='la la-times'></i></a></td>
-                                        </tr>
+                                                                                        <tr
+                                                                                            id='rencana_addr_<?= $key; ?>_<?= $k; ?>'>
+                                                                                            <td width="65%">
+                                                                                                <input type="text"
+                                                                                                    name='list_fund_plans[<?= $key; ?>][sublist][<?= $k; ?>][desc]'
+                                                                                                    value="<?= $v['desc']; ?>"
+                                                                                                    class="form-control" />
+                                                                                            </td>
+                                                                                            <td width="30%">
+                                                                                                <input type="text"
+                                                                                                    name='list_fund_plans[<?= $key; ?>][sublist][<?= $k; ?>][amount]'
+                                                                                                    value="<?= number_format( $v['amount'], 0, ',', '.' ); ?>"
+                                                                                                    class="form-control amount_<?= $key; ?>"
+                                                                                                    onkeyup="subTotal(<?= $key; ?>)" />
+                                                                                            </td>
+                                                                                            <td width='5%'><a
+                                                                                                    class='pull-right btn btn-santara-white'
+                                                                                                    onclick='removeReportPlan("<?= $key ?>","<?= $k ?>")'><i
+                                                                                                        class='la la-times'></i></a>
+                                                                                            </td>
+                                                                                        </tr>
 
-                                        <?php
+                                                                                        <?php
                                         $no = $k + 1;
                                         endforeach; ?>
-                                        <tr id='rencana_addr_<?= $key; ?>_<?= $no; ?>'></tr>
-                                    </tbody>
-                                    </table>
-                                    <div class="justify-content-between row col-12">
-                                        <a class="btn btn-santara-white col-2" onclick="addReportPlan(<?= $key; ?>,<?= $no; ?>)">Tambah Baris</a>
-                                        <input type="text" class="form-control col-4" value="<?= number_format( $value['total'] , 0, ',', '.' ); ?>" id="subtotal_<?= $key; ?>" name="list_fund_plans[<?= $key; ?>][subtotal]"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="form-group col-md-12">
-                                <label>Deskripsi</label>
-                                    <textarea class="form-control required-form" rows="7" cols="50" name="list_fund_plans[<?= $key; ?>][desc]" id="deskripsi"><?= isset($value['desc']) ? $value['desc'] : ''; ?></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
+                                                                                        <tr
+                                                                                            id='rencana_addr_<?= $key; ?>_<?= $no; ?>'>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                                <div
+                                                                                    class="justify-content-between row col-12">
+                                                                                    <a class="btn btn-santara-white col-2"
+                                                                                        onclick="addReportPlan(<?= $key; ?>,<?= $no; ?>)">Tambah
+                                                                                        Baris</a>
+                                                                                    <input type="text"
+                                                                                        class="form-control col-4"
+                                                                                        value="<?= number_format( $value['total'] , 0, ',', '.' ); ?>"
+                                                                                        id="subtotal_<?= $key; ?>"
+                                                                                        name="list_fund_plans[<?= $key; ?>][subtotal]" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-2">
+                                                                            <div class="form-group col-md-12">
+                                                                                <label>Deskripsi</label>
+                                                                                <textarea
+                                                                                    class="form-control required-form"
+                                                                                    rows="7" cols="50"
+                                                                                    name="list_fund_plans[<?= $key; ?>][desc]"
+                                                                                    id="deskripsi"><?= isset($value['desc']) ? $value['desc'] : ''; ?></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <?php endforeach; ?>
+                                                                    <?php endif; ?>
+                                                                </div>
+                                                                <?php endif; ?>
 
-            </div>
-        </div>
-        <div class="card-content mt-2">
-            <div class="row">
-                <div class="text-left col-md-6 mb-1">
-                    <a class="btn btn-santara-white btn-block" href="javascript:window.history.go(-1);">Kembali</a>
-                </div>
-                <div class="text-right col-md-6 mb-1">
-                    <button type="button" class="btn btn-santara-red btn-block"  onClick="submitPlan('<?= $type ?>')">Simpan</button>
-                </div>
-            </div>
-        </div>
-        </form>
-    </div>
-</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-content mt-2">
+                                                            <div class="row">
+                                                                <div class="text-left col-md-6 mb-1">
+                                                                    <a class="btn btn-santara-white btn-block"
+                                                                        href="javascript:window.history.go(-1);">Kembali</a>
+                                                                </div>
+                                                                <div class="text-right col-md-6 mb-1">
+                                                                    <button type="button"
+                                                                        class="btn btn-santara-red btn-block"
+                                                                        onClick="submitPlan('<?= $type ?>')">Simpan</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
 
 
                                         </div>
@@ -750,8 +837,8 @@
 
 @endsection
 @section('js')
-<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
     integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -1087,9 +1174,9 @@ function deleteReport(id, uuid){
         }).get();
         document.getElementById("subtotal_"+tab_id).value = ( isNaN(subtotal) ) ? 0 : formatNumber(Number(subtotal) );
     };
-    </script>
+</script>
 
-    <script></script>
+<script></script>
 @endsection
 @section('style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -1099,5 +1186,5 @@ function deleteReport(id, uuid){
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
-    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 @endsection

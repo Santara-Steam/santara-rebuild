@@ -35,24 +35,23 @@
                                             </thead>
                                             <tbody>
                                                 <?php $no = 0;?>
-                                                @for ($i = 0; $i < count($emiten); $i++)
-                                                <?php $no++; ?>
-                                                <tr>
-                                                    {{-- <td>{{$item->trader_id}}</td> --}}
-                                                    <td>{{$no}}</td>
-                                                    <td>{{$emiten[$i]['company_name']}}</td>
-                                                    <td>{{$emiten[$i]['trademark']}}</td>
-                                                    <td>{{$emiten[$i]['code_emiten']}}</td>
-                                                    <td>{{$emiten[$i]['ktg']}}</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-sm btn-success"
-                                                            data-toggle="modal"
-                                                            data-target="#default{{$emiten[$i]['id']}}">
+                                                @for ($i = 0; $i < count($emiten); $i++) <?php $no++; ?>
+                                                    <tr>
+                                                        {{-- <td>{{$item->trader_id}}</td> --}}
+                                                        <td>{{$no}}</td>
+                                                        <td>{{$emiten[$i]['company_name']}}</td>
+                                                        <td>{{$emiten[$i]['trademark']}}</td>
+                                                        <td>{{$emiten[$i]['code_emiten']}}</td>
+                                                        <td>{{$emiten[$i]['ktg']}}</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-sm btn-success"
+                                                                data-toggle="modal"
+                                                                data-target="#default{{$emiten[$i]['id']}}">
                                                                 Update Status
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                @endfor
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    @endfor
 
                                             </tbody>
                                         </table>
@@ -67,9 +66,8 @@
     </div>
 </div>
 
-@for ($i = 0; $i < count($emiten); $i++)
-<div class="modal fade text-left" id="default{{$emiten[$i]['id']}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true">
+@for ($i = 0; $i < count($emiten); $i++) <div class="modal fade text-left" id="default{{$emiten[$i]['id']}}"
+    tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form class="form" action="{{url('/emiten/update_status')}}/{{$emiten[$i]['id']}}" method="POST"
@@ -90,12 +88,13 @@
                     </div>
                     <div class="form-group">
                         <label for="start_date">Tanggal Mulai</label>
-                        <input type="datetime-local" class="form-control" name="start_date" onchange="getDate45('{{ $emiten[$i]['id'] }}')"
-                            id="start_date_{{ $emiten[$i]['id'] }}">
+                        <input type="datetime-local" class="form-control" name="start_date"
+                            onchange="getDate45('{{ $emiten[$i]['id'] }}')" id="start_date_{{ $emiten[$i]['id'] }}">
                     </div>
                     <div class="form-group">
                         <label for="start_date">Tanggal Selesai</label>
-                        <input type="datetime-local" class="form-control" name="end_date" id="end_date_{{ $emiten[$i]['id'] }}">
+                        <input type="datetime-local" class="form-control" name="end_date"
+                            id="end_date_{{ $emiten[$i]['id'] }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -105,22 +104,24 @@
             </form>
         </div>
     </div>
-</div>
-@endfor
-@endsection
-@section('js')
-<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-    $(document).ready(function() {
+    </div>
+    @endfor
+    @endsection
+    @section('js')
+    <script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+    <script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
+        integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
         $('#tabel').DataTable({
             responsive: true,
         });
     });
-</script>
-<script>
-     $(".deletebtn").click(function(e) {
+    </script>
+    <script>
+        $(".deletebtn").click(function(e) {
 
     id = e.target.dataset.id;
     Swal.fire({
@@ -158,10 +159,15 @@ function getDate45(id){
     })
 }
 
-</script>
-@endsection
-@section('style')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
-@endsection
+    </script>
+    @endsection
+    @section('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+        integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    @endsection

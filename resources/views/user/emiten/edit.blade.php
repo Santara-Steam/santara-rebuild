@@ -38,19 +38,24 @@
                                             </div> --}}
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Brand <span style="color: red">*</span></label>
-                                                    <input required type="text" id="companyName" value="{{$emiten->trademark}}"
-                                                        name="brand" class="form-control" placeholder="Nama Brand">
+                                                    <label for="companyName">Nama Brand <span
+                                                            style="color: red">*</span></label>
+                                                    <input required type="text" id="companyName"
+                                                        value="{{$emiten->trademark}}" name="brand" class="form-control"
+                                                        placeholder="Nama Brand">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Perusahaan <span style="color: red">*</span></label>
+                                                    <label for="companyName">Nama Perusahaan <span
+                                                            style="color: red">*</span></label>
                                                     <input required type="text" id="companyName" name="company_name"
                                                         class="form-control" value="{{$emiten->company_name}}"
                                                         placeholder="Nama Perusahaan">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="projectinput6">Kategori <span style="color: red">*</span></label>
-                                                    <select required id="projectinput6" name="kategori" class="form-control">
+                                                    <label for="projectinput6">Kategori <span
+                                                            style="color: red">*</span></label>
+                                                    <select required id="projectinput6" name="kategori"
+                                                        class="form-control">
                                                         <option value="" disabled="" hidden>-- Pilih
                                                             Kategori
                                                             --</option>
@@ -75,7 +80,8 @@
                                                         <div class="image_area text-center">
                                                             <label for="upload_image">
                                                                 <img src="{{env('PATH_WEB')}}{{$picture[0]}}"
-                                                                    id="uploaded_image" class="img-responsive" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
+                                                                    id="uploaded_image" class="img-responsive"
+                                                                    onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'" />
                                                                 <div class="overlay">
                                                                     <div class="text">Thumbnail</div>
                                                                 </div>
@@ -91,7 +97,8 @@
                                                         <label for="companyName">Banner</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image2">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[1]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[1]}}'"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[1]}}"
+                                                                    onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[1]}}'"
                                                                     id="uploaded_image2" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Banner</div>
@@ -107,7 +114,8 @@
                                                         <label for="companyName">Foto Owner</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image4">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[2]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[2]}}'"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[2]}}"
+                                                                    onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[2]}}'"
                                                                     id="uploaded_image4" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Foto Owner</div>
@@ -128,7 +136,8 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image3">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[3]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[3]}}'"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[3]}}"
+                                                                    onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[3]}}'"
                                                                     id="uploaded_image3" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha</div>
@@ -145,7 +154,8 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha 2</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image5">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[4]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[4]}}'"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[4]}}"
+                                                                    onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[4]}}'"
                                                                     id="uploaded_image5" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha 2</div>
@@ -161,7 +171,8 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha 3</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image6">
-                                                                <img src="{{env('PATH_WEB')}}{{$picture[5]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[5]}}'"
+                                                                <img src="{{env('PATH_WEB')}}{{$picture[5]}}"
+                                                                    onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[5]}}'"
                                                                     id="uploaded_image6" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha 3</div>
@@ -175,66 +186,85 @@
                                                     </div>
                                                 </div>
                                                 {{-- <div class="form-group col-md-4">
-                                                    <label for="companyName">Thumbnail <span style="color: red">*</span></label>
+                                                    <label for="companyName">Thumbnail <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304
+                                                        x 380 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" id="fil" accept=".png, .jpg" type="file" name="thumbnail"
+                                                        <input class="custom-file-input req" id="fil"
+                                                            accept=".png, .jpg" type="file" name="thumbnail"
                                                             id="inputGroupFile02">
-                                                        <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
+                                                        <label class="custom-file-label ssa" id="ssa"
+                                                            for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[0]}}</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Banner <span style="color: red">*</span></label>
+                                                    <label for="companyName">Banner <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size
+                                                        1440 x 432 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[1]}}' accept=".png, .jpg" type="file" name="banner" class="custom-file-input req"
+                                                        <input value='{{$picture[1]}}' accept=".png, .jpg" type="file"
+                                                            name="banner" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[1]}}</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Foto Owner <span style="color: red">*</span></label>
+                                                    <label for="companyName">Foto Owner <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio
+                                                        4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[2]}}' accept=".png, .jpg" type="file" name="owner" class="custom-file-input req"
+                                                        <input value='{{$picture[2]}}' accept=".png, .jpg" type="file"
+                                                            name="owner" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[2]}}</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <label for="companyName">Galeri <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio
+                                                        4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[3]}}' accept=".png, .jpg" type="file" name="galeri1" class="custom-file-input req"
+                                                        <input value='{{$picture[3]}}' accept=".png, .jpg" type="file"
+                                                            name="galeri1" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[3]}}</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <label for="companyName">Galeri <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio
+                                                        4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[4]}}' accept=".png, .jpg" type="file" name="galeri2" class="custom-file-input req"
+                                                        <input value='{{$picture[4]}}' accept=".png, .jpg" type="file"
+                                                            name="galeri2" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[4]}}</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <label for="companyName">Galeri <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio
+                                                        4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[5]}}' accept=".png, .jpg" type="file" name="galeri3" class="custom-file-input req"
+                                                        <input value='{{$picture[5]}}' accept=".png, .jpg" type="file"
+                                                            name="galeri3" class="custom-file-input req"
                                                             id="inputGroupFile02">
                                                         <label class="custom-file-label ssa" for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[5]}}</label>
@@ -242,33 +272,40 @@
                                                 </div> --}}
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Owner <span style="color: red">*</span></label>
-                                                    <input required type="text" value="{{$emiten->owner_name}}" name="nama_owner"
-                                                        id="companyName" class="form-control">
-                                                    <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar <span style="color: red">*</span></label>
+                                                    <label for="companyName">Nama Owner <span
+                                                            style="color: red">*</span></label>
+                                                    <input required type="text" value="{{$emiten->owner_name}}"
+                                                        name="nama_owner" id="companyName" class="form-control">
+                                                    <label style="margin-top: 20px" for="companyName">Harga Saham Per
+                                                        Lembar <span style="color: red">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="text" name="harga_saham" value="{{round($emiten->price,0)}}"
-                                                            class="form-control ribuan" placeholder="Harga Saham Per Lembar"
+                                                        <input required type="text" name="harga_saham"
+                                                            value="{{round($emiten->price,0)}}"
+                                                            class="form-control ribuan"
+                                                            placeholder="Harga Saham Per Lembar"
                                                             aria-describedby="basic-addon1">
                                                     </div>
-                                                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana yang di Butuhkan <span style="color: red">*</span></label>
+                                                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana
+                                                        yang di Butuhkan <span style="color: red">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="text" value="{{round($emiten->avg_capital_needs,0)}}"
+                                                        <input required type="text"
+                                                            value="{{round($emiten->avg_capital_needs,0)}}"
                                                             name="perkiraan_dana" class="form-control ribuan"
                                                             placeholder="Perkiraan Dana yang di Butuhkan"
                                                             aria-describedby="basic-addon1">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-8">
-                                                    <label for="projectinput8">Biografi Owner  <span style="color: red">*</span></label>
-                                                    <textarea required id="projectinput8" rows="11" cols="100" class="form-control"
-                                                        name="bio_owner"
+                                                    <label for="projectinput8">Biografi Owner <span
+                                                            style="color: red">*</span></label>
+                                                    <textarea required id="projectinput8" rows="11" cols="100"
+                                                        class="form-control" name="bio_owner"
                                                         placeholder="Biografi Owner">{{$emiten->admin_desc}}</textarea>
                                                 </div>
                                                 {{-- <div class="form-group col-md-4">
@@ -282,7 +319,8 @@
                                                 {{-- <div class="form-group"> --}}
                                                     {{-- <div class="form-group row"> --}}
                                                         <div class="col-md-4">
-                                                            <label for="projectinput5">Omset Tahun 2021 <span style="color: red">*</span></label>
+                                                            <label for="projectinput5">Omset Tahun 2021 <span
+                                                                    style="color: red">*</span></label>
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text"
@@ -296,7 +334,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label for="projectinput5">Omset Tahun 2022 <span style="color: red">*</span></label>
+                                                            <label for="projectinput5">Omset Tahun 2022 <span
+                                                                    style="color: red">*</span></label>
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text"
@@ -319,7 +358,8 @@
                                                         Umum</label>
                                                     <div class="input-group">
 
-                                                        <input type="text" value="{{round($emiten->avg_general_share_amount,0)}}"
+                                                        <input type="text"
+                                                            value="{{round($emiten->avg_general_share_amount,0)}}"
                                                             name="saham_dilepas" class="form-control ribuan"
                                                             placeholder="Perkiraan Saham yang di lepas ke Umum"
                                                             aria-describedby="basic-addon4">
@@ -347,7 +387,8 @@
                                                     <label for="companyName">Perkiraan Deviden Tahunan</label>
                                                     <div class="input-group">
 
-                                                        <input required  type="text" value="{{round($emiten->avg_annual_dividen,0)}}"
+                                                        <input required type="text"
+                                                            value="{{round($emiten->avg_annual_dividen,0)}}"
                                                             name="deviden_tahunan" class="form-control ribuan"
                                                             placeholder="Perkiraan Deviden Tahunan"
                                                             aria-describedby="basic-addon4">
@@ -358,7 +399,9 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Video Profile Perusahaan</label>
-                                                    <input pattern="https?://youtu.be.+" title="Include http://youtu.be/..." type="text" value="{{$emiten->youtube}}" id="companyName"
+                                                    <input pattern="https?://youtu.be.+"
+                                                        title="Include http://youtu.be/..." type="text"
+                                                        value="{{$emiten->youtube}}" id="companyName"
                                                         name="video_profile" class="form-control"
                                                         placeholder="Video Profile Perusahaan">
                                                 </div>
@@ -385,12 +428,14 @@
                                                 <div class="form-group col-md-6">
                                                     <label>Kota Lokasi Usaha</label>
                                                     <div class="hidden" id="rowKota">
-                                                        <select name="regency_id" id="input_kota" style="width: 100%"></select>
+                                                        <select name="regency_id" id="input_kota"
+                                                            style="width: 100%"></select>
                                                     </div>
                                                     <div class="input-group" id="kotaEdit">
                                                         <input type="text" value="{{ $emiten->kota }}"
                                                             class="form-control" id="regency_id2" readonly />
-                                                        <span class="input-group-text cursor-pointer" id="changeKota">Ganti</span>
+                                                        <span class="input-group-text cursor-pointer"
+                                                            id="changeKota">Ganti</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -398,13 +443,15 @@
                                                     <select name="business_entity" class="form-control">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($badanUsaha as $row)
-                                                            <option @if($emiten->business_entity == $row) selected @endif value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->business_entity == $row) selected @endif
+                                                            value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Alamat Lengkap Usaha</label>
-                                                    <textarea class="form-control" name="address" rows="5" placeholder="Alamat Lengkap Usaha">
+                                                    <textarea class="form-control" name="address" rows="5"
+                                                        placeholder="Alamat Lengkap Usaha">
                                                         {{$emiten->address}}
                                                     </textarea>
                                                 </div>
@@ -445,7 +492,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="monthly_turnover"
+                                                        <input type="text" name="monthly_turnover"
                                                             value="{{ $emiten->monthly_turnover }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -456,7 +503,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="monthly_profit"
+                                                        <input type="text" name="monthly_profit"
                                                             value="{{ $emiten->monthly_profit }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -467,7 +514,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="monthly_turnover_previous_year"
+                                                        <input type="text" name="monthly_turnover_previous_year"
                                                             value="{{ $emiten->monthly_turnover_previous_year }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -478,7 +525,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="monthly_profit_previous_year"
+                                                        <input type="text" name="monthly_profit_previous_year"
                                                             value="{{ $emiten->monthly_profit_previous_year }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -489,7 +536,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="total_bank_debt"
+                                                        <input type="text" name="total_bank_debt"
                                                             value="{{ $emiten->total_bank_debt }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -505,7 +552,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="total_paid_capital"
+                                                        <input type="text" name="total_paid_capital"
                                                             value="{{ $emiten->total_paid_capital }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -520,7 +567,8 @@
                                                     <select class="form-control" name="financial_recording_system">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($sistemPencatatan as $row)
-                                                            <option @if($emiten->financial_recording_system == $row) selected @endif value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->financial_recording_system == $row)
+                                                            selected @endif value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -529,9 +577,9 @@
                                                     <select class="form-control" name="bank_loan_reputation">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($posisiPasar as $row)
-                                                            <option
-                                                                @if($emiten->bank_loan_reputation == $row) selected @endif
-                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->bank_loan_reputation == $row) selected
+                                                            @endif
+                                                            value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -540,9 +588,9 @@
                                                     <select class="form-control" name="market_position_for_the_product">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($marketPositition as $row)
-                                                            <option
-                                                            @if($emiten->market_position_for_the_product == $row) selected @endif
-                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->market_position_for_the_product == $row)
+                                                            selected @endif
+                                                            value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -551,9 +599,8 @@
                                                     <select class="form-control" name="strategy_emiten">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($strategiEmiten as $row)
-                                                            <option
-                                                            @if($emiten->strategy_emiten == $row) selected @endif
-                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->strategy_emiten == $row) selected @endif
+                                                            value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -562,8 +609,8 @@
                                                     <select class="form-control" name="office_status">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($statusKantor as $row)
-                                                            <option value="{{ $row }}"
-                                                            @if($emiten->office_status == $row) selected @endif>{{ $row }}</option>
+                                                        <option value="{{ $row }}" @if($emiten->office_status == $row)
+                                                            selected @endif>{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -572,8 +619,9 @@
                                                     <select class="form-control" name="level_of_business_competition">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($levelKompetisi as $row)
-                                                            <option value="{{ $row }}"
-                                                            @if($emiten->level_of_business_competition == $row) selected @endif>{{ $row }}</option>
+                                                        <option value="{{ $row }}" @if($emiten->
+                                                            level_of_business_competition == $row) selected @endif>{{
+                                                            $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -582,8 +630,8 @@
                                                     <select class="form-control" name="managerial_ability">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($kemapuanManager as $row)
-                                                            <option value="{{ $row }}"
-                                                            @if($emiten->managerial_ability == $row) selected @endif>{{ $row }}</option>
+                                                        <option value="{{ $row }}" @if($emiten->managerial_ability ==
+                                                            $row) selected @endif>{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -592,8 +640,8 @@
                                                     <select class="form-control" name="technical_ability">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($kemapuanTeknis as $row)
-                                                            <option value="{{ $row }}"
-                                                            @if($emiten->technical_ability == $row) selected @endif>{{ $row }}</option>
+                                                        <option value="{{ $row }}" @if($emiten->technical_ability ==
+                                                            $row) selected @endif>{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -605,11 +653,15 @@
                                                 <div class="form-group col-md-12">
                                                     <label>Prospektus (PDF)</label>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" name="prospektus" id="prospektus"
-                                                            accept="application/pdf" type="file" />
-                                                        <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02" aria-describedby="inputGroupFile02">Pilih File</label>
+                                                        <input class="custom-file-input req" name="prospektus"
+                                                            id="prospektus" accept="application/pdf" type="file" />
+                                                        <label class="custom-file-label ssa" id="ssa"
+                                                            for="inputGroupFile02"
+                                                            aria-describedby="inputGroupFile02">Pilih File</label>
                                                     </div>
-                                                    <a target="blank" class="mt-1" href="{{ config('global.STORAGE_GOOGLE').'token/'.$emiten->prospektus }}">Lihat File</a>
+                                                    <a target="blank" class="mt-1"
+                                                        href="{{ config('global.STORAGE_GOOGLE').'token/'.$emiten->prospektus }}">Lihat
+                                                        File</a>
                                                 </div>
 
                                                 <hr />
@@ -618,7 +670,8 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Masukan link video tentang usaha Anda ( Youtube )</label>
-                                                    <input type="text" class="form-control" name="video_url" value="{{ $emiten->video_url }}" id="video_url" />
+                                                    <input type="text" class="form-control" name="video_url"
+                                                        value="{{ $emiten->video_url }}" id="video_url" />
                                                 </div>
 
 
@@ -1410,7 +1463,7 @@ $('#crop6').click(function(){
 
     });
 </script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
 <script>
     $("#sav").on("click", function () {
 // console.log($('.ssa').html())
@@ -1533,6 +1586,5 @@ $('#crop6').click(function(){
         transform: translate(-50%, -50%);
         text-align: center;
     }
-
 </style>
 @endsection

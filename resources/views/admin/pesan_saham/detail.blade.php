@@ -82,9 +82,9 @@
                                                         src="{{asset('public')}}/default.png" alt="">
                                                     @else
                                                     <a class="venobox" data-gall="gallery01"
-                                                        href="{{ asset('storage/bukti_transfer/'.$book->bukti_tranfer) }}"><img
+                                                        href="{{ asset('public/storage/bukti_transfer/'.$book->bukti_tranfer) }}"><img
                                                             width="80"
-                                                            src="{{ asset('storage/bukti_transfer/'.$book->bukti_tranfer) }}"
+                                                            src="{{ asset('public/storage/bukti_transfer/'.$book->bukti_tranfer) }}"
                                                             alt="image alt" /></a>
                                                     @endif
                                                 </td>
@@ -150,7 +150,7 @@
 </div>
 @endsection
 @section('js')
-<script type="text/javascript" src="{{asset('assets/venobox/venobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/assets/venobox/venobox.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
     integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -219,7 +219,7 @@
 </script>
 @endsection
 @section('style')
-<link rel="stylesheet" href="{{asset('assets/venobox/venobox.css')}}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{{asset('public/assets/venobox/venobox.css')}}" type="text/css" media="screen" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />

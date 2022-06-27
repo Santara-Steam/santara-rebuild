@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
     <title>{{ config('app.name') }} - Authorization</title>
 
     <!-- Styles -->
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('public//css/app.css') }}" rel="stylesheet">
 
     <style>
         .passport-authorize .container {
@@ -37,6 +38,7 @@
         }
     </style>
 </head>
+
 <body class="passport-authorize">
     <div class="container">
         <div class="row justify-content-center">
@@ -51,15 +53,15 @@
 
                         <!-- Scope List -->
                         @if (count($scopes) > 0)
-                            <div class="scopes">
-                                    <p><strong>This application will be able to:</strong></p>
+                        <div class="scopes">
+                            <p><strong>This application will be able to:</strong></p>
 
-                                    <ul>
-                                        @foreach ($scopes as $scope)
-                                            <li>{{ $scope->description }}</li>
-                                        @endforeach
-                                    </ul>
-                            </div>
+                            <ul>
+                                @foreach ($scopes as $scope)
+                                <li>{{ $scope->description }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                         @endif
 
                         <div class="buttons">
@@ -90,4 +92,5 @@
         </div>
     </div>
 </body>
+
 </html>

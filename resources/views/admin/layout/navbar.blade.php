@@ -1,5 +1,6 @@
 <nav style="background-color: #7f1d1d"
-    class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow" style="background-color: #7f1d1d">
+    class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow"
+    style="background-color: #7f1d1d">
     <div class="navbar-wrapper">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
@@ -26,7 +27,7 @@
         </div>
         <div class="navbar-container content">
             <div class="collapse navbar-collapse" id="navbar-mobile">
-            <ul class="nav navbar-nav mr-auto float-left">
+                <ul class="nav navbar-nav mr-auto float-left">
                     <a class="btn btn-dark float-right" href="{{url('/')}}">Back to Homepage</a>
                 </ul>
                 <ul class="nav navbar-nav mr-auto float-left">
@@ -39,7 +40,7 @@
                                     src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                     alt="avatar"><i></i></span></a>
                         <div class="dropdown-menu dropdown-menu-right">
-            
+
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
 

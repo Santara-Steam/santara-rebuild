@@ -38,37 +38,46 @@
                                             </div> --}}
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Brand <span style="color: red">*</span></label>
-                                                    <input required type="text" id="companyName" value="{{$emiten->trademark}}"
-                                                        name="brand" class="form-control" placeholder="Nama Brand">
+                                                    <label for="companyName">Nama Brand <span
+                                                            style="color: red">*</span></label>
+                                                    <input required type="text" id="companyName"
+                                                        value="{{$emiten->trademark}}" name="brand" class="form-control"
+                                                        placeholder="Nama Brand">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Perusahaan <span style="color: red">*</span></label>
+                                                    <label for="companyName">Nama Perusahaan <span
+                                                            style="color: red">*</span></label>
                                                     <input required type="text" id="companyName" name="company_name"
                                                         class="form-control" value="{{$emiten->company_name}}"
                                                         placeholder="Nama Perusahaan">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="projectinput6">Kategori <span style="color: red">*</span></label>
+                                                    <label for="projectinput6">Kategori <span
+                                                            style="color: red">*</span></label>
                                                     <div class="hidden" id="rowCategoriBisnis">
-                                                        <select id="categoriBisnis" style="width: 100%" name="kategori" class="form-control"></select>
+                                                        <select id="categoriBisnis" style="width: 100%" name="kategori"
+                                                            class="form-control"></select>
                                                     </div>
                                                     <div class="input-group" id="categoriEdit">
                                                         <input type="text" value="{{ $emiten->category }}"
                                                             class="form-control" id="categoriBisnis2" readonly />
-                                                        <span class="input-group-text cursor-pointer" id="changeCategoriBisnis">Ganti</span>
+                                                        <span class="input-group-text cursor-pointer"
+                                                            id="changeCategoriBisnis">Ganti</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label for="projectinput6">Trader Email <span style="color: red">*</span></label>
+                                                    <label for="projectinput6">Trader Email <span
+                                                            style="color: red">*</span></label>
                                                     <div class="hidden" id="rowTraderEmail">
-                                                        <select style="width: 100%" id="traderEmail" name="trader" class="form-control">
+                                                        <select style="width: 100%" id="traderEmail" name="trader"
+                                                            class="form-control">
                                                         </select>
                                                     </div>
                                                     <div class="input-group" id="userEdit">
                                                         <input type="text" value="{{ $emiten->email }}"
-                                                            class="form-control"  readonly />
-                                                        <span class="input-group-text cursor-pointer" id="changeUserEdit">Ganti</span>
+                                                            class="form-control" readonly />
+                                                        <span class="input-group-text cursor-pointer"
+                                                            id="changeUserEdit">Ganti</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-12">
@@ -83,7 +92,7 @@
                                                         <label for="companyName">Logo Usaha</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image">
-                                                                <img src="{{asset('upload')}}/{{$picture[0]}}"
+                                                                <img src="{{asset('public/upload')}}/{{$picture[0]}}"
                                                                     id="uploaded_image" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Logo Perusahaan</div>
@@ -99,7 +108,7 @@
                                                         <label for="companyName">Cover Profile</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image2">
-                                                                <img src="{{asset('upload')}}/{{$picture[1]}}"
+                                                                <img src="{{asset('public/upload')}}/{{$picture[1]}}"
                                                                     id="uploaded_image2" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Cover Profile</div>
@@ -115,7 +124,7 @@
                                                         <label for="companyName">Foto Owner</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image4">
-                                                                <img src="{{asset('upload')}}/{{$picture[2]}}"
+                                                                <img src="{{asset('public/upload')}}/{{$picture[2]}}"
                                                                     id="uploaded_image4" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Foto Owner</div>
@@ -136,7 +145,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image3">
-                                                                <img src="{{asset('upload')}}/{{$picture[3]}}"
+                                                                <img src="{{asset('public/upload')}}/{{$picture[3]}}"
                                                                     id="uploaded_image3" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha</div>
@@ -153,7 +162,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha 2</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image5">
-                                                                <img src="{{asset('upload')}}/{{$picture[4]}}"
+                                                                <img src="{{asset('public/upload')}}/{{$picture[4]}}"
                                                                     id="uploaded_image5" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha 2</div>
@@ -169,7 +178,7 @@
                                                         <label for="companyName">Galeri Foto/Tempat Usaha 3</label>
                                                         <div class="image_area text-center">
                                                             <label for="upload_image6">
-                                                                <img src="{{asset('upload')}}/{{$picture[5]}}"
+                                                                <img src="{{asset('public/upload')}}/{{$picture[5]}}"
                                                                     id="uploaded_image6" class="img-responsive" />
                                                                 <div class="overlay">
                                                                     <div class="text">Galeri Foto/Tempat Usaha 3</div>
@@ -183,136 +192,174 @@
                                                     </div>
                                                 </div> --}}
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Thumbnail <span style="color: red">*</span></label>
+                                                    <label for="companyName">Thumbnail <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304 x 380 pixel (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 304
+                                                        x 380 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" accept=".png, .jpg" type="file"
-                                                            id="upload_image">
-                                                        <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02"
+                                                        <input class="custom-file-input req" accept=".png, .jpg"
+                                                            type="file" id="upload_image">
+                                                        <label class="custom-file-label ssa" id="ssa"
+                                                            for="inputGroupFile02"
                                                             aria-describedby="inputGroupFile02">{{$picture[0]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="thumbnail" id="thumbnail" value="{{ $picture[0] }}"  />
+                                                    <input type="hidden" name="thumbnail" id="thumbnail"
+                                                        value="{{ $picture[0] }}" />
                                                     @if($picture[0] != 'no-image.png')
-                                                        <img class="mt-1" width="200" id="thumbnailUploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[0] }}" />
+                                                    <img class="mt-1" width="200" id="thumbnailUploaded"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[0] }}" />
                                                     @else
-                                                        <img class="mt-1" width="200" id="thumbnailUploaded" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[0] }}" />
+                                                    <img class="mt-1" width="200" id="thumbnailUploaded"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[0] }}" />
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Banner <span style="color: red">*</span></label>
+                                                    <label for="companyName">Banner <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size 1440 x 432 pixel (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image size
+                                                        1440 x 432 pixel (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[1]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
-                                                            id="upload_image2" />
+                                                        <input value='{{$picture[1]}}' accept=".png, .jpg" type="file"
+                                                            class="custom-file-input req" id="upload_image2" />
                                                         <label class="custom-file-label ssa" for="upload_image2"
                                                             aria-describedby="upload_image2">{{$picture[1]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="banner" id="banner" value="{{ $picture[1] }}" />
+                                                    <input type="hidden" name="banner" id="banner"
+                                                        value="{{ $picture[1] }}" />
                                                     @if($picture[1] != 'no-image.png')
-                                                        <img class="mt-1" id="bannerUploaded" width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[1] }}" />
+                                                    <img class="mt-1" id="bannerUploaded" width="200"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[1] }}" />
                                                     @else
-                                                        <img class="mt-1" id="bannerUploaded" width="200" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[1] }}" />
+                                                    <img class="mt-1" id="bannerUploaded" width="200"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[1] }}" />
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Foto Owner <span style="color: red">*</span></label>
+                                                    <label for="companyName">Foto Owner <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio
+                                                        4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[2]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
-                                                            id="upload_image4">
+                                                        <input value='{{$picture[2]}}' accept=".png, .jpg" type="file"
+                                                            class="custom-file-input req" id="upload_image4">
                                                         <label class="custom-file-label ssa" for="upload_image4"
                                                             aria-describedby="upload_image4">{{$picture[2]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="owner" id="owner" value="{{ $picture[2] }}" />
+                                                    <input type="hidden" name="owner" id="owner"
+                                                        value="{{ $picture[2] }}" />
                                                     @if($picture[2] != 'no-image.png')
-                                                        <img class="mt-1" id="ownerUploaded"  width="200" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[2] }}" />
+                                                    <img class="mt-1" id="ownerUploaded" width="200"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[2] }}" />
                                                     @else
-                                                        <img class="mt-1" id="ownerUploaded"  width="200" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[2] }}" />
+                                                    <img class="mt-1" id="ownerUploaded" width="200"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[2] }}" />
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <label for="companyName">Galeri <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio
+                                                        4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[3]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
-                                                            id="upload_image3">
+                                                        <input value='{{$picture[3]}}' accept=".png, .jpg" type="file"
+                                                            class="custom-file-input req" id="upload_image3">
                                                         <label class="custom-file-label ssa" for="upload_image3"
                                                             aria-describedby="upload_image3">{{$picture[3]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="galeri1" id="galeri1" value="{{ $picture[3] }}" />
+                                                    <input type="hidden" name="galeri1" id="galeri1"
+                                                        value="{{ $picture[3] }}" />
                                                     @if($picture[3] != 'no-image.png')
-                                                        <img class="mt-1" width="200" id="galeri1Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[3] }}" />
+                                                    <img class="mt-1" width="200" id="galeri1Uploaded"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[3] }}" />
                                                     @else
-                                                        <img class="mt-1" width="200" id="galeri1Uploaded" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[3] }}" />
+                                                    <img class="mt-1" width="200" id="galeri1Uploaded"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[3] }}" />
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <label for="companyName">Galeri <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio
+                                                        4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[4]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
-                                                            id="upload_image5">
+                                                        <input value='{{$picture[4]}}' accept=".png, .jpg" type="file"
+                                                            class="custom-file-input req" id="upload_image5">
                                                         <label class="custom-file-label ssa" for="upload_image5"
                                                             aria-describedby="upload_image5">{{$picture[4]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="galeri2" id="galeri2" value="{{ $picture[4] }}" />
+                                                    <input type="hidden" name="galeri2" id="galeri2"
+                                                        value="{{ $picture[4] }}" />
                                                     @if($picture[4] != 'no-image.png')
-                                                        <img class="mt-1" width="200" id="galeri2Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[4] }}" />
+                                                    <img class="mt-1" width="200" id="galeri2Uploaded"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[4] }}" />
                                                     @else
-                                                        <img class="mt-1" width="200" id="galeri2Uploaded" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[4] }}" />
+                                                    <img class="mt-1" width="200" id="galeri2Uploaded"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[4] }}" />
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Galeri <span style="color: red">*</span></label>
+                                                    <label for="companyName">Galeri <span
+                                                            style="color: red">*</span></label>
                                                     <br>
-                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio 4:4 (recomended) (.jpg / .png only)</small>
+                                                    <small style="font-size: 11px;color:grey">Max. 10 Mb, image ratio
+                                                        4:4 (recomended) (.jpg / .png only)</small>
                                                     <div class="custom-file">
-                                                        <input value='{{$picture[5]}}' accept=".png, .jpg" type="file" class="custom-file-input req"
-                                                            id="upload_image6">
+                                                        <input value='{{$picture[5]}}' accept=".png, .jpg" type="file"
+                                                            class="custom-file-input req" id="upload_image6">
                                                         <label class="custom-file-label ssa" for="upload_image6"
                                                             aria-describedby="upload_image6">{{$picture[5]}}</label>
                                                     </div>
-                                                    <input type="hidden" name="galeri3" id="galeri3" value="{{ $picture[5] }}" />
+                                                    <input type="hidden" name="galeri3" id="galeri3"
+                                                        value="{{ $picture[5] }}" />
                                                     @if($picture[5] != 'no-image.png')
-                                                        <img class="mt-1" width="200" id="galeri3Uploaded" src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[5] }}" />
+                                                    <img class="mt-1" width="200" id="galeri3Uploaded"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'token/'.$picture[5] }}" />
                                                     @else
-                                                        <img class="mt-1" width="200" id="galeri3Uploaded" src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[5] }}" />
+                                                    <img class="mt-1" width="200" id="galeri3Uploaded"
+                                                        src="{{ config('global.STORAGE_GOOGLE').'images/error/'.$picture[5] }}" />
                                                     @endif
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="companyName">Nama Owner <span style="color: red">*</span></label>
-                                                    <input required type="text" value="{{$emiten->owner_name}}" name="nama_owner"
-                                                        id="companyName" class="form-control" >
-                                                    <label style="margin-top: 20px" for="companyName">Harga Saham Per Lembar <span style="color: red">*</span></label>
+                                                    <label for="companyName">Nama Owner <span
+                                                            style="color: red">*</span></label>
+                                                    <input required type="text" value="{{$emiten->owner_name}}"
+                                                        name="nama_owner" id="companyName" class="form-control">
+                                                    <label style="margin-top: 20px" for="companyName">Harga Saham Per
+                                                        Lembar <span style="color: red">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="text" name="harga_saham" value="{{round($emiten->price,0)}}"
-                                                            class="form-control ribuan" placeholder="Harga Saham Per Lembar"
+                                                        <input required type="text" name="harga_saham"
+                                                            value="{{round($emiten->price,0)}}"
+                                                            class="form-control ribuan"
+                                                            placeholder="Harga Saham Per Lembar"
                                                             aria-describedby="basic-addon1">
                                                     </div>
-                                                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana yang di Butuhkan <span style="color: red">*</span></label>
+                                                    <label style="margin-top: 20px" for="companyName">Perkiraan Dana
+                                                        yang di Butuhkan <span style="color: red">*</span></label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input required type="text" value="{{round($emiten->avg_capital_needs,0)}}"
+                                                        <input required type="text"
+                                                            value="{{round($emiten->avg_capital_needs,0)}}"
                                                             name="perkiraan_dana" class="form-control ribuan"
                                                             placeholder="Perkiraan Dana yang di Butuhkan"
                                                             aria-describedby="basic-addon1">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-8">
-                                                    <label for="projectinput8">Biografi Owner  <span style="color: red">*</span></label>
-                                                    <textarea required id="projectinput8" rows="11" cols="100" class="form-control"
-                                                        name="bio_owner"
+                                                    <label for="projectinput8">Biografi Owner <span
+                                                            style="color: red">*</span></label>
+                                                    <textarea required id="projectinput8" rows="11" cols="100"
+                                                        class="form-control" name="bio_owner"
                                                         placeholder="Biografi Owner">{{$emiten->admin_desc}}</textarea>
                                                 </div>
                                                 {{-- <div class="form-group col-md-4">
@@ -326,7 +373,8 @@
                                                 {{-- <div class="form-group"> --}}
                                                     {{-- <div class="form-group row"> --}}
                                                         <div class="col-md-4">
-                                                            <label for="projectinput5">Omset Tahun 2021 <span style="color: red">*</span></label>
+                                                            <label for="projectinput5">Omset Tahun 2021 <span
+                                                                    style="color: red">*</span></label>
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text"
@@ -340,7 +388,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label for="projectinput5">Omset Tahun 2022 <span style="color: red">*</span></label>
+                                                            <label for="projectinput5">Omset Tahun 2022 <span
+                                                                    style="color: red">*</span></label>
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text"
@@ -361,13 +410,12 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Periode Bagi Hasil </label>
                                                     <div class="input-group">
-                                                        <input type="text"
-                                                            name="period" class="form-control"
-                                                            placeholder="contoh : 6"
-                                                            value="{{ $emiten->period }}"
+                                                        <input type="text" name="period" class="form-control"
+                                                            placeholder="contoh : 6" value="{{ $emiten->period }}"
                                                             aria-describedby="basic-addon4">
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text" id="basic-addon4">bulan</span>
+                                                            <span class="input-group-text"
+                                                                id="basic-addon4">bulan</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -377,7 +425,8 @@
                                                         Umum</label>
                                                     <div class="input-group">
 
-                                                        <input type="text" value="{{round($emiten->avg_general_share_amount,0)}}"
+                                                        <input type="text"
+                                                            value="{{round($emiten->avg_general_share_amount,0)}}"
                                                             name="saham_dilepas" class="form-control ribuan"
                                                             placeholder="Perkiraan Saham yang di lepas ke Umum"
                                                             aria-describedby="basic-addon4">
@@ -405,7 +454,8 @@
                                                     <label for="companyName">Perkiraan Deviden Tahunan</label>
                                                     <div class="input-group">
 
-                                                        <input type="text" value="{{round($emiten->avg_annual_dividen,0)}}"
+                                                        <input type="text"
+                                                            value="{{round($emiten->avg_annual_dividen,0)}}"
                                                             name="deviden_tahunan" class="form-control ribuan"
                                                             placeholder="Perkiraan Deviden Tahunan"
                                                             aria-describedby="basic-addon4">
@@ -416,10 +466,13 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Video Profile Perusahaan</label>
-                                                    <input pattern="https?://youtu.be.+" title="Include http://youtu.be/..." type="text"
-                                                        @if($emiten->youtube != null) value="{{str_replace("www.youtube.com/embed/", "youtu.be/", $emiten->youtube)}}" @endif
-                                                        id="companyName" name="video_profile" class="form-control"
-                                                        placeholder="Video Profile Perusahaan">
+                                                    <input pattern="https?://youtu.be.+"
+                                                        title="Include http://youtu.be/..." type="text"
+                                                        @if($emiten->youtube != null)
+                                                    value="{{str_replace("www.youtube.com/embed/", "youtu.be/",
+                                                    $emiten->youtube)}}" @endif
+                                                    id="companyName" name="video_profile" class="form-control"
+                                                    placeholder="Video Profile Perusahaan">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Alamat Website</label>
@@ -439,8 +492,8 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="companyName">Dynamic Link</label>
-                                                    <input type="text" id="companyName"
-                                                        name="dynamic_link" class="form-control" placeholder="Dynamic Link"
+                                                    <input type="text" id="companyName" name="dynamic_link"
+                                                        class="form-control" placeholder="Dynamic Link"
                                                         value="{{ $emiten->dynamic_link }}">
                                                 </div>
 
@@ -451,12 +504,14 @@
                                                 <div class="form-group col-md-6">
                                                     <label>Kota Lokasi Usaha</label>
                                                     <div class="hidden" id="rowKota">
-                                                        <select name="regency_id" id="input_kota" style="width: 100%"></select>
+                                                        <select name="regency_id" id="input_kota"
+                                                            style="width: 100%"></select>
                                                     </div>
                                                     <div class="input-group" id="kotaEdit">
                                                         <input type="text" value="{{ $emiten->kota }}"
                                                             class="form-control" id="regency_id2" readonly />
-                                                        <span class="input-group-text cursor-pointer" id="changeKota">Ganti</span>
+                                                        <span class="input-group-text cursor-pointer"
+                                                            id="changeKota">Ganti</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -464,13 +519,15 @@
                                                     <select name="business_entity" class="form-control">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($badanUsaha as $row)
-                                                            <option @if($emiten->business_entity == $row) selected @endif value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->business_entity == $row) selected @endif
+                                                            value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Alamat Lengkap Usaha</label>
-                                                    <textarea class="form-control" name="address" rows="5" placeholder="Alamat Lengkap Usaha">
+                                                    <textarea class="form-control" name="address" rows="5"
+                                                        placeholder="Alamat Lengkap Usaha">
                                                         {{$emiten->address}}
                                                     </textarea>
                                                 </div>
@@ -511,7 +568,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="monthly_turnover"
+                                                        <input type="text" name="monthly_turnover"
                                                             value="{{ $emiten->monthly_turnover }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -522,7 +579,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="monthly_profit"
+                                                        <input type="text" name="monthly_profit"
                                                             value="{{ $emiten->monthly_profit }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -533,7 +590,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="monthly_turnover_previous_year"
+                                                        <input type="text" name="monthly_turnover_previous_year"
                                                             value="{{ $emiten->monthly_turnover_previous_year }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -544,7 +601,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="monthly_profit_previous_year"
+                                                        <input type="text" name="monthly_profit_previous_year"
                                                             value="{{ $emiten->monthly_profit_previous_year }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -555,7 +612,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="total_bank_debt"
+                                                        <input type="text" name="total_bank_debt"
                                                             value="{{ $emiten->total_bank_debt }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -571,7 +628,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Rp</span>
                                                         </div>
-                                                        <input  type="text" name="total_paid_capital"
+                                                        <input type="text" name="total_paid_capital"
                                                             value="{{ $emiten->total_paid_capital }}"
                                                             class="form-control ribuan" aria-describedby="basic-addon1">
                                                     </div>
@@ -586,7 +643,8 @@
                                                     <select class="form-control" name="financial_recording_system">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($sistemPencatatan as $row)
-                                                            <option @if($emiten->financial_recording_system == $row) selected @endif value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->financial_recording_system == $row)
+                                                            selected @endif value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -595,9 +653,9 @@
                                                     <select class="form-control" name="bank_loan_reputation">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($posisiPasar as $row)
-                                                            <option
-                                                                @if($emiten->bank_loan_reputation == $row) selected @endif
-                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->bank_loan_reputation == $row) selected
+                                                            @endif
+                                                            value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -606,9 +664,9 @@
                                                     <select class="form-control" name="market_position_for_the_product">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($marketPositition as $row)
-                                                            <option
-                                                            @if($emiten->market_position_for_the_product == $row) selected @endif
-                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->market_position_for_the_product == $row)
+                                                            selected @endif
+                                                            value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -617,9 +675,8 @@
                                                     <select class="form-control" name="strategy_emiten">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($strategiEmiten as $row)
-                                                            <option
-                                                            @if($emiten->strategy_emiten == $row) selected @endif
-                                                                value="{{ $row }}">{{ $row }}</option>
+                                                        <option @if($emiten->strategy_emiten == $row) selected @endif
+                                                            value="{{ $row }}">{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -628,8 +685,8 @@
                                                     <select class="form-control" name="office_status">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($statusKantor as $row)
-                                                            <option value="{{ $row }}"
-                                                            @if($emiten->office_status == $row) selected @endif>{{ $row }}</option>
+                                                        <option value="{{ $row }}" @if($emiten->office_status == $row)
+                                                            selected @endif>{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -638,8 +695,9 @@
                                                     <select class="form-control" name="level_of_business_competition">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($levelKompetisi as $row)
-                                                            <option value="{{ $row }}"
-                                                            @if($emiten->level_of_business_competition == $row) selected @endif>{{ $row }}</option>
+                                                        <option value="{{ $row }}" @if($emiten->
+                                                            level_of_business_competition == $row) selected @endif>{{
+                                                            $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -648,8 +706,8 @@
                                                     <select class="form-control" name="managerial_ability">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($kemapuanManager as $row)
-                                                            <option value="{{ $row }}"
-                                                            @if($emiten->managerial_ability == $row) selected @endif>{{ $row }}</option>
+                                                        <option value="{{ $row }}" @if($emiten->managerial_ability ==
+                                                            $row) selected @endif>{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -658,8 +716,8 @@
                                                     <select class="form-control" name="technical_ability">
                                                         <option>Pilih Salah Satu</option>
                                                         @foreach($kemapuanTeknis as $row)
-                                                            <option value="{{ $row }}"
-                                                            @if($emiten->technical_ability == $row) selected @endif>{{ $row }}</option>
+                                                        <option value="{{ $row }}" @if($emiten->technical_ability ==
+                                                            $row) selected @endif>{{ $row }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -671,11 +729,15 @@
                                                 <div class="form-group col-md-12">
                                                     <label>Prospektus (PDF)</label>
                                                     <div class="custom-file">
-                                                        <input class="custom-file-input req" name="prospektus" id="prospektus"
-                                                            accept="application/pdf" type="file" />
-                                                        <label class="custom-file-label ssa" id="ssa" for="inputGroupFile02" aria-describedby="inputGroupFile02">Pilih File</label>
+                                                        <input class="custom-file-input req" name="prospektus"
+                                                            id="prospektus" accept="application/pdf" type="file" />
+                                                        <label class="custom-file-label ssa" id="ssa"
+                                                            for="inputGroupFile02"
+                                                            aria-describedby="inputGroupFile02">Pilih File</label>
                                                     </div>
-                                                    <a target="blank" class="mt-1" href="{{ config('global.STORAGE_GOOGLE').'token/'.$emiten->prospektus }}">Lihat File</a>
+                                                    <a target="blank" class="mt-1"
+                                                        href="{{ config('global.STORAGE_GOOGLE').'token/'.$emiten->prospektus }}">Lihat
+                                                        File</a>
                                                 </div>
 
                                                 <hr />
@@ -684,7 +746,8 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Masukan link video tentang usaha Anda ( Youtube )</label>
-                                                    <input type="text" class="form-control" name="video_url" value="{{ $emiten->video_url }}" id="video_url" />
+                                                    <input type="text" class="form-control" name="video_url"
+                                                        value="{{ $emiten->video_url }}" id="video_url" />
                                                 </div>
 
 
@@ -696,17 +759,18 @@
                                                 <i class="la la-check-square-o"></i> Save
                                             </button>
                                             <?php // if( $emiten->is_verified == 1 ) : ?>
-                                                {{-- <a class="btn btn-danger font-link-white"
-                                                    onclick="acceptPraListing('<?= $emiten->uuid ?>','0', 'Batalkan') ">Batalkan</a>
-                                                <a class="btn btn-info font-link-white"
-                                                    onclick="acceptOfficial('<?= $emiten->uuid ?>','1') ">Jadikan
-                                                    Penerbit Official</a> --}}
+                                            {{-- <a class="btn btn-danger font-link-white"
+                                                onclick="acceptPraListing('<?= $emiten->uuid ?>','0', 'Batalkan') ">Batalkan</a>
+                                            <a class="btn btn-info font-link-white"
+                                                onclick="acceptOfficial('<?= $emiten->uuid ?>','1') ">Jadikan
+                                                Penerbit Official</a> --}}
                                             <?php // else: ?>
-                                                {{-- <a class="btn btn-danger-ghost <?= $emiten->is_verified == 2 || $emiten->is_verified == 1 ? 'disabled' : '' ?>"
-                                                    onclick="rejectPralisting('<?= $emiten->uuid ?>','2') ">Tolak</a>
-                                                <a class="btn btn-info font-link-white"
-                                                    onclick="acceptPraListing('<?= $emiten->uuid ?>','1', 'Verifikasi') ">Konfirmasi
-                                                    Pengajuan</a> --}}
+                                            {{-- <a
+                                                class="btn btn-danger-ghost <?= $emiten->is_verified == 2 || $emiten->is_verified == 1 ? 'disabled' : '' ?>"
+                                                onclick="rejectPralisting('<?= $emiten->uuid ?>','2') ">Tolak</a>
+                                            <a class="btn btn-info font-link-white"
+                                                onclick="acceptPraListing('<?= $emiten->uuid ?>','1', 'Verifikasi') ">Konfirmasi
+                                                Pengajuan</a> --}}
                                             <?php // endif; ?>
                                         </div>
                                     </form>
@@ -917,7 +981,6 @@
 <script src="{{ asset('public') }}/assets/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-
     function acceptPraListing(uuid, status, status_title) {
             Swal.fire({
                 text: status_title + ' bisnis ini ? ',
@@ -1712,7 +1775,7 @@ $('#crop6').click(function(){
 
     });
 </script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
 <script>
     $("#sav").on("click", function () {
 
@@ -1742,8 +1805,8 @@ $('#crop6').click(function(){
 <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
 <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
-integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
-crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://unpkg.com/dropzone"></script>
 <script src="https://unpkg.com/cropperjs"></script>
 {{--
@@ -1843,6 +1906,5 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         transform: translate(-50%, -50%);
         text-align: center;
     }
-
 </style>
 @endsection

@@ -1,81 +1,75 @@
 @extends('user.layout.master')
 @section('content')
 <div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
-        <div class="content-body">
-            <section id="configuration">
-                <div class="row">
-                    <div class="col-12">
-                        @include('user.is_kyc')
-                        <div class="card">
-                            <div class="card-header">
-                                <h1 class="card-title-member">Cash Info</h1>
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row">
+    </div>
+    <div class="content-body">
+      <section id="configuration">
+        <div class="row">
+          <div class="col-12">
+            @include('user.is_kyc')
+            <div class="card">
+              <div class="card-header">
+                <h1 class="card-title-member">Cash Info</h1>
+              </div>
+              <div class="card-content">
+                <div class="card-body px-1 pb-3">
+                  <ul class="nav nav-justified mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item member-nav">
+                      <a class="nav-link member-nav-link active" id="pills-tambah-tab" data-toggle="tab"
+                        href="#pills-tambah" role="tab" aria-controls="pills-tambah" aria-selected="true">
+                        <span class="card-title-member">Deposit</span>
+                      </a>
+                    </li>
+                    <li class="nav-item member-nav">
+                      <a class="nav-link member-nav-link" id="pills-data-tab" data-toggle="tab" href="#pills-data"
+                        role="tab" aria-controls="pills-data" aria-selected="false">
+                        <span class="card-title-member">Penarikan</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-tambah" role="tabpanel"
+                      aria-labelledby="pills-tambah-tab">
+                      <div class="row m-0">
+                        <div class="col-md-7">
+                          {{-- {{Session::get('newurl')}} --}}
+                          <div class="total-amount-member">
+                            <div>
+                              <h3>Saldo Anda</h3>
+                              <span class="withdraw-saldo">Rp.
+                                {{number_format(Auth::user()->trader->saldo->balance, 0,
+                                ',', '.')}}</span>
                             </div>
-                            <div class="card-content">
-                                <div class="card-body px-1 pb-3">
-                                    <ul class="nav nav-justified mb-3" id="pills-tab" role="tablist">
-                                        <li class="nav-item member-nav">
-                                            <a class="nav-link member-nav-link active" id="pills-tambah-tab"
-                                                data-toggle="tab" href="#pills-tambah" role="tab"
-                                                aria-controls="pills-tambah" aria-selected="true">
-                                                <span class="card-title-member">Deposit</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item member-nav">
-                                            <a class="nav-link member-nav-link" id="pills-data-tab" data-toggle="tab"
-                                                href="#pills-data" role="tab" aria-controls="pills-data"
-                                                aria-selected="false">
-                                                <span class="card-title-member">Penarikan</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-tambah" role="tabpanel"
-                                            aria-labelledby="pills-tambah-tab">
-                                            <div class="row m-0">
-                                                <div class="col-md-7">
-                                                    {{-- {{Session::get('newurl')}} --}}
-                                                    <div class="total-amount-member">
-                                                        <div>
-                                                            <h3>Saldo Anda</h3>
-                                                            <span class="withdraw-saldo">Rp.
-                                                                {{number_format(Auth::user()->trader->saldo->balance, 0,
-                                                                ',', '.')}}</span>
-                                                        </div>
-                                                    </div>
-                                                    <form class="form" action="{{url('/user/create_deposit')}}"
-                                                        method="POST" enctype="multipart/form-data">
-                                                        {{ csrf_field() }}
-                                                        <div class="form-group">
-                                                            <label for="lastName1">Jumlah Deposit</label>
-                                                            <input type="text"
-                                                                class="form-control required-form-deposit number-only"
-                                                                name="amount" id="amount" maxlength="20">
-                                                            <input type="text" id="am" name="am" hidden>
-                                                            <span id="amount_error" class="text-danger"></span>
-                                                            <span id="amount_limit" class="text-danger"
-                                                                style="display: none">
-                                                                Minimal Jumlah Deposit Rp.100.000<br>
-                                                            </span>
-                                                            <div class="hidden" id="biaya">
-                                                                <div class="form-group">
-                                                                    <label for="lastName1">Biaya Deposit</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="" name="fee" id="fee"
-                                                                        readonly="readonly">
-                                                                    <span id="fee_error" class="text-danger"></span>
-                                                                </div>
+                          </div>
+                          <form class="form" action="{{url('/user/create_deposit')}}" method="POST"
+                            enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                              <label for="lastName1">Jumlah Deposit</label>
+                              <input type="text" class="form-control required-form-deposit number-only" name="amount"
+                                id="amount" maxlength="20">
+                              <input type="text" id="am" name="am" hidden>
+                              <span id="amount_error" class="text-danger"></span>
+                              <span id="amount_limit" class="text-danger" style="display: none">
+                                Minimal Jumlah Deposit Rp.100.000<br>
+                              </span>
+                              <div class="hidden" id="biaya">
+                                <div class="form-group">
+                                  <label for="lastName1">Biaya Deposit</label>
+                                  <input type="text" class="form-control" placeholder="" name="fee" id="fee"
+                                    readonly="readonly">
+                                  <span id="fee_error" class="text-danger"></span>
+                                </div>
 
-                                                            </div>
-                                                            <span class="withdraw-saldo"
-                                                                style="display: none; font-size:16px" id="total">Total:
-                                                            </span>
-                                                        </div>
+                              </div>
+                              <span class="withdraw-saldo" style="display: none; font-size:16px" id="total">Total:
+                              </span>
+                            </div>
 
-                                                        <!-- <div class="form-group">
+                            <!-- <div class="form-group">
                                                             <label for="lastName1">Metode Pembayaran</label>
                                                             <select name="channel" id="channel" class="form-control required-form-deposit">
                                                                 <option selected disabled value="">Pilih</option>
@@ -87,545 +81,510 @@
                                                                 Transaksi deposit menggunakan metode <b>Virtual Account</b> akan dikenakan <b>biaya admin</b> sebesar Rp. 2.000
                                                             </div>
                                                         </div> -->
-                                                        <div class="form-group account_number" style="display:none">
-                                                            <label for="lastName1">Nomor Rekening Anda</label>
-                                                            <input type="text"
-                                                                class="form-control number-only required-form-deposit"
-                                                                name="account_number" id="account_number"
-                                                                maxlength="16">
-                                                            <span id="account_number_error" class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="form-group bank_from" style="display:none">
-                                                            <label for="lastName1">Bank Rekening Anda</label>
-                                                            <select name="bank_from" id="bank_from"
-                                                                class="form-control required-form-deposit">
-                                                                <option value="">Pilih...</option>
-                                                                <option value="MANDIRI">Bank Mandiri</option>
-                                                                <option value="BCA">Bank BCA</option>
-                                                                <option value="BRI">Bank BRI</option>
-                                                                <option value="BNI">Bank BNI</option>
-                                                                <option value="other">Lainnya</option>
-                                                            </select>
-                                                            <span id="bank_from_error" class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="form-group bank_from_text" style="display:none">
-                                                            <input type="text"
-                                                                class="form-control alpha-space-only required-form-deposit"
-                                                                placeholder="Nama Bank" name="bank_from_text"
-                                                                id="bank_from_text" maxlength="15">
-                                                            <span id="bank_from_text_error" class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="form-group bank" style="display:none">
-                                                            <label for="lastName1">Bank</label>
-                                                            <select name="bank" id="bank"
-                                                                class="form-control required-form-deposit">
-                                                                <option value="">Pilih...</option>
-                                                                <option value="MANDIRI">Bank Mandiri</option>
-                                                                <option value="PERMATA">Bank Permata</option>
-                                                                <option value="BNI">Bank BNI</option>
-                                                                <option value="BRI">Bank BRI</option>
-                                                                <option value="BCA">Bank BCA</option>
-                                                            </select>
-                                                            <span id="bank_error" class="text-danger"></span>
-                                                        </div>
-                                                        <button type="submit"
-                                                            class="btn btn-santara-red btn-block
-                                                            <?= (Auth::user()->is_verified == 1) ? 'submit-form-deposit' : 'disabled' ?>"
-                                                            <?=(Auth::user()->is_verified == 1) ?
-                                                            'id="sdp"' : '' ?> type="button">
-                                                            <?= (Auth::user()->is_verified == 1) ? 'Deposit' : 'Akun belum verifikasi' ?>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                                <div class="col-md-5 disclamer-member">
-                                                    <strong>Ketentuan:</strong>
-                                                    <ul>
-                                                        <li>Minimal deposit adalah <b>Rp 100.000 </b> (Seratus Ribu
-                                                            Rupiah)</li>
-                                                        <li>Transaksi deposit akan dikenakan <b>biaya admin</b> sebesar
-                                                            <b>Rp
-                                                                {{--
-                                                                <?= number_format($fee, 0, ',', '.') ?> --}}
-                                                                4.000
-                                                            </b> (
-                                                            {{--
-                                                            <?= $terbilang ?> --}}
-                                                            Empat Ribu
-                                                            Rupiah)
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                {{-- @if (Session::has('newurl'))
-                                                <a id="link" class="link" href="{{Session::get('newurl')}}"
-                                                    target="_blank">Link</a>
-                                                @endif --}}
-
-                                            </div>
-                                            {{--
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-data" role="tabpanel"
-                                            aria-labelledby="pills-data-tab"> --}}
-                                            {{--
-                                            <hr>
-                                            <h1 class="card-title-member">Riwayat Deposit</h1>
-
-
-                                            <div class="table-responsive">
-                                                <table class="table table-hover dataTable-table" id="datatable"
-                                                    style="width: 100%">
-                                                    <thead>
-                                                        <tr style="display: none;">
-                                                            <th class="border-top-0">Nama</th>
-                                                            <th class="border-top-0">Status</th>
-                                                            <th class="border-top-0">Transaksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($deposit as $item)
-
-                                                        <tr role="row" class="odd">
-                                                            <td class="sorting_1 row">
-                                                                <div class="media col-6 col-sm-6 col-md-3">
-                                                                    <img class="mr-1"
-                                                                        src="https://santara.co.id/assets/images/icon/wallet.png">
-                                                                    <div class="media-body">
-                                                                        <div><b>Deposit</b></div>
-                                                                        <div><small>-</small></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-3">
-
-                                                                    @if ($item->status == 0)
-                                                                    <div class="font-menunggu-verifikasi"><b>Menunggu
-                                                                            Verifikasi</b></div>
-                                                                    @elseif ($item->status == 1)
-                                                                    <div class="font-berhasil"><b>Berhasil</b></div>
-                                                                    @elseif ($item->status == 2)
-                                                                    <div class="font-gagal"><b>Gagal</b></div>
-                                                                    @else
-                                                                    <div class="font-menunggu-verifikasi"><b>Menunggu
-                                                                            Verifikasi</b></div>
-                                                                    @endif
-                                                                    <div><small>{{tgl_indo(date('Y-m-d',
-                                                                            strtotime($item->created_at))).'
-                                                                            '.formatJam($item->created_at),}}</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row col-md-6">
-                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Metode
-                                                                            Pembayaran</small><br><b>
-                                                                            @if ($item->channel == 'ONEPAY')
-                                                                            OTHER PAYMENT
-                                                                            @else
-                                                                            -
-                                                                            @endif
-
-
-                                                                        </b></span>
-                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Nilai
-                                                                            Deposit</small><br><b
-                                                                            style="color: green;">Rp.
-                                                                            {{number_format($item->amount,0,',','.')}}</b></span>
-                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Biaya
-                                                                            Admin</small><br><b
-                                                                            style="color: green;">Rp.
-                                                                            {{number_format($item->fee,0,',','.')}}</b></span>
-                                                                </div>
-                                                                <div class="col-md-6"></div>
-                                                                <div class="row col-md-6">
-                                                                    <div class="col-12">
-
-                                                                        <span><small>Total
-                                                                                Pembayaran</small><br><b
-                                                                                style="color: green;">Rp.
-                                                                                {{number_format($item->amount+$item->fee,0,',','.')}}</b></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6"></div>
-
-                                                                <div class="row col-md-6">
-                                                                    <div class="col-12">
-
-
-                                                                        @if ($item->status == 0)
-                                                                        <a href="{{$item->redirect_url}}"
-                                                                            target="_blank"
-                                                                            class="btn btn-info btn-sm btn-block"
-                                                                            title="Ubah">Lanjut Pembayaran</a>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
-
-                                                    </tbody>
-                                                </table>
-                                            </div> --}}
-                                        </div>
-
-                                        @if ($trader_bank)
-
-                                        <div class="tab-pane fade" id="pills-data" role="tabpanel"
-                                            aria-labelledby="pills-data-tab">
-                                            <div class="alert alert-success" style="display:none"></div>
-                                            <div class="row m-0">
-                                                <div class="col-md-7">
-                                                    <div class="total-amount-member">
-                                                        <div>
-                                                            <h3>Dana Tersedia <i class="la la-info-circle"
-                                                                    onclick="infoWithdraw('Dana tersedia adalah dana yang bisa kamu tarik.')"
-                                                                    style="cursor: pointer;padding: 5px 10px"></i></h3>
-                                                            <span class="withdraw-saldo">Rp.
-                                                                {{number_format(Auth::user()->trader->saldo->balance, 0,
-                                                                ',', '.')}}</span>
-                                                        </div>
-                                                        <div class="mt-2">
-                                                            <h3>Dana Tertahan <i class="la la-info-circle"
-                                                                    onclick="infoWithdraw('Dana tertahan adalah jumlah dana Anda yang telah ditransaksikan di pasar sekunder. Dana dapat ditarik setelah 2 hari dari masa transaksi')"
-                                                                    style="cursor: pointer;padding: 5px 10px"></i></h3>
-                                                            <span class="withdraw-pending">Rp. 0</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="col-12 bank-user">
-                                                                <h3>Dana Akan di Transfer ke Rekening: </h3>
-                                                                <hr>
-                                                                <h4 class="font-weight-bold">{{$trader_bank->bank}}
-                                                                    ({{$trader_bank->bank_code}}) -
-                                                                    {{$trader_bank->account_number_bwd}}</h4>
-                                                                <h5 class="text-uppercase">
-                                                                    {{$trader_bank->account_name_bwd}} </h5>
-                                                                <h5 class="font-weight-bold small"
-                                                                    style="color: #BF2D30;">
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <input type="hidden" class="form-control" name="saldo" id="saldowd"
-                                                        value="{{round(Auth::user()->trader->saldo->balance,0)}}">
-                                                    <input type="hidden" class="form-control" name="refund"
-                                                        id="refundwd" value="">
-
-
-                                                    <form class="form" action="{{url('/user/penarikan/create')}}"
-                                                        method="POST" enctype="multipart/form-data">
-                                                        {{ csrf_field() }}
-                                                        <div class="form-group">
-                                                            <label for="lastName1">Jumlah Penarikan</label>
-                                                            <input type="text"
-                                                                class="form-control required-form-withdraw number-only"
-                                                                placeholder="" name="amount" id="amountwd">
-                                                            <input type="hidden" name="amount_limit" id="amount_limitwd"
-                                                                value="{{round(Auth::user()->trader->saldo->balance,0)}}">
-                                                            <span id="amount_errorwd" class="text-danger"></span>
-                                                            <span id="amount_limit_alertwd" class="text-danger"
-                                                                style="display: none">
-                                                                Saldo tidak cukup. Saldo Anda Rp.
-                                                                {{number_format(Auth::user()->trader->saldo->balance, 0,
-                                                                ',', '.')}} </span>
-                                                            <span id="amount_minimum_alertwd" class="text-danger"
-                                                                style="display: none">
-                                                                Minimal penarikan adalah Rp 100.000,00
-                                                            </span>
-                                                        </div>
-
-                                                        <div class="hidden" id="terimaBersih">
-                                                            <div class="form-group">
-                                                                <label for="lastName1">Biaya Penarikan</label>
-                                                                <input type="text" class="form-control" placeholder=""
-                                                                    name="fee" id="feewd" readonly="readonly">
-                                                                <span id="fee_errorwd" class="text-danger"></span>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label for="lastName1">Terima Bersih</label>
-                                                                <input type="text" class="form-control" placeholder=""
-                                                                    name="total" id="totalwd" readonly="readonly">
-                                                                <span id="total_errorwd" class="text-danger"></span>
-                                                            </div>
-                                                        </div>
-
-                                                        {{-- <button type="submit"
-                                                            class="btn btn-santara-red btn-block submit-form-withdraw"
-                                                            id="submitWithdraw" type="button" disabled="">
-                                                            Tarik Dana </button> --}}
-                                                    </form>
-                                                    <button id="withdraw" class="btn btn-santara-red btn-block sippp"
-                                                        disabled="">
-                                                        Tarik Dana </button>
-
-                                                    {{-- <form class="form" action="{{url('/pin_check')}}" method="POST"
-                                                        enctype="multipart/form-data">
-                                                        {{ csrf_field() }}
-                                                        <input type="password" name="pin">
-                                                        <button type="submit">Kirim</button>
-                                                    </form> --}}
-
-                                                </div>
-                                                <div class="col-md-5 disclamer-member">
-                                                    <strong>Ketentuan:</strong>
-                                                    <ul>
-                                                        <li>Minimal penarikan dana adalah Rp 100.000.</li>
-                                                        <li>Maksimal penarikan dana adalah Rp200.000.000/hari.</li>
-                                                        <li>Lama waktu pencairan ke rekening pengguna maksimal 3x24 jam
-                                                            hari kerja bank.</li>
-                                                        <li>Setiap transaksi penarikan dikenakan biaya sebesar Rp7.500.
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-
-                                            </div>
-                                            {{--
-                                        </div> --}}
-
-                                        @else
-                                        <div class="tab-pane fade" id="pills-data" role="tabpanel"
-                                            aria-labelledby="pills-data-tab">
-                                            <div class="alert alert-success" style="display:none"></div>
-                                            <div class="row m-0" data-select2-id="6">
-                                                <div class="col-md-12" data-select2-id="5">
-                                                    <div class="disclamer-member">
-                                                        {{-- {{Session::get('token')}} --}}
-                                                        <strong>Note:</strong>
-                                                        Bank yang Anda daftarkan seterusnya akan digunakan untuk
-                                                        melakukan penarikan dana dan dividen
-                                                    </div>
-                                                    {{-- <form action="#" class="mt-2" id="submitBank" method="post"
-                                                        data-select2-id="submitBank">
-                                                        --}}
-                                                        <form class="form" action="{{url('/user/add_bank')}}"
-                                                            method="POST" enctype="multipart/form-data">
-                                                            {{ csrf_field() }}
-                                                            <div class="form-group">
-                                                                <label for="lastName1">Bank<small
-                                                                        class="text-danger">*</small></label>
-                                                                <select class="form-control" name="bank" id="bank">
-                                                                    @foreach ($bwd as $item)
-                                                                    <option value="{{$item->id}}">{{$item->bank}}
-                                                                    </option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <small id="bank_error" class="text-danger"></small>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label for="lastName1">Nama<small
-                                                                        class="text-danger">*</small></label>
-                                                                <input type="text" class="form-control" placeholder=""
-                                                                    name="nama" value="{{Auth::user()->trader->name}}"
-                                                                    id="nama" readonly="">
-                                                                <small id="nama_error" class="text-danger"></small>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label for="lastName1">No. Rekening<small
-                                                                        class="text-danger">*</small></label>
-                                                                <input type="text" class="form-control number-only"
-                                                                    placeholder="" maxlength="20" name="norek"
-                                                                    id="norek">
-                                                                <small id="norek_error" class="text-danger"></small>
-                                                            </div>
-
-                                                            <button class="btn btn-santara-red btn-block" type="submit"
-                                                                id="bsubmitBank">
-                                                                Daftar Bank </button>
-                                                        </form>
-                                                </div>
-                                            </div>
-                                            {{--
-                                        </div> --}}
-                                        @endif
-
-                                        {{-- <div class="tab-pane fade" id="pills-data" role="tabpanel"
-                                            aria-labelledby="pills-data-tab">
-                                            --}}
-                                            {{--
-                                            <hr>
-                                            <h1 class="card-title-member">Riwayat Penarikan</h1>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover dataTable-table" id="datatable"
-                                                    style="width: 100%">
-                                                    <thead style="display: none;">
-                                                        <tr>
-                                                            <th class="border-top-0">Nama</th>
-                                                            <th class="border-top-0">Amount</th>
-                                                            <th class="border-top-0">Bank</th>
-                                                            <th class="border-top-0">Status</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($wd as $item)
-                                                        <tr role="row" class="odd">
-                                                            <td class="sorting_1">
-                                                                <div class="media" style="align-items: flex-end;">
-                                                                    <img class="mr-1"
-                                                                        src="https://santara.co.id/assets/images/icon/wallet.png">
-                                                                    <div class="media-body">
-                                                                        <div><b>Penarikan</b></div>
-                                                                        <div>
-                                                                            <small>{{Auth::user()->trader->name}}</small>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                @if ($item->is_verified == 0)
-                                                                <div class="font-menunggu-verifikasi"><b>Menunggu
-                                                                        Verifikasi</b></div>
-                                                                @elseif ($item->is_verified == 1)
-                                                                <div class="font-berhasil"><b>Berhasil</b></div>
-                                                                @elseif ($item->is_verified == 2)
-                                                                <div class="font-gagal"><b>Gagal</b></div>
-                                                                @endif
-                                                                <div><small>{{tgl_indo(date('Y-m-d',
-                                                                        strtotime($item->created_at))).'
-                                                                        '.formatJam($item->created_at),}}</small></div>
-                                                            </td>
-                                                            <td>
-                                                                <div><small>Bank</small></div>
-                                                                <div><b>{{$item->bank_to}}</b></div>
-                                                            </td>
-                                                            <td>
-                                                                <div><small>Nilai Penarikan</small></div>
-                                                                <div><b>Rp.
-                                                                        {{number_format($item->amount,0,',','.')}}</b>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
-
-                                                    </tbody>
-                                                </table>
-                                            </div> --}}
-                                        </div>
-
-                                    </div>
-                                </div>
+                            <div class="form-group account_number" style="display:none">
+                              <label for="lastName1">Nomor Rekening Anda</label>
+                              <input type="text" class="form-control number-only required-form-deposit"
+                                name="account_number" id="account_number" maxlength="16">
+                              <span id="account_number_error" class="text-danger"></span>
                             </div>
+
+                            <div class="form-group bank_from" style="display:none">
+                              <label for="lastName1">Bank Rekening Anda</label>
+                              <select name="bank_from" id="bank_from" class="form-control required-form-deposit">
+                                <option value="">Pilih...</option>
+                                <option value="MANDIRI">Bank Mandiri</option>
+                                <option value="BCA">Bank BCA</option>
+                                <option value="BRI">Bank BRI</option>
+                                <option value="BNI">Bank BNI</option>
+                                <option value="other">Lainnya</option>
+                              </select>
+                              <span id="bank_from_error" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group bank_from_text" style="display:none">
+                              <input type="text" class="form-control alpha-space-only required-form-deposit"
+                                placeholder="Nama Bank" name="bank_from_text" id="bank_from_text" maxlength="15">
+                              <span id="bank_from_text_error" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group bank" style="display:none">
+                              <label for="lastName1">Bank</label>
+                              <select name="bank" id="bank" class="form-control required-form-deposit">
+                                <option value="">Pilih...</option>
+                                <option value="MANDIRI">Bank Mandiri</option>
+                                <option value="PERMATA">Bank Permata</option>
+                                <option value="BNI">Bank BNI</option>
+                                <option value="BRI">Bank BRI</option>
+                                <option value="BCA">Bank BCA</option>
+                              </select>
+                              <span id="bank_error" class="text-danger"></span>
+                            </div>
+                            <button type="submit"
+                              class="btn btn-santara-red btn-block
+                                                            <?= (Auth::user()->is_verified == 1) ? 'submit-form-deposit' : 'disabled' ?>"
+                              <?=(Auth::user()->is_verified == 1) ?
+                              'id="sdp"' : '' ?> type="button">
+                              <?= (Auth::user()->is_verified == 1) ? 'Deposit' : 'Akun belum verifikasi' ?>
+                            </button>
+                          </form>
+                        </div>
+                        <div class="col-md-5 disclamer-member">
+                          <strong>Ketentuan:</strong>
+                          <ul>
+                            <li>Minimal deposit adalah <b>Rp 100.000 </b> (Seratus Ribu
+                              Rupiah)</li>
+                            <li>Transaksi deposit akan dikenakan <b>biaya admin</b> sebesar
+                              <b>Rp
+                                {{--
+                                <?= number_format($fee, 0, ',', '.') ?> --}}
+                                4.000
+                              </b> (
+                              {{--
+                              <?= $terbilang ?> --}}
+                              Empat Ribu
+                              Rupiah)
+                            </li>
+                          </ul>
+                        </div>
+                        {{-- @if (Session::has('newurl'))
+                        <a id="link" class="link" href="{{Session::get('newurl')}}" target="_blank">Link</a>
+                        @endif --}}
+
+                      </div>
+                      {{--
+                    </div>
+                    <div class="tab-pane fade" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab"> --}}
+                      {{--
+                      <hr>
+                      <h1 class="card-title-member">Riwayat Deposit</h1>
+
+
+                      <div class="table-responsive">
+                        <table class="table table-hover dataTable-table" id="datatable" style="width: 100%">
+                          <thead>
+                            <tr style="display: none;">
+                              <th class="border-top-0">Nama</th>
+                              <th class="border-top-0">Status</th>
+                              <th class="border-top-0">Transaksi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ($deposit as $item)
+
+                            <tr role="row" class="odd">
+                              <td class="sorting_1 row">
+                                <div class="media col-6 col-sm-6 col-md-3">
+                                  <img class="mr-1" src="https://santara.co.id/assets/images/icon/wallet.png">
+                                  <div class="media-body">
+                                    <div><b>Deposit</b></div>
+                                    <div><small>-</small></div>
+                                  </div>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-3">
+
+                                  @if ($item->status == 0)
+                                  <div class="font-menunggu-verifikasi"><b>Menunggu
+                                      Verifikasi</b></div>
+                                  @elseif ($item->status == 1)
+                                  <div class="font-berhasil"><b>Berhasil</b></div>
+                                  @elseif ($item->status == 2)
+                                  <div class="font-gagal"><b>Gagal</b></div>
+                                  @else
+                                  <div class="font-menunggu-verifikasi"><b>Menunggu
+                                      Verifikasi</b></div>
+                                  @endif
+                                  <div><small>{{tgl_indo(date('Y-m-d',
+                                      strtotime($item->created_at))).'
+                                      '.formatJam($item->created_at),}}</small>
+                                  </div>
+                                </div>
+                                <div class="row col-md-6">
+                                  <span class="col-6 col-sm-4 col-md-4"><small>Metode
+                                      Pembayaran</small><br><b>
+                                      @if ($item->channel == 'ONEPAY')
+                                      OTHER PAYMENT
+                                      @else
+                                      -
+                                      @endif
+
+
+                                    </b></span>
+                                  <span class="col-6 col-sm-4 col-md-4"><small>Nilai
+                                      Deposit</small><br><b style="color: green;">Rp.
+                                      {{number_format($item->amount,0,',','.')}}</b></span>
+                                  <span class="col-6 col-sm-4 col-md-4"><small>Biaya
+                                      Admin</small><br><b style="color: green;">Rp.
+                                      {{number_format($item->fee,0,',','.')}}</b></span>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="row col-md-6">
+                                  <div class="col-12">
+
+                                    <span><small>Total
+                                        Pembayaran</small><br><b style="color: green;">Rp.
+                                        {{number_format($item->amount+$item->fee,0,',','.')}}</b></span>
+                                  </div>
+                                </div>
+                                <div class="col-md-6"></div>
+
+                                <div class="row col-md-6">
+                                  <div class="col-12">
+
+
+                                    @if ($item->status == 0)
+                                    <a href="{{$item->redirect_url}}" target="_blank"
+                                      class="btn btn-info btn-sm btn-block" title="Ubah">Lanjut Pembayaran</a>
+                                    @endif
+                                  </div>
+                                </div>
+
+
+                              </td>
+                            </tr>
+                            @endforeach
+
+                          </tbody>
+                        </table>
+                      </div> --}}
+                    </div>
+
+                    @if ($trader_bank)
+
+                    <div class="tab-pane fade" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab">
+                      <div class="alert alert-success" style="display:none"></div>
+                      <div class="row m-0">
+                        <div class="col-md-7">
+                          <div class="total-amount-member">
+                            <div>
+                              <h3>Dana Tersedia <i class="la la-info-circle"
+                                  onclick="infoWithdraw('Dana tersedia adalah dana yang bisa kamu tarik.')"
+                                  style="cursor: pointer;padding: 5px 10px"></i></h3>
+                              <span class="withdraw-saldo">Rp.
+                                {{number_format(Auth::user()->trader->saldo->balance, 0,
+                                ',', '.')}}</span>
+                            </div>
+                            <div class="mt-2">
+                              <h3>Dana Tertahan <i class="la la-info-circle"
+                                  onclick="infoWithdraw('Dana tertahan adalah jumlah dana Anda yang telah ditransaksikan di pasar sekunder. Dana dapat ditarik setelah 2 hari dari masa transaksi')"
+                                  style="cursor: pointer;padding: 5px 10px"></i></h3>
+                              <span class="withdraw-pending">Rp. 0</span>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="col-12 bank-user">
+                                <h3>Dana Akan di Transfer ke Rekening: </h3>
+                                <hr>
+                                <h4 class="font-weight-bold">{{$trader_bank->bank}}
+                                  ({{$trader_bank->bank_code}}) -
+                                  {{$trader_bank->account_number_bwd}}</h4>
+                                <h5 class="text-uppercase">
+                                  {{$trader_bank->account_name_bwd}} </h5>
+                                <h5 class="font-weight-bold small" style="color: #BF2D30;">
+                                </h5>
+                              </div>
+                            </div>
+                          </div>
+                          <input type="hidden" class="form-control" name="saldo" id="saldowd"
+                            value="{{round(Auth::user()->trader->saldo->balance,0)}}">
+                          <input type="hidden" class="form-control" name="refund" id="refundwd" value="">
+
+
+                          <form class="form" action="{{url('/user/penarikan/create')}}" method="POST"
+                            enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                              <label for="lastName1">Jumlah Penarikan</label>
+                              <input type="text" class="form-control required-form-withdraw number-only" placeholder=""
+                                name="amount" id="amountwd">
+                              <input type="hidden" name="amount_limit" id="amount_limitwd"
+                                value="{{round(Auth::user()->trader->saldo->balance,0)}}">
+                              <span id="amount_errorwd" class="text-danger"></span>
+                              <span id="amount_limit_alertwd" class="text-danger" style="display: none">
+                                Saldo tidak cukup. Saldo Anda Rp.
+                                {{number_format(Auth::user()->trader->saldo->balance, 0,
+                                ',', '.')}} </span>
+                              <span id="amount_minimum_alertwd" class="text-danger" style="display: none">
+                                Minimal penarikan adalah Rp 100.000,00
+                              </span>
+                            </div>
+
+                            <div class="hidden" id="terimaBersih">
+                              <div class="form-group">
+                                <label for="lastName1">Biaya Penarikan</label>
+                                <input type="text" class="form-control" placeholder="" name="fee" id="feewd"
+                                  readonly="readonly">
+                                <span id="fee_errorwd" class="text-danger"></span>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="lastName1">Terima Bersih</label>
+                                <input type="text" class="form-control" placeholder="" name="total" id="totalwd"
+                                  readonly="readonly">
+                                <span id="total_errorwd" class="text-danger"></span>
+                              </div>
+                            </div>
+
+                            {{-- <button type="submit" class="btn btn-santara-red btn-block submit-form-withdraw"
+                              id="submitWithdraw" type="button" disabled="">
+                              Tarik Dana </button> --}}
+                          </form>
+                          <button id="withdraw" class="btn btn-santara-red btn-block sippp" disabled="">
+                            Tarik Dana </button>
+
+                          {{-- <form class="form" action="{{url('/pin_check')}}" method="POST"
+                            enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <input type="password" name="pin">
+                            <button type="submit">Kirim</button>
+                          </form> --}}
+
+                        </div>
+                        <div class="col-md-5 disclamer-member">
+                          <strong>Ketentuan:</strong>
+                          <ul>
+                            <li>Minimal penarikan dana adalah Rp 100.000.</li>
+                            <li>Maksimal penarikan dana adalah Rp200.000.000/hari.</li>
+                            <li>Lama waktu pencairan ke rekening pengguna maksimal 3x24 jam
+                              hari kerja bank.</li>
+                            <li>Setiap transaksi penarikan dikenakan biaya sebesar Rp7.500.
+                            </li>
+                          </ul>
                         </div>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <form action="{{url('/user/wallet')}}"
-                                                        method="GET" enctype="multipart/form-data">
-                                                        {{ csrf_field() }}
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <h1 class="card-title-member">Riwayat</h1>
-                                    </div>
-                                    <div class="col-md-9 row" style="    padding-top: 13px;">
-                                        <div class="col-md-4">
-                                            <input type="date" name="start" class="form-control" placeholder="Start Date">
-                                        </div>
-                                        <div class="col-md-1" style="    line-height: 40px;
-                                        text-align: center;">To</div>
-                                        <div class="col-md-4">
 
-                                            <input type="date" name="end" class="form-control" placeholder="End Date">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <button type="submit" class="btn btn-info">Filter</button>
-                                            <a href="{{url('/user/wallet')}}" class="btn btn-secondary">Reset</a>
-                                        </div>
-                                    </div>
-                                </div>
+                      </div>
+                      {{--
+                    </div> --}}
+
+                    @else
+                    <div class="tab-pane fade" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab">
+                      <div class="alert alert-success" style="display:none"></div>
+                      <div class="row m-0" data-select2-id="6">
+                        <div class="col-md-12" data-select2-id="5">
+                          <div class="disclamer-member">
+                            {{-- {{Session::get('token')}} --}}
+                            <strong>Note:</strong>
+                            Bank yang Anda daftarkan seterusnya akan digunakan untuk
+                            melakukan penarikan dana dan dividen
+                          </div>
+                          {{-- <form action="#" class="mt-2" id="submitBank" method="post" data-select2-id="submitBank">
+                            --}}
+                            <form class="form" action="{{url('/user/add_bank')}}" method="POST"
+                              enctype="multipart/form-data">
+                              {{ csrf_field() }}
+                              <div class="form-group">
+                                <label for="lastName1">Bank<small class="text-danger">*</small></label>
+                                <select class="form-control" name="bank" id="bank">
+                                  @foreach ($bwd as $item)
+                                  <option value="{{$item->id}}">{{$item->bank}}
+                                  </option>
+                                  @endforeach
+                                </select>
+                                <small id="bank_error" class="text-danger"></small>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="lastName1">Nama<small class="text-danger">*</small></label>
+                                <input type="text" class="form-control" placeholder="" name="nama"
+                                  value="{{Auth::user()->trader->name}}" id="nama" readonly="">
+                                <small id="nama_error" class="text-danger"></small>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="lastName1">No. Rekening<small class="text-danger">*</small></label>
+                                <input type="text" class="form-control number-only" placeholder="" maxlength="20"
+                                  name="norek" id="norek">
+                                <small id="norek_error" class="text-danger"></small>
+                              </div>
+
+                              <button class="btn btn-santara-red btn-block" type="submit" id="bsubmitBank">
+                                Daftar Bank </button>
                             </form>
+                        </div>
+                      </div>
+                      {{--
+                    </div> --}}
+                    @endif
 
-                            </div>
+                    {{-- <div class="tab-pane fade" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab">
+                      --}}
+                      {{--
+                      <hr>
+                      <h1 class="card-title-member">Riwayat Penarikan</h1>
+                      <div class="table-responsive">
+                        <table class="table table-hover dataTable-table" id="datatable" style="width: 100%">
+                          <thead style="display: none;">
+                            <tr>
+                              <th class="border-top-0">Nama</th>
+                              <th class="border-top-0">Amount</th>
+                              <th class="border-top-0">Bank</th>
+                              <th class="border-top-0">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ($wd as $item)
+                            <tr role="row" class="odd">
+                              <td class="sorting_1">
+                                <div class="media" style="align-items: flex-end;">
+                                  <img class="mr-1" src="https://santara.co.id/assets/images/icon/wallet.png">
+                                  <div class="media-body">
+                                    <div><b>Penarikan</b></div>
+                                    <div>
+                                      <small>{{Auth::user()->trader->name}}</small>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                @if ($item->is_verified == 0)
+                                <div class="font-menunggu-verifikasi"><b>Menunggu
+                                    Verifikasi</b></div>
+                                @elseif ($item->is_verified == 1)
+                                <div class="font-berhasil"><b>Berhasil</b></div>
+                                @elseif ($item->is_verified == 2)
+                                <div class="font-gagal"><b>Gagal</b></div>
+                                @endif
+                                <div><small>{{tgl_indo(date('Y-m-d',
+                                    strtotime($item->created_at))).'
+                                    '.formatJam($item->created_at),}}</small></div>
+                              </td>
+                              <td>
+                                <div><small>Bank</small></div>
+                                <div><b>{{$item->bank_to}}</b></div>
+                              </td>
+                              <td>
+                                <div><small>Nilai Penarikan</small></div>
+                                <div><b>Rp.
+                                    {{number_format($item->amount,0,',','.')}}</b>
+                                </div>
+                              </td>
+                            </tr>
+                            @endforeach
 
-                            <div class="card-content">
-                                <div class="table-responsive" style="padding-right: 20px;
+                          </tbody>
+                        </table>
+                      </div> --}}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <form action="{{url('/user/wallet')}}" method="GET" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                  <div class="row">
+                    <div class="col-md-3">
+                      <h1 class="card-title-member">Riwayat</h1>
+                    </div>
+                    <div class="col-md-9 row" style="    padding-top: 13px;">
+                      <div class="col-md-4">
+                        <input type="date" name="start" class="form-control" placeholder="Start Date">
+                      </div>
+                      <div class="col-md-1" style="    line-height: 40px;
+                                        text-align: center;">To</div>
+                      <div class="col-md-4">
+
+                        <input type="date" name="end" class="form-control" placeholder="End Date">
+                      </div>
+                      <div class="col-md-3">
+                        <button type="submit" class="btn btn-info">Filter</button>
+                        <a href="{{url('/user/wallet')}}" class="btn btn-secondary">Reset</a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+
+              <div class="card-content">
+                <div class="table-responsive" style="padding-right: 20px;
                                 padding-left: 20px;
                             ">
-                                    <table class="table table-hover dataTable-table" id="tabel"
-                                        style="width: 100%">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-top-0">#</th>
-                                                <th class="border-top-0">Tanggal</th>
-                                                <th class="border-top-0">Deskripsi</th>
-                                                <th class="border-top-0">Amount</th>
-                                                <th class="border-top-0">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $no = 0 ;?>
-                                            @foreach ($se as $item)
-                                            <?php $no++ ?>
-                                            <tr>
-                                                <td>{{$no}}</td>
-                                                <td>{{tgl_indo(date('Y-m-d',
-                                                    strtotime($item->created_at))).'
-                                                    '.formatJam($item->created_at),}}</td>
-                                                {{-- <td>{{$item->DEPOSIT}}</td> --}}
-                                                <td>@if ($item->DEPOSIT == 'DEPOSIT')
-                                                                <div class="font-berhasil"><b>DEPOSIT</b></div>
-                                                                @else
-                                                                <div class="font-gagal"><b>WITHDRAW</b></div>
-                                                @endif
-                                                </td>
-                                                <td>Rp. {{number_format($item->amount,0,',','.')}}</td>
-                                                <td>
-                                                    @if ($item->DEPOSIT == 'DEPOSIT')
+                  <table class="table table-hover dataTable-table" id="tabel" style="width: 100%">
+                    <thead>
+                      <tr>
+                        <th class="border-top-0">#</th>
+                        <th class="border-top-0">Tanggal</th>
+                        <th class="border-top-0">Deskripsi</th>
+                        <th class="border-top-0">Amount</th>
+                        <th class="border-top-0">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $no = 0 ;?>
+                      @foreach ($se as $item)
+                      <?php $no++ ?>
+                      <tr>
+                        <td>{{$no}}</td>
+                        <td>{{tgl_indo(date('Y-m-d',
+                          strtotime($item->created_at))).'
+                          '.formatJam($item->created_at),}}</td>
+                        {{-- <td>{{$item->DEPOSIT}}</td> --}}
+                        <td>@if ($item->DEPOSIT == 'DEPOSIT')
+                          <div class="font-berhasil"><b>DEPOSIT</b></div>
+                          @else
+                          <div class="font-gagal"><b>WITHDRAW</b></div>
+                          @endif
+                        </td>
+                        <td>Rp. {{number_format($item->amount,0,',','.')}}</td>
+                        <td>
+                          @if ($item->DEPOSIT == 'DEPOSIT')
 
 
-                                                    @if ($item->status == 0)
-                                                                <div class="font-menunggu-verifikasi"><b>Menunggu
-                                                                        Verifikasi</b></div>
-                                                                        <a href="{{$item->redirect_url}}" target="_blank"
-                                                                            class="btn btn-info btn-sm btn-block"
-                                                                            title="Ubah">Lanjut Pembayaran</a>
-                                                                @elseif ($item->status == 1)
-                                                                <div class="font-berhasil"><b>Berhasil</b></div>
-                                                                @elseif ($item->status == 2)
-                                                                <div class="font-gagal"><b>Gagal</b></div>
-                                                                @else
-                                                                <div class="font-menunggu-verifikasi"><b>Menunggu
-                                                                        Verifikasi</b></div>
-                                                                @endif
+                          @if ($item->status == 0)
+                          <div class="font-menunggu-verifikasi"><b>Menunggu
+                              Verifikasi</b></div>
+                          <a href="{{$item->redirect_url}}" target="_blank" class="btn btn-info btn-sm btn-block"
+                            title="Ubah">Lanjut Pembayaran</a>
+                          @elseif ($item->status == 1)
+                          <div class="font-berhasil"><b>Berhasil</b></div>
+                          @elseif ($item->status == 2)
+                          <div class="font-gagal"><b>Gagal</b></div>
+                          @else
+                          <div class="font-menunggu-verifikasi"><b>Menunggu
+                              Verifikasi</b></div>
+                          @endif
 
-                                                    @else
-                                                    @if ($item->status == 0)
-                                                    <div class="font-menunggu-verifikasi"><b>Menunggu Verifikasi</b></div>
-                                                    @elseif ($item->status == 1)
-                                                    <div class="font-berhasil"><b>Berhasil</b></div>
-                                                    @elseif ($item->status == 2)
-                                                    <div class="font-gagal"><b>Gagal</b></div>
-                                                    @endif
-                                                    @endif
-                                                </td>
-                                            </tr>
+                          @else
+                          @if ($item->status == 0)
+                          <div class="font-menunggu-verifikasi"><b>Menunggu Verifikasi</b></div>
+                          @elseif ($item->status == 1)
+                          <div class="font-berhasil"><b>Berhasil</b></div>
+                          @elseif ($item->status == 2)
+                          <div class="font-gagal"><b>Gagal</b></div>
+                          @endif
+                          @endif
+                        </td>
+                      </tr>
 
-                                            @endforeach
+                      @endforeach
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </tbody>
+                  </table>
                 </div>
-            </section>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
     </div>
+  </div>
 </div>
 @endsection
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js" integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"
+  integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/alert/sweetalert.min.js"></script>
 <script src="{{asset('public')}}/assets2/js/global.js?v=5.8.8"></script>
 <script>
-    const feeDeposit = "4000"
+  const feeDeposit = "4000"
     const amount = document.getElementById("amount");
 const channel = document.getElementById("channel");
 const fee = document.getElementById("fee");
@@ -972,7 +931,7 @@ function depositProcess(dataDeposit) {
 <script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/libraries/select2/select2.min.js" defer>
 </script>
 <script>
-    const fee_bankwd = "7500";
+  const fee_bankwd = "7500";
     const maksimalPenarikanwd = "500000000";
     const amountwd = document.getElementById("amountwd");
 const feewd = document.getElementById("feewd");
@@ -1329,13 +1288,15 @@ function withdrawProcess(dataWithdraw) {
 
 <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js" type="text/javascript"></script>
 
-{{-- <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js" type="text/javascript"></script> --}}
-{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>  --}}
-{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>  --}}
+{{-- <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js" type="text/javascript">
+</script> --}}
+{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> --}}
+{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> --}}
 
-{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>  --}}
+{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+--}}
 <script>
-    $(document).ready(function() {
+  $(document).ready(function() {
         $('#tabel').DataTable({
             responsive: true,
             dom: "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>rtip",
@@ -1353,7 +1314,7 @@ function withdrawProcess(dataWithdraw) {
 </script>
 @if (Session::has('newurl'))
 <script>
-    window.open('{{session()->get('newurl')}}', "_blank");
+  window.open('{{session()->get('newurl')}}', "_blank");
     // $('#pills-data').tab('show');
 </script>
 
@@ -1361,16 +1322,16 @@ function withdrawProcess(dataWithdraw) {
 @endsection
 @section('style')
 <link rel="stylesheet" type="text/css"
-    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+  href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 <link rel="stylesheet" type="text/css" href="{{asset('public')}}/app-assets/css/select2.min.css">
 <style>
-    .bank-user {
-        padding: 10px;
-        border-radius: 5px;
-        border-color: #bf2d30 !important;
-        background-color: #d9e4f5;
-        background-image: linear-gradient(315deg, #edf4ff 0%, #f4dfe2 74%);
-        margin-bottom: 10px;
-    }
+  .bank-user {
+    padding: 10px;
+    border-radius: 5px;
+    border-color: #bf2d30 !important;
+    background-color: #d9e4f5;
+    background-image: linear-gradient(315deg, #edf4ff 0%, #f4dfe2 74%);
+    margin-bottom: 10px;
+  }
 </style>
 @endsection

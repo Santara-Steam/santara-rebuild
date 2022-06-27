@@ -1,80 +1,75 @@
 @extends('user.layout.master')
 @section('content')
 <div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
-        <div class="content-body">
-            <section id="configuration">
-                <div class="row">
-                    <div class="col-12">
-                        @include('user.is_kyc')
-                        <div class="card">
-                            <div class="card-header">
-                                <h1 class="card-title-member">Deposit</h1>
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row">
+    </div>
+    <div class="content-body">
+      <section id="configuration">
+        <div class="row">
+          <div class="col-12">
+            @include('user.is_kyc')
+            <div class="card">
+              <div class="card-header">
+                <h1 class="card-title-member">Deposit</h1>
+              </div>
+              <div class="card-content">
+                <div class="card-body px-1 pb-3">
+                  <ul class="nav nav-justified mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item member-nav">
+                      <a class="nav-link member-nav-link active" id="pills-tambah-tab" data-toggle="tab"
+                        href="#pills-tambah" role="tab" aria-controls="pills-tambah" aria-selected="true">
+                        <span>Tambah</span>
+                      </a>
+                    </li>
+                    <li class="nav-item member-nav">
+                      <a class="nav-link member-nav-link" id="pills-data-tab" data-toggle="tab" href="#pills-data"
+                        role="tab" aria-controls="pills-data" aria-selected="false">
+                        <span>Riwayat</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-tambah" role="tabpanel"
+                      aria-labelledby="pills-tambah-tab">
+                      <div class="row m-0">
+                        <div class="col-md-7">
+                          {{-- {{Session::get('newurl')}} --}}
+                          <div class="total-amount-member">
+                            <div>
+                              <h3>Saldo Anda</h3>
+                              <span class="withdraw-saldo">Rp.
+                                {{number_format(Auth::user()->trader->saldo->balance, 0,
+                                ',', '.')}}</span>
                             </div>
-                            <div class="card-content">
-                                <div class="card-body px-1 pb-3">
-                                    <ul class="nav nav-justified mb-3" id="pills-tab" role="tablist">
-                                        <li class="nav-item member-nav">
-                                            <a class="nav-link member-nav-link active" id="pills-tambah-tab"
-                                                data-toggle="tab" href="#pills-tambah" role="tab"
-                                                aria-controls="pills-tambah" aria-selected="true">
-                                                <span>Tambah</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item member-nav">
-                                            <a class="nav-link member-nav-link" id="pills-data-tab" data-toggle="tab"
-                                                href="#pills-data" role="tab" aria-controls="pills-data"
-                                                aria-selected="false">
-                                                <span>Riwayat</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-tambah" role="tabpanel"
-                                            aria-labelledby="pills-tambah-tab">
-                                            <div class="row m-0">
-                                                <div class="col-md-7">
-                                                    {{-- {{Session::get('newurl')}} --}}
-                                                    <div class="total-amount-member">
-                                                        <div>
-                                                            <h3>Saldo Anda</h3>
-                                                            <span class="withdraw-saldo">Rp.
-                                                                {{number_format(Auth::user()->trader->saldo->balance, 0,
-                                                                ',', '.')}}</span>
-                                                        </div>
-                                                    </div>
-                                                    <form class="form" action="{{url('/user/create_deposit')}}"
-                                                        method="POST" enctype="multipart/form-data">
-                                                        {{ csrf_field() }}
-                                                        <div class="form-group">
-                                                            <label for="lastName1">Jumlah Deposit</label>
-                                                            <input type="text"
-                                                                class="form-control required-form-deposit number-only"
-                                                                name="amount" id="amount" maxlength="20">
-                                                            <input type="text" id="am" name="am" hidden>
-                                                            <span id="amount_error" class="text-danger"></span>
-                                                            <span id="amount_limit" class="text-danger"
-                                                                style="display: none">
-                                                                Minimal Jumlah Deposit Rp.100.000<br>
-                                                            </span>
-                                                            <div class="hidden" id="biaya">
-                                                                <div class="form-group">
-                                                                    <label for="lastName1">Biaya Deposit</label>
-                                                                    <input type="text" class="form-control" placeholder=""
-                                                                        name="fee" id="fee" readonly="readonly">
-                                                                    <span id="fee_error" class="text-danger"></span>
-                                                                </div>
+                          </div>
+                          <form class="form" action="{{url('/user/create_deposit')}}" method="POST"
+                            enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                              <label for="lastName1">Jumlah Deposit</label>
+                              <input type="text" class="form-control required-form-deposit number-only" name="amount"
+                                id="amount" maxlength="20">
+                              <input type="text" id="am" name="am" hidden>
+                              <span id="amount_error" class="text-danger"></span>
+                              <span id="amount_limit" class="text-danger" style="display: none">
+                                Minimal Jumlah Deposit Rp.100.000<br>
+                              </span>
+                              <div class="hidden" id="biaya">
+                                <div class="form-group">
+                                  <label for="lastName1">Biaya Deposit</label>
+                                  <input type="text" class="form-control" placeholder="" name="fee" id="fee"
+                                    readonly="readonly">
+                                  <span id="fee_error" class="text-danger"></span>
+                                </div>
 
-                                                            </div>
-                                                            <span class="withdraw-saldo"
-                                                                style="display: none; font-size:16px" id="total">Total:
-                                                            </span>
-                                                        </div>
+                              </div>
+                              <span class="withdraw-saldo" style="display: none; font-size:16px" id="total">Total:
+                              </span>
+                            </div>
 
-                                                        <!-- <div class="form-group">
+                            <!-- <div class="form-group">
                                                             <label for="lastName1">Metode Pembayaran</label>
                                                             <select name="channel" id="channel" class="form-control required-form-deposit">
                                                                 <option selected disabled value="">Pilih</option>
@@ -86,200 +81,187 @@
                                                                 Transaksi deposit menggunakan metode <b>Virtual Account</b> akan dikenakan <b>biaya admin</b> sebesar Rp. 2.000
                                                             </div>
                                                         </div> -->
-                                                        <div class="form-group account_number" style="display:none">
-                                                            <label for="lastName1">Nomor Rekening Anda</label>
-                                                            <input type="text"
-                                                                class="form-control number-only required-form-deposit"
-                                                                name="account_number" id="account_number"
-                                                                maxlength="16">
-                                                            <span id="account_number_error" class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="form-group bank_from" style="display:none">
-                                                            <label for="lastName1">Bank Rekening Anda</label>
-                                                            <select name="bank_from" id="bank_from"
-                                                                class="form-control required-form-deposit">
-                                                                <option value="">Pilih...</option>
-                                                                <option value="MANDIRI">Bank Mandiri</option>
-                                                                <option value="BCA">Bank BCA</option>
-                                                                <option value="BRI">Bank BRI</option>
-                                                                <option value="BNI">Bank BNI</option>
-                                                                <option value="other">Lainnya</option>
-                                                            </select>
-                                                            <span id="bank_from_error" class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="form-group bank_from_text" style="display:none">
-                                                            <input type="text"
-                                                                class="form-control alpha-space-only required-form-deposit"
-                                                                placeholder="Nama Bank" name="bank_from_text"
-                                                                id="bank_from_text" maxlength="15">
-                                                            <span id="bank_from_text_error" class="text-danger"></span>
-                                                        </div>
-
-                                                        <div class="form-group bank" style="display:none">
-                                                            <label for="lastName1">Bank</label>
-                                                            <select name="bank" id="bank"
-                                                                class="form-control required-form-deposit">
-                                                                <option value="">Pilih...</option>
-                                                                <option value="MANDIRI">Bank Mandiri</option>
-                                                                <option value="PERMATA">Bank Permata</option>
-                                                                <option value="BNI">Bank BNI</option>
-                                                                <option value="BRI">Bank BRI</option>
-                                                                <option value="BCA">Bank BCA</option>
-                                                            </select>
-                                                            <span id="bank_error" class="text-danger"></span>
-                                                        </div>
-                                                        <button type="submit"
-                                                            class="btn btn-santara-red btn-block 
-                                                            <?= (Auth::user()->is_verified == 1) ? 'submit-form-deposit' : 'disabled' ?>"
-                                                            <?=(Auth::user()->is_verified == 1) ?
-                                                            'id=""' : '' ?> type="button">
-                                                            <?= (Auth::user()->is_verified == 1) ? 'Deposit' : 'Akun belum verifikasi' ?>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                                <div class="col-md-5 disclamer-member">
-                                                    <strong>Ketentuan:</strong>
-                                                    <ul>
-                                                        <li>Minimal deposit adalah <b>Rp 100.000 </b> (Seratus Ribu
-                                                            Rupiah)</li>
-                                                        <li>Transaksi deposit akan dikenakan <b>biaya admin</b> sebesar
-                                                            <b>Rp
-                                                                {{--
-                                                                <?= number_format($fee, 0, ',', '.') ?> --}}
-                                                                4.000
-                                                            </b> (
-                                                            {{--
-                                                            <?= $terbilang ?> --}}
-                                                            Empat Ribu
-                                                            Rupiah)
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                {{-- @if (Session::has('newurl'))
-                                                <a id="link" class="link" href="{{Session::get('newurl')}}"
-                                                    target="_blank">Link</a>
-                                                @endif --}}
-                                                
-                                            </div>
-                                        {{-- </div>
-                                        <div class="tab-pane fade" id="pills-data" role="tabpanel"
-                                            aria-labelledby="pills-data-tab"> --}}
-                                            <hr>
-                                            <h1 class="card-title-member">Riwayat Deposit</h1>
-
-
-                                            <div class="table-responsive">
-                                                <table class="table table-hover dataTable-table" id="datatable"
-                                                    style="width: 100%">
-                                                    <thead>
-                                                        <tr style="display: none;">
-                                                            <th class="border-top-0">Nama</th>
-                                                            <th class="border-top-0">Status</th>
-                                                            <th class="border-top-0">Transaksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($deposit as $item)
-
-                                                        <tr role="row" class="odd">
-                                                            <td class="sorting_1 row">
-                                                                <div class="media col-6 col-sm-6 col-md-3" >
-                                                                    <img class="mr-1"
-                                                                        src="https://santara.co.id/assets/images/icon/wallet.png">
-                                                                    <div class="media-body">
-                                                                        <div><b>Deposit</b></div>
-                                                                        <div><small>-</small></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-3">
-
-                                                                @if ($item->status == 0)
-                                                                <div class="font-menunggu-verifikasi"><b>Menunggu
-                                                                        Verifikasi</b></div>
-                                                                @elseif ($item->status == 1)
-                                                                <div class="font-berhasil"><b>Berhasil</b></div>
-                                                                @elseif ($item->status == 2)
-                                                                <div class="font-gagal"><b>Gagal</b></div>
-                                                                @else
-                                                                <div class="font-menunggu-verifikasi"><b>Menunggu
-                                                                        Verifikasi</b></div>
-                                                                @endif
-                                                                <div><small>{{tgl_indo(date('Y-m-d',
-                                                                        strtotime($item->created_at))).'
-                                                                        '.formatJam($item->created_at),}}</small></div>
-                                                                </div>
-                                                                <div class="row col-md-6">
-                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Metode
-                                                                            Pembayaran</small><br><b>
-                                                                            @if ($item->channel == 'ONEPAY')
-                                                                            OTHER PAYMENT
-                                                                            @else
-                                                                            -
-                                                                            @endif
-
-
-                                                                        </b></span>
-                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Nilai
-                                                                            Deposit</small><br><b
-                                                                            style="color: green;">Rp.
-                                                                            {{number_format($item->amount,0,',','.')}}</b></span>
-                                                                    <span class="col-6 col-sm-4 col-md-4"><small>Biaya
-                                                                            Admin</small><br><b
-                                                                            style="color: green;">Rp.
-                                                                            {{number_format($item->fee,0,',','.')}}</b></span>
-                                                                </div>
-                                                                <div class="col-md-6"></div>
-                                                                <div class="row col-md-6">
-                                                                    <div class="col-12">
-
-                                                                        <span><small>Total
-                                                                            Pembayaran</small><br><b
-                                                                            style="color: green;">Rp.
-                                                                            {{number_format($item->amount+$item->fee,0,',','.')}}</b></span>
-                                                                        </div>
-                                                                </div>
-                                                                <div class="col-md-6"></div>
-
-                                                                <div class="row col-md-6">
-                                                                    <div class="col-12">
-
-                                                                        
-                                                                        @if ($item->status == 0)
-                                                                        <a href="{{$item->redirect_url}}" target="_blank"
-                                                                        class="btn btn-info btn-sm btn-block"
-                                                                        title="Ubah">Lanjut Pembayaran</a>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
+                            <div class="form-group account_number" style="display:none">
+                              <label for="lastName1">Nomor Rekening Anda</label>
+                              <input type="text" class="form-control number-only required-form-deposit"
+                                name="account_number" id="account_number" maxlength="16">
+                              <span id="account_number_error" class="text-danger"></span>
                             </div>
+
+                            <div class="form-group bank_from" style="display:none">
+                              <label for="lastName1">Bank Rekening Anda</label>
+                              <select name="bank_from" id="bank_from" class="form-control required-form-deposit">
+                                <option value="">Pilih...</option>
+                                <option value="MANDIRI">Bank Mandiri</option>
+                                <option value="BCA">Bank BCA</option>
+                                <option value="BRI">Bank BRI</option>
+                                <option value="BNI">Bank BNI</option>
+                                <option value="other">Lainnya</option>
+                              </select>
+                              <span id="bank_from_error" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group bank_from_text" style="display:none">
+                              <input type="text" class="form-control alpha-space-only required-form-deposit"
+                                placeholder="Nama Bank" name="bank_from_text" id="bank_from_text" maxlength="15">
+                              <span id="bank_from_text_error" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group bank" style="display:none">
+                              <label for="lastName1">Bank</label>
+                              <select name="bank" id="bank" class="form-control required-form-deposit">
+                                <option value="">Pilih...</option>
+                                <option value="MANDIRI">Bank Mandiri</option>
+                                <option value="PERMATA">Bank Permata</option>
+                                <option value="BNI">Bank BNI</option>
+                                <option value="BRI">Bank BRI</option>
+                                <option value="BCA">Bank BCA</option>
+                              </select>
+                              <span id="bank_error" class="text-danger"></span>
+                            </div>
+                            <button type="submit"
+                              class="btn btn-santara-red btn-block 
+                                                            <?= (Auth::user()->is_verified == 1) ? 'submit-form-deposit' : 'disabled' ?>"
+                              <?=(Auth::user()->is_verified == 1) ?
+                              'id=""' : '' ?> type="button">
+                              <?= (Auth::user()->is_verified == 1) ? 'Deposit' : 'Akun belum verifikasi' ?>
+                            </button>
+                          </form>
                         </div>
+                        <div class="col-md-5 disclamer-member">
+                          <strong>Ketentuan:</strong>
+                          <ul>
+                            <li>Minimal deposit adalah <b>Rp 100.000 </b> (Seratus Ribu
+                              Rupiah)</li>
+                            <li>Transaksi deposit akan dikenakan <b>biaya admin</b> sebesar
+                              <b>Rp
+                                {{--
+                                <?= number_format($fee, 0, ',', '.') ?> --}}
+                                4.000
+                              </b> (
+                              {{--
+                              <?= $terbilang ?> --}}
+                              Empat Ribu
+                              Rupiah)
+                            </li>
+                          </ul>
+                        </div>
+                        {{-- @if (Session::has('newurl'))
+                        <a id="link" class="link" href="{{Session::get('newurl')}}" target="_blank">Link</a>
+                        @endif --}}
+
+                      </div>
+                      {{--
                     </div>
+                    <div class="tab-pane fade" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab"> --}}
+                      <hr>
+                      <h1 class="card-title-member">Riwayat Deposit</h1>
+
+
+                      <div class="table-responsive">
+                        <table class="table table-hover dataTable-table" id="datatable" style="width: 100%">
+                          <thead>
+                            <tr style="display: none;">
+                              <th class="border-top-0">Nama</th>
+                              <th class="border-top-0">Status</th>
+                              <th class="border-top-0">Transaksi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ($deposit as $item)
+
+                            <tr role="row" class="odd">
+                              <td class="sorting_1 row">
+                                <div class="media col-6 col-sm-6 col-md-3">
+                                  <img class="mr-1" src="https://santara.co.id/assets/images/icon/wallet.png">
+                                  <div class="media-body">
+                                    <div><b>Deposit</b></div>
+                                    <div><small>-</small></div>
+                                  </div>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-3">
+
+                                  @if ($item->status == 0)
+                                  <div class="font-menunggu-verifikasi"><b>Menunggu
+                                      Verifikasi</b></div>
+                                  @elseif ($item->status == 1)
+                                  <div class="font-berhasil"><b>Berhasil</b></div>
+                                  @elseif ($item->status == 2)
+                                  <div class="font-gagal"><b>Gagal</b></div>
+                                  @else
+                                  <div class="font-menunggu-verifikasi"><b>Menunggu
+                                      Verifikasi</b></div>
+                                  @endif
+                                  <div><small>{{tgl_indo(date('Y-m-d',
+                                      strtotime($item->created_at))).'
+                                      '.formatJam($item->created_at),}}</small></div>
+                                </div>
+                                <div class="row col-md-6">
+                                  <span class="col-6 col-sm-4 col-md-4"><small>Metode
+                                      Pembayaran</small><br><b>
+                                      @if ($item->channel == 'ONEPAY')
+                                      OTHER PAYMENT
+                                      @else
+                                      -
+                                      @endif
+
+
+                                    </b></span>
+                                  <span class="col-6 col-sm-4 col-md-4"><small>Nilai
+                                      Deposit</small><br><b style="color: green;">Rp.
+                                      {{number_format($item->amount,0,',','.')}}</b></span>
+                                  <span class="col-6 col-sm-4 col-md-4"><small>Biaya
+                                      Admin</small><br><b style="color: green;">Rp.
+                                      {{number_format($item->fee,0,',','.')}}</b></span>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="row col-md-6">
+                                  <div class="col-12">
+
+                                    <span><small>Total
+                                        Pembayaran</small><br><b style="color: green;">Rp.
+                                        {{number_format($item->amount+$item->fee,0,',','.')}}</b></span>
+                                  </div>
+                                </div>
+                                <div class="col-md-6"></div>
+
+                                <div class="row col-md-6">
+                                  <div class="col-12">
+
+
+                                    @if ($item->status == 0)
+                                    <a href="{{$item->redirect_url}}" target="_blank"
+                                      class="btn btn-info btn-sm btn-block" title="Ubah">Lanjut Pembayaran</a>
+                                    @endif
+                                  </div>
+                                </div>
+
+
+                              </td>
+                            </tr>
+                            @endforeach
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
-            </section>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
     </div>
+  </div>
 </div>
 @endsection
 @section('js')
 <script type="text/javascript" src="{{asset('public')}}/app-assets/js/core/alert/sweetalert.min.js"></script>
 <script src="{{asset('public')}}/assets2/js/global.js?v=5.8.8"></script>
 <script>
-    const feeDeposit = "4000"
+  const feeDeposit = "4000"
     const amount = document.getElementById("amount");
 const channel = document.getElementById("channel");
 const fee = document.getElementById("fee");
@@ -626,7 +608,7 @@ function depositProcess(dataDeposit) {
 </script>
 @if (Session::has('newurl'))
 <script>
-    window.open('{{session()->get('newurl')}}', "_blank");
+  window.open('{{session()->get('newurl')}}', "_blank");
     // $('#pills-data').tab('show');
 </script>
 @endif

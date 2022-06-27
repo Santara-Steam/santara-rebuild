@@ -64,15 +64,20 @@
                                                                     style="align-content: center;justify-content: flex-start;">
                                                                     <div class="d-flex row">
                                                                         <div class="col-6 col-sm-6 col-md-2"><img
-                                                                                src="{{env("PATH_WEB_PROD")}}{{$picture[0]}}"
+                                                                                src="{{env("
+                                                                                PATH_WEB_PROD")}}{{$picture[0]}}"
                                                                                 class="img-fluid"></div>
                                                                         <div class="col-md-4">
-                                                                            <div style="font-size:18px"><b>({{$item->code_emiten}}) {{$item->trademark}}</b>
+                                                                            <div style="font-size:18px">
+                                                                                <b>({{$item->code_emiten}})
+                                                                                    {{$item->trademark}}</b>
                                                                             </div>
-                                                                            <div style="font-size:15px">{{$item->company_name}}</div>
+                                                                            <div style="font-size:15px">
+                                                                                {{$item->company_name}}</div>
                                                                             <div
                                                                                 style="display: flex; align-content: center;justify-content: space-between; margin: .5rem 0;">
-                                                                                <span style="font-size:13px">{{tgl_indo(date('Y-m-d',
+                                                                                <span
+                                                                                    style="font-size:13px">{{tgl_indo(date('Y-m-d',
                                                                                     strtotime($item->created_at))).'
                                                                                     '.formatJam($item->created_at),}}</span>
                                                                             </div>
@@ -81,12 +86,14 @@
                                                                             @if ($item->status ==
                                                                             'CREATED')
                                                                             <div class="p-1 font-berhasil">
-                                                                                <small><b>Menunggu Pembayaran</b></small>
+                                                                                <small><b>Menunggu
+                                                                                        Pembayaran</b></small>
                                                                             </div>
                                                                             @elseif ($item->status
                                                                             == 'WAITING FOR VERIFICATION')
                                                                             <div class="p-1 font-berhasil">
-                                                                                <small><b>Menunggu Verifikasi</b></small>
+                                                                                <small><b>Menunggu
+                                                                                        Verifikasi</b></small>
                                                                             </div>
                                                                             @endif
 
@@ -99,21 +106,23 @@
                                                                                         '.formatJam($item->expired_date),}}</b></span>
                                                                             </button>
                                                                         </div>
-                                                                    
+
                                                                         <div class="col-md-3 mt-1">
-                                                                            <a href="{{$item->redirect_url}}" target="_blank"
-                                                                                class="btn btn-success"
+                                                                            <a href="{{$item->redirect_url}}"
+                                                                                target="_blank" class="btn btn-success"
                                                                                 style="width:100px"
                                                                                 title="Bayar">Bayar</a>
                                                                             <a class="btn btn-santara-red  cancelbtn"
-                                                                            data-id="{{$item->id}}"
+                                                                                data-id="{{$item->id}}"
                                                                                 style="width:100px"
                                                                                 title="Bayar">Batal</a>
                                                                         </div>
                                                                     </div>
-                                                                    <form action="{{ url('/user/cancel_transaksi')}}" id="cancel{{$item->id}}" method="POST">
+                                                                    <form action="{{ url('/user/cancel_transaksi')}}"
+                                                                        id="cancel{{$item->id}}" method="POST">
                                                                         @csrf
-                                                                        <input type="hidden" name="uuid" value="{{$item->id}}">
+                                                                        <input type="hidden" name="uuid"
+                                                                            value="{{$item->id}}">
                                                                     </form>
                                                                 </div>
                                                                 <div class="col-12 pt-1 pb-0">
@@ -130,16 +139,14 @@
                                                                                 aria-expanded="false"
                                                                                 aria-controls="detail_{{$item->transaction_serial}}">
                                                                                 Detail
-                                                                                <i
-                                                                                    class="la la-angle-right"></i>
-                                                                                <i
-                                                                                    class="la la-angle-down"></i>
+                                                                                <i class="la la-angle-right"></i>
+                                                                                <i class="la la-angle-down"></i>
                                                                             </a>
                                                                         </small>
                                                                     </p>
                                                                     <div class="row col-12 py-1 collapse"
                                                                         id="detail_{{$item->transaction_serial}}">
-                                                                        <span >
+                                                                        <span>
                                                                             <div>No. Transaksi :
                                                                                 <b>{{$item->transaction_serial}}</b>
                                                                             </div>
@@ -159,7 +166,7 @@
                                                                                     )</b>
                                                                             </div>
                                                                         </span>
-                                                                        
+
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -236,8 +243,10 @@
                                                                                         style="align-content: center;justify-content: flex-start;">
                                                                                         <div class="d-flex row">
                                                                                             <div class="col-md-2"><img
-                                                                                                    src="{{env("PATH_WEB_PROD")}}{{$picture[0]}}"
-                                                                                                    class="img-fluid"></div>
+                                                                                                    src="{{env("
+                                                                                                    PATH_WEB_PROD")}}{{$picture[0]}}"
+                                                                                                    class="img-fluid">
+                                                                                            </div>
                                                                                             <div class="col-md-5">
                                                                                                 <div
                                                                                                     style="font-size:18px">
@@ -366,17 +375,17 @@
                                                                     style="align-content: center;justify-content: flex-start;">
                                                                     <div class="d-flex row">
                                                                         <div class="col-6 col-sm-6 col-md-2"><img
-                                                                                src="{{env("PATH_WEB_PROD")}}{{$picture[0]}}"
+                                                                                src="{{env("
+                                                                                PATH_WEB_PROD")}}{{$picture[0]}}"
                                                                                 class="img-fluid"></div>
                                                                         <div class="col-6 col-sm-6 col-md-5">
-                                                                            <div
-                                                                                style="font-size:18px">
-                                                                                <b>({{$item->code_emiten}}) {{$item->trademark}}</b>
+                                                                            <div style="font-size:18px">
+                                                                                <b>({{$item->code_emiten}})
+                                                                                    {{$item->trademark}}</b>
                                                                             </div>
-                                                                            <div
-                                                                                style="font-size:15px">
+                                                                            <div style="font-size:15px">
                                                                                 {{$item->company_name}}
-                                                                                
+
                                                                             </div>
                                                                             <div
                                                                                 style="display: flex; align-content: center;justify-content: space-between; margin: .5rem 0;">
@@ -395,8 +404,7 @@
                                                                             </div>
                                                                             @elseif ($item->status
                                                                             == 'VERIFIED')
-                                                                            <div
-                                                                                class="p-1 font-berhasil">
+                                                                            <div class="p-1 font-berhasil">
                                                                                 <small><b>Pembelian
                                                                                         Berhasil</b></small>
                                                                             </div>
@@ -423,10 +431,8 @@
                                                                                 aria-expanded="false"
                                                                                 aria-controls="detail_{{$item->transaction_serial}}">
                                                                                 Detail
-                                                                                <i
-                                                                                    class="la la-angle-right"></i>
-                                                                                <i
-                                                                                    class="la la-angle-down"></i>
+                                                                                <i class="la la-angle-right"></i>
+                                                                                <i class="la la-angle-down"></i>
                                                                             </a>
                                                                         </small>
                                                                     </p>
@@ -452,7 +458,7 @@
                                                                                     )</b>
                                                                             </div>
                                                                         </span>
-                                                                        
+
                                                                     </div>
                                                                 </div>
                                                             </td>

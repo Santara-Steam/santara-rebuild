@@ -14,9 +14,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Santara | Dashboard</title>
     {{--
-    <link rel="apple-touch-icon" href="{{asset('admin')}}/app-assets/images/ico/apple-icon-120.png"> --}}
+    <link rel="apple-touch-icon" href="{{asset('public/admin')}}/app-assets/images/ico/apple-icon-120.png"> --}}
     {{--
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin')}}/app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('public/admin')}}/app-assets/images/ico/favicon.ico">
     --}}
     <link rel="shortcut icon" type="image/x-icon"
         href="https://storage.googleapis.com/asset-santara/santara.co.id/images/ico/favicon.ico">
@@ -25,37 +25,37 @@
         rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/vendors/css/vendors.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/css/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/css/colors.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/css/components.css">
     <!-- END: Theme CSS-->
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css"
-        href="{{asset('admin')}}/app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
+        href="{{asset('public/admin')}}/app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
     <link rel="stylesheet" type="text/css"
-        href="{{asset('admin')}}/app-assets/css/core/colors/palette-gradient.css">
+        href="{{asset('public/admin')}}/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css"
-        href="{{asset('admin')}}/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/vendors/css/charts/morris.css">
+        href="{{asset('public/admin')}}/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/vendors/css/charts/morris.css">
     <link rel="stylesheet" type="text/css"
-        href="{{asset('admin')}}/app-assets/fonts/simple-line-icons/style.css">
+        href="{{asset('public/admin')}}/app-assets/fonts/simple-line-icons/style.css">
     <link rel="stylesheet" type="text/css"
-        href="{{asset('admin')}}/app-assets/css/core/colors/palette-gradient.css">
+        href="{{asset('public/admin')}}/app-assets/css/core/colors/palette-gradient.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     {{-- <script src="{{asset('public')}}/app-assets/js/core/jquery/jquery.min.js"></script> --}}
     <!-- END: Custom CSS-->
     @yield('style')
-    <script src="{{ asset('admin') }}/app-assets/vendors/js/vendors.min.js"></script>
+    <script src="{{ asset('public/admin') }}/app-assets/vendors/js/vendors.min.js"></script>
 </head>
 <!-- END: Head-->
 
@@ -87,8 +87,7 @@
     <div class="drag-target"></div>
 
     <!-- BEGIN: Footer-->
-    <footer
-        class="footer footer-on-sidemenu footer-static footer-dark navbar-border navbar-shadow">
+    <footer class="footer footer-on-sidemenu footer-static footer-dark navbar-border navbar-shadow">
         <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 pb-2">
             <span class="float-md-left d-block d-md-inline-block">Santara Website Ver 5.8.8 - Business Ver 3.6.2 |
                 Copyright © 2022
@@ -103,31 +102,31 @@
 
     <!-- BEGIN: Vendor JS-->
 
-    {{-- <script src="{{asset('admin')}}/app-assets/vendors/js/vendors.min.js"></script> --}}
+    {{-- <script src="{{asset('public/admin')}}/app-assets/vendors/js/vendors.min.js"></script> --}}
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="{{asset('admin')}}/app-assets/vendors/js/charts/chart.min.js"></script>
-    <script src="{{asset('admin')}}/app-assets/vendors/js/charts/raphael-min.js"></script>
-    <script src="{{asset('admin')}}/app-assets/vendors/js/charts/morris.min.js"></script>
-    <script src="{{asset('admin')}}/app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js">
+    <script src="{{asset('public/admin')}}/app-assets/vendors/js/charts/chart.min.js"></script>
+    <script src="{{asset('public/admin')}}/app-assets/vendors/js/charts/raphael-min.js"></script>
+    <script src="{{asset('public/admin')}}/app-assets/vendors/js/charts/morris.min.js"></script>
+    <script src="{{asset('public/admin')}}/app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js">
     </script>
-    <script src="{{asset('admin')}}/app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js">
+    <script src="{{asset('public/admin')}}/app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js">
     </script>
-    <script src="{{asset('admin')}}/app-assets/data/jvector/visitor-data.js"></script>
+    <script src="{{asset('public/admin')}}/app-assets/data/jvector/visitor-data.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
-    <script src="{{asset('admin')}}/app-assets/js/core/app-menu.js"></script>
-    <script src="{{asset('admin')}}/app-assets/js/core/app.js"></script>
+    <script src="{{asset('public/admin')}}/app-assets/js/core/app-menu.js"></script>
+    <script src="{{asset('public/admin')}}/app-assets/js/core/app.js"></script>
     <!-- END: Theme JS-->
     <!-- BEGIN: Page JS-->
-    {{-- <script src="{{asset('admin')}}/app-assets/js/scripts/pages/dashboard-sales.js"></script> --}}
+    {{-- <script src="{{asset('public/admin')}}/app-assets/js/scripts/pages/dashboard-sales.js"></script> --}}
     <!-- END: Page JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- END: Theme JS-->
     <!-- BEGIN: Page JS-->
-    {{-- <script src="{{asset('admin')}}/app-assets/js/scripts/pages/dashboard-sales.js"></script> --}}
+    {{-- <script src="{{asset('public/admin')}}/app-assets/js/scripts/pages/dashboard-sales.js"></script> --}}
     <!-- END: Page JS-->
     @if(Session::has('message'))
     <script>
@@ -176,7 +175,7 @@
             }
         });
     </script>
-        <script src="https://old.santara.co.id/assets/js/global.js?v=5.8.8" defer></script>
+    <script src="https://old.santara.co.id/assets/js/global.js?v=5.8.8" defer></script>
     @yield('js')
 
 </body>

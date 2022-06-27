@@ -34,7 +34,7 @@
                                         </tr>
                                         <tr>
                                             <td>Jumlah Token</td>
-                                            <td>: {{  decimalFormat($stock) }}</td>
+                                            <td>: {{ decimalFormat($stock) }}</td>
                                         </tr>
                                         <tr>
                                             <td>Harga Token</td>
@@ -51,7 +51,8 @@
                                         <tr>
                                             <td>Waktu</td>
                                             <td>:
-                                                {{ tgl_indo(date('Y-m-d', strtotime($transaction->created_at))).' '.formatJam($transaction->created_at) }}
+                                                {{ tgl_indo(date('Y-m-d', strtotime($transaction->created_at))).'
+                                                '.formatJam($transaction->created_at) }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -62,15 +63,15 @@
                                             <td>Status</td>
                                             <td>:
                                                 @if($status_transaction == 1)
-                                                    <div class="badge badge-secondary badge-md">Belum Konfirmasi</div>
+                                                <div class="badge badge-secondary badge-md">Belum Konfirmasi</div>
                                                 @elseif($status_transaction == 2)
-                                                    <div class="badge badge-warning badge-md">Menunggu Konfirmasi</div>
+                                                <div class="badge badge-warning badge-md">Menunggu Konfirmasi</div>
                                                 @elseif ($status_transaction == 3)
-                                                    <div class="badge badge-success badge-md">Lunas</div>
+                                                <div class="badge badge-success badge-md">Lunas</div>
                                                 @elseif ($status_transaction == 4)
-                                                    <div class="badge badge-danger badge-md">Kadaluarsa</div>
+                                                <div class="badge badge-danger badge-md">Kadaluarsa</div>
                                                 @else
-                                                    <div class="badge badge-secondary badge-md">Belum Konfirmasi</div>
+                                                <div class="badge badge-secondary badge-md">Belum Konfirmasi</div>
                                                 @endif
                                             </td>
                                         </tr>
@@ -84,8 +85,8 @@
                                             @if($transaction->is_verified == 0)
                                             <button
                                                 onclick="confirm('Konfirmasi Transaksi', 'Konfirmasi transaksi pembayaran ?', '{{ url('admin/transaction/confirm/'.$transaction->uuid) }}')"
-                                                class="btn btn-primary btn-block mt-0"
-                                                {{ $channel == 'BANKTRANSFER' || $channel == 'VA' ? 'disabled' : '' }}>Konfirmasi
+                                                class="btn btn-primary btn-block mt-0" {{ $channel=='BANKTRANSFER' ||
+                                                $channel=='VA' ? 'disabled' : '' }}>Konfirmasi
                                             </button>
                                             @else
                                             <button
@@ -95,7 +96,9 @@
                                             @endif
                                         </div>
                                         <div class="col-md-4">
-                                            <button onclick="remove('{{ url('admin/transaction/delete_transaction') }}', '{{ $transaction->id }}')" class="btn btn-danger btn-block">Hapus
+                                            <button
+                                                onclick="remove('{{ url('admin/transaction/delete_transaction') }}', '{{ $transaction->id }}')"
+                                                class="btn btn-danger btn-block">Hapus
                                             </button>
                                         </div>
                                         <div class="col-md-4">
@@ -109,29 +112,29 @@
                     </div>
                     {{-- <div class="col-xl-6 col-md-12 text-center">
                         @if($transaction->channel == 'BANKTRANSFER')
-                            @if($transaction->verification_photo)
-                                <p>{{ $verification_photo_jwt }}</p>
-                            @else
-                            <div class='alert alert-warning'>
-                                <span>Belum upload bukti pembayaran.</span>
-                                <br />
-                            </div>
+                        @if($transaction->verification_photo)
+                        <p>{{ $verification_photo_jwt }}</p>
+                        @else
+                        <div class='alert alert-warning'>
+                            <span>Belum upload bukti pembayaran.</span>
+                            <br />
+                        </div>
 
-                            <form id="formSubmitPhoto" enctype="multipart/form-data">
-                                <input type="hidden" name="transaction_uuid" value="{{ $transaction->uuid }}">
-                                <div class="form-group" style="margin-bottom: 1rem;margin-top: 1rem;">
-                                    <input type="file" name="verification_photo" id="verification_photo"
-                                        class="form-control-file" accept="image/*">
-                                    <div id="errorBlockVerificationPhoto" class="help-block"
-                                        style="padding:10px; margin: 10px 0"></div>
+                        <form id="formSubmitPhoto" enctype="multipart/form-data">
+                            <input type="hidden" name="transaction_uuid" value="{{ $transaction->uuid }}">
+                            <div class="form-group" style="margin-bottom: 1rem;margin-top: 1rem;">
+                                <input type="file" name="verification_photo" id="verification_photo"
+                                    class="form-control-file" accept="image/*">
+                                <div id="errorBlockVerificationPhoto" class="help-block"
+                                    style="padding:10px; margin: 10px 0"></div>
+                            </div>
+                            <div class="row">
+                                <div class="text-left col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-block">Upload</button>
                                 </div>
-                                <div class="row">
-                                    <div class="text-left col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-block">Upload</button>
-                                    </div>
-                                </div>
-                            </form>
-                            @endif
+                            </div>
+                        </form>
+                        @endif
                         @endif
                     </div> --}}
                 </div>
@@ -142,9 +145,9 @@
 @endsection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{asset('admin')}}/app-assets/file-input/bootstrap.file-input.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/file-input/bootstrap.file-input.js"></script>
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
     $("input[type='file']").fileinput({
         'showUpload': false,
         'previewFileType': 'image'
@@ -284,5 +287,5 @@ $("#formSubmitPhoto").on('submit', function(e) {
 </script>
 @endsection
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/file-input/fileinput.css" />
+<link rel="stylesheet" type="text/css" href="{{asset('public/admin')}}/app-assets/file-input/fileinput.css" />
 @endsection

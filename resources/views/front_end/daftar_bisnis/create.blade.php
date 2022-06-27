@@ -2,7 +2,8 @@
 
 @section('content')
 <link rel="stylesheet" href="https://use.typekit.net/juf5ftz.css">
-<link rel="stylesheet" type="text/css" href="https://old.santara.co.id/assets/new-santara/css/form-daftarkan-bisnis.css" />
+<link rel="stylesheet" type="text/css"
+    href="https://old.santara.co.id/assets/new-santara/css/form-daftarkan-bisnis.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     crossorigin="anonymous">
 
@@ -10,8 +11,8 @@
     style="margin-top: 96px;">
     <div class="row col-12 col-md-9" style="margin-top: 70px;">
         <div class="col-12 align-self-end">
-            <img src="https://old.santara.co.id/assets/new-santara/img/logo/logo_header.png" class="img-fluid" width="270px"
-                alt="logo santara" />
+            <img src="https://old.santara.co.id/assets/new-santara/img/logo/logo_header.png" class="img-fluid"
+                width="270px" alt="logo santara" />
         </div>
         <div class="col-12 mt-4 desc-header-daftarkan-bisnis">
             <p class="ff-p">
@@ -751,9 +752,9 @@
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> --}}
 {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
-<link rel="stylesheet" type="text/css" href="{{ asset('new-santara/css/style.css?v=5.8.8') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('new-santara/css/login.css?v=5.8.8') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset('new-santara/bootstrap/css/bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/style.css?v=5.8.8') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/css/login.css?v=5.8.8') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('public/new-santara/bootstrap/css/bootstrap.css') }}">
 
 @endsection
 @section('js')
@@ -1224,7 +1225,7 @@ $('#crop6').click(function(){
 });
 
 </script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/forms/custom-file-input.js"></script>
 <script>
     $("#asd").on("click", function () {
 

@@ -1,60 +1,60 @@
 @extends('admin.layout.master')
 @section('content')
-    <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <section id="configuration">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h2><strong>Tambah Broadcast Notification</strong></h2>
-                                </div>
-                                <div class="card-body">
-                                    <form id="formBroadcasting" enctype="multipart/form-data" class="wizard-circle">
-                                        <input type="hidden" name="type" id="type"
-                                            value="<?= isset($type) ? $type : '' ?>" />
-                                        <input type="hidden" name="broadcast_id" id="broadcast_id"
-                                            value="<?= isset($broadcast['id']) ? $broadcast['id'] : '' ?>" />
-                                        <input type="hidden" id="storage" value="{{ config('global.STORAGE_BUCKET') }}" />
-                                        <input type="hidden" id="token" value="{{ '?token=' . Session::get('token') }}" />
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <section id="configuration">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2><strong>Tambah Broadcast Notification</strong></h2>
+                            </div>
+                            <div class="card-body">
+                                <form id="formBroadcasting" enctype="multipart/form-data" class="wizard-circle">
+                                    <input type="hidden" name="type" id="type"
+                                        value="<?= isset($type) ? $type : '' ?>" />
+                                    <input type="hidden" name="broadcast_id" id="broadcast_id"
+                                        value="<?= isset($broadcast['id']) ? $broadcast['id'] : '' ?>" />
+                                    <input type="hidden" id="storage" value="{{ config('global.STORAGE_BUCKET') }}" />
+                                    <input type="hidden" id="token" value="{{ '?token=' . Session::get('token') }}" />
 
-                                        <h6>Target User</h6>
-                                        @include(
-                                            'admin.crm._broadcasting._target-user'
-                                        )
+                                    <h6>Target User</h6>
+                                    @include(
+                                    'admin.crm._broadcasting._target-user'
+                                    )
 
-                                        <h6>Konten</h6>
-                                        @include('admin.crm._broadcasting._konten')
+                                    <h6>Konten</h6>
+                                    @include('admin.crm._broadcasting._konten')
 
-                                        <h6>Preview</h6>
-                                        @include(
-                                            'admin.crm._broadcasting._preview'
-                                        )
-                                    </form>
-                                </div>
+                                    <h6>Preview</h6>
+                                    @include(
+                                    'admin.crm._broadcasting._preview'
+                                    )
+                                </form>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>
 @endsection
 
 @section('js')
-    <script src="{{ asset('public') }}/assets/js/jquery.steps.min.js"></script>
-    <script src="{{ asset('public') }}/assets/js/jquery.validate.min.js"></script>
-    <script src="{{ asset('public') }}/assets/js/flatpickr.min.js"></script>
-    <script src="{{ asset('public') }}/assets/js/bootstrap.file-input.js"></script>
-    <script src="{{ asset('public') }}/assets/js/select2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('public') }}/assets/js/jquery.steps.min.js"></script>
+<script src="{{ asset('public') }}/assets/js/jquery.validate.min.js"></script>
+<script src="{{ asset('public') }}/assets/js/flatpickr.min.js"></script>
+<script src="{{ asset('public') }}/assets/js/bootstrap.file-input.js"></script>
+<script src="{{ asset('public') }}/assets/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             $("#input_select_5").select2({
                 placeholder: "Contoh: Sleman",
                 closeOnSelect: false,
@@ -637,15 +637,15 @@
                 loading: "Loading ..."
             }
         })
-    </script>
+</script>
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-        integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="{{ asset('public') }}/assets/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
-        integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{{ asset('public') }}/assets/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+    integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection

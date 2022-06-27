@@ -49,12 +49,16 @@
                                                     <td>{{number_format($item->lembar_saham,0,',','.')}}</td>
                                                     <td>Rp{{number_format($item->total_amount,0,',','.')}}</td>
                                                     <td>
-                                                        @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer == null)
-                                                        <div class="badge badge-warning">Bukti Transfer Belum Di Upload</div>
+                                                        @if ($item->bukti_tranfer == '-' || $item->bukti_tranfer ==
+                                                        null)
+                                                        <div class="badge badge-warning">Bukti Transfer Belum Di Upload
+                                                        </div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 0)
-                                                        <div class="badge badge-primary">Bukti Transfer Sudah Di Upload</div>
+                                                        <div class="badge badge-primary">Bukti Transfer Sudah Di Upload
+                                                        </div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 3)
-                                                        <div class="badge badge-primary">Bukti Transfer Sudah Di Upload Ulang</div>
+                                                        <div class="badge badge-primary">Bukti Transfer Sudah Di Upload
+                                                            Ulang</div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 1)
                                                         <div class="badge badge-success">Bukti Transfer Valid</div>
                                                         @elseif($item->bukti_tranfer != '-' && $item->isValid == 2)
@@ -62,8 +66,8 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                                <a href="{{url('admin/pesan_saham/detail')}}/{{$item->id}}"
-                                                                    class="btn btn-sm btn-primary">Lihat Detail</a>
+                                                        <a href="{{url('admin/pesan_saham/detail')}}/{{$item->id}}"
+                                                            class="btn btn-sm btn-primary">Lihat Detail</a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -82,8 +86,8 @@
 </div>
 @endsection
 @section('js')
-<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script>
     $(document).ready(function() {
         $('#tabel').DataTable({
@@ -93,6 +97,7 @@
 </script>
 @endsection
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+<link rel="stylesheet" type="text/css"
+    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 
 @endsection

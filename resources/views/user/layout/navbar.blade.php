@@ -1,7 +1,7 @@
 <?php 
 $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
 ?>
-<nav 
+<nav
     class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow">
     <div class="navbar-wrapper">
         <div class="navbar-header">
@@ -59,12 +59,12 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                 <span class="badge badge-pill badge-danger badge-up badge-glow">
                                     {{count($notifnew)}}
                                 </span></a>
-                                @else
-                                <span class="badge badge-pill badge-danger badge-up badge-glow">
-                                    0
-                                </span></a>
+                            @else
+                            <span class="badge badge-pill badge-danger badge-up badge-glow">
+                                0
+                            </span></a>
 
-                                @endif
+                            @endif
 
                             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                                 <li class="dropdown-menu-header">
@@ -100,37 +100,40 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                     @foreach ($notif as $item)
                                     {{-- <a href="{{$item->action}}"> --}}
                                         @if (strpos($item->action, ".com") !== false || strpos($item->action, "https:"))
-                                            <a href="{{ $item->action }}" target="_blank">
-                                                <div class="media">
-                                                    <div class="media-left align-self-center"><i
-                                                            class="ft-mail icon-bg-circle bg-cyan bg-darken-1 mr-0"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6 class="media-heading darken-1 
-                                                        <?php echo ($item->is_deleted == 0? 'blue': '') ?>
-                                                        ">{{$item->title}}</h6>
-                                                        <p class="notification-text font-small-3 text-muted">{{$item->message}}</p><small>
-                                                            <time class="media-meta text-muted"
-                                                                datetime="2015-06-11T18:29:20+08:00">{{$item->created_at->diffForHumans()}}</time></small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        @else 
+                                        <a href="{{ $item->action }}" target="_blank">
                                             <div class="media">
                                                 <div class="media-left align-self-center"><i
                                                         class="ft-mail icon-bg-circle bg-cyan bg-darken-1 mr-0"></i>
                                                 </div>
                                                 <div class="media-body">
                                                     <h6 class="media-heading darken-1 
-                                                    <?php echo ($item->is_deleted == 0? 'blue': '') ?>
-                                                    ">{{$item->title}}</h6>
-                                                    <p class="notification-text font-small-3 text-muted">{{$item->message}}</p><small>
+                                                        <?php echo ($item->is_deleted == 0? 'blue': '') ?>
+                                                        ">{{$item->title}}</h6>
+                                                    <p class="notification-text font-small-3 text-muted">
+                                                        {{$item->message}}</p><small>
                                                         <time class="media-meta text-muted"
                                                             datetime="2015-06-11T18:29:20+08:00">{{$item->created_at->diffForHumans()}}</time></small>
                                                 </div>
                                             </div>
+                                        </a>
+                                        @else
+                                        <div class="media">
+                                            <div class="media-left align-self-center"><i
+                                                    class="ft-mail icon-bg-circle bg-cyan bg-darken-1 mr-0"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading darken-1 
+                                                    <?php echo ($item->is_deleted == 0? 'blue': '') ?>
+                                                    ">{{$item->title}}</h6>
+                                                <p class="notification-text font-small-3 text-muted">{{$item->message}}
+                                                </p><small>
+                                                    <time class="media-meta text-muted"
+                                                        datetime="2015-06-11T18:29:20+08:00">{{$item->created_at->diffForHumans()}}</time></small>
+                                            </div>
+                                        </div>
                                         @endif
-                                    {{-- </a> --}}
+                                        {{--
+                                    </a> --}}
                                     @endforeach
 
                                     {{-- <a href="javascript:void(0)">
@@ -171,16 +174,17 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                     </a> --}}
                                 </li>
                                 <li class="dropdown-menu-footer">
-                                    <a href="javascript:{}" onclick="document.getElementById('read').submit();return false;" class="dropdown-item text-muted text-center"
-                                        >Read all notifications
+                                    <a href="javascript:{}"
+                                        onclick="document.getElementById('read').submit();return false;"
+                                        class="dropdown-item text-muted text-center">Read all notifications
                                     </a>
 
                                     <form class="form" id="read" action="{{url('/user/read')}}" method="POST"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                    
+
                                     </form>
-                                    </li>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown dropdown-user nav-item">
@@ -191,8 +195,9 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                     <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                         alt="Avatar" style="border-radius: 50%;" />
                                     @else
-                                    <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}"
-                                        alt="Avatar" style="border-radius: 50%;width: " onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'"/>
+                                    <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}" alt="Avatar"
+                                        style="border-radius: 50%;width: "
+                                        onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'" />
 
                                     @endif
                                 </span>
@@ -216,8 +221,9 @@ $profpic = str_replace('/uploads/trader/', "", Auth::user()->trader->photo)
                                 <img src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                     alt="Foto Profile" style="border-radius: 50%;padding:10px" />
                                 @else
-                                <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}"
-                                    alt="Foto Profile" style="border-radius: 50%;padding:10px;width: 200px" onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'"/>
+                                <img src="{{config('global.STORAGE_BUCKET2')}}kyc/{{$profpic}}" alt="Foto Profile"
+                                    style="border-radius: 50%;padding:10px;width: 200px"
+                                    onerror="this.onerror=null;this.src='https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user.png'" />
                                 @endif
                                 <a class="dropdown-item" href="{{url('/edit_profile')}}/{{Auth::user()->id}}"><i
                                         class="ft-user"></i> Edit Profile</a>

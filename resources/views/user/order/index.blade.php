@@ -124,9 +124,10 @@
                             <div class="card text-white bg-danger mb-3 " style="padding: 20px;">
                                 <div class="card-header" style="background-color: #ffffff;border-radius: 5px;">
                                     <img src="{{asset('public')}}/bca.png" class="img-fluid" width="100px" alt="">
-                                    </div>
+                                </div>
                                 <div class="card-body " style="padding: 20px 0px 10px 0px;">
-                                    <h2 class="c-margin-b-20" style="color: white;font-family: Arial, Helvetica, sans-serif;"> 4567255777</h2>
+                                    <h2 class="c-margin-b-20"
+                                        style="color: white;font-family: Arial, Helvetica, sans-serif;"> 4567255777</h2>
                                     <p class="card-text" style="margin: 0;">A.n. PT Santara Daya Inspiratama</p>
                                 </div>
                             </div>
@@ -137,7 +138,8 @@
 
                     </div>
                     <div class="col-md-12 text-center" style="margin-top: -20px">
-                        Transfer Sebesar <strong>Rp{{ number_format($item->total_amount,0,',','.') }}</strong> Ke Nomor Rekening Di Atas.
+                        Transfer Sebesar <strong>Rp{{ number_format($item->total_amount,0,',','.') }}</strong> Ke Nomor
+                        Rekening Di Atas.
                     </div>
                     <div class="form-group">
                         <label for="bukti">Bukti Transfer</label>
@@ -155,8 +157,8 @@
 @endforeach
 @endsection
 @section('js')
-<script src="{{asset('admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{asset('admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="{{asset('public/admin')}}/app-assets/js/scripts/tables/datatables/datatable-basic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
     integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -180,5 +182,5 @@
     integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css"
-    href="{{asset('admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    href="{{asset('public/admin')}}/app-assets/vendors/css/tables/datatable/datatables.min.css">
 @endsection

@@ -123,13 +123,14 @@
                   data-id="<?=$cs->id?>" data-trdlike="<?=$cs->trdlike?>" data-trdvot="<?=$cs->trdvot?>"
                   data-image="<?=$picture[0]?>" data-verified-bisnis="<?= $cs->is_verified_bisnis ?>">
                   <div class="card moldla">
-                    <img class="rectangle-2 moldla"
-                      src="{{env("PATH_WEB")}}{{$picture[0]}}" onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
+                    <img class="rectangle-2 moldla" src="{{env(" PATH_WEB")}}{{$picture[0]}}"
+                      onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'" />
                   </div>
                 </a>
                 <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}" class="molpli">
                   <div class="card molpli">
-                    <img class="rectangle-2" src="{{env("PATH_WEB")}}{{$picture[0]}}"  onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'"/>
+                    <img class="rectangle-2" src="{{env(" PATH_WEB")}}{{$picture[0]}}"
+                      onerror="this.onerror=null;this.src='{{env('PATH_WEB_PROD')}}{{$picture[0]}}'" />
                     <div class="content">
                       <div class="header-card-dan-progress">
                         <div class="header-and-tags">
@@ -144,8 +145,8 @@
                                 <?php echo \Illuminate\Support\Str::limit(strip_tags( $cs->trademark ), 20, $end='...') ?>
                               </span>
                               @if ($cs->is_verified_bisnis == 1)
-                                                                        <i class="fa fa-check-circle" style="color: #2a8ede"></i>
-                                                                        @endif
+                              <i class="fa fa-check-circle" style="color: #2a8ede"></i>
+                              @endif
                             </div>
                             <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                               <span class="tx-np inter-normal-quill-gray">
@@ -236,7 +237,7 @@
                                 <a href="{{route('login')}}" style="cursor: pointer">
                                   <div class="icon-and-supporting-text-2">
                                     <i class="icon-com iconheart fas fa-comments"
-                                    style="color: #fff; font-size: 18px;"></i>
+                                      style="color: #fff; font-size: 18px;"></i>
                                     <div class="address-2 inter-normal-alabaster-10px">
                                       <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
                                     </div>
@@ -247,13 +248,13 @@
                                   data-target="#modal{{$cs->id}}" class="cmt">
                                   <div class="icon-and-supporting-text-2">
                                     <i class="icon-com iconheart fas fa-comments"
-                                    style="color: #fff; font-size: 18px;"></i>
+                                      style="color: #fff; font-size: 18px;"></i>
                                     <div class="address-2 inter-normal-alabaster-10px">
                                       <span class="tx-icon inter-normal-alabaster">{{$cs->cmt}} Komentar</span>
                                     </div>
                                   </div>
                                 </a>
-                                  @endguest
+                                @endguest
                                 <a style="cursor: pointer" data-id="{{$cs->id}}" data-toggle="modal"
                                   data-target="#modalShareButton{{$cs->id}}">
                                   <div class="icon-and-supporting-text-2">
@@ -267,7 +268,7 @@
                         </div>
                       </div>
                       <div class="footer-card">
-                        <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                        <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                         <a href="{{ url('detail-coming-soon') }}/{{$cs->id}}"
                           class="button btn-block btn btn-outline-light inter-medium-white-14px">Dukung Bisnis
                           Ini</a>
@@ -469,7 +470,7 @@
                   <div class="header">
                     <div class="saka-logistics inter-medium-alabaster-20px">
                       <span class="tx-pt inter-medium-alabaster" id="trademark"></span>
-                      <i id="verif" class="fa fa-check-circle"  style="color: #2a8ede;"></i>
+                      <i id="verif" class="fa fa-check-circle" style="color: #2a8ede;"></i>
                     </div>
                     <div class="pt-saka-multitrans-nusantara inter-normal-quill-gray-12px">
                       <span class="tx-np inter-normal-quill-gray" id="company_name"></span>
@@ -589,7 +590,7 @@
 
 
               <div class="footer-card3">
-                <img class="divider" src="{{ asset('assets/images/divider-108@2x.png') }}" />
+                <img class="divider" src="{{ asset('public/assets/images/divider-108@2x.png') }}" />
                 <a id="dbi" class="button btn btn-outline-light btn-au inter-medium-white-14px">Dukung Bisnis Ini</a>
               </div>
             </div>
@@ -655,7 +656,7 @@
   </script>
   @section('js')
   <script>
-// $("#testajax").click(function (e) {
+    // $("#testajax").click(function (e) {
 //  console.log('tes');
 // // AJAX request
 // $.post("/bisnis/getBisnis")

@@ -1,24 +1,24 @@
 @extends('admin.layout.master')
 @section('content')
-    <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <section id="configuration">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1 class="card-title-member">{{ $title }}</h1>
-                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                    <div class="heading-elements"></div>
-                                </div>
-                                <div class="card-content collapse show">
-                                    <div class="card-body card-dashboard">
-                                        <ul class="nav nav-justified mb-3" id="pills-tab" role="tablist">
-                                            <?php foreach ($tab as $key => $value): 
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <section id="configuration">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title-member">{{ $title }}</h1>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements"></div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <ul class="nav nav-justified mb-3" id="pills-tab" role="tablist">
+                                        <?php foreach ($tab as $key => $value): 
                                                 if($value->status == 'kustodian_verifying'){
                                                     $icon = 'la-check red';
                                                 }else if($value->status == 'verifying'){
@@ -29,81 +29,83 @@
                                                     $icon = 'la-times-circle red';
                                                 }
                                                 ?>
-                                            <li class="nav-item member-nav">
-                                                <a class="nav-link member-nav-link <?= $key == 1 ? 'active' : '' ?>"
-                                                    id="pills-<?= $value->page ?>-tab" data-toggle="tab"
-                                                    href="#pills-<?= $value->page ?>" role="tab"
-                                                    aria-controls="pills-<?= $value->page ?>" aria-selected="true">
-                                                    <span>
-                                                        <i style="font-size: 1.2rem; margin-right: 0;"
-                                                            class="las <?= $icon ?>"></i>
-                                                        <?= $value->title ?>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <?php endforeach; ?>
-                                        </ul>
+                                        <li class="nav-item member-nav">
+                                            <a class="nav-link member-nav-link <?= $key == 1 ? 'active' : '' ?>"
+                                                id="pills-<?= $value->page ?>-tab" data-toggle="tab"
+                                                href="#pills-<?= $value->page ?>" role="tab"
+                                                aria-controls="pills-<?= $value->page ?>" aria-selected="true">
+                                                <span>
+                                                    <i style="font-size: 1.2rem; margin-right: 0;"
+                                                        class="las <?= $icon ?>"></i>
+                                                    <?= $value->title ?>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
 
-                                        <div class="tab-content" id="pills-tabContent">
-                                            <?php foreach ($kyc as $key => $value): ?>
-                                            <div class="tab-pane fade show <?= $key == 1 ? 'active' : '' ?>"
-                                                id="pills-<?= $value->page ?>" role="tabpanel"
-                                                aria-labelledby="pills-<?= $value->page ?>-tab">
-                                                <input type="hidden" id="trader_uuid" value="<?= $value->uuid ?>" />
-                                                <input type="hidden" id="kyc_url"
-                                                    value="<?= $action == 'edit' ? $update_url : $confirm_url ?>" />
-                                                <input type="hidden" id="last_kyc_submission_id"
-                                                    value="<?= $value->data ? $value->data->last_kyc_submission_id : '' ?>" />
-                                                <form
-                                                    id="<?= $action == 'edit' ? 'formKycUpdate' . $key : 'formKycConfirm' . $key ?>">
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <?php foreach ($kyc as $key => $value): ?>
+                                        <div class="tab-pane fade show <?= $key == 1 ? 'active' : '' ?>"
+                                            id="pills-<?= $value->page ?>" role="tabpanel"
+                                            aria-labelledby="pills-<?= $value->page ?>-tab">
+                                            <input type="hidden" id="trader_uuid" value="<?= $value->uuid ?>" />
+                                            <input type="hidden" id="kyc_url"
+                                                value="<?= $action == 'edit' ? $update_url : $confirm_url ?>" />
+                                            <input type="hidden" id="last_kyc_submission_id"
+                                                value="<?= $value->data ? $value->data->last_kyc_submission_id : '' ?>" />
+                                            <form
+                                                id="<?= $action == 'edit' ? 'formKycUpdate' . $key : 'formKycConfirm' . $key ?>">
 
-                                                    @include('admin/kyc_bisnis/_detail/'.$value->page, [
-                                                        'data' => $value->data,
-                                                        'address' => $action == 'edit' ? $kyc['address'] : null,
-                                                    ])
+                                                @include('admin/kyc_bisnis/_detail/'.$value->page, [
+                                                'data' => $value->data,
+                                                'address' => $action == 'edit' ? $kyc['address'] : null,
+                                                ])
 
-                                                    @include('admin/kyc_bisnis/footer_confirm', [
-                                                        'is_empty' => $value->data ? false : true,
-                                                        'data' => $value->data,
-                                                        'key' => $key,
-                                                        'status' => $tab->$key->status,
-                                                    ])
-                                                </form>
-                                            </div>
-                                            <?php endforeach; ?>
+                                                @include('admin/kyc_bisnis/footer_confirm', [
+                                                'is_empty' => $value->data ? false : true,
+                                                'data' => $value->data,
+                                                'key' => $key,
+                                                'status' => $tab->$key->status,
+                                                ])
+                                            </form>
                                         </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
             <div class="modal-body text-center">
-                <img onClick='rotateMe()' name="popup_image" id="popup_image" class='rotateimg' style="max-height: 700px;max-width: 770px;" src="">
-                <hr/>
+                <img onClick='rotateMe()' name="popup_image" id="popup_image" class='rotateimg'
+                    style="max-height: 700px;max-width: 770px;" src="">
+                <hr />
                 <small><b>* Klik pada gambar untuk memutar posisi gambar</b></small>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-santara-white btn-block" data-dismiss="modal" >Tutup</button>
-            </div>
+                <button type="button" class="btn btn-sm btn-santara-white btn-block" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @section('js')
-    <script src="{{ asset('public') }}/assets/js/jquery.steps.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('public') }}/assets/js/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             validateComfirm();
         });
 
@@ -362,11 +364,11 @@
             });
             if (requiredAllCompleted) $(".submit-form-kyc").prop("disabled", false);
         }
-    </script>
+</script>
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
-        integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+    integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
