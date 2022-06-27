@@ -178,7 +178,9 @@
             </ul>
         </li>
         </li>
-        <li class="nav-item has-sub">
+        <li class=" nav-item {{ '/sso' == request()->path() ? 'active' : '' }}"><a href="{{url('/sso')}}" target="_blank"><i class="la la-comments"></i><span class="menu-title" data-i18n="eCommerce">Group chat</span></a>
+
+            <li class="nav-item has-sub">
             <a href="#"><i class="la la-gear"></i> &nbsp; Pengaturan</a>
             <ul class="menu-content">
                 <li class=" nav-item {{ 'admin/category' == request()->path() ? 'active' : '' }}"><a
