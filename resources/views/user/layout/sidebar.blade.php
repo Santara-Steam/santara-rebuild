@@ -113,7 +113,7 @@
              <li class=" nav-item {{ 'user/riwayat_aktifitas' == request()->path() ? 'active' : '' }}"><a href="{{url('/user/riwayat_aktifitas')}}"><i class="la la-history"></i><span class="menu-title" data-i18n="eCommerce">Riwayat Pengguna</span></a>
              </li>
 
-            <li class=" nav-item {{ 'user/sso' == request()->path() ? 'active' : '' }}"><a href="{{url('/user/sso')}}" target="_blank"><i class="la la-comments"></i><span class="menu-title" data-i18n="eCommerce">Group chat</span></a>
+            <li class=" nav-item {{ '/sso' == request()->path() ? 'active' : '' }}"><a href="{{url('/sso')}}" target="_blank"><i class="la la-comments"></i><span class="menu-title" data-i18n="eCommerce">Group chat</span></a>
             </li>
         </ul>
     </div>

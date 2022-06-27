@@ -30,15 +30,16 @@ use App\Http\Controllers\Front_end\ErrorPageController;
 // Auth::routes();
 Auth::routes(['verify' => true]);
 
-Route::get('/user/grant-access', function (){
-    return view('user.grant_access');
+Route::get('/grant-access', function (){
+    if (Auth::user()->role_id == 1) {
+        return view('admin.grant');
+    } else {
+        return view('user.grant');
+    }
 })->middleware('auth');
 
-Route::get('/check-user', function (){
-    dd(\request());
-});
-
-Route::get('/user/sso' ,[SsoController::class, 'sso'])->middleware('auth')->name('sso');
+Route::get('/sso' ,[SsoController::class, 'sso'])
+    ->middleware('auth')->name('sso');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["verified"]);
 // Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'store']);
 Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], function () {
