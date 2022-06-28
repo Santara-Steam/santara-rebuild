@@ -52,36 +52,42 @@ class syncGroupNowPlaying extends Command
 //            ->get(['emitens.id', 'emitens.company_name', 'emitens.pictures', 'emitens.trademark']);
 //        dd($emitensActive->toArray());
 
-        $emitensActive = emitens_old::select(
-            'emitens.id',
-            'emitens.company_name',
-            'emitens.pictures',
-            'emitens.trademark',
-            'emitens.price',
-            'emitens.supply',
-            'emitens.is_deleted',
-            'emitens.is_active',
-            'emitens.begin_period',
-            'categories.category as ktg')
-            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-            // ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
-            // ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
-            // ->where('emitens.is_deleted',0)
-            // ->whereRaw('emitens.end_period < now()')
-            // ->Where('emitens.last_emiten_journey', '=', 'PENAWARAN SAHAM')
-            // ->whereDate('emitens.end_period', '>=', now())  
-            // ->whereDate('emitens.begin_period', '<=', now())                                 
-            ->Where('emitens.is_coming_soon', '=', 0)
-            ->Where('emitens.is_active', '=', 1)
-            ->orderby('emitens.id','DESC')
-            ->groupBy('emitens.id')
-            ->get();
+        // $emitensActive = emitens_old::select(
+        //     'emitens.id',
+        //     'emitens.company_name',
+        //     'emitens.pictures',
+        //     'emitens.trademark',
+        //     'emitens.price',
+        //     'emitens.supply',
+        //     'emitens.is_deleted',
+        //     'emitens.is_active',
+        //     'emitens.begin_period',
+        //     'categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
+        //     ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+        //     ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
+        //     ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
+        //     // ->where('emitens.is_deleted',0)
+        //     // ->whereRaw('emitens.end_period < now()')
+        //     ->orderby('emitens.id','DESC')
+        //     ->groupBy('emitens.id')
+        //     ->havingRaw('CONVERT(ROUND(
+        //     IF(
+        //       (SUM(
+        //         IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply > 1, 1,
+        //           (SUM(
+        //             IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply) * 100, 2), char) = 100.00
+        //             and
+        //             emitens.is_deleted = 0
+        //             and emitens.is_active = 1
+        //             and emitens.begin_period < now()')
+        //     ->get();
+        $np = emiten(99, 1, null, null, null, null, null, 'saham', 'notfull');
+        $now_playing = collect($np);
 
-            // dd(now());
-        $this->info("Found " . $emitensActive->count() . " Emitens...");
+        $this->info("Found " . $now_playing->count() . " Emitens...");
         $this->info("Ready to executing...");
 
-        // foreach ($emitensActive as $emiten) {
+        // foreach ($now_playing as $emiten) {
         //     $db = DB::connection('chat');
 
         //     $groupExist = $db->table('groups')

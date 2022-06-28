@@ -166,8 +166,8 @@ class HomeController extends Controller
             ->get()
             ;
         
-        return view('front_end/home/index',compact('now_playing','sold_out','soon','soonc'));
-        // // dd(count($now_playing));
+        // return view('front_end/home/index',compact('now_playing','sold_out','soon','soonc'));
+        dd(count($now_playing));
         // dd(count($soon['data']));
         // dd($this->getPeekPralisting());
     }
