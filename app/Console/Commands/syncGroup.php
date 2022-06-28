@@ -99,7 +99,7 @@ class syncGroup extends Command
                     "Accept" => "application/json",
                     "email" => "admin@gmail.com",
                     "password" => "12345678",
-                ])->post('http://localhost:8888/api/groups', [
+                ])->post(env('SANTARA_CHAT_BASE_URL') .'/api/groups', [
                     "name" => $emiten->company_name,
                     "description" => $emiten->trademark,
                     "group_type" => 1, //closed group

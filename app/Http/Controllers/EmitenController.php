@@ -1049,7 +1049,7 @@ class EmitenController extends Controller
                 ->where('is_deleted', '=', 0)
                 ->groupBy('trader_id');
 
-            if ($request->get('title') == 'Pendanaan Terpenuhi') {
+            if ($request->get('title') == 'Penawaran Saham') {
                 $users = AuthHelper::getUserIdentitiesByGroup($transactions);
 
                 $response = Http::withHeaders([

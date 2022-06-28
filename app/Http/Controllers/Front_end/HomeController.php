@@ -101,6 +101,7 @@ class HomeController extends Controller
 
     public function index(){
         $np = emiten(99, 1, null, null, null, null, null, 'saham', 'notfull');
+        $now_playing = collect($np);
         
         $sold_out = emitens_old::select('emitens.*','categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
         ->leftjoin('categories', 'categories.id','=','emitens.category_id')
@@ -122,7 +123,6 @@ class HomeController extends Controller
                     and emitens.begin_period < now()')
         ->get();
         
-        $now_playing = collect($np);
         // $prelist = $this->getPeekPralisting();
         // $soon = collect($prelist['data']);
         // dd(collect($now_playing));

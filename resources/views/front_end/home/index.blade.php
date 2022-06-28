@@ -746,11 +746,12 @@
                         // print_r($value)
                         $s = json_decode(json_encode($value), true);
                         // print_r($s['m']);
-                        if ($s['m'] != null) {
-                            $s['m'];
-                        } else {
-                            $s['m'] = 0;
-                        }
+                        // if ($s['m'] != null) {
+                        //     $s['m'];
+                        // } else {
+                        //     $s['m'] = 0;
+                        // }
+                        $s['m'] = isset($r['m']) ? $r['m'] : 0;
                         ?>
             @endguest
 
