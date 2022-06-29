@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\emiten;
 use App\Models\emitens_old;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
@@ -14,36 +15,6 @@ class EmitenHelper
     {
         return self::Query()
             ->get();
-    }
-
-    public static function Query()
-    {
-        return emitens_old::select(
-            'emitens.id',
-            'emitens.company_name',
-            'emitens.pictures',
-            'emitens.trademark',
-            'emitens.price',
-            'emitens.supply',
-            'emitens.is_deleted',
-            'emitens.is_active',
-            'emitens.begin_period',
-            'categories.category as ktg', DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),  DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
-            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
-            ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
-            ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
-            ->orderby('emitens.id','DESC')
-            ->groupBy('emitens.id')
-            ->havingRaw('CONVERT(ROUND(
-            IF(
-              (SUM(
-                IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply > 1, 1,
-                  (SUM(
-                    IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply) * 100, 2), char) = 100.00
-                    and
-                    emitens.is_deleted = 0
-                    and emitens.is_active = 1
-                    and emitens.begin_period < now()');
     }
 
     public static function NowPlaying($limit = 99, $offset = 1, $search = null, $minimal = null, $maksimal = null, $category = null, $sort = null, $type = "saham", $jenis = "notfull")
@@ -101,6 +72,62 @@ class EmitenHelper
         $diff = array_diff($nowPlaying, $active);
 
         return array_merge($active, $diff);
+    }
+
+    public static function TraderEmitens()
+    {
+        $userId = request()->header('userId');
+
+        $emiten = emiten::select(
+            'emitens.id',
+            'emitens.company_name',
+            'emitens.pictures',
+            'emitens.trademark',
+            'emitens.price',
+            'emitens.supply',
+            'emitens.is_deleted',
+            'emitens.is_active',
+            'emitens.begin_period')
+            ->join('traders', 'traders.id', '=', 'emitens.trader_id')
+            ->where('traders.user_id', $userId)
+            ->where('emitens.is_active', 1)
+            ->where('emitens.is_deleted', 0)
+            ->get();
+
+        return $emiten;
+    }
+
+    public static function Query()
+    {
+        return emitens_old::select(
+            'emitens.id',
+            'emitens.company_name',
+            'emitens.pictures',
+            'emitens.trademark',
+            'emitens.price',
+            'emitens.supply',
+            'emitens.is_deleted',
+            'emitens.is_active',
+            'emitens.begin_period',
+            'categories.category as ktg',
+            DB::raw("SUM(Distinct(devidend.devidend)) as dvd"),
+            DB::raw("COUNT(Distinct(devidend.id)) as dvc"))
+            ->leftjoin('categories', 'categories.id','=','emitens.category_id')
+            ->leftjoin('devidend', 'devidend.emiten_id','=','emitens.id')
+            ->leftjoin('transactions','transactions.emiten_id','=','emitens.id')
+            ->orderby('emitens.id','DESC')
+            ->groupBy('emitens.id')
+            ->havingRaw('CONVERT(ROUND(
+            IF(
+              (SUM(
+                IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply > 1, 1,
+                  (SUM(
+                    IF(transactions.is_verified = 1 and transactions.is_deleted = 0, transactions.amount, 0)) / emitens.price) / emitens.supply) * 100, 2), char) = 100.00
+                    and
+                    emitens.is_deleted = 0
+                    and emitens.is_active = 1
+                    and emitens.begin_period < now()'
+            );
     }
 
 }

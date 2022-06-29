@@ -31,3 +31,8 @@ Route::get('/admin-emiten', function (){
    ]);
 });
 
+Route::get('/trader-emiten', function (){
+    return response()->json([
+        "emitenIds" => EmitenHelper::TraderEmitens()
+    ]);
+});
