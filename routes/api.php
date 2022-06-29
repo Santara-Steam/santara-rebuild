@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\EmitenHelper;
 use App\Helpers\Portofolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,5 +23,11 @@ Route::post('/emiten/store',[App\Http\Controllers\EmitenController::class, 'stor
 
 Route::get('/ownPortofolio', function () {
    return Portofolio::getApiPortofolio();
+});
+
+Route::get('/admin-emiten', function (){
+   return response()->json([
+       "emitenIds" => EmitenHelper::AdminEmitens()
+   ]);
 });
 
