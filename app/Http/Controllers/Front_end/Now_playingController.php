@@ -124,8 +124,10 @@ $c = count($now);
         where emiten_id = '.$id.')')
         ->first();
 
-        return view('front_end/now_playing/show',compact('emt','clike','cvote','ccmt','status','bok'));
-        
+        $group = db::connection('chat')->table('groups')->where('emiten_id','=',$id)->first();
+
+        return view('front_end/now_playing/show',compact('emt','clike','cvote','ccmt','status','bok','group'));
+        // dd($group);
     }
 
     /**

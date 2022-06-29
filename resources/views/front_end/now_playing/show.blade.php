@@ -342,7 +342,7 @@ $datediff = $end - $now;
                 </div>
             </div> --}}
             <div class="col-lg-6 col-sm-6 container">
-                <div class="info-deviden border-1px-cape-cod" style="width: 300px; height: 380px;">
+                <div class="info-deviden border-1px-cape-cod" style="width: 300px; height: 430px;">
                     <div class="pembagian-deviden-1 inter-normal-delta-12px">
                         <span class="inter-normal-delta-12px">Mulai dari</span>
                     </div>
@@ -423,6 +423,9 @@ $datediff = $end - $now;
                             <a target="blank" class="btn btn-light btn-block"
                                 href="{{ config('global.STORAGE_GOOGLE') . 'token/' . $emt->prospektus }}"><i
                                     class="fa fa-file-text" aria-hidden="true"></i> Prospektus</a>
+                            <a target="blank" class="btn btn-success btn-block"
+                                href="{{ config('global.STORAGE_GOOGLE') . 'token/' . $emt->prospektus }}"><i
+                                    class="fa fa-comments" aria-hidden="true"></i> Gabung Grup Chat</a>
                             @else
                             <button class="btn btn-danger btn-block" data-toggle="modal"
                                 data-target="#beliSahamModal"><i class="fa fa-shopping-cart"></i> Beli
@@ -430,6 +433,11 @@ $datediff = $end - $now;
                             <a target="blank" class="btn btn-light btn-block"
                                 href="{{ config('global.STORAGE_GOOGLE') . 'token/' . $emt->prospektus }}"><i
                                     class="fa fa-file-text" aria-hidden="true"></i> Prospektus</a>
+                            <a target="blank" class="btn btn-success btn-block"
+                                href="{{ config('global.STORAGE_GOOGLE') . 'token/' . $emt->prospektus }}"><i
+                                    class="fa fa-comments" aria-hidden="true"></i> Gabung Grup Chat</a>
+
+                            {{-- {{$group->id}} --}}
                             @endguest
                         </div>
                         </p>
