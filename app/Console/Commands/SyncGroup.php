@@ -3,12 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Helpers\EmitenHelper;
-use App\Models\emitens_old;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
-class syncGroup extends Command
+class SyncGroup extends Command
 {
     /**
      * The name and signature of the console command.
