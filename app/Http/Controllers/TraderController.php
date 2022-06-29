@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AuthHelper;
+use App\Models\Conversations;
 use App\Models\Deposit;
+use App\Models\GroupChatUser;
 use App\Models\notification;
 use App\Models\riwayat_user;
 use App\Models\trader;
 use App\Models\User;
 use App\Models\Withdraw;
 use DB;
+use Google\Cloud\Core\Timestamp;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -319,5 +323,61 @@ class TraderController extends Controller
     public function mobile_reset($token){
         
         return view('auth.passwords.email',compact('token'));
+    }
+
+    public function joinGroup($uuid){
+        // $response = Http::withHeaders([
+        //     "Content-Type" => "application/json",
+        //     "Accept" => "application/json",
+        //     "email" => AuthHelper::getEmail(),
+        //     "password" => AuthHelper::getPassword(),
+        // ])->post(env('SANTARA_CHAT_BASE_URL') . '/api/memberJoin/'.$uuid, [
+        //     "name" => 'tes'
+        // ])->json();
+
+        // if (!$response['success']) {
+        //     return redirect()->back()->with([
+        //        'message' => 'Error when creating group chat',
+        //        'alert-type' => 'danger'
+        //     ]);
+        // }
+
+        // dd($response);
+        $groupUsers = GroupChatUser::where('group_id','=',$uuid)->where('user_id','=',Auth::user()->id)->first();
+        
+        // if (in_array(Auth::user()->id, $groupUsers)) { // if already in group
+            
+        // }
+        if($groupUsers){
+            // dd('-');
+            $notif = array(
+                'message' => 'Anda sudah bergabung ke dalam group!',
+                'alert-type' => 'warn'
+            );
+            return redirect()->back()->with($notif);
+        }else{
+
+            GroupChatUser::create([
+                'user_id'  => Auth::user()->id,
+                'group_id' => $uuid,
+                'added_by' => 1,
+                'role'     => 1,
+            ]);
+
+            Conversations::create([
+                'to_id'        => $uuid,
+                'to_type'      => "App\Models\Group",
+                'message'      => Auth::user()->trader->name." has joined the group",
+                'message_type' => 9,
+                'add_members'  => true,
+            ]);
+            // dd('ok');
+            $notif = array(
+                'message' => 'Anda berhasil bergabung ke dalam group!',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notif);
+        }
+        // dd($groupUsers);
     }
 }

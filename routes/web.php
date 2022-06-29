@@ -89,6 +89,7 @@ Route::group(['middleware' => ['auth', 'checkRole:2', "verified",'pin','KYC']], 
     Route::get('/user/get-regency', [App\Http\Controllers\AddressController::class, 'usergetRegency']);
 
     Route::get('/secondary_market', [App\Http\Controllers\TraderController::class, 'secmar']);
+    Route::post('/join_group/{uuid}', [App\Http\Controllers\TraderController::class, 'joinGroup'])->name('join_group');
 
     Route::group(['middleware' => 'haveEmiten'], function (){
         Route::get('/user/group-chat', [ChatGroupController::class, 'getChatsByEmiten'])

@@ -433,11 +433,15 @@ $datediff = $end - $now;
                             <a target="blank" class="btn btn-light btn-block"
                                 href="{{ config('global.STORAGE_GOOGLE') . 'token/' . $emt->prospektus }}"><i
                                     class="fa fa-file-text" aria-hidden="true"></i> Prospektus</a>
-                            <a target="blank" class="btn btn-success btn-block"
-                                href="{{ config('global.STORAGE_GOOGLE') . 'token/' . $emt->prospektus }}"><i
+                            <a class="btn btn-success btn-block" href="javascript:{}"
+                                onclick="document.getElementById('joingrup').submit();"><i
                                     class="fa fa-comments" aria-hidden="true"></i> Gabung Grup Chat</a>
 
                             {{-- {{$group->id}} --}}
+                            <form id="joingrup" action="{{ route('join_group', $group->id) }}" method="POST">
+                                @csrf
+                                
+                            </form>
                             @endguest
                         </div>
                         </p>
