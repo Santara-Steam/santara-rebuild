@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function emiten($limit, $offset, $search, $minimal, $maksimal, $category, $sort, $type, $jenis)
 	{
